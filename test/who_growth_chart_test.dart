@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
 
-import 'package:who_growth_chart/who_growth_chart.dart';
+import 'package:who_growth_standards/who_growth_standards.dart';
 
 void main() {
   group('A group of tests', () {

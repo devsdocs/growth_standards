@@ -1,6 +1,6 @@
-import 'package:who_growth_chart/src/const.dart';
-import 'package:who_growth_chart/src/math.dart';
-import 'package:who_growth_chart/src/types.dart';
+import 'package:who_growth_standards/src/const.dart';
+import 'package:who_growth_standards/src/math.dart';
+import 'package:who_growth_standards/src/types.dart';
 
 class AgeInDays {
   AgeInDays(this.value);
@@ -8,6 +8,13 @@ class AgeInDays {
 
   int get inYears => rounding(inMonths / 12).toInt();
   int get inMonths => rounding(value / daysInMonth).toInt();
+}
+
+bool assertDateOfBirth(DateOfBirth dob) {
+  if (dob.date > _TimeTools._datesInMonth(dob.year, dob.month.number)) {
+    return false;
+  }
+  return true;
 }
 
 class Age {
@@ -65,13 +72,6 @@ class DateOfBirth {
   final int year;
   final Months month;
   final int date;
-}
-
-bool assertDateOfBirth(DateOfBirth dob) {
-  if (dob.date > _TimeTools._datesInMonth(dob.year, dob.month.number)) {
-    return false;
-  }
-  return true;
 }
 
 class _TimeTools {

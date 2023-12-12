@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:who_growth_chart/src/math.dart';
-import 'package:who_growth_chart/src/model/common.dart';
-import 'package:who_growth_chart/src/typedef.dart';
-import 'package:who_growth_chart/src/types.dart';
+import 'package:who_growth_standards/src/math.dart';
+import 'package:who_growth_standards/src/model/common.dart';
+import 'package:who_growth_standards/src/typedef.dart';
+import 'package:who_growth_standards/src/types.dart';
 
 part '../data/bmianthro.dart';
 
