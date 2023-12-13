@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:reusable_tools/reusable_tools.dart';
+import 'package:super_measurement/super_measurement.dart';
+import 'package:who_growth_standards/src/common.dart';
 import 'package:who_growth_standards/src/math.dart';
 import 'package:who_growth_standards/src/typedef.dart';
 import 'package:who_growth_standards/src/types.dart';
@@ -19,11 +21,9 @@ class WeightForHeightData {
                   x,
                   WeightForHeightLMS(
                     lms: (l: y['l'], m: y['m'], s: y['s']),
-                    lorh: y['lorh'] == 'L'
+                    lorh: y['lorh'].toString().toLowerCase() == 'l'
                         ? Measure.recumbent
-                        : y['lorh'] == 'H'
-                            ? Measure.standing
-                            : Measure.unknown,
+                        : Measure.standing,
                   ),
                 );
               }),
@@ -37,54 +37,81 @@ class WeightForHeightData {
 class WeightForHeight {
   WeightForHeight._({
     required Sex sex,
-    required num measurementResult,
-    // TODO(devsdocs): import reusable_tools and add Length and Weight for BMI calculcation, also consider the [Measure] type
-    // required Measure measure,
+    required Age age,
+    required Length lengthMeasurementResult,
+    required Mass massMeasurementResult,
+    required Measure measure,
     required WeightForHeightData weightForHeightData,
-  })  : _measurementResult = measurementResult,
-        // _measure = measure,
+  })  : _lengthMeasurementResult = lengthMeasurementResult,
+        _measure = measure,
         _sex = sex,
+        _massMeasurementResult = massMeasurementResult,
+        _age = age,
         _mapGender = weightForHeightData.data {
-    if (!(measurementResult >= 65 && measurementResult <= 120)) {
-      throw Exception('Height must be in range of 65 - 120 cm');
+    if (!(_adjustedHeight >= 65 && _adjustedHeight <= 120)) {
+      if (lengthMeasurementResult.toCentimeters.value! >= 65 &&
+          lengthMeasurementResult.toCentimeters.value! <= 120) {
+        throw Exception('Please correcting measurement position based on age');
+      } else {
+        throw Exception('Final height must be in range of 65 - 120 cm');
+      }
     }
   }
 
   factory WeightForHeight.male({
-    required num measurementResult,
+    required Length lengthMeasurementResult,
+    required Mass massMeasurementResult,
+    required Measure measure,
     required WeightForHeightData weightForHeightData,
+    required Age age,
   }) =>
       WeightForHeight._(
         sex: Sex.male,
-        measurementResult: measurementResult,
+        lengthMeasurementResult: lengthMeasurementResult,
         weightForHeightData: weightForHeightData,
+        massMeasurementResult: massMeasurementResult,
+        measure: measure,
+        age: age,
       );
 
   factory WeightForHeight.female({
-    required num measurementResult,
+    required Length lengthMeasurementResult,
+    required Mass massMeasurementResult,
     required WeightForHeightData weightForHeightData,
+    required Measure measure,
+    required Age age,
   }) =>
       WeightForHeight._(
         sex: Sex.female,
-        measurementResult: measurementResult,
+        lengthMeasurementResult: lengthMeasurementResult,
+        massMeasurementResult: massMeasurementResult,
         weightForHeightData: weightForHeightData,
+        measure: measure,
+        age: age,
       );
 
   final Sex _sex;
-
-  final num _measurementResult;
-  // final Measure _measure;
+  final Age _age;
+  final Length _lengthMeasurementResult;
+  final Mass _massMeasurementResult;
+  final Measure _measure;
   final Map<String, WeightForHeightGender> _mapGender;
+
+  num get _adjustedHeight => adjustedLengthHeight(
+        measure: _measure,
+        ageInDays: _age.totalDays,
+        lengthHeight: _lengthMeasurementResult.toCentimeters.value!,
+      );
 
   WeightForHeightGender get _maleData => _mapGender['1']!;
   WeightForHeightGender get _femaleData => _mapGender['2']!;
 
   WeightForHeightLMS get _ageData =>
       (_sex == Sex.male ? _maleData : _femaleData)
-          .heightData[_measurementResult.toDouble().toPrecision(1).toString()]!;
+          .heightData[_adjustedHeight.toDouble().toPrecision(1).toString()]!;
 
   num get zScore => adjustedZScore(
-        y: _measurementResult,
+        y: _massMeasurementResult.toKilograms.value!,
         l: _ageData.lms.l,
         m: _ageData.lms.m,
         s: _ageData.lms.s,

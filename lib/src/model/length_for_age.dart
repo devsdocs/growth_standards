@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:super_measurement/super_measurement.dart';
 import 'package:who_growth_standards/src/common.dart';
 import 'package:who_growth_standards/src/math.dart';
 import 'package:who_growth_standards/src/typedef.dart';
@@ -19,11 +20,9 @@ class LengthForAgeData {
                   x,
                   LengthForAgeLMS(
                     lms: (l: y['l'], m: y['m'], s: y['s']),
-                    loh: y['loh'] == 'L'
+                    loh: y['loh'].toString().toLowerCase() == 'l'
                         ? Measure.recumbent
-                        : y['loh'] == 'H'
-                            ? Measure.standing
-                            : Measure.unknown,
+                        : Measure.standing,
                   ),
                 );
               }),
@@ -38,12 +37,11 @@ class LengthForAge {
   LengthForAge._({
     required Sex sex,
     required Age age,
-    required num measurementResult,
-    // TODO(devsdocs): import reusable_tools and add Length and Weight for BMI calculcation, also consider the [Measure] type
-    // required Measure measure,
+    required Length measurementResult,
+    required Measure measure,
     required LengthForAgeData lengthForAgeData,
   })  : _measurementResult = measurementResult,
-        // _measure = measure,
+        _measure = measure,
         _sex = sex,
         _age = age,
         _mapGender = lengthForAgeData.data {
@@ -54,32 +52,36 @@ class LengthForAge {
 
   factory LengthForAge.male({
     required Age age,
-    required num measurementResult,
+    required Length measurementResult,
     required LengthForAgeData lengthForAgeData,
+    required Measure measure,
   }) =>
       LengthForAge._(
         sex: Sex.male,
         age: age,
         measurementResult: measurementResult,
         lengthForAgeData: lengthForAgeData,
+        measure: measure,
       );
 
   factory LengthForAge.female({
     required Age age,
-    required num measurementResult,
+    required Length measurementResult,
     required LengthForAgeData lengthForAgeData,
+    required Measure measure,
   }) =>
       LengthForAge._(
         sex: Sex.female,
         age: age,
         measurementResult: measurementResult,
         lengthForAgeData: lengthForAgeData,
+        measure: measure,
       );
 
   final Sex _sex;
   final Age _age;
-  final num _measurementResult;
-  // final Measure _measure;
+  final Length _measurementResult;
+  final Measure _measure;
   final Map<String, LengthForAgeGender> _mapGender;
 
   LengthForAgeGender get _maleData => _mapGender['1']!;
@@ -89,7 +91,11 @@ class LengthForAge {
       .ageData[_age.totalDays.toString()]!;
 
   num get zScore => zscore(
-        y: _measurementResult,
+        y: adjustedLengthHeight(
+          lengthHeight: _measurementResult.toCentimeters.value!,
+          ageInDays: _age.totalDays,
+          measure: _measure,
+        ),
         l: _ageData.lms.l,
         m: _ageData.lms.m,
         s: _ageData.lms.s,

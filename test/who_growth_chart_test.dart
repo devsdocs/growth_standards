@@ -17,7 +17,7 @@ void main() {
       expect(
         ArmCircumferenceForAge.male(
           age: Age.byMonthsAgo(24),
-          measurementResult: 20.3,
+          measurementResult: const Centimeters(20.3),
           armCircumferenceData: armCirData,
         ).zScore,
         anyOf(3.79, 3.80),
@@ -25,7 +25,7 @@ void main() {
       expect(
         ArmCircumferenceForAge.male(
           age: Age.byMonthsAgo(44),
-          measurementResult: 11.5,
+          measurementResult: const Centimeters(11.5),
           armCircumferenceData: armCirData,
         ).zScore,
         -4.11,
@@ -33,7 +33,7 @@ void main() {
       expect(
         ArmCircumferenceForAge.male(
           age: Age.byMonthsAgo(28),
-          measurementResult: 17.4,
+          measurementResult: const Centimeters(17.4),
           armCircumferenceData: armCirData,
         ).zScore,
         1.57,
@@ -43,7 +43,7 @@ void main() {
       expect(
         BodyMassIndexForAge.male(
           age: Age.byMonthsAgo(44),
-          measurementResult: 20.5,
+          bodyMassIndexMeasurement: BodyMassIndexMeasurement.fromValue(20.5),
           bodyMassIndexData: bodyMassIndexData,
         ).zScore,
         3.40,
@@ -51,7 +51,7 @@ void main() {
       expect(
         BodyMassIndexForAge.male(
           age: Age.byMonthsAgo(28),
-          measurementResult: 12,
+          bodyMassIndexMeasurement: BodyMassIndexMeasurement.fromValue(12),
           bodyMassIndexData: bodyMassIndexData,
         ).zScore,
         anyOf(-3.76, -3.75),
@@ -59,7 +59,7 @@ void main() {
       expect(
         BodyMassIndexForAge.male(
           age: Age.byMonthsAgo(52),
-          measurementResult: 18.8,
+          bodyMassIndexMeasurement: BodyMassIndexMeasurement.fromValue(18.8),
           bodyMassIndexData: bodyMassIndexData,
         ).zScore,
         anyOf(2.36, 2.37),

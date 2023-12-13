@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:super_measurement/super_measurement.dart';
 import 'package:who_growth_standards/src/common.dart';
 import 'package:who_growth_standards/src/math.dart';
 import 'package:who_growth_standards/src/typedef.dart';
@@ -33,7 +34,7 @@ class HeadCircumferenceForAge {
   HeadCircumferenceForAge._({
     required Sex sex,
     required Age age,
-    required num measurementResult,
+    required Length measurementResult,
     required HeadCircumferenceForAgeData headCircumferenceData,
   })  : _measurementResult = measurementResult,
         _sex = sex,
@@ -46,7 +47,7 @@ class HeadCircumferenceForAge {
 
   factory HeadCircumferenceForAge.male({
     required Age age,
-    required num measurementResult,
+    required Length measurementResult,
     required HeadCircumferenceForAgeData headCircumferenceData,
   }) =>
       HeadCircumferenceForAge._(
@@ -58,7 +59,7 @@ class HeadCircumferenceForAge {
 
   factory HeadCircumferenceForAge.female({
     required Age age,
-    required num measurementResult,
+    required Length measurementResult,
     required HeadCircumferenceForAgeData headCircumferenceData,
   }) =>
       HeadCircumferenceForAge._(
@@ -70,7 +71,7 @@ class HeadCircumferenceForAge {
 
   final Sex _sex;
   final Age _age;
-  final num _measurementResult;
+  final Length _measurementResult;
   final Map<String, HeadCircumferenceForAgeGender> _mapGender;
 
   HeadCircumferenceForAgeGender get _maleData => _mapGender['1']!;
@@ -81,7 +82,7 @@ class HeadCircumferenceForAge {
           .ageData[_age.totalDays.toString()]!;
 
   num get zScore => zscore(
-        y: _measurementResult,
+        y: _measurementResult.toCentimeters.value!,
         l: _ageData.lms.l,
         m: _ageData.lms.m,
         s: _ageData.lms.s,

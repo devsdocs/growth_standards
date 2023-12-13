@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:super_measurement/super_measurement.dart';
 import 'package:who_growth_standards/src/common.dart';
 import 'package:who_growth_standards/src/math.dart';
 import 'package:who_growth_standards/src/typedef.dart';
@@ -31,7 +32,7 @@ class WeightForAge {
   WeightForAge._({
     required Sex sex,
     required Age age,
-    required num measurementResult,
+    required Mass measurementResult,
     required WeightForAgeData weightForAgeData,
   })  : _measurementResult = measurementResult,
         _sex = sex,
@@ -44,7 +45,7 @@ class WeightForAge {
 
   factory WeightForAge.male({
     required Age age,
-    required num measurementResult,
+    required Mass measurementResult,
     required WeightForAgeData weightForAgeData,
   }) =>
       WeightForAge._(
@@ -56,7 +57,7 @@ class WeightForAge {
 
   factory WeightForAge.female({
     required Age age,
-    required num measurementResult,
+    required Mass measurementResult,
     required WeightForAgeData weightForAgeData,
   }) =>
       WeightForAge._(
@@ -68,7 +69,7 @@ class WeightForAge {
 
   final Sex _sex;
   final Age _age;
-  final num _measurementResult;
+  final Mass _measurementResult;
   final Map<String, WeightForAgeGender> _mapGender;
 
   WeightForAgeGender get _maleData => _mapGender['1']!;
@@ -78,7 +79,7 @@ class WeightForAge {
       .ageData[_age.totalDays.toString()]!;
 
   num get zScore => adjustedZScore(
-        y: _measurementResult,
+        y: _measurementResult.toKilograms.value!,
         l: _ageData.lms.l,
         m: _ageData.lms.m,
         s: _ageData.lms.s,

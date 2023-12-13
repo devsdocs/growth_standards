@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:reusable_tools/reusable_tools.dart';
+import 'package:super_measurement/super_measurement.dart';
+import 'package:who_growth_standards/src/common.dart';
 import 'package:who_growth_standards/src/math.dart';
 import 'package:who_growth_standards/src/typedef.dart';
 import 'package:who_growth_standards/src/types.dart';
@@ -19,11 +21,9 @@ class WeigthForLengthData {
                   x,
                   WeigthForLengthLMS(
                     lms: (l: y['l'], m: y['m'], s: y['s']),
-                    lorh: y['lorh'] == 'L'
+                    lorh: y['lorh'].toString().toLowerCase() == 'l'
                         ? Measure.recumbent
-                        : y['lorh'] == 'H'
-                            ? Measure.standing
-                            : Measure.unknown,
+                        : Measure.standing,
                   ),
                 );
               }),
@@ -37,54 +37,81 @@ class WeigthForLengthData {
 class WeigthForLength {
   WeigthForLength._({
     required Sex sex,
-    required num measurementResult,
-    // TODO(devsdocs): import reusable_tools and add Length and Weight for BMI calculcation, also consider the [Measure] type
-    // required Measure measure,
+    required Length lengthMeasurementResult,
+    required Mass massMeasurementResult,
+    required Age age,
+    required Measure measure,
     required WeigthForLengthData weigthForLengthData,
-  })  : _measurementResult = measurementResult,
-        // _measure = measure,
+  })  : _lengthMeasurementResult = lengthMeasurementResult,
+        _massMeasurementResult = massMeasurementResult,
+        _measure = measure,
         _sex = sex,
+        _age = age,
         _mapGender = weigthForLengthData.data {
-    if (!(measurementResult >= 45 && measurementResult <= 110)) {
-      throw Exception('Length must be in range of 45 - 110 cm');
+    if (!(_adjustedLength >= 45 && _adjustedLength <= 110)) {
+      if (lengthMeasurementResult.toCentimeters.value! >= 45 &&
+          lengthMeasurementResult.toCentimeters.value! <= 110) {
+        throw Exception('Please correcting measurement position based on age');
+      } else {
+        throw Exception('Final length must be in range of 45 - 110 cm');
+      }
     }
   }
 
   factory WeigthForLength.male({
-    required num measurementResult,
+    required Length lengthMeasurementResult,
+    required Mass massMeasurementResult,
     required WeigthForLengthData weigthForLengthData,
+    required Age age,
+    required Measure measure,
   }) =>
       WeigthForLength._(
         sex: Sex.male,
-        measurementResult: measurementResult,
+        age: age,
+        measure: measure,
+        lengthMeasurementResult: lengthMeasurementResult,
+        massMeasurementResult: massMeasurementResult,
         weigthForLengthData: weigthForLengthData,
       );
 
   factory WeigthForLength.female({
-    required num measurementResult,
+    required Length lengthMeasurementResult,
+    required Mass massMeasurementResult,
     required WeigthForLengthData weigthForLengthData,
+    required Age age,
+    required Measure measure,
   }) =>
       WeigthForLength._(
         sex: Sex.female,
-        measurementResult: measurementResult,
+        age: age,
+        measure: measure,
+        lengthMeasurementResult: lengthMeasurementResult,
+        massMeasurementResult: massMeasurementResult,
         weigthForLengthData: weigthForLengthData,
       );
 
   final Sex _sex;
-
-  final num _measurementResult;
-  // final Measure _measure;
+  final Age _age;
+  final Length _lengthMeasurementResult;
+  final Mass _massMeasurementResult;
+  final Measure _measure;
   final Map<String, WeigthForLengthGender> _mapGender;
+
+  num get _adjustedLength => adjustedLengthHeight(
+        measure: _measure,
+        ageInDays: _age.totalDays,
+        lengthHeight: _lengthMeasurementResult.toCentimeters.value!,
+      );
 
   WeigthForLengthGender get _maleData => _mapGender['1']!;
   WeigthForLengthGender get _femaleData => _mapGender['2']!;
 
   WeigthForLengthLMS get _ageData =>
       (_sex == Sex.male ? _maleData : _femaleData)
-          .lengthData[_measurementResult.toDouble().toPrecision(1).toString()]!;
+          .lengthData[_adjustedLength.toDouble().toPrecision(1).toString()]!;
 
   num get zScore => adjustedZScore(
-        y: _measurementResult,
+        y: _massMeasurementResult.toKilograms.value!,
         l: _ageData.lms.l,
         m: _ageData.lms.m,
         s: _ageData.lms.s,

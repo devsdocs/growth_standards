@@ -10,7 +10,12 @@ enum Sex {
 enum Measure {
   recumbent,
   standing,
-  unknown,
+  ;
+}
+
+enum OedemaExist {
+  yes,
+  no,
   ;
 }
 

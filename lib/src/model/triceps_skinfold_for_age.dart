@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:super_measurement/super_measurement.dart';
 import 'package:who_growth_standards/src/common.dart';
 import 'package:who_growth_standards/src/math.dart';
 import 'package:who_growth_standards/src/typedef.dart';
@@ -33,7 +34,7 @@ class TricepsSkinfoldForAge {
   TricepsSkinfoldForAge._({
     required Sex sex,
     required Age age,
-    required num measurementResult,
+    required Length measurementResult,
     required TricepsSkinfoldData tricepsSkinfoldData,
   })  : _measurementResult = measurementResult,
         _sex = sex,
@@ -46,7 +47,7 @@ class TricepsSkinfoldForAge {
 
   factory TricepsSkinfoldForAge.male({
     required Age age,
-    required num measurementResult,
+    required Length measurementResult,
     required TricepsSkinfoldData tricepsSkinfoldData,
   }) =>
       TricepsSkinfoldForAge._(
@@ -58,7 +59,7 @@ class TricepsSkinfoldForAge {
 
   factory TricepsSkinfoldForAge.female({
     required Age age,
-    required num measurementResult,
+    required Length measurementResult,
     required TricepsSkinfoldData tricepsSkinfoldData,
   }) =>
       TricepsSkinfoldForAge._(
@@ -70,7 +71,7 @@ class TricepsSkinfoldForAge {
 
   final Sex _sex;
   final Age _age;
-  final num _measurementResult;
+  final Length _measurementResult;
   final Map<String, TricepsSkinfoldAgeGender> _mapGender;
 
   TricepsSkinfoldAgeGender get _maleData => _mapGender['1']!;
@@ -81,7 +82,7 @@ class TricepsSkinfoldForAge {
           .ageData[_age.totalDays.toString()]!;
 
   num get zScore => adjustedZScore(
-        y: _measurementResult,
+        y: _measurementResult.toCentimeters.value!,
         l: _ageData.lms.l,
         m: _ageData.lms.m,
         s: _ageData.lms.s,

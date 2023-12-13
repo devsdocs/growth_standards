@@ -72,23 +72,20 @@ num adjustedZScore({
   return zscore.toPrecision(2);
 }
 
-double adjustedLengthHeight({
+num adjustedLengthHeight({
   required int ageInDays,
   required Measure measure,
-  required double lengthHeight,
+  required num lengthHeight,
 }) {
   // Assuming round_up function rounds the age to the nearest whole number.
   // Dart's round() function rounds to the nearest integer.
-  final roundedAgeInDays = rounding(ageInDays);
-  double adjustedLenHeight = lengthHeight;
 
-  // Standardize the length/height based on age and measurement unit
-  if (measure != Measure.unknown && !lengthHeight.isNaN) {
-    if (roundedAgeInDays <= 730 && measure == Measure.standing) {
-      adjustedLenHeight += 0.7;
-    } else if (roundedAgeInDays > 730 && measure == Measure.recumbent) {
-      adjustedLenHeight -= 0.7;
-    }
+  num adjustedLenHeight = lengthHeight;
+
+  if (ageInDays <= 730 && measure == Measure.standing) {
+    adjustedLenHeight += 0.7;
+  } else if (ageInDays > 730 && measure == Measure.recumbent) {
+    adjustedLenHeight -= 0.7;
   }
 
   return adjustedLenHeight;

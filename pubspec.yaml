@@ -1,6 +1,7 @@
 name: who_growth_standards
 description: A Dart implementation of WHO Growth Standards.
 version: 1.0.0
+publish_to: none
 # repository: https://github.com/my_org/my_repo
 
 environment:
@@ -9,7 +10,9 @@ environment:
 # Add regular dependencies here.
 dependencies:
   reusable_tools: ^1.0.16
-  # super_measurement: ^1.0.7
+
+  super_measurement:
+    path: D:/Devs/App2/super_measurement
 
 dev_dependencies:
   lint: ^2.2.0
