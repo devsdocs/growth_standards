@@ -4,7 +4,7 @@ Months _monthFromNumber(int number) =>
     Months.values.singleWhere((element) => element.number == number);
 
 bool _assertDateOfBirth(_DateOfBirth dob) {
-  if (dob.date > _TimeTools._datesInMonth(dob.year, dob.month.number)) {
+  if (dob.date > _TimeTools.datesInMonth(dob.year, dob.month.number)) {
     return false;
   }
   return true;
@@ -19,18 +19,15 @@ class Age {
           dateOfBirth.date,
         );
 
-  factory Age.byYearsAgo(int years) {
-    return Age._(_DateOfBirth.byYearsAgo(years));
-  }
-  factory Age.byMonthsAgo(int months) {
-    return Age._(_DateOfBirth.byMonthsAgo(months));
-  }
-  factory Age.byDaysAgo(int days) {
-    return Age._(_DateOfBirth.byDaysAgo(days));
-  }
-  factory Age.byBirthDate(DateTime birthDate) {
-    return Age._(_DateOfBirth.fromDateTime(birthDate));
-  }
+  factory Age.byYearsAgo(int years) => Age._(_DateOfBirth.byYearsAgo(years));
+
+  factory Age.byMonthsAgo(int months) =>
+      Age._(_DateOfBirth.byMonthsAgo(months));
+
+  factory Age.byDaysAgo(int days) => Age._(_DateOfBirth.byDaysAgo(days));
+
+  factory Age.byBirthDate(DateTime birthDate) =>
+      Age._(_DateOfBirth.fromDateTime(birthDate));
 
   final _TimeIntervalCount _dobCount;
 
@@ -47,7 +44,7 @@ class _DateOfBirth {
   _DateOfBirth._({required this.year, required this.month, required this.date});
 
   factory _DateOfBirth.byDaysAgo(int days) {
-    final calc = _TimeTools._calculateBirthDateInDays(days);
+    final calc = _TimeTools.calculateBirthDateInDays(days);
     return _DateOfBirth._(
       year: calc.year,
       month: _monthFromNumber(calc.month),
@@ -56,7 +53,7 @@ class _DateOfBirth {
   }
 
   factory _DateOfBirth.byMonthsAgo(int months) {
-    final calc = _TimeTools._calculateBirthDateInMonths(months);
+    final calc = _TimeTools.calculateBirthDateInMonths(months);
     return _DateOfBirth._(
       year: calc.year,
       month: _monthFromNumber(calc.month),
@@ -65,7 +62,7 @@ class _DateOfBirth {
   }
 
   factory _DateOfBirth.byYearsAgo(int years) {
-    final calc = _TimeTools._calculateBirthDateInYears(years);
+    final calc = _TimeTools.calculateBirthDateInYears(years);
     return _DateOfBirth._(
       year: calc.year,
       month: _monthFromNumber(calc.month),
@@ -73,13 +70,11 @@ class _DateOfBirth {
     );
   }
 
-  factory _DateOfBirth.fromDateTime(DateTime dateTime) {
-    return _DateOfBirth._(
-      year: dateTime.year,
-      month: _monthFromNumber(dateTime.month),
-      date: dateTime.day,
-    );
-  }
+  factory _DateOfBirth.fromDateTime(DateTime dateTime) => _DateOfBirth._(
+        year: dateTime.year,
+        month: _monthFromNumber(dateTime.month),
+        date: dateTime.day,
+      );
 
   final int year;
   final Months month;
@@ -88,7 +83,7 @@ class _DateOfBirth {
 
 class _TimeTools {
   /// _daysInMonth cost contains days per months; daysInMonth method to be used instead.
-  static final List<int> _daysInMonth = [
+  static final List<int> daysInMonth = [
     31, // Jan
     28, // Feb, it varies from 28 to 29
     31,
@@ -104,61 +99,52 @@ class _TimeTools {
   ];
 
   /// isLeapYear method
-  static bool _isLeapYear(int year) =>
+  static bool isLeapYear(int year) =>
       (year % 4 == 0) && ((year % 100 != 0) || (year % 400 == 0));
 
   /// daysInMonth method
-  static int _datesInMonth(int year, int month) =>
-      (month == DateTime.february && _isLeapYear(year))
+  static int datesInMonth(int year, int month) =>
+      (month == DateTime.february && isLeapYear(year))
           ? 29
-          : _daysInMonth[month - 1];
+          : daysInMonth[month - 1];
 
-  static DateTime _calculateBirthDateInDays(int daysOld) {
+  static DateTime calculateBirthDateInDays(int daysOld) =>
+      DateTime.now().subtract(Duration(days: daysOld));
+
+  static DateTime calculateBirthDateInYears(int yearsOld) {
     // Get the current date
     final DateTime currentDate = DateTime.now();
 
     // Calculate the target date
-    final DateTime targetDate = currentDate.subtract(Duration(days: daysOld));
-
-    return targetDate;
+    return currentDate
+        .subtract(Duration(days: yearsToDays(yearsOld, currentDate)));
   }
 
-  static DateTime _calculateBirthDateInYears(int yearsOld) {
-    // Get the current date
-    final DateTime currentDate = DateTime.now();
-
-    // Calculate the target date
-    final DateTime targetDate = currentDate
-        .subtract(Duration(days: _yearsToDays(yearsOld, currentDate)));
-
-    return targetDate;
-  }
-
-  static DateTime _calculateBirthDateInMonths(int monthsOld) {
+  static DateTime calculateBirthDateInMonths(int monthsOld) {
     // Get the current date
     final DateTime currentDate = DateTime.now();
 
     // Calculate the target date
     final DateTime targetDate = currentDate.subtract(
       Duration(
-        days: _monthsToDays(currentDate.year, currentDate.month, monthsOld),
+        days: monthsToDays(currentDate.year, currentDate.month, monthsOld),
       ),
     );
 
     return targetDate;
   }
 
-  static int _yearsToDays(int years, DateTime currentDate) {
+  static int yearsToDays(int years, DateTime currentDate) {
     // Calculate the total number of days in the given years, considering leap years
     int days = 0;
     for (int i = 0; i < years; i++) {
-      days += _isLeapYear(currentDate.year - i) ? 366 : 365;
+      days += isLeapYear(currentDate.year - i) ? 366 : 365;
     }
 
     return days;
   }
 
-  static int _monthsToDays(int year, int startingMonth, int months) {
+  static int monthsToDays(int year, int startingMonth, int months) {
     // Calculate the total number of days in the given months
     int days = 0;
     int currentMonth = startingMonth;
@@ -224,14 +210,14 @@ class _TimeIntervalCount {
           hours,
           minutes,
         ) {
-    if (date > _TimeTools._datesInMonth(year, month)) {
+    if (date > _TimeTools.datesInMonth(year, month)) {
       throw Exception('Days exceeded');
     }
   }
 
   final DateTime _dob;
 
-  _Age _timeDifference({
+  _Age timeDifference({
     required DateTime fromDate,
     required DateTime toDate,
   }) {
@@ -250,7 +236,7 @@ class _TimeIntervalCount {
 
       if (fromDate.day > endDate.day) {
         months--;
-        days = _TimeTools._datesInMonth(
+        days = _TimeTools.datesInMonth(
               fromDate.year + years,
               ((fromDate.month + months - 1) % DateTime.monthsPerYear) + 1,
             ) +
@@ -263,7 +249,7 @@ class _TimeIntervalCount {
       if (fromDate.day > endDate.day) {
         years--;
         months = DateTime.monthsPerYear - 1;
-        days = _TimeTools._datesInMonth(
+        days = _TimeTools.datesInMonth(
               fromDate.year + years,
               ((fromDate.month + months - 1) % DateTime.monthsPerYear) + 1,
             ) +
@@ -277,7 +263,7 @@ class _TimeIntervalCount {
 
       if (fromDate.day > endDate.day) {
         months--;
-        days = _TimeTools._datesInMonth(
+        days = _TimeTools.datesInMonth(
               fromDate.year + years,
               fromDate.month + months,
             ) +
@@ -312,7 +298,7 @@ class _TimeIntervalCount {
   }
 
   /// add method
-  DateTime _add({
+  DateTime add({
     required DateTime date,
     required _Age duration,
   }) {
@@ -325,24 +311,22 @@ class _TimeIntervalCount {
     return DateTime(years, months).add(Duration(days: days));
   }
 
-  _Age _ageAtDate(DateTime day) {
-    return _timeDifference(
-      fromDate: _dob,
-      toDate: day,
-    );
-  }
+  _Age ageAtDate(DateTime day) => timeDifference(
+        fromDate: _dob,
+        toDate: day,
+      );
 
-  _Age get ageNow => _ageAtDate(DateTime.now());
+  _Age get ageNow => ageAtDate(DateTime.now());
   _Age get timeUntilNextBirthdayFromNow =>
-      _timeUntilNextBirthday(DateTime.now());
+      timeUntilNextBirthday(DateTime.now());
 
-  _Age _timeUntilNextBirthday(DateTime fromDate) {
+  _Age timeUntilNextBirthday(DateTime fromDate) {
     final DateTime endDate = fromDate;
     final DateTime tempDate = DateTime(endDate.year, _dob.month, _dob.day);
     final DateTime nextBirthdayDate = tempDate.isBefore(endDate)
-        ? _add(date: tempDate, duration: _Age(years: 1))
+        ? add(date: tempDate, duration: _Age(years: 1))
         : tempDate;
-    return _timeDifference(fromDate: endDate, toDate: nextBirthdayDate);
+    return timeDifference(fromDate: endDate, toDate: nextBirthdayDate);
   }
 }
 

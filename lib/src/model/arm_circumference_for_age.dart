@@ -46,27 +46,25 @@ class ArmCircumferenceForAge {
     required Age age,
     required num measurementResult,
     required ArmCircumferenceData armCircumferenceData,
-  }) {
-    return ArmCircumferenceForAge._(
-      sex: Sex.male,
-      age: age,
-      measurementResult: measurementResult,
-      armCircumferenceData: armCircumferenceData,
-    );
-  }
+  }) =>
+      ArmCircumferenceForAge._(
+        sex: Sex.male,
+        age: age,
+        measurementResult: measurementResult,
+        armCircumferenceData: armCircumferenceData,
+      );
 
   factory ArmCircumferenceForAge.female({
     required Age age,
     required num measurementResult,
     required ArmCircumferenceData armCircumferenceData,
-  }) {
-    return ArmCircumferenceForAge._(
-      sex: Sex.female,
-      age: age,
-      measurementResult: measurementResult,
-      armCircumferenceData: armCircumferenceData,
-    );
-  }
+  }) =>
+      ArmCircumferenceForAge._(
+        sex: Sex.female,
+        age: age,
+        measurementResult: measurementResult,
+        armCircumferenceData: armCircumferenceData,
+      );
 
   final Sex _sex;
   final Age _age;

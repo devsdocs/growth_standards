@@ -56,27 +56,25 @@ class BodyMassIndexForAge {
     required Age age,
     required num measurementResult,
     required BodyMassIndexData bodyMassIndexData,
-  }) {
-    return BodyMassIndexForAge._(
-      sex: Sex.male,
-      age: age,
-      measurementResult: measurementResult,
-      bodyMassIndexData: bodyMassIndexData,
-    );
-  }
+  }) =>
+      BodyMassIndexForAge._(
+        sex: Sex.male,
+        age: age,
+        measurementResult: measurementResult,
+        bodyMassIndexData: bodyMassIndexData,
+      );
 
   factory BodyMassIndexForAge.female({
     required Age age,
     required num measurementResult,
     required BodyMassIndexData bodyMassIndexData,
-  }) {
-    return BodyMassIndexForAge._(
-      sex: Sex.female,
-      age: age,
-      measurementResult: measurementResult,
-      bodyMassIndexData: bodyMassIndexData,
-    );
-  }
+  }) =>
+      BodyMassIndexForAge._(
+        sex: Sex.female,
+        age: age,
+        measurementResult: measurementResult,
+        bodyMassIndexData: bodyMassIndexData,
+      );
 
   final Sex _sex;
   final Age _age;

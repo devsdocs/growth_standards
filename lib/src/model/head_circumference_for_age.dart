@@ -46,27 +46,25 @@ class HeadCircumferenceForAge {
     required Age age,
     required num measurementResult,
     required HeadCircumferenceData headCircumferenceData,
-  }) {
-    return HeadCircumferenceForAge._(
-      sex: Sex.male,
-      age: age,
-      measurementResult: measurementResult,
-      headCircumferenceData: headCircumferenceData,
-    );
-  }
+  }) =>
+      HeadCircumferenceForAge._(
+        sex: Sex.male,
+        age: age,
+        measurementResult: measurementResult,
+        headCircumferenceData: headCircumferenceData,
+      );
 
   factory HeadCircumferenceForAge.female({
     required Age age,
     required num measurementResult,
     required HeadCircumferenceData headCircumferenceData,
-  }) {
-    return HeadCircumferenceForAge._(
-      sex: Sex.female,
-      age: age,
-      measurementResult: measurementResult,
-      headCircumferenceData: headCircumferenceData,
-    );
-  }
+  }) =>
+      HeadCircumferenceForAge._(
+        sex: Sex.female,
+        age: age,
+        measurementResult: measurementResult,
+        headCircumferenceData: headCircumferenceData,
+      );
 
   final Sex _sex;
   final Age _age;

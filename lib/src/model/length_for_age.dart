@@ -56,27 +56,25 @@ class LengthForAge {
     required Age age,
     required num measurementResult,
     required LengthForAgeData lengthForAgeData,
-  }) {
-    return LengthForAge._(
-      sex: Sex.male,
-      age: age,
-      measurementResult: measurementResult,
-      lengthForAgeData: lengthForAgeData,
-    );
-  }
+  }) =>
+      LengthForAge._(
+        sex: Sex.male,
+        age: age,
+        measurementResult: measurementResult,
+        lengthForAgeData: lengthForAgeData,
+      );
 
   factory LengthForAge.female({
     required Age age,
     required num measurementResult,
     required LengthForAgeData lengthForAgeData,
-  }) {
-    return LengthForAge._(
-      sex: Sex.female,
-      age: age,
-      measurementResult: measurementResult,
-      lengthForAgeData: lengthForAgeData,
-    );
-  }
+  }) =>
+      LengthForAge._(
+        sex: Sex.female,
+        age: age,
+        measurementResult: measurementResult,
+        lengthForAgeData: lengthForAgeData,
+      );
 
   final Sex _sex;
   final Age _age;

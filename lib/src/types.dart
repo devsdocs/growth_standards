@@ -17,7 +17,7 @@ enum Measure {
 enum Months {
   januari(1, 'Januari', 31),
   februari(2, 'Februari', 28),
-  februariLeap(2, 'Februari', 29),
+  // februariLeap(2, 'Februari', 29),
   maret(3, 'Maret', 31),
   april(4, 'April', 30),
   mei(5, 'Mei', 31),

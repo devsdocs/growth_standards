@@ -37,9 +37,7 @@ num adjustedZScore({
   required num m,
   required num s,
 }) {
-  num calcSD(double sd) {
-    return m * pow(1 + l * s * sd, 1 / l);
-  }
+  num calcSD(double sd) => m * pow(1 + l * s * sd, 1 / l);
 
   // print('y: $y, l:$l, m:$m, s:$s');
 
