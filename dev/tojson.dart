@@ -4,7 +4,7 @@ import 'dart:io';
 import 'common.dart';
 
 void main() {
-  Directory('dev/raw').listSync().forEach((element) {
+  Directory('dev/raw/').listSync().forEach((element) {
     if (element is File) {
       final name = element.uri.pathSegments.last;
       final split = name.split('.');
@@ -26,19 +26,42 @@ void main() {
           return map;
         }).toList();
 
-        final male = rest
+        final maleMap = <String, dynamic>{};
+        final femaleMap = <String, dynamic>{};
+
+        rest
             .where((element) => element['sex'] == 1)
             .map((e) => e..remove('sex'))
-            .toList();
-        final female = rest
+            .toList()
+            .forEach((element) {
+          if (element['age'] != null) {
+            maleMap[element['age'].toString()] = element..remove('age');
+          }
+          if (element['height'] != null) {
+            maleMap[element['height'].toString()] = element..remove('height');
+          }
+          if (element['length'] != null) {
+            maleMap[element['length'].toString()] = element..remove('length');
+          }
+        });
+
+        rest
             .where((element) => element['sex'] == 2)
             .map((e) => e..remove('sex'))
-            .toList();
+            .toList()
+            .forEach((element) {
+          if (element['age'] != null) {
+            femaleMap[element['age'].toString()] = element..remove('age');
+          }
+          if (element['height'] != null) {
+            femaleMap[element['height'].toString()] = element..remove('height');
+          }
+          if (element['length'] != null) {
+            femaleMap[element['length'].toString()] = element..remove('length');
+          }
+        });
 
-        final out = [
-          {'sex': 1, 'data': male},
-          {'sex': 2, 'data': female},
-        ];
+        final out = {'1': maleMap, '2': femaleMap};
 
         final toJsonPretty = const JsonEncoder.withIndent('  ').convert(out);
         final toJson = json.encode(out);

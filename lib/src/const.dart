@@ -1,4 +1,4 @@
-const daysInMonth = 30.4375;
+// const daysInMonth = 30.436875;
 
 const dataMap = {
   'acanthro': 'Arm Circumference',

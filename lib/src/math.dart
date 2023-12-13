@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:reusable_tools/reusable_tools.dart';
-import 'package:who_growth_standards/src/const.dart';
 import 'package:who_growth_standards/src/types.dart';
 
 double _rawZscore({
@@ -53,7 +52,8 @@ num adjustedZScore({
 
     final cal = 3 + ((y - sD3pos) / sD23pos);
     return cal.toPrecision(2);
-  } else if (zscore < -3) {
+  }
+  if (zscore < -3) {
     final sD3neg = calcSD(-3);
     final calcSD2neg = calcSD(-2);
     final sD23neg = calcSD2neg - sD3neg;
@@ -61,7 +61,6 @@ num adjustedZScore({
     final cal = -3 + ((y - sD3neg) / sD23neg);
     return cal.toPrecision(2);
   }
-
   return zscore.toPrecision(2);
 }
 
@@ -107,7 +106,3 @@ num rounding(num value) {
     return value.roundToDouble();
   }
 }
-
-num monthAgeToDays(num month) => rounding(month * daysInMonth);
-
-num daysToMonth(num days) => days / daysInMonth;

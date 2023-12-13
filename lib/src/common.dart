@@ -1,16 +1,9 @@
-import 'package:who_growth_standards/src/const.dart';
-import 'package:who_growth_standards/src/math.dart';
 import 'package:who_growth_standards/src/types.dart';
 
-class AgeInDays {
-  AgeInDays(this.value);
-  final num value;
+Months _monthFromNumber(int number) =>
+    Months.values.singleWhere((element) => element.number == number);
 
-  int get inYears => rounding(inMonths / 12).toInt();
-  int get inMonths => rounding(value / daysInMonth).toInt();
-}
-
-bool assertDateOfBirth(DateOfBirth dob) {
+bool _assertDateOfBirth(DateOfBirth dob) {
   if (dob.date > _TimeTools._datesInMonth(dob.year, dob.month.number)) {
     return false;
   }
@@ -19,13 +12,16 @@ bool assertDateOfBirth(DateOfBirth dob) {
 
 class Age {
   Age(DateOfBirth dateOfBirth)
-      : assert(assertDateOfBirth(dateOfBirth)),
+      : assert(_assertDateOfBirth(dateOfBirth)),
         _dobCount = _TimeIntervalCount(
           dateOfBirth.year,
           dateOfBirth.month.number,
           dateOfBirth.date,
         );
 
+  factory Age.fromYears(int years) {
+    return Age(DateOfBirth.fromYears(years));
+  }
   factory Age.fromMonths(int months) {
     return Age(DateOfBirth.fromMonths(months));
   }
@@ -41,30 +37,34 @@ class Age {
   int get months => _ageNowIn.months;
   int get days => _ageNowIn.days;
 
-  int get totalMonths => years * 12 + months;
-  int get totalDays => rounding(totalMonths * daysInMonth).toInt() + days;
+  int get totalDays => DateTime.now().difference(_dobCount._dob).inDays;
 }
 
 class DateOfBirth {
   DateOfBirth({required this.year, required this.month, required this.date});
 
   factory DateOfBirth.fromDays(int days) {
-    final calc = DateTime.now().subtract(Duration(days: days));
+    final calc = _TimeTools._calculateBirthDateInDays(days);
     return DateOfBirth(
       year: calc.year,
-      month:
-          Months.values.singleWhere((element) => element.number == calc.month),
+      month: _monthFromNumber(calc.month),
       date: calc.day,
     );
   }
 
   factory DateOfBirth.fromMonths(int months) {
-    final calc = DateTime.now()
-        .subtract(Duration(days: rounding(months * daysInMonth).toInt()));
+    final calc = _TimeTools._calculateBirthDateInMonths(months);
     return DateOfBirth(
       year: calc.year,
-      month:
-          Months.values.singleWhere((element) => element.number == calc.month),
+      month: _monthFromNumber(calc.month),
+      date: calc.day,
+    );
+  }
+  factory DateOfBirth.fromYears(int years) {
+    final calc = _TimeTools._calculateBirthDateInYears(years);
+    return DateOfBirth(
+      year: calc.year,
+      month: _monthFromNumber(calc.month),
       date: calc.day,
     );
   }
@@ -100,6 +100,102 @@ class _TimeTools {
       (month == DateTime.february && _isLeapYear(year))
           ? 29
           : _daysInMonth[month - 1];
+
+  static DateTime _calculateBirthDateInDays(int daysOld) {
+    // Get the current date
+    final DateTime currentDate = DateTime.now();
+
+    // Calculate the target date
+    final DateTime targetDate = currentDate.subtract(Duration(days: daysOld));
+
+    return targetDate;
+  }
+
+  static DateTime _calculateBirthDateInYears(int yearsOld) {
+    // Get the current date
+    final DateTime currentDate = DateTime.now();
+
+    // Calculate the target date
+    final DateTime targetDate = currentDate
+        .subtract(Duration(days: _yearsToDays(yearsOld, currentDate)));
+
+    return targetDate;
+  }
+
+  static DateTime _calculateBirthDateInMonths(int monthsOld) {
+    // Get the current date
+    final DateTime currentDate = DateTime.now();
+
+    // Calculate the target date
+    final DateTime targetDate = currentDate.subtract(
+      Duration(
+        days: _monthsToDays(currentDate.year, currentDate.month, monthsOld),
+      ),
+    );
+
+    return targetDate;
+  }
+
+  static int _yearsToDays(int years, DateTime currentDate) {
+    // Calculate the total number of days in the given years, considering leap years
+    int days = 0;
+    for (int i = 0; i < years; i++) {
+      days += _isLeapYear(currentDate.year - i) ? 366 : 365;
+    }
+
+    return days;
+  }
+
+  static int _monthsToDays(int year, int startingMonth, int months) {
+    // Calculate the total number of days in the given months
+    int days = 0;
+    int currentMonth = startingMonth;
+    int y = year;
+
+    for (int i = 0; i < months; i++) {
+      days += DateTime(y, currentMonth, 0).day;
+      currentMonth++;
+
+      if (currentMonth > 12) {
+        currentMonth = 1;
+        y++;
+      }
+    }
+
+    return days;
+  }
+
+  // static DateTime _calculateBirthDate({
+  //   required int years,
+  //   required int months,
+  //   required int days,
+  // }) {
+  //   // Get the current date
+  //   final DateTime workingDate = DateTime.now();
+
+  //   // Calculate the target date
+  //   DateTime targetDate = workingDate.subtract(
+  //     Duration(
+  //       days: days,
+  //       hours: workingDate.hour,
+  //       minutes: workingDate.minute,
+  //       seconds: workingDate.second,
+  //       milliseconds: workingDate.millisecond,
+  //       microseconds: workingDate.microsecond,
+  //     ),
+  //   );
+
+  //   // Adjust the target date based on years and months
+  //   targetDate =
+  //       targetDate.subtract(Duration(days: _yearsToDays(years, targetDate)));
+  //   targetDate = targetDate.subtract(
+  //     Duration(
+  //       days: _monthsToDays(targetDate.year, targetDate.month, months),
+  //     ),
+  //   );
+
+  //   return targetDate;
+  // }
 }
 
 class _TimeIntervalCount {
@@ -251,9 +347,4 @@ class _Age {
   int years;
   int hours;
   int minutes;
-}
-
-class MeasurementResult {
-  MeasurementResult(this.value);
-  final num value;
 }

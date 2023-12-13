@@ -1,7 +1,8 @@
 import 'dart:convert';
 
+import 'package:who_growth_standards/src/common.dart';
 import 'package:who_growth_standards/src/math.dart';
-import 'package:who_growth_standards/src/model/common.dart';
+
 import 'package:who_growth_standards/src/typedef.dart';
 import 'package:who_growth_standards/src/types.dart';
 
@@ -9,53 +10,55 @@ part '../data/bmianthro.dart';
 
 class BodyMassIndexData {
   BodyMassIndexData()
-      : data = (json.decode(_bmianthro) as List<dynamic>).map((e) {
+      : data = (json.decode(_bmianthro) as Map<String, dynamic>).map((x, e) {
           e as Map<String, dynamic>;
-          return BodyMassIndexGender(
-            sex: e['sex'] as int == 1 ? Sex.male : Sex.female,
-            genderData: (e['data'] as List<dynamic>).map((x) {
-              x as Map<String, dynamic>;
-              return BodyMassIndexAge(
-                ageInDays: AgeInDays(x['age'] as num),
-                lms: (l: x['l'], m: x['m'], s: x['s']),
-                loh: x['loh'] as String,
-              );
-            }).toList(),
+          return MapEntry(
+            x,
+            BodyMassIndexGender(
+              ageData: (e['data'] as Map<String, dynamic>).map((x, y) {
+                y as Map<String, dynamic>;
+                return MapEntry(
+                  x,
+                  BodyMassIndexAge(
+                    lms: (l: y['l'], m: y['m'], s: y['s']),
+                    loh: y['loh'] as String,
+                  ),
+                );
+              }),
+            ),
           );
-        }).toList();
+        });
 
-  final List<BodyMassIndexGender> data;
+  final Map<String, BodyMassIndexGender> data;
 }
 
 class BodyMassIndex {
   BodyMassIndex({
     required Sex sex,
     required DateOfBirth dateOfBirth,
-    required MeasurementResult measurementResult,
+    required num measurementResult,
     required BodyMassIndexData bodyMassIndexData,
   })  : _measurementResult = measurementResult,
         _sex = sex,
         _age = Age(dateOfBirth),
-        _mapGender = bodyMassIndexData.data;
+        _mapGender = bodyMassIndexData.data {
+    assert(_age.totalDays >= 0 && _age.totalDays <= 1856);
+  }
 
   final Sex _sex;
   final Age _age;
-  final MeasurementResult _measurementResult;
+  final num _measurementResult;
+  final Map<String, BodyMassIndexGender> _mapGender;
 
-  final List<BodyMassIndexGender> _mapGender;
-
-  BodyMassIndexGender get _maleData =>
-      _mapGender.singleWhere((element) => element.sex == Sex.male);
-  BodyMassIndexGender get _femaleData =>
-      _mapGender.singleWhere((element) => element.sex == Sex.female);
+  BodyMassIndexGender get _maleData => _mapGender['1']!;
+  BodyMassIndexGender get _femaleData => _mapGender['2']!;
 
   BodyMassIndexAge get _genderData =>
       (_sex == Sex.male ? _maleData : _femaleData)
-          .genderData
-          .singleWhere((element) => element.ageInDays.value == _age.totalDays);
+          .ageData[_age.totalDays.toString()]!;
 
   num get zScore => adjustedZScore(
-        y: _measurementResult.value,
+        y: _measurementResult,
         l: _genderData.lms.l,
         m: _genderData.lms.m,
         s: _genderData.lms.s,
@@ -63,19 +66,16 @@ class BodyMassIndex {
 }
 
 class BodyMassIndexGender {
-  BodyMassIndexGender({required this.sex, required this.genderData});
+  BodyMassIndexGender({required this.ageData});
 
-  final Sex sex;
-  final List<BodyMassIndexAge> genderData;
+  final Map<String, BodyMassIndexAge> ageData;
 }
 
 class BodyMassIndexAge {
   BodyMassIndexAge({
-    required this.ageInDays,
     required this.lms,
     required this.loh,
   });
   final LMS lms;
-  final AgeInDays ageInDays;
   final String loh;
 }
