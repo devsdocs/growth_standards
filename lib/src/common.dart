@@ -3,7 +3,7 @@ import 'package:who_growth_standards/src/types.dart';
 Months _monthFromNumber(int number) =>
     Months.values.singleWhere((element) => element.number == number);
 
-bool _assertDateOfBirth(DateOfBirth dob) {
+bool _assertDateOfBirth(_DateOfBirth dob) {
   if (dob.date > _TimeTools._datesInMonth(dob.year, dob.month.number)) {
     return false;
   }
@@ -11,7 +11,7 @@ bool _assertDateOfBirth(DateOfBirth dob) {
 }
 
 class Age {
-  Age(DateOfBirth dateOfBirth)
+  Age._(_DateOfBirth dateOfBirth)
       : assert(_assertDateOfBirth(dateOfBirth)),
         _dobCount = _TimeIntervalCount(
           dateOfBirth.year,
@@ -19,14 +19,17 @@ class Age {
           dateOfBirth.date,
         );
 
-  factory Age.fromYears(int years) {
-    return Age(DateOfBirth.fromYears(years));
+  factory Age.byYearsAgo(int years) {
+    return Age._(_DateOfBirth.byYearsAgo(years));
   }
-  factory Age.fromMonths(int months) {
-    return Age(DateOfBirth.fromMonths(months));
+  factory Age.byMonthsAgo(int months) {
+    return Age._(_DateOfBirth.byMonthsAgo(months));
   }
-  factory Age.fromDays(int days) {
-    return Age(DateOfBirth.fromDays(days));
+  factory Age.byDaysAgo(int days) {
+    return Age._(_DateOfBirth.byDaysAgo(days));
+  }
+  factory Age.byBirthDate(DateTime birthDate) {
+    return Age._(_DateOfBirth.fromDateTime(birthDate));
   }
 
   final _TimeIntervalCount _dobCount;
@@ -40,32 +43,41 @@ class Age {
   int get totalDays => DateTime.now().difference(_dobCount._dob).inDays;
 }
 
-class DateOfBirth {
-  DateOfBirth({required this.year, required this.month, required this.date});
+class _DateOfBirth {
+  _DateOfBirth._({required this.year, required this.month, required this.date});
 
-  factory DateOfBirth.fromDays(int days) {
+  factory _DateOfBirth.byDaysAgo(int days) {
     final calc = _TimeTools._calculateBirthDateInDays(days);
-    return DateOfBirth(
+    return _DateOfBirth._(
       year: calc.year,
       month: _monthFromNumber(calc.month),
       date: calc.day,
     );
   }
 
-  factory DateOfBirth.fromMonths(int months) {
+  factory _DateOfBirth.byMonthsAgo(int months) {
     final calc = _TimeTools._calculateBirthDateInMonths(months);
-    return DateOfBirth(
+    return _DateOfBirth._(
       year: calc.year,
       month: _monthFromNumber(calc.month),
       date: calc.day,
     );
   }
-  factory DateOfBirth.fromYears(int years) {
+
+  factory _DateOfBirth.byYearsAgo(int years) {
     final calc = _TimeTools._calculateBirthDateInYears(years);
-    return DateOfBirth(
+    return _DateOfBirth._(
       year: calc.year,
       month: _monthFromNumber(calc.month),
       date: calc.day,
+    );
+  }
+
+  factory _DateOfBirth.fromDateTime(DateTime dateTime) {
+    return _DateOfBirth._(
+      year: dateTime.year,
+      month: _monthFromNumber(dateTime.month),
+      date: dateTime.day,
     );
   }
 

@@ -9,29 +9,27 @@ void main() {
     //   expect(Age.fromDays(1000).totalDays, 1000);
     // });
     test('Arm Circ', () {
-      final armCirData = ArmCircumferenceData();
+      final armCirData =
+          ArmCircumferenceData(); // Initialize for the first and only time to avoid repeated parsing the same data
       expect(
-        ArmCircumference(
-          sex: Sex.male,
-          dateOfBirth: DateOfBirth.fromMonths(24),
+        ArmCircumferenceForAge.male(
+          age: Age.byMonthsAgo(24),
           measurementResult: 20.3,
           armCircumferenceData: armCirData,
         ).zScore,
         anyOf(3.79, 3.80),
       );
       expect(
-        ArmCircumference(
-          sex: Sex.male,
-          dateOfBirth: DateOfBirth.fromMonths(44),
+        ArmCircumferenceForAge.male(
+          age: Age.byMonthsAgo(44),
           measurementResult: 11.5,
           armCircumferenceData: armCirData,
         ).zScore,
         -4.11,
       );
       expect(
-        ArmCircumference(
-          sex: Sex.male,
-          dateOfBirth: DateOfBirth.fromMonths(28),
+        ArmCircumferenceForAge.male(
+          age: Age.byMonthsAgo(28),
           measurementResult: 17.4,
           armCircumferenceData: armCirData,
         ).zScore,
@@ -39,29 +37,27 @@ void main() {
       );
     });
     test('BMI', () {
-      final bodyMassIndexData = BodyMassIndexData();
+      final bodyMassIndexData =
+          BodyMassIndexData(); // Initialize for the first and only time to avoid repeated parsing the same data
       expect(
-        BodyMassIndex(
-          sex: Sex.male,
-          dateOfBirth: DateOfBirth.fromMonths(44),
+        BodyMassIndexForAge.male(
+          age: Age.byMonthsAgo(44),
           measurementResult: 20.5,
           bodyMassIndexData: bodyMassIndexData,
         ).zScore,
         3.40,
       );
       expect(
-        BodyMassIndex(
-          sex: Sex.male,
-          dateOfBirth: DateOfBirth.fromMonths(28),
+        BodyMassIndexForAge.male(
+          age: Age.byMonthsAgo(28),
           measurementResult: 12,
           bodyMassIndexData: bodyMassIndexData,
         ).zScore,
         anyOf(-3.76, -3.75),
       );
       expect(
-        BodyMassIndex(
-          sex: Sex.male,
-          dateOfBirth: DateOfBirth.fromMonths(52),
+        BodyMassIndexForAge.male(
+          age: Age.byMonthsAgo(52),
           measurementResult: 18.8,
           bodyMassIndexData: bodyMassIndexData,
         ).zScore,
