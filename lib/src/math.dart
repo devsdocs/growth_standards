@@ -11,6 +11,14 @@ double _rawZscore({
 }) =>
     (pow(y / m, l) - 1) / (s * l);
 
+num calcSD({
+  required double sd,
+  required num l,
+  required num m,
+  required num s,
+}) =>
+    m * pow(1 + l * s * sd, 1 / l);
+
 /// COMPUTATION OF CENTILES AND Z-SCORES FOR
 ///
 /// HEAD CIRCUMFERENCE-FOR-AGE,
@@ -47,23 +55,41 @@ num adjustedZScore({
   required num m,
   required num s,
 }) {
-  num calcSD(double sd) => m * pow(1 + l * s * sd, 1 / l);
-
   // print('y: $y, l:$l, m:$m, s:$s');
 
   final double zscore = _rawZscore(y: y, m: m, l: l, s: s);
 
   if (zscore > 3) {
-    final sD3pos = calcSD(3);
-    final calcSD2pos = calcSD(2);
+    final sD3pos = calcSD(
+      sd: 3,
+      l: l,
+      m: m,
+      s: s,
+    );
+    final calcSD2pos = calcSD(
+      sd: 2,
+      l: l,
+      m: m,
+      s: s,
+    );
     final sD23pos = sD3pos - calcSD2pos;
 
     final cal = 3 + ((y - sD3pos) / sD23pos);
     return cal.toPrecision(2);
   }
   if (zscore < -3) {
-    final sD3neg = calcSD(-3);
-    final calcSD2neg = calcSD(-2);
+    final sD3neg = calcSD(
+      sd: -3,
+      l: l,
+      m: m,
+      s: s,
+    );
+    final calcSD2neg = calcSD(
+      sd: -2,
+      l: l,
+      m: m,
+      s: s,
+    );
     final sD23neg = calcSD2neg - sD3neg;
 
     final cal = -3 + ((y - sD3neg) / sD23neg);
