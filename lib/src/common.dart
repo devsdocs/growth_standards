@@ -37,7 +37,7 @@ class Age {
   int get months => _ageNowIn.months;
   int get days => _ageNowIn.days;
 
-  int get totalDays => DateTime.now().difference(_dobCount._dob).inDays;
+  int get totalDays => DateTime.now().difference(_dobCount.dob).inDays;
 }
 
 class _DateOfBirth {
@@ -203,7 +203,7 @@ class _TimeIntervalCount {
     int date = 1,
     int hours = 0,
     int minutes = 0,
-  ]) : _dob = DateTime(
+  ]) : dob = DateTime(
           year,
           month,
           date,
@@ -215,7 +215,7 @@ class _TimeIntervalCount {
     }
   }
 
-  final DateTime _dob;
+  final DateTime dob;
 
   _Age timeDifference({
     required DateTime fromDate,
@@ -312,7 +312,7 @@ class _TimeIntervalCount {
   }
 
   _Age ageAtDate(DateTime day) => timeDifference(
-        fromDate: _dob,
+        fromDate: dob,
         toDate: day,
       );
 
@@ -322,7 +322,7 @@ class _TimeIntervalCount {
 
   _Age timeUntilNextBirthday(DateTime fromDate) {
     final DateTime endDate = fromDate;
-    final DateTime tempDate = DateTime(endDate.year, _dob.month, _dob.day);
+    final DateTime tempDate = DateTime(endDate.year, dob.month, dob.day);
     final DateTime nextBirthdayDate = tempDate.isBefore(endDate)
         ? add(date: tempDate, duration: _Age(years: 1))
         : tempDate;
