@@ -10,9 +10,7 @@ environment:
 # Add regular dependencies here.
 dependencies:
   reusable_tools: ^1.0.16
-
-  super_measurement:
-    path: D:/Devs/App2/super_measurement
+  super_measurement: ^1.0.7
 
 dev_dependencies:
   lint: ^2.2.0
