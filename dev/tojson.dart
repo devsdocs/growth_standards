@@ -32,7 +32,6 @@ void main() {
         rest
             .where((element) => element['sex'] == 1)
             .map((e) => e..remove('sex'))
-            .toList()
             .forEach((element) {
           if (element['age'] != null) {
             maleMap[element['age'].toString()] = element..remove('age');
@@ -48,7 +47,6 @@ void main() {
         rest
             .where((element) => element['sex'] == 2)
             .map((e) => e..remove('sex'))
-            .toList()
             .forEach((element) {
           if (element['age'] != null) {
             femaleMap[element['age'].toString()] = element..remove('age');

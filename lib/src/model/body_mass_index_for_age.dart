@@ -7,17 +7,17 @@ import 'package:who_growth_standards/src/types.dart';
 
 part '../data/bmianthro.dart';
 
-class BodyMassIndexData {
-  BodyMassIndexData()
+class BodyMassIndexForAgeData {
+  BodyMassIndexForAgeData()
       : data = (json.decode(_bmianthro) as Map<String, dynamic>).map(
           (x, e) => MapEntry(
             x,
-            BodyMassIndexGender(
+            BodyMassIndexForAgeGender(
               ageData: (e as Map<String, dynamic>).map((x, y) {
                 y as Map<String, dynamic>;
                 return MapEntry(
                   x,
-                  BodyMassIndexAge(
+                  BodyMassIndexForAgeLMS(
                     lms: (l: y['l'], m: y['m'], s: y['s']),
                     loh: y['loh'] == 'L'
                         ? Measure.recumbent
@@ -31,7 +31,7 @@ class BodyMassIndexData {
           ),
         );
 
-  final Map<String, BodyMassIndexGender> data;
+  final Map<String, BodyMassIndexForAgeGender> data;
 }
 
 class BodyMassIndexForAge {
@@ -41,13 +41,13 @@ class BodyMassIndexForAge {
     required num measurementResult,
     // TODO(devsdocs): import reusable_tools and add Length and Weight for BMI calculcation, also consider the [Measure] type
     // required Measure measure,
-    required BodyMassIndexData bodyMassIndexData,
+    required BodyMassIndexForAgeData bodyMassIndexData,
   })  : _measurementResult = measurementResult,
         // _measure = measure,
         _sex = sex,
         _age = age,
         _mapGender = bodyMassIndexData.data {
-    if (_age.totalDays >= 0 && _age.totalDays <= 1856) {
+    if (!(_age.totalDays >= 0 && _age.totalDays <= 1856)) {
       throw Exception('Final age must be in range of 0 - 1856 days');
     }
   }
@@ -55,7 +55,7 @@ class BodyMassIndexForAge {
   factory BodyMassIndexForAge.male({
     required Age age,
     required num measurementResult,
-    required BodyMassIndexData bodyMassIndexData,
+    required BodyMassIndexForAgeData bodyMassIndexData,
   }) =>
       BodyMassIndexForAge._(
         sex: Sex.male,
@@ -67,7 +67,7 @@ class BodyMassIndexForAge {
   factory BodyMassIndexForAge.female({
     required Age age,
     required num measurementResult,
-    required BodyMassIndexData bodyMassIndexData,
+    required BodyMassIndexForAgeData bodyMassIndexData,
   }) =>
       BodyMassIndexForAge._(
         sex: Sex.female,
@@ -80,13 +80,14 @@ class BodyMassIndexForAge {
   final Age _age;
   // final Measure _measure;
   final num _measurementResult;
-  final Map<String, BodyMassIndexGender> _mapGender;
+  final Map<String, BodyMassIndexForAgeGender> _mapGender;
 
-  BodyMassIndexGender get _maleData => _mapGender['1']!;
-  BodyMassIndexGender get _femaleData => _mapGender['2']!;
+  BodyMassIndexForAgeGender get _maleData => _mapGender['1']!;
+  BodyMassIndexForAgeGender get _femaleData => _mapGender['2']!;
 
-  BodyMassIndexAge get _ageData => (_sex == Sex.male ? _maleData : _femaleData)
-      .ageData[_age.totalDays.toString()]!;
+  BodyMassIndexForAgeLMS get _ageData =>
+      (_sex == Sex.male ? _maleData : _femaleData)
+          .ageData[_age.totalDays.toString()]!;
 
   num get zScore => adjustedZScore(
         y: _measurementResult,
@@ -96,14 +97,14 @@ class BodyMassIndexForAge {
       );
 }
 
-class BodyMassIndexGender {
-  BodyMassIndexGender({required this.ageData});
+class BodyMassIndexForAgeGender {
+  BodyMassIndexForAgeGender({required this.ageData});
 
-  final Map<String, BodyMassIndexAge> ageData;
+  final Map<String, BodyMassIndexForAgeLMS> ageData;
 }
 
-class BodyMassIndexAge {
-  BodyMassIndexAge({
+class BodyMassIndexForAgeLMS {
+  BodyMassIndexForAgeLMS({
     required this.lms,
     required this.loh,
   });

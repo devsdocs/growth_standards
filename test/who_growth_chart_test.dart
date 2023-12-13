@@ -3,14 +3,17 @@ import 'package:test/test.dart';
 import 'package:who_growth_standards/who_growth_standards.dart';
 
 void main() {
+  final armCirData =
+      ArmCircumferenceForAgeData(); // Initialize for the first and only time to avoid repeated parsing the same data
+
+  final bodyMassIndexData =
+      BodyMassIndexForAgeData(); // Initialize for the first and only time to avoid repeated parsing the same data
   group('A group of tests', () {
     // test('Age', () {
     //   expect(Age.fromDays(30).totalDays, 30);
     //   expect(Age.fromDays(1000).totalDays, 1000);
     // });
     test('Arm Circ', () {
-      final armCirData =
-          ArmCircumferenceData(); // Initialize for the first and only time to avoid repeated parsing the same data
       expect(
         ArmCircumferenceForAge.male(
           age: Age.byMonthsAgo(24),
@@ -37,8 +40,6 @@ void main() {
       );
     });
     test('BMI', () {
-      final bodyMassIndexData =
-          BodyMassIndexData(); // Initialize for the first and only time to avoid repeated parsing the same data
       expect(
         BodyMassIndexForAge.male(
           age: Age.byMonthsAgo(44),

@@ -7,24 +7,26 @@ import 'package:who_growth_standards/src/types.dart';
 
 part '../data/acanthro.dart';
 
-class ArmCircumferenceData {
-  ArmCircumferenceData()
+class ArmCircumferenceForAgeData {
+  ArmCircumferenceForAgeData()
       : data = (json.decode(_acanthro) as Map<String, dynamic>).map(
           (k, v) => MapEntry(
             k,
-            ArmCircumferenceGender(
+            ArmCircumferenceForAgeGender(
               ageData: (v as Map<String, dynamic>).map((x, y) {
                 y as Map<String, dynamic>;
                 return MapEntry(
                   x,
-                  ArmCircumferenceAge(lms: (l: y['l'], m: y['m'], s: y['s'])),
+                  ArmCircumferenceForAgeLMS(
+                    lms: (l: y['l'], m: y['m'], s: y['s']),
+                  ),
                 );
               }),
             ),
           ),
         );
 
-  final Map<String, ArmCircumferenceGender> data;
+  final Map<String, ArmCircumferenceForAgeGender> data;
 }
 
 class ArmCircumferenceForAge {
@@ -32,12 +34,12 @@ class ArmCircumferenceForAge {
     required Sex sex,
     required Age age,
     required num measurementResult,
-    required ArmCircumferenceData armCircumferenceData,
+    required ArmCircumferenceForAgeData armCircumferenceData,
   })  : _measurementResult = measurementResult,
         _sex = sex,
         _age = age,
         _mapGender = armCircumferenceData.data {
-    if (_age.totalDays >= 91 && _age.totalDays <= 1856) {
+    if (!(_age.totalDays >= 91 && _age.totalDays <= 1856)) {
       throw Exception('Final age must be in range of 91 - 1856 days');
     }
   }
@@ -45,7 +47,7 @@ class ArmCircumferenceForAge {
   factory ArmCircumferenceForAge.male({
     required Age age,
     required num measurementResult,
-    required ArmCircumferenceData armCircumferenceData,
+    required ArmCircumferenceForAgeData armCircumferenceData,
   }) =>
       ArmCircumferenceForAge._(
         sex: Sex.male,
@@ -57,7 +59,7 @@ class ArmCircumferenceForAge {
   factory ArmCircumferenceForAge.female({
     required Age age,
     required num measurementResult,
-    required ArmCircumferenceData armCircumferenceData,
+    required ArmCircumferenceForAgeData armCircumferenceData,
   }) =>
       ArmCircumferenceForAge._(
         sex: Sex.female,
@@ -69,12 +71,12 @@ class ArmCircumferenceForAge {
   final Sex _sex;
   final Age _age;
   final num _measurementResult;
-  final Map<String, ArmCircumferenceGender> _mapGender;
+  final Map<String, ArmCircumferenceForAgeGender> _mapGender;
 
-  ArmCircumferenceGender get _maleData => _mapGender['1']!;
-  ArmCircumferenceGender get _femaleData => _mapGender['2']!;
+  ArmCircumferenceForAgeGender get _maleData => _mapGender['1']!;
+  ArmCircumferenceForAgeGender get _femaleData => _mapGender['2']!;
 
-  ArmCircumferenceAge get _ageData =>
+  ArmCircumferenceForAgeLMS get _ageData =>
       (_sex == Sex.male ? _maleData : _femaleData)
           .ageData[_age.totalDays.toString()]!;
 
@@ -86,13 +88,13 @@ class ArmCircumferenceForAge {
       );
 }
 
-class ArmCircumferenceGender {
-  ArmCircumferenceGender({required this.ageData});
+class ArmCircumferenceForAgeGender {
+  ArmCircumferenceForAgeGender({required this.ageData});
 
-  final Map<String, ArmCircumferenceAge> ageData;
+  final Map<String, ArmCircumferenceForAgeLMS> ageData;
 }
 
-class ArmCircumferenceAge {
-  ArmCircumferenceAge({required this.lms});
+class ArmCircumferenceForAgeLMS {
+  ArmCircumferenceForAgeLMS({required this.lms});
   final LMS lms;
 }

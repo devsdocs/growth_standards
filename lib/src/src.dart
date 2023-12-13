@@ -1,9 +1,9 @@
 export 'common.dart';
 export 'model/arm_circumference_for_age.dart'
-    hide ArmCircumferenceAge, ArmCircumferenceGender;
+    hide ArmCircumferenceForAgeGender, ArmCircumferenceForAgeLMS;
 export 'model/body_mass_index_for_age.dart'
-    hide BodyMassIndexAge, BodyMassIndexGender;
+    hide BodyMassIndexForAgeGender, BodyMassIndexForAgeLMS;
 export 'model/head_circumference_for_age.dart'
-    hide HeadCircumferenceAge, HeadCircumferenceGender;
-export 'model/length_for_age.dart' hide LengthAge, LengthForAgeGender;
+    hide HeadCircumferenceForAgeGender, HeadCircumferenceForAgeLMS;
+export 'model/length_for_age.dart' hide LengthForAgeGender, LengthForAgeLMS;
 export 'types.dart';

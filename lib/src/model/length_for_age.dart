@@ -17,7 +17,7 @@ class LengthForAgeData {
                 y as Map<String, dynamic>;
                 return MapEntry(
                   x,
-                  LengthAge(
+                  LengthForAgeLMS(
                     lms: (l: y['l'], m: y['m'], s: y['s']),
                     loh: y['loh'] == 'L'
                         ? Measure.recumbent
@@ -47,7 +47,7 @@ class LengthForAge {
         _sex = sex,
         _age = age,
         _mapGender = lengthForAgeData.data {
-    if (_age.totalDays >= 0 && _age.totalDays <= 1856) {
+    if (!(_age.totalDays >= 0 && _age.totalDays <= 1856)) {
       throw Exception('Final age must be in range of 0 - 1856 days');
     }
   }
@@ -85,7 +85,7 @@ class LengthForAge {
   LengthForAgeGender get _maleData => _mapGender['1']!;
   LengthForAgeGender get _femaleData => _mapGender['2']!;
 
-  LengthAge get _ageData => (_sex == Sex.male ? _maleData : _femaleData)
+  LengthForAgeLMS get _ageData => (_sex == Sex.male ? _maleData : _femaleData)
       .ageData[_age.totalDays.toString()]!;
 
   num get zScore => zscore(
@@ -98,11 +98,11 @@ class LengthForAge {
 
 class LengthForAgeGender {
   LengthForAgeGender({required this.ageData});
-  final Map<String, LengthAge> ageData;
+  final Map<String, LengthForAgeLMS> ageData;
 }
 
-class LengthAge {
-  LengthAge({
+class LengthForAgeLMS {
+  LengthForAgeLMS({
     required this.lms,
     required this.loh,
   });

@@ -12,8 +12,11 @@ double _rawZscore({
     (pow(y / m, l) - 1) / (s * l);
 
 /// COMPUTATION OF CENTILES AND Z-SCORES FOR
+///
 /// HEAD CIRCUMFERENCE-FOR-AGE,
+///
 /// LENGTH-FOR-AGE,
+///
 /// HEIGHT-FOR-AGE,
 num zscore({
   required num y,
@@ -24,12 +27,19 @@ num zscore({
     _rawZscore(y: y, l: l, m: m, s: s).toPrecision(2);
 
 /// COMPUTATION OF CENTILES AND Z-SCORES FOR
+///
 /// BMI-FOR-AGE,
+///
 /// WEIGHT-FOR-HEIGHT,
+///
 /// WEIGHT-FOR-LENGTH,
+///
 /// WEIGHT-FOR-AGE,
+///
 /// ARM CIRCUMFERENCE-FOR-AGE,
+///
 /// TRICEPS SKINFOLD-FOR-AGE,
+///
 /// SUBSCAPULAR SKINFOLD-FOR-AGE
 num adjustedZScore({
   required num y,
