@@ -1,7 +1,6 @@
 name: who_growth_standards
 description: A Dart implementation of WHO Growth Standards.
 version: 1.0.0
-publish_to: none
 # repository: https://github.com/my_org/my_repo
 
 environment:

@@ -2,6 +2,8 @@ import 'package:test/test.dart';
 
 import 'package:who_growth_standards/who_growth_standards.dart';
 
+const dateBase = [28, 29, 30, 31];
+
 void main() {
   final armCirData =
       ArmCircumferenceForAgeData(); // Initialize for the first and only time to avoid repeated parsing the same data
@@ -9,10 +11,18 @@ void main() {
   final bodyMassIndexData =
       BodyMassIndexForAgeData(); // Initialize for the first and only time to avoid repeated parsing the same data
   group('A group of tests', () {
-    // test('Age', () {
-    //   expect(Age.fromDays(30).totalDays, 30);
-    //   expect(Age.fromDays(1000).totalDays, 1000);
-    // });
+    test('Age', () {
+      expect(
+        Age.byMonthsAgo(2).totalDays,
+        anyOf(
+          dateBase.expand((element) => [element * 2, element * 2 + 1]).toList(),
+        ),
+      );
+      expect(Age.byMonthsAgo(1).totalDays, anyOf(dateBase));
+      expect(Age.byDaysAgo(30).totalDays, 30);
+      expect(Age.byDaysAgo(1000).totalDays, 1000);
+      expect(Age.byDaysAgo(10000).totalDays, 10000);
+    });
     test('Arm Circ', () {
       expect(
         ArmCircumferenceForAge.male(
