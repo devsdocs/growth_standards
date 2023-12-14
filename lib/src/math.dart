@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:dart_numerics/dart_numerics.dart';
 import 'package:reusable_tools/reusable_tools.dart';
 import 'package:who_growth_standards/src/types.dart';
 
@@ -100,7 +101,7 @@ num adjustedZScore({
 
 num adjustedLengthHeight({
   required int ageInDays,
-  required Measure measure,
+  required LengthHeigthMeasurementPosition measure,
   required num lengthHeight,
 }) {
   // Assuming round_up function rounds the age to the nearest whole number.
@@ -108,9 +109,10 @@ num adjustedLengthHeight({
 
   num adjustedLenHeight = lengthHeight;
 
-  if (ageInDays <= 730 && measure == Measure.standing) {
+  if (ageInDays <= 730 && measure == LengthHeigthMeasurementPosition.standing) {
     adjustedLenHeight += 0.7;
-  } else if (ageInDays > 730 && measure == Measure.recumbent) {
+  } else if (ageInDays > 730 &&
+      measure == LengthHeigthMeasurementPosition.recumbent) {
     adjustedLenHeight -= 0.7;
   }
 
@@ -136,4 +138,9 @@ num rounding(num value) {
     // Use the default rounding method for other cases
     return value.roundToDouble();
   }
+}
+
+num zScoreToPercentile(num zScore) {
+  final percentile = 0.5 * (1 + erf(zScore / sqrt(2)));
+  return (percentile * 100).toPrecision(2);
 }

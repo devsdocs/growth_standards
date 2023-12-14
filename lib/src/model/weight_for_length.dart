@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:reusable_tools/reusable_tools.dart';
 import 'package:super_measurement/super_measurement.dart';
-import 'package:who_growth_standards/src/common.dart';
+import 'package:who_growth_standards/src/age.dart';
 import 'package:who_growth_standards/src/math.dart';
 import 'package:who_growth_standards/src/typedef.dart';
 import 'package:who_growth_standards/src/types.dart';
@@ -22,8 +22,8 @@ class WeigthForLengthData {
                   WeigthForLengthLMS(
                     lms: (l: y['l'], m: y['m'], s: y['s']),
                     lorh: y['lorh'].toString().toLowerCase() == 'l'
-                        ? Measure.recumbent
-                        : Measure.standing,
+                        ? LengthHeigthMeasurementPosition.recumbent
+                        : LengthHeigthMeasurementPosition.standing,
                   ),
                 );
               }),
@@ -40,10 +40,10 @@ class WeigthForLength {
     required Length lengthMeasurementResult,
     required Mass massMeasurementResult,
     required Age age,
-    required Measure measure,
+    required LengthHeigthMeasurementPosition measure,
     required WeigthForLengthData weigthForLengthData,
-  })  : _lengthMeasurementResult = lengthMeasurementResult,
-        _massMeasurementResult = massMeasurementResult,
+  })  : _lengthHeight = lengthMeasurementResult,
+        _weight = massMeasurementResult,
         _measure = measure,
         _sex = sex,
         _age = age,
@@ -58,49 +58,77 @@ class WeigthForLength {
     }
   }
 
-  factory WeigthForLength.male({
-    required Length lengthMeasurementResult,
-    required Mass massMeasurementResult,
+  factory WeigthForLength.maleStandingPosition({
+    required Length height,
+    required Mass weight,
     required WeigthForLengthData weigthForLengthData,
     required Age age,
-    required Measure measure,
   }) =>
       WeigthForLength._(
         sex: Sex.male,
         age: age,
-        measure: measure,
-        lengthMeasurementResult: lengthMeasurementResult,
-        massMeasurementResult: massMeasurementResult,
+        measure: LengthHeigthMeasurementPosition.standing,
+        lengthMeasurementResult: height,
+        massMeasurementResult: weight,
         weigthForLengthData: weigthForLengthData,
       );
 
-  factory WeigthForLength.female({
-    required Length lengthMeasurementResult,
-    required Mass massMeasurementResult,
+  factory WeigthForLength.maleRecumbentPosition({
+    required Length length,
+    required Mass weight,
     required WeigthForLengthData weigthForLengthData,
     required Age age,
-    required Measure measure,
+  }) =>
+      WeigthForLength._(
+        sex: Sex.male,
+        age: age,
+        measure: LengthHeigthMeasurementPosition.recumbent,
+        lengthMeasurementResult: length,
+        massMeasurementResult: weight,
+        weigthForLengthData: weigthForLengthData,
+      );
+
+  factory WeigthForLength.femaleStandingPosition({
+    required Length height,
+    required Mass weight,
+    required WeigthForLengthData weigthForLengthData,
+    required Age age,
   }) =>
       WeigthForLength._(
         sex: Sex.female,
         age: age,
-        measure: measure,
-        lengthMeasurementResult: lengthMeasurementResult,
-        massMeasurementResult: massMeasurementResult,
+        measure: LengthHeigthMeasurementPosition.standing,
+        lengthMeasurementResult: height,
+        massMeasurementResult: weight,
+        weigthForLengthData: weigthForLengthData,
+      );
+
+  factory WeigthForLength.femaleRecumbentPosition({
+    required Length length,
+    required Mass weight,
+    required WeigthForLengthData weigthForLengthData,
+    required Age age,
+  }) =>
+      WeigthForLength._(
+        sex: Sex.female,
+        age: age,
+        measure: LengthHeigthMeasurementPosition.recumbent,
+        lengthMeasurementResult: length,
+        massMeasurementResult: weight,
         weigthForLengthData: weigthForLengthData,
       );
 
   final Sex _sex;
   final Age _age;
-  final Length _lengthMeasurementResult;
-  final Mass _massMeasurementResult;
-  final Measure _measure;
+  final Length _lengthHeight;
+  final Mass _weight;
+  final LengthHeigthMeasurementPosition _measure;
   final Map<String, WeigthForLengthGender> _mapGender;
 
   num get _adjustedLength => adjustedLengthHeight(
         measure: _measure,
         ageInDays: _age.totalDays,
-        lengthHeight: _lengthMeasurementResult.toCentimeters.value!,
+        lengthHeight: _lengthHeight.toCentimeters.value!,
       );
 
   WeigthForLengthGender get _maleData => _mapGender['1']!;
@@ -111,11 +139,13 @@ class WeigthForLength {
           .lengthData[_adjustedLength.toDouble().toPrecision(1).toString()]!;
 
   num get zScore => adjustedZScore(
-        y: _massMeasurementResult.toKilograms.value!,
+        y: _weight.toKilograms.value!,
         l: _ageData.lms.l,
         m: _ageData.lms.m,
         s: _ageData.lms.s,
       );
+
+  num get percentile => zScoreToPercentile(zScore);
 }
 
 class WeigthForLengthGender {
@@ -130,5 +160,5 @@ class WeigthForLengthLMS {
     required this.lorh,
   });
   final LMS lms;
-  final Measure lorh;
+  final LengthHeigthMeasurementPosition lorh;
 }

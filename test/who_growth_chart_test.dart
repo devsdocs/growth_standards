@@ -52,24 +52,28 @@ void main() {
     test('BMI', () {
       expect(
         BodyMassIndexForAge.male(
-          age: Age.byMonthsAgo(44),
-          bodyMassIndexMeasurement: BodyMassIndexMeasurement.fromValue(20.5),
+          bodyMassIndexMeasurement: BodyMassIndexMeasurement.fromValue(
+            20.5,
+            age: Age.byMonthsAgo(44),
+          ),
           bodyMassIndexData: bodyMassIndexData,
         ).zScore,
         3.40,
       );
       expect(
         BodyMassIndexForAge.male(
-          age: Age.byMonthsAgo(28),
-          bodyMassIndexMeasurement: BodyMassIndexMeasurement.fromValue(12),
+          bodyMassIndexMeasurement:
+              BodyMassIndexMeasurement.fromValue(12, age: Age.byMonthsAgo(28)),
           bodyMassIndexData: bodyMassIndexData,
         ).zScore,
         anyOf(-3.76, -3.75),
       );
       expect(
         BodyMassIndexForAge.male(
-          age: Age.byMonthsAgo(52),
-          bodyMassIndexMeasurement: BodyMassIndexMeasurement.fromValue(18.8),
+          bodyMassIndexMeasurement: BodyMassIndexMeasurement.fromValue(
+            18.8,
+            age: Age.byMonthsAgo(52),
+          ),
           bodyMassIndexData: bodyMassIndexData,
         ).zScore,
         anyOf(2.36, 2.37),

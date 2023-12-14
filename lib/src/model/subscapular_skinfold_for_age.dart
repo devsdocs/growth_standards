@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:super_measurement/super_measurement.dart';
-import 'package:who_growth_standards/src/common.dart';
+import 'package:who_growth_standards/src/age.dart';
 import 'package:who_growth_standards/src/math.dart';
 import 'package:who_growth_standards/src/typedef.dart';
 import 'package:who_growth_standards/src/types.dart';
@@ -87,6 +87,8 @@ class SubscapularSkinfoldForAge {
         m: _ageData.lms.m,
         s: _ageData.lms.s,
       );
+
+  num get percentile => zScoreToPercentile(zScore);
 }
 
 class SubscapularSkinfoldAgeGender {

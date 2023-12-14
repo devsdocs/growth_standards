@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:reusable_tools/reusable_tools.dart';
 import 'package:super_measurement/super_measurement.dart';
-import 'package:who_growth_standards/src/common.dart';
+import 'package:who_growth_standards/src/age.dart';
 import 'package:who_growth_standards/src/math.dart';
 import 'package:who_growth_standards/src/typedef.dart';
 import 'package:who_growth_standards/src/types.dart';
@@ -22,8 +22,8 @@ class WeightForHeightData {
                   WeightForHeightLMS(
                     lms: (l: y['l'], m: y['m'], s: y['s']),
                     lorh: y['lorh'].toString().toLowerCase() == 'l'
-                        ? Measure.recumbent
-                        : Measure.standing,
+                        ? LengthHeigthMeasurementPosition.recumbent
+                        : LengthHeigthMeasurementPosition.standing,
                   ),
                 );
               }),
@@ -38,19 +38,19 @@ class WeightForHeight {
   WeightForHeight._({
     required Sex sex,
     required Age age,
-    required Length lengthMeasurementResult,
-    required Mass massMeasurementResult,
-    required Measure measure,
+    required Length height,
+    required Mass mass,
+    required LengthHeigthMeasurementPosition measure,
     required WeightForHeightData weightForHeightData,
-  })  : _lengthMeasurementResult = lengthMeasurementResult,
+  })  : _lengthHeight = height,
         _measure = measure,
         _sex = sex,
-        _massMeasurementResult = massMeasurementResult,
+        _mass = mass,
         _age = age,
         _mapGender = weightForHeightData.data {
     if (!(_adjustedHeight >= 65 && _adjustedHeight <= 120)) {
-      if (lengthMeasurementResult.toCentimeters.value! >= 65 &&
-          lengthMeasurementResult.toCentimeters.value! <= 120) {
+      if (height.toCentimeters.value! >= 65 &&
+          height.toCentimeters.value! <= 120) {
         throw Exception('Please correcting measurement position based on age');
       } else {
         throw Exception('Final height must be in range of 65 - 120 cm');
@@ -58,49 +58,77 @@ class WeightForHeight {
     }
   }
 
-  factory WeightForHeight.male({
-    required Length lengthMeasurementResult,
-    required Mass massMeasurementResult,
-    required Measure measure,
+  factory WeightForHeight.maleStandingPosition({
+    required Length height,
+    required Mass weight,
     required WeightForHeightData weightForHeightData,
     required Age age,
   }) =>
       WeightForHeight._(
         sex: Sex.male,
-        lengthMeasurementResult: lengthMeasurementResult,
+        height: height,
         weightForHeightData: weightForHeightData,
-        massMeasurementResult: massMeasurementResult,
-        measure: measure,
+        mass: weight,
+        measure: LengthHeigthMeasurementPosition.standing,
         age: age,
       );
 
-  factory WeightForHeight.female({
-    required Length lengthMeasurementResult,
-    required Mass massMeasurementResult,
+  factory WeightForHeight.maleRecumbentPosition({
+    required Length length,
+    required Mass weight,
     required WeightForHeightData weightForHeightData,
-    required Measure measure,
+    required Age age,
+  }) =>
+      WeightForHeight._(
+        sex: Sex.male,
+        height: length,
+        weightForHeightData: weightForHeightData,
+        mass: weight,
+        measure: LengthHeigthMeasurementPosition.recumbent,
+        age: age,
+      );
+
+  factory WeightForHeight.femaleStandingPosition({
+    required Length height,
+    required Mass weight,
+    required WeightForHeightData weightForHeightData,
     required Age age,
   }) =>
       WeightForHeight._(
         sex: Sex.female,
-        lengthMeasurementResult: lengthMeasurementResult,
-        massMeasurementResult: massMeasurementResult,
+        height: height,
+        mass: weight,
         weightForHeightData: weightForHeightData,
-        measure: measure,
+        measure: LengthHeigthMeasurementPosition.standing,
+        age: age,
+      );
+
+  factory WeightForHeight.femaleRecumbentPosition({
+    required Length length,
+    required Mass weight,
+    required WeightForHeightData weightForHeightData,
+    required Age age,
+  }) =>
+      WeightForHeight._(
+        sex: Sex.female,
+        height: length,
+        mass: weight,
+        weightForHeightData: weightForHeightData,
+        measure: LengthHeigthMeasurementPosition.recumbent,
         age: age,
       );
 
   final Sex _sex;
   final Age _age;
-  final Length _lengthMeasurementResult;
-  final Mass _massMeasurementResult;
-  final Measure _measure;
+  final Length _lengthHeight;
+  final Mass _mass;
+  final LengthHeigthMeasurementPosition _measure;
   final Map<String, WeightForHeightGender> _mapGender;
 
   num get _adjustedHeight => adjustedLengthHeight(
         measure: _measure,
         ageInDays: _age.totalDays,
-        lengthHeight: _lengthMeasurementResult.toCentimeters.value!,
+        lengthHeight: _lengthHeight.toCentimeters.value!,
       );
 
   WeightForHeightGender get _maleData => _mapGender['1']!;
@@ -111,11 +139,13 @@ class WeightForHeight {
           .heightData[_adjustedHeight.toDouble().toPrecision(1).toString()]!;
 
   num get zScore => adjustedZScore(
-        y: _massMeasurementResult.toKilograms.value!,
+        y: _mass.toKilograms.value!,
         l: _ageData.lms.l,
         m: _ageData.lms.m,
         s: _ageData.lms.s,
       );
+
+  num get percentile => zScoreToPercentile(zScore);
 }
 
 class WeightForHeightGender {
@@ -130,5 +160,5 @@ class WeightForHeightLMS {
     required this.lorh,
   });
   final LMS lms;
-  final Measure lorh;
+  final LengthHeigthMeasurementPosition lorh;
 }

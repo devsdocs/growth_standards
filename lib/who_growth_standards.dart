@@ -1,6 +1,4 @@
-/// Support for doing something awesome.
-///
-/// More dartdocs go here.
+/// WHO Child Growth Standard Implementation in Dart
 library who_child_growth_standards;
 
 export 'package:super_measurement/super_measurement.dart';

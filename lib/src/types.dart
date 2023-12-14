@@ -7,7 +7,7 @@ enum Sex {
   final int number;
 }
 
-enum Measure {
+enum LengthHeigthMeasurementPosition {
   recumbent,
   standing,
   ;

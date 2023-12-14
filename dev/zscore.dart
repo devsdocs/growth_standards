@@ -1,3 +1,7 @@
+// ignore_for_file: avoid_print
+
+import 'package:reusable_tools/reusable_tools.dart';
+
 double maxpscore(double z) {
   double y;
   double x;
@@ -6,7 +10,7 @@ double maxpscore(double z) {
     x = 0.0;
   } else {
     y = 0.5 * z.abs();
-    if (y > (s_maximum * 0.5)) {
+    if (y > (sMmaximum * 0.5)) {
       x = 1.0;
     } else if (y < 1.0) {
       w = y * y;
@@ -52,8 +56,8 @@ double maxpscore(double z) {
 }
 
 // Assuming s_maximum is defined somewhere in your code
-double s_maximum = 6; // Replace this with the actual value of s_maximum
+const double sMmaximum = 6; // Replace this with the actual value of s_maximum
 
-void call(double zscore) {
-  print(maxpscore(zscore));
+void call(double zScore) {
+  print('Z-score: $zScore, Percentile: ${(maxpscore(zScore) * 100).toPrecision(2)}%');
 }

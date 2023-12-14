@@ -1,5 +1,8 @@
+// ignore_for_file: avoid_print
+
 import 'dart:math';
 import 'package:dart_numerics/dart_numerics.dart' as f;
+import 'package:reusable_tools/reusable_tools.dart';
 
 import 'a.dart';
 
@@ -9,8 +12,8 @@ double zScoreToPercentile(double zScore) {
 }
 
 void main() {
-  const double zScore = 2.11; // Replace this with your actual Z-score
+  const double zScore = -1.23; // Replace this with your actual Z-score
   final double percentile = zScoreToPercentile(zScore);
-  print('Z-score: $zScore, Percentile: $percentile%');
+  print('Z-score: $zScore, Percentile: ${percentile.toPrecision(2)}%');
   cell(zScore);
 }

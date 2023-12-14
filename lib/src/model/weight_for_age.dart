@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:super_measurement/super_measurement.dart';
-import 'package:who_growth_standards/src/common.dart';
+import 'package:who_growth_standards/src/age.dart';
 import 'package:who_growth_standards/src/math.dart';
 import 'package:who_growth_standards/src/typedef.dart';
 import 'package:who_growth_standards/src/types.dart';
@@ -32,9 +32,9 @@ class WeightForAge {
   WeightForAge._({
     required Sex sex,
     required Age age,
-    required Mass measurementResult,
+    required Mass weight,
     required WeightForAgeData weightForAgeData,
-  })  : _measurementResult = measurementResult,
+  })  : _measurementResult = weight,
         _sex = sex,
         _age = age,
         _mapGender = weightForAgeData.data {
@@ -45,25 +45,25 @@ class WeightForAge {
 
   factory WeightForAge.male({
     required Age age,
-    required Mass measurementResult,
+    required Mass weight,
     required WeightForAgeData weightForAgeData,
   }) =>
       WeightForAge._(
         sex: Sex.male,
         age: age,
-        measurementResult: measurementResult,
+        weight: weight,
         weightForAgeData: weightForAgeData,
       );
 
   factory WeightForAge.female({
     required Age age,
-    required Mass measurementResult,
+    required Mass weight,
     required WeightForAgeData weightForAgeData,
   }) =>
       WeightForAge._(
         sex: Sex.female,
         age: age,
-        measurementResult: measurementResult,
+        weight: weight,
         weightForAgeData: weightForAgeData,
       );
 
@@ -84,6 +84,8 @@ class WeightForAge {
         m: _ageData.lms.m,
         s: _ageData.lms.s,
       );
+
+  num get percentile => zScoreToPercentile(zScore);
 }
 
 class WeightForAgeGender {

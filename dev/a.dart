@@ -2,6 +2,8 @@
 
 import 'dart:math';
 
+import 'package:reusable_tools/reusable_tools.dart';
+
 import 'zscore.dart';
 
 double zScoreToPercentile(double zScore) {
@@ -34,10 +36,8 @@ double integral(
 }
 
 void cell(double zScore) {
-  
-  final double percentile = zScoreToPercentile(zScore);
-  print('Z-score: $zScore, Percentile: $percentile%');
-  print(percentile);
+  final double percentile = zScoreToPercentile(zScore) * 100;
+  print('Z-score: $zScore, Percentile: ${percentile.toPrecision(2)}%');
 
   call(zScore);
 }

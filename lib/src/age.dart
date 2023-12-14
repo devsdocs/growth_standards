@@ -26,8 +26,8 @@ class Age {
 
   factory Age.byDaysAgo(int days) => Age._(_DateOfBirth.byDaysAgo(days));
 
-  factory Age.byBirthDate(DateTime birthDate) =>
-      Age._(_DateOfBirth.fromDateTime(birthDate));
+  factory Age.byBirthDay(DateTime birthDay) =>
+      Age._(_DateOfBirth.fromDateTime(birthDay));
 
   final _TimeIntervalCount _dobCount;
 

@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:super_measurement/super_measurement.dart';
-import 'package:who_growth_standards/src/common.dart';
+import 'package:who_growth_standards/src/age.dart';
 import 'package:who_growth_standards/src/math.dart';
 import 'package:who_growth_standards/src/typedef.dart';
 import 'package:who_growth_standards/src/types.dart';
@@ -22,8 +22,8 @@ class BodyMassIndexForAgeData {
                   BodyMassIndexForAgeLMS(
                     lms: (l: y['l'], m: y['m'], s: y['s']),
                     loh: y['loh'].toString().toLowerCase() == 'l'
-                        ? Measure.recumbent
-                        : Measure.standing,
+                        ? LengthHeigthMeasurementPosition.recumbent
+                        : LengthHeigthMeasurementPosition.standing,
                   ),
                 );
               }),
@@ -35,12 +35,36 @@ class BodyMassIndexForAgeData {
 }
 
 class BodyMassIndexMeasurement {
-  const BodyMassIndexMeasurement._(this.value);
+  const BodyMassIndexMeasurement._(this.value, {required Age age}) : _age = age;
 
-  factory BodyMassIndexMeasurement.fromMeasurement({
+  factory BodyMassIndexMeasurement.standingPosition({
+    required Length height,
+    required Mass weight,
+    required Age age,
+  }) =>
+      BodyMassIndexMeasurement._fromMeasurement(
+        lengthHeight: height,
+        weight: weight,
+        measure: LengthHeigthMeasurementPosition.standing,
+        age: age,
+      );
+
+  factory BodyMassIndexMeasurement.recumbentPosition({
+    required Length length,
+    required Mass weight,
+    required Age age,
+  }) =>
+      BodyMassIndexMeasurement._fromMeasurement(
+        lengthHeight: length,
+        weight: weight,
+        measure: LengthHeigthMeasurementPosition.recumbent,
+        age: age,
+      );
+
+  factory BodyMassIndexMeasurement._fromMeasurement({
     required Length lengthHeight,
-    required Mass mass,
-    required Measure measure,
+    required Mass weight,
+    required LengthHeigthMeasurementPosition measure,
     required Age age,
   }) {
     final toMeterSquare = pow(
@@ -53,26 +77,27 @@ class BodyMassIndexMeasurement {
       ).toMeters.value!,
       2,
     );
-    final toKg = mass.toKilograms.value!;
+    final toKg = weight.toKilograms.value!;
 
-    return BodyMassIndexMeasurement._(toKg / toMeterSquare);
+    return BodyMassIndexMeasurement._(toKg / toMeterSquare, age: age);
   }
 
-  factory BodyMassIndexMeasurement.fromValue(num value) =>
-      BodyMassIndexMeasurement._(value);
+  factory BodyMassIndexMeasurement.fromValue(num value, {required Age age}) =>
+      BodyMassIndexMeasurement._(value, age: age);
 
   final num value;
+
+  final Age _age;
 }
 
 class BodyMassIndexForAge {
   BodyMassIndexForAge._({
     required Sex sex,
-    required Age age,
     required BodyMassIndexMeasurement measurementResult,
     required BodyMassIndexForAgeData bodyMassIndexData,
   })  : _bodyMassIndexMeasurementResult = measurementResult,
         _sex = sex,
-        _age = age,
+        _age = measurementResult._age,
         _mapGender = bodyMassIndexData.data {
     if (!(_age.totalDays >= 0 && _age.totalDays <= 1856)) {
       throw Exception('Final age must be in range of 0 - 1856 days');
@@ -80,25 +105,21 @@ class BodyMassIndexForAge {
   }
 
   factory BodyMassIndexForAge.male({
-    required Age age,
     required BodyMassIndexMeasurement bodyMassIndexMeasurement,
     required BodyMassIndexForAgeData bodyMassIndexData,
   }) =>
       BodyMassIndexForAge._(
         sex: Sex.male,
-        age: age,
         measurementResult: bodyMassIndexMeasurement,
         bodyMassIndexData: bodyMassIndexData,
       );
 
   factory BodyMassIndexForAge.female({
-    required Age age,
     required BodyMassIndexMeasurement bodyMassIndexMeasurementResult,
     required BodyMassIndexForAgeData bodyMassIndexData,
   }) =>
       BodyMassIndexForAge._(
         sex: Sex.female,
-        age: age,
         measurementResult: bodyMassIndexMeasurementResult,
         bodyMassIndexData: bodyMassIndexData,
       );
@@ -122,6 +143,8 @@ class BodyMassIndexForAge {
         m: _ageData.lms.m,
         s: _ageData.lms.s,
       );
+
+  num get percentile => zScoreToPercentile(zScore);
 }
 
 class BodyMassIndexForAgeGender {
@@ -136,5 +159,5 @@ class BodyMassIndexForAgeLMS {
     required this.loh,
   });
   final LMS lms;
-  final Measure loh;
+  final LengthHeigthMeasurementPosition loh;
 }

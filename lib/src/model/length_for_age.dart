@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:super_measurement/super_measurement.dart';
-import 'package:who_growth_standards/src/common.dart';
+import 'package:who_growth_standards/src/age.dart';
 import 'package:who_growth_standards/src/math.dart';
 import 'package:who_growth_standards/src/typedef.dart';
 import 'package:who_growth_standards/src/types.dart';
@@ -21,8 +21,8 @@ class LengthForAgeData {
                   LengthForAgeLMS(
                     lms: (l: y['l'], m: y['m'], s: y['s']),
                     loh: y['loh'].toString().toLowerCase() == 'l'
-                        ? Measure.recumbent
-                        : Measure.standing,
+                        ? LengthHeigthMeasurementPosition.recumbent
+                        : LengthHeigthMeasurementPosition.standing,
                   ),
                 );
               }),
@@ -37,10 +37,10 @@ class LengthForAge {
   LengthForAge._({
     required Sex sex,
     required Age age,
-    required Length measurementResult,
-    required Measure measure,
+    required Length lengthHeight,
+    required LengthHeigthMeasurementPosition measure,
     required LengthForAgeData lengthForAgeData,
-  })  : _measurementResult = measurementResult,
+  })  : _lengthHeight = lengthHeight,
         _measure = measure,
         _sex = sex,
         _age = age,
@@ -50,38 +50,62 @@ class LengthForAge {
     }
   }
 
-  factory LengthForAge.male({
+  factory LengthForAge.maleStandingPosition({
     required Age age,
-    required Length measurementResult,
+    required Length height,
     required LengthForAgeData lengthForAgeData,
-    required Measure measure,
   }) =>
       LengthForAge._(
         sex: Sex.male,
         age: age,
-        measurementResult: measurementResult,
+        lengthHeight: height,
         lengthForAgeData: lengthForAgeData,
-        measure: measure,
+        measure: LengthHeigthMeasurementPosition.standing,
       );
 
-  factory LengthForAge.female({
+  factory LengthForAge.maleRecumbentPosition({
     required Age age,
-    required Length measurementResult,
+    required Length length,
     required LengthForAgeData lengthForAgeData,
-    required Measure measure,
+  }) =>
+      LengthForAge._(
+        sex: Sex.male,
+        age: age,
+        lengthHeight: length,
+        lengthForAgeData: lengthForAgeData,
+        measure: LengthHeigthMeasurementPosition.recumbent,
+      );
+
+  factory LengthForAge.femaleStandingPosition({
+    required Age age,
+    required Length heigth,
+    required LengthForAgeData lengthForAgeData,
   }) =>
       LengthForAge._(
         sex: Sex.female,
         age: age,
-        measurementResult: measurementResult,
+        lengthHeight: heigth,
         lengthForAgeData: lengthForAgeData,
-        measure: measure,
+        measure: LengthHeigthMeasurementPosition.standing,
+      );
+
+  factory LengthForAge.femaleRecumbentPosition({
+    required Age age,
+    required Length length,
+    required LengthForAgeData lengthForAgeData,
+  }) =>
+      LengthForAge._(
+        sex: Sex.female,
+        age: age,
+        lengthHeight: length,
+        lengthForAgeData: lengthForAgeData,
+        measure: LengthHeigthMeasurementPosition.recumbent,
       );
 
   final Sex _sex;
   final Age _age;
-  final Length _measurementResult;
-  final Measure _measure;
+  final Length _lengthHeight;
+  final LengthHeigthMeasurementPosition _measure;
   final Map<String, LengthForAgeGender> _mapGender;
 
   LengthForAgeGender get _maleData => _mapGender['1']!;
@@ -92,7 +116,7 @@ class LengthForAge {
 
   num get zScore => zscore(
         y: adjustedLengthHeight(
-          lengthHeight: _measurementResult.toCentimeters.value!,
+          lengthHeight: _lengthHeight.toCentimeters.value!,
           ageInDays: _age.totalDays,
           measure: _measure,
         ),
@@ -100,6 +124,8 @@ class LengthForAge {
         m: _ageData.lms.m,
         s: _ageData.lms.s,
       );
+
+  num get percentile => zScoreToPercentile(zScore);
 }
 
 class LengthForAgeGender {
@@ -113,5 +139,5 @@ class LengthForAgeLMS {
     required this.loh,
   });
   final LMS lms;
-  final Measure loh;
+  final LengthHeigthMeasurementPosition loh;
 }

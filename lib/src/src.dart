@@ -1,4 +1,4 @@
-export 'common.dart';
+export 'age.dart';
 export 'model/arm_circumference_for_age.dart'
     hide ArmCircumferenceForAgeGender, ArmCircumferenceForAgeLMS;
 export 'model/body_mass_index_for_age.dart'
@@ -15,4 +15,3 @@ export 'model/weight_for_height.dart'
     hide WeightForHeightGender, WeightForHeightLMS;
 export 'model/weight_for_length.dart'
     hide WeigthForLengthGender, WeigthForLengthLMS;
-export 'types.dart';
