@@ -22,12 +22,11 @@ void main() {
 
       sanitize(data!)
           .map(
-            (c) => dataTitle
-                .asMap()
-                .map((_, value) => getVal(c, value).entries.first)
-                .map((key, value) => MapEntry(key.toLowerCase(), value)),
-          )
-          .toList()
+        (c) => dataTitle
+            .asMap()
+            .map((_, value) => getVal(c, value).entries.first)
+            .map((key, value) => MapEntry(key.toLowerCase(), value)),
+      )
           .forEach((element) {
         expMap[element['month'].toString()] = element..remove('month');
       });
