@@ -10,7 +10,7 @@ part '../data/hcanthro.dart';
 
 class HeadCircumferenceForAgeData {
   HeadCircumferenceForAgeData()
-      : data = (json.decode(_hcanthro) as Map<String, dynamic>).map(
+      : _data = (json.decode(_hcanthro) as Map<String, dynamic>).map(
           (u, e) => MapEntry(
             u,
             HeadCircumferenceForAgeGender(
@@ -27,7 +27,7 @@ class HeadCircumferenceForAgeData {
           ),
         );
 
-  final Map<String, HeadCircumferenceForAgeGender> data;
+  final Map<String, HeadCircumferenceForAgeGender> _data;
 }
 
 class HeadCircumferenceForAge {
@@ -39,7 +39,7 @@ class HeadCircumferenceForAge {
   })  : _measurementResult = measurementResult,
         _sex = sex,
         _age = age,
-        _mapGender = headCircumferenceData.data {
+        _mapGender = headCircumferenceData._data {
     if (!(_age.totalDays >= 0 && _age.totalDays <= 1856)) {
       throw Exception('Final age must be in range of 0 - 1856 days');
     }

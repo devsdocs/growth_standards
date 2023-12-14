@@ -10,7 +10,7 @@ part '../data/weianthro.dart';
 
 class WeightForAgeData {
   WeightForAgeData()
-      : data = (json.decode(_weianthro) as Map<String, dynamic>).map(
+      : _data = (json.decode(_weianthro) as Map<String, dynamic>).map(
           (u, e) => MapEntry(
             u,
             WeightForAgeGender(
@@ -25,7 +25,7 @@ class WeightForAgeData {
           ),
         );
 
-  final Map<String, WeightForAgeGender> data;
+  final Map<String, WeightForAgeGender> _data;
 }
 
 class WeightForAge {
@@ -37,7 +37,7 @@ class WeightForAge {
   })  : _measurementResult = weight,
         _sex = sex,
         _age = age,
-        _mapGender = weightForAgeData.data {
+        _mapGender = weightForAgeData._data {
     if (!(_age.totalDays >= 0 && _age.totalDays <= 1856)) {
       throw Exception('Final age must be in range of 0 - 1856 days');
     }

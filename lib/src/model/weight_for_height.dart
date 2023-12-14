@@ -11,7 +11,7 @@ part '../data/wfhanthro.dart';
 
 class WeightForHeightData {
   WeightForHeightData()
-      : data = (json.decode(_wfhanthro) as Map<String, dynamic>).map(
+      : _data = (json.decode(_wfhanthro) as Map<String, dynamic>).map(
           (u, e) => MapEntry(
             u,
             WeightForHeightGender(
@@ -31,7 +31,7 @@ class WeightForHeightData {
           ),
         );
 
-  final Map<String, WeightForHeightGender> data;
+  final Map<String, WeightForHeightGender> _data;
 }
 
 class WeightForHeight {
@@ -47,7 +47,7 @@ class WeightForHeight {
         _sex = sex,
         _mass = mass,
         _age = age,
-        _mapGender = weightForHeightData.data {
+        _mapGender = weightForHeightData._data {
     if (!(_adjustedHeight >= 65 && _adjustedHeight <= 120)) {
       if (height.toCentimeters.value! >= 65 &&
           height.toCentimeters.value! <= 120) {

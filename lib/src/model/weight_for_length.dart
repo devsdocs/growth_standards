@@ -11,7 +11,7 @@ part '../data/wflanthro.dart';
 
 class WeigthForLengthData {
   WeigthForLengthData()
-      : data = (json.decode(_wflanthro) as Map<String, dynamic>).map(
+      : _data = (json.decode(_wflanthro) as Map<String, dynamic>).map(
           (u, e) => MapEntry(
             u,
             WeigthForLengthGender(
@@ -31,7 +31,7 @@ class WeigthForLengthData {
           ),
         );
 
-  final Map<String, WeigthForLengthGender> data;
+  final Map<String, WeigthForLengthGender> _data;
 }
 
 class WeigthForLength {
@@ -47,7 +47,7 @@ class WeigthForLength {
         _measure = measure,
         _sex = sex,
         _age = age,
-        _mapGender = weigthForLengthData.data {
+        _mapGender = weigthForLengthData._data {
     if (!(_adjustedLength >= 45 && _adjustedLength <= 110)) {
       if (lengthMeasurementResult.toCentimeters.value! >= 45 &&
           lengthMeasurementResult.toCentimeters.value! <= 110) {

@@ -10,7 +10,7 @@ part '../data/acanthro.dart';
 
 class ArmCircumferenceForAgeData {
   ArmCircumferenceForAgeData()
-      : data = (json.decode(_acanthro) as Map<String, dynamic>).map(
+      : _data = (json.decode(_acanthro) as Map<String, dynamic>).map(
           (k, v) => MapEntry(
             k,
             ArmCircumferenceForAgeGender(
@@ -27,7 +27,7 @@ class ArmCircumferenceForAgeData {
           ),
         );
 
-  final Map<String, ArmCircumferenceForAgeGender> data;
+  final Map<String, ArmCircumferenceForAgeGender> _data;
 }
 
 class ArmCircumferenceForAge {
@@ -39,7 +39,7 @@ class ArmCircumferenceForAge {
   })  : _measurementResult = measurementResult,
         _sex = sex,
         _age = age,
-        _mapGender = armCircumferenceData.data {
+        _mapGender = armCircumferenceData._data {
     if (!(_age.totalDays >= 91 && _age.totalDays <= 1856)) {
       throw Exception('Final age must be in range of 91 - 1856 days');
     }

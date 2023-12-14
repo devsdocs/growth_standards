@@ -10,7 +10,7 @@ part '../data/ssanthro.dart';
 
 class SubscapularSkinfoldData {
   SubscapularSkinfoldData()
-      : data = (json.decode(_ssanthro) as Map<String, dynamic>).map(
+      : _data = (json.decode(_ssanthro) as Map<String, dynamic>).map(
           (u, e) => MapEntry(
             u,
             SubscapularSkinfoldAgeGender(
@@ -27,7 +27,7 @@ class SubscapularSkinfoldData {
           ),
         );
 
-  final Map<String, SubscapularSkinfoldAgeGender> data;
+  final Map<String, SubscapularSkinfoldAgeGender> _data;
 }
 
 class SubscapularSkinfoldForAge {
@@ -39,7 +39,7 @@ class SubscapularSkinfoldForAge {
   })  : _measurementResult = measurementResult,
         _sex = sex,
         _age = age,
-        _mapGender = subscapularSkinfoldData.data {
+        _mapGender = subscapularSkinfoldData._data {
     if (!(_age.totalDays >= 91 && _age.totalDays <= 1856)) {
       throw Exception('Final age must be in range of 91 - 1856 days');
     }

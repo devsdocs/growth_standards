@@ -10,7 +10,7 @@ part '../data/lenanthro.dart';
 
 class LengthForAgeData {
   LengthForAgeData()
-      : data = (json.decode(_lenanthro) as Map<String, dynamic>).map(
+      : _data = (json.decode(_lenanthro) as Map<String, dynamic>).map(
           (u, e) => MapEntry(
             u,
             LengthForAgeGender(
@@ -30,7 +30,7 @@ class LengthForAgeData {
           ),
         );
 
-  final Map<String, LengthForAgeGender> data;
+  final Map<String, LengthForAgeGender> _data;
 }
 
 class LengthForAge {
@@ -44,7 +44,7 @@ class LengthForAge {
         _measure = measure,
         _sex = sex,
         _age = age,
-        _mapGender = lengthForAgeData.data {
+        _mapGender = lengthForAgeData._data {
     if (!(_age.totalDays >= 0 && _age.totalDays <= 1856)) {
       throw Exception('Final age must be in range of 0 - 1856 days');
     }

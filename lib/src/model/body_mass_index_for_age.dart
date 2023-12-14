@@ -11,7 +11,7 @@ part '../data/bmianthro.dart';
 
 class BodyMassIndexForAgeData {
   BodyMassIndexForAgeData()
-      : data = (json.decode(_bmianthro) as Map<String, dynamic>).map(
+      : _data = (json.decode(_bmianthro) as Map<String, dynamic>).map(
           (x, e) => MapEntry(
             x,
             BodyMassIndexForAgeGender(
@@ -31,7 +31,7 @@ class BodyMassIndexForAgeData {
           ),
         );
 
-  final Map<String, BodyMassIndexForAgeGender> data;
+  final Map<String, BodyMassIndexForAgeGender> _data;
 }
 
 class BodyMassIndexMeasurement {
@@ -98,7 +98,7 @@ class BodyMassIndexForAge {
   })  : _bodyMassIndexMeasurementResult = measurementResult,
         _sex = sex,
         _age = measurementResult._age,
-        _mapGender = bodyMassIndexData.data {
+        _mapGender = bodyMassIndexData._data {
     if (!(_age.totalDays >= 0 && _age.totalDays <= 1856)) {
       throw Exception('Final age must be in range of 0 - 1856 days');
     }

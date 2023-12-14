@@ -10,7 +10,7 @@ part '../data/tsanthro.dart';
 
 class TricepsSkinfoldData {
   TricepsSkinfoldData()
-      : data = (json.decode(_tsanthro) as Map<String, dynamic>).map(
+      : _data = (json.decode(_tsanthro) as Map<String, dynamic>).map(
           (u, e) => MapEntry(
             u,
             TricepsSkinfoldAgeGender(
@@ -27,7 +27,7 @@ class TricepsSkinfoldData {
           ),
         );
 
-  final Map<String, TricepsSkinfoldAgeGender> data;
+  final Map<String, TricepsSkinfoldAgeGender> _data;
 }
 
 class TricepsSkinfoldForAge {
@@ -39,7 +39,7 @@ class TricepsSkinfoldForAge {
   })  : _measurementResult = measurementResult,
         _sex = sex,
         _age = age,
-        _mapGender = tricepsSkinfoldData.data {
+        _mapGender = tricepsSkinfoldData._data {
     if (!(_age.totalDays >= 91 && _age.totalDays <= 1856)) {
       throw Exception('Final age must be in range of 91 - 1856 days');
     }
