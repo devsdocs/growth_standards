@@ -1,13 +1,4 @@
-import 'dart:convert';
-import 'dart:math';
-
-import 'package:super_measurement/super_measurement.dart';
-import 'package:who_growth_standards/src/age.dart';
-import 'package:who_growth_standards/src/math.dart';
-import 'package:who_growth_standards/src/typedef.dart';
-import 'package:who_growth_standards/src/types.dart';
-
-part '../data/bmianthro.dart';
+part of '../standard.dart';
 
 class BodyMassIndexForAgeData {
   BodyMassIndexForAgeData()
@@ -76,7 +67,7 @@ class BodyMassIndexForAge {
         _age = bodyMassIndexMeasurement._age,
         _mapGender = bodyMassIndexData._data {
     if (!(_age.totalDays >= 0 && _age.totalDays <= 1856)) {
-      throw Exception('Final age must be in range of 0 - 1856 days');
+      throw Exception('Age must be in range of 0 - 1856 days');
     }
   }
 

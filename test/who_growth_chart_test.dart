@@ -4,7 +4,7 @@ import 'package:who_growth_standards/who_growth_standards.dart';
 
 const dateBase = [28, 29, 30, 31];
 
-final gs = WHO.growthStandard;
+final gs = GrowthStandard.whoGrowthStandard;
 
 void main() {
   final armCirData = gs.armCircumferenceForAge
@@ -61,8 +61,7 @@ void main() {
       expect(
         gs.bodyMassIndexForAge
             .male(
-              bodyMassIndexMeasurement:
-                  gs.bodyMassIndexForAge.calculateBMI.fromValue(
+              bodyMassIndexMeasurement: gs.bodyMassIndexForAge.getBMI.fromValue(
                 20.5,
                 age: Age.byMonthsAgo(44),
               ),
@@ -74,7 +73,7 @@ void main() {
       expect(
         gs.bodyMassIndexForAge
             .male(
-              bodyMassIndexMeasurement: gs.bodyMassIndexForAge.calculateBMI
+              bodyMassIndexMeasurement: gs.bodyMassIndexForAge.getBMI
                   .fromValue(12, age: Age.byMonthsAgo(28)),
               bodyMassIndexData: bodyMassIndexData,
             )
@@ -84,8 +83,7 @@ void main() {
       expect(
         gs.bodyMassIndexForAge
             .male(
-              bodyMassIndexMeasurement:
-                  gs.bodyMassIndexForAge.calculateBMI.fromValue(
+              bodyMassIndexMeasurement: gs.bodyMassIndexForAge.getBMI.fromValue(
                 18.8,
                 age: Age.byMonthsAgo(52),
               ),

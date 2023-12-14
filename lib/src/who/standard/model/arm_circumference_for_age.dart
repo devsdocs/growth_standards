@@ -1,12 +1,4 @@
-import 'dart:convert';
-
-import 'package:super_measurement/super_measurement.dart';
-import 'package:who_growth_standards/src/age.dart';
-import 'package:who_growth_standards/src/math.dart';
-import 'package:who_growth_standards/src/typedef.dart';
-import 'package:who_growth_standards/src/types.dart';
-
-part '../data/acanthro.dart';
+part of '../standard.dart';
 
 class ArmCircumferenceForAgeData {
   ArmCircumferenceForAgeData()
@@ -41,7 +33,7 @@ class ArmCircumferenceForAge {
         _age = age,
         _mapGender = armCircumferenceData._data {
     if (!(_age.totalDays >= 91 && _age.totalDays <= 1856)) {
-      throw Exception('Final age must be in range of 91 - 1856 days');
+      throw Exception('Age must be in range of 91 - 1856 days');
     }
   }
 

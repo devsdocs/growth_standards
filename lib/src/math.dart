@@ -67,13 +67,13 @@ num adjustedZScore({
       m: m,
       s: s,
     );
-    final calcSD2pos = calcSD(
+    final sD2pos = calcSD(
       sd: 2,
       l: l,
       m: m,
       s: s,
     );
-    final sD23pos = sD3pos - calcSD2pos;
+    final sD23pos = sD3pos - sD2pos;
 
     final cal = 3 + ((y - sD3pos) / sD23pos);
     return cal.toPrecision(2);
@@ -85,13 +85,13 @@ num adjustedZScore({
       m: m,
       s: s,
     );
-    final calcSD2neg = calcSD(
+    final sD2neg = calcSD(
       sd: -2,
       l: l,
       m: m,
       s: s,
     );
-    final sD23neg = calcSD2neg - sD3neg;
+    final sD23neg = sD2neg - sD3neg;
 
     final cal = -3 + ((y - sD3neg) / sD23neg);
     return cal.toPrecision(2);

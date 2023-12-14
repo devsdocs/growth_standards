@@ -1,25 +1,18 @@
 import 'package:super_measurement/super_measurement.dart';
 import 'package:who_growth_standards/src/age.dart';
-import 'package:who_growth_standards/src/model/arm_circumference_for_age.dart';
-import 'package:who_growth_standards/src/model/body_mass_index_for_age.dart';
-import 'package:who_growth_standards/src/model/head_circumference_for_age.dart';
-import 'package:who_growth_standards/src/model/length_for_age.dart';
-import 'package:who_growth_standards/src/model/subscapular_skinfold_for_age.dart';
-import 'package:who_growth_standards/src/model/triceps_skinfold_for_age.dart';
-import 'package:who_growth_standards/src/model/weight_for_age.dart';
-import 'package:who_growth_standards/src/model/weight_for_height.dart';
-import 'package:who_growth_standards/src/model/weight_for_length.dart';
 import 'package:who_growth_standards/src/types.dart';
+import 'package:who_growth_standards/src/who/reference/reference.dart';
+import 'package:who_growth_standards/src/who/standard/standard.dart';
 
-part 'standard.dart';
 part 'reference.dart';
+part 'standard.dart';
 
-final class WHO {
+final class GrowthStandard {
   /// For age 0 to 5 years old (max at 60 months)
-  static _WHOGrowthStandard get growthStandard => _WHOGrowthStandard();
+  static _WHOGrowthStandard get whoGrowthStandard => _WHOGrowthStandard();
 
   /// For age 5 to 18 years old (start with 61 months)
-  static _WHOGrowthReference get growthReference => _WHOGrowthReference();
+  static _WHOGrowthReference get whoGrowthReference => _WHOGrowthReference();
 }
 
 final class _WHOGrowthStandard {
@@ -43,4 +36,11 @@ final class _WHOGrowthStandard {
       _WHOGrowthStandardWeightForLength();
 }
 
-final class _WHOGrowthReference {}
+final class _WHOGrowthReference {
+  _WHOGrowthReferenceBodyMassIndex get bodyMassIndexForAge =>
+      _WHOGrowthReferenceBodyMassIndex();
+  _WHOGrowthReferenceHeightForAge get lengthForAge =>
+      _WHOGrowthReferenceHeightForAge();
+  _WHOGrowthReferenceWeightForAge get weightForAge =>
+      _WHOGrowthReferenceWeightForAge();
+}

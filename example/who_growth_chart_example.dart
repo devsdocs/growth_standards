@@ -10,7 +10,7 @@ const centimeters = Centimeters(length);
 const kilograms = Kilograms(weight);
 final age = Age.byBirthDay(birthDay);
 
-final gs = WHO.growthStandard;
+final gs = GrowthStandard.whoGrowthStandard;
 
 final heightData = gs.lengthForAge.data;
 final weightData = gs.weightForAge.data;
@@ -57,7 +57,7 @@ void main() {
 
   final calcBMIForAge = gs.bodyMassIndexForAge.male(
     bodyMassIndexMeasurement:
-        gs.bodyMassIndexForAge.calculateBMI.withRecumbentPosition(
+        gs.bodyMassIndexForAge.getBMI.withRecumbentPosition(
       length: centimeters,
       weight: kilograms,
       age: age,

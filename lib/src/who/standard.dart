@@ -42,7 +42,10 @@ final class _WHOGrowthStandardArmCircumference {
 }
 
 final class _WHOGrowthStandardBMITools {
-  BodyMassIndexMeasurement fromValue(num value, {required Age age}) =>
+  BodyMassIndexMeasurement fromValue(
+    num value, {
+    required Age age,
+  }) =>
       BodyMassIndexMeasurement.fromValue(value, age: age);
 
   BodyMassIndexMeasurement withStandingPosition({
@@ -72,7 +75,7 @@ final class _WHOGrowthStandardBMITools {
 
 final class _WHOGrowthStandardBodyMassIndex {
   BodyMassIndexForAgeData get data => BodyMassIndexForAgeData();
-  _WHOGrowthStandardBMITools get calculateBMI => _WHOGrowthStandardBMITools();
+  _WHOGrowthStandardBMITools get getBMI => _WHOGrowthStandardBMITools();
 
   BodyMassIndexForAge measure({
     required Sex sex,

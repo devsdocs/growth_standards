@@ -1,13 +1,4 @@
-import 'dart:convert';
-
-import 'package:reusable_tools/reusable_tools.dart';
-import 'package:super_measurement/super_measurement.dart';
-import 'package:who_growth_standards/src/age.dart';
-import 'package:who_growth_standards/src/math.dart';
-import 'package:who_growth_standards/src/typedef.dart';
-import 'package:who_growth_standards/src/types.dart';
-
-part '../data/wfhanthro.dart';
+part of '../standard.dart';
 
 class WeightForHeightData {
   WeightForHeightData()
@@ -53,7 +44,7 @@ class WeightForHeight {
           height.toCentimeters.value! <= 120) {
         throw Exception('Please correcting measurement position based on age');
       } else {
-        throw Exception('Final height must be in range of 65 - 120 cm');
+        throw Exception('Height must be in range of 65 - 120 cm');
       }
     }
   }
