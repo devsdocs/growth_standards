@@ -2,7 +2,7 @@
 
 import 'package:growth_standards/growth_standards.dart';
 
-final birthDay = DateTime(2022, 6, 30);
+final birthDay = DateOfBirth(year: 2022, month: Months.juni, date: 30);
 const weight = 11.5;
 const length = 80;
 

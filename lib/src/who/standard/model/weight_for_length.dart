@@ -1,7 +1,8 @@
 part of '../standard.dart';
 
 class WeigthForLengthData {
-  WeigthForLengthData()
+  factory WeigthForLengthData() => _singleton;
+  WeigthForLengthData._()
       : _data = (json.decode(_wflanthro) as Map<String, dynamic>).map(
           (u, e) => MapEntry(
             u,
@@ -21,6 +22,8 @@ class WeigthForLengthData {
             ),
           ),
         );
+
+  static final _singleton = WeigthForLengthData._();
 
   final Map<String, WeigthForLengthGender> _data;
 }

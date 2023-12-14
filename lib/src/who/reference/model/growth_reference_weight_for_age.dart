@@ -1,7 +1,8 @@
 part of '../reference.dart';
 
 class GrowthReferenceWeightForAgeData {
-  GrowthReferenceWeightForAgeData()
+  factory GrowthReferenceWeightForAgeData() => _singleton;
+  GrowthReferenceWeightForAgeData._()
       : _data = (json.decode(_wfa5yo) as Map<String, dynamic>).map(
           (u, e) => MapEntry(
             u,
@@ -18,6 +19,8 @@ class GrowthReferenceWeightForAgeData {
             ),
           ),
         );
+
+  static final _singleton = GrowthReferenceWeightForAgeData._();
 
   final Map<String, GrowthReferenceWeightForAgeGender> _data;
 }

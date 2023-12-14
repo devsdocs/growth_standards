@@ -1,7 +1,8 @@
 part of '../reference.dart';
 
 class GrowthReferenceBodyMassIndexForAgeData {
-  GrowthReferenceBodyMassIndexForAgeData()
+  factory GrowthReferenceBodyMassIndexForAgeData() => _singleton;
+  GrowthReferenceBodyMassIndexForAgeData._()
       : _data = (json.decode(_bmi5yo) as Map<String, dynamic>).map(
           (x, e) => MapEntry(
             x,
@@ -18,6 +19,8 @@ class GrowthReferenceBodyMassIndexForAgeData {
             ),
           ),
         );
+
+  static final _singleton = GrowthReferenceBodyMassIndexForAgeData._();
 
   final Map<String, GrowthReferenceBodyMassIndexForAgeGender> _data;
 }

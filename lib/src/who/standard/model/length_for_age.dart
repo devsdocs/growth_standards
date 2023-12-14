@@ -1,7 +1,8 @@
 part of '../standard.dart';
 
 class LengthForAgeData {
-  LengthForAgeData()
+  factory LengthForAgeData() => _singleton;
+  LengthForAgeData._()
       : _data = (json.decode(_lenanthro) as Map<String, dynamic>).map(
           (u, e) => MapEntry(
             u,
@@ -21,6 +22,7 @@ class LengthForAgeData {
             ),
           ),
         );
+  static final _singleton = LengthForAgeData._();
 
   final Map<String, LengthForAgeGender> _data;
 }

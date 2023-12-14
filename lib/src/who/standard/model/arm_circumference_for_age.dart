@@ -1,7 +1,8 @@
 part of '../standard.dart';
 
 class ArmCircumferenceForAgeData {
-  ArmCircumferenceForAgeData()
+  factory ArmCircumferenceForAgeData() => _singleton;
+  ArmCircumferenceForAgeData._()
       : _data = (json.decode(_acanthro) as Map<String, dynamic>).map(
           (k, v) => MapEntry(
             k,
@@ -18,6 +19,8 @@ class ArmCircumferenceForAgeData {
             ),
           ),
         );
+
+  static final _singleton = ArmCircumferenceForAgeData._();
 
   final Map<String, ArmCircumferenceForAgeGender> _data;
 }

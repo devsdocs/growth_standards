@@ -1,7 +1,8 @@
 part of '../standard.dart';
 
 class SubscapularSkinfoldForAgeData {
-  SubscapularSkinfoldForAgeData()
+  factory SubscapularSkinfoldForAgeData() => _singleton;
+  SubscapularSkinfoldForAgeData._()
       : _data = (json.decode(_ssanthro) as Map<String, dynamic>).map(
           (u, e) => MapEntry(
             u,
@@ -18,6 +19,8 @@ class SubscapularSkinfoldForAgeData {
             ),
           ),
         );
+
+  static final _singleton = SubscapularSkinfoldForAgeData._();
 
   final Map<String, SubscapularSkinfoldAgeGender> _data;
 }

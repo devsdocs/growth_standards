@@ -15,6 +15,7 @@ export 'package:super_measurement/super_measurement.dart'
         Mass,
         MassUnit,
         Meters,
+        Millemeters,
         NumOfLength,
         NumOfMass,
         Ounces,
@@ -22,6 +23,4 @@ export 'package:super_measurement/super_measurement.dart'
         Precision,
         UnitExtension;
 
-export 'src/common/age.dart';
-export 'src/common/types.dart' show LengthHeigthMeasurementPosition, Sex;
 export 'src/growth_standards.dart';

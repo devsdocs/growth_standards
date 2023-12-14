@@ -1,7 +1,8 @@
 part of '../standard.dart';
 
 class TricepsSkinfoldForAgeData {
-  TricepsSkinfoldForAgeData()
+  factory TricepsSkinfoldForAgeData() => _singleton;
+  TricepsSkinfoldForAgeData._()
       : _data = (json.decode(_tsanthro) as Map<String, dynamic>).map(
           (u, e) => MapEntry(
             u,
@@ -18,6 +19,8 @@ class TricepsSkinfoldForAgeData {
             ),
           ),
         );
+
+  static final _singleton = TricepsSkinfoldForAgeData._();
 
   final Map<String, TricepsSkinfoldAgeGender> _data;
 }

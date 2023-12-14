@@ -1,7 +1,8 @@
 part of '../standard.dart';
 
 class WeightForHeightData {
-  WeightForHeightData()
+  factory WeightForHeightData() => _singleton;
+  WeightForHeightData._()
       : _data = (json.decode(_wfhanthro) as Map<String, dynamic>).map(
           (u, e) => MapEntry(
             u,
@@ -21,6 +22,8 @@ class WeightForHeightData {
             ),
           ),
         );
+
+  static final _singleton = WeightForHeightData._();
 
   final Map<String, WeightForHeightGender> _data;
 }

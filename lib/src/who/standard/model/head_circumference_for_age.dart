@@ -1,7 +1,8 @@
 part of '../standard.dart';
 
 class HeadCircumferenceForAgeData {
-  HeadCircumferenceForAgeData()
+  factory HeadCircumferenceForAgeData() => _singleton;
+  HeadCircumferenceForAgeData._()
       : _data = (json.decode(_hcanthro) as Map<String, dynamic>).map(
           (u, e) => MapEntry(
             u,
@@ -18,6 +19,8 @@ class HeadCircumferenceForAgeData {
             ),
           ),
         );
+
+  static final _singleton = HeadCircumferenceForAgeData._();
 
   final Map<String, HeadCircumferenceForAgeGender> _data;
 }
