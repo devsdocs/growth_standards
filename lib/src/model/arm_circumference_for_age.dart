@@ -31,7 +31,7 @@ class ArmCircumferenceForAgeData {
 }
 
 class ArmCircumferenceForAge {
-  ArmCircumferenceForAge._({
+  ArmCircumferenceForAge({
     required Sex sex,
     required Age age,
     required Length measurementResult,
@@ -44,30 +44,6 @@ class ArmCircumferenceForAge {
       throw Exception('Final age must be in range of 91 - 1856 days');
     }
   }
-
-  factory ArmCircumferenceForAge.male({
-    required Age age,
-    required Length measurementResult,
-    required ArmCircumferenceForAgeData armCircumferenceData,
-  }) =>
-      ArmCircumferenceForAge._(
-        sex: Sex.male,
-        age: age,
-        measurementResult: measurementResult,
-        armCircumferenceData: armCircumferenceData,
-      );
-
-  factory ArmCircumferenceForAge.female({
-    required Age age,
-    required Length measurementResult,
-    required ArmCircumferenceForAgeData armCircumferenceData,
-  }) =>
-      ArmCircumferenceForAge._(
-        sex: Sex.female,
-        age: age,
-        measurementResult: measurementResult,
-        armCircumferenceData: armCircumferenceData,
-      );
 
   final Sex _sex;
   final Age _age;

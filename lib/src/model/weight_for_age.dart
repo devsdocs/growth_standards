@@ -29,7 +29,7 @@ class WeightForAgeData {
 }
 
 class WeightForAge {
-  WeightForAge._({
+  WeightForAge({
     required Sex sex,
     required Age age,
     required Mass weight,
@@ -43,29 +43,7 @@ class WeightForAge {
     }
   }
 
-  factory WeightForAge.male({
-    required Age age,
-    required Mass weight,
-    required WeightForAgeData weightForAgeData,
-  }) =>
-      WeightForAge._(
-        sex: Sex.male,
-        age: age,
-        weight: weight,
-        weightForAgeData: weightForAgeData,
-      );
 
-  factory WeightForAge.female({
-    required Age age,
-    required Mass weight,
-    required WeightForAgeData weightForAgeData,
-  }) =>
-      WeightForAge._(
-        sex: Sex.female,
-        age: age,
-        weight: weight,
-        weightForAgeData: weightForAgeData,
-      );
 
   final Sex _sex;
   final Age _age;

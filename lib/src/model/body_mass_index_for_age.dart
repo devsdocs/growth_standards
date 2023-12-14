@@ -37,31 +37,7 @@ class BodyMassIndexForAgeData {
 class BodyMassIndexMeasurement {
   const BodyMassIndexMeasurement._(this.value, {required Age age}) : _age = age;
 
-  factory BodyMassIndexMeasurement.standingPosition({
-    required Length height,
-    required Mass weight,
-    required Age age,
-  }) =>
-      BodyMassIndexMeasurement._fromMeasurement(
-        lengthHeight: height,
-        weight: weight,
-        measure: LengthHeigthMeasurementPosition.standing,
-        age: age,
-      );
-
-  factory BodyMassIndexMeasurement.recumbentPosition({
-    required Length length,
-    required Mass weight,
-    required Age age,
-  }) =>
-      BodyMassIndexMeasurement._fromMeasurement(
-        lengthHeight: length,
-        weight: weight,
-        measure: LengthHeigthMeasurementPosition.recumbent,
-        age: age,
-      );
-
-  factory BodyMassIndexMeasurement._fromMeasurement({
+  factory BodyMassIndexMeasurement.fromMeasurement({
     required Length lengthHeight,
     required Mass weight,
     required LengthHeigthMeasurementPosition measure,
@@ -91,42 +67,22 @@ class BodyMassIndexMeasurement {
 }
 
 class BodyMassIndexForAge {
-  BodyMassIndexForAge._({
+  BodyMassIndexForAge({
     required Sex sex,
-    required BodyMassIndexMeasurement measurementResult,
+    required BodyMassIndexMeasurement bodyMassIndexMeasurement,
     required BodyMassIndexForAgeData bodyMassIndexData,
-  })  : _bodyMassIndexMeasurementResult = measurementResult,
+  })  : _bodyMassIndexMeasurement = bodyMassIndexMeasurement,
         _sex = sex,
-        _age = measurementResult._age,
+        _age = bodyMassIndexMeasurement._age,
         _mapGender = bodyMassIndexData._data {
     if (!(_age.totalDays >= 0 && _age.totalDays <= 1856)) {
       throw Exception('Final age must be in range of 0 - 1856 days');
     }
   }
 
-  factory BodyMassIndexForAge.male({
-    required BodyMassIndexMeasurement bodyMassIndexMeasurement,
-    required BodyMassIndexForAgeData bodyMassIndexData,
-  }) =>
-      BodyMassIndexForAge._(
-        sex: Sex.male,
-        measurementResult: bodyMassIndexMeasurement,
-        bodyMassIndexData: bodyMassIndexData,
-      );
-
-  factory BodyMassIndexForAge.female({
-    required BodyMassIndexMeasurement bodyMassIndexMeasurementResult,
-    required BodyMassIndexForAgeData bodyMassIndexData,
-  }) =>
-      BodyMassIndexForAge._(
-        sex: Sex.female,
-        measurementResult: bodyMassIndexMeasurementResult,
-        bodyMassIndexData: bodyMassIndexData,
-      );
-
   final Sex _sex;
   final Age _age;
-  final BodyMassIndexMeasurement _bodyMassIndexMeasurementResult;
+  final BodyMassIndexMeasurement _bodyMassIndexMeasurement;
 
   final Map<String, BodyMassIndexForAgeGender> _mapGender;
 
@@ -138,7 +94,7 @@ class BodyMassIndexForAge {
           .ageData[_age.totalDays.toString()]!;
 
   num get zScore => adjustedZScore(
-        y: _bodyMassIndexMeasurementResult.value,
+        y: _bodyMassIndexMeasurement.value,
         l: _ageData.lms.l,
         m: _ageData.lms.m,
         s: _ageData.lms.s,

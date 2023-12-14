@@ -31,7 +31,7 @@ class HeadCircumferenceForAgeData {
 }
 
 class HeadCircumferenceForAge {
-  HeadCircumferenceForAge._({
+  HeadCircumferenceForAge({
     required Sex sex,
     required Age age,
     required Length measurementResult,
@@ -44,30 +44,6 @@ class HeadCircumferenceForAge {
       throw Exception('Final age must be in range of 0 - 1856 days');
     }
   }
-
-  factory HeadCircumferenceForAge.male({
-    required Age age,
-    required Length measurementResult,
-    required HeadCircumferenceForAgeData headCircumferenceData,
-  }) =>
-      HeadCircumferenceForAge._(
-        sex: Sex.male,
-        age: age,
-        measurementResult: measurementResult,
-        headCircumferenceData: headCircumferenceData,
-      );
-
-  factory HeadCircumferenceForAge.female({
-    required Age age,
-    required Length measurementResult,
-    required HeadCircumferenceForAgeData headCircumferenceData,
-  }) =>
-      HeadCircumferenceForAge._(
-        sex: Sex.female,
-        age: age,
-        measurementResult: measurementResult,
-        headCircumferenceData: headCircumferenceData,
-      );
 
   final Sex _sex;
   final Age _age;

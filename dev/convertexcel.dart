@@ -63,24 +63,28 @@ void main() {
     }
   });
 
+  final encodeBMI = json.encode(bmi);
+  final encodeHFA = json.encode(hfa);
+  final encodeWFA = json.encode(wfa);
+
   File('dev/5yo/bmi.json')
     ..createSync(recursive: true)
-    ..writeAsStringSync(json.encode(bmi));
+    ..writeAsStringSync(encodeBMI);
   File('dev/5yo/wfa.json')
     ..createSync(recursive: true)
-    ..writeAsStringSync(json.encode(wfa));
+    ..writeAsStringSync(encodeWFA);
   File('dev/5yo/hfa.json')
     ..createSync(recursive: true)
-    ..writeAsStringSync(json.encode(hfa));
+    ..writeAsStringSync(encodeHFA);
   File('dev/5yo/bmi.dart')
     ..createSync(recursive: true)
-    ..writeAsStringSync("const bmi5yo = '''\n${json.encode(bmi)}\n''';\n");
+    ..writeAsStringSync("const bmi5yo = '''\n$encodeBMI\n''';\n");
   File('dev/5yo/wfa.dart')
     ..createSync(recursive: true)
-    ..writeAsStringSync("const wfa5yo = '''\n${json.encode(wfa)}\n''';\n");
+    ..writeAsStringSync("const wfa5yo = '''\n$encodeWFA\n''';\n");
   File('dev/5yo/hfa.dart')
     ..createSync(recursive: true)
-    ..writeAsStringSync("const hfa5yo = '''\n${json.encode(hfa)}\n''';\n");
+    ..writeAsStringSync("const hfa5yo = '''\n$encodeHFA\n''';\n");
 }
 
 List<List<dynamic>>? dataFromExcel(Excel excel) {
@@ -145,4 +149,4 @@ List<List<Map<String, dynamic>>> sanitize(List<List<dynamic>> data) {
 Map<String, dynamic> getVal(List<Map<String, dynamic>> c, String key) =>
     {key: c.singleWhere((element) => element.keys.first == key).values.first};
 
-final dataTitle = ['Month', 'L', 'M', 'S'];
+const dataTitle = ['Month', 'L', 'M', 'S'];

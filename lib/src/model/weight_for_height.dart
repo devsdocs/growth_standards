@@ -35,7 +35,7 @@ class WeightForHeightData {
 }
 
 class WeightForHeight {
-  WeightForHeight._({
+  WeightForHeight({
     required Sex sex,
     required Age age,
     required Length height,
@@ -64,7 +64,7 @@ class WeightForHeight {
     required WeightForHeightData weightForHeightData,
     required Age age,
   }) =>
-      WeightForHeight._(
+      WeightForHeight(
         sex: Sex.male,
         height: height,
         weightForHeightData: weightForHeightData,
@@ -79,7 +79,7 @@ class WeightForHeight {
     required WeightForHeightData weightForHeightData,
     required Age age,
   }) =>
-      WeightForHeight._(
+      WeightForHeight(
         sex: Sex.male,
         height: length,
         weightForHeightData: weightForHeightData,
@@ -94,7 +94,7 @@ class WeightForHeight {
     required WeightForHeightData weightForHeightData,
     required Age age,
   }) =>
-      WeightForHeight._(
+      WeightForHeight(
         sex: Sex.female,
         height: height,
         mass: weight,
@@ -109,7 +109,7 @@ class WeightForHeight {
     required WeightForHeightData weightForHeightData,
     required Age age,
   }) =>
-      WeightForHeight._(
+      WeightForHeight(
         sex: Sex.female,
         height: length,
         mass: weight,

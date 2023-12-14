@@ -35,7 +35,7 @@ class WeigthForLengthData {
 }
 
 class WeigthForLength {
-  WeigthForLength._({
+  WeigthForLength({
     required Sex sex,
     required Length lengthMeasurementResult,
     required Mass massMeasurementResult,
@@ -57,66 +57,6 @@ class WeigthForLength {
       }
     }
   }
-
-  factory WeigthForLength.maleStandingPosition({
-    required Length height,
-    required Mass weight,
-    required WeigthForLengthData weigthForLengthData,
-    required Age age,
-  }) =>
-      WeigthForLength._(
-        sex: Sex.male,
-        age: age,
-        measure: LengthHeigthMeasurementPosition.standing,
-        lengthMeasurementResult: height,
-        massMeasurementResult: weight,
-        weigthForLengthData: weigthForLengthData,
-      );
-
-  factory WeigthForLength.maleRecumbentPosition({
-    required Length length,
-    required Mass weight,
-    required WeigthForLengthData weigthForLengthData,
-    required Age age,
-  }) =>
-      WeigthForLength._(
-        sex: Sex.male,
-        age: age,
-        measure: LengthHeigthMeasurementPosition.recumbent,
-        lengthMeasurementResult: length,
-        massMeasurementResult: weight,
-        weigthForLengthData: weigthForLengthData,
-      );
-
-  factory WeigthForLength.femaleStandingPosition({
-    required Length height,
-    required Mass weight,
-    required WeigthForLengthData weigthForLengthData,
-    required Age age,
-  }) =>
-      WeigthForLength._(
-        sex: Sex.female,
-        age: age,
-        measure: LengthHeigthMeasurementPosition.standing,
-        lengthMeasurementResult: height,
-        massMeasurementResult: weight,
-        weigthForLengthData: weigthForLengthData,
-      );
-
-  factory WeigthForLength.femaleRecumbentPosition({
-    required Length length,
-    required Mass weight,
-    required WeigthForLengthData weigthForLengthData,
-    required Age age,
-  }) =>
-      WeigthForLength._(
-        sex: Sex.female,
-        age: age,
-        measure: LengthHeigthMeasurementPosition.recumbent,
-        lengthMeasurementResult: length,
-        massMeasurementResult: weight,
-        weigthForLengthData: weigthForLengthData,
-      );
 
   final Sex _sex;
   final Age _age;

@@ -1,23 +1,27 @@
+import 'package:who_growth_standards/src/typedef.dart';
 import 'package:who_growth_standards/src/types.dart';
 
 Months _monthFromNumber(int number) =>
     Months.values.singleWhere((element) => element.number == number);
 
-bool _assertDateOfBirth(_DateOfBirth dob) {
-  if (dob.date > _TimeTools.datesInMonth(dob.year, dob.month.number)) {
-    return false;
-  }
-  return true;
-}
-
 class Age {
-  Age._(_DateOfBirth dateOfBirth)
-      : assert(_assertDateOfBirth(dateOfBirth)),
-        _dobCount = _TimeIntervalCount(
-          dateOfBirth.year,
-          dateOfBirth.month.number,
-          dateOfBirth.date,
-        );
+  Age._(_DateOfBirth dob)
+      : _dobCount = _TimeIntervalCount(
+          dob.year,
+          dob.month.number,
+          dob.date,
+        ) {
+    if (dob.date > _TimeTools.datesInMonth(dob.year, dob.month.number)) {
+      throw Exception('Date exceeded');
+    }
+
+    final now = DateTime.now();
+    if (DateTime(now.year, now.month, now.day)
+        .difference(DateTime(dob.year, dob.month.number, dob.date))
+        .isNegative) {
+      throw Exception('Age is impossible');
+    }
+  }
 
   factory Age.byYearsAgo(int years) => Age._(_DateOfBirth.byYearsAgo(years));
 
@@ -33,9 +37,10 @@ class Age {
 
   _Age get _ageNowIn => _dobCount.ageNow;
 
-  int get years => _ageNowIn.years;
-  int get months => _ageNowIn.months;
-  int get days => _ageNowIn.days;
+  YearsMonthsDays get yearsMonthsDays =>
+      (years: _ageNowIn.years, months: _ageNowIn.months, days: _ageNowIn.days);
+
+  int get totalMonths => (yearsMonthsDays.years * 12) + yearsMonthsDays.months;
 
   int get totalDays => DateTime.now().difference(_dobCount.dob).inDays;
 }

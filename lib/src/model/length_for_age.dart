@@ -34,7 +34,7 @@ class LengthForAgeData {
 }
 
 class LengthForAge {
-  LengthForAge._({
+  LengthForAge({
     required Sex sex,
     required Age age,
     required Length lengthHeight,
@@ -49,58 +49,6 @@ class LengthForAge {
       throw Exception('Final age must be in range of 0 - 1856 days');
     }
   }
-
-  factory LengthForAge.maleStandingPosition({
-    required Age age,
-    required Length height,
-    required LengthForAgeData lengthForAgeData,
-  }) =>
-      LengthForAge._(
-        sex: Sex.male,
-        age: age,
-        lengthHeight: height,
-        lengthForAgeData: lengthForAgeData,
-        measure: LengthHeigthMeasurementPosition.standing,
-      );
-
-  factory LengthForAge.maleRecumbentPosition({
-    required Age age,
-    required Length length,
-    required LengthForAgeData lengthForAgeData,
-  }) =>
-      LengthForAge._(
-        sex: Sex.male,
-        age: age,
-        lengthHeight: length,
-        lengthForAgeData: lengthForAgeData,
-        measure: LengthHeigthMeasurementPosition.recumbent,
-      );
-
-  factory LengthForAge.femaleStandingPosition({
-    required Age age,
-    required Length heigth,
-    required LengthForAgeData lengthForAgeData,
-  }) =>
-      LengthForAge._(
-        sex: Sex.female,
-        age: age,
-        lengthHeight: heigth,
-        lengthForAgeData: lengthForAgeData,
-        measure: LengthHeigthMeasurementPosition.standing,
-      );
-
-  factory LengthForAge.femaleRecumbentPosition({
-    required Age age,
-    required Length length,
-    required LengthForAgeData lengthForAgeData,
-  }) =>
-      LengthForAge._(
-        sex: Sex.female,
-        age: age,
-        lengthHeight: length,
-        lengthForAgeData: lengthForAgeData,
-        measure: LengthHeigthMeasurementPosition.recumbent,
-      );
 
   final Sex _sex;
   final Age _age;

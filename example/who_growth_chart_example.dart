@@ -10,14 +10,19 @@ const centimeters = Centimeters(length);
 const kilograms = Kilograms(weight);
 final age = Age.byBirthDay(birthDay);
 
-final heightData = LengthForAgeData();
-final weightData = WeightForAgeData();
-final weigthForLengthData = WeigthForLengthData();
-final bodyMassIndexData = BodyMassIndexForAgeData();
+final gs = WHO.growthStandard;
+
+final heightData = gs.lengthForAge.data;
+final weightData = gs.weightForAge.data;
+final weigthForLengthData = gs.weightForLength.data;
+final bodyMassIndexData = gs.bodyMassIndexForAge.data;
 
 void main() {
+  print(
+    'Age: ${age.yearsMonthsDays.years} Years, ${age.yearsMonthsDays.months} Months, ${age.yearsMonthsDays.days} Days, with total ${age.totalMonths} in Months or ${age.totalDays} in Days',
+  );
   // Demonstrating adjusted zscore calculation
-  final calcLengthForAgeStanding = LengthForAge.maleStandingPosition(
+  final calcLengthForAgeStanding = gs.lengthForAge.maleStandingPosition(
     age: age,
     height: centimeters,
     lengthForAgeData: heightData,
@@ -25,7 +30,7 @@ void main() {
   print(calcLengthForAgeStanding.zScore);
   print(calcLengthForAgeStanding.percentile);
 
-  final calcLengthForAgeRecumbent = LengthForAge.maleRecumbentPosition(
+  final calcLengthForAgeRecumbent = gs.lengthForAge.maleRecumbentPosition(
     age: age,
     length: centimeters,
     lengthForAgeData: heightData,
@@ -33,7 +38,7 @@ void main() {
   print(calcLengthForAgeRecumbent.zScore);
   print(calcLengthForAgeRecumbent.percentile);
 
-  final calcWeigthForAge = WeightForAge.male(
+  final calcWeigthForAge = gs.weightForAge.male(
     age: age,
     weight: kilograms,
     weightForAgeData: weightData,
@@ -41,7 +46,7 @@ void main() {
   print(calcWeigthForAge.zScore);
   print(calcWeigthForAge.percentile);
 
-  final calcWeigthForLength = WeigthForLength.maleRecumbentPosition(
+  final calcWeigthForLength = gs.weightForLength.maleRecumbentPosition(
     length: centimeters,
     weight: kilograms,
     weigthForLengthData: weigthForLengthData,
@@ -50,8 +55,9 @@ void main() {
   print(calcWeigthForLength.zScore);
   print(calcWeigthForLength.percentile);
 
-  final calcBMIForAge = BodyMassIndexForAge.male(
-    bodyMassIndexMeasurement: BodyMassIndexMeasurement.recumbentPosition(
+  final calcBMIForAge = gs.bodyMassIndexForAge.male(
+    bodyMassIndexMeasurement:
+        gs.bodyMassIndexForAge.calculateBMI.withRecumbentPosition(
       length: centimeters,
       weight: kilograms,
       age: age,

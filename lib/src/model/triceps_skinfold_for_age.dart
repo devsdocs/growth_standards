@@ -8,8 +8,8 @@ import 'package:who_growth_standards/src/types.dart';
 
 part '../data/tsanthro.dart';
 
-class TricepsSkinfoldData {
-  TricepsSkinfoldData()
+class TricepsSkinfoldForAgeData {
+  TricepsSkinfoldForAgeData()
       : _data = (json.decode(_tsanthro) as Map<String, dynamic>).map(
           (u, e) => MapEntry(
             u,
@@ -31,11 +31,11 @@ class TricepsSkinfoldData {
 }
 
 class TricepsSkinfoldForAge {
-  TricepsSkinfoldForAge._({
+  TricepsSkinfoldForAge({
     required Sex sex,
     required Age age,
     required Length measurementResult,
-    required TricepsSkinfoldData tricepsSkinfoldData,
+    required TricepsSkinfoldForAgeData tricepsSkinfoldData,
   })  : _measurementResult = measurementResult,
         _sex = sex,
         _age = age,
@@ -44,30 +44,6 @@ class TricepsSkinfoldForAge {
       throw Exception('Final age must be in range of 91 - 1856 days');
     }
   }
-
-  factory TricepsSkinfoldForAge.male({
-    required Age age,
-    required Length measurementResult,
-    required TricepsSkinfoldData tricepsSkinfoldData,
-  }) =>
-      TricepsSkinfoldForAge._(
-        sex: Sex.male,
-        age: age,
-        measurementResult: measurementResult,
-        tricepsSkinfoldData: tricepsSkinfoldData,
-      );
-
-  factory TricepsSkinfoldForAge.female({
-    required Age age,
-    required Length measurementResult,
-    required TricepsSkinfoldData tricepsSkinfoldData,
-  }) =>
-      TricepsSkinfoldForAge._(
-        sex: Sex.female,
-        age: age,
-        measurementResult: measurementResult,
-        tricepsSkinfoldData: tricepsSkinfoldData,
-      );
 
   final Sex _sex;
   final Age _age;

@@ -8,8 +8,8 @@ import 'package:who_growth_standards/src/types.dart';
 
 part '../data/ssanthro.dart';
 
-class SubscapularSkinfoldData {
-  SubscapularSkinfoldData()
+class SubscapularSkinfoldForAgeData {
+  SubscapularSkinfoldForAgeData()
       : _data = (json.decode(_ssanthro) as Map<String, dynamic>).map(
           (u, e) => MapEntry(
             u,
@@ -31,11 +31,11 @@ class SubscapularSkinfoldData {
 }
 
 class SubscapularSkinfoldForAge {
-  SubscapularSkinfoldForAge._({
+  SubscapularSkinfoldForAge({
     required Sex sex,
     required Age age,
     required Length measurementResult,
-    required SubscapularSkinfoldData subscapularSkinfoldData,
+    required SubscapularSkinfoldForAgeData subscapularSkinfoldData,
   })  : _measurementResult = measurementResult,
         _sex = sex,
         _age = age,
@@ -44,30 +44,6 @@ class SubscapularSkinfoldForAge {
       throw Exception('Final age must be in range of 91 - 1856 days');
     }
   }
-
-  factory SubscapularSkinfoldForAge.male({
-    required Age age,
-    required Length measurementResult,
-    required SubscapularSkinfoldData subscapularSkinfoldData,
-  }) =>
-      SubscapularSkinfoldForAge._(
-        sex: Sex.male,
-        age: age,
-        measurementResult: measurementResult,
-        subscapularSkinfoldData: subscapularSkinfoldData,
-      );
-
-  factory SubscapularSkinfoldForAge.female({
-    required Age age,
-    required Length measurementResult,
-    required SubscapularSkinfoldData subscapularSkinfoldData,
-  }) =>
-      SubscapularSkinfoldForAge._(
-        sex: Sex.female,
-        age: age,
-        measurementResult: measurementResult,
-        subscapularSkinfoldData: subscapularSkinfoldData,
-      );
 
   final Sex _sex;
   final Age _age;
