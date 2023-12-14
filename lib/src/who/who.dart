@@ -1,8 +1,8 @@
+import 'package:growth_standards/src/common/age.dart';
+import 'package:growth_standards/src/common/types.dart';
+import 'package:growth_standards/src/who/reference/reference.dart';
+import 'package:growth_standards/src/who/standard/standard.dart';
 import 'package:super_measurement/super_measurement.dart';
-import 'package:who_growth_standards/src/age.dart';
-import 'package:who_growth_standards/src/types.dart';
-import 'package:who_growth_standards/src/who/reference/reference.dart';
-import 'package:who_growth_standards/src/who/standard/standard.dart';
 
 part 'reference.dart';
 part 'standard.dart';

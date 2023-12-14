@@ -1,8 +1,8 @@
 import 'dart:math';
 
 import 'package:dart_numerics/dart_numerics.dart';
+import 'package:growth_standards/src/common/types.dart';
 import 'package:reusable_tools/reusable_tools.dart';
-import 'package:who_growth_standards/src/types.dart';
 
 double _rawZscore({
   required num y,

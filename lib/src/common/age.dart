@@ -1,5 +1,5 @@
-import 'package:who_growth_standards/src/typedef.dart';
-import 'package:who_growth_standards/src/types.dart';
+import 'package:growth_standards/src/common/typedef.dart';
+import 'package:growth_standards/src/common/types.dart';
 
 Months _monthFromNumber(int number) =>
     Months.values.singleWhere((element) => element.number == number);

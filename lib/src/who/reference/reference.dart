@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:growth_standards/src/common/age.dart';
+import 'package:growth_standards/src/common/math.dart';
+import 'package:growth_standards/src/common/typedef.dart';
+import 'package:growth_standards/src/common/types.dart';
 import 'package:super_measurement/super_measurement.dart';
-import 'package:who_growth_standards/src/age.dart';
-import 'package:who_growth_standards/src/math.dart';
-import 'package:who_growth_standards/src/typedef.dart';
-import 'package:who_growth_standards/src/types.dart';
 
 part 'data/bmi.dart';
 part 'data/hfa.dart';

@@ -1,6 +1,6 @@
 // ignore_for_file: avoid_print
 
-import 'package:who_growth_standards/who_growth_standards.dart';
+import 'package:growth_standards/growth_standards.dart';
 
 final birthDay = DateTime(2022, 6, 30);
 const weight = 11.5;
