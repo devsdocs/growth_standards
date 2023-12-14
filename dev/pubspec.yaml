@@ -8,8 +8,10 @@ environment:
 
 # Add regular dependencies here.
 dependencies:
+  csv: ^5.1.1
   dart_numerics: ^0.0.6
   dio: ^5.4.0
+  excel: ^4.0.0
   reusable_tools: ^1.0.16
   # path: ^1.8.0
 
