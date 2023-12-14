@@ -54,7 +54,7 @@ class LengthForAge {
   LengthForAgeLMS get _ageData => (_sex == Sex.male ? _maleData : _femaleData)
       .ageData[_age.totalDays.toString()]!;
 
-  num get zScore => zscore(
+  num get _zScore => zscore(
         y: adjustedLengthHeight(
           lengthHeight: _lengthHeight.toCentimeters.value!,
           ageInDays: _age.totalDays,
@@ -65,7 +65,9 @@ class LengthForAge {
         s: _ageData.lms.s,
       );
 
-  num get percentile => zScoreToPercentile(zScore);
+  num get zScore => _zScore.toDouble().toPrecision(2);
+
+  num get percentile => zScoreToPercentile(zScore).toDouble().toPrecision(2);
 }
 
 class LengthForAgeGender {

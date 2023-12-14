@@ -35,8 +35,6 @@ class WeightForAge {
     }
   }
 
-
-
   final Sex _sex;
   final Age _age;
   final Mass _measurementResult;
@@ -48,14 +46,16 @@ class WeightForAge {
   WeightForAgeLMS get _ageData => (_sex == Sex.male ? _maleData : _femaleData)
       .ageData[_age.totalDays.toString()]!;
 
-  num get zScore => adjustedZScore(
+  num get _zScore => adjustedZScore(
         y: _measurementResult.toKilograms.value!,
         l: _ageData.lms.l,
         m: _ageData.lms.m,
         s: _ageData.lms.s,
       );
 
-  num get percentile => zScoreToPercentile(zScore);
+  num get zScore => _zScore.toDouble().toPrecision(2);
+
+  num get percentile => zScoreToPercentile(_zScore).toDouble().toPrecision(2);
 }
 
 class WeightForAgeGender {

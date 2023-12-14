@@ -4,14 +4,6 @@ import 'package:dart_numerics/dart_numerics.dart';
 import 'package:growth_standards/src/common/types.dart';
 import 'package:reusable_tools/reusable_tools.dart';
 
-double _rawZscore({
-  required num y,
-  required num l,
-  required num m,
-  required num s,
-}) =>
-    (pow(y / m, l) - 1) / (s * l);
-
 num calcSD({
   required double sd,
   required num l,
@@ -33,7 +25,7 @@ num zscore({
   required num m,
   required num s,
 }) =>
-    _rawZscore(y: y, l: l, m: m, s: s).toPrecision(2);
+    (pow(y / m, l) - 1) / (s * l);
 
 /// COMPUTATION OF CENTILES AND Z-SCORES FOR
 ///
@@ -58,9 +50,9 @@ num adjustedZScore({
 }) {
   // print('y: $y, l:$l, m:$m, s:$s');
 
-  final double zscore = _rawZscore(y: y, m: m, l: l, s: s);
+  final num zScore = zscore(y: y, m: m, l: l, s: s);
 
-  if (zscore > 3) {
+  if (zScore > 3) {
     final sD3pos = calcSD(
       sd: 3,
       l: l,
@@ -75,10 +67,9 @@ num adjustedZScore({
     );
     final sD23pos = sD3pos - sD2pos;
 
-    final cal = 3 + ((y - sD3pos) / sD23pos);
-    return cal.toPrecision(2);
+    return 3 + ((y - sD3pos) / sD23pos);
   }
-  if (zscore < -3) {
+  if (zScore < -3) {
     final sD3neg = calcSD(
       sd: -3,
       l: l,
@@ -93,10 +84,9 @@ num adjustedZScore({
     );
     final sD23neg = sD2neg - sD3neg;
 
-    final cal = -3 + ((y - sD3neg) / sD23neg);
-    return cal.toPrecision(2);
+    return -3 + ((y - sD3neg) / sD23neg);
   }
-  return zscore.toPrecision(2);
+  return zScore;
 }
 
 num adjustedLengthHeight({

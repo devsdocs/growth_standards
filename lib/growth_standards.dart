@@ -2,8 +2,26 @@
 library growth_standards;
 
 export 'package:super_measurement/super_measurement.dart'
-    show Centimeters, Feet, Grams, Inches, Kilograms, Meters, Ounces, Pounds;
+    show
+        Centimeters,
+        Feet,
+        Grams,
+        Inches,
+        IterableOfLength,
+        IterableOfMass,
+        Kilograms,
+        Length,
+        LengthUnit,
+        Mass,
+        MassUnit,
+        Meters,
+        NumOfLength,
+        NumOfMass,
+        Ounces,
+        Pounds,
+        Precision,
+        UnitExtension;
 
 export 'src/common/age.dart';
 export 'src/common/types.dart' show LengthHeigthMeasurementPosition, Sex;
-export 'src/who/who.dart';
+export 'src/growth_standards.dart';

@@ -69,14 +69,16 @@ class WeigthForLength {
       (_sex == Sex.male ? _maleData : _femaleData)
           .lengthData[_adjustedLength.toDouble().toPrecision(1).toString()]!;
 
-  num get zScore => adjustedZScore(
+  num get _zScore => adjustedZScore(
         y: _weight.toKilograms.value!,
         l: _ageData.lms.l,
         m: _ageData.lms.m,
         s: _ageData.lms.s,
       );
 
-  num get percentile => zScoreToPercentile(zScore);
+  num get zScore => _zScore.toDouble().toPrecision(2);
+
+  num get percentile => zScoreToPercentile(_zScore).toDouble().toPrecision(2);
 }
 
 class WeigthForLengthGender {

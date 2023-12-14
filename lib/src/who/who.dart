@@ -7,15 +7,7 @@ import 'package:super_measurement/super_measurement.dart';
 part 'reference.dart';
 part 'standard.dart';
 
-final class GrowthStandard {
-  /// For age 0 to 5 years old (max at 60 months)
-  static _WHOGrowthStandard get whoGrowthStandard => _WHOGrowthStandard();
-
-  /// For age 5 to 18 years old (start with 61 months)
-  static _WHOGrowthReference get whoGrowthReference => _WHOGrowthReference();
-}
-
-final class _WHOGrowthStandard {
+final class WHOGrowthStandard {
   _WHOGrowthStandardArmCircumference get armCircumferenceForAge =>
       _WHOGrowthStandardArmCircumference();
   _WHOGrowthStandardBodyMassIndex get bodyMassIndexForAge =>
@@ -36,7 +28,7 @@ final class _WHOGrowthStandard {
       _WHOGrowthStandardWeightForLength();
 }
 
-final class _WHOGrowthReference {
+final class WHOGrowthReference {
   _WHOGrowthReferenceBodyMassIndex get bodyMassIndexForAge =>
       _WHOGrowthReferenceBodyMassIndex();
   _WHOGrowthReferenceHeightForAge get lengthForAge =>

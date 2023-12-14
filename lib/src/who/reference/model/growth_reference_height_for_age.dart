@@ -50,14 +50,16 @@ class GrowthReferenceHeightForAge {
       (_sex == Sex.male ? _maleData : _femaleData)
           .ageData[_age.totalMonths.toString()]!;
 
-  num get zScore => zscore(
+  num get _zScore => zscore(
         y: _lengthHeight.toCentimeters.value!,
         l: _ageData.lms.l,
         m: _ageData.lms.m,
         s: _ageData.lms.s,
       );
 
-  num get percentile => zScoreToPercentile(zScore);
+  num get zScore => _zScore.toDouble().toPrecision(2);
+
+  num get percentile => zScoreToPercentile(_zScore).toDouble().toPrecision(2);
 }
 
 class GrowthReferenceHeightForAgeGender {
