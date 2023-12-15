@@ -1,1 +1,9 @@
-final class CDC {}
+part 'data/bmiage2022.dart';
+part 'data/bmiagerev.dart';
+part 'data/hcageinf.dart';
+part 'data/lenageinf.dart';
+part 'data/statage.dart';
+part 'data/wtage.dart';
+part 'data/wtageinf.dart';
+part 'data/wtleninf.dart';
+part 'data/wtstat.dart';

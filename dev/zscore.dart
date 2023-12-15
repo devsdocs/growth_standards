@@ -59,5 +59,7 @@ double maxpscore(double z) {
 const double sMmaximum = 6; // Replace this with the actual value of s_maximum
 
 void call(double zScore) {
-  print('Z-score: $zScore, Percentile: ${(maxpscore(zScore) * 100).toPrecision(2)}%');
+  print(
+    'Z-score: $zScore, Percentile: ${(maxpscore(zScore) * 100).toPrecision(2)}%',
+  );
 }
