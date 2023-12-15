@@ -1,4 +1,5 @@
 import 'package:growth_standards/growth_standards.dart';
+import 'package:growth_standards/src/who/standard/standard.dart';
 import 'package:test/test.dart';
 
 const dateBase = [28, 29, 30, 31];
@@ -14,18 +15,20 @@ void main() {
 
   final dateTime1 = DateTime(2023, 1, 31);
   final date1 = Date.fromDateTime(dateTime1);
-  final dateTime2 = DateTime(
-    2022,
-    2,
-    29, //! (NOTE) Should throw if using other constructor as February 2022 max at day 28, DateTime always add exceeded day to the next months, this will print 2022-03-01
-  );
+
+  final dateTime2 = DateTime(2022, 2, 29);
+  //! (NOTE) date2 Should throw if using other constructor as February 2022 max at day 28, because dateTime2 add exceeded day to the next months, this will produce 2022-03-01 instead of throwing
   final date2 = Date.fromDateTime(dateTime2);
+
   final dateTime3 = DateTime(2024, 1, 2);
   final date3 = Date.fromDateTime(dateTime3);
+
   final dateTime4 = DateTime(2021, 5, 2);
   final date4 = Date.fromDateTime(dateTime4);
+
   final dateTime5 = DateTime(2023, 1, 31);
   final date5 = Date.fromDateTime(dateTime5);
+
   final dateTime6 = DateTime(2021, 8, 2);
   final date6 = Date.fromDateTime(dateTime6);
 
@@ -60,30 +63,38 @@ void main() {
       expect(list.first == date2, true);
     });
     test('Age', () {
-      expect(Age.byMonthsAgo(1).totalDays, anyOf(dateBase));
+      expect(Age.byMonthsAgo(1).ageInTotalDaysByNow, anyOf(dateBase));
       expect(
-        Age.byMonthsAgo(2).totalDays,
+        Age.byMonthsAgo(2).ageInTotalDaysByNow,
         anyOf(
           dateBase.expand((element) => [element * 2, element * 2 + 1]).toList(),
         ),
       );
-      expect(Age.byDaysAgo(30).totalDays, 30);
-      expect(Age.byDaysAgo(1000).totalDays, 1000);
-      expect(Age.byDaysAgo(10000).totalDays, 10000);
+      expect(Age.byDaysAgo(30).ageInTotalDaysByNow, 30);
+      expect(Age.byDaysAgo(1000).ageInTotalDaysByNow, 1000);
+      expect(Age.byDaysAgo(10000).ageInTotalDaysByNow, 10000);
     });
     test('Arm Circ', () {
-      expect(
-        gs.armCircumferenceForAge
-            .male(
-              age: Age.byMonthsAgo(24),
-              measurementResult: const Centimeters(20.3),
-              armCircumferenceData: armCirData,
-            )
-            .zScore,
-        3.79,
+      final age = Age.byMonthsAgo(24);
+      final observationDate = Date.monthsAgoByNow(18);
+      final acForAge = gs.armCircumferenceForAge;
+      //! Test observation date
+      final male = acForAge.male(
+        age: age,
+        measurementResult: const Centimeters(20.3),
+        armCircumferenceData: armCirData,
+        observationDate: observationDate,
       );
       expect(
-        gs.armCircumferenceForAge
+        male.zScore,
+        equals(
+          male.copyWithNull(observationDate: null)
+              .copyWith(age: Age.byDate(observationDate))
+              .zScore,
+        ),
+      );
+      expect(
+        acForAge
             .male(
               age: Age.byMonthsAgo(44),
               measurementResult: const Centimeters(11.5),
@@ -93,7 +104,7 @@ void main() {
         -4.11,
       );
       expect(
-        gs.armCircumferenceForAge
+        acForAge
             .male(
               age: Age.byMonthsAgo(28),
               measurementResult: const Centimeters(17.4),

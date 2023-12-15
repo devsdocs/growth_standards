@@ -39,7 +39,7 @@ class LengthForAge {
         _sex = sex,
         _age = age,
         _mapGender = lengthForAgeData._data {
-    if (!(_age.totalDays >= 0 && _age.totalDays <= 1856)) {
+    if (!(_age.ageInTotalDaysByNow >= 0 && _age.ageInTotalDaysByNow <= 1856)) {
       throw Exception('Age must be in range of 0 - 1856 days');
     }
   }
@@ -54,12 +54,12 @@ class LengthForAge {
   LengthForAgeGender get _femaleData => _mapGender['2']!;
 
   LengthForAgeLMS get _ageData => (_sex == Sex.male ? _maleData : _femaleData)
-      .ageData[_age.totalDays.toString()]!;
+      .ageData[_age.ageInTotalDaysByNow.toString()]!;
 
   num get _zScore => zscore(
         y: adjustedLengthHeight(
           lengthHeight: _lengthHeight.toCentimeters.value!,
-          ageInDays: _age.totalDays,
+          ageInDays: _age.ageInTotalDaysByNow,
           measure: _measure,
         ),
         l: _ageData.lms.l,

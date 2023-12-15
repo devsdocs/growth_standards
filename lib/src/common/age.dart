@@ -1,80 +1,113 @@
 import 'dart:convert';
 
+import 'package:boilerplate_annotations/boilerplate_annotations.dart';
+import 'package:equatable/equatable.dart';
 import 'package:growth_standards/src/common/typedef.dart';
 import 'package:growth_standards/src/common/types.dart';
+
+part 'age.g.dart';
 
 Months _monthFromNumber(int number) =>
     Months.values.singleWhere((element) => element.number == number);
 
-class Age {
-  Age._(Date dob)
-      : _dobCount = _TimeIntervalCount(
-          dob.year,
-          dob.month.number,
-          dob.date,
-        ),
-        _dob = dob {
+@copyWith
+@props
+class Age extends Equatable {
+  Age(this.dateOfBirth) {
     final now = DateTime.now();
     if (DateTime(now.year, now.month, now.day)
-        .difference(DateTime(dob.year, dob.month.number, dob.date))
+        .difference(
+          DateTime(
+            dateOfBirth.year,
+            dateOfBirth.month.number,
+            dateOfBirth.date,
+          ),
+        )
         .isNegative) {
       throw Exception('Age is impossible');
     }
   }
 
-  factory Age.byYearsAgo(int years) => Age._(Date.byYearsAgo(years));
+  factory Age.byYearsAgo(int years) => Age(Date.yearsAgoByNow(years));
 
-  factory Age.byMonthsAgo(int months) => Age._(Date.byMonthsAgo(months));
+  factory Age.byMonthsAgo(int months) => Age(Date.monthsAgoByNow(months));
 
-  factory Age.byDaysAgo(int days) => Age._(Date.byDaysAgo(days));
+  factory Age.byDaysAgo(int days) => Age(Date.daysAgoByNow(days));
 
-  factory Age.byBirthDay(Date birthDay) => Age._(birthDay);
+  factory Age.byDate(Date date) => Age(date);
 
   factory Age.fromJson(String age) =>
       Age.fromMap(json.decode(age) as Map<String, dynamic>);
 
   factory Age.fromMap(Map<String, dynamic> map) =>
-      Age.byBirthDay(Date.fromMap(map['birthday'] as Map<String, dynamic>));
+      Age.byDate(Date.fromMap(map['birthday'] as Map<String, dynamic>));
 
-  final _TimeIntervalCount _dobCount;
+  _TimeIntervalCount get _dobCount => _TimeIntervalCount(
+        dateOfBirth.year,
+        dateOfBirth.month.number,
+        dateOfBirth.date,
+      );
 
   _Age get _ageNowIn => _dobCount.ageNow;
 
-  final Date _dob;
+  final Date dateOfBirth;
 
-  YearsMonthsDays get yearsMonthsDays =>
+  YearsMonthsDays get yearsMonthsDaysOfAge =>
       (years: _ageNowIn.years, months: _ageNowIn.months, days: _ageNowIn.days);
 
-  int get totalMonths => (yearsMonthsDays.years * 12) + yearsMonthsDays.months;
+  int get ageInTotalMonthsByNow =>
+      (yearsMonthsDaysOfAge.years * 12) + yearsMonthsDaysOfAge.months;
 
-  int get totalDays => DateTime.now().difference(_dobCount.dob).inDays;
+  int get ageInTotalDaysByNow =>
+      DateTime.now().difference(_dobCount.dob).inDays;
 
-  int get totalWeeks => totalDays < 7 ? 0 : totalDays ~/ 7;
+  int get ageInTotalWeeksByNow =>
+      ageInTotalDaysByNow < 7 ? 0 : ageInTotalDaysByNow ~/ 7;
 
-  Date get birthDay => _dob;
+  Date dateAtPastDays(int daysAgo) => Date.today() - Duration(days: daysAgo);
 
-  Map<String, dynamic> toMap() => {'birthday': birthDay.toMap()};
+  Date dateAtDaysAfterBirth(int daysAfterBirth) =>
+      dateOfBirth + Duration(days: daysAfterBirth);
+
+  Age ageAtAnyPastDate(Date date) {
+    if (date.isSameOrAfter(Date.today())) {
+      return this;
+    }
+    return Age.byDate(
+      dateAtDaysAfterBirth(
+        ageInTotalDaysByNow - Age.byDate(date).ageInTotalDaysByNow,
+      ),
+    );
+  }
+
+  Map<String, dynamic> toMap() => {'birthday': dateOfBirth.toMap()};
 
   String toJson() => json.encode(toMap());
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => _$AgeProps(this);
 }
 
-class Date implements Comparable<Date> {
+@copyWith
+@props
+class Date extends Equatable implements Comparable<Date> {
   Date({required this.year, required this.month, required this.date}) {
     if (year < 1 || date < 1 || date > 31) {
       throw Exception(
-        'Date impossible, use Date.fromDateTime() for safety, in cost of increased risk of wrong Date calculation',
+        'Date impossible, use ${Date.fromDateTime} for safety, in cost of increased risk of wrong growth calculation',
       );
     }
     final datesInMonth = _TimeTools.datesInMonth(year, month.number);
     if (date > datesInMonth) {
       throw Exception(
-        'Date exceeded, max date is $datesInMonth in ${month.text} $year',
+        'Date exceeded, max date is at $datesInMonth in ${month.text} $year',
       );
     }
   }
 
-  factory Date.byDaysAgo(int days) {
-    final calc = _TimeTools.calculateBirthDateInDays(days);
+  factory Date.daysAgoByNow(int days) {
+    final calc = _TimeTools.calculateBirthDateInDaysBeforeByNow(days);
     return Date(
       year: calc.year,
       month: _monthFromNumber(calc.month),
@@ -82,8 +115,8 @@ class Date implements Comparable<Date> {
     );
   }
 
-  factory Date.byMonthsAgo(int months) {
-    final calc = _TimeTools.calculateBirthDateInMonths(months);
+  factory Date.monthsAgoByNow(int months) {
+    final calc = _TimeTools.calculateBirthDateInMonthsBeforeByNow(months);
     return Date(
       year: calc.year,
       month: _monthFromNumber(calc.month),
@@ -91,8 +124,8 @@ class Date implements Comparable<Date> {
     );
   }
 
-  factory Date.byYearsAgo(int years) {
-    final calc = _TimeTools.calculateBirthDateInYears(years);
+  factory Date.yearsAgoByNow(int years) {
+    final calc = _TimeTools.calculateBirthDateInYearsBeforeByNow(years);
     return Date(
       year: calc.year,
       month: _monthFromNumber(calc.month),
@@ -139,6 +172,29 @@ class Date implements Comparable<Date> {
 
   @override
   int get hashCode => year.hashCode ^ month.number.hashCode ^ date.hashCode;
+
+  bool isBefore(Date other) => this < other;
+  bool isSameOrBefore(Date other) => this <= other;
+
+  bool isAfter(Date other) => this > other;
+  bool isSameOrAfter(Date other) => this >= other;
+
+  bool isSameAs(Date other) => this == other;
+
+  Date add(Duration duration) => this + duration;
+  Date subtract(Duration duration) => this - duration;
+
+  Date operator +(Duration duration) {
+    if (duration.inDays < 1) return this;
+    return Date.fromDateTime(DateTime(year, month.number, date).add(duration));
+  }
+
+  Date operator -(Duration duration) {
+    if (duration.inDays < 1) return this;
+    return Date.fromDateTime(
+      DateTime(year, month.number, date).subtract(duration),
+    );
+  }
 
   bool operator >=(Date other) {
     if (this == other) return true;
@@ -187,6 +243,9 @@ class Date implements Comparable<Date> {
 
   @override
   String toString() => 'Date($date ${month.text} $year)';
+
+  @override
+  List<Object?> get props => _$DateProps(this);
 }
 
 class _TimeTools {
@@ -216,10 +275,10 @@ class _TimeTools {
           ? 29
           : daysInMonth[month - 1];
 
-  static DateTime calculateBirthDateInDays(int daysOld) =>
+  static DateTime calculateBirthDateInDaysBeforeByNow(int daysOld) =>
       DateTime.now().subtract(Duration(days: daysOld));
 
-  static DateTime calculateBirthDateInYears(int yearsOld) {
+  static DateTime calculateBirthDateInYearsBeforeByNow(int yearsOld) {
     // Get the current date
     final DateTime currentDate = DateTime.now();
 
@@ -228,7 +287,7 @@ class _TimeTools {
         .subtract(Duration(days: yearsToDays(yearsOld, currentDate)));
   }
 
-  static DateTime calculateBirthDateInMonths(int monthsOld) {
+  static DateTime calculateBirthDateInMonthsBeforeByNow(int monthsOld) {
     // Get the current date
     final DateTime currentDate = DateTime.now();
 

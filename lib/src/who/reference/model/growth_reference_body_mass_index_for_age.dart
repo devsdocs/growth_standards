@@ -57,7 +57,8 @@ class GrowthReferenceBodyMassIndexForAge {
         _sex = sex,
         _age = age,
         _mapGender = bodyMassIndexData._data {
-    if (!(_age.totalMonths >= 61 && _age.totalMonths <= 228)) {
+    if (!(_age.ageInTotalMonthsByNow >= 61 &&
+        _age.ageInTotalMonthsByNow <= 228)) {
       throw Exception('Age must be in range of 61 - 228 months');
     }
   }
@@ -73,7 +74,7 @@ class GrowthReferenceBodyMassIndexForAge {
 
   GrowthReferenceBodyMassIndexForAgeLMS get _ageData =>
       (_sex == Sex.male ? _maleData : _femaleData)
-          .ageData[_age.totalMonths.toString()]!;
+          .ageData[_age.ageInTotalMonthsByNow.toString()]!;
 
   num get _zScore => adjustedZScore(
         y: _bodyMassIndexMeasurement.value,

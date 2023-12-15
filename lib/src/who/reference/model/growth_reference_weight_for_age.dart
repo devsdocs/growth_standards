@@ -35,7 +35,8 @@ class GrowthReferenceWeightForAge {
         _sex = sex,
         _age = age,
         _mapGender = weightForAgeData._data {
-    if (!(_age.totalMonths >= 61 && _age.totalMonths <= 120)) {
+    if (!(_age.ageInTotalMonthsByNow >= 61 &&
+        _age.ageInTotalMonthsByNow <= 120)) {
       throw Exception('Age must be in range of 61 - 120 months');
     }
   }
@@ -50,7 +51,7 @@ class GrowthReferenceWeightForAge {
 
   GrowthReferenceWeightForAgeLMS get _ageData =>
       (_sex == Sex.male ? _maleData : _femaleData)
-          .ageData[_age.totalMonths.toString()]!;
+          .ageData[_age.ageInTotalMonthsByNow.toString()]!;
 
   num get _zScore => adjustedZScore(
         y: _measurementResult.toKilograms.value!,

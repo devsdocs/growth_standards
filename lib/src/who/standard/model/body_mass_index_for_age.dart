@@ -40,7 +40,7 @@ class BodyMassIndexMeasurement {
     final toMeterSquare = pow(
       Centimeters(
         adjustedLengthHeight(
-          ageInDays: age.totalDays,
+          ageInDays: age.ageInTotalDaysByNow,
           measure: measure,
           lengthHeight: lengthHeight.toCentimeters.value!,
         ),
@@ -69,7 +69,7 @@ class BodyMassIndexForAge {
         _sex = sex,
         _age = bodyMassIndexMeasurement._age,
         _mapGender = bodyMassIndexData._data {
-    if (!(_age.totalDays >= 0 && _age.totalDays <= 1856)) {
+    if (!(_age.ageInTotalDaysByNow >= 0 && _age.ageInTotalDaysByNow <= 1856)) {
       throw Exception('Age must be in range of 0 - 1856 days');
     }
   }
@@ -85,7 +85,7 @@ class BodyMassIndexForAge {
 
   BodyMassIndexForAgeLMS get _ageData =>
       (_sex == Sex.male ? _maleData : _femaleData)
-          .ageData[_age.totalDays.toString()]!;
+          .ageData[_age.ageInTotalDaysByNow.toString()]!;
 
   num get _zScore => adjustedZScore(
         y: _bodyMassIndexMeasurement.value,

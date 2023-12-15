@@ -8,23 +8,27 @@ final class _WHOGrowthStandardArmCircumference {
     required Age age,
     required Length measurementResult,
     required ArmCircumferenceForAgeData armCircumferenceData,
+    Date? observationDate,
   }) =>
       ArmCircumferenceForAge(
         sex: sex,
         age: age,
         measurementResult: measurementResult,
         armCircumferenceData: armCircumferenceData,
+        observationDate: observationDate,
       );
 
   ArmCircumferenceForAge male({
     required Age age,
     required Length measurementResult,
     required ArmCircumferenceForAgeData armCircumferenceData,
+    Date? observationDate,
   }) =>
       measure(
         sex: Sex.male,
         age: age,
         measurementResult: measurementResult,
+        observationDate: observationDate,
         armCircumferenceData: armCircumferenceData,
       );
 
@@ -32,11 +36,13 @@ final class _WHOGrowthStandardArmCircumference {
     required Age age,
     required Length measurementResult,
     required ArmCircumferenceForAgeData armCircumferenceData,
+    Date? observationDate,
   }) =>
       measure(
         sex: Sex.female,
         age: age,
         measurementResult: measurementResult,
+        observationDate: observationDate,
         armCircumferenceData: armCircumferenceData,
       );
 }

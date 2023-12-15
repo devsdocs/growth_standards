@@ -35,7 +35,7 @@ class TricepsSkinfoldForAge {
         _sex = sex,
         _age = age,
         _mapGender = tricepsSkinfoldData._data {
-    if (!(_age.totalDays >= 91 && _age.totalDays <= 1856)) {
+    if (!(_age.ageInTotalDaysByNow >= 91 && _age.ageInTotalDaysByNow <= 1856)) {
       throw Exception('Age must be in range of 91 - 1856 days');
     }
   }
@@ -50,7 +50,7 @@ class TricepsSkinfoldForAge {
 
   TricepsSkinfoldForAgeLMS get _ageData =>
       (_sex == Sex.male ? _maleData : _femaleData)
-          .ageData[_age.totalDays.toString()]!;
+          .ageData[_age.ageInTotalDaysByNow.toString()]!;
 
   num get _zScore => adjustedZScore(
         y: _measurementResult.toCentimeters.value!,

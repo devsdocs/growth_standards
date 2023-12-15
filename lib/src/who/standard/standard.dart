@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:boilerplate_annotations/boilerplate_annotations.dart';
+import 'package:equatable/equatable.dart';
 import 'package:growth_standards/src/common/age.dart';
 import 'package:growth_standards/src/common/math.dart';
 import 'package:growth_standards/src/common/typedef.dart';
@@ -29,3 +31,5 @@ part 'model/weight_for_age.dart';
 part 'model/weight_for_height.dart';
 part 'model/weight_for_length.dart';
 part 'model/head_circumference_velocity.dart';
+
+part 'standard.g.dart';

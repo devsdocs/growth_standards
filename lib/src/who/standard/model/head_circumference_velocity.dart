@@ -44,7 +44,7 @@ class HeadCircumferenceVelocityForAge {
         _age = age,
         _pastMeasurement = pastMeasurement,
         _mapGender = headCircumferenceData._data {
-    if (!(_age.totalDays >= 0 && _age.totalMonths <= 24)) {
+    if (!(_age.ageInTotalDaysByNow >= 0 && _age.ageInTotalMonthsByNow <= 24)) {
       throw Exception('Age must be in range of 0 days - 24 months');
     }
     if (_pastMeasurement.isEmpty) {
@@ -52,19 +52,21 @@ class HeadCircumferenceVelocityForAge {
         'Calculation can not be done as past measurment is empty',
       );
     }
-    if (_pastMeasurement.keys.any((element) => element == Date.today())) {
+    if (_pastMeasurement.keys
+        .any((element) => element.isSameAs(Date.today()))) {
       throw Exception(
         'Calculation can not be done as there is todays date in past measurment',
       );
     }
-    if (_pastMeasurement.keys.any((element) => element > Date.today())) {
+    if (_pastMeasurement.keys.any((element) => element.isAfter(Date.today()))) {
       throw Exception(
         'Calculation can not be done as there is future date in past measurment',
       );
     }
-    if (_pastMeasurement.keys.any((element) => _age.birthDay < element)) {
+    if (_pastMeasurement.keys
+        .any((element) => element.isBefore(_age.dateOfBirth))) {
       throw Exception(
-        'Calculation can not be done as there is date less than Date of Birth in past measurement, if you find this exception is a mistake, try to provide exact $Age by using ${Age.byBirthDay} or $Date by using ${Date.fromDateTime} in Past Measurement',
+        'Calculation can not be done as there is date less than Date of Birth in past measurement, if you find this exception is a mistake, try to provide exact $Age by using ${Age.byDate} or $Date by using ${Date.fromDateTime} in Past Measurement',
       );
     }
   }
@@ -77,40 +79,6 @@ class HeadCircumferenceVelocityForAge {
 
   HeadCircumferenceVelocityForAgeGender get _maleData => _mapGender['1']!;
   HeadCircumferenceVelocityForAgeGender get _femaleData => _mapGender['2']!;
-
-  Map<HeadCircumferenceVelocityForAgeIncrement,
-          HeadCircumferenceVelocityForAgeLMS>
-      get incrementAndAge =>
-          (Map<String, HeadCircumferenceVelocityForAgeIncrement>.from(
-            (_sex == Sex.male ? _maleData : _femaleData).incrementData,
-          )..removeWhere((key, value) {
-                  //
-                }))
-              .map((key, value) {
-            //
-            return MapEntry(value, value);
-          });
-
-  Map<HeadCircumferenceVelocityForAgeIncrement, ZScorePercentile>
-      get zScorePercentile => incrementAndAge.map(
-            (k, v) {
-              final zscoreCalc = zscore(
-                y: _measurementResult.toCentimeters.value!,
-                l: v.lms.l,
-                m: v.lms.m,
-                s: v.lms.s,
-              );
-
-              return MapEntry(
-                k,
-                (
-                  zScore: zscoreCalc.toDouble().toPrecision(2),
-                  percentile:
-                      zScoreToPercentile(zscoreCalc).toDouble().toPrecision(2)
-                ),
-              );
-            },
-          );
 }
 
 class HeadCircumferenceVelocityForAgeGender {

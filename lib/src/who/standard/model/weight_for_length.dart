@@ -61,7 +61,7 @@ class WeigthForLength {
 
   num get _adjustedLength => adjustedLengthHeight(
         measure: _measure,
-        ageInDays: _age.totalDays,
+        ageInDays: _age.ageInTotalDaysByNow,
         lengthHeight: _lengthHeight.toCentimeters.value!,
       );
 

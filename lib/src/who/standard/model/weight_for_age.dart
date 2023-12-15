@@ -33,7 +33,7 @@ class WeightForAge {
         _sex = sex,
         _age = age,
         _mapGender = weightForAgeData._data {
-    if (!(_age.totalDays >= 0 && _age.totalDays <= 1856)) {
+    if (!(_age.ageInTotalDaysByNow >= 0 && _age.ageInTotalDaysByNow <= 1856)) {
       throw Exception('Age must be in range of 0 - 1856 days');
     }
   }
@@ -47,7 +47,7 @@ class WeightForAge {
   WeightForAgeGender get _femaleData => _mapGender['2']!;
 
   WeightForAgeLMS get _ageData => (_sex == Sex.male ? _maleData : _femaleData)
-      .ageData[_age.totalDays.toString()]!;
+      .ageData[_age.ageInTotalDaysByNow.toString()]!;
 
   num get _zScore => adjustedZScore(
         y: _measurementResult.toKilograms.value!,
