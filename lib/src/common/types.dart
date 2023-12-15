@@ -20,19 +20,19 @@ enum OedemaExist {
 }
 
 enum Months {
-  januari(1, 'Januari', 31),
-  februari(2, 'Februari', 28),
-  // februariLeap(2, 'Februari', 29),
-  maret(3, 'Maret', 31),
+  january(1, 'January', 31),
+  february(2, 'February', 28),
+  // februaryLeap(2, 'Februari', 29),
+  march(3, 'March', 31),
   april(4, 'April', 30),
-  mei(5, 'Mei', 31),
-  juni(6, 'Juni', 30),
-  juli(7, 'Juli', 31),
-  agustus(8, 'Agustus', 31),
+  may(5, 'May', 31),
+  june(6, 'June', 30),
+  july(7, 'July', 31),
+  august(8, 'August', 31),
   september(9, 'September', 30),
-  oktober(10, 'Oktober', 31),
+  october(10, 'October', 31),
   november(11, 'November', 30),
-  desember(12, 'Desember', 31),
+  december(12, 'December', 31),
   ;
 
   const Months(this.number, this.text, this.date);
