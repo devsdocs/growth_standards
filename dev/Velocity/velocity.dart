@@ -20,7 +20,13 @@ void main() {
       final dataExcel = dataFromExcel(excel);
       final data = dataExcel
           ?.map(
-            (e) => e.take(dataExcel.first.contains('Delta') ? 5 : 4).toList(),
+            (e) => e
+                .take(
+                  dataExcel.first.map((e) => e.toString()).contains('Delta')
+                      ? 5
+                      : 4,
+                )
+                .toList(),
           )
           .toList();
 
@@ -34,11 +40,11 @@ void main() {
             .map((key, value) => MapEntry(key.toLowerCase(), value)),
       )
           .forEach((element) {
-        expMap[element['interval']
-            .toString()
-            .splitSpace
-            .first
-            .replaceAll('-', '_')] = element..remove('interval');
+        expMap[element['interval'].toString().replaceAll(' – ', '-')
+            // .splitSpace
+            // .first
+            // .replaceAll('-', '_')
+            ] = element..remove('interval');
       });
 
       final splitFileName = fileName.replaceAll('-', '_').split('_');
@@ -136,11 +142,17 @@ void main() {
     ..writeAsStringSync(encodelv);
   File('dev/Velocity/hv.dart')
     ..createSync(recursive: true)
-    ..writeAsStringSync("const hv = '''\n$encodehcv\n''';\n");
+    ..writeAsStringSync(
+      "part of '../standard.dart';\n\nconst hv = '''\n$encodehcv\n''';\n",
+    );
   File('dev/Velocity/wv.dart')
     ..createSync(recursive: true)
-    ..writeAsStringSync("const wv = '''\n$encodewv\n''';\n");
+    ..writeAsStringSync(
+      "part of '../standard.dart';\n\nconst wv = '''\n$encodewv\n''';\n",
+    );
   File('dev/Velocity/lv.dart')
     ..createSync(recursive: true)
-    ..writeAsStringSync("const lv = '''\n$encodelv\n''';\n");
+    ..writeAsStringSync(
+      "part of '../standard.dart';\n\nconst lv = '''\n$encodelv\n''';\n",
+    );
 }

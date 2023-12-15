@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:growth_standards/src/common/typedef.dart';
 import 'package:growth_standards/src/common/types.dart';
 
@@ -5,16 +7,13 @@ Months _monthFromNumber(int number) =>
     Months.values.singleWhere((element) => element.number == number);
 
 class Age {
-  Age._(DateOfBirth dob)
+  Age._(Date dob)
       : _dobCount = _TimeIntervalCount(
           dob.year,
           dob.month.number,
           dob.date,
-        ) {
-    if (dob.date > _TimeTools.datesInMonth(dob.year, dob.month.number)) {
-      throw Exception('Date exceeded');
-    }
-
+        ),
+        _dob = dob {
     final now = DateTime.now();
     if (DateTime(now.year, now.month, now.day)
         .difference(DateTime(dob.year, dob.month.number, dob.date))
@@ -23,17 +22,25 @@ class Age {
     }
   }
 
-  factory Age.byYearsAgo(int years) => Age._(DateOfBirth.byYearsAgo(years));
+  factory Age.byYearsAgo(int years) => Age._(Date.byYearsAgo(years));
 
-  factory Age.byMonthsAgo(int months) => Age._(DateOfBirth.byMonthsAgo(months));
+  factory Age.byMonthsAgo(int months) => Age._(Date.byMonthsAgo(months));
 
-  factory Age.byDaysAgo(int days) => Age._(DateOfBirth.byDaysAgo(days));
+  factory Age.byDaysAgo(int days) => Age._(Date.byDaysAgo(days));
 
-  factory Age.byBirthDay(DateOfBirth birthDay) => Age._(birthDay);
+  factory Age.byBirthDay(Date birthDay) => Age._(birthDay);
+
+  factory Age.fromJson(String age) =>
+      Age.fromMap(json.decode(age) as Map<String, dynamic>);
+
+  factory Age.fromMap(Map<String, dynamic> map) =>
+      Age.byBirthDay(Date.fromMap(map['birthday'] as Map<String, dynamic>));
 
   final _TimeIntervalCount _dobCount;
 
   _Age get _ageNowIn => _dobCount.ageNow;
+
+  final Date _dob;
 
   YearsMonthsDays get yearsMonthsDays =>
       (years: _ageNowIn.years, months: _ageNowIn.months, days: _ageNowIn.days);
@@ -41,41 +48,145 @@ class Age {
   int get totalMonths => (yearsMonthsDays.years * 12) + yearsMonthsDays.months;
 
   int get totalDays => DateTime.now().difference(_dobCount.dob).inDays;
+
+  int get totalWeeks => totalDays < 7 ? 0 : totalDays ~/ 7;
+
+  Date get birthDay => _dob;
+
+  Map<String, dynamic> toMap() => {'birthday': birthDay.toMap()};
+
+  String toJson() => json.encode(toMap());
 }
 
-class DateOfBirth {
-  DateOfBirth({required this.year, required this.month, required this.date});
+class Date implements Comparable<Date> {
+  Date({required this.year, required this.month, required this.date}) {
+    if (year < 1 || date < 1 || date > 31) {
+      throw Exception(
+        'Date impossible, use Date.fromDateTime() for safety, in cost of increased risk of wrong Date calculation',
+      );
+    }
+    final datesInMonth = _TimeTools.datesInMonth(year, month.number);
+    if (date > datesInMonth) {
+      throw Exception(
+        'Date exceeded, max date is $datesInMonth in ${month.text} $year',
+      );
+    }
+  }
 
-  factory DateOfBirth.byDaysAgo(int days) {
+  factory Date.byDaysAgo(int days) {
     final calc = _TimeTools.calculateBirthDateInDays(days);
-    return DateOfBirth(
+    return Date(
       year: calc.year,
       month: _monthFromNumber(calc.month),
       date: calc.day,
     );
   }
 
-  factory DateOfBirth.byMonthsAgo(int months) {
+  factory Date.byMonthsAgo(int months) {
     final calc = _TimeTools.calculateBirthDateInMonths(months);
-    return DateOfBirth(
+    return Date(
       year: calc.year,
       month: _monthFromNumber(calc.month),
       date: calc.day,
     );
   }
 
-  factory DateOfBirth.byYearsAgo(int years) {
+  factory Date.byYearsAgo(int years) {
     final calc = _TimeTools.calculateBirthDateInYears(years);
-    return DateOfBirth(
+    return Date(
       year: calc.year,
       month: _monthFromNumber(calc.month),
       date: calc.day,
     );
   }
+
+  factory Date.today() => Date.fromDateTime(DateTime.now());
+
+  factory Date.fromDateTime(DateTime dateTime) => Date(
+        year: dateTime.year,
+        month: _monthFromNumber(dateTime.month),
+        date: dateTime.day,
+      );
+
+  factory Date.fromJson(String date) =>
+      Date.fromMap(json.decode(date) as Map<String, dynamic>);
+
+  factory Date.fromMap(Map<String, dynamic> date) => Date(
+        year: date['year'] as int,
+        month: _monthFromNumber(date['month'] as int),
+        date: date['date'] as int,
+      );
 
   final int year;
   final Months month;
   final int date;
+
+  Map<String, dynamic> toMap() => {
+        'year': year,
+        'month': month.number,
+        'date': date,
+      };
+
+  String toJson() => json.encode(toMap());
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Date &&
+          other.year == year &&
+          other.month.number == month.number &&
+          other.date == date;
+
+  @override
+  int get hashCode => year.hashCode ^ month.number.hashCode ^ date.hashCode;
+
+  bool operator >=(Date other) {
+    if (this == other) return true;
+    return this > other;
+  }
+
+  bool operator <=(Date other) {
+    if (this == other) return true;
+    return this < other;
+  }
+
+  bool operator >(Date other) {
+    if (this == other) return false;
+    return !(this < other);
+  }
+
+  bool operator <(Date other) {
+    if (this == other) return false;
+    if (year == other.year) {
+      if (month == other.month) {
+        if (date > other.date) {
+          return false;
+        } else {
+          return true;
+        }
+      } else {
+        if (month.number > other.month.number) {
+          return false;
+        } else {
+          return true;
+        }
+      }
+    } else {
+      if (year > other.year) {
+        return false;
+      }
+      return true;
+    }
+  }
+
+  @override
+  int compareTo(Date other) {
+    if (this == other) return 0;
+    return this > other ? 1 : -1;
+  }
+
+  @override
+  String toString() => 'Date($date ${month.text} $year)';
 }
 
 class _TimeTools {

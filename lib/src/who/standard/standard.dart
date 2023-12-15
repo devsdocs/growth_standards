@@ -17,6 +17,8 @@ part 'data/tsanthro.dart';
 part 'data/weianthro.dart';
 part 'data/wfhanthro.dart';
 part 'data/wflanthro.dart';
+part 'data/hv.dart';
+
 part 'model/arm_circumference_for_age.dart';
 part 'model/body_mass_index_for_age.dart';
 part 'model/head_circumference_for_age.dart';
@@ -26,3 +28,4 @@ part 'model/triceps_skinfold_for_age.dart';
 part 'model/weight_for_age.dart';
 part 'model/weight_for_height.dart';
 part 'model/weight_for_length.dart';
+part 'model/head_circumference_velocity.dart';
