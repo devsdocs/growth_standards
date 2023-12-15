@@ -73,7 +73,3 @@ void main() {
     }
   });
 }
-
-List<String> getDataTitle(List<List<dynamic>> data) {
-  return data.first.map((e) => e.toString()).toList();
-}

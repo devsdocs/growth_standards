@@ -88,32 +88,4 @@ void main() {
     ..writeAsStringSync("const hfa5yo = '''\n$encodeHFA\n''';\n");
 }
 
-List<List<dynamic>>? dataFromExcel(Excel excel) {
-  List<List<dynamic>>? data;
-  for (final r in excel.tables.keys) {
-    final dataEx = excel.tables[r]?.rows;
-    data = dataEx
-        ?.map(
-          (x) => x
-              .map(
-                (e) => e?.value == null
-                    ? null
-                    : e?.value is SharedString
-                        ? int.tryParse(
-                                  e!.value.toString(),
-                                ) !=
-                                null
-                            ? int.parse(
-                                e.value.toString(),
-                              )
-                            : e.value.toString()
-                        : e?.value,
-              )
-              .toList(),
-        )
-        .toList();
-  }
-  return data;
-}
-
 const dataTitle = ['Month', 'L', 'M', 'S'];
