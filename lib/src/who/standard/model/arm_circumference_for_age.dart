@@ -4,15 +4,15 @@ class ArmCircumferenceForAgeData {
   factory ArmCircumferenceForAgeData() => _singleton;
   ArmCircumferenceForAgeData._()
       : _data = (json.decode(_acanthro) as Map<String, dynamic>).map(
-          (k, v) => MapEntry(
-            k,
+          (k1, v1) => MapEntry(
+            k1,
             ArmCircumferenceForAgeGender(
-              ageData: (v as Map<String, dynamic>).map((x, y) {
-                y as Map<String, dynamic>;
+              ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
+                v2 as Map<String, dynamic>;
                 return MapEntry(
-                  x,
+                  k2,
                   ArmCircumferenceForAgeLMS(
-                    lms: (l: y['l'], m: y['m'], s: y['s']),
+                    lms: (l: v2['l'], m: v2['m'], s: v2['s']),
                   ),
                 );
               }),

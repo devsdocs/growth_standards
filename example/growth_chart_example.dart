@@ -57,7 +57,7 @@ void main() {
 
   final calcBMIForAge = gs.bodyMassIndexForAge.male(
     bodyMassIndexMeasurement:
-        gs.bodyMassIndexForAge.getBMI.withRecumbentPosition(
+        gs.bodyMassIndexForAge.bodyMassIndexMeasurement.withRecumbentPosition(
       length: centimeters,
       weight: kilograms,
       age: age,

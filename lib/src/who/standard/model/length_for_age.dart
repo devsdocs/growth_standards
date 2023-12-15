@@ -4,16 +4,16 @@ class LengthForAgeData {
   factory LengthForAgeData() => _singleton;
   LengthForAgeData._()
       : _data = (json.decode(_lenanthro) as Map<String, dynamic>).map(
-          (u, e) => MapEntry(
-            u,
+          (k1, v1) => MapEntry(
+            k1,
             LengthForAgeGender(
-              ageData: (e as Map<String, dynamic>).map((x, y) {
-                y as Map<String, dynamic>;
+              ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
+                v2 as Map<String, dynamic>;
                 return MapEntry(
-                  x,
+                  k2,
                   LengthForAgeLMS(
-                    lms: (l: y['l'], m: y['m'], s: y['s']),
-                    loh: y['loh'].toString().toLowerCase() == 'l'
+                    lms: (l: v2['l'], m: v2['m'], s: v2['s']),
+                    loh: v2['loh'].toString().toLowerCase() == 'l'
                         ? LengthHeigthMeasurementPosition.recumbent
                         : LengthHeigthMeasurementPosition.standing,
                   ),

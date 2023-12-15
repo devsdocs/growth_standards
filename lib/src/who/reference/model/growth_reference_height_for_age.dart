@@ -4,15 +4,15 @@ class GrowthReferenceHeightForAgeData {
   factory GrowthReferenceHeightForAgeData() => _singleton;
   GrowthReferenceHeightForAgeData._()
       : _data = (json.decode(_hfa5yo) as Map<String, dynamic>).map(
-          (u, e) => MapEntry(
-            u,
+          (k1, v1) => MapEntry(
+            k1,
             GrowthReferenceHeightForAgeGender(
-              ageData: (e as Map<String, dynamic>).map((x, y) {
-                y as Map<String, dynamic>;
+              ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
+                v2 as Map<String, dynamic>;
                 return MapEntry(
-                  x,
+                  k2,
                   GrowthReferenceHeightForAgeLMS(
-                    lms: (l: y['l'], m: y['m'], s: y['s']),
+                    lms: (l: v2['l'], m: v2['m'], s: v2['s']),
                   ),
                 );
               }),

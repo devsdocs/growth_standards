@@ -4,16 +4,16 @@ class WeightForHeightData {
   factory WeightForHeightData() => _singleton;
   WeightForHeightData._()
       : _data = (json.decode(_wfhanthro) as Map<String, dynamic>).map(
-          (u, e) => MapEntry(
-            u,
+          (k1, v1) => MapEntry(
+            k1,
             WeightForHeightGender(
-              heightData: (e as Map<String, dynamic>).map((x, y) {
-                y as Map<String, dynamic>;
+              heightData: (v1 as Map<String, dynamic>).map((k2, v2) {
+                v2 as Map<String, dynamic>;
                 return MapEntry(
-                  x,
+                  k2,
                   WeightForHeightLMS(
-                    lms: (l: y['l'], m: y['m'], s: y['s']),
-                    lorh: y['lorh'].toString().toLowerCase() == 'l'
+                    lms: (l: v2['l'], m: v2['m'], s: v2['s']),
+                    lorh: v2['lorh'].toString().toLowerCase() == 'l'
                         ? LengthHeigthMeasurementPosition.recumbent
                         : LengthHeigthMeasurementPosition.standing,
                   ),
@@ -51,66 +51,6 @@ class WeightForHeight {
       }
     }
   }
-
-  factory WeightForHeight.maleStandingPosition({
-    required Length height,
-    required Mass weight,
-    required WeightForHeightData weightForHeightData,
-    required Age age,
-  }) =>
-      WeightForHeight(
-        sex: Sex.male,
-        height: height,
-        weightForHeightData: weightForHeightData,
-        mass: weight,
-        measure: LengthHeigthMeasurementPosition.standing,
-        age: age,
-      );
-
-  factory WeightForHeight.maleRecumbentPosition({
-    required Length length,
-    required Mass weight,
-    required WeightForHeightData weightForHeightData,
-    required Age age,
-  }) =>
-      WeightForHeight(
-        sex: Sex.male,
-        height: length,
-        weightForHeightData: weightForHeightData,
-        mass: weight,
-        measure: LengthHeigthMeasurementPosition.recumbent,
-        age: age,
-      );
-
-  factory WeightForHeight.femaleStandingPosition({
-    required Length height,
-    required Mass weight,
-    required WeightForHeightData weightForHeightData,
-    required Age age,
-  }) =>
-      WeightForHeight(
-        sex: Sex.female,
-        height: height,
-        mass: weight,
-        weightForHeightData: weightForHeightData,
-        measure: LengthHeigthMeasurementPosition.standing,
-        age: age,
-      );
-
-  factory WeightForHeight.femaleRecumbentPosition({
-    required Length length,
-    required Mass weight,
-    required WeightForHeightData weightForHeightData,
-    required Age age,
-  }) =>
-      WeightForHeight(
-        sex: Sex.female,
-        height: length,
-        mass: weight,
-        weightForHeightData: weightForHeightData,
-        measure: LengthHeigthMeasurementPosition.recumbent,
-        age: age,
-      );
 
   final Sex _sex;
   final Age _age;

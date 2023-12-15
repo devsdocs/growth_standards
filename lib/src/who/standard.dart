@@ -75,7 +75,8 @@ final class _WHOGrowthStandardBMITools {
 
 final class _WHOGrowthStandardBodyMassIndex {
   BodyMassIndexForAgeData get data => BodyMassIndexForAgeData();
-  _WHOGrowthStandardBMITools get getBMI => _WHOGrowthStandardBMITools();
+  _WHOGrowthStandardBMITools get bodyMassIndexMeasurement =>
+      _WHOGrowthStandardBMITools();
 
   BodyMassIndexForAge measure({
     required Sex sex,

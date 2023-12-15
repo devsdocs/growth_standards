@@ -4,14 +4,14 @@ class WeightForAgeData {
   factory WeightForAgeData() => _singleton;
   WeightForAgeData._()
       : _data = (json.decode(_weianthro) as Map<String, dynamic>).map(
-          (u, e) => MapEntry(
-            u,
+          (k1, v1) => MapEntry(
+            k1,
             WeightForAgeGender(
-              ageData: (e as Map<String, dynamic>).map((x, y) {
-                y as Map<String, dynamic>;
+              ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
+                v2 as Map<String, dynamic>;
                 return MapEntry(
-                  x,
-                  WeightForAgeLMS(lms: (l: y['l'], m: y['m'], s: y['s'])),
+                  k2,
+                  WeightForAgeLMS(lms: (l: v2['l'], m: v2['m'], s: v2['s'])),
                 );
               }),
             ),

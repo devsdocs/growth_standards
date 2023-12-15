@@ -1,7 +1,6 @@
 import 'package:growth_standards/growth_standards.dart';
 import 'package:test/test.dart';
 
-
 const dateBase = [28, 29, 30, 31];
 
 final gs = GrowthStandard.whoGrowthStandard;
@@ -14,13 +13,13 @@ void main() {
       .data; // Initialize for the first and only time to avoid repeated parsing the same data
   group('A group of tests', () {
     test('Age', () {
+      expect(Age.byMonthsAgo(1).totalDays, anyOf(dateBase));
       expect(
         Age.byMonthsAgo(2).totalDays,
         anyOf(
           dateBase.expand((element) => [element * 2, element * 2 + 1]).toList(),
         ),
       );
-      expect(Age.byMonthsAgo(1).totalDays, anyOf(dateBase));
       expect(Age.byDaysAgo(30).totalDays, 30);
       expect(Age.byDaysAgo(1000).totalDays, 1000);
       expect(Age.byDaysAgo(10000).totalDays, 10000);
@@ -34,7 +33,7 @@ void main() {
               armCircumferenceData: armCirData,
             )
             .zScore,
-        anyOf(3.79, 3.80),
+        3.79,
       );
       expect(
         gs.armCircumferenceForAge
@@ -61,7 +60,8 @@ void main() {
       expect(
         gs.bodyMassIndexForAge
             .male(
-              bodyMassIndexMeasurement: gs.bodyMassIndexForAge.getBMI.fromValue(
+              bodyMassIndexMeasurement:
+                  gs.bodyMassIndexForAge.bodyMassIndexMeasurement.fromValue(
                 20.5,
                 age: Age.byMonthsAgo(44),
               ),
@@ -73,17 +73,19 @@ void main() {
       expect(
         gs.bodyMassIndexForAge
             .male(
-              bodyMassIndexMeasurement: gs.bodyMassIndexForAge.getBMI
+              bodyMassIndexMeasurement: gs
+                  .bodyMassIndexForAge.bodyMassIndexMeasurement
                   .fromValue(12, age: Age.byMonthsAgo(28)),
               bodyMassIndexData: bodyMassIndexData,
             )
             .zScore,
-        anyOf(-3.76, -3.75),
+        -3.75,
       );
       expect(
         gs.bodyMassIndexForAge
             .male(
-              bodyMassIndexMeasurement: gs.bodyMassIndexForAge.getBMI.fromValue(
+              bodyMassIndexMeasurement:
+                  gs.bodyMassIndexForAge.bodyMassIndexMeasurement.fromValue(
                 18.8,
                 age: Age.byMonthsAgo(52),
               ),
