@@ -3,112 +3,41 @@
 part of 'age.dart';
 
 // **************************************************************************
-// CopyWithGenerator
+// JsonSerializableGenerator
 // **************************************************************************
 
-// coverage:ignore-start
-/// @nodoc
-extension $AgeCopyWithExtension on Age {
-  $AgeCopyWith<Age> get copyWith => $AgeCopyWith<Age>(this, (value) => value);
+_$AgeImpl _$$AgeImplFromJson(Map<String, dynamic> json) => _$AgeImpl(
+      Date.fromJson(json['dateOfBirth'] as Map<String, dynamic>),
+    );
 
-  $AgeCopyWithNull<Age> get copyWithNull =>
-      $AgeCopyWithNull<Age>(this, (value) => value);
-}
+Map<String, dynamic> _$$AgeImplToJson(_$AgeImpl instance) => <String, dynamic>{
+      'dateOfBirth': instance.dateOfBirth,
+    };
 
-/// @nodoc
-class $AgeCopyWith<$Return> {
-  // ignore: unused_field
-  final Age _value;
+_$DateImpl _$$DateImplFromJson(Map<String, dynamic> json) => _$DateImpl(
+      year: json['year'] as int,
+      month: $enumDecode(_$MonthsEnumMap, json['month']),
+      date: json['date'] as int,
+    );
 
-  // ignore: unused_field
-  final $Return Function(Age) _callback;
+Map<String, dynamic> _$$DateImplToJson(_$DateImpl instance) =>
+    <String, dynamic>{
+      'year': instance.year,
+      'month': _$MonthsEnumMap[instance.month]!,
+      'date': instance.date,
+    };
 
-  $AgeCopyWith(this._value, this._callback);
-
-  $DateCopyWith<$Return> get dateOfBirth => $DateCopyWith<$Return>(
-      _value.dateOfBirth,
-      (value) => _callback(_value.copyWith(dateOfBirth: value)));
-
-  $Return call({
-    Date? dateOfBirth,
-  }) =>
-      _callback(Age(
-        dateOfBirth ?? _value.dateOfBirth,
-      ));
-}
-
-/// @nodoc
-class $AgeCopyWithNull<$Return> {
-  // ignore: unused_field
-  final Age _value;
-  // ignore: unused_field
-  final $Return Function(Age) _callback;
-
-  $AgeCopyWithNull(this._value, this._callback);
-
-  $DateCopyWithNull<$Return> get dateOfBirth => $DateCopyWithNull<$Return>(
-      _value.dateOfBirth,
-      (value) => _callback(_value.copyWith(dateOfBirth: value)));
-}
-
-// coverage:ignore-end
-
-// coverage:ignore-start
-/// @nodoc
-extension $DateCopyWithExtension on Date {
-  $DateCopyWith<Date> get copyWith =>
-      $DateCopyWith<Date>(this, (value) => value);
-
-  $DateCopyWithNull<Date> get copyWithNull =>
-      $DateCopyWithNull<Date>(this, (value) => value);
-}
-
-/// @nodoc
-class $DateCopyWith<$Return> {
-  // ignore: unused_field
-  final Date _value;
-
-  // ignore: unused_field
-  final $Return Function(Date) _callback;
-
-  $DateCopyWith(this._value, this._callback);
-
-  $Return call({
-    int? year,
-    Months? month,
-    int? date,
-  }) =>
-      _callback(Date(
-        year: year ?? _value.year,
-        month: month ?? _value.month,
-        date: date ?? _value.date,
-      ));
-}
-
-/// @nodoc
-class $DateCopyWithNull<$Return> {
-  // ignore: unused_field
-  final Date _value;
-  // ignore: unused_field
-  final $Return Function(Date) _callback;
-
-  $DateCopyWithNull(this._value, this._callback);
-}
-
-// coverage:ignore-end
-
-// **************************************************************************
-// PropsGenerator
-// **************************************************************************
-
-// coverage:ignore-start
-/// @nodoc
-List<Object?> _$AgeProps(Age instance, {List<Object?>? superProps}) =>
-    [instance.dateOfBirth, ...?superProps];
-// coverage:ignore-end
-
-// coverage:ignore-start
-/// @nodoc
-List<Object?> _$DateProps(Date instance, {List<Object?>? superProps}) =>
-    [instance.year, instance.month, instance.date, ...?superProps];
-// coverage:ignore-end
+const _$MonthsEnumMap = {
+  Months.january: 1,
+  Months.february: 2,
+  Months.march: 3,
+  Months.april: 4,
+  Months.may: 5,
+  Months.june: 6,
+  Months.july: 7,
+  Months.august: 8,
+  Months.september: 9,
+  Months.october: 10,
+  Months.november: 11,
+  Months.december: 12,
+};

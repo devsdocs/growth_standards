@@ -1,3 +1,7 @@
+import 'package:json_annotation/json_annotation.dart';
+import 'package:super_measurement/super_measurement.dart';
+
+@JsonEnum(valueField: 'number')
 enum Sex {
   male(1),
   female(2),
@@ -19,6 +23,7 @@ enum OedemaExist {
   ;
 }
 
+@JsonEnum(valueField: 'number')
 enum Months {
   january(1, 'January', 31),
   february(2, 'February', 28),
@@ -39,4 +44,48 @@ enum Months {
   final int date;
   final int number;
   final String text;
+}
+
+Map<String, dynamic> getLengthEnumName(Length length) => {
+      LengthUnit.values
+          .singleWhere(
+            (element) => element.construct.runtimeType == length.runtimeType,
+          )
+          .name: length.value,
+    };
+
+Length getLengthEnum(Map<String, dynamic> data) => LengthUnit.values
+    .singleWhere((element) => element.name == data.keys.first)
+    .construct
+    .withValue(data.values.first as num);
+
+Mass getMassEnum(Map<String, dynamic> data) => MassUnit.values
+    .singleWhere((element) => element.name == data.keys.first)
+    .construct
+    .withValue(data.values.first as num);
+
+Map<String, dynamic> getMassEnumName(Mass mass) => {
+      MassUnit.values
+          .singleWhere(
+            (element) => element.construct.runtimeType == mass.runtimeType,
+          )
+          .name: mass.value,
+    };
+
+class MassConverter implements JsonConverter<Mass, Map<String, dynamic>> {
+  const MassConverter();
+  @override
+  Mass fromJson(Map<String, dynamic> json) => getMassEnum(json);
+
+  @override
+  Map<String, dynamic> toJson(Mass object) => getMassEnumName(object);
+}
+
+class LengthConverter implements JsonConverter<Length, Map<String, dynamic>> {
+  const LengthConverter();
+  @override
+  Length fromJson(Map<String, dynamic> json) => getLengthEnum(json);
+
+  @override
+  Map<String, dynamic> toJson(Length object) => getLengthEnumName(object);
 }

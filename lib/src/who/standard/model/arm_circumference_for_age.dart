@@ -6,12 +6,12 @@ class ArmCircumferenceForAgeData {
       : _data = (json.decode(_acanthro) as Map<String, dynamic>).map(
           (k1, v1) => MapEntry(
             k1,
-            ArmCircumferenceForAgeGender(
+            _ArmCircumferenceForAgeGender(
               ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
                 v2 as Map<String, dynamic>;
                 return MapEntry(
                   k2,
-                  ArmCircumferenceForAgeLMS(
+                  _ArmCircumferenceForAgeLMS(
                     lms: (l: v2['l'], m: v2['m'], s: v2['s']),
                   ),
                 );
@@ -22,59 +22,48 @@ class ArmCircumferenceForAgeData {
 
   static final _singleton = ArmCircumferenceForAgeData._();
 
-  final Map<String, ArmCircumferenceForAgeGender> _data;
+  final Map<String, _ArmCircumferenceForAgeGender> _data;
 }
 
-@copyWith
-@props
-class ArmCircumferenceForAge extends Equatable {
-  ArmCircumferenceForAge({
-    this.observationDate,
-    required this.sex,
-    required this.age,
-    required this.measurementResult,
-    @propsExclude required this.armCircumferenceData,
-  }) {
-    if (!(age.ageInTotalDaysByNow >= minimalAgeInDays &&
-        age.ageInTotalDaysByNow <= maximalAgeInDays)) {
-      throw Exception(
-        'Age must be in range of $minimalAgeInDays - $maximalAgeInDays days',
-      );
-    }
+@freezed
+class ArmCircumferenceForAge with _$ArmCircumferenceForAge {
+  @Assert(
+    'age.ageInTotalDaysByNow >= 91 && age.ageInTotalDaysByNow <= 1856',
+    'Age must be in range of 91 - 1856 days',
+  )
+  @Assert(
+    'observationDate == null || observationDate.isBefore(Date.today()) || observationDate.isAfter(age.dateOfBirth)',
+    'Observation date is impossible, because happen after today or before birth',
+  )
+  @Assert(
+    'observationDate == null || observationDate.isAfter(age.dateAtDaysAfterBirth(91)) ',
+    'Observation date is impossible, because happen after today or before birth',
+  )
+  factory ArmCircumferenceForAge({
+    Date? observationDate,
+    required Sex sex,
+    required Age age,
+    @LengthConverter() required Length measurementResult,
+    @JsonKey(includeToJson: false, includeFromJson: false)
+    ArmCircumferenceForAgeData? armCircumferenceData,
+  }) = _ArmCircumferenceForAge;
 
-    if (observationDate != null) {
-      if (observationDate!.isAfter(Date.today()) ||
-          observationDate!.isBefore(age.dateOfBirth)) {
-        throw Exception(
-          'Observation date => $observationDate is impossible, because happen after ${Date.today()} or before ${age.dateOfBirth}',
-        );
-      }
-      if (observationDate!
-          .isBefore(age.dateAtDaysAfterBirth(minimalAgeInDays))) {
-        throw Exception(
-          'Observation date => $observationDate is impossible because less than mininum age requirement $minimalAgeInDays at the moment of observation',
-        );
-      }
-    }
-  }
+  const ArmCircumferenceForAge._();
 
-  static const minimalAgeInDays = 91;
-  static const maximalAgeInDays = 1856;
+  factory ArmCircumferenceForAge.fromJson(Map<String, dynamic> json) =>
+      _$ArmCircumferenceForAgeFromJson(json);
 
-  final Sex sex;
-  final Age age;
-  final Date? observationDate;
-  final Length measurementResult;
-  final ArmCircumferenceForAgeData armCircumferenceData;
+  ArmCircumferenceForAgeData get _armCircumferenceData =>
+      armCircumferenceData ?? ArmCircumferenceForAgeData();
 
-  ArmCircumferenceForAgeGender get _maleData =>
-      armCircumferenceData._data['1']!;
-  ArmCircumferenceForAgeGender get _femaleData =>
-      armCircumferenceData._data['2']!;
+  _ArmCircumferenceForAgeGender get _maleData =>
+      _armCircumferenceData._data['1']!;
+  _ArmCircumferenceForAgeGender get _femaleData =>
+      _armCircumferenceData._data['2']!;
 
-  ArmCircumferenceForAgeLMS get _ageData =>
+  _ArmCircumferenceForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)
-          .ageData[ageAtObservationDate.ageInTotalDaysByNow.toString()]!;
+          .ageData[_ageAtObservationDate.ageInTotalDaysByNow.toString()]!;
 
   num get _zScore => adjustedZScore(
         y: measurementResult.value!,
@@ -83,7 +72,7 @@ class ArmCircumferenceForAge extends Equatable {
         s: _ageData.lms.s,
       );
 
-  Age get ageAtObservationDate => observationDate == null
+  Age get _ageAtObservationDate => observationDate == null
       ? age
       : observationDate == Date.today()
           ? age
@@ -92,18 +81,15 @@ class ArmCircumferenceForAge extends Equatable {
   num get zScore => _zScore.toDouble().toPrecision(2);
 
   num get percentile => zScoreToPercentile(_zScore).toDouble().toPrecision(2);
-
-  @override
-  List<Object?> get props => _$ArmCircumferenceForAgeProps(this);
 }
 
-class ArmCircumferenceForAgeGender {
-  ArmCircumferenceForAgeGender({required this.ageData});
+class _ArmCircumferenceForAgeGender {
+  _ArmCircumferenceForAgeGender({required this.ageData});
 
-  final Map<String, ArmCircumferenceForAgeLMS> ageData;
+  final Map<String, _ArmCircumferenceForAgeLMS> ageData;
 }
 
-class ArmCircumferenceForAgeLMS {
-  ArmCircumferenceForAgeLMS({required this.lms});
+class _ArmCircumferenceForAgeLMS {
+  _ArmCircumferenceForAgeLMS({required this.lms});
   final LMS lms;
 }

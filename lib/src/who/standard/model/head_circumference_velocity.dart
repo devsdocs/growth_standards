@@ -34,51 +34,54 @@ class HeadCircumferenceVelocityForAgeData {
 
 class HeadCircumferenceVelocityForAge {
   HeadCircumferenceVelocityForAge({
-    required Sex sex,
-    required Age age,
-    required Map<Date, Length> pastMeasurement,
-    required Length lastMeasurementResult,
-    required HeadCircumferenceVelocityForAgeData headCircumferenceData,
-  })  : _measurementResult = lastMeasurementResult,
-        _sex = sex,
-        _age = age,
-        _pastMeasurement = pastMeasurement,
-        _mapGender = headCircumferenceData._data {
-    if (!(_age.ageInTotalDaysByNow >= 0 && _age.ageInTotalMonthsByNow <= 24)) {
+    this.observationDate,
+    required this.sex,
+    required this.age,
+    required this.pastMeasurement,
+    required this.headCircumferenceData,
+  }) {
+    if (!(age.ageInTotalDaysByNow >= 0 && age.ageInTotalMonthsByNow <= 24)) {
       throw Exception('Age must be in range of 0 days - 24 months');
     }
-    if (_pastMeasurement.isEmpty) {
+    if (pastMeasurement.isEmpty) {
       throw Exception(
         'Calculation can not be done as past measurment is empty',
       );
     }
-    if (_pastMeasurement.keys
-        .any((element) => element.isSameAs(Date.today()))) {
+    if (pastMeasurement.keys.any((element) => element.isSameAs(Date.today()))) {
       throw Exception(
         'Calculation can not be done as there is todays date in past measurment',
       );
     }
-    if (_pastMeasurement.keys.any((element) => element.isAfter(Date.today()))) {
+    if (pastMeasurement.keys.any((element) => element.isAfter(Date.today()))) {
       throw Exception(
         'Calculation can not be done as there is future date in past measurment',
       );
     }
-    if (_pastMeasurement.keys
-        .any((element) => element.isBefore(_age.dateOfBirth))) {
+    if (pastMeasurement.keys
+        .any((element) => element.isBefore(age.dateOfBirth))) {
       throw Exception(
         'Calculation can not be done as there is date less than Date of Birth in past measurement, if you find this exception is a mistake, try to provide exact $Age by using ${Age.byDate} or $Date by using ${Date.fromDateTime} in Past Measurement',
       );
     }
   }
 
-  final Sex _sex;
-  final Age _age;
-  final Length _measurementResult;
-  final Map<Date, Length> _pastMeasurement;
-  final Map<String, HeadCircumferenceVelocityForAgeGender> _mapGender;
+  final Sex sex;
+  final Age age;
+  final Date? observationDate;
+  final Map<Date, Length> pastMeasurement;
+  final HeadCircumferenceVelocityForAgeData headCircumferenceData;
 
-  HeadCircumferenceVelocityForAgeGender get _maleData => _mapGender['1']!;
-  HeadCircumferenceVelocityForAgeGender get _femaleData => _mapGender['2']!;
+  HeadCircumferenceVelocityForAgeGender get _maleData =>
+      headCircumferenceData._data['1']!;
+  HeadCircumferenceVelocityForAgeGender get _femaleData =>
+      headCircumferenceData._data['2']!;
+
+  Age get ageAtObservationDate => observationDate == null
+      ? age
+      : observationDate == Date.today()
+          ? age
+          : age.ageAtAnyPastDate(observationDate!);
 }
 
 class HeadCircumferenceVelocityForAgeGender {

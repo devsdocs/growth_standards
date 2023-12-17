@@ -6,12 +6,12 @@ class GrowthReferenceWeightForAgeData {
       : _data = (json.decode(_wfa5yo) as Map<String, dynamic>).map(
           (k1, v1) => MapEntry(
             k1,
-            GrowthReferenceWeightForAgeGender(
+            _GrowthReferenceWeightForAgeGender(
               ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
                 v2 as Map<String, dynamic>;
                 return MapEntry(
                   k2,
-                  GrowthReferenceWeightForAgeLMS(
+                  _GrowthReferenceWeightForAgeLMS(
                     lms: (l: v2['l'], m: v2['m'], s: v2['s']),
                   ),
                 );
@@ -22,39 +22,36 @@ class GrowthReferenceWeightForAgeData {
 
   static final _singleton = GrowthReferenceWeightForAgeData._();
 
-  final Map<String, GrowthReferenceWeightForAgeGender> _data;
+  final Map<String, _GrowthReferenceWeightForAgeGender> _data;
 }
 
-class GrowthReferenceWeightForAge {
-  GrowthReferenceWeightForAge({
+@freezed
+class GrowthReferenceWeightForAge with _$GrowthReferenceWeightForAge {
+  @Assert(
+    'age.ageInTotalMonthsByNow >= 61 && age.ageInTotalMonthsByNow <= 120',
+    'Age must be in range of 61 - 120 months',
+  )
+  factory GrowthReferenceWeightForAge({
+    Date? observationDate,
     required Sex sex,
     required Age age,
     required Mass weight,
     required GrowthReferenceWeightForAgeData weightForAgeData,
-  })  : _measurementResult = weight,
-        _sex = sex,
-        _age = age,
-        _mapGender = weightForAgeData._data {
-    if (!(_age.ageInTotalMonthsByNow >= 61 &&
-        _age.ageInTotalMonthsByNow <= 120)) {
-      throw Exception('Age must be in range of 61 - 120 months');
-    }
-  }
+  }) = _GrowthReferenceWeightForAge;
 
-  final Sex _sex;
-  final Age _age;
-  final Mass _measurementResult;
-  final Map<String, GrowthReferenceWeightForAgeGender> _mapGender;
+  const GrowthReferenceWeightForAge._();
 
-  GrowthReferenceWeightForAgeGender get _maleData => _mapGender['1']!;
-  GrowthReferenceWeightForAgeGender get _femaleData => _mapGender['2']!;
+  _GrowthReferenceWeightForAgeGender get _maleData =>
+      weightForAgeData._data['1']!;
+  _GrowthReferenceWeightForAgeGender get _femaleData =>
+      weightForAgeData._data['2']!;
 
-  GrowthReferenceWeightForAgeLMS get _ageData =>
-      (_sex == Sex.male ? _maleData : _femaleData)
-          .ageData[_age.ageInTotalMonthsByNow.toString()]!;
+  _GrowthReferenceWeightForAgeLMS get _ageData =>
+      (sex == Sex.male ? _maleData : _femaleData)
+          .ageData[age.ageInTotalMonthsByNow.toString()]!;
 
   num get _zScore => adjustedZScore(
-        y: _measurementResult.toKilograms.value!,
+        y: weight.toKilograms.value!,
         l: _ageData.lms.l,
         m: _ageData.lms.m,
         s: _ageData.lms.s,
@@ -65,13 +62,13 @@ class GrowthReferenceWeightForAge {
   num get percentile => zScoreToPercentile(_zScore).toDouble().toPrecision(2);
 }
 
-class GrowthReferenceWeightForAgeGender {
-  GrowthReferenceWeightForAgeGender({required this.ageData});
+class _GrowthReferenceWeightForAgeGender {
+  _GrowthReferenceWeightForAgeGender({required this.ageData});
 
-  final Map<String, GrowthReferenceWeightForAgeLMS> ageData;
+  final Map<String, _GrowthReferenceWeightForAgeLMS> ageData;
 }
 
-class GrowthReferenceWeightForAgeLMS {
-  GrowthReferenceWeightForAgeLMS({required this.lms});
+class _GrowthReferenceWeightForAgeLMS {
+  _GrowthReferenceWeightForAgeLMS({required this.lms});
   final LMS lms;
 }

@@ -6,12 +6,12 @@ class TricepsSkinfoldForAgeData {
       : _data = (json.decode(_tsanthro) as Map<String, dynamic>).map(
           (k1, v1) => MapEntry(
             k1,
-            TricepsSkinfoldAgeGender(
+            _TricepsSkinfoldAgeGender(
               ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
                 v2 as Map<String, dynamic>;
                 return MapEntry(
                   k2,
-                  TricepsSkinfoldForAgeLMS(
+                  _TricepsSkinfoldForAgeLMS(
                     lms: (l: v2['l'], m: v2['m'], s: v2['s']),
                   ),
                 );
@@ -22,38 +22,34 @@ class TricepsSkinfoldForAgeData {
 
   static final _singleton = TricepsSkinfoldForAgeData._();
 
-  final Map<String, TricepsSkinfoldAgeGender> _data;
+  final Map<String, _TricepsSkinfoldAgeGender> _data;
 }
 
-class TricepsSkinfoldForAge {
-  TricepsSkinfoldForAge({
+@freezed
+class TricepsSkinfoldForAge with _$TricepsSkinfoldForAge {
+  @Assert(
+    'age.ageInTotalDaysByNow >= 91 && age.ageInTotalDaysByNow <= 1856',
+    'Age must be in range of 91 - 1856 days',
+  )
+  factory TricepsSkinfoldForAge({
+    Date? observationDate,
     required Sex sex,
     required Age age,
     required Length measurementResult,
     required TricepsSkinfoldForAgeData tricepsSkinfoldData,
-  })  : _measurementResult = measurementResult,
-        _sex = sex,
-        _age = age,
-        _mapGender = tricepsSkinfoldData._data {
-    if (!(_age.ageInTotalDaysByNow >= 91 && _age.ageInTotalDaysByNow <= 1856)) {
-      throw Exception('Age must be in range of 91 - 1856 days');
-    }
-  }
+  }) = _TricepsSkinfoldForAge;
 
-  final Sex _sex;
-  final Age _age;
-  final Length _measurementResult;
-  final Map<String, TricepsSkinfoldAgeGender> _mapGender;
+  const TricepsSkinfoldForAge._();
 
-  TricepsSkinfoldAgeGender get _maleData => _mapGender['1']!;
-  TricepsSkinfoldAgeGender get _femaleData => _mapGender['2']!;
+  _TricepsSkinfoldAgeGender get _maleData => tricepsSkinfoldData._data['1']!;
+  _TricepsSkinfoldAgeGender get _femaleData => tricepsSkinfoldData._data['2']!;
 
-  TricepsSkinfoldForAgeLMS get _ageData =>
-      (_sex == Sex.male ? _maleData : _femaleData)
-          .ageData[_age.ageInTotalDaysByNow.toString()]!;
+  _TricepsSkinfoldForAgeLMS get _ageData =>
+      (sex == Sex.male ? _maleData : _femaleData)
+          .ageData[_ageAtObservationDate.ageInTotalDaysByNow.toString()]!;
 
   num get _zScore => adjustedZScore(
-        y: _measurementResult.toCentimeters.value!,
+        y: measurementResult.toCentimeters.value!,
         l: _ageData.lms.l,
         m: _ageData.lms.m,
         s: _ageData.lms.s,
@@ -62,15 +58,21 @@ class TricepsSkinfoldForAge {
   num get zScore => _zScore.toDouble().toPrecision(2);
 
   num get percentile => zScoreToPercentile(_zScore).toDouble().toPrecision(2);
+
+  Age get _ageAtObservationDate => observationDate == null
+      ? age
+      : observationDate == Date.today()
+          ? age
+          : age.ageAtAnyPastDate(observationDate!);
 }
 
-class TricepsSkinfoldAgeGender {
-  TricepsSkinfoldAgeGender({required this.ageData});
-  final Map<String, TricepsSkinfoldForAgeLMS> ageData;
+class _TricepsSkinfoldAgeGender {
+  _TricepsSkinfoldAgeGender({required this.ageData});
+  final Map<String, _TricepsSkinfoldForAgeLMS> ageData;
 }
 
-class TricepsSkinfoldForAgeLMS {
-  TricepsSkinfoldForAgeLMS({
+class _TricepsSkinfoldForAgeLMS {
+  _TricepsSkinfoldForAgeLMS({
     required this.lms,
   });
   final LMS lms;

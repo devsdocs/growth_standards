@@ -4,15 +4,96 @@ import 'package:excel/excel.dart';
 import 'package:reusable_tools/reusable_tools.dart';
 
 const dataMap = {
-  'acanthro': 'Arm Circumference',
-  'bmianthro': 'Body Mass Index',
-  'hcanthro': 'Head Circumference',
-  'lenanthro': 'Length For Age',
-  'ssanthro': 'Subscapular Skinfold',
-  'tsanthro': 'Triceps Skinfold',
-  'weianthro': 'Weight For Age',
-  'wfhanthro': 'Weight For Height',
-  'wflanthro': 'Weight For Length',
+  'acanthro': {
+    'long': 'Arm Circumference',
+    'short': 'ac',
+    'limit': {
+      'cat': 'age',
+      'unit': 'days',
+      'low': 91,
+      'high': 1856,
+    },
+  },
+  'bmianthro': {
+    'long': 'Body Mass Index',
+    'short': 'bmi',
+    'limit': {
+      'cat': 'age',
+      'unit': 'days',
+      'low': 0,
+      'high': 1856,
+    },
+  },
+  'hcanthro': {
+    'long': 'Head Circumference',
+    'short': 'hc',
+    'limit': {
+      'cat': 'age',
+      'unit': 'days',
+      'low': 0,
+      'high': 1856,
+    },
+  },
+  'lenanthro': {
+    'long': 'Length For Age',
+    'short': 'lfa',
+    'limit': {
+      'cat': 'age',
+      'unit': 'days',
+      'low': 0,
+      'high': 1856,
+    },
+  },
+  'ssanthro': {
+    'long': 'Subscapular Skinfold',
+    'short': 'ss',
+    'limit': {
+      'cat': 'age',
+      'unit': 'days',
+      'low': 0,
+      'high': 1856,
+    },
+  },
+  'tsanthro': {
+    'long': 'Triceps Skinfold',
+    'short': 'ts',
+    'limit': {
+      'cat': 'age',
+      'unit': 'days',
+      'low': 0,
+      'high': 1856,
+    },
+  },
+  'weianthro': {
+    'long': 'Weight For Age',
+    'short': 'wfa',
+    'limit': {
+      'cat': 'age',
+      'unit': 'days',
+      'low': 0,
+      'high': 1856,
+    },
+  },
+  'wfhanthro': {
+    'long': 'Weight For Height',
+    'short': 'wfh',
+    'limit': {
+      'cat': 'heigth',
+      'unit': 'cm',
+      'low': 0,
+      'high': 1856,
+    },
+  },
+  'wflanthro': {
+    'long': 'Weight For Length',
+    'short': 'wfl',
+    'limit': {
+      'cat': 'length',
+      'unit': 'c,',
+      'low': 0,
+      'high': 1856,
+    },
+  },
 };
 
 void format() {

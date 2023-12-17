@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:growth_standards/src/common/age.dart';
 import 'package:growth_standards/src/common/math.dart';
 import 'package:growth_standards/src/common/typedef.dart';
@@ -14,3 +15,5 @@ part 'data/wfa.dart';
 part 'model/growth_reference_body_mass_index_for_age.dart';
 part 'model/growth_reference_height_for_age.dart';
 part 'model/growth_reference_weight_for_age.dart';
+
+part 'reference.freezed.dart';

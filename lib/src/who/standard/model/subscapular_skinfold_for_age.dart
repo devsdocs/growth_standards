@@ -6,12 +6,12 @@ class SubscapularSkinfoldForAgeData {
       : _data = (json.decode(_ssanthro) as Map<String, dynamic>).map(
           (k1, v1) => MapEntry(
             k1,
-            SubscapularSkinfoldAgeGender(
+            _SubscapularSkinfoldAgeGender(
               ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
                 v2 as Map<String, dynamic>;
                 return MapEntry(
                   k2,
-                  SubscapularSkinfoldForAgeLMS(
+                  _SubscapularSkinfoldForAgeLMS(
                     lms: (l: v2['l'], m: v2['m'], s: v2['s']),
                   ),
                 );
@@ -22,38 +22,36 @@ class SubscapularSkinfoldForAgeData {
 
   static final _singleton = SubscapularSkinfoldForAgeData._();
 
-  final Map<String, SubscapularSkinfoldAgeGender> _data;
+  final Map<String, _SubscapularSkinfoldAgeGender> _data;
 }
 
-class SubscapularSkinfoldForAge {
-  SubscapularSkinfoldForAge({
+@freezed
+class SubscapularSkinfoldForAge with _$SubscapularSkinfoldForAge {
+  @Assert(
+    'age.ageInTotalDaysByNow >= 91 && age.ageInTotalDaysByNow <= 1856',
+    'Age must be in range of 91 - 1856 days',
+  )
+  factory SubscapularSkinfoldForAge({
+    Date? observationDate,
     required Sex sex,
     required Age age,
     required Length measurementResult,
     required SubscapularSkinfoldForAgeData subscapularSkinfoldData,
-  })  : _measurementResult = measurementResult,
-        _sex = sex,
-        _age = age,
-        _mapGender = subscapularSkinfoldData._data {
-    if (!(_age.ageInTotalDaysByNow >= 91 && _age.ageInTotalDaysByNow <= 1856)) {
-      throw Exception('Age must be in range of 91 - 1856 days');
-    }
-  }
+  }) = _SubscapularSkinfoldForAge;
 
-  final Sex _sex;
-  final Age _age;
-  final Length _measurementResult;
-  final Map<String, SubscapularSkinfoldAgeGender> _mapGender;
+  const SubscapularSkinfoldForAge._();
 
-  SubscapularSkinfoldAgeGender get _maleData => _mapGender['1']!;
-  SubscapularSkinfoldAgeGender get _femaleData => _mapGender['2']!;
+  _SubscapularSkinfoldAgeGender get _maleData =>
+      subscapularSkinfoldData._data['1']!;
+  _SubscapularSkinfoldAgeGender get _femaleData =>
+      subscapularSkinfoldData._data['2']!;
 
-  SubscapularSkinfoldForAgeLMS get _ageData =>
-      (_sex == Sex.male ? _maleData : _femaleData)
-          .ageData[_age.ageInTotalDaysByNow.toString()]!;
+  _SubscapularSkinfoldForAgeLMS get _ageData =>
+      (sex == Sex.male ? _maleData : _femaleData)
+          .ageData[_ageAtObservationDate.ageInTotalDaysByNow.toString()]!;
 
   num get _zScore => adjustedZScore(
-        y: _measurementResult.toCentimeters.value!,
+        y: measurementResult.toCentimeters.value!,
         l: _ageData.lms.l,
         m: _ageData.lms.m,
         s: _ageData.lms.s,
@@ -62,15 +60,21 @@ class SubscapularSkinfoldForAge {
   num get zScore => _zScore.toDouble().toPrecision(2);
 
   num get percentile => zScoreToPercentile(_zScore).toDouble().toPrecision(2);
+
+  Age get _ageAtObservationDate => observationDate == null
+      ? age
+      : observationDate == Date.today()
+          ? age
+          : age.ageAtAnyPastDate(observationDate!);
 }
 
-class SubscapularSkinfoldAgeGender {
-  SubscapularSkinfoldAgeGender({required this.ageData});
-  final Map<String, SubscapularSkinfoldForAgeLMS> ageData;
+class _SubscapularSkinfoldAgeGender {
+  _SubscapularSkinfoldAgeGender({required this.ageData});
+  final Map<String, _SubscapularSkinfoldForAgeLMS> ageData;
 }
 
-class SubscapularSkinfoldForAgeLMS {
-  SubscapularSkinfoldForAgeLMS({
+class _SubscapularSkinfoldForAgeLMS {
+  _SubscapularSkinfoldForAgeLMS({
     required this.lms,
   });
   final LMS lms;

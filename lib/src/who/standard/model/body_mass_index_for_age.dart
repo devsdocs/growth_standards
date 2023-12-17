@@ -6,12 +6,12 @@ class BodyMassIndexForAgeData {
       : _data = (json.decode(_bmianthro) as Map<String, dynamic>).map(
           (k1, v1) => MapEntry(
             k1,
-            BodyMassIndexForAgeGender(
+            _BodyMassIndexForAgeGender(
               ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
                 v2 as Map<String, dynamic>;
                 return MapEntry(
                   k2,
-                  BodyMassIndexForAgeLMS(
+                  _BodyMassIndexForAgeLMS(
                     lms: (l: v2['l'], m: v2['m'], s: v2['s']),
                     loh: v2['loh'].toString().toLowerCase() == 'l'
                         ? LengthHeigthMeasurementPosition.recumbent
@@ -25,11 +25,11 @@ class BodyMassIndexForAgeData {
 
   static final _singleton = BodyMassIndexForAgeData._();
 
-  final Map<String, BodyMassIndexForAgeGender> _data;
+  final Map<String, _BodyMassIndexForAgeGender> _data;
 }
 
 class BodyMassIndexMeasurement {
-  const BodyMassIndexMeasurement._(this.value, {required Age age}) : _age = age;
+  const BodyMassIndexMeasurement._(this.value, {required this.age});
 
   factory BodyMassIndexMeasurement.fromMeasurement({
     required Length lengthHeight,
@@ -57,56 +57,57 @@ class BodyMassIndexMeasurement {
 
   final num value;
 
-  final Age _age;
+  final Age age;
 }
 
-class BodyMassIndexForAge {
-  BodyMassIndexForAge({
+@freezed
+class BodyMassIndexForAge with _$BodyMassIndexForAge {
+  @Assert(
+    'bodyMassIndexMeasurement.age.ageInTotalDaysByNow >= 0 && bodyMassIndexMeasurement.age.ageInTotalDaysByNow <= 1856',
+    'Age must be in range of 0 - 1856 days',
+  )
+  factory BodyMassIndexForAge({
+    Date? observationDate,
     required Sex sex,
     required BodyMassIndexMeasurement bodyMassIndexMeasurement,
     required BodyMassIndexForAgeData bodyMassIndexData,
-  })  : _bodyMassIndexMeasurement = bodyMassIndexMeasurement,
-        _sex = sex,
-        _age = bodyMassIndexMeasurement._age,
-        _mapGender = bodyMassIndexData._data {
-    if (!(_age.ageInTotalDaysByNow >= 0 && _age.ageInTotalDaysByNow <= 1856)) {
-      throw Exception('Age must be in range of 0 - 1856 days');
-    }
-  }
+  }) = _BodyMassIndexForAge;
 
-  final Sex _sex;
-  final Age _age;
-  final BodyMassIndexMeasurement _bodyMassIndexMeasurement;
+  const BodyMassIndexForAge._();
 
-  final Map<String, BodyMassIndexForAgeGender> _mapGender;
+  _BodyMassIndexForAgeGender get _maleData => bodyMassIndexData._data['1']!;
+  _BodyMassIndexForAgeGender get _femaleData => bodyMassIndexData._data['2']!;
 
-  BodyMassIndexForAgeGender get _maleData => _mapGender['1']!;
-  BodyMassIndexForAgeGender get _femaleData => _mapGender['2']!;
-
-  BodyMassIndexForAgeLMS get _ageData =>
-      (_sex == Sex.male ? _maleData : _femaleData)
-          .ageData[_age.ageInTotalDaysByNow.toString()]!;
+  _BodyMassIndexForAgeLMS get _ageData =>
+      (sex == Sex.male ? _maleData : _femaleData)
+          .ageData[_ageAtObservationDate.ageInTotalDaysByNow.toString()]!;
 
   num get _zScore => adjustedZScore(
-        y: _bodyMassIndexMeasurement.value,
+        y: bodyMassIndexMeasurement.value,
         l: _ageData.lms.l,
         m: _ageData.lms.m,
         s: _ageData.lms.s,
       );
+
+  Age get _ageAtObservationDate => observationDate == null
+      ? bodyMassIndexMeasurement.age
+      : observationDate == Date.today()
+          ? bodyMassIndexMeasurement.age
+          : bodyMassIndexMeasurement.age.ageAtAnyPastDate(observationDate!);
 
   num get zScore => _zScore.toDouble().toPrecision(2);
 
   num get percentile => zScoreToPercentile(_zScore).toDouble().toPrecision(2);
 }
 
-class BodyMassIndexForAgeGender {
-  BodyMassIndexForAgeGender({required this.ageData});
+class _BodyMassIndexForAgeGender {
+  _BodyMassIndexForAgeGender({required this.ageData});
 
-  final Map<String, BodyMassIndexForAgeLMS> ageData;
+  final Map<String, _BodyMassIndexForAgeLMS> ageData;
 }
 
-class BodyMassIndexForAgeLMS {
-  BodyMassIndexForAgeLMS({
+class _BodyMassIndexForAgeLMS {
+  _BodyMassIndexForAgeLMS({
     required this.lms,
     required this.loh,
   });

@@ -6,12 +6,12 @@ class GrowthReferenceHeightForAgeData {
       : _data = (json.decode(_hfa5yo) as Map<String, dynamic>).map(
           (k1, v1) => MapEntry(
             k1,
-            GrowthReferenceHeightForAgeGender(
+            _GrowthReferenceHeightForAgeGender(
               ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
                 v2 as Map<String, dynamic>;
                 return MapEntry(
                   k2,
-                  GrowthReferenceHeightForAgeLMS(
+                  _GrowthReferenceHeightForAgeLMS(
                     lms: (l: v2['l'], m: v2['m'], s: v2['s']),
                   ),
                 );
@@ -22,40 +22,36 @@ class GrowthReferenceHeightForAgeData {
 
   static final _singleton = GrowthReferenceHeightForAgeData._();
 
-  final Map<String, GrowthReferenceHeightForAgeGender> _data;
+  final Map<String, _GrowthReferenceHeightForAgeGender> _data;
 }
 
-class GrowthReferenceHeightForAge {
-  GrowthReferenceHeightForAge({
-    required Sex sex,
-    required Age age,
-    required Length lengthHeight,
-    required GrowthReferenceHeightForAgeData lengthForAgeData,
-  })  : _lengthHeight = lengthHeight,
-        _sex = sex,
-        _age = age,
-        _mapGender = lengthForAgeData._data {
-    if (!(_age.ageInTotalMonthsByNow >= 61 &&
-        _age.ageInTotalMonthsByNow <= 228)) {
-      throw Exception('Age must be in range of 61 - 228 months');
-    }
-  }
+@freezed
+class GrowthReferenceHeightForAge with _$GrowthReferenceHeightForAge {
+  @Assert(
+    'age.ageInTotalMonthsByNow >= 61 && age.ageInTotalMonthsByNow <= 228',
+    'Age must be in range of 61 - 228 months',
+  )
+  factory GrowthReferenceHeightForAge({
+   Date? observationDate,
+  required Sex sex,
+  required Age age,
+  required Length lengthHeight,
+  required GrowthReferenceHeightForAgeData lengthForAgeData,
+  }) = _GrowthReferenceHeightForAge;
 
-  final Sex _sex;
-  final Age _age;
-  final Length _lengthHeight;
+const GrowthReferenceHeightForAge._();
 
-  final Map<String, GrowthReferenceHeightForAgeGender> _mapGender;
+  _GrowthReferenceHeightForAgeGender get _maleData =>
+      lengthForAgeData._data['1']!;
+  _GrowthReferenceHeightForAgeGender get _femaleData =>
+      lengthForAgeData._data['2']!;
 
-  GrowthReferenceHeightForAgeGender get _maleData => _mapGender['1']!;
-  GrowthReferenceHeightForAgeGender get _femaleData => _mapGender['2']!;
-
-  GrowthReferenceHeightForAgeLMS get _ageData =>
-      (_sex == Sex.male ? _maleData : _femaleData)
-          .ageData[_age.ageInTotalMonthsByNow.toString()]!;
+  _GrowthReferenceHeightForAgeLMS get _ageData =>
+      (sex == Sex.male ? _maleData : _femaleData)
+          .ageData[age.ageInTotalMonthsByNow.toString()]!;
 
   num get _zScore => zscore(
-        y: _lengthHeight.toCentimeters.value!,
+        y: lengthHeight.toCentimeters.value!,
         l: _ageData.lms.l,
         m: _ageData.lms.m,
         s: _ageData.lms.s,
@@ -66,12 +62,12 @@ class GrowthReferenceHeightForAge {
   num get percentile => zScoreToPercentile(_zScore).toDouble().toPrecision(2);
 }
 
-class GrowthReferenceHeightForAgeGender {
-  GrowthReferenceHeightForAgeGender({required this.ageData});
-  final Map<String, GrowthReferenceHeightForAgeLMS> ageData;
+class _GrowthReferenceHeightForAgeGender {
+  _GrowthReferenceHeightForAgeGender({required this.ageData});
+  final Map<String, _GrowthReferenceHeightForAgeLMS> ageData;
 }
 
-class GrowthReferenceHeightForAgeLMS {
-  GrowthReferenceHeightForAgeLMS({required this.lms});
+class _GrowthReferenceHeightForAgeLMS {
+  _GrowthReferenceHeightForAgeLMS({required this.lms});
   final LMS lms;
 }

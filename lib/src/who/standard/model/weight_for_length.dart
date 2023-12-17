@@ -6,12 +6,12 @@ class WeigthForLengthData {
       : _data = (json.decode(_wflanthro) as Map<String, dynamic>).map(
           (k1, v1) => MapEntry(
             k1,
-            WeigthForLengthGender(
+            _WeigthForLengthGender(
               lengthData: (v1 as Map<String, dynamic>).map((k2, v2) {
                 v2 as Map<String, dynamic>;
                 return MapEntry(
                   k2,
-                  WeigthForLengthLMS(
+                  _WeigthForLengthLMS(
                     lms: (l: v2['l'], m: v2['m'], s: v2['s']),
                     lorh: v2['lorh'].toString().toLowerCase() == 'l'
                         ? LengthHeigthMeasurementPosition.recumbent
@@ -25,55 +25,48 @@ class WeigthForLengthData {
 
   static final _singleton = WeigthForLengthData._();
 
-  final Map<String, WeigthForLengthGender> _data;
+  final Map<String, _WeigthForLengthGender> _data;
 }
 
-class WeigthForLength {
-  WeigthForLength({
+@freezed
+class WeigthForLength with _$WeigthForLength {
+  //TODO(devsdocs): Test this!
+  @Assert(
+    'adjustedLengthHeight(measure: measure,ageInDays: age.ageInTotalDaysByNow,lengthHeight: length.toCentimeters.value!,) >= 45 && adjustedLengthHeight(measure: measure,ageInDays: age.ageInTotalDaysByNow,lengthHeight: length.toCentimeters.value!,) <= 110 && length.toCentimeters.value! >= 45 && length.toCentimeters.value! <= 110',
+    'Please correcting measurement position based on age',
+  )
+  //TODO(devsdocs): Test this!
+  @Assert(
+    'adjustedLengthHeight(measure: measure,ageInDays: age.ageInTotalDaysByNow,lengthHeight: length.toCentimeters.value!,) >= 45 && adjustedLengthHeight(measure: measure,ageInDays: age.ageInTotalDaysByNow,lengthHeight: length.toCentimeters.value!,) <= 110',
+    'Length must be in range of 45 - 110 cm',
+  )
+  factory WeigthForLength({
+    Date? observationDate,
     required Sex sex,
-    required Length lengthMeasurementResult,
-    required Mass massMeasurementResult,
     required Age age,
+    required Length length,
+    required Mass massMeasurementResult,
     required LengthHeigthMeasurementPosition measure,
     required WeigthForLengthData weigthForLengthData,
-  })  : _lengthHeight = lengthMeasurementResult,
-        _weight = massMeasurementResult,
-        _measure = measure,
-        _sex = sex,
-        _age = age,
-        _mapGender = weigthForLengthData._data {
-    if (!(_adjustedLength >= 45 && _adjustedLength <= 110)) {
-      if (lengthMeasurementResult.toCentimeters.value! >= 45 &&
-          lengthMeasurementResult.toCentimeters.value! <= 110) {
-        throw Exception('Please correcting measurement position based on age');
-      } else {
-        throw Exception('Length must be in range of 45 - 110 cm');
-      }
-    }
-  }
+  }) = _WeigthForLength;
 
-  final Sex _sex;
-  final Age _age;
-  final Length _lengthHeight;
-  final Mass _weight;
-  final LengthHeigthMeasurementPosition _measure;
-  final Map<String, WeigthForLengthGender> _mapGender;
+  const WeigthForLength._();
 
   num get _adjustedLength => adjustedLengthHeight(
-        measure: _measure,
-        ageInDays: _age.ageInTotalDaysByNow,
-        lengthHeight: _lengthHeight.toCentimeters.value!,
+        measure: measure,
+        ageInDays: age.ageInTotalDaysByNow,
+        lengthHeight: length.toCentimeters.value!,
       );
 
-  WeigthForLengthGender get _maleData => _mapGender['1']!;
-  WeigthForLengthGender get _femaleData => _mapGender['2']!;
+  _WeigthForLengthGender get _maleData => weigthForLengthData._data['1']!;
+  _WeigthForLengthGender get _femaleData => weigthForLengthData._data['2']!;
 
-  WeigthForLengthLMS get _ageData =>
-      (_sex == Sex.male ? _maleData : _femaleData)
+  _WeigthForLengthLMS get _ageData =>
+      (sex == Sex.male ? _maleData : _femaleData)
           .lengthData[_adjustedLength.toDouble().toPrecision(1).toString()]!;
 
   num get _zScore => adjustedZScore(
-        y: _weight.toKilograms.value!,
+        y: massMeasurementResult.toKilograms.value!,
         l: _ageData.lms.l,
         m: _ageData.lms.m,
         s: _ageData.lms.s,
@@ -82,16 +75,22 @@ class WeigthForLength {
   num get zScore => _zScore.toDouble().toPrecision(2);
 
   num get percentile => zScoreToPercentile(_zScore).toDouble().toPrecision(2);
+
+  Age get ageAtObservationDate => observationDate == null
+      ? age
+      : observationDate == Date.today()
+          ? age
+          : age.ageAtAnyPastDate(observationDate!);
 }
 
-class WeigthForLengthGender {
-  WeigthForLengthGender({required this.lengthData});
+class _WeigthForLengthGender {
+  _WeigthForLengthGender({required this.lengthData});
 
-  final Map<String, WeigthForLengthLMS> lengthData;
+  final Map<String, _WeigthForLengthLMS> lengthData;
 }
 
-class WeigthForLengthLMS {
-  WeigthForLengthLMS({
+class _WeigthForLengthLMS {
+  _WeigthForLengthLMS({
     required this.lms,
     required this.lorh,
   });

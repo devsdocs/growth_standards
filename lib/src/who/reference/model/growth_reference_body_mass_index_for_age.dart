@@ -6,12 +6,12 @@ class GrowthReferenceBodyMassIndexForAgeData {
       : _data = (json.decode(_bmi5yo) as Map<String, dynamic>).map(
           (k1, v1) => MapEntry(
             k1,
-            GrowthReferenceBodyMassIndexForAgeGender(
+            _GrowthReferenceBodyMassIndexForAgeGender(
               ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
                 v2 as Map<String, dynamic>;
                 return MapEntry(
                   k2,
-                  GrowthReferenceBodyMassIndexForAgeLMS(
+                  _GrowthReferenceBodyMassIndexForAgeLMS(
                     lms: (l: v2['l'], m: v2['m'], s: v2['s']),
                   ),
                 );
@@ -22,7 +22,7 @@ class GrowthReferenceBodyMassIndexForAgeData {
 
   static final _singleton = GrowthReferenceBodyMassIndexForAgeData._();
 
-  final Map<String, GrowthReferenceBodyMassIndexForAgeGender> _data;
+  final Map<String, _GrowthReferenceBodyMassIndexForAgeGender> _data;
 }
 
 class GrowthReferenceBodyMassIndexMeasurement {
@@ -47,37 +47,34 @@ class GrowthReferenceBodyMassIndexMeasurement {
   final num value;
 }
 
-class GrowthReferenceBodyMassIndexForAge {
-  GrowthReferenceBodyMassIndexForAge({
+@freezed
+class GrowthReferenceBodyMassIndexForAge
+    with _$GrowthReferenceBodyMassIndexForAge {
+  @Assert(
+    'age.ageInTotalMonthsByNow >= 61 && age.ageInTotalMonthsByNow <= 228',
+    'Age must be in range of 61 - 228 months',
+  )
+  factory GrowthReferenceBodyMassIndexForAge({
+    Date? observationDate,
     required Sex sex,
     required Age age,
     required GrowthReferenceBodyMassIndexMeasurement bodyMassIndexMeasurement,
     required GrowthReferenceBodyMassIndexForAgeData bodyMassIndexData,
-  })  : _bodyMassIndexMeasurement = bodyMassIndexMeasurement,
-        _sex = sex,
-        _age = age,
-        _mapGender = bodyMassIndexData._data {
-    if (!(_age.ageInTotalMonthsByNow >= 61 &&
-        _age.ageInTotalMonthsByNow <= 228)) {
-      throw Exception('Age must be in range of 61 - 228 months');
-    }
-  }
+  }) = _GrowthReferenceBodyMassIndexForAge;
 
-  final Sex _sex;
-  final Age _age;
-  final GrowthReferenceBodyMassIndexMeasurement _bodyMassIndexMeasurement;
+  const GrowthReferenceBodyMassIndexForAge._();
 
-  final Map<String, GrowthReferenceBodyMassIndexForAgeGender> _mapGender;
+  _GrowthReferenceBodyMassIndexForAgeGender get _maleData =>
+      bodyMassIndexData._data['1']!;
+  _GrowthReferenceBodyMassIndexForAgeGender get _femaleData =>
+      bodyMassIndexData._data['2']!;
 
-  GrowthReferenceBodyMassIndexForAgeGender get _maleData => _mapGender['1']!;
-  GrowthReferenceBodyMassIndexForAgeGender get _femaleData => _mapGender['2']!;
-
-  GrowthReferenceBodyMassIndexForAgeLMS get _ageData =>
-      (_sex == Sex.male ? _maleData : _femaleData)
-          .ageData[_age.ageInTotalMonthsByNow.toString()]!;
+  _GrowthReferenceBodyMassIndexForAgeLMS get _ageData =>
+      (sex == Sex.male ? _maleData : _femaleData)
+          .ageData[age.ageInTotalMonthsByNow.toString()]!;
 
   num get _zScore => adjustedZScore(
-        y: _bodyMassIndexMeasurement.value,
+        y: bodyMassIndexMeasurement.value,
         l: _ageData.lms.l,
         m: _ageData.lms.m,
         s: _ageData.lms.s,
@@ -88,12 +85,12 @@ class GrowthReferenceBodyMassIndexForAge {
   num get percentile => zScoreToPercentile(_zScore).toDouble().toPrecision(2);
 }
 
-class GrowthReferenceBodyMassIndexForAgeGender {
-  GrowthReferenceBodyMassIndexForAgeGender({required this.ageData});
-  final Map<String, GrowthReferenceBodyMassIndexForAgeLMS> ageData;
+class _GrowthReferenceBodyMassIndexForAgeGender {
+  _GrowthReferenceBodyMassIndexForAgeGender({required this.ageData});
+  final Map<String, _GrowthReferenceBodyMassIndexForAgeLMS> ageData;
 }
 
-class GrowthReferenceBodyMassIndexForAgeLMS {
-  GrowthReferenceBodyMassIndexForAgeLMS({required this.lms});
+class _GrowthReferenceBodyMassIndexForAgeLMS {
+  _GrowthReferenceBodyMassIndexForAgeLMS({required this.lms});
   final LMS lms;
 }

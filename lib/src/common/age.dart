@@ -1,32 +1,22 @@
-import 'dart:convert';
-
-import 'package:boilerplate_annotations/boilerplate_annotations.dart';
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:growth_standards/src/common/typedef.dart';
 import 'package:growth_standards/src/common/types.dart';
 
+part 'age.freezed.dart';
 part 'age.g.dart';
 
 Months _monthFromNumber(int number) =>
     Months.values.singleWhere((element) => element.number == number);
 
-@copyWith
-@props
-class Age extends Equatable {
-  Age(this.dateOfBirth) {
-    final now = DateTime.now();
-    if (DateTime(now.year, now.month, now.day)
-        .difference(
-          DateTime(
-            dateOfBirth.year,
-            dateOfBirth.month.number,
-            dateOfBirth.date,
-          ),
-        )
-        .isNegative) {
-      throw Exception('Age is impossible');
-    }
-  }
+@freezed
+class Age with _$Age {
+  @Assert(
+    '!(DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day).difference(DateTime(dateOfBirth.year,dateOfBirth.month.number,dateOfBirth.date,),).isNegative)',
+    'Age is impossible',
+  )
+  factory Age(Date dateOfBirth) = _Age;
+
+  const Age._();
 
   factory Age.byYearsAgo(int years) => Age(Date.yearsAgoByNow(years));
 
@@ -36,11 +26,7 @@ class Age extends Equatable {
 
   factory Age.byDate(Date date) => Age(date);
 
-  factory Age.fromJson(String age) =>
-      Age.fromMap(json.decode(age) as Map<String, dynamic>);
-
-  factory Age.fromMap(Map<String, dynamic> map) =>
-      Age.byDate(Date.fromMap(map['birthday'] as Map<String, dynamic>));
+  factory Age.fromJson(Map<String, dynamic> json) => _$AgeFromJson(json);
 
   _TimeIntervalCount get _dobCount => _TimeIntervalCount(
         dateOfBirth.year,
@@ -48,9 +34,7 @@ class Age extends Equatable {
         dateOfBirth.date,
       );
 
-  _Age get _ageNowIn => _dobCount.ageNow;
-
-  final Date dateOfBirth;
+  _AgeInternal get _ageNowIn => _dobCount.ageNow;
 
   YearsMonthsDays get yearsMonthsDaysOfAge =>
       (years: _ageNowIn.years, months: _ageNowIn.months, days: _ageNowIn.days);
@@ -79,32 +63,25 @@ class Age extends Equatable {
       ),
     );
   }
-
-  Map<String, dynamic> toMap() => {'birthday': dateOfBirth.toMap()};
-
-  String toJson() => json.encode(toMap());
-
-  @override
-  // TODO: implement props
-  List<Object?> get props => _$AgeProps(this);
 }
 
-@copyWith
-@props
-class Date extends Equatable implements Comparable<Date> {
-  Date({required this.year, required this.month, required this.date}) {
-    if (year < 1 || date < 1 || date > 31) {
-      throw Exception(
-        'Date impossible, use ${Date.fromDateTime} for safety, in cost of increased risk of wrong growth calculation',
-      );
-    }
-    final datesInMonth = _TimeTools.datesInMonth(year, month.number);
-    if (date > datesInMonth) {
-      throw Exception(
-        'Date exceeded, max date is at $datesInMonth in ${month.text} $year',
-      );
-    }
-  }
+@freezed
+class Date with _$Date implements Comparable<Date> {
+  @Assert(
+    'year > 0 || date > 0 || date < 32',
+    'Date impossible, use \${Date.fromDateTime} for safety, in cost of increased risk of wrong growth calculation',
+  )
+  @Assert(
+    'date <= _TimeTools.datesInMonth(year, month.number)',
+    'Date exceeded, max date is at \${_TimeTools.datesInMonth(year, month.number)} in \${month.text} \$year',
+  )
+  factory Date({
+    required int year,
+    required Months month,
+    required int date,
+  }) = _Date;
+
+  const Date._();
 
   factory Date.daysAgoByNow(int days) {
     final calc = _TimeTools.calculateBirthDateInDaysBeforeByNow(days);
@@ -141,26 +118,7 @@ class Date extends Equatable implements Comparable<Date> {
         date: dateTime.day,
       );
 
-  factory Date.fromJson(String date) =>
-      Date.fromMap(json.decode(date) as Map<String, dynamic>);
-
-  factory Date.fromMap(Map<String, dynamic> date) => Date(
-        year: date['year'] as int,
-        month: _monthFromNumber(date['month'] as int),
-        date: date['date'] as int,
-      );
-
-  final int year;
-  final Months month;
-  final int date;
-
-  Map<String, dynamic> toMap() => {
-        'year': year,
-        'month': month.number,
-        'date': date,
-      };
-
-  String toJson() => json.encode(toMap());
+  factory Date.fromJson(Map<String, dynamic> json) => _$DateFromJson(json);
 
   @override
   bool operator ==(Object other) =>
@@ -240,12 +198,6 @@ class Date extends Equatable implements Comparable<Date> {
     if (this == other) return 0;
     return this > other ? 1 : -1;
   }
-
-  @override
-  String toString() => 'Date($date ${month.text} $year)';
-
-  @override
-  List<Object?> get props => _$DateProps(this);
 }
 
 class _TimeTools {
@@ -384,7 +336,7 @@ class _TimeIntervalCount {
 
   final DateTime dob;
 
-  _Age timeDifference({
+  _AgeInternal timeDifference({
     required DateTime fromDate,
     required DateTime toDate,
   }) {
@@ -455,7 +407,7 @@ class _TimeIntervalCount {
       minutes = endDate.minute - fromDate.minute;
     }
 
-    return _Age(
+    return _AgeInternal(
       days: days,
       months: months,
       years: years,
@@ -467,7 +419,7 @@ class _TimeIntervalCount {
   /// add method
   DateTime add({
     required DateTime date,
-    required _Age duration,
+    required _AgeInternal duration,
   }) {
     int years = date.year + duration.years;
     years += (date.month + duration.months) ~/ DateTime.monthsPerYear;
@@ -478,27 +430,27 @@ class _TimeIntervalCount {
     return DateTime(years, months).add(Duration(days: days));
   }
 
-  _Age ageAtDate(DateTime day) => timeDifference(
+  _AgeInternal ageAtDate(DateTime day) => timeDifference(
         fromDate: dob,
         toDate: day,
       );
 
-  _Age get ageNow => ageAtDate(DateTime.now());
-  _Age get timeUntilNextBirthdayFromNow =>
+  _AgeInternal get ageNow => ageAtDate(DateTime.now());
+  _AgeInternal get timeUntilNextBirthdayFromNow =>
       timeUntilNextBirthday(DateTime.now());
 
-  _Age timeUntilNextBirthday(DateTime fromDate) {
+  _AgeInternal timeUntilNextBirthday(DateTime fromDate) {
     final DateTime endDate = fromDate;
     final DateTime tempDate = DateTime(endDate.year, dob.month, dob.day);
     final DateTime nextBirthdayDate = tempDate.isBefore(endDate)
-        ? add(date: tempDate, duration: _Age(years: 1))
+        ? add(date: tempDate, duration: _AgeInternal(years: 1))
         : tempDate;
     return timeDifference(fromDate: endDate, toDate: nextBirthdayDate);
   }
 }
 
-class _Age {
-  _Age({
+class _AgeInternal {
+  _AgeInternal({
     this.days = 0,
     this.months = 0,
     this.years = 0,
