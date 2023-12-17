@@ -2,24 +2,25 @@ part of '../standard.dart';
 
 class WeightForAgeData {
   factory WeightForAgeData() => _singleton;
-  WeightForAgeData._()
-      : _data = (json.decode(_weianthro) as Map<String, dynamic>).map(
-          (k1, v1) => MapEntry(
-            k1,
-            _WeightForAgeGender(
-              ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
-                v2 as Map<String, dynamic>;
-                return MapEntry(
-                  k2,
-                  _WeightForAgeLMS(lms: (l: v2['l'], m: v2['m'], s: v2['s'])),
-                );
-              }),
-            ),
+  WeightForAgeData._(this._data);
+
+  static final _singleton = WeightForAgeData._(_parse());
+
+  static Map<String, _WeightForAgeGender> _parse() =>
+      (json.decode(_weianthro) as Map<String, dynamic>).map(
+        (k1, v1) => MapEntry(
+          k1,
+          _WeightForAgeGender(
+            ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
+              v2 as Map<String, dynamic>;
+              return MapEntry(
+                k2,
+                _WeightForAgeLMS(lms: (l: v2['l'], m: v2['m'], s: v2['s'])),
+              );
+            }),
           ),
-        );
-
-  static final _singleton = WeightForAgeData._();
-
+        ),
+      );
   final Map<String, _WeightForAgeGender> _data;
 }
 
@@ -33,14 +34,18 @@ class WeightForAge with _$WeightForAge {
     Date? observationDate,
     required Sex sex,
     required Age age,
-    required Mass weight,
-    required WeightForAgeData weightForAgeData,
+    @MassConverter() required Mass weight,
   }) = _WeightForAge;
 
   const WeightForAge._();
 
-  _WeightForAgeGender get _maleData => weightForAgeData._data['1']!;
-  _WeightForAgeGender get _femaleData => weightForAgeData._data['2']!;
+  factory WeightForAge.fromJson(Map<String, dynamic> json) =>
+      _$WeightForAgeFromJson(json);
+
+  WeightForAgeData get _weightForAgeData => WeightForAgeData();
+
+  _WeightForAgeGender get _maleData => _weightForAgeData._data['1']!;
+  _WeightForAgeGender get _femaleData => _weightForAgeData._data['2']!;
 
   _WeightForAgeLMS get _ageData => (sex == Sex.male ? _maleData : _femaleData)
       .ageData[_ageAtObservationDate.ageInTotalDaysByNow.toString()]!;

@@ -2,29 +2,30 @@ part of '../standard.dart';
 
 class WeightForHeightData {
   factory WeightForHeightData() => _singleton;
-  WeightForHeightData._()
-      : _data = (json.decode(_wfhanthro) as Map<String, dynamic>).map(
-          (k1, v1) => MapEntry(
-            k1,
-            _WeightForHeightGender(
-              heightData: (v1 as Map<String, dynamic>).map((k2, v2) {
-                v2 as Map<String, dynamic>;
-                return MapEntry(
-                  k2,
-                  _WeightForHeightLMS(
-                    lms: (l: v2['l'], m: v2['m'], s: v2['s']),
-                    lorh: v2['lorh'].toString().toLowerCase() == 'l'
-                        ? LengthHeigthMeasurementPosition.recumbent
-                        : LengthHeigthMeasurementPosition.standing,
-                  ),
-                );
-              }),
-            ),
+  WeightForHeightData._(this._data);
+
+  static final _singleton = WeightForHeightData._(_parse());
+
+  static Map<String, _WeightForHeightGender> _parse() =>
+      (json.decode(_wfhanthro) as Map<String, dynamic>).map(
+        (k1, v1) => MapEntry(
+          k1,
+          _WeightForHeightGender(
+            heightData: (v1 as Map<String, dynamic>).map((k2, v2) {
+              v2 as Map<String, dynamic>;
+              return MapEntry(
+                k2,
+                _WeightForHeightLMS(
+                  lms: (l: v2['l'], m: v2['m'], s: v2['s']),
+                  lorh: v2['lorh'].toString().toLowerCase() == 'l'
+                      ? LengthHeigthMeasurementPosition.recumbent
+                      : LengthHeigthMeasurementPosition.standing,
+                ),
+              );
+            }),
           ),
-        );
-
-  static final _singleton = WeightForHeightData._();
-
+        ),
+      );
   final Map<String, _WeightForHeightGender> _data;
 }
 
@@ -44,13 +45,15 @@ class WeightForHeight with _$WeightForHeight {
     Date? observationDate,
     required Sex sex,
     required Age age,
-    required Length height,
-    required Mass mass,
+    @LengthConverter() required Length height,
+    @MassConverter() required Mass weight,
     required LengthHeigthMeasurementPosition measure,
-    required WeightForHeightData weightForHeightData,
   }) = _WeightForHeight;
 
   const WeightForHeight._();
+
+  factory WeightForHeight.fromJson(Map<String, dynamic> json) =>
+      _$WeightForHeightFromJson(json);
 
   num get _adjustedHeight => adjustedLengthHeight(
         measure: measure,
@@ -58,15 +61,17 @@ class WeightForHeight with _$WeightForHeight {
         lengthHeight: height.toCentimeters.value!,
       );
 
-  _WeightForHeightGender get _maleData => weightForHeightData._data['1']!;
-  _WeightForHeightGender get _femaleData => weightForHeightData._data['2']!;
+  WeightForHeightData get _weightForHeightData => WeightForHeightData();
+
+  _WeightForHeightGender get _maleData => _weightForHeightData._data['1']!;
+  _WeightForHeightGender get _femaleData => _weightForHeightData._data['2']!;
 
   _WeightForHeightLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)
           .heightData[_adjustedHeight.toDouble().toPrecision(1).toString()]!;
 
   num get _zScore => adjustedZScore(
-        y: mass.toKilograms.value!,
+        y: weight.toKilograms.value!,
         l: _ageData.lms.l,
         m: _ageData.lms.m,
         s: _ageData.lms.s,

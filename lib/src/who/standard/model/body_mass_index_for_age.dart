@@ -2,38 +2,60 @@ part of '../standard.dart';
 
 class BodyMassIndexForAgeData {
   factory BodyMassIndexForAgeData() => _singleton;
-  BodyMassIndexForAgeData._()
-      : _data = (json.decode(_bmianthro) as Map<String, dynamic>).map(
-          (k1, v1) => MapEntry(
-            k1,
-            _BodyMassIndexForAgeGender(
-              ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
-                v2 as Map<String, dynamic>;
-                return MapEntry(
-                  k2,
-                  _BodyMassIndexForAgeLMS(
-                    lms: (l: v2['l'], m: v2['m'], s: v2['s']),
-                    loh: v2['loh'].toString().toLowerCase() == 'l'
-                        ? LengthHeigthMeasurementPosition.recumbent
-                        : LengthHeigthMeasurementPosition.standing,
-                  ),
-                );
-              }),
-            ),
-          ),
-        );
+  const BodyMassIndexForAgeData._(this._data);
 
-  static final _singleton = BodyMassIndexForAgeData._();
+  static final _singleton = BodyMassIndexForAgeData._(_parse());
+
+  static Map<String, _BodyMassIndexForAgeGender> _parse() =>
+      (json.decode(_bmianthro) as Map<String, dynamic>).map(
+        (k1, v1) => MapEntry(
+          k1,
+          _BodyMassIndexForAgeGender(
+            ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
+              v2 as Map<String, dynamic>;
+              return MapEntry(
+                k2,
+                _BodyMassIndexForAgeLMS(
+                  lms: (l: v2['l'], m: v2['m'], s: v2['s']),
+                  loh: v2['loh'].toString().toLowerCase() == 'l'
+                      ? LengthHeigthMeasurementPosition.recumbent
+                      : LengthHeigthMeasurementPosition.standing,
+                ),
+              );
+            }),
+          ),
+        ),
+      );
 
   final Map<String, _BodyMassIndexForAgeGender> _data;
 }
 
-class BodyMassIndexMeasurement {
-  const BodyMassIndexMeasurement._(this.value, {required this.age});
+class BodyMassIndexMeasurementConverter
+    implements JsonConverter<BodyMassIndexMeasurement, Map<String, dynamic>> {
+  const BodyMassIndexMeasurementConverter();
+  @override
+  BodyMassIndexMeasurement fromJson(Map<String, dynamic> json) =>
+      BodyMassIndexMeasurement(
+        json['value'] as num,
+        age: Age.fromJson(
+          json['age'] as Map<String, dynamic>,
+        ),
+      );
+
+  @override
+  Map<String, dynamic> toJson(BodyMassIndexMeasurement object) =>
+      {'value': object.value, 'age': object.age.toJson()};
+}
+
+@freezed
+class BodyMassIndexMeasurement with _$BodyMassIndexMeasurement {
+  factory BodyMassIndexMeasurement(num value, {required Age age}) =
+      _BodyMassIndexMeasurement;
+  const BodyMassIndexMeasurement._();
 
   factory BodyMassIndexMeasurement.fromMeasurement({
-    required Length lengthHeight,
-    required Mass weight,
+    @LengthConverter() required Length lengthHeight,
+    @MassConverter() required Mass weight,
     required LengthHeigthMeasurementPosition measure,
     required Age age,
   }) {
@@ -49,15 +71,11 @@ class BodyMassIndexMeasurement {
     );
     final toKg = weight.toKilograms.value!;
 
-    return BodyMassIndexMeasurement._(toKg / toMeterSquare, age: age);
+    return BodyMassIndexMeasurement(toKg / toMeterSquare, age: age);
   }
 
   factory BodyMassIndexMeasurement.fromValue(num value, {required Age age}) =>
-      BodyMassIndexMeasurement._(value, age: age);
-
-  final num value;
-
-  final Age age;
+      BodyMassIndexMeasurement(value, age: age);
 }
 
 @freezed
@@ -69,14 +87,19 @@ class BodyMassIndexForAge with _$BodyMassIndexForAge {
   factory BodyMassIndexForAge({
     Date? observationDate,
     required Sex sex,
+    @BodyMassIndexMeasurementConverter()
     required BodyMassIndexMeasurement bodyMassIndexMeasurement,
-    required BodyMassIndexForAgeData bodyMassIndexData,
   }) = _BodyMassIndexForAge;
 
   const BodyMassIndexForAge._();
 
-  _BodyMassIndexForAgeGender get _maleData => bodyMassIndexData._data['1']!;
-  _BodyMassIndexForAgeGender get _femaleData => bodyMassIndexData._data['2']!;
+  factory BodyMassIndexForAge.fromJson(Map<String, dynamic> json) =>
+      _$BodyMassIndexForAgeFromJson(json);
+
+  BodyMassIndexForAgeData get _bodyMassIndexData => BodyMassIndexForAgeData();
+
+  _BodyMassIndexForAgeGender get _maleData => _bodyMassIndexData._data['1']!;
+  _BodyMassIndexForAgeGender get _femaleData => _bodyMassIndexData._data['2']!;
 
   _BodyMassIndexForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)

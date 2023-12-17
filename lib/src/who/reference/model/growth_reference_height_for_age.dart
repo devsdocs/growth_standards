@@ -2,26 +2,27 @@ part of '../reference.dart';
 
 class GrowthReferenceHeightForAgeData {
   factory GrowthReferenceHeightForAgeData() => _singleton;
-  GrowthReferenceHeightForAgeData._()
-      : _data = (json.decode(_hfa5yo) as Map<String, dynamic>).map(
-          (k1, v1) => MapEntry(
-            k1,
-            _GrowthReferenceHeightForAgeGender(
-              ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
-                v2 as Map<String, dynamic>;
-                return MapEntry(
-                  k2,
-                  _GrowthReferenceHeightForAgeLMS(
-                    lms: (l: v2['l'], m: v2['m'], s: v2['s']),
-                  ),
-                );
-              }),
-            ),
+const   GrowthReferenceHeightForAgeData._(this._data);
+
+  static final _singleton = GrowthReferenceHeightForAgeData._(_parse());
+
+  static Map<String, _GrowthReferenceHeightForAgeGender> _parse() =>
+      (json.decode(_hfa5yo) as Map<String, dynamic>).map(
+        (k1, v1) => MapEntry(
+          k1,
+          _GrowthReferenceHeightForAgeGender(
+            ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
+              v2 as Map<String, dynamic>;
+              return MapEntry(
+                k2,
+                _GrowthReferenceHeightForAgeLMS(
+                  lms: (l: v2['l'], m: v2['m'], s: v2['s']),
+                ),
+              );
+            }),
           ),
-        );
-
-  static final _singleton = GrowthReferenceHeightForAgeData._();
-
+        ),
+      );
   final Map<String, _GrowthReferenceHeightForAgeGender> _data;
 }
 
@@ -32,19 +33,20 @@ class GrowthReferenceHeightForAge with _$GrowthReferenceHeightForAge {
     'Age must be in range of 61 - 228 months',
   )
   factory GrowthReferenceHeightForAge({
-   Date? observationDate,
-  required Sex sex,
-  required Age age,
-  required Length lengthHeight,
-  required GrowthReferenceHeightForAgeData lengthForAgeData,
+    Date? observationDate,
+    required Sex sex,
+    required Age age,
+    @LengthConverter()  required Length lengthHeight,
   }) = _GrowthReferenceHeightForAge;
 
-const GrowthReferenceHeightForAge._();
+  const GrowthReferenceHeightForAge._();
+  GrowthReferenceHeightForAgeData get _lengthForAgeData =>
+      GrowthReferenceHeightForAgeData();
 
   _GrowthReferenceHeightForAgeGender get _maleData =>
-      lengthForAgeData._data['1']!;
+      _lengthForAgeData._data['1']!;
   _GrowthReferenceHeightForAgeGender get _femaleData =>
-      lengthForAgeData._data['2']!;
+      _lengthForAgeData._data['2']!;
 
   _GrowthReferenceHeightForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)

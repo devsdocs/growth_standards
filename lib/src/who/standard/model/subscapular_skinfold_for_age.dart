@@ -2,25 +2,27 @@ part of '../standard.dart';
 
 class SubscapularSkinfoldForAgeData {
   factory SubscapularSkinfoldForAgeData() => _singleton;
-  SubscapularSkinfoldForAgeData._()
-      : _data = (json.decode(_ssanthro) as Map<String, dynamic>).map(
-          (k1, v1) => MapEntry(
-            k1,
-            _SubscapularSkinfoldAgeGender(
-              ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
-                v2 as Map<String, dynamic>;
-                return MapEntry(
-                  k2,
-                  _SubscapularSkinfoldForAgeLMS(
-                    lms: (l: v2['l'], m: v2['m'], s: v2['s']),
-                  ),
-                );
-              }),
-            ),
-          ),
-        );
+  SubscapularSkinfoldForAgeData._(this._data);
 
-  static final _singleton = SubscapularSkinfoldForAgeData._();
+  static final _singleton = SubscapularSkinfoldForAgeData._(_parse());
+
+  static Map<String, _SubscapularSkinfoldAgeGender> _parse() =>
+      (json.decode(_ssanthro) as Map<String, dynamic>).map(
+        (k1, v1) => MapEntry(
+          k1,
+          _SubscapularSkinfoldAgeGender(
+            ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
+              v2 as Map<String, dynamic>;
+              return MapEntry(
+                k2,
+                _SubscapularSkinfoldForAgeLMS(
+                  lms: (l: v2['l'], m: v2['m'], s: v2['s']),
+                ),
+              );
+            }),
+          ),
+        ),
+      );
 
   final Map<String, _SubscapularSkinfoldAgeGender> _data;
 }
@@ -35,16 +37,21 @@ class SubscapularSkinfoldForAge with _$SubscapularSkinfoldForAge {
     Date? observationDate,
     required Sex sex,
     required Age age,
-    required Length measurementResult,
-    required SubscapularSkinfoldForAgeData subscapularSkinfoldData,
+    @LengthConverter() required Length measurementResult,
   }) = _SubscapularSkinfoldForAge;
 
   const SubscapularSkinfoldForAge._();
 
+  factory SubscapularSkinfoldForAge.fromJson(Map<String, dynamic> json) =>
+      _$SubscapularSkinfoldForAgeFromJson(json);
+
+  SubscapularSkinfoldForAgeData get _subscapularSkinfoldData =>
+      SubscapularSkinfoldForAgeData();
+
   _SubscapularSkinfoldAgeGender get _maleData =>
-      subscapularSkinfoldData._data['1']!;
+      _subscapularSkinfoldData._data['1']!;
   _SubscapularSkinfoldAgeGender get _femaleData =>
-      subscapularSkinfoldData._data['2']!;
+      _subscapularSkinfoldData._data['2']!;
 
   _SubscapularSkinfoldForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)

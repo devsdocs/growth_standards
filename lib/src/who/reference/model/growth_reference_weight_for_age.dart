@@ -2,26 +2,27 @@ part of '../reference.dart';
 
 class GrowthReferenceWeightForAgeData {
   factory GrowthReferenceWeightForAgeData() => _singleton;
-  GrowthReferenceWeightForAgeData._()
-      : _data = (json.decode(_wfa5yo) as Map<String, dynamic>).map(
-          (k1, v1) => MapEntry(
-            k1,
-            _GrowthReferenceWeightForAgeGender(
-              ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
-                v2 as Map<String, dynamic>;
-                return MapEntry(
-                  k2,
-                  _GrowthReferenceWeightForAgeLMS(
-                    lms: (l: v2['l'], m: v2['m'], s: v2['s']),
-                  ),
-                );
-              }),
-            ),
+  const GrowthReferenceWeightForAgeData._(this._data);
+
+  static final _singleton = GrowthReferenceWeightForAgeData._(_parse());
+
+  static Map<String, _GrowthReferenceWeightForAgeGender> _parse() =>
+      (json.decode(_wfa5yo) as Map<String, dynamic>).map(
+        (k1, v1) => MapEntry(
+          k1,
+          _GrowthReferenceWeightForAgeGender(
+            ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
+              v2 as Map<String, dynamic>;
+              return MapEntry(
+                k2,
+                _GrowthReferenceWeightForAgeLMS(
+                  lms: (l: v2['l'], m: v2['m'], s: v2['s']),
+                ),
+              );
+            }),
           ),
-        );
-
-  static final _singleton = GrowthReferenceWeightForAgeData._();
-
+        ),
+      );
   final Map<String, _GrowthReferenceWeightForAgeGender> _data;
 }
 
@@ -35,16 +36,18 @@ class GrowthReferenceWeightForAge with _$GrowthReferenceWeightForAge {
     Date? observationDate,
     required Sex sex,
     required Age age,
-    required Mass weight,
-    required GrowthReferenceWeightForAgeData weightForAgeData,
+    @MassConverter() required Mass weight,
   }) = _GrowthReferenceWeightForAge;
 
   const GrowthReferenceWeightForAge._();
 
+  GrowthReferenceWeightForAgeData get _weightForAgeData =>
+      GrowthReferenceWeightForAgeData();
+
   _GrowthReferenceWeightForAgeGender get _maleData =>
-      weightForAgeData._data['1']!;
+      _weightForAgeData._data['1']!;
   _GrowthReferenceWeightForAgeGender get _femaleData =>
-      weightForAgeData._data['2']!;
+      _weightForAgeData._data['2']!;
 
   _GrowthReferenceWeightForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)

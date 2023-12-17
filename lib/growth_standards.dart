@@ -15,7 +15,7 @@ export 'package:super_measurement/super_measurement.dart'
         Mass,
         MassUnit,
         Meters,
-        Millemeters,
+        Millimeters,
         NumOfLength,
         NumOfMass,
         Ounces,

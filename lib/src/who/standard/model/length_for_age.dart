@@ -2,28 +2,29 @@ part of '../standard.dart';
 
 class LengthForAgeData {
   factory LengthForAgeData() => _singleton;
-  LengthForAgeData._()
-      : _data = (json.decode(_lenanthro) as Map<String, dynamic>).map(
-          (k1, v1) => MapEntry(
-            k1,
-            _LengthForAgeGender(
-              ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
-                v2 as Map<String, dynamic>;
-                return MapEntry(
-                  k2,
-                  _LengthForAgeLMS(
-                    lms: (l: v2['l'], m: v2['m'], s: v2['s']),
-                    loh: v2['loh'].toString().toLowerCase() == 'l'
-                        ? LengthHeigthMeasurementPosition.recumbent
-                        : LengthHeigthMeasurementPosition.standing,
-                  ),
-                );
-              }),
-            ),
-          ),
-        );
-  static final _singleton = LengthForAgeData._();
+  LengthForAgeData._(this._data);
+  static final _singleton = LengthForAgeData._(_parse());
 
+  static Map<String, _LengthForAgeGender> _parse() =>
+      (json.decode(_lenanthro) as Map<String, dynamic>).map(
+        (k1, v1) => MapEntry(
+          k1,
+          _LengthForAgeGender(
+            ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
+              v2 as Map<String, dynamic>;
+              return MapEntry(
+                k2,
+                _LengthForAgeLMS(
+                  lms: (l: v2['l'], m: v2['m'], s: v2['s']),
+                  loh: v2['loh'].toString().toLowerCase() == 'l'
+                      ? LengthHeigthMeasurementPosition.recumbent
+                      : LengthHeigthMeasurementPosition.standing,
+                ),
+              );
+            }),
+          ),
+        ),
+      );
   final Map<String, _LengthForAgeGender> _data;
 }
 
@@ -37,15 +38,19 @@ class LengthForAge with _$LengthForAge {
     Date? observationDate,
     required Sex sex,
     required Age age,
-    required Length lengthHeight,
+    @LengthConverter() required Length lengthHeight,
     required LengthHeigthMeasurementPosition measure,
-    required LengthForAgeData lengthForAgeData,
   }) = _LengthForAge;
 
   const LengthForAge._();
 
-  _LengthForAgeGender get _maleData => lengthForAgeData._data['1']!;
-  _LengthForAgeGender get _femaleData => lengthForAgeData._data['2']!;
+  factory LengthForAge.fromJson(Map<String, dynamic> json) =>
+      _$LengthForAgeFromJson(json);
+
+  LengthForAgeData get _lengthForAgeData => LengthForAgeData();
+
+  _LengthForAgeGender get _maleData => _lengthForAgeData._data['1']!;
+  _LengthForAgeGender get _femaleData => _lengthForAgeData._data['2']!;
 
   _LengthForAgeLMS get _ageData => (sex == Sex.male ? _maleData : _femaleData)
       .ageData[_ageAtObservationDate.ageInTotalDaysByNow.toString()]!;

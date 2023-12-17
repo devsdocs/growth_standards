@@ -2,25 +2,27 @@ part of '../standard.dart';
 
 class HeadCircumferenceForAgeData {
   factory HeadCircumferenceForAgeData() => _singleton;
-  HeadCircumferenceForAgeData._()
-      : _data = (json.decode(_hcanthro) as Map<String, dynamic>).map(
-          (k1, v1) => MapEntry(
-            k1,
-            _HeadCircumferenceForAgeGender(
-              ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
-                v2 as Map<String, dynamic>;
-                return MapEntry(
-                  k2,
-                  _HeadCircumferenceForAgeLMS(
-                    lms: (l: v2['l'], m: v2['m'], s: v2['s']),
-                  ),
-                );
-              }),
-            ),
-          ),
-        );
+  HeadCircumferenceForAgeData._(this._data);
 
-  static final _singleton = HeadCircumferenceForAgeData._();
+  static final _singleton = HeadCircumferenceForAgeData._(_parse());
+
+  static Map<String, _HeadCircumferenceForAgeGender> _parse() =>
+      (json.decode(_hcanthro) as Map<String, dynamic>).map(
+        (k1, v1) => MapEntry(
+          k1,
+          _HeadCircumferenceForAgeGender(
+            ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
+              v2 as Map<String, dynamic>;
+              return MapEntry(
+                k2,
+                _HeadCircumferenceForAgeLMS(
+                  lms: (l: v2['l'], m: v2['m'], s: v2['s']),
+                ),
+              );
+            }),
+          ),
+        ),
+      );
 
   final Map<String, _HeadCircumferenceForAgeGender> _data;
 }
@@ -35,16 +37,21 @@ class HeadCircumferenceForAge with _$HeadCircumferenceForAge {
     Date? observationDate,
     required Sex sex,
     required Age age,
-    required Length measurementResult,
-    required HeadCircumferenceForAgeData headCircumferenceData,
+    @LengthConverter() required Length measurementResult,
   }) = _HeadCircumferenceForAge;
 
   const HeadCircumferenceForAge._();
 
+  factory HeadCircumferenceForAge.fromJson(Map<String, dynamic> json) =>
+      _$HeadCircumferenceForAgeFromJson(json);
+
+  HeadCircumferenceForAgeData get _headCircumferenceData =>
+      HeadCircumferenceForAgeData();
+
   _HeadCircumferenceForAgeGender get _maleData =>
-      headCircumferenceData._data['1']!;
+      _headCircumferenceData._data['1']!;
   _HeadCircumferenceForAgeGender get _femaleData =>
-      headCircumferenceData._data['2']!;
+      _headCircumferenceData._data['2']!;
 
   _HeadCircumferenceForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)

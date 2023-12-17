@@ -2,25 +2,27 @@ part of '../standard.dart';
 
 class ArmCircumferenceForAgeData {
   factory ArmCircumferenceForAgeData() => _singleton;
-  ArmCircumferenceForAgeData._()
-      : _data = (json.decode(_acanthro) as Map<String, dynamic>).map(
-          (k1, v1) => MapEntry(
-            k1,
-            _ArmCircumferenceForAgeGender(
-              ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
-                v2 as Map<String, dynamic>;
-                return MapEntry(
-                  k2,
-                  _ArmCircumferenceForAgeLMS(
-                    lms: (l: v2['l'], m: v2['m'], s: v2['s']),
-                  ),
-                );
-              }),
-            ),
-          ),
-        );
+  const ArmCircumferenceForAgeData._(this._data);
 
-  static final _singleton = ArmCircumferenceForAgeData._();
+  static final _singleton = ArmCircumferenceForAgeData._(_parse());
+
+  static  Map<String, _ArmCircumferenceForAgeGender> _parse() =>
+      (json.decode(_acanthro) as Map<String, dynamic>).map(
+        (k1, v1) => MapEntry(
+          k1,
+          _ArmCircumferenceForAgeGender(
+            ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
+              v2 as Map<String, dynamic>;
+              return MapEntry(
+                k2,
+                _ArmCircumferenceForAgeLMS(
+                  lms: (l: v2['l'], m: v2['m'], s: v2['s']),
+                ),
+              );
+            }),
+          ),
+        ),
+      );
 
   final Map<String, _ArmCircumferenceForAgeGender> _data;
 }
@@ -44,8 +46,6 @@ class ArmCircumferenceForAge with _$ArmCircumferenceForAge {
     required Sex sex,
     required Age age,
     @LengthConverter() required Length measurementResult,
-    @JsonKey(includeToJson: false, includeFromJson: false)
-    ArmCircumferenceForAgeData? armCircumferenceData,
   }) = _ArmCircumferenceForAge;
 
   const ArmCircumferenceForAge._();
@@ -54,7 +54,7 @@ class ArmCircumferenceForAge with _$ArmCircumferenceForAge {
       _$ArmCircumferenceForAgeFromJson(json);
 
   ArmCircumferenceForAgeData get _armCircumferenceData =>
-      armCircumferenceData ?? ArmCircumferenceForAgeData();
+      ArmCircumferenceForAgeData();
 
   _ArmCircumferenceForAgeGender get _maleData =>
       _armCircumferenceData._data['1']!;

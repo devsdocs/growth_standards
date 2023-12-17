@@ -14,14 +14,168 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+GrowthReferenceBodyMassIndexMeasurement
+    _$GrowthReferenceBodyMassIndexMeasurementFromJson(
+        Map<String, dynamic> json) {
+  return _GrowthReferenceBodyMassIndexMeasurement.fromJson(json);
+}
+
+/// @nodoc
+mixin _$GrowthReferenceBodyMassIndexMeasurement {
+  num get value => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $GrowthReferenceBodyMassIndexMeasurementCopyWith<
+          GrowthReferenceBodyMassIndexMeasurement>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $GrowthReferenceBodyMassIndexMeasurementCopyWith<$Res> {
+  factory $GrowthReferenceBodyMassIndexMeasurementCopyWith(
+          GrowthReferenceBodyMassIndexMeasurement value,
+          $Res Function(GrowthReferenceBodyMassIndexMeasurement) then) =
+      _$GrowthReferenceBodyMassIndexMeasurementCopyWithImpl<$Res,
+          GrowthReferenceBodyMassIndexMeasurement>;
+  @useResult
+  $Res call({num value});
+}
+
+/// @nodoc
+class _$GrowthReferenceBodyMassIndexMeasurementCopyWithImpl<$Res,
+        $Val extends GrowthReferenceBodyMassIndexMeasurement>
+    implements $GrowthReferenceBodyMassIndexMeasurementCopyWith<$Res> {
+  _$GrowthReferenceBodyMassIndexMeasurementCopyWithImpl(
+      this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_value.copyWith(
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as num,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$GrowthReferenceBodyMassIndexMeasurementImplCopyWith<$Res>
+    implements $GrowthReferenceBodyMassIndexMeasurementCopyWith<$Res> {
+  factory _$$GrowthReferenceBodyMassIndexMeasurementImplCopyWith(
+          _$GrowthReferenceBodyMassIndexMeasurementImpl value,
+          $Res Function(_$GrowthReferenceBodyMassIndexMeasurementImpl) then) =
+      __$$GrowthReferenceBodyMassIndexMeasurementImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({num value});
+}
+
+/// @nodoc
+class __$$GrowthReferenceBodyMassIndexMeasurementImplCopyWithImpl<$Res>
+    extends _$GrowthReferenceBodyMassIndexMeasurementCopyWithImpl<$Res,
+        _$GrowthReferenceBodyMassIndexMeasurementImpl>
+    implements _$$GrowthReferenceBodyMassIndexMeasurementImplCopyWith<$Res> {
+  __$$GrowthReferenceBodyMassIndexMeasurementImplCopyWithImpl(
+      _$GrowthReferenceBodyMassIndexMeasurementImpl _value,
+      $Res Function(_$GrowthReferenceBodyMassIndexMeasurementImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_$GrowthReferenceBodyMassIndexMeasurementImpl(
+      null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as num,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$GrowthReferenceBodyMassIndexMeasurementImpl
+    extends _GrowthReferenceBodyMassIndexMeasurement {
+  _$GrowthReferenceBodyMassIndexMeasurementImpl(this.value) : super._();
+
+  factory _$GrowthReferenceBodyMassIndexMeasurementImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$GrowthReferenceBodyMassIndexMeasurementImplFromJson(json);
+
+  @override
+  final num value;
+
+  @override
+  String toString() {
+    return 'GrowthReferenceBodyMassIndexMeasurement(value: $value)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GrowthReferenceBodyMassIndexMeasurementImpl &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GrowthReferenceBodyMassIndexMeasurementImplCopyWith<
+          _$GrowthReferenceBodyMassIndexMeasurementImpl>
+      get copyWith =>
+          __$$GrowthReferenceBodyMassIndexMeasurementImplCopyWithImpl<
+              _$GrowthReferenceBodyMassIndexMeasurementImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$GrowthReferenceBodyMassIndexMeasurementImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _GrowthReferenceBodyMassIndexMeasurement
+    extends GrowthReferenceBodyMassIndexMeasurement {
+  factory _GrowthReferenceBodyMassIndexMeasurement(final num value) =
+      _$GrowthReferenceBodyMassIndexMeasurementImpl;
+  _GrowthReferenceBodyMassIndexMeasurement._() : super._();
+
+  factory _GrowthReferenceBodyMassIndexMeasurement.fromJson(
+          Map<String, dynamic> json) =
+      _$GrowthReferenceBodyMassIndexMeasurementImpl.fromJson;
+
+  @override
+  num get value;
+  @override
+  @JsonKey(ignore: true)
+  _$$GrowthReferenceBodyMassIndexMeasurementImplCopyWith<
+          _$GrowthReferenceBodyMassIndexMeasurementImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
 /// @nodoc
 mixin _$GrowthReferenceBodyMassIndexForAge {
   Date? get observationDate => throw _privateConstructorUsedError;
   Sex get sex => throw _privateConstructorUsedError;
   Age get age => throw _privateConstructorUsedError;
   GrowthReferenceBodyMassIndexMeasurement get bodyMassIndexMeasurement =>
-      throw _privateConstructorUsedError;
-  GrowthReferenceBodyMassIndexForAgeData get bodyMassIndexData =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -42,11 +196,12 @@ abstract class $GrowthReferenceBodyMassIndexForAgeCopyWith<$Res> {
       {Date? observationDate,
       Sex sex,
       Age age,
-      GrowthReferenceBodyMassIndexMeasurement bodyMassIndexMeasurement,
-      GrowthReferenceBodyMassIndexForAgeData bodyMassIndexData});
+      GrowthReferenceBodyMassIndexMeasurement bodyMassIndexMeasurement});
 
   $DateCopyWith<$Res>? get observationDate;
   $AgeCopyWith<$Res> get age;
+  $GrowthReferenceBodyMassIndexMeasurementCopyWith<$Res>
+      get bodyMassIndexMeasurement;
 }
 
 /// @nodoc
@@ -67,7 +222,6 @@ class _$GrowthReferenceBodyMassIndexForAgeCopyWithImpl<$Res,
     Object? sex = null,
     Object? age = null,
     Object? bodyMassIndexMeasurement = null,
-    Object? bodyMassIndexData = null,
   }) {
     return _then(_value.copyWith(
       observationDate: freezed == observationDate
@@ -86,10 +240,6 @@ class _$GrowthReferenceBodyMassIndexForAgeCopyWithImpl<$Res,
           ? _value.bodyMassIndexMeasurement
           : bodyMassIndexMeasurement // ignore: cast_nullable_to_non_nullable
               as GrowthReferenceBodyMassIndexMeasurement,
-      bodyMassIndexData: null == bodyMassIndexData
-          ? _value.bodyMassIndexData
-          : bodyMassIndexData // ignore: cast_nullable_to_non_nullable
-              as GrowthReferenceBodyMassIndexForAgeData,
     ) as $Val);
   }
 
@@ -112,6 +262,16 @@ class _$GrowthReferenceBodyMassIndexForAgeCopyWithImpl<$Res,
       return _then(_value.copyWith(age: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $GrowthReferenceBodyMassIndexMeasurementCopyWith<$Res>
+      get bodyMassIndexMeasurement {
+    return $GrowthReferenceBodyMassIndexMeasurementCopyWith<$Res>(
+        _value.bodyMassIndexMeasurement, (value) {
+      return _then(_value.copyWith(bodyMassIndexMeasurement: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -127,13 +287,15 @@ abstract class _$$GrowthReferenceBodyMassIndexForAgeImplCopyWith<$Res>
       {Date? observationDate,
       Sex sex,
       Age age,
-      GrowthReferenceBodyMassIndexMeasurement bodyMassIndexMeasurement,
-      GrowthReferenceBodyMassIndexForAgeData bodyMassIndexData});
+      GrowthReferenceBodyMassIndexMeasurement bodyMassIndexMeasurement});
 
   @override
   $DateCopyWith<$Res>? get observationDate;
   @override
   $AgeCopyWith<$Res> get age;
+  @override
+  $GrowthReferenceBodyMassIndexMeasurementCopyWith<$Res>
+      get bodyMassIndexMeasurement;
 }
 
 /// @nodoc
@@ -153,7 +315,6 @@ class __$$GrowthReferenceBodyMassIndexForAgeImplCopyWithImpl<$Res>
     Object? sex = null,
     Object? age = null,
     Object? bodyMassIndexMeasurement = null,
-    Object? bodyMassIndexData = null,
   }) {
     return _then(_$GrowthReferenceBodyMassIndexForAgeImpl(
       observationDate: freezed == observationDate
@@ -172,10 +333,6 @@ class __$$GrowthReferenceBodyMassIndexForAgeImplCopyWithImpl<$Res>
           ? _value.bodyMassIndexMeasurement
           : bodyMassIndexMeasurement // ignore: cast_nullable_to_non_nullable
               as GrowthReferenceBodyMassIndexMeasurement,
-      bodyMassIndexData: null == bodyMassIndexData
-          ? _value.bodyMassIndexData
-          : bodyMassIndexData // ignore: cast_nullable_to_non_nullable
-              as GrowthReferenceBodyMassIndexForAgeData,
     ));
   }
 }
@@ -188,8 +345,7 @@ class _$GrowthReferenceBodyMassIndexForAgeImpl
       {this.observationDate,
       required this.sex,
       required this.age,
-      required this.bodyMassIndexMeasurement,
-      required this.bodyMassIndexData})
+      required this.bodyMassIndexMeasurement})
       : assert(
             age.ageInTotalMonthsByNow >= 61 && age.ageInTotalMonthsByNow <= 228,
             'Age must be in range of 61 - 228 months'),
@@ -203,12 +359,10 @@ class _$GrowthReferenceBodyMassIndexForAgeImpl
   final Age age;
   @override
   final GrowthReferenceBodyMassIndexMeasurement bodyMassIndexMeasurement;
-  @override
-  final GrowthReferenceBodyMassIndexForAgeData bodyMassIndexData;
 
   @override
   String toString() {
-    return 'GrowthReferenceBodyMassIndexForAge(observationDate: $observationDate, sex: $sex, age: $age, bodyMassIndexMeasurement: $bodyMassIndexMeasurement, bodyMassIndexData: $bodyMassIndexData)';
+    return 'GrowthReferenceBodyMassIndexForAge(observationDate: $observationDate, sex: $sex, age: $age, bodyMassIndexMeasurement: $bodyMassIndexMeasurement)';
   }
 
   @override
@@ -222,14 +376,12 @@ class _$GrowthReferenceBodyMassIndexForAgeImpl
             (identical(other.age, age) || other.age == age) &&
             (identical(
                     other.bodyMassIndexMeasurement, bodyMassIndexMeasurement) ||
-                other.bodyMassIndexMeasurement == bodyMassIndexMeasurement) &&
-            (identical(other.bodyMassIndexData, bodyMassIndexData) ||
-                other.bodyMassIndexData == bodyMassIndexData));
+                other.bodyMassIndexMeasurement == bodyMassIndexMeasurement));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, observationDate, sex, age,
-      bodyMassIndexMeasurement, bodyMassIndexData);
+  int get hashCode => Object.hash(
+      runtimeType, observationDate, sex, age, bodyMassIndexMeasurement);
 
   @JsonKey(ignore: true)
   @override
@@ -247,9 +399,7 @@ abstract class _GrowthReferenceBodyMassIndexForAge
       required final Sex sex,
       required final Age age,
       required final GrowthReferenceBodyMassIndexMeasurement
-          bodyMassIndexMeasurement,
-      required final GrowthReferenceBodyMassIndexForAgeData
-          bodyMassIndexData}) = _$GrowthReferenceBodyMassIndexForAgeImpl;
+          bodyMassIndexMeasurement}) = _$GrowthReferenceBodyMassIndexForAgeImpl;
   _GrowthReferenceBodyMassIndexForAge._() : super._();
 
   @override
@@ -260,8 +410,6 @@ abstract class _GrowthReferenceBodyMassIndexForAge
   Age get age;
   @override
   GrowthReferenceBodyMassIndexMeasurement get bodyMassIndexMeasurement;
-  @override
-  GrowthReferenceBodyMassIndexForAgeData get bodyMassIndexData;
   @override
   @JsonKey(ignore: true)
   _$$GrowthReferenceBodyMassIndexForAgeImplCopyWith<
@@ -274,9 +422,8 @@ mixin _$GrowthReferenceHeightForAge {
   Date? get observationDate => throw _privateConstructorUsedError;
   Sex get sex => throw _privateConstructorUsedError;
   Age get age => throw _privateConstructorUsedError;
+  @LengthConverter()
   Length get lengthHeight => throw _privateConstructorUsedError;
-  GrowthReferenceHeightForAgeData get lengthForAgeData =>
-      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $GrowthReferenceHeightForAgeCopyWith<GrowthReferenceHeightForAge>
@@ -295,8 +442,7 @@ abstract class $GrowthReferenceHeightForAgeCopyWith<$Res> {
       {Date? observationDate,
       Sex sex,
       Age age,
-      Length lengthHeight,
-      GrowthReferenceHeightForAgeData lengthForAgeData});
+      @LengthConverter() Length lengthHeight});
 
   $DateCopyWith<$Res>? get observationDate;
   $AgeCopyWith<$Res> get age;
@@ -320,7 +466,6 @@ class _$GrowthReferenceHeightForAgeCopyWithImpl<$Res,
     Object? sex = null,
     Object? age = null,
     Object? lengthHeight = null,
-    Object? lengthForAgeData = null,
   }) {
     return _then(_value.copyWith(
       observationDate: freezed == observationDate
@@ -339,10 +484,6 @@ class _$GrowthReferenceHeightForAgeCopyWithImpl<$Res,
           ? _value.lengthHeight
           : lengthHeight // ignore: cast_nullable_to_non_nullable
               as Length,
-      lengthForAgeData: null == lengthForAgeData
-          ? _value.lengthForAgeData
-          : lengthForAgeData // ignore: cast_nullable_to_non_nullable
-              as GrowthReferenceHeightForAgeData,
     ) as $Val);
   }
 
@@ -380,8 +521,7 @@ abstract class _$$GrowthReferenceHeightForAgeImplCopyWith<$Res>
       {Date? observationDate,
       Sex sex,
       Age age,
-      Length lengthHeight,
-      GrowthReferenceHeightForAgeData lengthForAgeData});
+      @LengthConverter() Length lengthHeight});
 
   @override
   $DateCopyWith<$Res>? get observationDate;
@@ -406,7 +546,6 @@ class __$$GrowthReferenceHeightForAgeImplCopyWithImpl<$Res>
     Object? sex = null,
     Object? age = null,
     Object? lengthHeight = null,
-    Object? lengthForAgeData = null,
   }) {
     return _then(_$GrowthReferenceHeightForAgeImpl(
       observationDate: freezed == observationDate
@@ -425,10 +564,6 @@ class __$$GrowthReferenceHeightForAgeImplCopyWithImpl<$Res>
           ? _value.lengthHeight
           : lengthHeight // ignore: cast_nullable_to_non_nullable
               as Length,
-      lengthForAgeData: null == lengthForAgeData
-          ? _value.lengthForAgeData
-          : lengthForAgeData // ignore: cast_nullable_to_non_nullable
-              as GrowthReferenceHeightForAgeData,
     ));
   }
 }
@@ -440,8 +575,7 @@ class _$GrowthReferenceHeightForAgeImpl extends _GrowthReferenceHeightForAge {
       {this.observationDate,
       required this.sex,
       required this.age,
-      required this.lengthHeight,
-      required this.lengthForAgeData})
+      @LengthConverter() required this.lengthHeight})
       : assert(
             age.ageInTotalMonthsByNow >= 61 && age.ageInTotalMonthsByNow <= 228,
             'Age must be in range of 61 - 228 months'),
@@ -454,13 +588,12 @@ class _$GrowthReferenceHeightForAgeImpl extends _GrowthReferenceHeightForAge {
   @override
   final Age age;
   @override
+  @LengthConverter()
   final Length lengthHeight;
-  @override
-  final GrowthReferenceHeightForAgeData lengthForAgeData;
 
   @override
   String toString() {
-    return 'GrowthReferenceHeightForAge(observationDate: $observationDate, sex: $sex, age: $age, lengthHeight: $lengthHeight, lengthForAgeData: $lengthForAgeData)';
+    return 'GrowthReferenceHeightForAge(observationDate: $observationDate, sex: $sex, age: $age, lengthHeight: $lengthHeight)';
   }
 
   @override
@@ -473,14 +606,12 @@ class _$GrowthReferenceHeightForAgeImpl extends _GrowthReferenceHeightForAge {
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.lengthHeight, lengthHeight) ||
-                other.lengthHeight == lengthHeight) &&
-            (identical(other.lengthForAgeData, lengthForAgeData) ||
-                other.lengthForAgeData == lengthForAgeData));
+                other.lengthHeight == lengthHeight));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, observationDate, sex, age, lengthHeight, lengthForAgeData);
+  int get hashCode =>
+      Object.hash(runtimeType, observationDate, sex, age, lengthHeight);
 
   @JsonKey(ignore: true)
   @override
@@ -496,8 +627,7 @@ abstract class _GrowthReferenceHeightForAge
           {final Date? observationDate,
           required final Sex sex,
           required final Age age,
-          required final Length lengthHeight,
-          required final GrowthReferenceHeightForAgeData lengthForAgeData}) =
+          @LengthConverter() required final Length lengthHeight}) =
       _$GrowthReferenceHeightForAgeImpl;
   _GrowthReferenceHeightForAge._() : super._();
 
@@ -508,9 +638,8 @@ abstract class _GrowthReferenceHeightForAge
   @override
   Age get age;
   @override
+  @LengthConverter()
   Length get lengthHeight;
-  @override
-  GrowthReferenceHeightForAgeData get lengthForAgeData;
   @override
   @JsonKey(ignore: true)
   _$$GrowthReferenceHeightForAgeImplCopyWith<_$GrowthReferenceHeightForAgeImpl>
@@ -522,9 +651,8 @@ mixin _$GrowthReferenceWeightForAge {
   Date? get observationDate => throw _privateConstructorUsedError;
   Sex get sex => throw _privateConstructorUsedError;
   Age get age => throw _privateConstructorUsedError;
+  @MassConverter()
   Mass get weight => throw _privateConstructorUsedError;
-  GrowthReferenceWeightForAgeData get weightForAgeData =>
-      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $GrowthReferenceWeightForAgeCopyWith<GrowthReferenceWeightForAge>
@@ -540,11 +668,7 @@ abstract class $GrowthReferenceWeightForAgeCopyWith<$Res> {
           GrowthReferenceWeightForAge>;
   @useResult
   $Res call(
-      {Date? observationDate,
-      Sex sex,
-      Age age,
-      Mass weight,
-      GrowthReferenceWeightForAgeData weightForAgeData});
+      {Date? observationDate, Sex sex, Age age, @MassConverter() Mass weight});
 
   $DateCopyWith<$Res>? get observationDate;
   $AgeCopyWith<$Res> get age;
@@ -568,7 +692,6 @@ class _$GrowthReferenceWeightForAgeCopyWithImpl<$Res,
     Object? sex = null,
     Object? age = null,
     Object? weight = null,
-    Object? weightForAgeData = null,
   }) {
     return _then(_value.copyWith(
       observationDate: freezed == observationDate
@@ -587,10 +710,6 @@ class _$GrowthReferenceWeightForAgeCopyWithImpl<$Res,
           ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
               as Mass,
-      weightForAgeData: null == weightForAgeData
-          ? _value.weightForAgeData
-          : weightForAgeData // ignore: cast_nullable_to_non_nullable
-              as GrowthReferenceWeightForAgeData,
     ) as $Val);
   }
 
@@ -625,11 +744,7 @@ abstract class _$$GrowthReferenceWeightForAgeImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Date? observationDate,
-      Sex sex,
-      Age age,
-      Mass weight,
-      GrowthReferenceWeightForAgeData weightForAgeData});
+      {Date? observationDate, Sex sex, Age age, @MassConverter() Mass weight});
 
   @override
   $DateCopyWith<$Res>? get observationDate;
@@ -654,7 +769,6 @@ class __$$GrowthReferenceWeightForAgeImplCopyWithImpl<$Res>
     Object? sex = null,
     Object? age = null,
     Object? weight = null,
-    Object? weightForAgeData = null,
   }) {
     return _then(_$GrowthReferenceWeightForAgeImpl(
       observationDate: freezed == observationDate
@@ -673,10 +787,6 @@ class __$$GrowthReferenceWeightForAgeImplCopyWithImpl<$Res>
           ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
               as Mass,
-      weightForAgeData: null == weightForAgeData
-          ? _value.weightForAgeData
-          : weightForAgeData // ignore: cast_nullable_to_non_nullable
-              as GrowthReferenceWeightForAgeData,
     ));
   }
 }
@@ -688,8 +798,7 @@ class _$GrowthReferenceWeightForAgeImpl extends _GrowthReferenceWeightForAge {
       {this.observationDate,
       required this.sex,
       required this.age,
-      required this.weight,
-      required this.weightForAgeData})
+      @MassConverter() required this.weight})
       : assert(
             age.ageInTotalMonthsByNow >= 61 && age.ageInTotalMonthsByNow <= 120,
             'Age must be in range of 61 - 120 months'),
@@ -702,13 +811,12 @@ class _$GrowthReferenceWeightForAgeImpl extends _GrowthReferenceWeightForAge {
   @override
   final Age age;
   @override
+  @MassConverter()
   final Mass weight;
-  @override
-  final GrowthReferenceWeightForAgeData weightForAgeData;
 
   @override
   String toString() {
-    return 'GrowthReferenceWeightForAge(observationDate: $observationDate, sex: $sex, age: $age, weight: $weight, weightForAgeData: $weightForAgeData)';
+    return 'GrowthReferenceWeightForAge(observationDate: $observationDate, sex: $sex, age: $age, weight: $weight)';
   }
 
   @override
@@ -720,14 +828,12 @@ class _$GrowthReferenceWeightForAgeImpl extends _GrowthReferenceWeightForAge {
                 other.observationDate == observationDate) &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
-            (identical(other.weight, weight) || other.weight == weight) &&
-            (identical(other.weightForAgeData, weightForAgeData) ||
-                other.weightForAgeData == weightForAgeData));
+            (identical(other.weight, weight) || other.weight == weight));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, observationDate, sex, age, weight, weightForAgeData);
+  int get hashCode =>
+      Object.hash(runtimeType, observationDate, sex, age, weight);
 
   @JsonKey(ignore: true)
   @override
@@ -743,8 +849,7 @@ abstract class _GrowthReferenceWeightForAge
           {final Date? observationDate,
           required final Sex sex,
           required final Age age,
-          required final Mass weight,
-          required final GrowthReferenceWeightForAgeData weightForAgeData}) =
+          @MassConverter() required final Mass weight}) =
       _$GrowthReferenceWeightForAgeImpl;
   _GrowthReferenceWeightForAge._() : super._();
 
@@ -755,9 +860,8 @@ abstract class _GrowthReferenceWeightForAge
   @override
   Age get age;
   @override
+  @MassConverter()
   Mass get weight;
-  @override
-  GrowthReferenceWeightForAgeData get weightForAgeData;
   @override
   @JsonKey(ignore: true)
   _$$GrowthReferenceWeightForAgeImplCopyWith<_$GrowthReferenceWeightForAgeImpl>

@@ -2,26 +2,27 @@ part of '../standard.dart';
 
 class TricepsSkinfoldForAgeData {
   factory TricepsSkinfoldForAgeData() => _singleton;
-  TricepsSkinfoldForAgeData._()
-      : _data = (json.decode(_tsanthro) as Map<String, dynamic>).map(
-          (k1, v1) => MapEntry(
-            k1,
-            _TricepsSkinfoldAgeGender(
-              ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
-                v2 as Map<String, dynamic>;
-                return MapEntry(
-                  k2,
-                  _TricepsSkinfoldForAgeLMS(
-                    lms: (l: v2['l'], m: v2['m'], s: v2['s']),
-                  ),
-                );
-              }),
-            ),
+  TricepsSkinfoldForAgeData._(this._data);
+
+  static final _singleton = TricepsSkinfoldForAgeData._(_parse());
+
+  static Map<String, _TricepsSkinfoldAgeGender> _parse() =>
+      (json.decode(_tsanthro) as Map<String, dynamic>).map(
+        (k1, v1) => MapEntry(
+          k1,
+          _TricepsSkinfoldAgeGender(
+            ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
+              v2 as Map<String, dynamic>;
+              return MapEntry(
+                k2,
+                _TricepsSkinfoldForAgeLMS(
+                  lms: (l: v2['l'], m: v2['m'], s: v2['s']),
+                ),
+              );
+            }),
           ),
-        );
-
-  static final _singleton = TricepsSkinfoldForAgeData._();
-
+        ),
+      );
   final Map<String, _TricepsSkinfoldAgeGender> _data;
 }
 
@@ -35,14 +36,19 @@ class TricepsSkinfoldForAge with _$TricepsSkinfoldForAge {
     Date? observationDate,
     required Sex sex,
     required Age age,
-    required Length measurementResult,
-    required TricepsSkinfoldForAgeData tricepsSkinfoldData,
+    @LengthConverter() required Length measurementResult,
   }) = _TricepsSkinfoldForAge;
 
   const TricepsSkinfoldForAge._();
 
-  _TricepsSkinfoldAgeGender get _maleData => tricepsSkinfoldData._data['1']!;
-  _TricepsSkinfoldAgeGender get _femaleData => tricepsSkinfoldData._data['2']!;
+  factory TricepsSkinfoldForAge.fromJson(Map<String, dynamic> json) =>
+      _$TricepsSkinfoldForAgeFromJson(json);
+
+  TricepsSkinfoldForAgeData get _tricepsSkinfoldData =>
+      TricepsSkinfoldForAgeData();
+
+  _TricepsSkinfoldAgeGender get _maleData => _tricepsSkinfoldData._data['1']!;
+  _TricepsSkinfoldAgeGender get _femaleData => _tricepsSkinfoldData._data['2']!;
 
   _TricepsSkinfoldForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)

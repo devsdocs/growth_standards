@@ -1,38 +1,32 @@
-import 'package:growth_standards/src/common/age.dart';
+
+import 'package:growth_standards/src/common/model/age.dart';
 import 'package:growth_standards/src/common/types.dart';
 import 'package:growth_standards/src/who/reference/reference.dart';
 import 'package:growth_standards/src/who/standard/standard.dart';
 import 'package:super_measurement/super_measurement.dart';
 
 final class WHOGrowthStandard {
-  ArmCircumferenceForAgeData get armCircumferenceForAgeData =>
-      ArmCircumferenceForAgeData();
-
   ArmCircumferenceForAge armCircumferenceForAge({
     required Sex sex,
     required Age age,
     required Length measurementResult,
-    required ArmCircumferenceForAgeData armCircumferenceForAgeData,
     Date? observationDate,
   }) =>
       ArmCircumferenceForAge(
         sex: sex,
         age: age,
         measurementResult: measurementResult,
-        armCircumferenceData: armCircumferenceForAgeData,
         observationDate: observationDate,
       );
 
   BodyMassIndexForAge bodyMassIndexForAge({
     required Sex sex,
     required BodyMassIndexMeasurement bodyMassIndexMeasurement,
-    required BodyMassIndexForAgeData bodyMassIndexData,
     Date? observationDate,
   }) =>
       BodyMassIndexForAge(
         sex: sex,
         bodyMassIndexMeasurement: bodyMassIndexMeasurement,
-        bodyMassIndexData: bodyMassIndexData,
         observationDate: observationDate,
       );
 
@@ -41,13 +35,11 @@ final class WHOGrowthStandard {
     required Sex sex,
     required Age age,
     required Length measurementResult,
-    required HeadCircumferenceForAgeData headCircumferenceData,
   }) =>
       HeadCircumferenceForAge(
         sex: sex,
         age: age,
         measurementResult: measurementResult,
-        headCircumferenceData: headCircumferenceData,
       );
 
   LengthForAge lengthForAge({
@@ -56,7 +48,6 @@ final class WHOGrowthStandard {
     required Age age,
     required Length lengthHeight,
     required LengthHeigthMeasurementPosition measure,
-    required LengthForAgeData lengthForAgeData,
   }) =>
       LengthForAge(
         observationDate: observationDate,
@@ -64,7 +55,6 @@ final class WHOGrowthStandard {
         age: age,
         lengthHeight: lengthHeight,
         measure: measure,
-        lengthForAgeData: lengthForAgeData,
       );
 
   SubscapularSkinfoldForAge subscapularSkinfoldForAge({
@@ -72,14 +62,12 @@ final class WHOGrowthStandard {
     required Sex sex,
     required Age age,
     required Length measurementResult,
-    required SubscapularSkinfoldForAgeData subscapularSkinfoldData,
   }) =>
       SubscapularSkinfoldForAge(
         observationDate: observationDate,
         sex: sex,
         age: age,
         measurementResult: measurementResult,
-        subscapularSkinfoldData: subscapularSkinfoldData,
       );
 
   TricepsSkinfoldForAge tricepsSkinfoldForAge({
@@ -87,28 +75,24 @@ final class WHOGrowthStandard {
     required Sex sex,
     required Age age,
     required Length measurementResult,
-    required TricepsSkinfoldForAgeData tricepsSkinfoldData,
   }) =>
       TricepsSkinfoldForAge(
         observationDate: observationDate,
         sex: sex,
         age: age,
         measurementResult: measurementResult,
-        tricepsSkinfoldData: tricepsSkinfoldData,
       );
   WeightForAge weightForAge({
     Date? observationDate,
     required Sex sex,
     required Age age,
     required Mass weight,
-    required WeightForAgeData weightForAgeData,
   }) =>
       WeightForAge(
         observationDate: observationDate,
         sex: sex,
         age: age,
         weight: weight,
-        weightForAgeData: weightForAgeData,
       );
 
   WeightForHeight weightForHeight({
@@ -118,16 +102,14 @@ final class WHOGrowthStandard {
     required Length height,
     required Mass mass,
     required LengthHeigthMeasurementPosition measure,
-    required WeightForHeightData weightForHeightData,
   }) =>
       WeightForHeight(
         observationDate: observationDate,
         sex: sex,
         age: age,
         height: height,
-        mass: mass,
+        weight: mass,
         measure: measure,
-        weightForHeightData: weightForHeightData,
       );
 
   WeigthForLength weightForLength({
@@ -137,16 +119,14 @@ final class WHOGrowthStandard {
     required Mass massMeasurementResult,
     required Age age,
     required LengthHeigthMeasurementPosition measure,
-    required WeigthForLengthData weigthForLengthData,
   }) =>
       WeigthForLength(
         observationDate: observationDate,
         sex: sex,
         length: lengthMeasurementResult,
-        massMeasurementResult: massMeasurementResult,
+        weight: massMeasurementResult,
         age: age,
         measure: measure,
-        weigthForLengthData: weigthForLengthData,
       );
 }
 
@@ -155,7 +135,6 @@ final class WHOGrowthReference {
     Date? observationDate,
     required Sex sex,
     required GrowthReferenceBodyMassIndexMeasurement bodyMassIndexMeasurement,
-    required GrowthReferenceBodyMassIndexForAgeData bodyMassIndexData,
     required Age age,
   }) =>
       GrowthReferenceBodyMassIndexForAge(
@@ -163,7 +142,6 @@ final class WHOGrowthReference {
         age: age,
         sex: sex,
         bodyMassIndexMeasurement: bodyMassIndexMeasurement,
-        bodyMassIndexData: bodyMassIndexData,
       );
 
   GrowthReferenceHeightForAge heightForAge({
@@ -172,14 +150,12 @@ final class WHOGrowthReference {
     required Age age,
     required Length lengthHeight,
     required LengthHeigthMeasurementPosition measure,
-    required GrowthReferenceHeightForAgeData lengthForAgeData,
   }) =>
       GrowthReferenceHeightForAge(
         observationDate: observationDate,
         sex: sex,
         age: age,
         lengthHeight: lengthHeight,
-        lengthForAgeData: lengthForAgeData,
       );
 
   GrowthReferenceWeightForAge weightForAge({
@@ -187,13 +163,11 @@ final class WHOGrowthReference {
     required Sex sex,
     required Age age,
     required Mass weight,
-    required GrowthReferenceWeightForAgeData weightForAgeData,
   }) =>
       GrowthReferenceWeightForAge(
         observationDate: observationDate,
         sex: sex,
         age: age,
         weight: weight,
-        weightForAgeData: weightForAgeData,
       );
 }

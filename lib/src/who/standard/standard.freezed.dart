@@ -26,9 +26,6 @@ mixin _$ArmCircumferenceForAge {
   Age get age => throw _privateConstructorUsedError;
   @LengthConverter()
   Length get measurementResult => throw _privateConstructorUsedError;
-  @JsonKey(includeToJson: false, includeFromJson: false)
-  ArmCircumferenceForAgeData? get armCircumferenceData =>
-      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,9 +43,7 @@ abstract class $ArmCircumferenceForAgeCopyWith<$Res> {
       {Date? observationDate,
       Sex sex,
       Age age,
-      @LengthConverter() Length measurementResult,
-      @JsonKey(includeToJson: false, includeFromJson: false)
-      ArmCircumferenceForAgeData? armCircumferenceData});
+      @LengthConverter() Length measurementResult});
 
   $DateCopyWith<$Res>? get observationDate;
   $AgeCopyWith<$Res> get age;
@@ -72,7 +67,6 @@ class _$ArmCircumferenceForAgeCopyWithImpl<$Res,
     Object? sex = null,
     Object? age = null,
     Object? measurementResult = null,
-    Object? armCircumferenceData = freezed,
   }) {
     return _then(_value.copyWith(
       observationDate: freezed == observationDate
@@ -91,10 +85,6 @@ class _$ArmCircumferenceForAgeCopyWithImpl<$Res,
           ? _value.measurementResult
           : measurementResult // ignore: cast_nullable_to_non_nullable
               as Length,
-      armCircumferenceData: freezed == armCircumferenceData
-          ? _value.armCircumferenceData
-          : armCircumferenceData // ignore: cast_nullable_to_non_nullable
-              as ArmCircumferenceForAgeData?,
     ) as $Val);
   }
 
@@ -132,9 +122,7 @@ abstract class _$$ArmCircumferenceForAgeImplCopyWith<$Res>
       {Date? observationDate,
       Sex sex,
       Age age,
-      @LengthConverter() Length measurementResult,
-      @JsonKey(includeToJson: false, includeFromJson: false)
-      ArmCircumferenceForAgeData? armCircumferenceData});
+      @LengthConverter() Length measurementResult});
 
   @override
   $DateCopyWith<$Res>? get observationDate;
@@ -159,7 +147,6 @@ class __$$ArmCircumferenceForAgeImplCopyWithImpl<$Res>
     Object? sex = null,
     Object? age = null,
     Object? measurementResult = null,
-    Object? armCircumferenceData = freezed,
   }) {
     return _then(_$ArmCircumferenceForAgeImpl(
       observationDate: freezed == observationDate
@@ -178,10 +165,6 @@ class __$$ArmCircumferenceForAgeImplCopyWithImpl<$Res>
           ? _value.measurementResult
           : measurementResult // ignore: cast_nullable_to_non_nullable
               as Length,
-      armCircumferenceData: freezed == armCircumferenceData
-          ? _value.armCircumferenceData
-          : armCircumferenceData // ignore: cast_nullable_to_non_nullable
-              as ArmCircumferenceForAgeData?,
     ));
   }
 }
@@ -193,9 +176,7 @@ class _$ArmCircumferenceForAgeImpl extends _ArmCircumferenceForAge {
       {this.observationDate,
       required this.sex,
       required this.age,
-      @LengthConverter() required this.measurementResult,
-      @JsonKey(includeToJson: false, includeFromJson: false)
-      this.armCircumferenceData})
+      @LengthConverter() required this.measurementResult})
       : assert(age.ageInTotalDaysByNow >= 91 && age.ageInTotalDaysByNow <= 1856,
             'Age must be in range of 91 - 1856 days'),
         assert(
@@ -221,13 +202,10 @@ class _$ArmCircumferenceForAgeImpl extends _ArmCircumferenceForAge {
   @override
   @LengthConverter()
   final Length measurementResult;
-  @override
-  @JsonKey(includeToJson: false, includeFromJson: false)
-  final ArmCircumferenceForAgeData? armCircumferenceData;
 
   @override
   String toString() {
-    return 'ArmCircumferenceForAge(observationDate: $observationDate, sex: $sex, age: $age, measurementResult: $measurementResult, armCircumferenceData: $armCircumferenceData)';
+    return 'ArmCircumferenceForAge(observationDate: $observationDate, sex: $sex, age: $age, measurementResult: $measurementResult)';
   }
 
   @override
@@ -240,15 +218,13 @@ class _$ArmCircumferenceForAgeImpl extends _ArmCircumferenceForAge {
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.measurementResult, measurementResult) ||
-                other.measurementResult == measurementResult) &&
-            (identical(other.armCircumferenceData, armCircumferenceData) ||
-                other.armCircumferenceData == armCircumferenceData));
+                other.measurementResult == measurementResult));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, observationDate, sex, age,
-      measurementResult, armCircumferenceData);
+  int get hashCode =>
+      Object.hash(runtimeType, observationDate, sex, age, measurementResult);
 
   @JsonKey(ignore: true)
   @override
@@ -270,9 +246,7 @@ abstract class _ArmCircumferenceForAge extends ArmCircumferenceForAge {
           {final Date? observationDate,
           required final Sex sex,
           required final Age age,
-          @LengthConverter() required final Length measurementResult,
-          @JsonKey(includeToJson: false, includeFromJson: false)
-          final ArmCircumferenceForAgeData? armCircumferenceData}) =
+          @LengthConverter() required final Length measurementResult}) =
       _$ArmCircumferenceForAgeImpl;
   _ArmCircumferenceForAge._() : super._();
 
@@ -289,23 +263,177 @@ abstract class _ArmCircumferenceForAge extends ArmCircumferenceForAge {
   @LengthConverter()
   Length get measurementResult;
   @override
-  @JsonKey(includeToJson: false, includeFromJson: false)
-  ArmCircumferenceForAgeData? get armCircumferenceData;
-  @override
   @JsonKey(ignore: true)
   _$$ArmCircumferenceForAgeImplCopyWith<_$ArmCircumferenceForAgeImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
+mixin _$BodyMassIndexMeasurement {
+  num get value => throw _privateConstructorUsedError;
+  Age get age => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $BodyMassIndexMeasurementCopyWith<BodyMassIndexMeasurement> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $BodyMassIndexMeasurementCopyWith<$Res> {
+  factory $BodyMassIndexMeasurementCopyWith(BodyMassIndexMeasurement value,
+          $Res Function(BodyMassIndexMeasurement) then) =
+      _$BodyMassIndexMeasurementCopyWithImpl<$Res, BodyMassIndexMeasurement>;
+  @useResult
+  $Res call({num value, Age age});
+
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class _$BodyMassIndexMeasurementCopyWithImpl<$Res,
+        $Val extends BodyMassIndexMeasurement>
+    implements $BodyMassIndexMeasurementCopyWith<$Res> {
+  _$BodyMassIndexMeasurementCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? value = null,
+    Object? age = null,
+  }) {
+    return _then(_value.copyWith(
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as num,
+      age: null == age
+          ? _value.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AgeCopyWith<$Res> get age {
+    return $AgeCopyWith<$Res>(_value.age, (value) {
+      return _then(_value.copyWith(age: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$BodyMassIndexMeasurementImplCopyWith<$Res>
+    implements $BodyMassIndexMeasurementCopyWith<$Res> {
+  factory _$$BodyMassIndexMeasurementImplCopyWith(
+          _$BodyMassIndexMeasurementImpl value,
+          $Res Function(_$BodyMassIndexMeasurementImpl) then) =
+      __$$BodyMassIndexMeasurementImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({num value, Age age});
+
+  @override
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class __$$BodyMassIndexMeasurementImplCopyWithImpl<$Res>
+    extends _$BodyMassIndexMeasurementCopyWithImpl<$Res,
+        _$BodyMassIndexMeasurementImpl>
+    implements _$$BodyMassIndexMeasurementImplCopyWith<$Res> {
+  __$$BodyMassIndexMeasurementImplCopyWithImpl(
+      _$BodyMassIndexMeasurementImpl _value,
+      $Res Function(_$BodyMassIndexMeasurementImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? value = null,
+    Object? age = null,
+  }) {
+    return _then(_$BodyMassIndexMeasurementImpl(
+      null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as num,
+      age: null == age
+          ? _value.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$BodyMassIndexMeasurementImpl extends _BodyMassIndexMeasurement {
+  _$BodyMassIndexMeasurementImpl(this.value, {required this.age}) : super._();
+
+  @override
+  final num value;
+  @override
+  final Age age;
+
+  @override
+  String toString() {
+    return 'BodyMassIndexMeasurement(value: $value, age: $age)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$BodyMassIndexMeasurementImpl &&
+            (identical(other.value, value) || other.value == value) &&
+            (identical(other.age, age) || other.age == age));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, value, age);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$BodyMassIndexMeasurementImplCopyWith<_$BodyMassIndexMeasurementImpl>
+      get copyWith => __$$BodyMassIndexMeasurementImplCopyWithImpl<
+          _$BodyMassIndexMeasurementImpl>(this, _$identity);
+}
+
+abstract class _BodyMassIndexMeasurement extends BodyMassIndexMeasurement {
+  factory _BodyMassIndexMeasurement(final num value, {required final Age age}) =
+      _$BodyMassIndexMeasurementImpl;
+  _BodyMassIndexMeasurement._() : super._();
+
+  @override
+  num get value;
+  @override
+  Age get age;
+  @override
+  @JsonKey(ignore: true)
+  _$$BodyMassIndexMeasurementImplCopyWith<_$BodyMassIndexMeasurementImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+BodyMassIndexForAge _$BodyMassIndexForAgeFromJson(Map<String, dynamic> json) {
+  return _BodyMassIndexForAge.fromJson(json);
+}
+
+/// @nodoc
 mixin _$BodyMassIndexForAge {
   Date? get observationDate => throw _privateConstructorUsedError;
   Sex get sex => throw _privateConstructorUsedError;
+  @BodyMassIndexMeasurementConverter()
   BodyMassIndexMeasurement get bodyMassIndexMeasurement =>
       throw _privateConstructorUsedError;
-  BodyMassIndexForAgeData get bodyMassIndexData =>
-      throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $BodyMassIndexForAgeCopyWith<BodyMassIndexForAge> get copyWith =>
       throw _privateConstructorUsedError;
@@ -320,10 +448,11 @@ abstract class $BodyMassIndexForAgeCopyWith<$Res> {
   $Res call(
       {Date? observationDate,
       Sex sex,
-      BodyMassIndexMeasurement bodyMassIndexMeasurement,
-      BodyMassIndexForAgeData bodyMassIndexData});
+      @BodyMassIndexMeasurementConverter()
+      BodyMassIndexMeasurement bodyMassIndexMeasurement});
 
   $DateCopyWith<$Res>? get observationDate;
+  $BodyMassIndexMeasurementCopyWith<$Res> get bodyMassIndexMeasurement;
 }
 
 /// @nodoc
@@ -342,7 +471,6 @@ class _$BodyMassIndexForAgeCopyWithImpl<$Res, $Val extends BodyMassIndexForAge>
     Object? observationDate = freezed,
     Object? sex = null,
     Object? bodyMassIndexMeasurement = null,
-    Object? bodyMassIndexData = null,
   }) {
     return _then(_value.copyWith(
       observationDate: freezed == observationDate
@@ -357,10 +485,6 @@ class _$BodyMassIndexForAgeCopyWithImpl<$Res, $Val extends BodyMassIndexForAge>
           ? _value.bodyMassIndexMeasurement
           : bodyMassIndexMeasurement // ignore: cast_nullable_to_non_nullable
               as BodyMassIndexMeasurement,
-      bodyMassIndexData: null == bodyMassIndexData
-          ? _value.bodyMassIndexData
-          : bodyMassIndexData // ignore: cast_nullable_to_non_nullable
-              as BodyMassIndexForAgeData,
     ) as $Val);
   }
 
@@ -373,6 +497,15 @@ class _$BodyMassIndexForAgeCopyWithImpl<$Res, $Val extends BodyMassIndexForAge>
 
     return $DateCopyWith<$Res>(_value.observationDate!, (value) {
       return _then(_value.copyWith(observationDate: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $BodyMassIndexMeasurementCopyWith<$Res> get bodyMassIndexMeasurement {
+    return $BodyMassIndexMeasurementCopyWith<$Res>(
+        _value.bodyMassIndexMeasurement, (value) {
+      return _then(_value.copyWith(bodyMassIndexMeasurement: value) as $Val);
     });
   }
 }
@@ -388,11 +521,13 @@ abstract class _$$BodyMassIndexForAgeImplCopyWith<$Res>
   $Res call(
       {Date? observationDate,
       Sex sex,
-      BodyMassIndexMeasurement bodyMassIndexMeasurement,
-      BodyMassIndexForAgeData bodyMassIndexData});
+      @BodyMassIndexMeasurementConverter()
+      BodyMassIndexMeasurement bodyMassIndexMeasurement});
 
   @override
   $DateCopyWith<$Res>? get observationDate;
+  @override
+  $BodyMassIndexMeasurementCopyWith<$Res> get bodyMassIndexMeasurement;
 }
 
 /// @nodoc
@@ -409,7 +544,6 @@ class __$$BodyMassIndexForAgeImplCopyWithImpl<$Res>
     Object? observationDate = freezed,
     Object? sex = null,
     Object? bodyMassIndexMeasurement = null,
-    Object? bodyMassIndexData = null,
   }) {
     return _then(_$BodyMassIndexForAgeImpl(
       observationDate: freezed == observationDate
@@ -424,40 +558,38 @@ class __$$BodyMassIndexForAgeImplCopyWithImpl<$Res>
           ? _value.bodyMassIndexMeasurement
           : bodyMassIndexMeasurement // ignore: cast_nullable_to_non_nullable
               as BodyMassIndexMeasurement,
-      bodyMassIndexData: null == bodyMassIndexData
-          ? _value.bodyMassIndexData
-          : bodyMassIndexData // ignore: cast_nullable_to_non_nullable
-              as BodyMassIndexForAgeData,
     ));
   }
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$BodyMassIndexForAgeImpl extends _BodyMassIndexForAge {
   _$BodyMassIndexForAgeImpl(
       {this.observationDate,
       required this.sex,
-      required this.bodyMassIndexMeasurement,
-      required this.bodyMassIndexData})
+      @BodyMassIndexMeasurementConverter()
+      required this.bodyMassIndexMeasurement})
       : assert(
             bodyMassIndexMeasurement.age.ageInTotalDaysByNow >= 0 &&
                 bodyMassIndexMeasurement.age.ageInTotalDaysByNow <= 1856,
             'Age must be in range of 0 - 1856 days'),
         super._();
 
+  factory _$BodyMassIndexForAgeImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BodyMassIndexForAgeImplFromJson(json);
+
   @override
   final Date? observationDate;
   @override
   final Sex sex;
   @override
+  @BodyMassIndexMeasurementConverter()
   final BodyMassIndexMeasurement bodyMassIndexMeasurement;
-  @override
-  final BodyMassIndexForAgeData bodyMassIndexData;
 
   @override
   String toString() {
-    return 'BodyMassIndexForAge(observationDate: $observationDate, sex: $sex, bodyMassIndexMeasurement: $bodyMassIndexMeasurement, bodyMassIndexData: $bodyMassIndexData)';
+    return 'BodyMassIndexForAge(observationDate: $observationDate, sex: $sex, bodyMassIndexMeasurement: $bodyMassIndexMeasurement)';
   }
 
   @override
@@ -470,14 +602,13 @@ class _$BodyMassIndexForAgeImpl extends _BodyMassIndexForAge {
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(
                     other.bodyMassIndexMeasurement, bodyMassIndexMeasurement) ||
-                other.bodyMassIndexMeasurement == bodyMassIndexMeasurement) &&
-            (identical(other.bodyMassIndexData, bodyMassIndexData) ||
-                other.bodyMassIndexData == bodyMassIndexData));
+                other.bodyMassIndexMeasurement == bodyMassIndexMeasurement));
   }
 
+  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, observationDate, sex,
-      bodyMassIndexMeasurement, bodyMassIndexData);
+  int get hashCode =>
+      Object.hash(runtimeType, observationDate, sex, bodyMassIndexMeasurement);
 
   @JsonKey(ignore: true)
   @override
@@ -485,29 +616,43 @@ class _$BodyMassIndexForAgeImpl extends _BodyMassIndexForAge {
   _$$BodyMassIndexForAgeImplCopyWith<_$BodyMassIndexForAgeImpl> get copyWith =>
       __$$BodyMassIndexForAgeImplCopyWithImpl<_$BodyMassIndexForAgeImpl>(
           this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$BodyMassIndexForAgeImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _BodyMassIndexForAge extends BodyMassIndexForAge {
   factory _BodyMassIndexForAge(
           {final Date? observationDate,
           required final Sex sex,
-          required final BodyMassIndexMeasurement bodyMassIndexMeasurement,
-          required final BodyMassIndexForAgeData bodyMassIndexData}) =
+          @BodyMassIndexMeasurementConverter()
+          required final BodyMassIndexMeasurement bodyMassIndexMeasurement}) =
       _$BodyMassIndexForAgeImpl;
   _BodyMassIndexForAge._() : super._();
+
+  factory _BodyMassIndexForAge.fromJson(Map<String, dynamic> json) =
+      _$BodyMassIndexForAgeImpl.fromJson;
 
   @override
   Date? get observationDate;
   @override
   Sex get sex;
   @override
+  @BodyMassIndexMeasurementConverter()
   BodyMassIndexMeasurement get bodyMassIndexMeasurement;
-  @override
-  BodyMassIndexForAgeData get bodyMassIndexData;
   @override
   @JsonKey(ignore: true)
   _$$BodyMassIndexForAgeImplCopyWith<_$BodyMassIndexForAgeImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+HeadCircumferenceForAge _$HeadCircumferenceForAgeFromJson(
+    Map<String, dynamic> json) {
+  return _HeadCircumferenceForAge.fromJson(json);
 }
 
 /// @nodoc
@@ -515,10 +660,10 @@ mixin _$HeadCircumferenceForAge {
   Date? get observationDate => throw _privateConstructorUsedError;
   Sex get sex => throw _privateConstructorUsedError;
   Age get age => throw _privateConstructorUsedError;
+  @LengthConverter()
   Length get measurementResult => throw _privateConstructorUsedError;
-  HeadCircumferenceForAgeData get headCircumferenceData =>
-      throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $HeadCircumferenceForAgeCopyWith<HeadCircumferenceForAge> get copyWith =>
       throw _privateConstructorUsedError;
@@ -534,8 +679,7 @@ abstract class $HeadCircumferenceForAgeCopyWith<$Res> {
       {Date? observationDate,
       Sex sex,
       Age age,
-      Length measurementResult,
-      HeadCircumferenceForAgeData headCircumferenceData});
+      @LengthConverter() Length measurementResult});
 
   $DateCopyWith<$Res>? get observationDate;
   $AgeCopyWith<$Res> get age;
@@ -559,7 +703,6 @@ class _$HeadCircumferenceForAgeCopyWithImpl<$Res,
     Object? sex = null,
     Object? age = null,
     Object? measurementResult = null,
-    Object? headCircumferenceData = null,
   }) {
     return _then(_value.copyWith(
       observationDate: freezed == observationDate
@@ -578,10 +721,6 @@ class _$HeadCircumferenceForAgeCopyWithImpl<$Res,
           ? _value.measurementResult
           : measurementResult // ignore: cast_nullable_to_non_nullable
               as Length,
-      headCircumferenceData: null == headCircumferenceData
-          ? _value.headCircumferenceData
-          : headCircumferenceData // ignore: cast_nullable_to_non_nullable
-              as HeadCircumferenceForAgeData,
     ) as $Val);
   }
 
@@ -619,8 +758,7 @@ abstract class _$$HeadCircumferenceForAgeImplCopyWith<$Res>
       {Date? observationDate,
       Sex sex,
       Age age,
-      Length measurementResult,
-      HeadCircumferenceForAgeData headCircumferenceData});
+      @LengthConverter() Length measurementResult});
 
   @override
   $DateCopyWith<$Res>? get observationDate;
@@ -645,7 +783,6 @@ class __$$HeadCircumferenceForAgeImplCopyWithImpl<$Res>
     Object? sex = null,
     Object? age = null,
     Object? measurementResult = null,
-    Object? headCircumferenceData = null,
   }) {
     return _then(_$HeadCircumferenceForAgeImpl(
       observationDate: freezed == observationDate
@@ -664,26 +801,24 @@ class __$$HeadCircumferenceForAgeImplCopyWithImpl<$Res>
           ? _value.measurementResult
           : measurementResult // ignore: cast_nullable_to_non_nullable
               as Length,
-      headCircumferenceData: null == headCircumferenceData
-          ? _value.headCircumferenceData
-          : headCircumferenceData // ignore: cast_nullable_to_non_nullable
-              as HeadCircumferenceForAgeData,
     ));
   }
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$HeadCircumferenceForAgeImpl extends _HeadCircumferenceForAge {
   _$HeadCircumferenceForAgeImpl(
       {this.observationDate,
       required this.sex,
       required this.age,
-      required this.measurementResult,
-      required this.headCircumferenceData})
+      @LengthConverter() required this.measurementResult})
       : assert(age.ageInTotalDaysByNow >= 0 && age.ageInTotalDaysByNow <= 1856,
             'Age must be in range of 0 - 1856 days'),
         super._();
+
+  factory _$HeadCircumferenceForAgeImpl.fromJson(Map<String, dynamic> json) =>
+      _$$HeadCircumferenceForAgeImplFromJson(json);
 
   @override
   final Date? observationDate;
@@ -692,13 +827,12 @@ class _$HeadCircumferenceForAgeImpl extends _HeadCircumferenceForAge {
   @override
   final Age age;
   @override
+  @LengthConverter()
   final Length measurementResult;
-  @override
-  final HeadCircumferenceForAgeData headCircumferenceData;
 
   @override
   String toString() {
-    return 'HeadCircumferenceForAge(observationDate: $observationDate, sex: $sex, age: $age, measurementResult: $measurementResult, headCircumferenceData: $headCircumferenceData)';
+    return 'HeadCircumferenceForAge(observationDate: $observationDate, sex: $sex, age: $age, measurementResult: $measurementResult)';
   }
 
   @override
@@ -711,14 +845,13 @@ class _$HeadCircumferenceForAgeImpl extends _HeadCircumferenceForAge {
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.measurementResult, measurementResult) ||
-                other.measurementResult == measurementResult) &&
-            (identical(other.headCircumferenceData, headCircumferenceData) ||
-                other.headCircumferenceData == headCircumferenceData));
+                other.measurementResult == measurementResult));
   }
 
+  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, observationDate, sex, age,
-      measurementResult, headCircumferenceData);
+  int get hashCode =>
+      Object.hash(runtimeType, observationDate, sex, age, measurementResult);
 
   @JsonKey(ignore: true)
   @override
@@ -726,6 +859,13 @@ class _$HeadCircumferenceForAgeImpl extends _HeadCircumferenceForAge {
   _$$HeadCircumferenceForAgeImplCopyWith<_$HeadCircumferenceForAgeImpl>
       get copyWith => __$$HeadCircumferenceForAgeImplCopyWithImpl<
           _$HeadCircumferenceForAgeImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$HeadCircumferenceForAgeImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _HeadCircumferenceForAge extends HeadCircumferenceForAge {
@@ -733,10 +873,12 @@ abstract class _HeadCircumferenceForAge extends HeadCircumferenceForAge {
           {final Date? observationDate,
           required final Sex sex,
           required final Age age,
-          required final Length measurementResult,
-          required final HeadCircumferenceForAgeData headCircumferenceData}) =
+          @LengthConverter() required final Length measurementResult}) =
       _$HeadCircumferenceForAgeImpl;
   _HeadCircumferenceForAge._() : super._();
+
+  factory _HeadCircumferenceForAge.fromJson(Map<String, dynamic> json) =
+      _$HeadCircumferenceForAgeImpl.fromJson;
 
   @override
   Date? get observationDate;
@@ -745,13 +887,16 @@ abstract class _HeadCircumferenceForAge extends HeadCircumferenceForAge {
   @override
   Age get age;
   @override
+  @LengthConverter()
   Length get measurementResult;
-  @override
-  HeadCircumferenceForAgeData get headCircumferenceData;
   @override
   @JsonKey(ignore: true)
   _$$HeadCircumferenceForAgeImplCopyWith<_$HeadCircumferenceForAgeImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+LengthForAge _$LengthForAgeFromJson(Map<String, dynamic> json) {
+  return _LengthForAge.fromJson(json);
 }
 
 /// @nodoc
@@ -759,11 +904,12 @@ mixin _$LengthForAge {
   Date? get observationDate => throw _privateConstructorUsedError;
   Sex get sex => throw _privateConstructorUsedError;
   Age get age => throw _privateConstructorUsedError;
+  @LengthConverter()
   Length get lengthHeight => throw _privateConstructorUsedError;
   LengthHeigthMeasurementPosition get measure =>
       throw _privateConstructorUsedError;
-  LengthForAgeData get lengthForAgeData => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $LengthForAgeCopyWith<LengthForAge> get copyWith =>
       throw _privateConstructorUsedError;
@@ -779,9 +925,8 @@ abstract class $LengthForAgeCopyWith<$Res> {
       {Date? observationDate,
       Sex sex,
       Age age,
-      Length lengthHeight,
-      LengthHeigthMeasurementPosition measure,
-      LengthForAgeData lengthForAgeData});
+      @LengthConverter() Length lengthHeight,
+      LengthHeigthMeasurementPosition measure});
 
   $DateCopyWith<$Res>? get observationDate;
   $AgeCopyWith<$Res> get age;
@@ -805,7 +950,6 @@ class _$LengthForAgeCopyWithImpl<$Res, $Val extends LengthForAge>
     Object? age = null,
     Object? lengthHeight = null,
     Object? measure = null,
-    Object? lengthForAgeData = null,
   }) {
     return _then(_value.copyWith(
       observationDate: freezed == observationDate
@@ -828,10 +972,6 @@ class _$LengthForAgeCopyWithImpl<$Res, $Val extends LengthForAge>
           ? _value.measure
           : measure // ignore: cast_nullable_to_non_nullable
               as LengthHeigthMeasurementPosition,
-      lengthForAgeData: null == lengthForAgeData
-          ? _value.lengthForAgeData
-          : lengthForAgeData // ignore: cast_nullable_to_non_nullable
-              as LengthForAgeData,
     ) as $Val);
   }
 
@@ -868,9 +1008,8 @@ abstract class _$$LengthForAgeImplCopyWith<$Res>
       {Date? observationDate,
       Sex sex,
       Age age,
-      Length lengthHeight,
-      LengthHeigthMeasurementPosition measure,
-      LengthForAgeData lengthForAgeData});
+      @LengthConverter() Length lengthHeight,
+      LengthHeigthMeasurementPosition measure});
 
   @override
   $DateCopyWith<$Res>? get observationDate;
@@ -894,7 +1033,6 @@ class __$$LengthForAgeImplCopyWithImpl<$Res>
     Object? age = null,
     Object? lengthHeight = null,
     Object? measure = null,
-    Object? lengthForAgeData = null,
   }) {
     return _then(_$LengthForAgeImpl(
       observationDate: freezed == observationDate
@@ -917,27 +1055,25 @@ class __$$LengthForAgeImplCopyWithImpl<$Res>
           ? _value.measure
           : measure // ignore: cast_nullable_to_non_nullable
               as LengthHeigthMeasurementPosition,
-      lengthForAgeData: null == lengthForAgeData
-          ? _value.lengthForAgeData
-          : lengthForAgeData // ignore: cast_nullable_to_non_nullable
-              as LengthForAgeData,
     ));
   }
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$LengthForAgeImpl extends _LengthForAge {
   _$LengthForAgeImpl(
       {this.observationDate,
       required this.sex,
       required this.age,
-      required this.lengthHeight,
-      required this.measure,
-      required this.lengthForAgeData})
+      @LengthConverter() required this.lengthHeight,
+      required this.measure})
       : assert(age.ageInTotalDaysByNow >= 0 && age.ageInTotalDaysByNow <= 1856,
             'Age must be in range of 0 - 1856 days'),
         super._();
+
+  factory _$LengthForAgeImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LengthForAgeImplFromJson(json);
 
   @override
   final Date? observationDate;
@@ -946,15 +1082,14 @@ class _$LengthForAgeImpl extends _LengthForAge {
   @override
   final Age age;
   @override
+  @LengthConverter()
   final Length lengthHeight;
   @override
   final LengthHeigthMeasurementPosition measure;
-  @override
-  final LengthForAgeData lengthForAgeData;
 
   @override
   String toString() {
-    return 'LengthForAge(observationDate: $observationDate, sex: $sex, age: $age, lengthHeight: $lengthHeight, measure: $measure, lengthForAgeData: $lengthForAgeData)';
+    return 'LengthForAge(observationDate: $observationDate, sex: $sex, age: $age, lengthHeight: $lengthHeight, measure: $measure)';
   }
 
   @override
@@ -968,31 +1103,40 @@ class _$LengthForAgeImpl extends _LengthForAge {
             (identical(other.age, age) || other.age == age) &&
             (identical(other.lengthHeight, lengthHeight) ||
                 other.lengthHeight == lengthHeight) &&
-            (identical(other.measure, measure) || other.measure == measure) &&
-            (identical(other.lengthForAgeData, lengthForAgeData) ||
-                other.lengthForAgeData == lengthForAgeData));
+            (identical(other.measure, measure) || other.measure == measure));
   }
 
+  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, observationDate, sex, age,
-      lengthHeight, measure, lengthForAgeData);
+  int get hashCode => Object.hash(
+      runtimeType, observationDate, sex, age, lengthHeight, measure);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$LengthForAgeImplCopyWith<_$LengthForAgeImpl> get copyWith =>
       __$$LengthForAgeImplCopyWithImpl<_$LengthForAgeImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$LengthForAgeImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _LengthForAge extends LengthForAge {
   factory _LengthForAge(
-      {final Date? observationDate,
-      required final Sex sex,
-      required final Age age,
-      required final Length lengthHeight,
-      required final LengthHeigthMeasurementPosition measure,
-      required final LengthForAgeData lengthForAgeData}) = _$LengthForAgeImpl;
+          {final Date? observationDate,
+          required final Sex sex,
+          required final Age age,
+          @LengthConverter() required final Length lengthHeight,
+          required final LengthHeigthMeasurementPosition measure}) =
+      _$LengthForAgeImpl;
   _LengthForAge._() : super._();
+
+  factory _LengthForAge.fromJson(Map<String, dynamic> json) =
+      _$LengthForAgeImpl.fromJson;
 
   @override
   Date? get observationDate;
@@ -1001,15 +1145,19 @@ abstract class _LengthForAge extends LengthForAge {
   @override
   Age get age;
   @override
+  @LengthConverter()
   Length get lengthHeight;
   @override
   LengthHeigthMeasurementPosition get measure;
   @override
-  LengthForAgeData get lengthForAgeData;
-  @override
   @JsonKey(ignore: true)
   _$$LengthForAgeImplCopyWith<_$LengthForAgeImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+SubscapularSkinfoldForAge _$SubscapularSkinfoldForAgeFromJson(
+    Map<String, dynamic> json) {
+  return _SubscapularSkinfoldForAge.fromJson(json);
 }
 
 /// @nodoc
@@ -1017,10 +1165,10 @@ mixin _$SubscapularSkinfoldForAge {
   Date? get observationDate => throw _privateConstructorUsedError;
   Sex get sex => throw _privateConstructorUsedError;
   Age get age => throw _privateConstructorUsedError;
+  @LengthConverter()
   Length get measurementResult => throw _privateConstructorUsedError;
-  SubscapularSkinfoldForAgeData get subscapularSkinfoldData =>
-      throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $SubscapularSkinfoldForAgeCopyWith<SubscapularSkinfoldForAge> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1036,8 +1184,7 @@ abstract class $SubscapularSkinfoldForAgeCopyWith<$Res> {
       {Date? observationDate,
       Sex sex,
       Age age,
-      Length measurementResult,
-      SubscapularSkinfoldForAgeData subscapularSkinfoldData});
+      @LengthConverter() Length measurementResult});
 
   $DateCopyWith<$Res>? get observationDate;
   $AgeCopyWith<$Res> get age;
@@ -1061,7 +1208,6 @@ class _$SubscapularSkinfoldForAgeCopyWithImpl<$Res,
     Object? sex = null,
     Object? age = null,
     Object? measurementResult = null,
-    Object? subscapularSkinfoldData = null,
   }) {
     return _then(_value.copyWith(
       observationDate: freezed == observationDate
@@ -1080,10 +1226,6 @@ class _$SubscapularSkinfoldForAgeCopyWithImpl<$Res,
           ? _value.measurementResult
           : measurementResult // ignore: cast_nullable_to_non_nullable
               as Length,
-      subscapularSkinfoldData: null == subscapularSkinfoldData
-          ? _value.subscapularSkinfoldData
-          : subscapularSkinfoldData // ignore: cast_nullable_to_non_nullable
-              as SubscapularSkinfoldForAgeData,
     ) as $Val);
   }
 
@@ -1121,8 +1263,7 @@ abstract class _$$SubscapularSkinfoldForAgeImplCopyWith<$Res>
       {Date? observationDate,
       Sex sex,
       Age age,
-      Length measurementResult,
-      SubscapularSkinfoldForAgeData subscapularSkinfoldData});
+      @LengthConverter() Length measurementResult});
 
   @override
   $DateCopyWith<$Res>? get observationDate;
@@ -1147,7 +1288,6 @@ class __$$SubscapularSkinfoldForAgeImplCopyWithImpl<$Res>
     Object? sex = null,
     Object? age = null,
     Object? measurementResult = null,
-    Object? subscapularSkinfoldData = null,
   }) {
     return _then(_$SubscapularSkinfoldForAgeImpl(
       observationDate: freezed == observationDate
@@ -1166,26 +1306,24 @@ class __$$SubscapularSkinfoldForAgeImplCopyWithImpl<$Res>
           ? _value.measurementResult
           : measurementResult // ignore: cast_nullable_to_non_nullable
               as Length,
-      subscapularSkinfoldData: null == subscapularSkinfoldData
-          ? _value.subscapularSkinfoldData
-          : subscapularSkinfoldData // ignore: cast_nullable_to_non_nullable
-              as SubscapularSkinfoldForAgeData,
     ));
   }
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$SubscapularSkinfoldForAgeImpl extends _SubscapularSkinfoldForAge {
   _$SubscapularSkinfoldForAgeImpl(
       {this.observationDate,
       required this.sex,
       required this.age,
-      required this.measurementResult,
-      required this.subscapularSkinfoldData})
+      @LengthConverter() required this.measurementResult})
       : assert(age.ageInTotalDaysByNow >= 91 && age.ageInTotalDaysByNow <= 1856,
             'Age must be in range of 91 - 1856 days'),
         super._();
+
+  factory _$SubscapularSkinfoldForAgeImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SubscapularSkinfoldForAgeImplFromJson(json);
 
   @override
   final Date? observationDate;
@@ -1194,13 +1332,12 @@ class _$SubscapularSkinfoldForAgeImpl extends _SubscapularSkinfoldForAge {
   @override
   final Age age;
   @override
+  @LengthConverter()
   final Length measurementResult;
-  @override
-  final SubscapularSkinfoldForAgeData subscapularSkinfoldData;
 
   @override
   String toString() {
-    return 'SubscapularSkinfoldForAge(observationDate: $observationDate, sex: $sex, age: $age, measurementResult: $measurementResult, subscapularSkinfoldData: $subscapularSkinfoldData)';
+    return 'SubscapularSkinfoldForAge(observationDate: $observationDate, sex: $sex, age: $age, measurementResult: $measurementResult)';
   }
 
   @override
@@ -1213,15 +1350,13 @@ class _$SubscapularSkinfoldForAgeImpl extends _SubscapularSkinfoldForAge {
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.measurementResult, measurementResult) ||
-                other.measurementResult == measurementResult) &&
-            (identical(
-                    other.subscapularSkinfoldData, subscapularSkinfoldData) ||
-                other.subscapularSkinfoldData == subscapularSkinfoldData));
+                other.measurementResult == measurementResult));
   }
 
+  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, observationDate, sex, age,
-      measurementResult, subscapularSkinfoldData);
+  int get hashCode =>
+      Object.hash(runtimeType, observationDate, sex, age, measurementResult);
 
   @JsonKey(ignore: true)
   @override
@@ -1229,17 +1364,26 @@ class _$SubscapularSkinfoldForAgeImpl extends _SubscapularSkinfoldForAge {
   _$$SubscapularSkinfoldForAgeImplCopyWith<_$SubscapularSkinfoldForAgeImpl>
       get copyWith => __$$SubscapularSkinfoldForAgeImplCopyWithImpl<
           _$SubscapularSkinfoldForAgeImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SubscapularSkinfoldForAgeImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _SubscapularSkinfoldForAge extends SubscapularSkinfoldForAge {
   factory _SubscapularSkinfoldForAge(
-      {final Date? observationDate,
-      required final Sex sex,
-      required final Age age,
-      required final Length measurementResult,
-      required final SubscapularSkinfoldForAgeData
-          subscapularSkinfoldData}) = _$SubscapularSkinfoldForAgeImpl;
+          {final Date? observationDate,
+          required final Sex sex,
+          required final Age age,
+          @LengthConverter() required final Length measurementResult}) =
+      _$SubscapularSkinfoldForAgeImpl;
   _SubscapularSkinfoldForAge._() : super._();
+
+  factory _SubscapularSkinfoldForAge.fromJson(Map<String, dynamic> json) =
+      _$SubscapularSkinfoldForAgeImpl.fromJson;
 
   @override
   Date? get observationDate;
@@ -1248,13 +1392,17 @@ abstract class _SubscapularSkinfoldForAge extends SubscapularSkinfoldForAge {
   @override
   Age get age;
   @override
+  @LengthConverter()
   Length get measurementResult;
-  @override
-  SubscapularSkinfoldForAgeData get subscapularSkinfoldData;
   @override
   @JsonKey(ignore: true)
   _$$SubscapularSkinfoldForAgeImplCopyWith<_$SubscapularSkinfoldForAgeImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+TricepsSkinfoldForAge _$TricepsSkinfoldForAgeFromJson(
+    Map<String, dynamic> json) {
+  return _TricepsSkinfoldForAge.fromJson(json);
 }
 
 /// @nodoc
@@ -1262,10 +1410,10 @@ mixin _$TricepsSkinfoldForAge {
   Date? get observationDate => throw _privateConstructorUsedError;
   Sex get sex => throw _privateConstructorUsedError;
   Age get age => throw _privateConstructorUsedError;
+  @LengthConverter()
   Length get measurementResult => throw _privateConstructorUsedError;
-  TricepsSkinfoldForAgeData get tricepsSkinfoldData =>
-      throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $TricepsSkinfoldForAgeCopyWith<TricepsSkinfoldForAge> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1281,8 +1429,7 @@ abstract class $TricepsSkinfoldForAgeCopyWith<$Res> {
       {Date? observationDate,
       Sex sex,
       Age age,
-      Length measurementResult,
-      TricepsSkinfoldForAgeData tricepsSkinfoldData});
+      @LengthConverter() Length measurementResult});
 
   $DateCopyWith<$Res>? get observationDate;
   $AgeCopyWith<$Res> get age;
@@ -1306,7 +1453,6 @@ class _$TricepsSkinfoldForAgeCopyWithImpl<$Res,
     Object? sex = null,
     Object? age = null,
     Object? measurementResult = null,
-    Object? tricepsSkinfoldData = null,
   }) {
     return _then(_value.copyWith(
       observationDate: freezed == observationDate
@@ -1325,10 +1471,6 @@ class _$TricepsSkinfoldForAgeCopyWithImpl<$Res,
           ? _value.measurementResult
           : measurementResult // ignore: cast_nullable_to_non_nullable
               as Length,
-      tricepsSkinfoldData: null == tricepsSkinfoldData
-          ? _value.tricepsSkinfoldData
-          : tricepsSkinfoldData // ignore: cast_nullable_to_non_nullable
-              as TricepsSkinfoldForAgeData,
     ) as $Val);
   }
 
@@ -1366,8 +1508,7 @@ abstract class _$$TricepsSkinfoldForAgeImplCopyWith<$Res>
       {Date? observationDate,
       Sex sex,
       Age age,
-      Length measurementResult,
-      TricepsSkinfoldForAgeData tricepsSkinfoldData});
+      @LengthConverter() Length measurementResult});
 
   @override
   $DateCopyWith<$Res>? get observationDate;
@@ -1391,7 +1532,6 @@ class __$$TricepsSkinfoldForAgeImplCopyWithImpl<$Res>
     Object? sex = null,
     Object? age = null,
     Object? measurementResult = null,
-    Object? tricepsSkinfoldData = null,
   }) {
     return _then(_$TricepsSkinfoldForAgeImpl(
       observationDate: freezed == observationDate
@@ -1410,26 +1550,24 @@ class __$$TricepsSkinfoldForAgeImplCopyWithImpl<$Res>
           ? _value.measurementResult
           : measurementResult // ignore: cast_nullable_to_non_nullable
               as Length,
-      tricepsSkinfoldData: null == tricepsSkinfoldData
-          ? _value.tricepsSkinfoldData
-          : tricepsSkinfoldData // ignore: cast_nullable_to_non_nullable
-              as TricepsSkinfoldForAgeData,
     ));
   }
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$TricepsSkinfoldForAgeImpl extends _TricepsSkinfoldForAge {
   _$TricepsSkinfoldForAgeImpl(
       {this.observationDate,
       required this.sex,
       required this.age,
-      required this.measurementResult,
-      required this.tricepsSkinfoldData})
+      @LengthConverter() required this.measurementResult})
       : assert(age.ageInTotalDaysByNow >= 91 && age.ageInTotalDaysByNow <= 1856,
             'Age must be in range of 91 - 1856 days'),
         super._();
+
+  factory _$TricepsSkinfoldForAgeImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TricepsSkinfoldForAgeImplFromJson(json);
 
   @override
   final Date? observationDate;
@@ -1438,13 +1576,12 @@ class _$TricepsSkinfoldForAgeImpl extends _TricepsSkinfoldForAge {
   @override
   final Age age;
   @override
+  @LengthConverter()
   final Length measurementResult;
-  @override
-  final TricepsSkinfoldForAgeData tricepsSkinfoldData;
 
   @override
   String toString() {
-    return 'TricepsSkinfoldForAge(observationDate: $observationDate, sex: $sex, age: $age, measurementResult: $measurementResult, tricepsSkinfoldData: $tricepsSkinfoldData)';
+    return 'TricepsSkinfoldForAge(observationDate: $observationDate, sex: $sex, age: $age, measurementResult: $measurementResult)';
   }
 
   @override
@@ -1457,14 +1594,13 @@ class _$TricepsSkinfoldForAgeImpl extends _TricepsSkinfoldForAge {
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.measurementResult, measurementResult) ||
-                other.measurementResult == measurementResult) &&
-            (identical(other.tricepsSkinfoldData, tricepsSkinfoldData) ||
-                other.tricepsSkinfoldData == tricepsSkinfoldData));
+                other.measurementResult == measurementResult));
   }
 
+  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, observationDate, sex, age,
-      measurementResult, tricepsSkinfoldData);
+  int get hashCode =>
+      Object.hash(runtimeType, observationDate, sex, age, measurementResult);
 
   @JsonKey(ignore: true)
   @override
@@ -1472,6 +1608,13 @@ class _$TricepsSkinfoldForAgeImpl extends _TricepsSkinfoldForAge {
   _$$TricepsSkinfoldForAgeImplCopyWith<_$TricepsSkinfoldForAgeImpl>
       get copyWith => __$$TricepsSkinfoldForAgeImplCopyWithImpl<
           _$TricepsSkinfoldForAgeImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$TricepsSkinfoldForAgeImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _TricepsSkinfoldForAge extends TricepsSkinfoldForAge {
@@ -1479,10 +1622,12 @@ abstract class _TricepsSkinfoldForAge extends TricepsSkinfoldForAge {
           {final Date? observationDate,
           required final Sex sex,
           required final Age age,
-          required final Length measurementResult,
-          required final TricepsSkinfoldForAgeData tricepsSkinfoldData}) =
+          @LengthConverter() required final Length measurementResult}) =
       _$TricepsSkinfoldForAgeImpl;
   _TricepsSkinfoldForAge._() : super._();
+
+  factory _TricepsSkinfoldForAge.fromJson(Map<String, dynamic> json) =
+      _$TricepsSkinfoldForAgeImpl.fromJson;
 
   @override
   Date? get observationDate;
@@ -1491,13 +1636,16 @@ abstract class _TricepsSkinfoldForAge extends TricepsSkinfoldForAge {
   @override
   Age get age;
   @override
+  @LengthConverter()
   Length get measurementResult;
-  @override
-  TricepsSkinfoldForAgeData get tricepsSkinfoldData;
   @override
   @JsonKey(ignore: true)
   _$$TricepsSkinfoldForAgeImplCopyWith<_$TricepsSkinfoldForAgeImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+WeightForAge _$WeightForAgeFromJson(Map<String, dynamic> json) {
+  return _WeightForAge.fromJson(json);
 }
 
 /// @nodoc
@@ -1505,9 +1653,10 @@ mixin _$WeightForAge {
   Date? get observationDate => throw _privateConstructorUsedError;
   Sex get sex => throw _privateConstructorUsedError;
   Age get age => throw _privateConstructorUsedError;
+  @MassConverter()
   Mass get weight => throw _privateConstructorUsedError;
-  WeightForAgeData get weightForAgeData => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $WeightForAgeCopyWith<WeightForAge> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1520,11 +1669,7 @@ abstract class $WeightForAgeCopyWith<$Res> {
       _$WeightForAgeCopyWithImpl<$Res, WeightForAge>;
   @useResult
   $Res call(
-      {Date? observationDate,
-      Sex sex,
-      Age age,
-      Mass weight,
-      WeightForAgeData weightForAgeData});
+      {Date? observationDate, Sex sex, Age age, @MassConverter() Mass weight});
 
   $DateCopyWith<$Res>? get observationDate;
   $AgeCopyWith<$Res> get age;
@@ -1547,7 +1692,6 @@ class _$WeightForAgeCopyWithImpl<$Res, $Val extends WeightForAge>
     Object? sex = null,
     Object? age = null,
     Object? weight = null,
-    Object? weightForAgeData = null,
   }) {
     return _then(_value.copyWith(
       observationDate: freezed == observationDate
@@ -1566,10 +1710,6 @@ class _$WeightForAgeCopyWithImpl<$Res, $Val extends WeightForAge>
           ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
               as Mass,
-      weightForAgeData: null == weightForAgeData
-          ? _value.weightForAgeData
-          : weightForAgeData // ignore: cast_nullable_to_non_nullable
-              as WeightForAgeData,
     ) as $Val);
   }
 
@@ -1603,11 +1743,7 @@ abstract class _$$WeightForAgeImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Date? observationDate,
-      Sex sex,
-      Age age,
-      Mass weight,
-      WeightForAgeData weightForAgeData});
+      {Date? observationDate, Sex sex, Age age, @MassConverter() Mass weight});
 
   @override
   $DateCopyWith<$Res>? get observationDate;
@@ -1630,7 +1766,6 @@ class __$$WeightForAgeImplCopyWithImpl<$Res>
     Object? sex = null,
     Object? age = null,
     Object? weight = null,
-    Object? weightForAgeData = null,
   }) {
     return _then(_$WeightForAgeImpl(
       observationDate: freezed == observationDate
@@ -1649,26 +1784,24 @@ class __$$WeightForAgeImplCopyWithImpl<$Res>
           ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
               as Mass,
-      weightForAgeData: null == weightForAgeData
-          ? _value.weightForAgeData
-          : weightForAgeData // ignore: cast_nullable_to_non_nullable
-              as WeightForAgeData,
     ));
   }
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$WeightForAgeImpl extends _WeightForAge {
   _$WeightForAgeImpl(
       {this.observationDate,
       required this.sex,
       required this.age,
-      required this.weight,
-      required this.weightForAgeData})
+      @MassConverter() required this.weight})
       : assert(age.ageInTotalDaysByNow >= 0 && age.ageInTotalDaysByNow <= 1856,
             'Age must be in range of 0 - 1856 days'),
         super._();
+
+  factory _$WeightForAgeImpl.fromJson(Map<String, dynamic> json) =>
+      _$$WeightForAgeImplFromJson(json);
 
   @override
   final Date? observationDate;
@@ -1677,13 +1810,12 @@ class _$WeightForAgeImpl extends _WeightForAge {
   @override
   final Age age;
   @override
+  @MassConverter()
   final Mass weight;
-  @override
-  final WeightForAgeData weightForAgeData;
 
   @override
   String toString() {
-    return 'WeightForAge(observationDate: $observationDate, sex: $sex, age: $age, weight: $weight, weightForAgeData: $weightForAgeData)';
+    return 'WeightForAge(observationDate: $observationDate, sex: $sex, age: $age, weight: $weight)';
   }
 
   @override
@@ -1695,20 +1827,26 @@ class _$WeightForAgeImpl extends _WeightForAge {
                 other.observationDate == observationDate) &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
-            (identical(other.weight, weight) || other.weight == weight) &&
-            (identical(other.weightForAgeData, weightForAgeData) ||
-                other.weightForAgeData == weightForAgeData));
+            (identical(other.weight, weight) || other.weight == weight));
   }
 
+  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, observationDate, sex, age, weight, weightForAgeData);
+  int get hashCode =>
+      Object.hash(runtimeType, observationDate, sex, age, weight);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$WeightForAgeImplCopyWith<_$WeightForAgeImpl> get copyWith =>
       __$$WeightForAgeImplCopyWithImpl<_$WeightForAgeImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$WeightForAgeImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _WeightForAge extends WeightForAge {
@@ -1716,9 +1854,11 @@ abstract class _WeightForAge extends WeightForAge {
       {final Date? observationDate,
       required final Sex sex,
       required final Age age,
-      required final Mass weight,
-      required final WeightForAgeData weightForAgeData}) = _$WeightForAgeImpl;
+      @MassConverter() required final Mass weight}) = _$WeightForAgeImpl;
   _WeightForAge._() : super._();
+
+  factory _WeightForAge.fromJson(Map<String, dynamic> json) =
+      _$WeightForAgeImpl.fromJson;
 
   @override
   Date? get observationDate;
@@ -1727,13 +1867,16 @@ abstract class _WeightForAge extends WeightForAge {
   @override
   Age get age;
   @override
+  @MassConverter()
   Mass get weight;
-  @override
-  WeightForAgeData get weightForAgeData;
   @override
   @JsonKey(ignore: true)
   _$$WeightForAgeImplCopyWith<_$WeightForAgeImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+WeightForHeight _$WeightForHeightFromJson(Map<String, dynamic> json) {
+  return _WeightForHeight.fromJson(json);
 }
 
 /// @nodoc
@@ -1741,13 +1884,14 @@ mixin _$WeightForHeight {
   Date? get observationDate => throw _privateConstructorUsedError;
   Sex get sex => throw _privateConstructorUsedError;
   Age get age => throw _privateConstructorUsedError;
+  @LengthConverter()
   Length get height => throw _privateConstructorUsedError;
-  Mass get mass => throw _privateConstructorUsedError;
+  @MassConverter()
+  Mass get weight => throw _privateConstructorUsedError;
   LengthHeigthMeasurementPosition get measure =>
       throw _privateConstructorUsedError;
-  WeightForHeightData get weightForHeightData =>
-      throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $WeightForHeightCopyWith<WeightForHeight> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1763,10 +1907,9 @@ abstract class $WeightForHeightCopyWith<$Res> {
       {Date? observationDate,
       Sex sex,
       Age age,
-      Length height,
-      Mass mass,
-      LengthHeigthMeasurementPosition measure,
-      WeightForHeightData weightForHeightData});
+      @LengthConverter() Length height,
+      @MassConverter() Mass weight,
+      LengthHeigthMeasurementPosition measure});
 
   $DateCopyWith<$Res>? get observationDate;
   $AgeCopyWith<$Res> get age;
@@ -1789,9 +1932,8 @@ class _$WeightForHeightCopyWithImpl<$Res, $Val extends WeightForHeight>
     Object? sex = null,
     Object? age = null,
     Object? height = null,
-    Object? mass = null,
+    Object? weight = null,
     Object? measure = null,
-    Object? weightForHeightData = null,
   }) {
     return _then(_value.copyWith(
       observationDate: freezed == observationDate
@@ -1810,18 +1952,14 @@ class _$WeightForHeightCopyWithImpl<$Res, $Val extends WeightForHeight>
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
               as Length,
-      mass: null == mass
-          ? _value.mass
-          : mass // ignore: cast_nullable_to_non_nullable
+      weight: null == weight
+          ? _value.weight
+          : weight // ignore: cast_nullable_to_non_nullable
               as Mass,
       measure: null == measure
           ? _value.measure
           : measure // ignore: cast_nullable_to_non_nullable
               as LengthHeigthMeasurementPosition,
-      weightForHeightData: null == weightForHeightData
-          ? _value.weightForHeightData
-          : weightForHeightData // ignore: cast_nullable_to_non_nullable
-              as WeightForHeightData,
     ) as $Val);
   }
 
@@ -1858,10 +1996,9 @@ abstract class _$$WeightForHeightImplCopyWith<$Res>
       {Date? observationDate,
       Sex sex,
       Age age,
-      Length height,
-      Mass mass,
-      LengthHeigthMeasurementPosition measure,
-      WeightForHeightData weightForHeightData});
+      @LengthConverter() Length height,
+      @MassConverter() Mass weight,
+      LengthHeigthMeasurementPosition measure});
 
   @override
   $DateCopyWith<$Res>? get observationDate;
@@ -1884,9 +2021,8 @@ class __$$WeightForHeightImplCopyWithImpl<$Res>
     Object? sex = null,
     Object? age = null,
     Object? height = null,
-    Object? mass = null,
+    Object? weight = null,
     Object? measure = null,
-    Object? weightForHeightData = null,
   }) {
     return _then(_$WeightForHeightImpl(
       observationDate: freezed == observationDate
@@ -1905,33 +2041,28 @@ class __$$WeightForHeightImplCopyWithImpl<$Res>
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
               as Length,
-      mass: null == mass
-          ? _value.mass
-          : mass // ignore: cast_nullable_to_non_nullable
+      weight: null == weight
+          ? _value.weight
+          : weight // ignore: cast_nullable_to_non_nullable
               as Mass,
       measure: null == measure
           ? _value.measure
           : measure // ignore: cast_nullable_to_non_nullable
               as LengthHeigthMeasurementPosition,
-      weightForHeightData: null == weightForHeightData
-          ? _value.weightForHeightData
-          : weightForHeightData // ignore: cast_nullable_to_non_nullable
-              as WeightForHeightData,
     ));
   }
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$WeightForHeightImpl extends _WeightForHeight {
   _$WeightForHeightImpl(
       {this.observationDate,
       required this.sex,
       required this.age,
-      required this.height,
-      required this.mass,
-      required this.measure,
-      required this.weightForHeightData})
+      @LengthConverter() required this.height,
+      @MassConverter() required this.weight,
+      required this.measure})
       : assert(
             adjustedLengthHeight(
                       measure: measure,
@@ -1964,6 +2095,9 @@ class _$WeightForHeightImpl extends _WeightForHeight {
             'Height must be in range of 65 - 120 cm'),
         super._();
 
+  factory _$WeightForHeightImpl.fromJson(Map<String, dynamic> json) =>
+      _$$WeightForHeightImplFromJson(json);
+
   @override
   final Date? observationDate;
   @override
@@ -1971,17 +2105,17 @@ class _$WeightForHeightImpl extends _WeightForHeight {
   @override
   final Age age;
   @override
+  @LengthConverter()
   final Length height;
   @override
-  final Mass mass;
+  @MassConverter()
+  final Mass weight;
   @override
   final LengthHeigthMeasurementPosition measure;
-  @override
-  final WeightForHeightData weightForHeightData;
 
   @override
   String toString() {
-    return 'WeightForHeight(observationDate: $observationDate, sex: $sex, age: $age, height: $height, mass: $mass, measure: $measure, weightForHeightData: $weightForHeightData)';
+    return 'WeightForHeight(observationDate: $observationDate, sex: $sex, age: $age, height: $height, weight: $weight, measure: $measure)';
   }
 
   @override
@@ -1994,15 +2128,14 @@ class _$WeightForHeightImpl extends _WeightForHeight {
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.height, height) || other.height == height) &&
-            (identical(other.mass, mass) || other.mass == mass) &&
-            (identical(other.measure, measure) || other.measure == measure) &&
-            (identical(other.weightForHeightData, weightForHeightData) ||
-                other.weightForHeightData == weightForHeightData));
+            (identical(other.weight, weight) || other.weight == weight) &&
+            (identical(other.measure, measure) || other.measure == measure));
   }
 
+  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, observationDate, sex, age,
-      height, mass, measure, weightForHeightData);
+  int get hashCode => Object.hash(
+      runtimeType, observationDate, sex, age, height, weight, measure);
 
   @JsonKey(ignore: true)
   @override
@@ -2010,6 +2143,13 @@ class _$WeightForHeightImpl extends _WeightForHeight {
   _$$WeightForHeightImplCopyWith<_$WeightForHeightImpl> get copyWith =>
       __$$WeightForHeightImplCopyWithImpl<_$WeightForHeightImpl>(
           this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$WeightForHeightImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _WeightForHeight extends WeightForHeight {
@@ -2017,12 +2157,14 @@ abstract class _WeightForHeight extends WeightForHeight {
           {final Date? observationDate,
           required final Sex sex,
           required final Age age,
-          required final Length height,
-          required final Mass mass,
-          required final LengthHeigthMeasurementPosition measure,
-          required final WeightForHeightData weightForHeightData}) =
+          @LengthConverter() required final Length height,
+          @MassConverter() required final Mass weight,
+          required final LengthHeigthMeasurementPosition measure}) =
       _$WeightForHeightImpl;
   _WeightForHeight._() : super._();
+
+  factory _WeightForHeight.fromJson(Map<String, dynamic> json) =
+      _$WeightForHeightImpl.fromJson;
 
   @override
   Date? get observationDate;
@@ -2031,17 +2173,21 @@ abstract class _WeightForHeight extends WeightForHeight {
   @override
   Age get age;
   @override
+  @LengthConverter()
   Length get height;
   @override
-  Mass get mass;
+  @MassConverter()
+  Mass get weight;
   @override
   LengthHeigthMeasurementPosition get measure;
-  @override
-  WeightForHeightData get weightForHeightData;
   @override
   @JsonKey(ignore: true)
   _$$WeightForHeightImplCopyWith<_$WeightForHeightImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+WeigthForLength _$WeigthForLengthFromJson(Map<String, dynamic> json) {
+  return _WeigthForLength.fromJson(json);
 }
 
 /// @nodoc
@@ -2049,13 +2195,14 @@ mixin _$WeigthForLength {
   Date? get observationDate => throw _privateConstructorUsedError;
   Sex get sex => throw _privateConstructorUsedError;
   Age get age => throw _privateConstructorUsedError;
+  @LengthConverter()
   Length get length => throw _privateConstructorUsedError;
-  Mass get massMeasurementResult => throw _privateConstructorUsedError;
+  @MassConverter()
+  Mass get weight => throw _privateConstructorUsedError;
   LengthHeigthMeasurementPosition get measure =>
       throw _privateConstructorUsedError;
-  WeigthForLengthData get weigthForLengthData =>
-      throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $WeigthForLengthCopyWith<WeigthForLength> get copyWith =>
       throw _privateConstructorUsedError;
@@ -2071,10 +2218,9 @@ abstract class $WeigthForLengthCopyWith<$Res> {
       {Date? observationDate,
       Sex sex,
       Age age,
-      Length length,
-      Mass massMeasurementResult,
-      LengthHeigthMeasurementPosition measure,
-      WeigthForLengthData weigthForLengthData});
+      @LengthConverter() Length length,
+      @MassConverter() Mass weight,
+      LengthHeigthMeasurementPosition measure});
 
   $DateCopyWith<$Res>? get observationDate;
   $AgeCopyWith<$Res> get age;
@@ -2097,9 +2243,8 @@ class _$WeigthForLengthCopyWithImpl<$Res, $Val extends WeigthForLength>
     Object? sex = null,
     Object? age = null,
     Object? length = null,
-    Object? massMeasurementResult = null,
+    Object? weight = null,
     Object? measure = null,
-    Object? weigthForLengthData = null,
   }) {
     return _then(_value.copyWith(
       observationDate: freezed == observationDate
@@ -2118,18 +2263,14 @@ class _$WeigthForLengthCopyWithImpl<$Res, $Val extends WeigthForLength>
           ? _value.length
           : length // ignore: cast_nullable_to_non_nullable
               as Length,
-      massMeasurementResult: null == massMeasurementResult
-          ? _value.massMeasurementResult
-          : massMeasurementResult // ignore: cast_nullable_to_non_nullable
+      weight: null == weight
+          ? _value.weight
+          : weight // ignore: cast_nullable_to_non_nullable
               as Mass,
       measure: null == measure
           ? _value.measure
           : measure // ignore: cast_nullable_to_non_nullable
               as LengthHeigthMeasurementPosition,
-      weigthForLengthData: null == weigthForLengthData
-          ? _value.weigthForLengthData
-          : weigthForLengthData // ignore: cast_nullable_to_non_nullable
-              as WeigthForLengthData,
     ) as $Val);
   }
 
@@ -2166,10 +2307,9 @@ abstract class _$$WeigthForLengthImplCopyWith<$Res>
       {Date? observationDate,
       Sex sex,
       Age age,
-      Length length,
-      Mass massMeasurementResult,
-      LengthHeigthMeasurementPosition measure,
-      WeigthForLengthData weigthForLengthData});
+      @LengthConverter() Length length,
+      @MassConverter() Mass weight,
+      LengthHeigthMeasurementPosition measure});
 
   @override
   $DateCopyWith<$Res>? get observationDate;
@@ -2192,9 +2332,8 @@ class __$$WeigthForLengthImplCopyWithImpl<$Res>
     Object? sex = null,
     Object? age = null,
     Object? length = null,
-    Object? massMeasurementResult = null,
+    Object? weight = null,
     Object? measure = null,
-    Object? weigthForLengthData = null,
   }) {
     return _then(_$WeigthForLengthImpl(
       observationDate: freezed == observationDate
@@ -2213,33 +2352,28 @@ class __$$WeigthForLengthImplCopyWithImpl<$Res>
           ? _value.length
           : length // ignore: cast_nullable_to_non_nullable
               as Length,
-      massMeasurementResult: null == massMeasurementResult
-          ? _value.massMeasurementResult
-          : massMeasurementResult // ignore: cast_nullable_to_non_nullable
+      weight: null == weight
+          ? _value.weight
+          : weight // ignore: cast_nullable_to_non_nullable
               as Mass,
       measure: null == measure
           ? _value.measure
           : measure // ignore: cast_nullable_to_non_nullable
               as LengthHeigthMeasurementPosition,
-      weigthForLengthData: null == weigthForLengthData
-          ? _value.weigthForLengthData
-          : weigthForLengthData // ignore: cast_nullable_to_non_nullable
-              as WeigthForLengthData,
     ));
   }
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$WeigthForLengthImpl extends _WeigthForLength {
   _$WeigthForLengthImpl(
       {this.observationDate,
       required this.sex,
       required this.age,
-      required this.length,
-      required this.massMeasurementResult,
-      required this.measure,
-      required this.weigthForLengthData})
+      @LengthConverter() required this.length,
+      @MassConverter() required this.weight,
+      required this.measure})
       : assert(
             adjustedLengthHeight(
                       measure: measure,
@@ -2272,6 +2406,9 @@ class _$WeigthForLengthImpl extends _WeigthForLength {
             'Length must be in range of 45 - 110 cm'),
         super._();
 
+  factory _$WeigthForLengthImpl.fromJson(Map<String, dynamic> json) =>
+      _$$WeigthForLengthImplFromJson(json);
+
   @override
   final Date? observationDate;
   @override
@@ -2279,17 +2416,17 @@ class _$WeigthForLengthImpl extends _WeigthForLength {
   @override
   final Age age;
   @override
+  @LengthConverter()
   final Length length;
   @override
-  final Mass massMeasurementResult;
+  @MassConverter()
+  final Mass weight;
   @override
   final LengthHeigthMeasurementPosition measure;
-  @override
-  final WeigthForLengthData weigthForLengthData;
 
   @override
   String toString() {
-    return 'WeigthForLength(observationDate: $observationDate, sex: $sex, age: $age, length: $length, massMeasurementResult: $massMeasurementResult, measure: $measure, weigthForLengthData: $weigthForLengthData)';
+    return 'WeigthForLength(observationDate: $observationDate, sex: $sex, age: $age, length: $length, weight: $weight, measure: $measure)';
   }
 
   @override
@@ -2302,16 +2439,14 @@ class _$WeigthForLengthImpl extends _WeigthForLength {
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.length, length) || other.length == length) &&
-            (identical(other.massMeasurementResult, massMeasurementResult) ||
-                other.massMeasurementResult == massMeasurementResult) &&
-            (identical(other.measure, measure) || other.measure == measure) &&
-            (identical(other.weigthForLengthData, weigthForLengthData) ||
-                other.weigthForLengthData == weigthForLengthData));
+            (identical(other.weight, weight) || other.weight == weight) &&
+            (identical(other.measure, measure) || other.measure == measure));
   }
 
+  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, observationDate, sex, age,
-      length, massMeasurementResult, measure, weigthForLengthData);
+  int get hashCode => Object.hash(
+      runtimeType, observationDate, sex, age, length, weight, measure);
 
   @JsonKey(ignore: true)
   @override
@@ -2319,6 +2454,13 @@ class _$WeigthForLengthImpl extends _WeigthForLength {
   _$$WeigthForLengthImplCopyWith<_$WeigthForLengthImpl> get copyWith =>
       __$$WeigthForLengthImplCopyWithImpl<_$WeigthForLengthImpl>(
           this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$WeigthForLengthImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _WeigthForLength extends WeigthForLength {
@@ -2326,12 +2468,14 @@ abstract class _WeigthForLength extends WeigthForLength {
           {final Date? observationDate,
           required final Sex sex,
           required final Age age,
-          required final Length length,
-          required final Mass massMeasurementResult,
-          required final LengthHeigthMeasurementPosition measure,
-          required final WeigthForLengthData weigthForLengthData}) =
+          @LengthConverter() required final Length length,
+          @MassConverter() required final Mass weight,
+          required final LengthHeigthMeasurementPosition measure}) =
       _$WeigthForLengthImpl;
   _WeigthForLength._() : super._();
+
+  factory _WeigthForLength.fromJson(Map<String, dynamic> json) =
+      _$WeigthForLengthImpl.fromJson;
 
   @override
   Date? get observationDate;
@@ -2340,13 +2484,13 @@ abstract class _WeigthForLength extends WeigthForLength {
   @override
   Age get age;
   @override
+  @LengthConverter()
   Length get length;
   @override
-  Mass get massMeasurementResult;
+  @MassConverter()
+  Mass get weight;
   @override
   LengthHeigthMeasurementPosition get measure;
-  @override
-  WeigthForLengthData get weigthForLengthData;
   @override
   @JsonKey(ignore: true)
   _$$WeigthForLengthImplCopyWith<_$WeigthForLengthImpl> get copyWith =>

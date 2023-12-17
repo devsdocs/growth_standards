@@ -2,49 +2,46 @@ part of '../reference.dart';
 
 class GrowthReferenceBodyMassIndexForAgeData {
   factory GrowthReferenceBodyMassIndexForAgeData() => _singleton;
-  GrowthReferenceBodyMassIndexForAgeData._()
-      : _data = (json.decode(_bmi5yo) as Map<String, dynamic>).map(
-          (k1, v1) => MapEntry(
-            k1,
-            _GrowthReferenceBodyMassIndexForAgeGender(
-              ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
-                v2 as Map<String, dynamic>;
-                return MapEntry(
-                  k2,
-                  _GrowthReferenceBodyMassIndexForAgeLMS(
-                    lms: (l: v2['l'], m: v2['m'], s: v2['s']),
-                  ),
-                );
-              }),
-            ),
+  const GrowthReferenceBodyMassIndexForAgeData._(this._data);
+
+  static final _singleton = GrowthReferenceBodyMassIndexForAgeData._(_parse());
+
+  static Map<String, _GrowthReferenceBodyMassIndexForAgeGender> _parse() =>
+      (json.decode(_bmi5yo) as Map<String, dynamic>).map(
+        (k1, v1) => MapEntry(
+          k1,
+          _GrowthReferenceBodyMassIndexForAgeGender(
+            ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
+              v2 as Map<String, dynamic>;
+              return MapEntry(
+                k2,
+                _GrowthReferenceBodyMassIndexForAgeLMS(
+                  lms: (l: v2['l'], m: v2['m'], s: v2['s']),
+                ),
+              );
+            }),
           ),
-        );
-
-  static final _singleton = GrowthReferenceBodyMassIndexForAgeData._();
-
+        ),
+      );
   final Map<String, _GrowthReferenceBodyMassIndexForAgeGender> _data;
 }
 
-class GrowthReferenceBodyMassIndexMeasurement {
-  const GrowthReferenceBodyMassIndexMeasurement._(this.value);
+@freezed
+class GrowthReferenceBodyMassIndexMeasurement
+    with _$GrowthReferenceBodyMassIndexMeasurement {
+  factory GrowthReferenceBodyMassIndexMeasurement(num value) =
+      _GrowthReferenceBodyMassIndexMeasurement;
+  const GrowthReferenceBodyMassIndexMeasurement._();
 
-  factory GrowthReferenceBodyMassIndexMeasurement.fromMeasurement({
-    required Length lengthHeight,
-    required Mass weight,
-  }) {
-    final toMeterSquare = pow(
-      lengthHeight.toMeters.value!,
-      2,
-    );
-    final toKg = weight.toKilograms.value!;
+  factory GrowthReferenceBodyMassIndexMeasurement.fromMeasurement(
+    BodyMassIndex bodyMassIndex,
+  ) =>
+      GrowthReferenceBodyMassIndexMeasurement(bodyMassIndex.value);
 
-    return GrowthReferenceBodyMassIndexMeasurement._(toKg / toMeterSquare);
-  }
-
-  factory GrowthReferenceBodyMassIndexMeasurement.fromValue(num value) =>
-      GrowthReferenceBodyMassIndexMeasurement._(value);
-
-  final num value;
+  factory GrowthReferenceBodyMassIndexMeasurement.fromJson(
+    Map<String, dynamic> json,
+  ) =>
+      _$GrowthReferenceBodyMassIndexMeasurementFromJson(json);
 }
 
 @freezed
@@ -59,15 +56,17 @@ class GrowthReferenceBodyMassIndexForAge
     required Sex sex,
     required Age age,
     required GrowthReferenceBodyMassIndexMeasurement bodyMassIndexMeasurement,
-    required GrowthReferenceBodyMassIndexForAgeData bodyMassIndexData,
   }) = _GrowthReferenceBodyMassIndexForAge;
 
   const GrowthReferenceBodyMassIndexForAge._();
 
+  GrowthReferenceBodyMassIndexForAgeData get _bodyMassIndexData =>
+      GrowthReferenceBodyMassIndexForAgeData();
+
   _GrowthReferenceBodyMassIndexForAgeGender get _maleData =>
-      bodyMassIndexData._data['1']!;
+      _bodyMassIndexData._data['1']!;
   _GrowthReferenceBodyMassIndexForAgeGender get _femaleData =>
-      bodyMassIndexData._data['2']!;
+      _bodyMassIndexData._data['2']!;
 
   _GrowthReferenceBodyMassIndexForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)

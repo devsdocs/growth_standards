@@ -1,6 +1,6 @@
 import 'package:growth_standards/src/who/who.dart';
 
-export 'common/age.dart';
+export 'common/model/age.dart';
 export 'common/types.dart' show LengthHeigthMeasurementPosition, Months, Sex;
 
 final class GrowthStandard {
