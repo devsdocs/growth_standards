@@ -14,7 +14,7 @@ const kilograms = Kilograms(weight);
 final age = Age.byDate(birthDay);
 
 final gs = GrowthStandard.whoGrowthStandard;
-final gsFromJson = GrowthStandard.whoGrowthStandard.fromJson;
+final gsFromJson = gs.fromJson;
 const sex = Sex.male;
 
 void main() {
