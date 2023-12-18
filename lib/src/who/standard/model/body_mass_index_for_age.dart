@@ -59,19 +59,15 @@ class BodyMassIndexMeasurement with _$BodyMassIndexMeasurement {
     required LengthHeigthMeasurementPosition measure,
     required Age age,
   }) {
-    final toMeterSquare = pow(
-      Centimeters(
-        adjustedLengthHeight(
-          ageInDays: age.ageInTotalDaysByNow,
-          measure: measure,
-          lengthHeight: lengthHeight.toCentimeters.value!,
-        ),
-      ).toMeters.value!,
-      2,
+    final adjustedLength = adjustedLengthHeight(
+      age: age,
+      measure: measure,
+      lengthHeight: lengthHeight,
     );
-    final toKg = weight.toKilograms.value!;
 
-    return BodyMassIndexMeasurement(toKg / toMeterSquare, age: age);
+    final bmi = BodyMassIndex(lengthHeight: adjustedLength, weight: weight);
+
+    return BodyMassIndexMeasurement(bmi.value.toDouble().toPrecision(2), age: age);
   }
 
   factory BodyMassIndexMeasurement.fromValue(num value, {required Age age}) =>

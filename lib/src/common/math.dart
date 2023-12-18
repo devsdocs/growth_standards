@@ -1,8 +1,9 @@
 import 'dart:math';
 
 import 'package:dart_numerics/dart_numerics.dart';
+import 'package:growth_standards/src/common/model/age.dart';
 import 'package:growth_standards/src/common/types.dart';
-import 'package:reusable_tools/reusable_tools.dart';
+import 'package:super_measurement/super_measurement.dart';
 
 num calcSD({
   required double sd,
@@ -89,24 +90,24 @@ num adjustedZScore({
   return zScore;
 }
 
-num adjustedLengthHeight({
-  required int ageInDays,
+Centimeters adjustedLengthHeight({
+  required Age age,
   required LengthHeigthMeasurementPosition measure,
-  required num lengthHeight,
+  required Length lengthHeight,
 }) {
-  // Assuming round_up function rounds the age to the nearest whole number.
-  // Dart's round() function rounds to the nearest integer.
+  num adjustedLenHeight = lengthHeight.toCentimeters.value!;
 
-  num adjustedLenHeight = lengthHeight;
-
-  if (ageInDays <= 730 && measure == LengthHeigthMeasurementPosition.standing) {
+  if (age.ageInTotalDaysByNow <= 730 &&
+      measure == LengthHeigthMeasurementPosition.standing) {
     adjustedLenHeight += 0.7;
-  } else if (ageInDays > 730 &&
+    return Centimeters(adjustedLenHeight);
+  } else if (age.ageInTotalDaysByNow > 730 &&
       measure == LengthHeigthMeasurementPosition.recumbent) {
     adjustedLenHeight -= 0.7;
+    return Centimeters(adjustedLenHeight);
+  } else {
+    return Centimeters(adjustedLenHeight);
   }
-
-  return adjustedLenHeight;
 }
 
 num rounding(num value) {
@@ -132,5 +133,5 @@ num rounding(num value) {
 
 num zScoreToPercentile(num zScore) {
   final percentile = 0.5 * (1 + erf(zScore / sqrt(2)));
-  return (percentile * 100).toPrecision(2);
+  return percentile * 100;
 }

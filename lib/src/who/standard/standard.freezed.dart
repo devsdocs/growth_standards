@@ -2066,15 +2066,15 @@ class _$WeightForHeightImpl extends _WeightForHeight {
       : assert(
             adjustedLengthHeight(
                       measure: measure,
-                      ageInDays: age.ageInTotalDaysByNow,
-                      lengthHeight: height.toCentimeters.value!,
-                    ) >=
+                      age: age,
+                      lengthHeight: height,
+                    ).value! >=
                     65 &&
                 adjustedLengthHeight(
                       measure: measure,
-                      ageInDays: age.ageInTotalDaysByNow,
-                      lengthHeight: height.toCentimeters.value!,
-                    ) <=
+                      age: age,
+                      lengthHeight: height,
+                    ).value! <=
                     120 &&
                 height.toCentimeters.value! >= 65 &&
                 height.toCentimeters.value! <= 120,
@@ -2082,15 +2082,15 @@ class _$WeightForHeightImpl extends _WeightForHeight {
         assert(
             adjustedLengthHeight(
                       measure: measure,
-                      ageInDays: age.ageInTotalDaysByNow,
-                      lengthHeight: height.toCentimeters.value!,
-                    ) >=
+                      age: age,
+                      lengthHeight: height,
+                    ).value! >=
                     65 &&
                 adjustedLengthHeight(
                       measure: measure,
-                      ageInDays: age.ageInTotalDaysByNow,
-                      lengthHeight: height.toCentimeters.value!,
-                    ) <=
+                      age: age,
+                      lengthHeight: height,
+                    ).value! <=
                     120,
             'Height must be in range of 65 - 120 cm'),
         super._();
@@ -2377,15 +2377,15 @@ class _$WeigthForLengthImpl extends _WeigthForLength {
       : assert(
             adjustedLengthHeight(
                       measure: measure,
-                      ageInDays: age.ageInTotalDaysByNow,
-                      lengthHeight: length.toCentimeters.value!,
-                    ) >=
+                      age: age,
+                      lengthHeight: length,
+                    ).value! >=
                     45 &&
                 adjustedLengthHeight(
                       measure: measure,
-                      ageInDays: age.ageInTotalDaysByNow,
-                      lengthHeight: length.toCentimeters.value!,
-                    ) <=
+                      age: age,
+                      lengthHeight: length,
+                    ).value! <=
                     110 &&
                 length.toCentimeters.value! >= 45 &&
                 length.toCentimeters.value! <= 110,
@@ -2393,15 +2393,15 @@ class _$WeigthForLengthImpl extends _WeigthForLength {
         assert(
             adjustedLengthHeight(
                       measure: measure,
-                      ageInDays: age.ageInTotalDaysByNow,
-                      lengthHeight: length.toCentimeters.value!,
-                    ) >=
+                      age: age,
+                      lengthHeight: length,
+                    ).value! >=
                     45 &&
                 adjustedLengthHeight(
                       measure: measure,
-                      ageInDays: age.ageInTotalDaysByNow,
-                      lengthHeight: length.toCentimeters.value!,
-                    ) <=
+                      age: age,
+                      lengthHeight: length,
+                    ).value! <=
                     110,
             'Length must be in range of 45 - 110 cm'),
         super._();

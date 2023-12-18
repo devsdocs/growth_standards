@@ -10,9 +10,15 @@ enum Sex {
   final int number;
 }
 
+/// [LengthHeigthMeasurementPosition.recumbent] for age <= 730 days
+///
+/// [LengthHeigthMeasurementPosition.standing] for age > 730 days
 @JsonEnum(valueField: 'value')
 enum LengthHeigthMeasurementPosition {
+  /// [recumbent] for age <= 730 days
   recumbent('recumbent'),
+
+  /// [standing] for age > 730 days
   standing('standing'),
   ;
 
@@ -25,6 +31,21 @@ enum OedemaExist {
   no,
   ;
 }
+
+const monthsEnumMap = {
+  Months.january: 1,
+  Months.february: 2,
+  Months.march: 3,
+  Months.april: 4,
+  Months.may: 5,
+  Months.june: 6,
+  Months.july: 7,
+  Months.august: 8,
+  Months.september: 9,
+  Months.october: 10,
+  Months.november: 11,
+  Months.december: 12,
+};
 
 @JsonEnum(valueField: 'number')
 enum Months {

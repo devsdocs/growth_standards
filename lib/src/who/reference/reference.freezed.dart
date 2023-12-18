@@ -170,6 +170,11 @@ abstract class _GrowthReferenceBodyMassIndexMeasurement
       get copyWith => throw _privateConstructorUsedError;
 }
 
+GrowthReferenceBodyMassIndexForAge _$GrowthReferenceBodyMassIndexForAgeFromJson(
+    Map<String, dynamic> json) {
+  return _GrowthReferenceBodyMassIndexForAge.fromJson(json);
+}
+
 /// @nodoc
 mixin _$GrowthReferenceBodyMassIndexForAge {
   Date? get observationDate => throw _privateConstructorUsedError;
@@ -178,6 +183,7 @@ mixin _$GrowthReferenceBodyMassIndexForAge {
   GrowthReferenceBodyMassIndexMeasurement get bodyMassIndexMeasurement =>
       throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $GrowthReferenceBodyMassIndexForAgeCopyWith<
           GrowthReferenceBodyMassIndexForAge>
@@ -338,7 +344,7 @@ class __$$GrowthReferenceBodyMassIndexForAgeImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$GrowthReferenceBodyMassIndexForAgeImpl
     extends _GrowthReferenceBodyMassIndexForAge {
   _$GrowthReferenceBodyMassIndexForAgeImpl(
@@ -350,6 +356,10 @@ class _$GrowthReferenceBodyMassIndexForAgeImpl
             age.ageInTotalMonthsByNow >= 61 && age.ageInTotalMonthsByNow <= 228,
             'Age must be in range of 61 - 228 months'),
         super._();
+
+  factory _$GrowthReferenceBodyMassIndexForAgeImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$GrowthReferenceBodyMassIndexForAgeImplFromJson(json);
 
   @override
   final Date? observationDate;
@@ -379,6 +389,7 @@ class _$GrowthReferenceBodyMassIndexForAgeImpl
                 other.bodyMassIndexMeasurement == bodyMassIndexMeasurement));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType, observationDate, sex, age, bodyMassIndexMeasurement);
@@ -390,6 +401,13 @@ class _$GrowthReferenceBodyMassIndexForAgeImpl
           _$GrowthReferenceBodyMassIndexForAgeImpl>
       get copyWith => __$$GrowthReferenceBodyMassIndexForAgeImplCopyWithImpl<
           _$GrowthReferenceBodyMassIndexForAgeImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$GrowthReferenceBodyMassIndexForAgeImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _GrowthReferenceBodyMassIndexForAge
@@ -401,6 +419,10 @@ abstract class _GrowthReferenceBodyMassIndexForAge
       required final GrowthReferenceBodyMassIndexMeasurement
           bodyMassIndexMeasurement}) = _$GrowthReferenceBodyMassIndexForAgeImpl;
   _GrowthReferenceBodyMassIndexForAge._() : super._();
+
+  factory _GrowthReferenceBodyMassIndexForAge.fromJson(
+          Map<String, dynamic> json) =
+      _$GrowthReferenceBodyMassIndexForAgeImpl.fromJson;
 
   @override
   Date? get observationDate;
@@ -417,6 +439,11 @@ abstract class _GrowthReferenceBodyMassIndexForAge
       get copyWith => throw _privateConstructorUsedError;
 }
 
+GrowthReferenceHeightForAge _$GrowthReferenceHeightForAgeFromJson(
+    Map<String, dynamic> json) {
+  return _GrowthReferenceHeightForAge.fromJson(json);
+}
+
 /// @nodoc
 mixin _$GrowthReferenceHeightForAge {
   Date? get observationDate => throw _privateConstructorUsedError;
@@ -425,6 +452,7 @@ mixin _$GrowthReferenceHeightForAge {
   @LengthConverter()
   Length get lengthHeight => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $GrowthReferenceHeightForAgeCopyWith<GrowthReferenceHeightForAge>
       get copyWith => throw _privateConstructorUsedError;
@@ -569,7 +597,7 @@ class __$$GrowthReferenceHeightForAgeImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$GrowthReferenceHeightForAgeImpl extends _GrowthReferenceHeightForAge {
   _$GrowthReferenceHeightForAgeImpl(
       {this.observationDate,
@@ -580,6 +608,10 @@ class _$GrowthReferenceHeightForAgeImpl extends _GrowthReferenceHeightForAge {
             age.ageInTotalMonthsByNow >= 61 && age.ageInTotalMonthsByNow <= 228,
             'Age must be in range of 61 - 228 months'),
         super._();
+
+  factory _$GrowthReferenceHeightForAgeImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$GrowthReferenceHeightForAgeImplFromJson(json);
 
   @override
   final Date? observationDate;
@@ -609,6 +641,7 @@ class _$GrowthReferenceHeightForAgeImpl extends _GrowthReferenceHeightForAge {
                 other.lengthHeight == lengthHeight));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, observationDate, sex, age, lengthHeight);
@@ -619,6 +652,13 @@ class _$GrowthReferenceHeightForAgeImpl extends _GrowthReferenceHeightForAge {
   _$$GrowthReferenceHeightForAgeImplCopyWith<_$GrowthReferenceHeightForAgeImpl>
       get copyWith => __$$GrowthReferenceHeightForAgeImplCopyWithImpl<
           _$GrowthReferenceHeightForAgeImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$GrowthReferenceHeightForAgeImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _GrowthReferenceHeightForAge
@@ -630,6 +670,9 @@ abstract class _GrowthReferenceHeightForAge
           @LengthConverter() required final Length lengthHeight}) =
       _$GrowthReferenceHeightForAgeImpl;
   _GrowthReferenceHeightForAge._() : super._();
+
+  factory _GrowthReferenceHeightForAge.fromJson(Map<String, dynamic> json) =
+      _$GrowthReferenceHeightForAgeImpl.fromJson;
 
   @override
   Date? get observationDate;
@@ -646,6 +689,11 @@ abstract class _GrowthReferenceHeightForAge
       get copyWith => throw _privateConstructorUsedError;
 }
 
+GrowthReferenceWeightForAge _$GrowthReferenceWeightForAgeFromJson(
+    Map<String, dynamic> json) {
+  return _GrowthReferenceWeightForAge.fromJson(json);
+}
+
 /// @nodoc
 mixin _$GrowthReferenceWeightForAge {
   Date? get observationDate => throw _privateConstructorUsedError;
@@ -654,6 +702,7 @@ mixin _$GrowthReferenceWeightForAge {
   @MassConverter()
   Mass get weight => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $GrowthReferenceWeightForAgeCopyWith<GrowthReferenceWeightForAge>
       get copyWith => throw _privateConstructorUsedError;
@@ -792,7 +841,7 @@ class __$$GrowthReferenceWeightForAgeImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$GrowthReferenceWeightForAgeImpl extends _GrowthReferenceWeightForAge {
   _$GrowthReferenceWeightForAgeImpl(
       {this.observationDate,
@@ -803,6 +852,10 @@ class _$GrowthReferenceWeightForAgeImpl extends _GrowthReferenceWeightForAge {
             age.ageInTotalMonthsByNow >= 61 && age.ageInTotalMonthsByNow <= 120,
             'Age must be in range of 61 - 120 months'),
         super._();
+
+  factory _$GrowthReferenceWeightForAgeImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$GrowthReferenceWeightForAgeImplFromJson(json);
 
   @override
   final Date? observationDate;
@@ -831,6 +884,7 @@ class _$GrowthReferenceWeightForAgeImpl extends _GrowthReferenceWeightForAge {
             (identical(other.weight, weight) || other.weight == weight));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, observationDate, sex, age, weight);
@@ -841,6 +895,13 @@ class _$GrowthReferenceWeightForAgeImpl extends _GrowthReferenceWeightForAge {
   _$$GrowthReferenceWeightForAgeImplCopyWith<_$GrowthReferenceWeightForAgeImpl>
       get copyWith => __$$GrowthReferenceWeightForAgeImplCopyWithImpl<
           _$GrowthReferenceWeightForAgeImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$GrowthReferenceWeightForAgeImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _GrowthReferenceWeightForAge
@@ -852,6 +913,9 @@ abstract class _GrowthReferenceWeightForAge
           @MassConverter() required final Mass weight}) =
       _$GrowthReferenceWeightForAgeImpl;
   _GrowthReferenceWeightForAge._() : super._();
+
+  factory _GrowthReferenceWeightForAge.fromJson(Map<String, dynamic> json) =
+      _$GrowthReferenceWeightForAgeImpl.fromJson;
 
   @override
   Date? get observationDate;

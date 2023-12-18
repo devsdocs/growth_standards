@@ -1,11 +1,41 @@
-
 import 'package:growth_standards/src/common/model/age.dart';
 import 'package:growth_standards/src/common/types.dart';
 import 'package:growth_standards/src/who/reference/reference.dart';
 import 'package:growth_standards/src/who/standard/standard.dart';
 import 'package:super_measurement/super_measurement.dart';
 
+final class WHOGrowthStandardFromJson {
+  ArmCircumferenceForAge armCircumferenceForAge(Map<String, dynamic> json) =>
+      ArmCircumferenceForAge.fromJson(json);
+
+  BodyMassIndexForAge bodyMassIndexForAge(Map<String, dynamic> json) =>
+      BodyMassIndexForAge.fromJson(json);
+
+  HeadCircumferenceForAge headCircumferenceForAge(Map<String, dynamic> json) =>
+      HeadCircumferenceForAge.fromJson(json);
+  LengthForAge lengthForAge(Map<String, dynamic> json) =>
+      LengthForAge.fromJson(json);
+
+  SubscapularSkinfoldForAge subscapularSkinfoldForAge(
+    Map<String, dynamic> json,
+  ) =>
+      SubscapularSkinfoldForAge.fromJson(json);
+
+  TricepsSkinfoldForAge tricepsSkinfoldForAge(Map<String, dynamic> json) =>
+      TricepsSkinfoldForAge.fromJson(json);
+  WeightForAge weightForAge(Map<String, dynamic> json) =>
+      WeightForAge.fromJson(json);
+  WeightForHeight weightForHeight(Map<String, dynamic> json) =>
+      WeightForHeight.fromJson(json);
+
+  WeigthForLength weightForLength(Map<String, dynamic> json) =>
+      WeigthForLength.fromJson(json);
+}
+
+/// For age 0 to 5 years old (<= 1856 days)
 final class WHOGrowthStandard {
+  WHOGrowthStandardFromJson get fromJson => WHOGrowthStandardFromJson();
+
   ArmCircumferenceForAge armCircumferenceForAge({
     required Sex sex,
     required Age age,
@@ -130,7 +160,23 @@ final class WHOGrowthStandard {
       );
 }
 
+final class WHOGrowthReferenceFromJson {
+  GrowthReferenceBodyMassIndexForAge bodyMassIndexForAge(
+    Map<String, dynamic> json,
+  ) =>
+      GrowthReferenceBodyMassIndexForAge.fromJson(json);
+
+  GrowthReferenceHeightForAge heightForAge(Map<String, dynamic> json) =>
+      GrowthReferenceHeightForAge.fromJson(json);
+
+  GrowthReferenceWeightForAge weightForAge(Map<String, dynamic> json) =>
+      GrowthReferenceWeightForAge.fromJson(json);
+}
+
+/// For age 5 to 18 years old (> 1856 days)
 final class WHOGrowthReference {
+  WHOGrowthReferenceFromJson get fromJson => WHOGrowthReferenceFromJson();
+
   GrowthReferenceBodyMassIndexForAge bodyMassIndexForAge({
     Date? observationDate,
     required Sex sex,

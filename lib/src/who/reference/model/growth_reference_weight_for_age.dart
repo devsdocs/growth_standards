@@ -41,6 +41,11 @@ class GrowthReferenceWeightForAge with _$GrowthReferenceWeightForAge {
 
   const GrowthReferenceWeightForAge._();
 
+  factory GrowthReferenceWeightForAge.fromJson(
+    Map<String, dynamic> json,
+  ) =>
+      _$GrowthReferenceWeightForAgeFromJson(json);
+
   GrowthReferenceWeightForAgeData get _weightForAgeData =>
       GrowthReferenceWeightForAgeData();
 

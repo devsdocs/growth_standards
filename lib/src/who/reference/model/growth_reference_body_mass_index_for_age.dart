@@ -36,7 +36,9 @@ class GrowthReferenceBodyMassIndexMeasurement
   factory GrowthReferenceBodyMassIndexMeasurement.fromMeasurement(
     BodyMassIndex bodyMassIndex,
   ) =>
-      GrowthReferenceBodyMassIndexMeasurement(bodyMassIndex.value);
+      GrowthReferenceBodyMassIndexMeasurement(
+        bodyMassIndex.value.toDouble().toPrecision(2),
+      );
 
   factory GrowthReferenceBodyMassIndexMeasurement.fromJson(
     Map<String, dynamic> json,
@@ -59,6 +61,11 @@ class GrowthReferenceBodyMassIndexForAge
   }) = _GrowthReferenceBodyMassIndexForAge;
 
   const GrowthReferenceBodyMassIndexForAge._();
+
+  factory GrowthReferenceBodyMassIndexForAge.fromJson(
+    Map<String, dynamic> json,
+  ) =>
+      _$GrowthReferenceBodyMassIndexForAgeFromJson(json);
 
   GrowthReferenceBodyMassIndexForAgeData get _bodyMassIndexData =>
       GrowthReferenceBodyMassIndexForAgeData();

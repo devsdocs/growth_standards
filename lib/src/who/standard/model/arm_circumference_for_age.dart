@@ -6,7 +6,7 @@ class ArmCircumferenceForAgeData {
 
   static final _singleton = ArmCircumferenceForAgeData._(_parse());
 
-  static  Map<String, _ArmCircumferenceForAgeGender> _parse() =>
+  static Map<String, _ArmCircumferenceForAgeGender> _parse() =>
       (json.decode(_acanthro) as Map<String, dynamic>).map(
         (k1, v1) => MapEntry(
           k1,

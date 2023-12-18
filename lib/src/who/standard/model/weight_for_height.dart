@@ -33,12 +33,12 @@ class WeightForHeightData {
 class WeightForHeight with _$WeightForHeight {
   //TODO(devsdocs): Test this!
   @Assert(
-    'adjustedLengthHeight(measure: measure,ageInDays: age.ageInTotalDaysByNow,lengthHeight: height.toCentimeters.value!,) >= 65 && adjustedLengthHeight(measure: measure,ageInDays: age.ageInTotalDaysByNow,lengthHeight: height.toCentimeters.value!,) <= 120 && height.toCentimeters.value! >= 65 && height.toCentimeters.value! <= 120',
+    'adjustedLengthHeight(measure: measure,age: age,lengthHeight: height,).value! >= 65 && adjustedLengthHeight(measure: measure,age: age,lengthHeight: height,).value! <= 120 && height.toCentimeters.value! >= 65 && height.toCentimeters.value! <= 120',
     'Please correcting measurement position based on age',
   )
   //TODO(devsdocs): Test this!
   @Assert(
-    'adjustedLengthHeight(measure: measure,ageInDays: age.ageInTotalDaysByNow,lengthHeight: height.toCentimeters.value!,) >= 65 && adjustedLengthHeight(measure: measure,ageInDays: age.ageInTotalDaysByNow,lengthHeight: height.toCentimeters.value!,) <= 120',
+    'adjustedLengthHeight(measure: measure,age: age,lengthHeight: height,).value! >= 65 && adjustedLengthHeight(measure: measure,age: age,lengthHeight: height,).value! <= 120',
     'Height must be in range of 65 - 120 cm',
   )
   factory WeightForHeight({
@@ -57,9 +57,9 @@ class WeightForHeight with _$WeightForHeight {
 
   num get _adjustedHeight => adjustedLengthHeight(
         measure: measure,
-        ageInDays: age.ageInTotalDaysByNow,
-        lengthHeight: height.toCentimeters.value!,
-      );
+        age: age,
+        lengthHeight: height,
+      ).value!;
 
   WeightForHeightData get _weightForHeightData => WeightForHeightData();
 
@@ -81,11 +81,11 @@ class WeightForHeight with _$WeightForHeight {
 
   num get percentile => zScoreToPercentile(_zScore).toDouble().toPrecision(2);
 
-  Age get ageAtObservationDate => observationDate == null
-      ? age
-      : observationDate == Date.today()
-          ? age
-          : age.ageAtAnyPastDate(observationDate!);
+  // Age get _ageAtObservationDate => observationDate == null
+  //     ? age
+  //     : observationDate == Date.today()
+  //         ? age
+  //         : age.ageAtAnyPastDate(observationDate!);
 }
 
 class _WeightForHeightGender {

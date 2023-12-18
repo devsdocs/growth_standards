@@ -2,7 +2,7 @@ part of '../reference.dart';
 
 class GrowthReferenceHeightForAgeData {
   factory GrowthReferenceHeightForAgeData() => _singleton;
-const   GrowthReferenceHeightForAgeData._(this._data);
+  const GrowthReferenceHeightForAgeData._(this._data);
 
   static final _singleton = GrowthReferenceHeightForAgeData._(_parse());
 
@@ -36,10 +36,15 @@ class GrowthReferenceHeightForAge with _$GrowthReferenceHeightForAge {
     Date? observationDate,
     required Sex sex,
     required Age age,
-    @LengthConverter()  required Length lengthHeight,
+    @LengthConverter() required Length lengthHeight,
   }) = _GrowthReferenceHeightForAge;
 
   const GrowthReferenceHeightForAge._();
+  factory GrowthReferenceHeightForAge.fromJson(
+    Map<String, dynamic> json,
+  ) =>
+      _$GrowthReferenceHeightForAgeFromJson(json);
+
   GrowthReferenceHeightForAgeData get _lengthForAgeData =>
       GrowthReferenceHeightForAgeData();
 

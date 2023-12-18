@@ -55,12 +55,14 @@ class LengthForAge with _$LengthForAge {
   _LengthForAgeLMS get _ageData => (sex == Sex.male ? _maleData : _femaleData)
       .ageData[_ageAtObservationDate.ageInTotalDaysByNow.toString()]!;
 
+  num get _adjustedLength => adjustedLengthHeight(
+        measure: measure,
+        age: age,
+        lengthHeight: lengthHeight,
+      ).value!;
+
   num get _zScore => zscore(
-        y: adjustedLengthHeight(
-          lengthHeight: lengthHeight.toCentimeters.value!,
-          ageInDays: age.ageInTotalDaysByNow,
-          measure: measure,
-        ),
+        y: _adjustedLength,
         l: _ageData.lms.l,
         m: _ageData.lms.m,
         s: _ageData.lms.s,
