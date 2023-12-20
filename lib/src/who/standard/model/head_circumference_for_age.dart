@@ -57,12 +57,8 @@ class HeadCircumferenceForAge with _$HeadCircumferenceForAge {
       (sex == Sex.male ? _maleData : _femaleData)
           .ageData[_ageAtObservationDate.ageInTotalDaysByNow.toString()]!;
 
-  num get _zScore => zscore(
-        y: measurementResult.toCentimeters.value!,
-        l: _ageData.lms.l,
-        m: _ageData.lms.m,
-        s: _ageData.lms.s,
-      );
+  num get _zScore =>
+      _ageData.lms.zScore(measurementResult.toCentimeters.value!);
 
   Age get _ageAtObservationDate => observationDate == null
       ? age
@@ -70,9 +66,15 @@ class HeadCircumferenceForAge with _$HeadCircumferenceForAge {
           ? age
           : age.ageAtAnyPastDate(observationDate!);
 
-  num get zScore => _zScore.toDouble().toPrecision(2);
+  num zScore([
+    Precision precision = Precision.nine,
+  ]) =>
+      _zScore.toDouble().toPrecision(precision.value);
 
-  num get percentile => zScoreToPercentile(zScore).toDouble().toPrecision(2);
+  num percentile([
+    Precision precision = Precision.nine,
+  ]) =>
+      (pnorm(_zScore) * 100).toDouble().toPrecision(precision.value);
 }
 
 class _HeadCircumferenceForAgeGender {

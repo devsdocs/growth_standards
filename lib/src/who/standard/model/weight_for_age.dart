@@ -50,22 +50,23 @@ class WeightForAge with _$WeightForAge {
   _WeightForAgeLMS get _ageData => (sex == Sex.male ? _maleData : _femaleData)
       .ageData[_ageAtObservationDate.ageInTotalDaysByNow.toString()]!;
 
-  num get _zScore => adjustedZScore(
-        y: weight.toKilograms.value!,
-        l: _ageData.lms.l,
-        m: _ageData.lms.m,
-        s: _ageData.lms.s,
-      );
-
-  num get zScore => _zScore.toDouble().toPrecision(2);
-
-  num get percentile => zScoreToPercentile(_zScore).toDouble().toPrecision(2);
+  num get _zScore => _ageData.lms.adjustedZScore(weight.toKilograms.value!);
 
   Age get _ageAtObservationDate => observationDate == null
       ? age
       : observationDate == Date.today()
           ? age
           : age.ageAtAnyPastDate(observationDate!);
+
+  num zScore([
+    Precision precision = Precision.nine,
+  ]) =>
+      _zScore.toDouble().toPrecision(precision.value);
+
+  num percentile([
+    Precision precision = Precision.nine,
+  ]) =>
+      (pnorm(_zScore) * 100).toDouble().toPrecision(precision.value);
 }
 
 class _WeightForAgeGender {

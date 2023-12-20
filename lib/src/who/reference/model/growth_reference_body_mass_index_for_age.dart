@@ -7,7 +7,7 @@ class GrowthReferenceBodyMassIndexForAgeData {
   static final _singleton = GrowthReferenceBodyMassIndexForAgeData._(_parse());
 
   static Map<String, _GrowthReferenceBodyMassIndexForAgeGender> _parse() =>
-      (json.decode(_bmi5yo) as Map<String, dynamic>).map(
+      _bmi5yo.toJsonObjectAsMap.map(
         (k1, v1) => MapEntry(
           k1,
           _GrowthReferenceBodyMassIndexForAgeGender(
@@ -23,6 +23,7 @@ class GrowthReferenceBodyMassIndexForAgeData {
           ),
         ),
       );
+
   final Map<String, _GrowthReferenceBodyMassIndexForAgeGender> _data;
 }
 
@@ -79,16 +80,18 @@ class GrowthReferenceBodyMassIndexForAge
       (sex == Sex.male ? _maleData : _femaleData)
           .ageData[age.ageInTotalMonthsByNow.toString()]!;
 
-  num get _zScore => adjustedZScore(
-        y: bodyMassIndexMeasurement.value,
-        l: _ageData.lms.l,
-        m: _ageData.lms.m,
-        s: _ageData.lms.s,
-      );
+  num get _zScore =>
+      _ageData.lms.adjustedZScore(bodyMassIndexMeasurement.value);
 
-  num get zScore => _zScore.toDouble().toPrecision(2);
+  num zScore([
+    Precision precision = Precision.nine,
+  ]) =>
+      _zScore.toDouble().toPrecision(precision.value);
 
-  num get percentile => zScoreToPercentile(_zScore).toDouble().toPrecision(2);
+  num percentile([
+    Precision precision = Precision.nine,
+  ]) =>
+      (pnorm(_zScore) * 100).toDouble().toPrecision(precision.value);
 }
 
 class _GrowthReferenceBodyMassIndexForAgeGender {

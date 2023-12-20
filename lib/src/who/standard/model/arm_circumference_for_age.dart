@@ -6,17 +6,21 @@ class ArmCircumferenceForAgeData {
 
   static final _singleton = ArmCircumferenceForAgeData._(_parse());
 
-  static Map<String, _ArmCircumferenceForAgeGender> _parse() =>
-      (json.decode(_acanthro) as Map<String, dynamic>).map(
+  static Map<Sex, _ArmCircumferenceForAgeGender> _parse() =>
+      _acanthro.toJsonObjectAsMap.map(
         (k1, v1) => MapEntry(
-          k1,
+          k1 == '1' ? Sex.male : Sex.female,
           _ArmCircumferenceForAgeGender(
             ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
               v2 as Map<String, dynamic>;
+              final lms =
+                  (l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
               return MapEntry(
-                k2,
+                int.parse(k2),
                 _ArmCircumferenceForAgeLMS(
-                  lms: (l: v2['l'], m: v2['m'], s: v2['s']),
+                  lms: lms,
+                  percentileCutOff: lms.percentileCutOff,
+                  standardDeviationCutOff: lms.stDevCutOff,
                 ),
               );
             }),
@@ -24,7 +28,12 @@ class ArmCircumferenceForAgeData {
         ),
       );
 
-  final Map<String, _ArmCircumferenceForAgeGender> _data;
+  final Map<Sex, _ArmCircumferenceForAgeGender> _data;
+
+  Map<Sex, _ArmCircumferenceForAgeGender> get data => _data;
+
+  @override
+  String toString() => 'Arm Circumference Data($_data)';
 }
 
 @freezed
@@ -57,20 +66,15 @@ class ArmCircumferenceForAge with _$ArmCircumferenceForAge {
       ArmCircumferenceForAgeData();
 
   _ArmCircumferenceForAgeGender get _maleData =>
-      _armCircumferenceData._data['1']!;
+      _armCircumferenceData._data[Sex.male]!;
   _ArmCircumferenceForAgeGender get _femaleData =>
-      _armCircumferenceData._data['2']!;
+      _armCircumferenceData._data[Sex.female]!;
 
   _ArmCircumferenceForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)
-          .ageData[_ageAtObservationDate.ageInTotalDaysByNow.toString()]!;
+          .ageData[_ageAtObservationDate.ageInTotalDaysByNow]!;
 
-  num get _zScore => adjustedZScore(
-        y: measurementResult.value!,
-        l: _ageData.lms.l,
-        m: _ageData.lms.m,
-        s: _ageData.lms.s,
-      );
+  num get _zScore => _ageData.lms.adjustedZScore(measurementResult.value!);
 
   Age get _ageAtObservationDate => observationDate == null
       ? age
@@ -78,18 +82,39 @@ class ArmCircumferenceForAge with _$ArmCircumferenceForAge {
           ? age
           : age.ageAtAnyPastDate(observationDate!);
 
-  num get zScore => _zScore.toDouble().toPrecision(2);
+  num zScore([
+    Precision precision = Precision.nine,
+  ]) =>
+      _zScore.toDouble().toPrecision(precision.value);
 
-  num get percentile => zScoreToPercentile(_zScore).toDouble().toPrecision(2);
+  num percentile([
+    Precision precision = Precision.nine,
+  ]) =>
+      (pnorm(_zScore) * 100).toDouble().toPrecision(precision.value);
 }
 
 class _ArmCircumferenceForAgeGender {
   _ArmCircumferenceForAgeGender({required this.ageData});
 
-  final Map<String, _ArmCircumferenceForAgeLMS> ageData;
+  final Map<int, _ArmCircumferenceForAgeLMS> ageData;
+
+  @override
+  String toString() => 'Gender Data($ageData)';
 }
 
 class _ArmCircumferenceForAgeLMS {
-  _ArmCircumferenceForAgeLMS({required this.lms});
+  _ArmCircumferenceForAgeLMS({
+    required this.lms,
+    required this.standardDeviationCutOff,
+    required this.percentileCutOff,
+  });
   final LMS lms;
+
+  final ZScoreCutOff standardDeviationCutOff;
+
+  final PercentileCutOff percentileCutOff;
+
+  @override
+  String toString() =>
+      'Age Data(LMS: $lms, Standard Deviation CutOff: $standardDeviationCutOff, Percentile CutOff: $percentileCutOff)';
 }

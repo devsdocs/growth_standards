@@ -61,22 +61,23 @@ class LengthForAge with _$LengthForAge {
         lengthHeight: lengthHeight,
       ).value!;
 
-  num get _zScore => zscore(
-        y: _adjustedLength,
-        l: _ageData.lms.l,
-        m: _ageData.lms.m,
-        s: _ageData.lms.s,
-      );
-
-  num get zScore => _zScore.toDouble().toPrecision(2);
-
-  num get percentile => zScoreToPercentile(zScore).toDouble().toPrecision(2);
+  num get _zScore => _ageData.lms.zScore(_adjustedLength);
 
   Age get _ageAtObservationDate => observationDate == null
       ? age
       : observationDate == Date.today()
           ? age
           : age.ageAtAnyPastDate(observationDate!);
+
+  num zScore([
+    Precision precision = Precision.nine,
+  ]) =>
+      _zScore.toDouble().toPrecision(precision.value);
+
+  num percentile([
+    Precision precision = Precision.nine,
+  ]) =>
+      (pnorm(_zScore) * 100).toDouble().toPrecision(precision.value);
 }
 
 class _LengthForAgeGender {

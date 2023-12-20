@@ -1,17 +1,17 @@
 import 'dart:math';
 
 import 'package:dart_numerics/dart_numerics.dart';
+import 'package:growth_standards/src/common/extension.dart';
 import 'package:growth_standards/src/common/model/age.dart';
+import 'package:growth_standards/src/common/typedef.dart';
 import 'package:growth_standards/src/common/types.dart';
 import 'package:super_measurement/super_measurement.dart';
 
-num calcSD({
-  required double sd,
-  required num l,
-  required num m,
-  required num s,
+num standardDeviationCalculation(
+  num sd, {
+  required LMS lms,
 }) =>
-    m * pow(1 + l * s * sd, 1 / l);
+    lms.m * pow(1 + lms.l * lms.s * sd, 1 / lms.l);
 
 /// COMPUTATION OF CENTILES AND Z-SCORES FOR
 ///
@@ -20,13 +20,11 @@ num calcSD({
 /// LENGTH-FOR-AGE,
 ///
 /// HEIGHT-FOR-AGE,
-num zscore({
-  required num y,
-  required num l,
-  required num m,
-  required num s,
+num zScoreCalculation(
+  num y, {
+  required LMS lms,
 }) =>
-    (pow(y / m, l) - 1) / (s * l);
+    (pow(y / lms.m, lms.l) - 1) / (lms.s * lms.l);
 
 /// COMPUTATION OF CENTILES AND Z-SCORES FOR
 ///
@@ -43,46 +41,24 @@ num zscore({
 /// TRICEPS SKINFOLD-FOR-AGE,
 ///
 /// SUBSCAPULAR SKINFOLD-FOR-AGE
-num adjustedZScore({
-  required num y,
-  required num l,
-  required num m,
-  required num s,
+num adjustedZScoreCalculation(
+  num y, {
+  required LMS lms,
 }) {
   // print('y: $y, l:$l, m:$m, s:$s');
 
-  final num zScore = zscore(y: y, m: m, l: l, s: s);
+  final num zScore = lms.zScore(y);
 
   if (zScore > 3) {
-    final sD3pos = calcSD(
-      sd: 3,
-      l: l,
-      m: m,
-      s: s,
-    );
-    final sD2pos = calcSD(
-      sd: 2,
-      l: l,
-      m: m,
-      s: s,
-    );
+    final sD3pos = lms.stDev(3);
+    final sD2pos = lms.stDev(2);
     final sD23pos = sD3pos - sD2pos;
 
     return 3 + ((y - sD3pos) / sD23pos);
   }
   if (zScore < -3) {
-    final sD3neg = calcSD(
-      sd: -3,
-      l: l,
-      m: m,
-      s: s,
-    );
-    final sD2neg = calcSD(
-      sd: -2,
-      l: l,
-      m: m,
-      s: s,
-    );
+    final sD3neg = lms.stDev(-3);
+    final sD2neg = lms.stDev(-2);
     final sD23neg = sD2neg - sD3neg;
 
     return -3 + ((y - sD3neg) / sD23neg);
@@ -110,28 +86,27 @@ Centimeters adjustedLengthHeight({
   }
 }
 
-num rounding(num value) {
-  // Remove the decimal part to work with integers
-  final integerPart = value.toInt();
-  final decimalPart = value - integerPart;
+// num rounding(num value) {
+//   // Remove the decimal part to work with integers
+//   final integerPart = value.toInt();
+//   final decimalPart = value - integerPart;
 
-  // Check if the decimal part is exactly 0.5
-  if (decimalPart == 0.5) {
-    // If the integer part is even, round down by returning the integer part
-    if (integerPart.isEven) {
-      return integerPart.toDouble();
-    }
-    // If the integer part is odd, round up by adding 1
-    else {
-      return (integerPart + 1).toDouble();
-    }
-  } else {
-    // Use the default rounding method for other cases
-    return value.roundToDouble();
-  }
-}
+//   // Check if the decimal part is exactly 0.5
+//   if (decimalPart == 0.5) {
+//     // If the integer part is even, round down by returning the integer part
+//     if (integerPart.isEven) {
+//       return integerPart.toDouble();
+//     }
+//     // If the integer part is odd, round up by adding 1
+//     else {
+//       return (integerPart + 1).toDouble();
+//     }
+//   } else {
+//     // Use the default rounding method for other cases
+//     return value.roundToDouble();
+//   }
+// }
 
-num zScoreToPercentile(num zScore) {
-  final percentile = 0.5 * (1 + erf(zScore / sqrt(2)));
-  return percentile * 100;
-}
+num pnorm(num zScore) => 0.5 * (1 + erf(zScore / sqrt(2)));
+
+num qnorm(num percentile) => sqrt(2) * erfInv(2 * percentile - 1);

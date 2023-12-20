@@ -67,7 +67,10 @@ class BodyMassIndexMeasurement with _$BodyMassIndexMeasurement {
 
     final bmi = BodyMassIndex(lengthHeight: adjustedLength, weight: weight);
 
-    return BodyMassIndexMeasurement(bmi.value.toDouble().toPrecision(2), age: age);
+    return BodyMassIndexMeasurement(
+      bmi.value.toDouble().toPrecision(2),
+      age: age,
+    );
   }
 
   factory BodyMassIndexMeasurement.fromValue(num value, {required Age age}) =>
@@ -101,12 +104,8 @@ class BodyMassIndexForAge with _$BodyMassIndexForAge {
       (sex == Sex.male ? _maleData : _femaleData)
           .ageData[_ageAtObservationDate.ageInTotalDaysByNow.toString()]!;
 
-  num get _zScore => adjustedZScore(
-        y: bodyMassIndexMeasurement.value,
-        l: _ageData.lms.l,
-        m: _ageData.lms.m,
-        s: _ageData.lms.s,
-      );
+  num get _zScore =>
+      _ageData.lms.adjustedZScore(bodyMassIndexMeasurement.value);
 
   Age get _ageAtObservationDate => observationDate == null
       ? bodyMassIndexMeasurement.age
@@ -114,9 +113,15 @@ class BodyMassIndexForAge with _$BodyMassIndexForAge {
           ? bodyMassIndexMeasurement.age
           : bodyMassIndexMeasurement.age.ageAtAnyPastDate(observationDate!);
 
-  num get zScore => _zScore.toDouble().toPrecision(2);
+  num zScore([
+    Precision precision = Precision.nine,
+  ]) =>
+      _zScore.toDouble().toPrecision(precision.value);
 
-  num get percentile => zScoreToPercentile(_zScore).toDouble().toPrecision(2);
+  num percentile([
+    Precision precision = Precision.nine,
+  ]) =>
+      (pnorm(_zScore) * 100).toDouble().toPrecision(precision.value);
 }
 
 class _BodyMassIndexForAgeGender {

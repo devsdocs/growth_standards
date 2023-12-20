@@ -81,11 +81,11 @@ void main() {
       //! Test observation date
 
       expect(
-        male.zScore,
+        male.zScore(Precision.two),
         equals(
           male
               .copyWith(age: Age.byDate(observationDate), observationDate: null)
-              .zScore,
+              .zScore(Precision.two),
         ),
       );
       expect(
@@ -95,7 +95,7 @@ void main() {
               measurementResult: const Centimeters(11.5),
               sex: Sex.male,
             )
-            .zScore,
+            .zScore(Precision.two),
         -4.11,
       );
       expect(
@@ -105,7 +105,7 @@ void main() {
               measurementResult: const Centimeters(17.4),
               sex: Sex.male,
             )
-            .zScore,
+            .zScore(Precision.two),
         1.57,
       );
     });
@@ -122,7 +122,7 @@ void main() {
         observationDate: observationDate,
       );
       expect(
-        male.zScore,
+        male.zScore(Precision.two),
         3.39,
       );
       expect(
@@ -134,7 +134,7 @@ void main() {
                 age: Age.byDate(observationDate),
               ),
             )
-            .zScore,
+            .zScore(Precision.two),
         3.39,
       );
       expect(
@@ -146,7 +146,7 @@ void main() {
                 age: Age.byMonthsAgo(28),
               ),
             )
-            .zScore,
+            .zScore(Precision.two),
         -3.75,
       );
       expect(
@@ -158,7 +158,7 @@ void main() {
                 age: Age.byMonthsAgo(52),
               ),
             )
-            .zScore,
+            .zScore(Precision.two),
         anyOf(2.36, 2.37),
       );
     });

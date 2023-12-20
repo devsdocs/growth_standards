@@ -895,6 +895,254 @@ abstract class _HeadCircumferenceForAge extends HeadCircumferenceForAge {
       get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
+mixin _$HeadCircumferenceVelocityForAge {
+  Date? get observationDate => throw _privateConstructorUsedError;
+  Sex get sex => throw _privateConstructorUsedError;
+  Age get age => throw _privateConstructorUsedError;
+  Map<Date, Length> get pastMeasurement => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $HeadCircumferenceVelocityForAgeCopyWith<HeadCircumferenceVelocityForAge>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $HeadCircumferenceVelocityForAgeCopyWith<$Res> {
+  factory $HeadCircumferenceVelocityForAgeCopyWith(
+          HeadCircumferenceVelocityForAge value,
+          $Res Function(HeadCircumferenceVelocityForAge) then) =
+      _$HeadCircumferenceVelocityForAgeCopyWithImpl<$Res,
+          HeadCircumferenceVelocityForAge>;
+  @useResult
+  $Res call(
+      {Date? observationDate,
+      Sex sex,
+      Age age,
+      Map<Date, Length> pastMeasurement});
+
+  $DateCopyWith<$Res>? get observationDate;
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class _$HeadCircumferenceVelocityForAgeCopyWithImpl<$Res,
+        $Val extends HeadCircumferenceVelocityForAge>
+    implements $HeadCircumferenceVelocityForAgeCopyWith<$Res> {
+  _$HeadCircumferenceVelocityForAgeCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? observationDate = freezed,
+    Object? sex = null,
+    Object? age = null,
+    Object? pastMeasurement = null,
+  }) {
+    return _then(_value.copyWith(
+      observationDate: freezed == observationDate
+          ? _value.observationDate
+          : observationDate // ignore: cast_nullable_to_non_nullable
+              as Date?,
+      sex: null == sex
+          ? _value.sex
+          : sex // ignore: cast_nullable_to_non_nullable
+              as Sex,
+      age: null == age
+          ? _value.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+      pastMeasurement: null == pastMeasurement
+          ? _value.pastMeasurement
+          : pastMeasurement // ignore: cast_nullable_to_non_nullable
+              as Map<Date, Length>,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DateCopyWith<$Res>? get observationDate {
+    if (_value.observationDate == null) {
+      return null;
+    }
+
+    return $DateCopyWith<$Res>(_value.observationDate!, (value) {
+      return _then(_value.copyWith(observationDate: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AgeCopyWith<$Res> get age {
+    return $AgeCopyWith<$Res>(_value.age, (value) {
+      return _then(_value.copyWith(age: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$HeadCircumferenceVelocityForAgeImplCopyWith<$Res>
+    implements $HeadCircumferenceVelocityForAgeCopyWith<$Res> {
+  factory _$$HeadCircumferenceVelocityForAgeImplCopyWith(
+          _$HeadCircumferenceVelocityForAgeImpl value,
+          $Res Function(_$HeadCircumferenceVelocityForAgeImpl) then) =
+      __$$HeadCircumferenceVelocityForAgeImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {Date? observationDate,
+      Sex sex,
+      Age age,
+      Map<Date, Length> pastMeasurement});
+
+  @override
+  $DateCopyWith<$Res>? get observationDate;
+  @override
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class __$$HeadCircumferenceVelocityForAgeImplCopyWithImpl<$Res>
+    extends _$HeadCircumferenceVelocityForAgeCopyWithImpl<$Res,
+        _$HeadCircumferenceVelocityForAgeImpl>
+    implements _$$HeadCircumferenceVelocityForAgeImplCopyWith<$Res> {
+  __$$HeadCircumferenceVelocityForAgeImplCopyWithImpl(
+      _$HeadCircumferenceVelocityForAgeImpl _value,
+      $Res Function(_$HeadCircumferenceVelocityForAgeImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? observationDate = freezed,
+    Object? sex = null,
+    Object? age = null,
+    Object? pastMeasurement = null,
+  }) {
+    return _then(_$HeadCircumferenceVelocityForAgeImpl(
+      observationDate: freezed == observationDate
+          ? _value.observationDate
+          : observationDate // ignore: cast_nullable_to_non_nullable
+              as Date?,
+      sex: null == sex
+          ? _value.sex
+          : sex // ignore: cast_nullable_to_non_nullable
+              as Sex,
+      age: null == age
+          ? _value.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+      pastMeasurement: null == pastMeasurement
+          ? _value._pastMeasurement
+          : pastMeasurement // ignore: cast_nullable_to_non_nullable
+              as Map<Date, Length>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$HeadCircumferenceVelocityForAgeImpl
+    extends _HeadCircumferenceVelocityForAge {
+  _$HeadCircumferenceVelocityForAgeImpl(
+      {this.observationDate,
+      required this.sex,
+      required this.age,
+      required final Map<Date, Length> pastMeasurement})
+      : assert(age.ageInTotalDaysByNow >= 0 && age.ageInTotalMonthsByNow <= 24,
+            'Age must be in range of 0 days - 24 months'),
+        assert(pastMeasurement.isNotEmpty,
+            'Calculation can not be done as past measurment is empty'),
+        assert(
+            pastMeasurement.keys
+                .every((element) => element.isNotSameAs(Date.today())),
+            'Calculation can not be done as there is todays date in past measurment'),
+        assert(
+            pastMeasurement.keys
+                .every((element) => element.isBefore(Date.today())),
+            'Calculation can not be done as there is future date in past measurment'),
+        assert(
+            pastMeasurement.keys
+                .every((element) => element.isSameOrAfter(age.dateOfBirth)),
+            'Calculation can not be done as there is date less than Date of Birth in past measurement, if you find this exception is a mistake, try to provide exact $Age by using ${Age.byDate} or $Date by using ${Date.fromDateTime} in Past Measurement'),
+        _pastMeasurement = pastMeasurement,
+        super._();
+
+  @override
+  final Date? observationDate;
+  @override
+  final Sex sex;
+  @override
+  final Age age;
+  final Map<Date, Length> _pastMeasurement;
+  @override
+  Map<Date, Length> get pastMeasurement {
+    if (_pastMeasurement is EqualUnmodifiableMapView) return _pastMeasurement;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_pastMeasurement);
+  }
+
+  @override
+  String toString() {
+    return 'HeadCircumferenceVelocityForAge(observationDate: $observationDate, sex: $sex, age: $age, pastMeasurement: $pastMeasurement)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$HeadCircumferenceVelocityForAgeImpl &&
+            (identical(other.observationDate, observationDate) ||
+                other.observationDate == observationDate) &&
+            (identical(other.sex, sex) || other.sex == sex) &&
+            (identical(other.age, age) || other.age == age) &&
+            const DeepCollectionEquality()
+                .equals(other._pastMeasurement, _pastMeasurement));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, observationDate, sex, age,
+      const DeepCollectionEquality().hash(_pastMeasurement));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$HeadCircumferenceVelocityForAgeImplCopyWith<
+          _$HeadCircumferenceVelocityForAgeImpl>
+      get copyWith => __$$HeadCircumferenceVelocityForAgeImplCopyWithImpl<
+          _$HeadCircumferenceVelocityForAgeImpl>(this, _$identity);
+}
+
+abstract class _HeadCircumferenceVelocityForAge
+    extends HeadCircumferenceVelocityForAge {
+  factory _HeadCircumferenceVelocityForAge(
+          {final Date? observationDate,
+          required final Sex sex,
+          required final Age age,
+          required final Map<Date, Length> pastMeasurement}) =
+      _$HeadCircumferenceVelocityForAgeImpl;
+  _HeadCircumferenceVelocityForAge._() : super._();
+
+  @override
+  Date? get observationDate;
+  @override
+  Sex get sex;
+  @override
+  Age get age;
+  @override
+  Map<Date, Length> get pastMeasurement;
+  @override
+  @JsonKey(ignore: true)
+  _$$HeadCircumferenceVelocityForAgeImplCopyWith<
+          _$HeadCircumferenceVelocityForAgeImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
 LengthForAge _$LengthForAgeFromJson(Map<String, dynamic> json) {
   return _LengthForAge.fromJson(json);
 }

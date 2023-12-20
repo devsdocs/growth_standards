@@ -48,8 +48,6 @@ class Age with _$Age {
   int get ageInTotalWeeksByNow =>
       ageInTotalDaysByNow < 7 ? 0 : ageInTotalDaysByNow ~/ 7;
 
-  Date dateAtPastDays(int daysAgo) => Date.today() - Duration(days: daysAgo);
-
   Date dateAtDaysAfterBirth(int daysAfterBirth) =>
       dateOfBirth + Duration(days: daysAfterBirth);
 
@@ -72,8 +70,8 @@ class Date with _$Date implements Comparable<Date> {
     'Date impossible, use \${Date.fromDateTime} for safety, in cost of increased risk of wrong growth calculation',
   )
   @Assert(
-    'date <= _TimeTools.datesInMonth(year, month.number)',
-    'Date exceeded, max date is at \${_TimeTools.datesInMonth(year, month.number)} in \${month.text} \$year',
+    'date <= TimeTools.datesInMonth(year, month.number)',
+    'Date exceeded, max date is at \${TimeTools.datesInMonth(year, month.number)} in \${month.text} \$year',
   )
   factory Date({
     required int year,
@@ -84,7 +82,7 @@ class Date with _$Date implements Comparable<Date> {
   const Date._();
 
   factory Date.daysAgoByNow(int days) {
-    final calc = _TimeTools.calculateBirthDateInDaysBeforeByNow(days);
+    final calc = TimeTools.calculateBirthDateInDaysBeforeByNow(days);
     return Date(
       year: calc.year,
       month: _monthFromNumber(calc.month),
@@ -93,7 +91,7 @@ class Date with _$Date implements Comparable<Date> {
   }
 
   factory Date.monthsAgoByNow(int months) {
-    final calc = _TimeTools.calculateBirthDateInMonthsBeforeByNow(months);
+    final calc = TimeTools.calculateBirthDateInMonthsBeforeByNow(months);
     return Date(
       year: calc.year,
       month: _monthFromNumber(calc.month),
@@ -102,7 +100,7 @@ class Date with _$Date implements Comparable<Date> {
   }
 
   factory Date.yearsAgoByNow(int years) {
-    final calc = _TimeTools.calculateBirthDateInYearsBeforeByNow(years);
+    final calc = TimeTools.calculateBirthDateInYearsBeforeByNow(years);
     return Date(
       year: calc.year,
       month: _monthFromNumber(calc.month),
@@ -138,9 +136,14 @@ class Date with _$Date implements Comparable<Date> {
   bool isSameOrAfter(Date other) => this >= other;
 
   bool isSameAs(Date other) => this == other;
+  bool isNotSameAs(Date other) => this != other;
 
   Date add(Duration duration) => this + duration;
   Date subtract(Duration duration) => this - duration;
+
+  DateTime toDateTime() => DateTime(year, month.number, date);
+
+  Date dateAtPastDays(int daysAgo) => Date.today() - Duration(days: daysAgo);
 
   Date operator +(Duration duration) {
     if (duration.inDays < 1) return this;
@@ -200,7 +203,7 @@ class Date with _$Date implements Comparable<Date> {
   }
 }
 
-class _TimeTools {
+class TimeTools {
   /// _daysInMonth cost contains days per months; daysInMonth method to be used instead.
   static final List<int> daysInMonth = [
     31, // Jan
@@ -282,37 +285,37 @@ class _TimeTools {
     return days;
   }
 
-  // static DateTime _calculateBirthDate({
-  //   required int years,
-  //   required int months,
-  //   required int days,
-  // }) {
-  //   // Get the current date
-  //   final DateTime workingDate = DateTime.now();
+  static Date calculateBirthDateFromYearsMonthsDays({
+    required YearsMonthsDays ymd,
+    DateTime? fromDate,
+  }) {
+    final now = DateTime.now();
+    if (fromDate != null) {
+      if (now.isBefore(fromDate)) {
+        fromDate = now;
+      }
+    }
 
-  //   // Calculate the target date
-  //   DateTime targetDate = workingDate.subtract(
-  //     Duration(
-  //       days: days,
-  //       hours: workingDate.hour,
-  //       minutes: workingDate.minute,
-  //       seconds: workingDate.second,
-  //       milliseconds: workingDate.millisecond,
-  //       microseconds: workingDate.microsecond,
-  //     ),
-  //   );
+    final days = ymd.days;
+    final months = ymd.months;
+    final years = ymd.years;
+    // Get the current date
+    final DateTime workingDate = fromDate ?? now;
 
-  //   // Adjust the target date based on years and months
-  //   targetDate =
-  //       targetDate.subtract(Duration(days: _yearsToDays(years, targetDate)));
-  //   targetDate = targetDate.subtract(
-  //     Duration(
-  //       days: _monthsToDays(targetDate.year, targetDate.month, months),
-  //     ),
-  //   );
+    // Calculate the target date
+    DateTime targetDate = workingDate.subtract(Duration(days: days + 1));
+    targetDate = targetDate.subtract(
+      Duration(
+        days: monthsToDays(targetDate.year, targetDate.month, months),
+      ),
+    );
+    targetDate =
+        targetDate.subtract(Duration(days: yearsToDays(years, targetDate)));
 
-  //   return targetDate;
-  // }
+    // Adjust the target date based on years and months
+
+    return Date.fromDateTime(targetDate);
+  }
 }
 
 class _TimeIntervalCount {
@@ -329,7 +332,7 @@ class _TimeIntervalCount {
           hours,
           minutes,
         ) {
-    if (date > _TimeTools.datesInMonth(year, month)) {
+    if (date > TimeTools.datesInMonth(year, month)) {
       throw Exception('Days exceeded');
     }
   }
@@ -355,7 +358,7 @@ class _TimeIntervalCount {
 
       if (fromDate.day > endDate.day) {
         months--;
-        days = _TimeTools.datesInMonth(
+        days = TimeTools.datesInMonth(
               fromDate.year + years,
               ((fromDate.month + months - 1) % DateTime.monthsPerYear) + 1,
             ) +
@@ -368,7 +371,7 @@ class _TimeIntervalCount {
       if (fromDate.day > endDate.day) {
         years--;
         months = DateTime.monthsPerYear - 1;
-        days = _TimeTools.datesInMonth(
+        days = TimeTools.datesInMonth(
               fromDate.year + years,
               ((fromDate.month + months - 1) % DateTime.monthsPerYear) + 1,
             ) +
@@ -382,7 +385,7 @@ class _TimeIntervalCount {
 
       if (fromDate.day > endDate.day) {
         months--;
-        days = _TimeTools.datesInMonth(
+        days = TimeTools.datesInMonth(
               fromDate.year + years,
               fromDate.month + months,
             ) +
@@ -408,9 +411,9 @@ class _TimeIntervalCount {
     }
 
     return _AgeInternal(
+      years: years,
       days: days,
       months: months,
-      years: years,
       hours: hours,
       minutes: minutes,
     );
