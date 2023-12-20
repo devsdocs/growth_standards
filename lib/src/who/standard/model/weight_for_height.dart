@@ -13,10 +13,14 @@ class WeightForHeightData {
           _WeightForHeightGender(
             heightData: (v1 as Map<String, dynamic>).map((k2, v2) {
               v2 as Map<String, dynamic>;
+              final lms =
+                  (l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
               return MapEntry(
-                k2,
+                int.parse(k2),
                 _WeightForHeightLMS(
-                  lms: (l: v2['l'], m: v2['m'], s: v2['s']),
+                  lms: lms,
+                  percentileCutOff: lms.percentileCutOff,
+                  standardDeviationCutOff: lms.stDevCutOff,
                   lorh: v2['lorh'].toString().toLowerCase() == 'l'
                       ? LengthHeigthMeasurementPosition.recumbent
                       : LengthHeigthMeasurementPosition.standing,
@@ -27,6 +31,10 @@ class WeightForHeightData {
         ),
       );
   final Map<String, _WeightForHeightGender> _data;
+  Map<String, _WeightForHeightGender> get data => _data;
+
+  @override
+  String toString() => 'Weight For Height Data($_data)';
 }
 
 @freezed
@@ -68,7 +76,7 @@ class WeightForHeight with _$WeightForHeight {
 
   _WeightForHeightLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)
-          .heightData[_adjustedHeight.toDouble().toPrecision(1).toString()]!;
+          .heightData[_adjustedHeight.toDouble().toPrecision(1)]!;
 
   num get _zScore => _ageData.lms.adjustedZScore(weight.toKilograms.value!);
 
@@ -94,14 +102,25 @@ class WeightForHeight with _$WeightForHeight {
 class _WeightForHeightGender {
   _WeightForHeightGender({required this.heightData});
 
-  final Map<String, _WeightForHeightLMS> heightData;
+  final Map<num, _WeightForHeightLMS> heightData;
+  @override
+  String toString() => 'Gender Data($heightData)';
 }
 
 class _WeightForHeightLMS {
   _WeightForHeightLMS({
     required this.lms,
     required this.lorh,
+    required this.percentileCutOff,
+    required this.standardDeviationCutOff,
   });
   final LMS lms;
   final LengthHeigthMeasurementPosition lorh;
+  final ZScoreCutOff standardDeviationCutOff;
+
+  final PercentileCutOff percentileCutOff;
+
+  @override
+  String toString() =>
+      'Height Data(LMS: $lms, Length/Height Measurement Position: $lorh, Standard Deviation CutOff: $standardDeviationCutOff, Percentile CutOff: $percentileCutOff)';
 }

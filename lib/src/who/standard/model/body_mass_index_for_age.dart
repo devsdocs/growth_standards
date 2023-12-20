@@ -13,10 +13,14 @@ class BodyMassIndexForAgeData {
           _BodyMassIndexForAgeGender(
             ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
               v2 as Map<String, dynamic>;
+              final lms =
+                  (l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
               return MapEntry(
-                k2,
+                int.parse(k2),
                 _BodyMassIndexForAgeLMS(
-                  lms: (l: v2['l'], m: v2['m'], s: v2['s']),
+                  lms: lms,
+                  percentileCutOff: lms.percentileCutOff,
+                  standardDeviationCutOff: lms.stDevCutOff,
                   loh: v2['loh'].toString().toLowerCase() == 'l'
                       ? LengthHeigthMeasurementPosition.recumbent
                       : LengthHeigthMeasurementPosition.standing,
@@ -28,6 +32,10 @@ class BodyMassIndexForAgeData {
       );
 
   final Map<String, _BodyMassIndexForAgeGender> _data;
+  Map<String, _BodyMassIndexForAgeGender> get data => _data;
+
+  @override
+  String toString() => 'Body Mass Index For Age Data($_data)';
 }
 
 class BodyMassIndexMeasurementConverter
@@ -68,7 +76,7 @@ class BodyMassIndexMeasurement with _$BodyMassIndexMeasurement {
     final bmi = BodyMassIndex(lengthHeight: adjustedLength, weight: weight);
 
     return BodyMassIndexMeasurement(
-      bmi.value.toDouble().toPrecision(2),
+      bmi.value,
       age: age,
     );
   }
@@ -102,7 +110,7 @@ class BodyMassIndexForAge with _$BodyMassIndexForAge {
 
   _BodyMassIndexForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)
-          .ageData[_ageAtObservationDate.ageInTotalDaysByNow.toString()]!;
+          .ageData[_ageAtObservationDate.ageInTotalDaysByNow]!;
 
   num get _zScore =>
       _ageData.lms.adjustedZScore(bodyMassIndexMeasurement.value);
@@ -127,14 +135,27 @@ class BodyMassIndexForAge with _$BodyMassIndexForAge {
 class _BodyMassIndexForAgeGender {
   _BodyMassIndexForAgeGender({required this.ageData});
 
-  final Map<String, _BodyMassIndexForAgeLMS> ageData;
+  final Map<int, _BodyMassIndexForAgeLMS> ageData;
+
+  @override
+  String toString() => 'Gender Data($ageData)';
 }
 
 class _BodyMassIndexForAgeLMS {
   _BodyMassIndexForAgeLMS({
     required this.lms,
     required this.loh,
+    required this.percentileCutOff,
+    required this.standardDeviationCutOff,
   });
   final LMS lms;
   final LengthHeigthMeasurementPosition loh;
+
+  final ZScoreCutOff standardDeviationCutOff;
+
+  final PercentileCutOff percentileCutOff;
+
+  @override
+  String toString() =>
+      'Age Data(LMS: $lms, Length/Height Measurement Position: $loh, Standard Deviation CutOff: $standardDeviationCutOff, Percentile CutOff: $percentileCutOff)';
 }

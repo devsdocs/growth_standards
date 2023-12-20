@@ -13,10 +13,14 @@ class TricepsSkinfoldForAgeData {
           _TricepsSkinfoldAgeGender(
             ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
               v2 as Map<String, dynamic>;
+              final lms =
+                  (l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
               return MapEntry(
-                k2,
+                int.parse(k2),
                 _TricepsSkinfoldForAgeLMS(
-                  lms: (l: v2['l'], m: v2['m'], s: v2['s']),
+                  lms: lms,
+                  percentileCutOff: lms.percentileCutOff,
+                  standardDeviationCutOff: lms.stDevCutOff,
                 ),
               );
             }),
@@ -24,6 +28,10 @@ class TricepsSkinfoldForAgeData {
         ),
       );
   final Map<String, _TricepsSkinfoldAgeGender> _data;
+  Map<String, _TricepsSkinfoldAgeGender> get data => _data;
+
+  @override
+  String toString() => 'Triceps Skinfold For Age Data($_data)';
 }
 
 @freezed
@@ -52,7 +60,7 @@ class TricepsSkinfoldForAge with _$TricepsSkinfoldForAge {
 
   _TricepsSkinfoldForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)
-          .ageData[_ageAtObservationDate.ageInTotalDaysByNow.toString()]!;
+          .ageData[_ageAtObservationDate.ageInTotalDaysByNow]!;
 
   num get _zScore =>
       _ageData.lms.adjustedZScore(measurementResult.toCentimeters.value!);
@@ -76,12 +84,23 @@ class TricepsSkinfoldForAge with _$TricepsSkinfoldForAge {
 
 class _TricepsSkinfoldAgeGender {
   _TricepsSkinfoldAgeGender({required this.ageData});
-  final Map<String, _TricepsSkinfoldForAgeLMS> ageData;
+  final Map<int, _TricepsSkinfoldForAgeLMS> ageData;
+  @override
+  String toString() => 'Gender Data($ageData)';
 }
 
 class _TricepsSkinfoldForAgeLMS {
   _TricepsSkinfoldForAgeLMS({
     required this.lms,
+    required this.standardDeviationCutOff,
+    required this.percentileCutOff,
   });
   final LMS lms;
+  final ZScoreCutOff standardDeviationCutOff;
+
+  final PercentileCutOff percentileCutOff;
+
+  @override
+  String toString() =>
+      'Age Data(LMS: $lms, Standard Deviation CutOff: $standardDeviationCutOff, Percentile CutOff: $percentileCutOff)';
 }

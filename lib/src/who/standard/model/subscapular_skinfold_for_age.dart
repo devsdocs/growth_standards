@@ -13,10 +13,14 @@ class SubscapularSkinfoldForAgeData {
           _SubscapularSkinfoldAgeGender(
             ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
               v2 as Map<String, dynamic>;
+              final lms =
+                  (l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
               return MapEntry(
-                k2,
+                int.parse(k2),
                 _SubscapularSkinfoldForAgeLMS(
-                  lms: (l: v2['l'], m: v2['m'], s: v2['s']),
+                  lms: lms,
+                  percentileCutOff: lms.percentileCutOff,
+                  standardDeviationCutOff: lms.stDevCutOff,
                 ),
               );
             }),
@@ -25,6 +29,10 @@ class SubscapularSkinfoldForAgeData {
       );
 
   final Map<String, _SubscapularSkinfoldAgeGender> _data;
+  Map<String, _SubscapularSkinfoldAgeGender> get data => _data;
+
+  @override
+  String toString() => 'Subscapular Skinfold For Age Data($_data)';
 }
 
 @freezed
@@ -55,7 +63,7 @@ class SubscapularSkinfoldForAge with _$SubscapularSkinfoldForAge {
 
   _SubscapularSkinfoldForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)
-          .ageData[_ageAtObservationDate.ageInTotalDaysByNow.toString()]!;
+          .ageData[_ageAtObservationDate.ageInTotalDaysByNow]!;
 
   num get _zScore =>
       _ageData.lms.adjustedZScore(measurementResult.toCentimeters.value!);
@@ -79,12 +87,24 @@ class SubscapularSkinfoldForAge with _$SubscapularSkinfoldForAge {
 
 class _SubscapularSkinfoldAgeGender {
   _SubscapularSkinfoldAgeGender({required this.ageData});
-  final Map<String, _SubscapularSkinfoldForAgeLMS> ageData;
+  final Map<int, _SubscapularSkinfoldForAgeLMS> ageData;
+  @override
+  String toString() => 'Gender Data($ageData)';
 }
 
 class _SubscapularSkinfoldForAgeLMS {
   _SubscapularSkinfoldForAgeLMS({
     required this.lms,
+    required this.percentileCutOff,
+    required this.standardDeviationCutOff,
   });
   final LMS lms;
+
+  final ZScoreCutOff standardDeviationCutOff;
+
+  final PercentileCutOff percentileCutOff;
+
+  @override
+  String toString() =>
+      'Age Data(LMS: $lms, Standard Deviation CutOff: $standardDeviationCutOff, Percentile CutOff: $percentileCutOff)';
 }

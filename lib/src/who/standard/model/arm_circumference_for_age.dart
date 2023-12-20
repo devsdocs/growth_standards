@@ -33,7 +33,7 @@ class ArmCircumferenceForAgeData {
   Map<Sex, _ArmCircumferenceForAgeGender> get data => _data;
 
   @override
-  String toString() => 'Arm Circumference Data($_data)';
+  String toString() => 'Arm Circumference For Age Data($_data)';
 }
 
 @freezed

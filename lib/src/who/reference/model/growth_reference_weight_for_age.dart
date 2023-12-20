@@ -13,10 +13,14 @@ class GrowthReferenceWeightForAgeData {
           _GrowthReferenceWeightForAgeGender(
             ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
               v2 as Map<String, dynamic>;
+              final lms =
+                  (l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
               return MapEntry(
-                k2,
+                int.parse(k2),
                 _GrowthReferenceWeightForAgeLMS(
-                  lms: (l: v2['l'], m: v2['m'], s: v2['s']),
+                  lms: lms,
+                  percentileCutOff: lms.percentileCutOff,
+                  standardDeviationCutOff: lms.stDevCutOff,
                 ),
               );
             }),
@@ -24,6 +28,10 @@ class GrowthReferenceWeightForAgeData {
         ),
       );
   final Map<String, _GrowthReferenceWeightForAgeGender> _data;
+  Map<String, _GrowthReferenceWeightForAgeGender> get data => _data;
+
+  @override
+  String toString() => 'Weight For Age Data($_data)';
 }
 
 @freezed
@@ -56,7 +64,7 @@ class GrowthReferenceWeightForAge with _$GrowthReferenceWeightForAge {
 
   _GrowthReferenceWeightForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)
-          .ageData[age.ageInTotalMonthsByNow.toString()]!;
+          .ageData[age.ageInTotalMonthsByNow]!;
 
   num get _zScore => _ageData.lms.adjustedZScore(weight.toKilograms.value!);
 
@@ -74,10 +82,24 @@ class GrowthReferenceWeightForAge with _$GrowthReferenceWeightForAge {
 class _GrowthReferenceWeightForAgeGender {
   _GrowthReferenceWeightForAgeGender({required this.ageData});
 
-  final Map<String, _GrowthReferenceWeightForAgeLMS> ageData;
+  final Map<int, _GrowthReferenceWeightForAgeLMS> ageData;
+  @override
+  String toString() => 'Gender Data($ageData)';
 }
 
 class _GrowthReferenceWeightForAgeLMS {
-  _GrowthReferenceWeightForAgeLMS({required this.lms});
+  _GrowthReferenceWeightForAgeLMS({
+    required this.lms,
+    required this.percentileCutOff,
+    required this.standardDeviationCutOff,
+  });
   final LMS lms;
+
+  final ZScoreCutOff standardDeviationCutOff;
+
+  final PercentileCutOff percentileCutOff;
+
+  @override
+  String toString() =>
+      'Age Data(LMS: $lms, Standard Deviation CutOff: $standardDeviationCutOff, Percentile CutOff: $percentileCutOff)';
 }

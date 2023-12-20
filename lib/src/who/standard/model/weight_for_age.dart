@@ -13,15 +13,25 @@ class WeightForAgeData {
           _WeightForAgeGender(
             ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
               v2 as Map<String, dynamic>;
+              final lms =
+                  (l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
               return MapEntry(
-                k2,
-                _WeightForAgeLMS(lms: (l: v2['l'], m: v2['m'], s: v2['s'])),
+                int.parse(k2),
+                _WeightForAgeLMS(
+                  lms: lms,
+                  percentileCutOff: lms.percentileCutOff,
+                  standardDeviationCutOff: lms.stDevCutOff,
+                ),
               );
             }),
           ),
         ),
       );
   final Map<String, _WeightForAgeGender> _data;
+  Map<String, _WeightForAgeGender> get data => _data;
+
+  @override
+  String toString() => 'Weight For Age Data($_data)';
 }
 
 @freezed
@@ -48,7 +58,7 @@ class WeightForAge with _$WeightForAge {
   _WeightForAgeGender get _femaleData => _weightForAgeData._data['2']!;
 
   _WeightForAgeLMS get _ageData => (sex == Sex.male ? _maleData : _femaleData)
-      .ageData[_ageAtObservationDate.ageInTotalDaysByNow.toString()]!;
+      .ageData[_ageAtObservationDate.ageInTotalDaysByNow]!;
 
   num get _zScore => _ageData.lms.adjustedZScore(weight.toKilograms.value!);
 
@@ -72,12 +82,23 @@ class WeightForAge with _$WeightForAge {
 class _WeightForAgeGender {
   _WeightForAgeGender({required this.ageData});
 
-  final Map<String, _WeightForAgeLMS> ageData;
+  final Map<int, _WeightForAgeLMS> ageData;
+  @override
+  String toString() => 'Gender Data($ageData)';
 }
 
 class _WeightForAgeLMS {
   _WeightForAgeLMS({
     required this.lms,
+    required this.percentileCutOff,
+    required this.standardDeviationCutOff,
   });
   final LMS lms;
+  final ZScoreCutOff standardDeviationCutOff;
+
+  final PercentileCutOff percentileCutOff;
+
+  @override
+  String toString() =>
+      'Age Data(LMS: $lms, Standard Deviation CutOff: $standardDeviationCutOff, Percentile CutOff: $percentileCutOff)';
 }
