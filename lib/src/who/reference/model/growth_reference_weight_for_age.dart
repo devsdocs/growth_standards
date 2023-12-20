@@ -6,10 +6,10 @@ class GrowthReferenceWeightForAgeData {
 
   static final _singleton = GrowthReferenceWeightForAgeData._(_parse());
 
-  static Map<String, _GrowthReferenceWeightForAgeGender> _parse() =>
+  static Map<Sex, _GrowthReferenceWeightForAgeGender> _parse() =>
       (json.decode(_wfa5yo) as Map<String, dynamic>).map(
         (k1, v1) => MapEntry(
-          k1,
+          k1 == '1' ? Sex.male : Sex.female,
           _GrowthReferenceWeightForAgeGender(
             ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
               v2 as Map<String, dynamic>;
@@ -27,8 +27,8 @@ class GrowthReferenceWeightForAgeData {
           ),
         ),
       );
-  final Map<String, _GrowthReferenceWeightForAgeGender> _data;
-  Map<String, _GrowthReferenceWeightForAgeGender> get data => _data;
+  final Map<Sex, _GrowthReferenceWeightForAgeGender> _data;
+  Map<Sex, _GrowthReferenceWeightForAgeGender> get data => _data;
 
   @override
   String toString() => 'Weight For Age Data($_data)';
@@ -58,9 +58,9 @@ class GrowthReferenceWeightForAge with _$GrowthReferenceWeightForAge {
       GrowthReferenceWeightForAgeData();
 
   _GrowthReferenceWeightForAgeGender get _maleData =>
-      _weightForAgeData._data['1']!;
+      _weightForAgeData._data[Sex.male]!;
   _GrowthReferenceWeightForAgeGender get _femaleData =>
-      _weightForAgeData._data['2']!;
+      _weightForAgeData._data[Sex.female]!;
 
   _GrowthReferenceWeightForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)

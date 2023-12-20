@@ -6,17 +6,17 @@ class WeightForHeightData {
 
   static final _singleton = WeightForHeightData._(_parse());
 
-  static Map<String, _WeightForHeightGender> _parse() =>
+  static Map<Sex, _WeightForHeightGender> _parse() =>
       (json.decode(_wfhanthro) as Map<String, dynamic>).map(
         (k1, v1) => MapEntry(
-          k1,
+          k1 == '1' ? Sex.male : Sex.female,
           _WeightForHeightGender(
             heightData: (v1 as Map<String, dynamic>).map((k2, v2) {
               v2 as Map<String, dynamic>;
               final lms =
                   (l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
               return MapEntry(
-                int.parse(k2),
+                num.parse(k2),
                 _WeightForHeightLMS(
                   lms: lms,
                   percentileCutOff: lms.percentileCutOff,
@@ -30,8 +30,8 @@ class WeightForHeightData {
           ),
         ),
       );
-  final Map<String, _WeightForHeightGender> _data;
-  Map<String, _WeightForHeightGender> get data => _data;
+  final Map<Sex, _WeightForHeightGender> _data;
+  Map<Sex, _WeightForHeightGender> get data => _data;
 
   @override
   String toString() => 'Weight For Height Data($_data)';
@@ -71,8 +71,9 @@ class WeightForHeight with _$WeightForHeight {
 
   WeightForHeightData get _weightForHeightData => WeightForHeightData();
 
-  _WeightForHeightGender get _maleData => _weightForHeightData._data['1']!;
-  _WeightForHeightGender get _femaleData => _weightForHeightData._data['2']!;
+  _WeightForHeightGender get _maleData => _weightForHeightData._data[Sex.male]!;
+  _WeightForHeightGender get _femaleData =>
+      _weightForHeightData._data[Sex.female]!;
 
   _WeightForHeightLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)

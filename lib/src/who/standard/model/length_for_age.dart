@@ -5,10 +5,10 @@ class LengthForAgeData {
   LengthForAgeData._(this._data);
   static final _singleton = LengthForAgeData._(_parse());
 
-  static Map<String, _LengthForAgeGender> _parse() =>
+  static Map<Sex, _LengthForAgeGender> _parse() =>
       (json.decode(_lenanthro) as Map<String, dynamic>).map(
         (k1, v1) => MapEntry(
-          k1,
+          k1 == '1' ? Sex.male : Sex.female,
           _LengthForAgeGender(
             ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
               v2 as Map<String, dynamic>;
@@ -29,8 +29,8 @@ class LengthForAgeData {
           ),
         ),
       );
-  final Map<String, _LengthForAgeGender> _data;
-  Map<String, _LengthForAgeGender> get data => _data;
+  final Map<Sex, _LengthForAgeGender> _data;
+  Map<Sex, _LengthForAgeGender> get data => _data;
 
   @override
   String toString() => 'Length For Age Data($_data)';
@@ -57,8 +57,8 @@ class LengthForAge with _$LengthForAge {
 
   LengthForAgeData get _lengthForAgeData => LengthForAgeData();
 
-  _LengthForAgeGender get _maleData => _lengthForAgeData._data['1']!;
-  _LengthForAgeGender get _femaleData => _lengthForAgeData._data['2']!;
+  _LengthForAgeGender get _maleData => _lengthForAgeData._data[Sex.male]!;
+  _LengthForAgeGender get _femaleData => _lengthForAgeData._data[Sex.female]!;
 
   _LengthForAgeLMS get _ageData => (sex == Sex.male ? _maleData : _femaleData)
       .ageData[_ageAtObservationDate.ageInTotalDaysByNow]!;

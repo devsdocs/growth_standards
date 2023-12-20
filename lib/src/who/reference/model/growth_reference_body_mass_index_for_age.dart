@@ -6,10 +6,10 @@ class GrowthReferenceBodyMassIndexForAgeData {
 
   static final _singleton = GrowthReferenceBodyMassIndexForAgeData._(_parse());
 
-  static Map<String, _GrowthReferenceBodyMassIndexForAgeGender> _parse() =>
+  static Map<Sex, _GrowthReferenceBodyMassIndexForAgeGender> _parse() =>
       _bmi5yo.toJsonObjectAsMap.map(
         (k1, v1) => MapEntry(
-          k1,
+          k1 == '1' ? Sex.male : Sex.female,
           _GrowthReferenceBodyMassIndexForAgeGender(
             ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
               v2 as Map<String, dynamic>;
@@ -28,8 +28,8 @@ class GrowthReferenceBodyMassIndexForAgeData {
         ),
       );
 
-  final Map<String, _GrowthReferenceBodyMassIndexForAgeGender> _data;
-  Map<String, _GrowthReferenceBodyMassIndexForAgeGender> get data => _data;
+  final Map<Sex, _GrowthReferenceBodyMassIndexForAgeGender> _data;
+  Map<Sex, _GrowthReferenceBodyMassIndexForAgeGender> get data => _data;
 
   @override
   String toString() => 'Body Mass Index For Age Data($_data)';
@@ -80,9 +80,9 @@ class GrowthReferenceBodyMassIndexForAge
       GrowthReferenceBodyMassIndexForAgeData();
 
   _GrowthReferenceBodyMassIndexForAgeGender get _maleData =>
-      _bodyMassIndexData._data['1']!;
+      _bodyMassIndexData._data[Sex.male]!;
   _GrowthReferenceBodyMassIndexForAgeGender get _femaleData =>
-      _bodyMassIndexData._data['2']!;
+      _bodyMassIndexData._data[Sex.female]!;
 
   _GrowthReferenceBodyMassIndexForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)

@@ -6,21 +6,28 @@ class HeadCircumferenceVelocityForAgeData {
 
   static final _singleton = HeadCircumferenceVelocityForAgeData._(_parse());
 
-  static Map<String, HeadCircumferenceVelocityForAgeGender> _parse() =>
+  static Map<Sex, HeadCircumferenceVelocityForAgeGender> _parse() =>
       _hv.toJsonObjectAsMap.map(
         (k1, v1) => MapEntry(
-          k1,
+          k1 == '1' ? Sex.male : Sex.female,
           HeadCircumferenceVelocityForAgeGender(
             incrementData: (v1 as Map<String, dynamic>).map(
               (k2, v2) => MapEntry(
-                k2,
+                int.parse(k2),
                 HeadCircumferenceVelocityForAgeIncrement(
                   lmsData: (v2 as Map<String, dynamic>).map((k3, v3) {
                     v3 as Map<String, dynamic>;
+                    final lms = (
+                      l: v3['l'] as num,
+                      m: v3['m'] as num,
+                      s: v3['s'] as num
+                    );
                     return MapEntry(
-                      k3,
+                      parseVelocityIncrement(k3),
                       HeadCircumferenceVelocityForAgeLMS(
-                        lms: (l: v3['l'], m: v3['m'], s: v3['s']),
+                        lms: lms,
+                        percentileCutOff: lms.percentileCutOff,
+                        standardDeviationCutOff: lms.stDevCutOff,
                       ),
                     );
                   }),
@@ -31,7 +38,7 @@ class HeadCircumferenceVelocityForAgeData {
         ),
       );
 
-  final Map<String, HeadCircumferenceVelocityForAgeGender> _data;
+  final Map<Sex, HeadCircumferenceVelocityForAgeGender> _data;
 }
 
 @freezed
@@ -69,9 +76,9 @@ class HeadCircumferenceVelocityForAge with _$HeadCircumferenceVelocityForAge {
       HeadCircumferenceVelocityForAgeData();
 
   HeadCircumferenceVelocityForAgeGender get _maleData =>
-      _headCircumferenceData._data['1']!;
+      _headCircumferenceData._data[Sex.male]!;
   HeadCircumferenceVelocityForAgeGender get _femaleData =>
-      _headCircumferenceData._data['2']!;
+      _headCircumferenceData._data[Sex.female]!;
 
   Age get ageAtObservationDate => observationDate == null
       ? age
@@ -83,19 +90,25 @@ class HeadCircumferenceVelocityForAge with _$HeadCircumferenceVelocityForAge {
 class HeadCircumferenceVelocityForAgeGender {
   HeadCircumferenceVelocityForAgeGender({required this.incrementData});
 
-  final Map<String, HeadCircumferenceVelocityForAgeIncrement> incrementData;
+  final Map<int, HeadCircumferenceVelocityForAgeIncrement> incrementData;
 }
 
 class HeadCircumferenceVelocityForAgeIncrement {
   HeadCircumferenceVelocityForAgeIncrement({required this.lmsData});
-  final Map<String, HeadCircumferenceVelocityForAgeLMS> lmsData;
+  final Map<WeeksMonths, HeadCircumferenceVelocityForAgeLMS> lmsData;
 }
 
 class HeadCircumferenceVelocityForAgeLMS {
   HeadCircumferenceVelocityForAgeLMS({
     required this.lms,
+    required this.percentileCutOff,
+    required this.standardDeviationCutOff,
   });
   final LMS lms;
+
+  final ZScoreCutOff standardDeviationCutOff;
+
+  final PercentileCutOff percentileCutOff;
 }
 
 WeeksMonths parseVelocityIncrement(String source) {

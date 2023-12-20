@@ -6,10 +6,10 @@ class GrowthReferenceHeightForAgeData {
 
   static final _singleton = GrowthReferenceHeightForAgeData._(_parse());
 
-  static Map<String, _GrowthReferenceHeightForAgeGender> _parse() =>
+  static Map<Sex, _GrowthReferenceHeightForAgeGender> _parse() =>
       (json.decode(_hfa5yo) as Map<String, dynamic>).map(
         (k1, v1) => MapEntry(
-          k1,
+          k1 == '1' ? Sex.male : Sex.female,
           _GrowthReferenceHeightForAgeGender(
             ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
               v2 as Map<String, dynamic>;
@@ -27,8 +27,8 @@ class GrowthReferenceHeightForAgeData {
           ),
         ),
       );
-  final Map<String, _GrowthReferenceHeightForAgeGender> _data;
-  Map<String, _GrowthReferenceHeightForAgeGender> get data => _data;
+  final Map<Sex, _GrowthReferenceHeightForAgeGender> _data;
+  Map<Sex, _GrowthReferenceHeightForAgeGender> get data => _data;
 
   @override
   String toString() => 'Height For Age Data($_data)';
@@ -57,9 +57,9 @@ class GrowthReferenceHeightForAge with _$GrowthReferenceHeightForAge {
       GrowthReferenceHeightForAgeData();
 
   _GrowthReferenceHeightForAgeGender get _maleData =>
-      _lengthForAgeData._data['1']!;
+      _lengthForAgeData._data[Sex.male]!;
   _GrowthReferenceHeightForAgeGender get _femaleData =>
-      _lengthForAgeData._data['2']!;
+      _lengthForAgeData._data[Sex.female]!;
 
   _GrowthReferenceHeightForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)

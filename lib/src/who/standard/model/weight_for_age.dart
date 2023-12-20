@@ -6,10 +6,10 @@ class WeightForAgeData {
 
   static final _singleton = WeightForAgeData._(_parse());
 
-  static Map<String, _WeightForAgeGender> _parse() =>
+  static Map<Sex, _WeightForAgeGender> _parse() =>
       (json.decode(_weianthro) as Map<String, dynamic>).map(
         (k1, v1) => MapEntry(
-          k1,
+          k1 == '1' ? Sex.male : Sex.female,
           _WeightForAgeGender(
             ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
               v2 as Map<String, dynamic>;
@@ -27,8 +27,8 @@ class WeightForAgeData {
           ),
         ),
       );
-  final Map<String, _WeightForAgeGender> _data;
-  Map<String, _WeightForAgeGender> get data => _data;
+  final Map<Sex, _WeightForAgeGender> _data;
+  Map<Sex, _WeightForAgeGender> get data => _data;
 
   @override
   String toString() => 'Weight For Age Data($_data)';
@@ -54,8 +54,8 @@ class WeightForAge with _$WeightForAge {
 
   WeightForAgeData get _weightForAgeData => WeightForAgeData();
 
-  _WeightForAgeGender get _maleData => _weightForAgeData._data['1']!;
-  _WeightForAgeGender get _femaleData => _weightForAgeData._data['2']!;
+  _WeightForAgeGender get _maleData => _weightForAgeData._data[Sex.male]!;
+  _WeightForAgeGender get _femaleData => _weightForAgeData._data[Sex.female]!;
 
   _WeightForAgeLMS get _ageData => (sex == Sex.male ? _maleData : _femaleData)
       .ageData[_ageAtObservationDate.ageInTotalDaysByNow]!;

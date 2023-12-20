@@ -6,10 +6,10 @@ class SubscapularSkinfoldForAgeData {
 
   static final _singleton = SubscapularSkinfoldForAgeData._(_parse());
 
-  static Map<String, _SubscapularSkinfoldAgeGender> _parse() =>
+  static Map<Sex, _SubscapularSkinfoldAgeGender> _parse() =>
       (json.decode(_ssanthro) as Map<String, dynamic>).map(
         (k1, v1) => MapEntry(
-          k1,
+          k1 == '1' ? Sex.male : Sex.female,
           _SubscapularSkinfoldAgeGender(
             ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
               v2 as Map<String, dynamic>;
@@ -28,8 +28,8 @@ class SubscapularSkinfoldForAgeData {
         ),
       );
 
-  final Map<String, _SubscapularSkinfoldAgeGender> _data;
-  Map<String, _SubscapularSkinfoldAgeGender> get data => _data;
+  final Map<Sex, _SubscapularSkinfoldAgeGender> _data;
+  Map<Sex, _SubscapularSkinfoldAgeGender> get data => _data;
 
   @override
   String toString() => 'Subscapular Skinfold For Age Data($_data)';
@@ -57,9 +57,9 @@ class SubscapularSkinfoldForAge with _$SubscapularSkinfoldForAge {
       SubscapularSkinfoldForAgeData();
 
   _SubscapularSkinfoldAgeGender get _maleData =>
-      _subscapularSkinfoldData._data['1']!;
+      _subscapularSkinfoldData._data[Sex.male]!;
   _SubscapularSkinfoldAgeGender get _femaleData =>
-      _subscapularSkinfoldData._data['2']!;
+      _subscapularSkinfoldData._data[Sex.female]!;
 
   _SubscapularSkinfoldForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)

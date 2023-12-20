@@ -6,10 +6,10 @@ class TricepsSkinfoldForAgeData {
 
   static final _singleton = TricepsSkinfoldForAgeData._(_parse());
 
-  static Map<String, _TricepsSkinfoldAgeGender> _parse() =>
+  static Map<Sex, _TricepsSkinfoldAgeGender> _parse() =>
       (json.decode(_tsanthro) as Map<String, dynamic>).map(
         (k1, v1) => MapEntry(
-          k1,
+          k1 == '1' ? Sex.male : Sex.female,
           _TricepsSkinfoldAgeGender(
             ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
               v2 as Map<String, dynamic>;
@@ -27,8 +27,8 @@ class TricepsSkinfoldForAgeData {
           ),
         ),
       );
-  final Map<String, _TricepsSkinfoldAgeGender> _data;
-  Map<String, _TricepsSkinfoldAgeGender> get data => _data;
+  final Map<Sex, _TricepsSkinfoldAgeGender> _data;
+  Map<Sex, _TricepsSkinfoldAgeGender> get data => _data;
 
   @override
   String toString() => 'Triceps Skinfold For Age Data($_data)';
@@ -55,8 +55,10 @@ class TricepsSkinfoldForAge with _$TricepsSkinfoldForAge {
   TricepsSkinfoldForAgeData get _tricepsSkinfoldData =>
       TricepsSkinfoldForAgeData();
 
-  _TricepsSkinfoldAgeGender get _maleData => _tricepsSkinfoldData._data['1']!;
-  _TricepsSkinfoldAgeGender get _femaleData => _tricepsSkinfoldData._data['2']!;
+  _TricepsSkinfoldAgeGender get _maleData =>
+      _tricepsSkinfoldData._data[Sex.male]!;
+  _TricepsSkinfoldAgeGender get _femaleData =>
+      _tricepsSkinfoldData._data[Sex.female]!;
 
   _TricepsSkinfoldForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)

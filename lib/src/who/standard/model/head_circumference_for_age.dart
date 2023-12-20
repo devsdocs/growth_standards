@@ -6,10 +6,10 @@ class HeadCircumferenceForAgeData {
 
   static final _singleton = HeadCircumferenceForAgeData._(_parse());
 
-  static Map<String, _HeadCircumferenceForAgeGender> _parse() =>
+  static Map<Sex, _HeadCircumferenceForAgeGender> _parse() =>
       (json.decode(_hcanthro) as Map<String, dynamic>).map(
         (k1, v1) => MapEntry(
-          k1,
+          k1 == '1' ? Sex.male : Sex.female,
           _HeadCircumferenceForAgeGender(
             ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
               v2 as Map<String, dynamic>;
@@ -28,8 +28,8 @@ class HeadCircumferenceForAgeData {
         ),
       );
 
-  final Map<String, _HeadCircumferenceForAgeGender> _data;
-  Map<String, _HeadCircumferenceForAgeGender> get data => _data;
+  final Map<Sex, _HeadCircumferenceForAgeGender> _data;
+  Map<Sex, _HeadCircumferenceForAgeGender> get data => _data;
 
   @override
   String toString() => 'Head Circumference For Age Data($_data)';
@@ -57,9 +57,9 @@ class HeadCircumferenceForAge with _$HeadCircumferenceForAge {
       HeadCircumferenceForAgeData();
 
   _HeadCircumferenceForAgeGender get _maleData =>
-      _headCircumferenceData._data['1']!;
+      _headCircumferenceData._data[Sex.male]!;
   _HeadCircumferenceForAgeGender get _femaleData =>
-      _headCircumferenceData._data['2']!;
+      _headCircumferenceData._data[Sex.female]!;
 
   _HeadCircumferenceForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)
