@@ -3,7 +3,6 @@
 import 'dart:convert';
 
 import 'package:growth_standards/growth_standards.dart';
-import 'package:reusable_tools/reusable_tools.dart';
 
 final birthDay = Date(year: 2022, month: Months.june, date: 30);
 const weight = 12.1;
@@ -32,7 +31,7 @@ void main() {
   print(calcLengthForAgeStanding.percentile(Precision.two));
   final encode = json.encode(calcLengthForAgeStanding.toJson());
   print(encode);
-  print(gsFromJson.lengthForAge(encode.toJsonObjectAsMap));
+  print(gsFromJson.lengthForAge(json.encode(encode) as Map<String, dynamic>));
 
   final calcLengthForAgeRecumbent = calcLengthForAgeStanding.copyWith(
     measure: LengthHeigthMeasurementPosition.recumbent,
