@@ -7,7 +7,7 @@ class TricepsSkinfoldForAgeData {
   static final _singleton = TricepsSkinfoldForAgeData._(_parse());
 
   static Map<Sex, _TricepsSkinfoldAgeGender> _parse() =>
-      (json.decode(_tsanthro) as Map<String, dynamic>).map(
+      _tsanthro.toJsonObjectAsMap.map(
         (k1, v1) => MapEntry(
           k1 == '1' ? Sex.male : Sex.female,
           _TricepsSkinfoldAgeGender(

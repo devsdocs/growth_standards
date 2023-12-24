@@ -33,6 +33,20 @@ const _$SexEnumMap = {
   Sex.female: 2,
 };
 
+_$BodyMassIndexMeasurementImpl _$$BodyMassIndexMeasurementImplFromJson(
+        Map<String, dynamic> json) =>
+    _$BodyMassIndexMeasurementImpl(
+      json['value'] as num,
+      age: Age.fromJson(json['age'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$BodyMassIndexMeasurementImplToJson(
+        _$BodyMassIndexMeasurementImpl instance) =>
+    <String, dynamic>{
+      'value': instance.value,
+      'age': instance.age,
+    };
+
 _$BodyMassIndexForAgeImpl _$$BodyMassIndexForAgeImplFromJson(
         Map<String, dynamic> json) =>
     _$BodyMassIndexForAgeImpl(

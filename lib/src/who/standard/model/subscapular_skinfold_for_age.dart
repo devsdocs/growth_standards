@@ -7,7 +7,7 @@ class SubscapularSkinfoldForAgeData {
   static final _singleton = SubscapularSkinfoldForAgeData._(_parse());
 
   static Map<Sex, _SubscapularSkinfoldAgeGender> _parse() =>
-      (json.decode(_ssanthro) as Map<String, dynamic>).map(
+      _ssanthro.toJsonObjectAsMap.map(
         (k1, v1) => MapEntry(
           k1 == '1' ? Sex.male : Sex.female,
           _SubscapularSkinfoldAgeGender(

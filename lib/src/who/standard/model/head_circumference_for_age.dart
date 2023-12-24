@@ -7,7 +7,7 @@ class HeadCircumferenceForAgeData {
   static final _singleton = HeadCircumferenceForAgeData._(_parse());
 
   static Map<Sex, _HeadCircumferenceForAgeGender> _parse() =>
-      (json.decode(_hcanthro) as Map<String, dynamic>).map(
+      _hcanthro.toJsonObjectAsMap.map(
         (k1, v1) => MapEntry(
           k1 == '1' ? Sex.male : Sex.female,
           _HeadCircumferenceForAgeGender(

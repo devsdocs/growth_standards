@@ -45,9 +45,7 @@ class GrowthReferenceBodyMassIndexMeasurement
   factory GrowthReferenceBodyMassIndexMeasurement.fromMeasurement(
     BodyMassIndex bodyMassIndex,
   ) =>
-      GrowthReferenceBodyMassIndexMeasurement(
-        bodyMassIndex.value.toDouble().toPrecision(2),
-      );
+      GrowthReferenceBodyMassIndexMeasurement(bodyMassIndex.value);
 
   factory GrowthReferenceBodyMassIndexMeasurement.fromJson(
     Map<String, dynamic> json,

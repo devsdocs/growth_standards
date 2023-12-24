@@ -7,7 +7,7 @@ class BodyMassIndexForAgeData {
   static final _singleton = BodyMassIndexForAgeData._(_parse());
 
   static Map<Sex, _BodyMassIndexForAgeGender> _parse() =>
-      (json.decode(_bmianthro) as Map<String, dynamic>).map(
+      _bmianthro.toJsonObjectAsMap.map(
         (k1, v1) => MapEntry(
           k1 == '1' ? Sex.male : Sex.female,
           _BodyMassIndexForAgeGender(
@@ -38,23 +38,6 @@ class BodyMassIndexForAgeData {
   String toString() => 'Body Mass Index For Age Data($_data)';
 }
 
-class BodyMassIndexMeasurementConverter
-    implements JsonConverter<BodyMassIndexMeasurement, Map<String, dynamic>> {
-  const BodyMassIndexMeasurementConverter();
-  @override
-  BodyMassIndexMeasurement fromJson(Map<String, dynamic> json) =>
-      BodyMassIndexMeasurement(
-        json['value'] as num,
-        age: Age.fromJson(
-          json['age'] as Map<String, dynamic>,
-        ),
-      );
-
-  @override
-  Map<String, dynamic> toJson(BodyMassIndexMeasurement object) =>
-      {'value': object.value, 'age': object.age.toJson()};
-}
-
 @freezed
 class BodyMassIndexMeasurement with _$BodyMassIndexMeasurement {
   factory BodyMassIndexMeasurement(num value, {required Age age}) =
@@ -81,8 +64,10 @@ class BodyMassIndexMeasurement with _$BodyMassIndexMeasurement {
     );
   }
 
-  factory BodyMassIndexMeasurement.fromValue(num value, {required Age age}) =>
-      BodyMassIndexMeasurement(value, age: age);
+  factory BodyMassIndexMeasurement.fromJson(
+    Map<String, dynamic> json,
+  ) =>
+      _$BodyMassIndexMeasurementFromJson(json);
 }
 
 @freezed

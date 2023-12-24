@@ -112,7 +112,7 @@ void main() {
     test('BMI', () {
       final observationDate = Date.monthsAgoByNow(40);
       final age = Age.byMonthsAgo(44);
-      final bmi = BodyMassIndexMeasurement.fromValue(
+      final bmi = BodyMassIndexMeasurement(
         20.5,
         age: age,
       );
@@ -141,7 +141,7 @@ void main() {
         whoGS
             .bodyMassIndexForAge(
               sex: Sex.male,
-              bodyMassIndexMeasurement: BodyMassIndexMeasurement.fromValue(
+              bodyMassIndexMeasurement: BodyMassIndexMeasurement(
                 12,
                 age: Age.byMonthsAgo(28),
               ),
@@ -153,7 +153,7 @@ void main() {
         whoGS
             .bodyMassIndexForAge(
               sex: Sex.male,
-              bodyMassIndexMeasurement: BodyMassIndexMeasurement.fromValue(
+              bodyMassIndexMeasurement: BodyMassIndexMeasurement(
                 18.8,
                 age: Age.byMonthsAgo(52),
               ),

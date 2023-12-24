@@ -110,37 +110,3 @@ class HeadCircumferenceVelocityForAgeLMS {
 
   final PercentileCutOff percentileCutOff;
 }
-
-WeeksMonths parseVelocityIncrement(String source) {
-  final clean = source.clean.splitSpace.first;
-  final splitC = clean.split('-').map(
-        (e) => int.tryParse(e) == null
-            ? int.parse(
-                e.replaceAll(RegExp('[a-zA-z]'), '').replaceAll(' ', ''),
-              )
-            : int.parse(e),
-      );
-  if (splitC.length > 2) {
-    throw Exception('More than 2 element');
-  }
-  if (source.contains('wks')) {
-    if (source.contains('mo')) {
-      return (
-        weeks: null,
-        weeksMonths: (low: splitC.first, high: splitC.last),
-        months: null,
-      );
-    }
-    return (
-      weeks: (low: splitC.first, high: splitC.last),
-      weeksMonths: null,
-      months: null,
-    );
-  } else {
-    return (
-      weeks: null,
-      weeksMonths: null,
-      months: (low: splitC.first, high: splitC.last)
-    );
-  }
-}

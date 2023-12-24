@@ -268,11 +268,17 @@ abstract class _ArmCircumferenceForAge extends ArmCircumferenceForAge {
       get copyWith => throw _privateConstructorUsedError;
 }
 
+BodyMassIndexMeasurement _$BodyMassIndexMeasurementFromJson(
+    Map<String, dynamic> json) {
+  return _BodyMassIndexMeasurement.fromJson(json);
+}
+
 /// @nodoc
 mixin _$BodyMassIndexMeasurement {
   num get value => throw _privateConstructorUsedError;
   Age get age => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $BodyMassIndexMeasurementCopyWith<BodyMassIndexMeasurement> get copyWith =>
       throw _privateConstructorUsedError;
@@ -372,9 +378,12 @@ class __$$BodyMassIndexMeasurementImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$BodyMassIndexMeasurementImpl extends _BodyMassIndexMeasurement {
   _$BodyMassIndexMeasurementImpl(this.value, {required this.age}) : super._();
+
+  factory _$BodyMassIndexMeasurementImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BodyMassIndexMeasurementImplFromJson(json);
 
   @override
   final num value;
@@ -395,6 +404,7 @@ class _$BodyMassIndexMeasurementImpl extends _BodyMassIndexMeasurement {
             (identical(other.age, age) || other.age == age));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, value, age);
 
@@ -404,12 +414,22 @@ class _$BodyMassIndexMeasurementImpl extends _BodyMassIndexMeasurement {
   _$$BodyMassIndexMeasurementImplCopyWith<_$BodyMassIndexMeasurementImpl>
       get copyWith => __$$BodyMassIndexMeasurementImplCopyWithImpl<
           _$BodyMassIndexMeasurementImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$BodyMassIndexMeasurementImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _BodyMassIndexMeasurement extends BodyMassIndexMeasurement {
   factory _BodyMassIndexMeasurement(final num value, {required final Age age}) =
       _$BodyMassIndexMeasurementImpl;
   _BodyMassIndexMeasurement._() : super._();
+
+  factory _BodyMassIndexMeasurement.fromJson(Map<String, dynamic> json) =
+      _$BodyMassIndexMeasurementImpl.fromJson;
 
   @override
   num get value;

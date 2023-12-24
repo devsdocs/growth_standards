@@ -6,7 +6,7 @@ class LengthForAgeData {
   static final _singleton = LengthForAgeData._(_parse());
 
   static Map<Sex, _LengthForAgeGender> _parse() =>
-      (json.decode(_lenanthro) as Map<String, dynamic>).map(
+      _lenanthro.toJsonObjectAsMap.map(
         (k1, v1) => MapEntry(
           k1 == '1' ? Sex.male : Sex.female,
           _LengthForAgeGender(

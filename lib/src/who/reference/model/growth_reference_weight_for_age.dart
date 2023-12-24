@@ -7,7 +7,7 @@ class GrowthReferenceWeightForAgeData {
   static final _singleton = GrowthReferenceWeightForAgeData._(_parse());
 
   static Map<Sex, _GrowthReferenceWeightForAgeGender> _parse() =>
-      (json.decode(_wfa5yo) as Map<String, dynamic>).map(
+      _wfa5yo.toJsonObjectAsMap.map(
         (k1, v1) => MapEntry(
           k1 == '1' ? Sex.male : Sex.female,
           _GrowthReferenceWeightForAgeGender(

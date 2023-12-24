@@ -7,7 +7,7 @@ class GrowthReferenceHeightForAgeData {
   static final _singleton = GrowthReferenceHeightForAgeData._(_parse());
 
   static Map<Sex, _GrowthReferenceHeightForAgeGender> _parse() =>
-      (json.decode(_hfa5yo) as Map<String, dynamic>).map(
+      _hfa5yo.toJsonObjectAsMap.map(
         (k1, v1) => MapEntry(
           k1 == '1' ? Sex.male : Sex.female,
           _GrowthReferenceHeightForAgeGender(

@@ -7,7 +7,7 @@ class WeightForAgeData {
   static final _singleton = WeightForAgeData._(_parse());
 
   static Map<Sex, _WeightForAgeGender> _parse() =>
-      (json.decode(_weianthro) as Map<String, dynamic>).map(
+      _weianthro.toJsonObjectAsMap.map(
         (k1, v1) => MapEntry(
           k1 == '1' ? Sex.male : Sex.female,
           _WeightForAgeGender(
