@@ -80,6 +80,9 @@ class HeadCircumferenceVelocityForAge with _$HeadCircumferenceVelocityForAge {
   HeadCircumferenceVelocityForAgeGender get _femaleData =>
       _headCircumferenceData._data[Sex.female]!;
 
+  Map<VelocityIncrement, HeadCircumferenceVelocityForAgeIncrement>
+      get _incrementData => (sex == Sex.male ? _maleData : _femaleData).incrementData;
+
   Age get ageAtObservationDate => observationDate == null
       ? age
       : observationDate == Date.today()
