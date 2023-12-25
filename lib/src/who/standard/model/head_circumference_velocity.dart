@@ -13,7 +13,7 @@ class HeadCircumferenceVelocityForAgeData {
           HeadCircumferenceVelocityForAgeGender(
             incrementData: (v1 as Map<String, dynamic>).map(
               (k2, v2) => MapEntry(
-                int.parse(k2),
+                parseIncrement(k2),
                 HeadCircumferenceVelocityForAgeIncrement(
                   lmsData: (v2 as Map<String, dynamic>).map((k3, v3) {
                     v3 as Map<String, dynamic>;
@@ -90,7 +90,8 @@ class HeadCircumferenceVelocityForAge with _$HeadCircumferenceVelocityForAge {
 class HeadCircumferenceVelocityForAgeGender {
   HeadCircumferenceVelocityForAgeGender({required this.incrementData});
 
-  final Map<int, HeadCircumferenceVelocityForAgeIncrement> incrementData;
+  final Map<VelocityIncrement, HeadCircumferenceVelocityForAgeIncrement>
+      incrementData;
 }
 
 class HeadCircumferenceVelocityForAgeIncrement {

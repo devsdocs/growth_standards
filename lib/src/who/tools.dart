@@ -54,3 +54,18 @@ WeeksMonths parseVelocityIncrement(String source) {
     );
   }
 }
+
+enum VelocityIncrement {
+  $1(1),
+  $2(2),
+  $3(3),
+  $4(4),
+  $6(6),
+  ;
+
+  const VelocityIncrement(this.value);
+  final int value;
+}
+
+VelocityIncrement parseIncrement(String val) => VelocityIncrement.values
+    .singleWhere((element) => element.value == int.parse(val));
