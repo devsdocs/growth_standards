@@ -5,23 +5,34 @@ export 'common/types.dart' show LengthHeigthMeasurementPosition, Months, Sex;
 export 'who/reference/reference.dart'
     show
         GrowthReferenceBodyMassIndexForAge,
+        GrowthReferenceBodyMassIndexForAgeData,
         GrowthReferenceBodyMassIndexMeasurement,
         GrowthReferenceHeightForAge,
-        GrowthReferenceWeightForAge;
+        GrowthReferenceHeightForAgeData,
+        GrowthReferenceWeightForAge,
+        GrowthReferenceWeightForAgeData;
 
 export 'who/standard/standard.dart'
     show
         ArmCircumferenceForAge,
+        ArmCircumferenceForAgeData,
         BodyMassIndexForAge,
+        BodyMassIndexForAgeData,
         BodyMassIndexMeasurement,
         HeadCircumferenceForAge,
+        HeadCircumferenceForAgeData,
         LengthForAge,
         LengthForAgeData,
         SubscapularSkinfoldForAge,
+        SubscapularSkinfoldForAgeData,
         TricepsSkinfoldForAge,
+        TricepsSkinfoldForAgeData,
         WeightForAge,
+        WeightForAgeData,
         WeightForHeight,
-        WeigthForLength;
+        WeightForHeightData,
+        WeigthForLength,
+        WeigthForLengthData;
 
 final class GrowthStandard {
   /// For age 0 to 5 years old (<= 1856 days)
