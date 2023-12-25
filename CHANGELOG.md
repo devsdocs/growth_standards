@@ -1,3 +1,7 @@
+## 1.0.3
+
+- Exposing additional types
+
 ## 1.0.2
 
 - Exposing data API

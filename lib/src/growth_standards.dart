@@ -1,7 +1,13 @@
 import 'package:growth_standards/src/who/who.dart';
 
 export 'common/model/age.dart' show Age, Date;
-export 'common/types.dart' show LengthHeigthMeasurementPosition, Months, Sex;
+export 'common/types.dart'
+    show
+        LengthHeigthMeasurementPosition,
+        Months,
+        PercentileValue,
+        Sex,
+        ZScoreValue;
 export 'who/reference/reference.dart'
     show
         GrowthReferenceBodyMassIndexForAge,
