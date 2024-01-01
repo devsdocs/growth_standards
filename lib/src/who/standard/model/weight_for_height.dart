@@ -41,13 +41,17 @@ class WeightForHeightData {
 class WeightForHeight with _$WeightForHeight {
   //TODO(devsdocs): Test this!
   @Assert(
-    'adjustedLengthHeight(measure: measure,age: age,lengthHeight: height,).value! >= 65 && adjustedLengthHeight(measure: measure,age: age,lengthHeight: height,).value! <= 120 && height.toCentimeters.value! >= 65 && height.toCentimeters.value! <= 120',
+    'whoAdjustedLengthHeight(measure: measure,age: age,lengthHeight: height,).value! >= 65 && whoAdjustedLengthHeight(measure: measure,age: age,lengthHeight: height,).value! <= 120 && height.toCentimeters.value! >= 65 && height.toCentimeters.value! <= 120',
     'Please correcting measurement position based on age',
   )
   //TODO(devsdocs): Test this!
   @Assert(
-    'adjustedLengthHeight(measure: measure,age: age,lengthHeight: height,).value! >= 65 && adjustedLengthHeight(measure: measure,age: age,lengthHeight: height,).value! <= 120',
+    'whoAdjustedLengthHeight(measure: measure,age: age,lengthHeight: height,).value! >= 65 && whoAdjustedLengthHeight(measure: measure,age: age,lengthHeight: height,).value! <= 120',
     'Height must be in range of 65 - 120 cm',
+  )
+  @Assert(
+    'observationDate == null || observationDate.isSameOrBefore(Date.today()) || observationDate.isSameOrAfter(age.dateOfBirth)',
+    'Observation date is impossible, because happen after today or before birth',
   )
   factory WeightForHeight({
     Date? observationDate,
@@ -63,7 +67,7 @@ class WeightForHeight with _$WeightForHeight {
   factory WeightForHeight.fromJson(Map<String, dynamic> json) =>
       _$WeightForHeightFromJson(json);
 
-  num get _adjustedHeight => adjustedLengthHeight(
+  num get _adjustedHeight => whoAdjustedLengthHeight(
         measure: measure,
         age: age,
         lengthHeight: height,
@@ -86,8 +90,6 @@ class WeightForHeight with _$WeightForHeight {
   //     : observationDate == Date.today()
   //         ? age
   //         : age.ageAtAnyPastDate(observationDate!);
-  //
-  //
 
   num zScore([
     Precision precision = Precision.ten,

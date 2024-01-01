@@ -355,6 +355,15 @@ class _$GrowthReferenceBodyMassIndexForAgeImpl
       : assert(
             age.ageInTotalMonthsByNow >= 61 && age.ageInTotalMonthsByNow <= 228,
             'Age must be in range of 61 - 228 months'),
+        assert(
+            observationDate == null ||
+                observationDate.isSameOrBefore(Date.today()) ||
+                observationDate.isSameOrAfter(age.dateOfBirth),
+            'Observation date is impossible, because happen after today or before birth'),
+        assert(
+            observationDate == null ||
+                observationDate.isSameOrAfter(age.dateAtMonthsAfterBirth(61)),
+            'Observation date is impossible, because happen after today or before birth'),
         super._();
 
   factory _$GrowthReferenceBodyMassIndexForAgeImpl.fromJson(
@@ -607,6 +616,15 @@ class _$GrowthReferenceHeightForAgeImpl extends _GrowthReferenceHeightForAge {
       : assert(
             age.ageInTotalMonthsByNow >= 61 && age.ageInTotalMonthsByNow <= 228,
             'Age must be in range of 61 - 228 months'),
+        assert(
+            observationDate == null ||
+                observationDate.isSameOrBefore(Date.today()) ||
+                observationDate.isSameOrAfter(age.dateOfBirth),
+            'Observation date is impossible, because happen after today or before birth'),
+        assert(
+            observationDate == null ||
+                observationDate.isSameOrAfter(age.dateAtMonthsAfterBirth(61)),
+            'Observation date is impossible, because happen after today or before birth'),
         super._();
 
   factory _$GrowthReferenceHeightForAgeImpl.fromJson(
@@ -851,6 +869,15 @@ class _$GrowthReferenceWeightForAgeImpl extends _GrowthReferenceWeightForAge {
       : assert(
             age.ageInTotalMonthsByNow >= 61 && age.ageInTotalMonthsByNow <= 120,
             'Age must be in range of 61 - 120 months'),
+        assert(
+            observationDate == null ||
+                observationDate.isSameOrBefore(Date.today()) ||
+                observationDate.isSameOrAfter(age.dateOfBirth),
+            'Observation date is impossible, because happen after today or before birth'),
+        assert(
+            observationDate == null ||
+                observationDate.isSameOrAfter(age.dateAtMonthsAfterBirth(61)),
+            'Observation date is impossible, because happen after today or before birth'),
         super._();
 
   factory _$GrowthReferenceWeightForAgeImpl.fromJson(

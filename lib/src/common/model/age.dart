@@ -43,7 +43,8 @@ class Age with _$Age {
       (years: _ageNowIn.years, months: _ageNowIn.months, days: _ageNowIn.days);
 
   int get ageInTotalMonthsByNow {
-    final months = (yearsMonthsDaysOfAge.years * 12) + yearsMonthsDaysOfAge.months;
+    final months =
+        (yearsMonthsDaysOfAge.years * 12) + yearsMonthsDaysOfAge.months;
     return checkMonth == true ? months + 1 : months;
   }
 
@@ -55,10 +56,15 @@ class Age with _$Age {
   int get ageInTotalWeeksByNow =>
       ageInTotalDaysByNow < 7 ? 0 : ageInTotalDaysByNow ~/ 7;
 
-  Date dateAtDaysAfterBirth(int daysAfterBirth) =>
-      dateOfBirth + Duration(days: daysAfterBirth);
+  Date dateAtDaysAfterBirth(int daysAfterBirth) => Date.fromDateTime(
+        DTU.addDays(dateOfBirth.toDateTime(), daysAfterBirth),
+      );
 
-  Age ageAtAnyPastDate(Date date) {
+  Date dateAtMonthsAfterBirth(int monthsAfterBirth) => Date.fromDateTime(
+        DTU.addMonths(dateOfBirth.toDateTime(), monthsAfterBirth),
+      );
+
+  Age ageAtPastDate(Date date) {
     if (date.isSameOrAfter(Date.today())) {
       return this;
     }

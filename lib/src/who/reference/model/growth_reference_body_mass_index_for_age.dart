@@ -60,6 +60,14 @@ class GrowthReferenceBodyMassIndexForAge
     'age.ageInTotalMonthsByNow >= 61 && age.ageInTotalMonthsByNow <= 228',
     'Age must be in range of 61 - 228 months',
   )
+  @Assert(
+    'observationDate == null || observationDate.isSameOrBefore(Date.today()) || observationDate.isSameOrAfter(age.dateOfBirth)',
+    'Observation date is impossible, because happen after today or before birth',
+  )
+  @Assert(
+    'observationDate == null || observationDate.isSameOrAfter(age.dateAtMonthsAfterBirth(61)) ',
+    'Observation date is impossible, because happen after today or before birth',
+  )
   factory GrowthReferenceBodyMassIndexForAge({
     Date? observationDate,
     required Sex sex,
@@ -84,10 +92,16 @@ class GrowthReferenceBodyMassIndexForAge
 
   _GrowthReferenceBodyMassIndexForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)
-          .ageData[age.ageInTotalMonthsByNow]!;
+          .ageData[_ageAtObservationDate.ageInTotalMonthsByNow]!;
 
   num get _zScore =>
       _ageData.lms.adjustedZScore(bodyMassIndexMeasurement.value);
+
+  Age get _ageAtObservationDate => observationDate == null
+      ? age
+      : observationDate == Date.today()
+          ? age
+          : age.ageAtPastDate(observationDate!);
 
   num zScore([
     Precision precision = Precision.ten,

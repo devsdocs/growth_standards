@@ -50,7 +50,7 @@ class BodyMassIndexMeasurement with _$BodyMassIndexMeasurement {
     required LengthHeigthMeasurementPosition measure,
     required Age age,
   }) {
-    final adjustedLength = adjustedLengthHeight(
+    final adjustedLength = whoAdjustedLengthHeight(
       age: age,
       measure: measure,
       lengthHeight: lengthHeight,
@@ -75,6 +75,10 @@ class BodyMassIndexForAge with _$BodyMassIndexForAge {
   @Assert(
     'bodyMassIndexMeasurement.age.ageInTotalDaysByNow >= 0 && bodyMassIndexMeasurement.age.ageInTotalDaysByNow <= 1856',
     'Age must be in range of 0 - 1856 days',
+  )
+  @Assert(
+    'observationDate == null || observationDate.isSameOrBefore(Date.today()) || observationDate.isSameOrAfter(bodyMassIndexMeasurement.age.dateOfBirth)',
+    'Observation date is impossible, because happen after today or before birth',
   )
   factory BodyMassIndexForAge({
     Date? observationDate,
@@ -106,7 +110,7 @@ class BodyMassIndexForAge with _$BodyMassIndexForAge {
       ? bodyMassIndexMeasurement.age
       : observationDate == Date.today()
           ? bodyMassIndexMeasurement.age
-          : bodyMassIndexMeasurement.age.ageAtAnyPastDate(observationDate!);
+          : bodyMassIndexMeasurement.age.ageAtPastDate(observationDate!);
 
   num zScore([
     Precision precision = Precision.ten,

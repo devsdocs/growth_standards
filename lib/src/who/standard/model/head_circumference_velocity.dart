@@ -89,7 +89,7 @@ class HeadCircumferenceVelocityForAge with _$HeadCircumferenceVelocityForAge {
       ? age
       : observationDate == Date.today()
           ? age
-          : age.ageAtAnyPastDate(observationDate!);
+          : age.ageAtPastDate(observationDate!);
 }
 
 class HeadCircumferenceVelocityForAgeGender {

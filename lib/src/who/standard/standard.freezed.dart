@@ -181,12 +181,12 @@ class _$ArmCircumferenceForAgeImpl extends _ArmCircumferenceForAge {
             'Age must be in range of 91 - 1856 days'),
         assert(
             observationDate == null ||
-                observationDate.isBefore(Date.today()) ||
-                observationDate.isAfter(age.dateOfBirth),
+                observationDate.isSameOrBefore(Date.today()) ||
+                observationDate.isSameOrAfter(age.dateOfBirth),
             'Observation date is impossible, because happen after today or before birth'),
         assert(
             observationDate == null ||
-                observationDate.isAfter(age.dateAtDaysAfterBirth(91)),
+                observationDate.isSameOrAfter(age.dateAtDaysAfterBirth(91)),
             'Observation date is impossible, because happen after today or before birth'),
         super._();
 
@@ -594,6 +594,12 @@ class _$BodyMassIndexForAgeImpl extends _BodyMassIndexForAge {
             bodyMassIndexMeasurement.age.ageInTotalDaysByNow >= 0 &&
                 bodyMassIndexMeasurement.age.ageInTotalDaysByNow <= 1856,
             'Age must be in range of 0 - 1856 days'),
+        assert(
+            observationDate == null ||
+                observationDate.isSameOrBefore(Date.today()) ||
+                observationDate
+                    .isSameOrAfter(bodyMassIndexMeasurement.age.dateOfBirth),
+            'Observation date is impossible, because happen after today or before birth'),
         super._();
 
   factory _$BodyMassIndexForAgeImpl.fromJson(Map<String, dynamic> json) =>
@@ -835,6 +841,11 @@ class _$HeadCircumferenceForAgeImpl extends _HeadCircumferenceForAge {
       @LengthConverter() required this.measurementResult})
       : assert(age.ageInTotalDaysByNow >= 0 && age.ageInTotalDaysByNow <= 1856,
             'Age must be in range of 0 - 1856 days'),
+        assert(
+            observationDate == null ||
+                observationDate.isSameOrBefore(Date.today()) ||
+                observationDate.isSameOrAfter(age.dateOfBirth),
+            'Observation date is impossible, because happen after today or before birth'),
         super._();
 
   factory _$HeadCircumferenceForAgeImpl.fromJson(Map<String, dynamic> json) =>
@@ -1338,6 +1349,11 @@ class _$LengthForAgeImpl extends _LengthForAge {
       required this.measure})
       : assert(age.ageInTotalDaysByNow >= 0 && age.ageInTotalDaysByNow <= 1856,
             'Age must be in range of 0 - 1856 days'),
+        assert(
+            observationDate == null ||
+                observationDate.isSameOrBefore(Date.today()) ||
+                observationDate.isSameOrAfter(age.dateOfBirth),
+            'Observation date is impossible, because happen after today or before birth'),
         super._();
 
   factory _$LengthForAgeImpl.fromJson(Map<String, dynamic> json) =>
@@ -1588,6 +1604,15 @@ class _$SubscapularSkinfoldForAgeImpl extends _SubscapularSkinfoldForAge {
       @LengthConverter() required this.measurementResult})
       : assert(age.ageInTotalDaysByNow >= 91 && age.ageInTotalDaysByNow <= 1856,
             'Age must be in range of 91 - 1856 days'),
+        assert(
+            observationDate == null ||
+                observationDate.isSameOrBefore(Date.today()) ||
+                observationDate.isSameOrAfter(age.dateOfBirth),
+            'Observation date is impossible, because happen after today or before birth'),
+        assert(
+            observationDate == null ||
+                observationDate.isSameOrAfter(age.dateAtDaysAfterBirth(91)),
+            'Observation date is impossible, because happen after today or before birth'),
         super._();
 
   factory _$SubscapularSkinfoldForAgeImpl.fromJson(Map<String, dynamic> json) =>
@@ -1832,6 +1857,15 @@ class _$TricepsSkinfoldForAgeImpl extends _TricepsSkinfoldForAge {
       @LengthConverter() required this.measurementResult})
       : assert(age.ageInTotalDaysByNow >= 91 && age.ageInTotalDaysByNow <= 1856,
             'Age must be in range of 91 - 1856 days'),
+        assert(
+            observationDate == null ||
+                observationDate.isSameOrBefore(Date.today()) ||
+                observationDate.isSameOrAfter(age.dateOfBirth),
+            'Observation date is impossible, because happen after today or before birth'),
+        assert(
+            observationDate == null ||
+                observationDate.isSameOrAfter(age.dateAtDaysAfterBirth(91)),
+            'Observation date is impossible, because happen after today or before birth'),
         super._();
 
   factory _$TricepsSkinfoldForAgeImpl.fromJson(Map<String, dynamic> json) =>
@@ -2066,6 +2100,11 @@ class _$WeightForAgeImpl extends _WeightForAge {
       @MassConverter() required this.weight})
       : assert(age.ageInTotalDaysByNow >= 0 && age.ageInTotalDaysByNow <= 1856,
             'Age must be in range of 0 - 1856 days'),
+        assert(
+            observationDate == null ||
+                observationDate.isSameOrBefore(Date.today()) ||
+                observationDate.isSameOrAfter(age.dateOfBirth),
+            'Observation date is impossible, because happen after today or before birth'),
         super._();
 
   factory _$WeightForAgeImpl.fromJson(Map<String, dynamic> json) =>
@@ -2332,13 +2371,13 @@ class _$WeightForHeightImpl extends _WeightForHeight {
       @MassConverter() required this.weight,
       required this.measure})
       : assert(
-            adjustedLengthHeight(
+            whoAdjustedLengthHeight(
                       measure: measure,
                       age: age,
                       lengthHeight: height,
                     ).value! >=
                     65 &&
-                adjustedLengthHeight(
+                whoAdjustedLengthHeight(
                       measure: measure,
                       age: age,
                       lengthHeight: height,
@@ -2348,19 +2387,24 @@ class _$WeightForHeightImpl extends _WeightForHeight {
                 height.toCentimeters.value! <= 120,
             'Please correcting measurement position based on age'),
         assert(
-            adjustedLengthHeight(
+            whoAdjustedLengthHeight(
                       measure: measure,
                       age: age,
                       lengthHeight: height,
                     ).value! >=
                     65 &&
-                adjustedLengthHeight(
+                whoAdjustedLengthHeight(
                       measure: measure,
                       age: age,
                       lengthHeight: height,
                     ).value! <=
                     120,
             'Height must be in range of 65 - 120 cm'),
+        assert(
+            observationDate == null ||
+                observationDate.isSameOrBefore(Date.today()) ||
+                observationDate.isSameOrAfter(age.dateOfBirth),
+            'Observation date is impossible, because happen after today or before birth'),
         super._();
 
   factory _$WeightForHeightImpl.fromJson(Map<String, dynamic> json) =>
@@ -2643,13 +2687,13 @@ class _$WeigthForLengthImpl extends _WeigthForLength {
       @MassConverter() required this.weight,
       required this.measure})
       : assert(
-            adjustedLengthHeight(
+            whoAdjustedLengthHeight(
                       measure: measure,
                       age: age,
                       lengthHeight: length,
                     ).value! >=
                     45 &&
-                adjustedLengthHeight(
+                whoAdjustedLengthHeight(
                       measure: measure,
                       age: age,
                       lengthHeight: length,
@@ -2659,19 +2703,24 @@ class _$WeigthForLengthImpl extends _WeigthForLength {
                 length.toCentimeters.value! <= 110,
             'Please correcting measurement position based on age'),
         assert(
-            adjustedLengthHeight(
+            whoAdjustedLengthHeight(
                       measure: measure,
                       age: age,
                       lengthHeight: length,
                     ).value! >=
                     45 &&
-                adjustedLengthHeight(
+                whoAdjustedLengthHeight(
                       measure: measure,
                       age: age,
                       lengthHeight: length,
                     ).value! <=
                     110,
             'Length must be in range of 45 - 110 cm'),
+        assert(
+            observationDate == null ||
+                observationDate.isSameOrBefore(Date.today()) ||
+                observationDate.isSameOrAfter(age.dateOfBirth),
+            'Observation date is impossible, because happen after today or before birth'),
         super._();
 
   factory _$WeigthForLengthImpl.fromJson(Map<String, dynamic> json) =>

@@ -41,13 +41,17 @@ class WeigthForLengthData {
 class WeigthForLength with _$WeigthForLength {
   //TODO(devsdocs): Test this!
   @Assert(
-    'adjustedLengthHeight(measure: measure,age: age,lengthHeight: length,).value! >= 45 && adjustedLengthHeight(measure: measure,age: age,lengthHeight: length,).value! <= 110 && length.toCentimeters.value! >= 45 && length.toCentimeters.value! <= 110',
+    'whoAdjustedLengthHeight(measure: measure,age: age,lengthHeight: length,).value! >= 45 && whoAdjustedLengthHeight(measure: measure,age: age,lengthHeight: length,).value! <= 110 && length.toCentimeters.value! >= 45 && length.toCentimeters.value! <= 110',
     'Please correcting measurement position based on age',
   )
   //TODO(devsdocs): Test this!
   @Assert(
-    'adjustedLengthHeight(measure: measure,age: age,lengthHeight: length,).value! >= 45 && adjustedLengthHeight(measure: measure,age: age,lengthHeight: length,).value! <= 110',
+    'whoAdjustedLengthHeight(measure: measure,age: age,lengthHeight: length,).value! >= 45 && whoAdjustedLengthHeight(measure: measure,age: age,lengthHeight: length,).value! <= 110',
     'Length must be in range of 45 - 110 cm',
+  )
+  @Assert(
+    'observationDate == null || observationDate.isSameOrBefore(Date.today()) || observationDate.isSameOrAfter(age.dateOfBirth)',
+    'Observation date is impossible, because happen after today or before birth',
   )
   factory WeigthForLength({
     Date? observationDate,
@@ -63,7 +67,7 @@ class WeigthForLength with _$WeigthForLength {
   factory WeigthForLength.fromJson(Map<String, dynamic> json) =>
       _$WeigthForLengthFromJson(json);
 
-  num get _adjustedLength => adjustedLengthHeight(
+  num get _adjustedLength => whoAdjustedLengthHeight(
         measure: measure,
         age: age,
         lengthHeight: length,

@@ -1,4 +1,4 @@
-part of '../reference.dart';
+part of '../cdc.dart';
 
 class GrowthReferenceWeightForAgeData {
   factory GrowthReferenceWeightForAgeData() => _singleton;
@@ -7,7 +7,7 @@ class GrowthReferenceWeightForAgeData {
   static final _singleton = GrowthReferenceWeightForAgeData._(_parse());
 
   static Map<Sex, _GrowthReferenceWeightForAgeGender> _parse() =>
-      _wfa5yo.toJsonObjectAsMap.map(
+      cdcwtage.toJsonObjectAsMap.map(
         (k1, v1) => MapEntry(
           k1 == '1' ? Sex.male : Sex.female,
           _GrowthReferenceWeightForAgeGender(
@@ -37,15 +37,15 @@ class GrowthReferenceWeightForAgeData {
 @freezed
 class GrowthReferenceWeightForAge with _$GrowthReferenceWeightForAge {
   @Assert(
-    'age.ageInTotalMonthsByNow >= 61 && age.ageInTotalMonthsByNow <= 120',
-    'Age must be in range of 61 - 120 months',
+    'age.ageInTotalMonthsByNow >= 24 && age.ageInTotalMonthsByNow <= 240',
+    'Age must be in range of 24 - 240 months',
   )
   @Assert(
     'observationDate == null || observationDate.isSameOrBefore(Date.today()) || observationDate.isSameOrAfter(age.dateOfBirth)',
     'Observation date is impossible, because happen after today or before birth',
   )
   @Assert(
-    'observationDate == null || observationDate.isSameOrAfter(age.dateAtMonthsAfterBirth(61)) ',
+    'observationDate == null || observationDate.isSameOrAfter(age.dateAtMonthsAfterBirth(24)) ',
     'Observation date is impossible, because happen after today or before birth',
   )
   factory GrowthReferenceWeightForAge({
@@ -71,8 +71,12 @@ class GrowthReferenceWeightForAge with _$GrowthReferenceWeightForAge {
       _weightForAgeData._data[Sex.female]!;
 
   _GrowthReferenceWeightForAgeLMS get _ageData =>
-      (sex == Sex.male ? _maleData : _femaleData)
-          .ageData[_ageAtObservationDate.ageInTotalMonthsByNow]!;
+      (sex == Sex.male ? _maleData : _femaleData).ageData[
+          _ageAtObservationDate.ageInTotalMonthsByNow == 24
+              ? 24
+              : _ageAtObservationDate.ageInTotalMonthsByNow == 240
+                  ? 240
+                  : _ageAtObservationDate.cdcAge]!;
 
   num get _zScore => _ageData.lms.adjustedZScore(weight.toKilograms.value!);
 

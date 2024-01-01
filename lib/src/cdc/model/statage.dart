@@ -1,23 +1,23 @@
-part of '../reference.dart';
+part of '../cdc.dart';
 
-class GrowthReferenceHeightForAgeData {
-  factory GrowthReferenceHeightForAgeData() => _singleton;
-  const GrowthReferenceHeightForAgeData._(this._data);
+class CDCStatureForAgeData {
+  factory CDCStatureForAgeData() => _singleton;
+  const CDCStatureForAgeData._(this._data);
 
-  static final _singleton = GrowthReferenceHeightForAgeData._(_parse());
+  static final _singleton = CDCStatureForAgeData._(_parse());
 
-  static Map<Sex, _GrowthReferenceHeightForAgeGender> _parse() =>
-      _hfa5yo.toJsonObjectAsMap.map(
+  static Map<Sex, _CDCStatureForAgeGender> _parse() =>
+      cdcstatage.toJsonObjectAsMap.map(
         (k1, v1) => MapEntry(
           k1 == '1' ? Sex.male : Sex.female,
-          _GrowthReferenceHeightForAgeGender(
+          _CDCStatureForAgeGender(
             ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
               v2 as Map<String, dynamic>;
               final lms =
                   (l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
               return MapEntry(
                 int.parse(k2),
-                _GrowthReferenceHeightForAgeLMS(
+                _CDCStatureForAgeLMS(
                   lms: lms,
                   percentileCutOff: lms.percentileCutOff,
                   standardDeviationCutOff: lms.stDevCutOff,
@@ -27,53 +27,62 @@ class GrowthReferenceHeightForAgeData {
           ),
         ),
       );
-  final Map<Sex, _GrowthReferenceHeightForAgeGender> _data;
-  Map<Sex, _GrowthReferenceHeightForAgeGender> get data => _data;
+  final Map<Sex, _CDCStatureForAgeGender> _data;
+  Map<Sex, _CDCStatureForAgeGender> get data => _data;
 
   @override
   String toString() => 'Height For Age Data($_data)';
 }
 
 @freezed
-class GrowthReferenceHeightForAge with _$GrowthReferenceHeightForAge {
+class CDCStatureForAge with _$CDCStatureForAge {
   @Assert(
-    'age.ageInTotalMonthsByNow >= 61 && age.ageInTotalMonthsByNow <= 228',
-    'Age must be in range of 61 - 228 months',
+    'age.ageInTotalMonthsByNow >= 24 && age.ageInTotalMonthsByNow <= 240',
+    'Age must be in range of 24 - 240 months',
   )
   @Assert(
     'observationDate == null || observationDate.isSameOrBefore(Date.today()) || observationDate.isSameOrAfter(age.dateOfBirth)',
     'Observation date is impossible, because happen after today or before birth',
   )
   @Assert(
-    'observationDate == null || observationDate.isSameOrAfter(age.dateAtMonthsAfterBirth(61)) ',
+    'observationDate == null || observationDate.isSameOrAfter(age.dateAtMonthsAfterBirth(24)) ',
     'Observation date is impossible, because happen after today or before birth',
   )
-  factory GrowthReferenceHeightForAge({
+  factory CDCStatureForAge({
     Date? observationDate,
     required Sex sex,
     required Age age,
     @LengthConverter() required Length lengthHeight,
+    required LengthHeigthMeasurementPosition measure,
   }) = _GrowthReferenceHeightForAge;
 
-  const GrowthReferenceHeightForAge._();
-  factory GrowthReferenceHeightForAge.fromJson(
+  const CDCStatureForAge._();
+  factory CDCStatureForAge.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$GrowthReferenceHeightForAgeFromJson(json);
+      _$CDCStatureForAgeFromJson(json);
 
-  GrowthReferenceHeightForAgeData get _lengthForAgeData =>
-      GrowthReferenceHeightForAgeData();
+  CDCStatureForAgeData get _lengthForAgeData => CDCStatureForAgeData();
 
-  _GrowthReferenceHeightForAgeGender get _maleData =>
-      _lengthForAgeData._data[Sex.male]!;
-  _GrowthReferenceHeightForAgeGender get _femaleData =>
+  _CDCStatureForAgeGender get _maleData => _lengthForAgeData._data[Sex.male]!;
+  _CDCStatureForAgeGender get _femaleData =>
       _lengthForAgeData._data[Sex.female]!;
 
-  _GrowthReferenceHeightForAgeLMS get _ageData =>
-      (sex == Sex.male ? _maleData : _femaleData)
-          .ageData[_ageAtObservationDate.ageInTotalMonthsByNow]!;
+  _CDCStatureForAgeLMS get _ageData =>
+      (sex == Sex.male ? _maleData : _femaleData).ageData[
+          _ageAtObservationDate.ageInTotalDaysByNow == 24
+              ? 24
+              : _ageAtObservationDate.ageInTotalMonthsByNow == 240
+                  ? 240
+                  : _ageAtObservationDate.cdcAge]!;
 
-  num get _zScore => _ageData.lms.zScore(lengthHeight.toCentimeters.value!);
+  num get _adjustedLength => cdcAdjustedLengthHeight(
+        measure: measure,
+        age: age,
+        lengthHeight: lengthHeight,
+      ).value!;
+
+  num get _zScore => _ageData.lms.zScore(_adjustedLength);
 
   Age get _ageAtObservationDate => observationDate == null
       ? age
@@ -92,16 +101,16 @@ class GrowthReferenceHeightForAge with _$GrowthReferenceHeightForAge {
       (pnorm(_zScore) * 100).precision(precision);
 }
 
-class _GrowthReferenceHeightForAgeGender {
-  _GrowthReferenceHeightForAgeGender({required this.ageData});
-  final Map<int, _GrowthReferenceHeightForAgeLMS> ageData;
+class _CDCStatureForAgeGender {
+  _CDCStatureForAgeGender({required this.ageData});
+  final Map<int, _CDCStatureForAgeLMS> ageData;
 
   @override
   String toString() => 'Gender Data($ageData)';
 }
 
-class _GrowthReferenceHeightForAgeLMS {
-  _GrowthReferenceHeightForAgeLMS({
+class _CDCStatureForAgeLMS {
+  _CDCStatureForAgeLMS({
     required this.lms,
     required this.percentileCutOff,
     required this.standardDeviationCutOff,

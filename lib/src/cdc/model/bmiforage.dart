@@ -59,6 +59,14 @@ class CDCBodyMassIndexForAge with _$CDCBodyMassIndexForAge {
     'age.ageInTotalMonthsByNow >= 24 && age.ageInTotalMonthsByNow < 241',
     'Age must be in range of 24 - 240 months',
   )
+  @Assert(
+    'observationDate == null || observationDate.isSameOrBefore(Date.today()) || observationDate.isSameOrAfter(age.dateOfBirth)',
+    'Observation date is impossible, because happen after today or before birth',
+  )
+  @Assert(
+    'observationDate == null || observationDate.isSameOrAfter(age.dateAtMonthsAfterBirth(24)) ',
+    'Observation date is impossible, because happen after today or before birth',
+  )
   factory CDCBodyMassIndexForAge({
     Date? observationDate,
     required Sex sex,
@@ -82,8 +90,10 @@ class CDCBodyMassIndexForAge with _$CDCBodyMassIndexForAge {
       _bodyMassIndexData._data[Sex.female]!;
 
   _CDCBodyMassIndexForAgeLMS get _ageData =>
-      (sex == Sex.male ? _maleData : _femaleData)
-          .ageData[age.ageInTotalMonthsByNow == 24 ? 24 : age.cdcAge]!;
+      (sex == Sex.male ? _maleData : _femaleData).ageData[
+          _ageAtObservationDate.ageInTotalMonthsByNow == 24
+              ? 24
+              : _ageAtObservationDate.cdcAge]!;
 
   num get _zScore => _ageData.lms.zScore(bodyMassIndexMeasurement.value);
 
@@ -103,6 +113,12 @@ class CDCBodyMassIndexForAge with _$CDCBodyMassIndexForAge {
                     _ageData.sigma,
               ))
       : (pnorm(_zScore) * 100);
+
+  Age get _ageAtObservationDate => observationDate == null
+      ? age
+      : observationDate == Date.today()
+          ? age
+          : age.ageAtPastDate(observationDate!);
 
   num zScore([
     Precision precision = Precision.ten,

@@ -43,11 +43,11 @@ class ArmCircumferenceForAge with _$ArmCircumferenceForAge {
     'Age must be in range of 91 - 1856 days',
   )
   @Assert(
-    'observationDate == null || observationDate.isBefore(Date.today()) || observationDate.isAfter(age.dateOfBirth)',
+    'observationDate == null || observationDate.isSameOrBefore(Date.today()) || observationDate.isSameOrAfter(age.dateOfBirth)',
     'Observation date is impossible, because happen after today or before birth',
   )
   @Assert(
-    'observationDate == null || observationDate.isAfter(age.dateAtDaysAfterBirth(91)) ',
+    'observationDate == null || observationDate.isSameOrAfter(age.dateAtDaysAfterBirth(91)) ',
     'Observation date is impossible, because happen after today or before birth',
   )
   factory ArmCircumferenceForAge({
@@ -80,7 +80,7 @@ class ArmCircumferenceForAge with _$ArmCircumferenceForAge {
       ? age
       : observationDate == Date.today()
           ? age
-          : age.ageAtAnyPastDate(observationDate!);
+          : age.ageAtPastDate(observationDate!);
 
   num zScore([
     Precision precision = Precision.ten,

@@ -66,7 +66,27 @@ num adjustedZScoreCalculation(
   return zScore;
 }
 
-Centimeters adjustedLengthHeight({
+Centimeters cdcAdjustedLengthHeight({
+  required Age age,
+  required LengthHeigthMeasurementPosition measure,
+  required Length lengthHeight,
+}) {
+  num adjustedLenHeight = lengthHeight.toCentimeters.value!;
+
+  if (age.ageInTotalMonthsByNow < 24 &&
+      measure == LengthHeigthMeasurementPosition.standing) {
+    adjustedLenHeight += 0.8;
+    return Centimeters(adjustedLenHeight);
+  } else if (age.ageInTotalMonthsByNow >= 24 &&
+      measure == LengthHeigthMeasurementPosition.recumbent) {
+    adjustedLenHeight -= 0.8;
+    return Centimeters(adjustedLenHeight);
+  } else {
+    return Centimeters(adjustedLenHeight);
+  }
+}
+
+Centimeters whoAdjustedLengthHeight({
   required Age age,
   required LengthHeigthMeasurementPosition measure,
   required Length lengthHeight,

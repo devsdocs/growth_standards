@@ -40,6 +40,14 @@ class TricepsSkinfoldForAge with _$TricepsSkinfoldForAge {
     'age.ageInTotalDaysByNow >= 91 && age.ageInTotalDaysByNow <= 1856',
     'Age must be in range of 91 - 1856 days',
   )
+  @Assert(
+    'observationDate == null || observationDate.isSameOrBefore(Date.today()) || observationDate.isSameOrAfter(age.dateOfBirth)',
+    'Observation date is impossible, because happen after today or before birth',
+  )
+  @Assert(
+    'observationDate == null || observationDate.isSameOrAfter(age.dateAtDaysAfterBirth(91)) ',
+    'Observation date is impossible, because happen after today or before birth',
+  )
   factory TricepsSkinfoldForAge({
     Date? observationDate,
     required Sex sex,
@@ -71,7 +79,7 @@ class TricepsSkinfoldForAge with _$TricepsSkinfoldForAge {
       ? age
       : observationDate == Date.today()
           ? age
-          : age.ageAtAnyPastDate(observationDate!);
+          : age.ageAtPastDate(observationDate!);
 
   num zScore([
     Precision precision = Precision.ten,
