@@ -1,6 +1,15 @@
+import 'package:growth_standards/src/cdc/cdc.dart';
 import 'package:growth_standards/src/who/who.dart';
 
+export 'cdc/cdc.dart'
+    show
+        CDCBodyMassIndexForAge,
+        CDCBodyMassIndexForAgeData,
+        CDCBodyMassIndexMeasurement;
+
 export 'common/model/age.dart' show Age, Date;
+export 'common/model/bmi.dart' show BodyMassIndex;
+
 export 'common/types.dart'
     show
         LengthHeigthMeasurementPosition,
@@ -8,6 +17,7 @@ export 'common/types.dart'
         PercentileValue,
         Sex,
         ZScoreValue;
+
 export 'who/reference/reference.dart'
     show
         GrowthReferenceBodyMassIndexForAge,
@@ -46,4 +56,6 @@ final class GrowthStandard {
 
   /// For age 5 to 18 years old (> 1856 days)
   static WHOGrowthReference get whoGrowthReference => WHOGrowthReference();
+
+  static CDCGrowthStandard get cdcGrowthStandard => CDCGrowthStandard();
 }

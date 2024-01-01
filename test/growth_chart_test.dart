@@ -67,8 +67,15 @@ void main() {
       expect(Age.byDaysAgo(30).ageInTotalDaysByNow, 30);
       expect(Age.byDaysAgo(1000).ageInTotalDaysByNow, 1000);
       expect(Age.byDaysAgo(10000).ageInTotalDaysByNow, 10000);
+      expect(Age.byMonthsAgo(1).ageInTotalMonthsByNow, 1);
+      expect(Age.byMonthsAgo(2).ageInTotalMonthsByNow, 2);
+
+      expect(Age.byMonthsAgo(4).ageInTotalMonthsByNow, 4);
+      expect(Age.byYearsAgo(1).ageInTotalMonthsByNow, 12);
+      expect(Age.byYearsAgo(2).ageInTotalMonthsByNow, 24);
+      expect(Age.byYearsAgo(20).ageInTotalMonthsByNow, 240);
     });
-    test('Arm Circ', () {
+    test('WHO Arm Circ', () {
       final age = Age.byMonthsAgo(24);
       final observationDate = Date.monthsAgoByNow(18);
       final male = whoGS.armCircumferenceForAge(
@@ -109,7 +116,7 @@ void main() {
         1.57,
       );
     });
-    test('BMI', () {
+    test('WHO BMI', () {
       final observationDate = Date.monthsAgoByNow(40);
       final age = Age.byMonthsAgo(44);
       final bmi = BodyMassIndexMeasurement(
@@ -161,6 +168,40 @@ void main() {
             .zScore(Precision.two),
         anyOf(2.36, 2.37),
       );
+    });
+  });
+
+  group('CDC', () {
+    test('CDC BMI 1', () {
+      final age = Age.byMonthsAgo(50);
+      const sex = Sex.male;
+      final bodyMassIndexMeasurement = CDCBodyMassIndexMeasurement(22.6);
+      final calc = CDCBodyMassIndexForAge(
+        sex: sex,
+        age: age,
+        bodyMassIndexMeasurement: bodyMassIndexMeasurement,
+      );
+
+      print(calc.age.cdcAge);
+
+      expect(calc.zScore(Precision.two), 2.83);
+      expect(calc.percentile(Precision.four), 99.7683);
+    });
+    test('CDC BMI 2', () {
+      final age = Age.byMonthsAgo(115);
+      const sex = Sex.female;
+      final bodyMassIndexMeasurement = CDCBodyMassIndexMeasurement(21.2);
+
+      final calc = CDCBodyMassIndexForAge(
+        sex: sex,
+        age: age,
+        bodyMassIndexMeasurement: bodyMassIndexMeasurement,
+      );
+
+      print(calc.age.cdcAge);
+
+      expect(calc.zScore(Precision.four), 1.4215);
+      expect(calc.percentile(Precision.one), 92.2);
     });
   });
 }

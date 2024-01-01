@@ -109,14 +109,14 @@ class BodyMassIndexForAge with _$BodyMassIndexForAge {
           : bodyMassIndexMeasurement.age.ageAtAnyPastDate(observationDate!);
 
   num zScore([
-    Precision precision = Precision.nine,
+    Precision precision = Precision.ten,
   ]) =>
-      _zScore.toDouble().toPrecision(precision.value);
+      _zScore.precision(precision);
 
   num percentile([
-    Precision precision = Precision.nine,
+    Precision precision = Precision.ten,
   ]) =>
-      (pnorm(_zScore) * 100).toDouble().toPrecision(precision.value);
+      (pnorm(_zScore) * 100).precision(precision);
 }
 
 class _BodyMassIndexForAgeGender {
