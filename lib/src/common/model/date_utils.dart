@@ -83,69 +83,6 @@ class TimeTools {
 
     return days;
   }
-
-  // static Date calculateBirthDateFromYearsMonths({
-  //   required YearsMonths ym,
-  //   DateTime? fromDate,
-  // }) {
-  //   final now = DTU.now();
-  //   if (fromDate != null) {
-  //     if (now.isBefore(fromDate)) {
-  //       fromDate = now;
-  //     }
-  //   }
-
-  //   final months = ym.months;
-  //   final years = ym.years;
-  //   // Get the current date
-  //   final DateTime workingDate = fromDate ?? now;
-
-  //   // Calculate the target date
-
-  //   DateTime targetDate = workingDate.subtract(
-  //     Duration(
-  //       days: monthsToDays(workingDate.year, workingDate.month, months),
-  //     ),
-  //   );
-  //   targetDate =
-  //       targetDate.subtract(Duration(days: yearsToDays(years, targetDate)));
-
-  //   // Adjust the target date based on years and months
-
-  //   return Date.fromDateTime(targetDate);
-  // }
-
-  // static Date calculateBirthDateFromYearsMonthsDays({
-  //   required YearsMonthsDays ymd,
-  //   DateTime? fromDate,
-  // }) {
-  //   final now = DTU.now();
-  //   if (fromDate != null) {
-  //     if (now.isBefore(fromDate)) {
-  //       fromDate = now;
-  //     }
-  //   }
-
-  //   final days = ymd.days;
-  //   final months = ymd.months;
-  //   final years = ymd.years;
-  //   // Get the current date
-  //   final DateTime workingDate = fromDate ?? now;
-
-  //   // Calculate the target date
-  //   DateTime targetDate = workingDate.subtract(Duration(days: days + 1));
-  //   targetDate = targetDate.subtract(
-  //     Duration(
-  //       days: monthsToDays(targetDate.year, targetDate.month, months),
-  //     ),
-  //   );
-  //   targetDate =
-  //       targetDate.subtract(Duration(days: yearsToDays(years, targetDate)));
-
-  //   // Adjust the target date based on years and months
-
-  //   return Date.fromDateTime(targetDate);
-  // }
 }
 
 bool checkMonths(int number) {
@@ -156,8 +93,8 @@ bool checkMonths(int number) {
   return number != Age.byDate(date).ageInTotalMonthsByNow;
 }
 
-class _TimeIntervalCount {
-  _TimeIntervalCount(
+class TimeIntervalCount {
+  TimeIntervalCount(
     int year, [
     int month = 1,
     int date = 1,
@@ -177,7 +114,7 @@ class _TimeIntervalCount {
 
   final DateTime dob;
 
-  _AgeInternal timeDifference({
+  AgeInternal timeDifference({
     required DateTime fromDate,
     required DateTime toDate,
   }) {
@@ -248,7 +185,7 @@ class _TimeIntervalCount {
       minutes = endDate.minute - fromDate.minute;
     }
 
-    return _AgeInternal(
+    return AgeInternal(
       years: years,
       days: days,
       months: months,
@@ -260,7 +197,7 @@ class _TimeIntervalCount {
   /// add method
   DateTime add({
     required DateTime date,
-    required _AgeInternal duration,
+    required AgeInternal duration,
   }) {
     int years = date.year + duration.years;
     years += (date.month + duration.months) ~/ DateTime.monthsPerYear;
@@ -271,27 +208,27 @@ class _TimeIntervalCount {
     return DateTime(years, months).add(Duration(days: days));
   }
 
-  _AgeInternal ageAtDate(DateTime day) => timeDifference(
+  AgeInternal ageAtDate(DateTime day) => timeDifference(
         fromDate: dob,
         toDate: day,
       );
 
-  _AgeInternal get ageNow => ageAtDate(DTU.now());
-  _AgeInternal get timeUntilNextBirthdayFromNow =>
+  AgeInternal get ageNow => ageAtDate(DTU.now());
+  AgeInternal get timeUntilNextBirthdayFromNow =>
       timeUntilNextBirthday(DTU.now());
 
-  _AgeInternal timeUntilNextBirthday(DateTime fromDate) {
+  AgeInternal timeUntilNextBirthday(DateTime fromDate) {
     final DateTime endDate = fromDate;
     final DateTime tempDate = DateTime(endDate.year, dob.month, dob.day);
     final DateTime nextBirthdayDate = tempDate.isBefore(endDate)
-        ? add(date: tempDate, duration: _AgeInternal(years: 1))
+        ? add(date: tempDate, duration: AgeInternal(years: 1))
         : tempDate;
     return timeDifference(fromDate: endDate, toDate: nextBirthdayDate);
   }
 }
 
-class _AgeInternal {
-  _AgeInternal({
+class AgeInternal {
+  AgeInternal({
     this.days = 0,
     this.months = 0,
     this.years = 0,

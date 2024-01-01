@@ -56,7 +56,7 @@ class CDCBodyMassIndexMeasurement with _$CDCBodyMassIndexMeasurement {
 @freezed
 class CDCBodyMassIndexForAge with _$CDCBodyMassIndexForAge {
   @Assert(
-    'age.ageInTotalMonthsByNow >= 24 && age.ageInTotalMonthsByNow <= 241',
+    'age.ageInTotalMonthsByNow >= 24 && age.ageInTotalMonthsByNow < 241',
     'Age must be in range of 24 - 240 months',
   )
   factory CDCBodyMassIndexForAge({

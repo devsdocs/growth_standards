@@ -72,6 +72,9 @@ void main() {
       expect(Age.byMonthsAgo(3).ageInTotalMonthsByNow, 3);
       expect(Age.byMonthsAgo(4).ageInTotalMonthsByNow, 4);
       expect(Age.byMonthsAgo(5).ageInTotalMonthsByNow, 5);
+      expect(Age.byMonthsAgo(111).ageInTotalMonthsByNow, 111);
+      expect(Age.byMonthsAgo(112).ageInTotalMonthsByNow, 112);
+      expect(Age.byMonthsAgo(113).ageInTotalMonthsByNow, 113);
 
       expect(Age.byYearsAgo(1).ageInTotalMonthsByNow, 12);
       expect(Age.byYearsAgo(2).ageInTotalMonthsByNow, 24);

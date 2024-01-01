@@ -31,20 +31,20 @@ class Age with _$Age {
 
   factory Age.fromJson(Map<String, dynamic> json) => _$AgeFromJson(json);
 
-  _TimeIntervalCount get _dobCount => _TimeIntervalCount(
+  TimeIntervalCount get _dobCount => TimeIntervalCount(
         dateOfBirth.year,
         dateOfBirth.month.number,
         dateOfBirth.date,
       );
 
-  _AgeInternal get _ageNowIn => _dobCount.ageNow;
+  AgeInternal get _ageNowIn => _dobCount.ageNow;
 
   YearsMonthsDays get yearsMonthsDaysOfAge =>
       (years: _ageNowIn.years, months: _ageNowIn.months, days: _ageNowIn.days);
 
   int get ageInTotalMonthsByNow {
-    final i = (yearsMonthsDaysOfAge.years * 12) + yearsMonthsDaysOfAge.months;
-    return checkMonth == true ? i + 1 : i;
+    final months = (yearsMonthsDaysOfAge.years * 12) + yearsMonthsDaysOfAge.months;
+    return checkMonth == true ? months + 1 : months;
   }
 
   double get cdcAge => ageInTotalMonthsByNow + 0.5;

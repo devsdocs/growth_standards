@@ -344,7 +344,7 @@ class _$GrowthReferenceBodyMassIndexForAgeImpl
       required this.age,
       required this.bodyMassIndexMeasurement})
       : assert(
-            age.ageInTotalMonthsByNow >= 24 && age.ageInTotalMonthsByNow <= 241,
+            age.ageInTotalMonthsByNow >= 24 && age.ageInTotalMonthsByNow < 241,
             'Age must be in range of 24 - 240 months'),
         super._();
 
