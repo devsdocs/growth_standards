@@ -71,6 +71,7 @@ void main() {
       expect(Age.byMonthsAgo(2).ageInTotalMonthsByNow, 2);
       expect(Age.byMonthsAgo(3).ageInTotalMonthsByNow, 3);
       expect(Age.byMonthsAgo(4).ageInTotalMonthsByNow, 4);
+      expect(Age.byMonthsAgo(5).ageInTotalMonthsByNow, 5);
 
       expect(Age.byYearsAgo(1).ageInTotalMonthsByNow, 12);
       expect(Age.byYearsAgo(2).ageInTotalMonthsByNow, 24);
@@ -183,8 +184,6 @@ void main() {
         bodyMassIndexMeasurement: bodyMassIndexMeasurement,
       );
 
-      print(calc.age.cdcAge);
-
       expect(calc.zScore(Precision.two), 2.83);
       expect(calc.percentile(Precision.four), 99.7683);
     });
@@ -198,8 +197,6 @@ void main() {
         age: age,
         bodyMassIndexMeasurement: bodyMassIndexMeasurement,
       );
-
-      print(calc.age.cdcAge);
 
       expect(calc.zScore(Precision.four), 1.4215);
       expect(calc.percentile(Precision.one), 92.2);

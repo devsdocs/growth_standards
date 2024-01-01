@@ -148,44 +148,12 @@ class TimeTools {
   // }
 }
 
-bool isIncludedInPattern(int number) {
-  // Initialize the first two numbers in the pattern.
-  int prime1 = 3;
-  int prime2 = 5;
+bool checkMonths(int number) {
+  final date = Date.fromDateTime(
+    TimeTools.calculateBirthDateInMonthsBeforeByNow(number),
+  );
 
-  // Find the next numbers in the pattern until the given number is reached or exceeded.
-  while (prime1 * prime2 - 1 < number) {
-    // Find the next two consecutive prime numbers.
-    prime1 = getNextPrime(prime1);
-    prime2 = getNextPrime(prime2);
-  }
-
-  // Check if the given number is equal to the last number in the pattern.
-  return prime1 * prime2 - 1 == number;
-}
-
-// Find the next prime number after a given number.
-int getNextPrime(int number) {
-  int num = number;
-  while (true) {
-    num++;
-    if (isPrime(num)) {
-      return num;
-    }
-  }
-}
-
-// Check if a given number is prime.
-bool isPrime(int number) {
-  if (number <= 1) {
-    return false;
-  }
-  for (int i = 2; i <= number / 2; i++) {
-    if (number % i == 0) {
-      return false;
-    }
-  }
-  return true;
+  return number != Age.byDate(date).ageInTotalMonthsByNow;
 }
 
 class _TimeIntervalCount {

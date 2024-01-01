@@ -16,22 +16,18 @@ class Age with _$Age {
     '!(DateTime(DTU.now().year, DTU.now().month, DTU.now().day).difference(DateTime(dateOfBirth.year,dateOfBirth.month.number,dateOfBirth.date,),).isNegative)',
     'Age is impossible',
   )
-  factory Age(Date dateOfBirth) = _Age;
+  factory Age(Date dateOfBirth, bool checkMonth) = _Age;
 
   const Age._();
 
-  factory Age.byYearsAgo(int years) => Age(Date.yearsAgoByNow(years));
+  factory Age.byYearsAgo(int years) => Age(Date.yearsAgoByNow(years), false);
 
-  factory Age.byMonthsAgo(int months) => isIncludedInPattern(months)
-      ? Age(Date.monthsAgoByNow(months))
-      : Age.byLiteralMonthsAgo(months);
+  factory Age.byMonthsAgo(int months) =>
+      Age(Date.monthsAgoByNow(months), checkMonths(months));
 
-  factory Age.byLiteralMonthsAgo(int months) =>
-      Age(Date.monthsAgoByNow(months + 1));
+  factory Age.byDaysAgo(int days) => Age(Date.daysAgoByNow(days), false);
 
-  factory Age.byDaysAgo(int days) => Age(Date.daysAgoByNow(days));
-
-  factory Age.byDate(Date date) => Age(date);
+  factory Age.byDate(Date date) => Age(date, false);
 
   factory Age.fromJson(Map<String, dynamic> json) => _$AgeFromJson(json);
 
@@ -46,13 +42,14 @@ class Age with _$Age {
   YearsMonthsDays get yearsMonthsDaysOfAge =>
       (years: _ageNowIn.years, months: _ageNowIn.months, days: _ageNowIn.days);
 
-  int get ageInTotalMonthsByNow =>
-      (yearsMonthsDaysOfAge.years * 12) + yearsMonthsDaysOfAge.months;
+  int get ageInTotalMonthsByNow {
+    final i = (yearsMonthsDaysOfAge.years * 12) + yearsMonthsDaysOfAge.months;
+    return checkMonth == true ? i + 1 : i;
+  }
 
   double get cdcAge => ageInTotalMonthsByNow + 0.5;
 
   int get ageInTotalDaysByNow =>
-      // DTU.now().difference(_dobCount.dob).inDays;
       DTU.getDaysDifference(DTU.now(), _dobCount.dob);
 
   int get ageInTotalWeeksByNow =>

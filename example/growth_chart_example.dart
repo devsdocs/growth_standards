@@ -31,7 +31,7 @@ void main() {
   print(calcLengthForAgeStanding.percentile(Precision.two));
   final encode = json.encode(calcLengthForAgeStanding.toJson());
   print(encode);
-  print(gsFromJson.lengthForAge(json.encode(encode) as Map<String, dynamic>));
+  print(gsFromJson.lengthForAge(json.decode(encode) as Map<String, dynamic>));
 
   final calcLengthForAgeRecumbent = calcLengthForAgeStanding.copyWith(
     measure: LengthHeigthMeasurementPosition.recumbent,

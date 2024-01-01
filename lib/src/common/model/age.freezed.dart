@@ -21,6 +21,7 @@ Age _$AgeFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Age {
   Date get dateOfBirth => throw _privateConstructorUsedError;
+  bool get checkMonth => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -32,7 +33,7 @@ abstract class $AgeCopyWith<$Res> {
   factory $AgeCopyWith(Age value, $Res Function(Age) then) =
       _$AgeCopyWithImpl<$Res, Age>;
   @useResult
-  $Res call({Date dateOfBirth});
+  $Res call({Date dateOfBirth, bool checkMonth});
 
   $DateCopyWith<$Res> get dateOfBirth;
 }
@@ -50,12 +51,17 @@ class _$AgeCopyWithImpl<$Res, $Val extends Age> implements $AgeCopyWith<$Res> {
   @override
   $Res call({
     Object? dateOfBirth = null,
+    Object? checkMonth = null,
   }) {
     return _then(_value.copyWith(
       dateOfBirth: null == dateOfBirth
           ? _value.dateOfBirth
           : dateOfBirth // ignore: cast_nullable_to_non_nullable
               as Date,
+      checkMonth: null == checkMonth
+          ? _value.checkMonth
+          : checkMonth // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -74,7 +80,7 @@ abstract class _$$AgeImplCopyWith<$Res> implements $AgeCopyWith<$Res> {
       __$$AgeImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Date dateOfBirth});
+  $Res call({Date dateOfBirth, bool checkMonth});
 
   @override
   $DateCopyWith<$Res> get dateOfBirth;
@@ -90,12 +96,17 @@ class __$$AgeImplCopyWithImpl<$Res> extends _$AgeCopyWithImpl<$Res, _$AgeImpl>
   @override
   $Res call({
     Object? dateOfBirth = null,
+    Object? checkMonth = null,
   }) {
     return _then(_$AgeImpl(
       null == dateOfBirth
           ? _value.dateOfBirth
           : dateOfBirth // ignore: cast_nullable_to_non_nullable
               as Date,
+      null == checkMonth
+          ? _value.checkMonth
+          : checkMonth // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -103,10 +114,9 @@ class __$$AgeImplCopyWithImpl<$Res> extends _$AgeCopyWithImpl<$Res, _$AgeImpl>
 /// @nodoc
 @JsonSerializable()
 class _$AgeImpl extends _Age {
-  _$AgeImpl(this.dateOfBirth)
+  _$AgeImpl(this.dateOfBirth, this.checkMonth)
       : assert(
-            !(DateTime(DateTime.now().year, DateTime.now().month,
-                    DateTime.now().day)
+            !(DateTime(DTU.now().year, DTU.now().month, DTU.now().day)
                 .difference(
                   DateTime(
                     dateOfBirth.year,
@@ -123,10 +133,12 @@ class _$AgeImpl extends _Age {
 
   @override
   final Date dateOfBirth;
+  @override
+  final bool checkMonth;
 
   @override
   String toString() {
-    return 'Age(dateOfBirth: $dateOfBirth)';
+    return 'Age(dateOfBirth: $dateOfBirth, checkMonth: $checkMonth)';
   }
 
   @override
@@ -135,12 +147,14 @@ class _$AgeImpl extends _Age {
         (other.runtimeType == runtimeType &&
             other is _$AgeImpl &&
             (identical(other.dateOfBirth, dateOfBirth) ||
-                other.dateOfBirth == dateOfBirth));
+                other.dateOfBirth == dateOfBirth) &&
+            (identical(other.checkMonth, checkMonth) ||
+                other.checkMonth == checkMonth));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, dateOfBirth);
+  int get hashCode => Object.hash(runtimeType, dateOfBirth, checkMonth);
 
   @JsonKey(ignore: true)
   @override
@@ -157,13 +171,15 @@ class _$AgeImpl extends _Age {
 }
 
 abstract class _Age extends Age {
-  factory _Age(final Date dateOfBirth) = _$AgeImpl;
+  factory _Age(final Date dateOfBirth, final bool checkMonth) = _$AgeImpl;
   _Age._() : super._();
 
   factory _Age.fromJson(Map<String, dynamic> json) = _$AgeImpl.fromJson;
 
   @override
   Date get dateOfBirth;
+  @override
+  bool get checkMonth;
   @override
   @JsonKey(ignore: true)
   _$$AgeImplCopyWith<_$AgeImpl> get copyWith =>

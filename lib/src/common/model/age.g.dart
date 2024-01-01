@@ -8,10 +8,12 @@ part of 'age.dart';
 
 _$AgeImpl _$$AgeImplFromJson(Map<String, dynamic> json) => _$AgeImpl(
       Date.fromJson(json['dateOfBirth'] as Map<String, dynamic>),
+      json['checkMonth'] as bool,
     );
 
 Map<String, dynamic> _$$AgeImplToJson(_$AgeImpl instance) => <String, dynamic>{
       'dateOfBirth': instance.dateOfBirth,
+      'checkMonth': instance.checkMonth,
     };
 
 _$DateImpl _$$DateImplFromJson(Map<String, dynamic> json) => _$DateImpl(
