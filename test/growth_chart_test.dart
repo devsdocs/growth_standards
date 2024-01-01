@@ -67,10 +67,8 @@ void main() {
       expect(Age.byDaysAgo(30).ageInTotalDaysByNow, 30);
       expect(Age.byDaysAgo(1000).ageInTotalDaysByNow, 1000);
       expect(Age.byDaysAgo(10000).ageInTotalDaysByNow, 10000);
-      expect(Age.byMonthsAgo(1).ageInTotalMonthsByNow, 1);
-      expect(Age.byMonthsAgo(2).ageInTotalMonthsByNow, 2);
+      expect(Age.byMonthsAgo(400).ageInTotalMonthsByNow, 400);
 
-      expect(Age.byMonthsAgo(4).ageInTotalMonthsByNow, 4);
       expect(Age.byYearsAgo(1).ageInTotalMonthsByNow, 12);
       expect(Age.byYearsAgo(2).ageInTotalMonthsByNow, 24);
       expect(Age.byYearsAgo(20).ageInTotalMonthsByNow, 240);

@@ -67,83 +67,125 @@ class TimeTools {
     // Calculate the total number of days in the given months
     int days = 0;
     int currentMonth = startingMonth;
-    int y = year;
+    int currentYear = year;
 
     for (int i = 0; i < months; i++) {
-      days += DateTime(y, currentMonth, 0).day;
+      final daysInCurrentMonth = DateTime(currentYear, currentMonth, 0).day;
+      days += daysInCurrentMonth;
+
       currentMonth++;
 
       if (currentMonth > 12) {
         currentMonth = 1;
-        y++;
+        currentYear++;
       }
     }
 
     return days;
   }
 
-  static Date calculateBirthDateFromYearsMonths({
-    required YearsMonths ym,
-    DateTime? fromDate,
-  }) {
-    final now = DTU.now();
-    if (fromDate != null) {
-      if (now.isBefore(fromDate)) {
-        fromDate = now;
-      }
-    }
+  // static Date calculateBirthDateFromYearsMonths({
+  //   required YearsMonths ym,
+  //   DateTime? fromDate,
+  // }) {
+  //   final now = DTU.now();
+  //   if (fromDate != null) {
+  //     if (now.isBefore(fromDate)) {
+  //       fromDate = now;
+  //     }
+  //   }
 
-    final months = ym.months;
-    final years = ym.years;
-    // Get the current date
-    final DateTime workingDate = fromDate ?? now;
+  //   final months = ym.months;
+  //   final years = ym.years;
+  //   // Get the current date
+  //   final DateTime workingDate = fromDate ?? now;
 
-    // Calculate the target date
+  //   // Calculate the target date
 
-    DateTime targetDate = workingDate.subtract(
-      Duration(
-        days: monthsToDays(workingDate.year, workingDate.month, months),
-      ),
-    );
-    targetDate =
-        targetDate.subtract(Duration(days: yearsToDays(years, targetDate)));
+  //   DateTime targetDate = workingDate.subtract(
+  //     Duration(
+  //       days: monthsToDays(workingDate.year, workingDate.month, months),
+  //     ),
+  //   );
+  //   targetDate =
+  //       targetDate.subtract(Duration(days: yearsToDays(years, targetDate)));
 
-    // Adjust the target date based on years and months
+  //   // Adjust the target date based on years and months
 
-    return Date.fromDateTime(targetDate);
+  //   return Date.fromDateTime(targetDate);
+  // }
+
+  // static Date calculateBirthDateFromYearsMonthsDays({
+  //   required YearsMonthsDays ymd,
+  //   DateTime? fromDate,
+  // }) {
+  //   final now = DTU.now();
+  //   if (fromDate != null) {
+  //     if (now.isBefore(fromDate)) {
+  //       fromDate = now;
+  //     }
+  //   }
+
+  //   final days = ymd.days;
+  //   final months = ymd.months;
+  //   final years = ymd.years;
+  //   // Get the current date
+  //   final DateTime workingDate = fromDate ?? now;
+
+  //   // Calculate the target date
+  //   DateTime targetDate = workingDate.subtract(Duration(days: days + 1));
+  //   targetDate = targetDate.subtract(
+  //     Duration(
+  //       days: monthsToDays(targetDate.year, targetDate.month, months),
+  //     ),
+  //   );
+  //   targetDate =
+  //       targetDate.subtract(Duration(days: yearsToDays(years, targetDate)));
+
+  //   // Adjust the target date based on years and months
+
+  //   return Date.fromDateTime(targetDate);
+  // }
+}
+
+bool isIncludedInPattern(int number) {
+  // Initialize the first two numbers in the pattern.
+  int prime1 = 3;
+  int prime2 = 5;
+
+  // Find the next numbers in the pattern until the given number is reached or exceeded.
+  while (prime1 * prime2 - 1 < number) {
+    // Find the next two consecutive prime numbers.
+    prime1 = getNextPrime(prime1);
+    prime2 = getNextPrime(prime2);
   }
 
-  static Date calculateBirthDateFromYearsMonthsDays({
-    required YearsMonthsDays ymd,
-    DateTime? fromDate,
-  }) {
-    final now = DTU.now();
-    if (fromDate != null) {
-      if (now.isBefore(fromDate)) {
-        fromDate = now;
-      }
+  // Check if the given number is equal to the last number in the pattern.
+  return prime1 * prime2 - 1 == number;
+}
+
+// Find the next prime number after a given number.
+int getNextPrime(int number) {
+  int num = number;
+  while (true) {
+    num++;
+    if (isPrime(num)) {
+      return num;
     }
-
-    final days = ymd.days;
-    final months = ymd.months;
-    final years = ymd.years;
-    // Get the current date
-    final DateTime workingDate = fromDate ?? now;
-
-    // Calculate the target date
-    DateTime targetDate = workingDate.subtract(Duration(days: days + 1));
-    targetDate = targetDate.subtract(
-      Duration(
-        days: monthsToDays(targetDate.year, targetDate.month, months),
-      ),
-    );
-    targetDate =
-        targetDate.subtract(Duration(days: yearsToDays(years, targetDate)));
-
-    // Adjust the target date based on years and months
-
-    return Date.fromDateTime(targetDate);
   }
+}
+
+// Check if a given number is prime.
+bool isPrime(int number) {
+  if (number <= 1) {
+    return false;
+  }
+  for (int i = 2; i <= number / 2; i++) {
+    if (number % i == 0) {
+      return false;
+    }
+  }
+  return true;
 }
 
 class _TimeIntervalCount {
