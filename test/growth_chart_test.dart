@@ -67,7 +67,10 @@ void main() {
       expect(Age.byDaysAgo(30).ageInTotalDaysByNow, 30);
       expect(Age.byDaysAgo(1000).ageInTotalDaysByNow, 1000);
       expect(Age.byDaysAgo(10000).ageInTotalDaysByNow, 10000);
-      expect(Age.byMonthsAgo(400).ageInTotalMonthsByNow, 400);
+      expect(Age.byMonthsAgo(1).ageInTotalMonthsByNow, 1);
+      expect(Age.byMonthsAgo(2).ageInTotalMonthsByNow, 2);
+      expect(Age.byMonthsAgo(3).ageInTotalMonthsByNow, 3);
+      expect(Age.byMonthsAgo(4).ageInTotalMonthsByNow, 4);
 
       expect(Age.byYearsAgo(1).ageInTotalMonthsByNow, 12);
       expect(Age.byYearsAgo(2).ageInTotalMonthsByNow, 24);
@@ -170,7 +173,7 @@ void main() {
   });
 
   group('CDC', () {
-    test('CDC BMI 1', () {
+    test('BMI 1', () {
       final age = Age.byMonthsAgo(50);
       const sex = Sex.male;
       final bodyMassIndexMeasurement = CDCBodyMassIndexMeasurement(22.6);
@@ -185,8 +188,8 @@ void main() {
       expect(calc.zScore(Precision.two), 2.83);
       expect(calc.percentile(Precision.four), 99.7683);
     });
-    test('CDC BMI 2', () {
-      final age = Age.byMonthsAgo(115);
+    test('BMI 2', () {
+      final age = Age.byMonthsAgo(114);
       const sex = Sex.female;
       final bodyMassIndexMeasurement = CDCBodyMassIndexMeasurement(21.2);
 

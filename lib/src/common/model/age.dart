@@ -22,7 +22,12 @@ class Age with _$Age {
 
   factory Age.byYearsAgo(int years) => Age(Date.yearsAgoByNow(years));
 
-  factory Age.byMonthsAgo(int months) => isIncludedInPattern(months) ? Age(Date.monthsAgoByNow(months)) : ;
+  factory Age.byMonthsAgo(int months) => isIncludedInPattern(months)
+      ? Age(Date.monthsAgoByNow(months))
+      : Age.byLiteralMonthsAgo(months);
+
+  factory Age.byLiteralMonthsAgo(int months) =>
+      Age(Date.monthsAgoByNow(months + 1));
 
   factory Age.byDaysAgo(int days) => Age(Date.daysAgoByNow(days));
 
