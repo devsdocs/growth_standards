@@ -31,7 +31,7 @@ void main() {
   final encode = json.encode(calcLengthForAgeStanding.toJson());
   print(encode);
   print(
-    WHOGrowthStandardsLengthForAge.fromJson(
+    gs.fromJson.lengthForAge(
       json.decode(encode) as Map<String, dynamic>,
     ),
   );
