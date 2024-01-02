@@ -61,7 +61,8 @@ class WHOGrowthStandardsSubscapularSkinfoldForAge
   const WHOGrowthStandardsSubscapularSkinfoldForAge._();
 
   factory WHOGrowthStandardsSubscapularSkinfoldForAge.fromJson(
-          Map<String, dynamic> json,) =>
+    Map<String, dynamic> json,
+  ) =>
       _$WHOGrowthStandardsSubscapularSkinfoldForAgeFromJson(json);
 
   WHOGrowthStandardsSubscapularSkinfoldForAgeData

@@ -4,7 +4,8 @@ class WHOGrowthReferenceBodyMassIndexForAgeData {
   factory WHOGrowthReferenceBodyMassIndexForAgeData() => _singleton;
   const WHOGrowthReferenceBodyMassIndexForAgeData._(this._data);
 
-  static final _singleton = WHOGrowthReferenceBodyMassIndexForAgeData._(_parse());
+  static final _singleton =
+      WHOGrowthReferenceBodyMassIndexForAgeData._(_parse());
 
   static Map<Sex, _WHOGrowthReferenceBodyMassIndexForAgeGender> _parse() =>
       _bmi5yo.toJsonObjectAsMap.map(
@@ -72,7 +73,8 @@ class WHOGrowthReferenceBodyMassIndexForAge
     Date? observationDate,
     required Sex sex,
     required Age age,
-    required WHOGrowthReferenceBodyMassIndexMeasurement bodyMassIndexMeasurement,
+    required WHOGrowthReferenceBodyMassIndexMeasurement
+        bodyMassIndexMeasurement,
   }) = _WHOGrowthReferenceBodyMassIndexForAge;
 
   const WHOGrowthReferenceBodyMassIndexForAge._();

@@ -237,7 +237,8 @@ final class WHOGrowthReference {
   WHOGrowthReferenceBodyMassIndexForAge bodyMassIndexForAge({
     Date? observationDate,
     required Sex sex,
-    required WHOGrowthReferenceBodyMassIndexMeasurement bodyMassIndexMeasurement,
+    required WHOGrowthReferenceBodyMassIndexMeasurement
+        bodyMassIndexMeasurement,
     required Age age,
   }) =>
       WHOGrowthReferenceBodyMassIndexForAge(

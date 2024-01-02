@@ -55,7 +55,8 @@ class CDCInfantHeadCircumferenceForAge with _$CDCInfantHeadCircumferenceForAge {
   const CDCInfantHeadCircumferenceForAge._();
 
   factory CDCInfantHeadCircumferenceForAge.fromJson(
-          Map<String, dynamic> json,) =>
+    Map<String, dynamic> json,
+  ) =>
       _$CDCInfantHeadCircumferenceForAgeFromJson(json);
 
   CDCInfantHeadCircumferenceForAgeData get _headCircumferenceData =>

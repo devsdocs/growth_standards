@@ -97,16 +97,18 @@ class WHOGrowthStandardsHeadCircumferenceVelocityForAge
 }
 
 class WHOGrowthStandardsHeadCircumferenceVelocityForAgeGender {
-  WHOGrowthStandardsHeadCircumferenceVelocityForAgeGender(
-      {required this.incrementData,});
+  WHOGrowthStandardsHeadCircumferenceVelocityForAgeGender({
+    required this.incrementData,
+  });
 
   final Map<VelocityIncrement,
       WHOGrowthStandardsHeadCircumferenceVelocityForAgeIncrement> incrementData;
 }
 
 class WHOGrowthStandardsHeadCircumferenceVelocityForAgeIncrement {
-  WHOGrowthStandardsHeadCircumferenceVelocityForAgeIncrement(
-      {required this.lmsData,});
+  WHOGrowthStandardsHeadCircumferenceVelocityForAgeIncrement({
+    required this.lmsData,
+  });
   final Map<WeeksMonths, WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS>
       lmsData;
 }

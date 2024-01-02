@@ -57,7 +57,8 @@ class WHOGrowthStandardsHeadCircumferenceForAge
   const WHOGrowthStandardsHeadCircumferenceForAge._();
 
   factory WHOGrowthStandardsHeadCircumferenceForAge.fromJson(
-          Map<String, dynamic> json,) =>
+    Map<String, dynamic> json,
+  ) =>
       _$WHOGrowthStandardsHeadCircumferenceForAgeFromJson(json);
 
   WHOGrowthStandardsHeadCircumferenceForAgeData get _headCircumferenceData =>

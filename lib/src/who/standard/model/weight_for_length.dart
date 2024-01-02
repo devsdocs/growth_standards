@@ -66,7 +66,8 @@ class WHOGrowthStandardsWeigthForLength
   const WHOGrowthStandardsWeigthForLength._();
 
   factory WHOGrowthStandardsWeigthForLength.fromJson(
-          Map<String, dynamic> json,) =>
+    Map<String, dynamic> json,
+  ) =>
       _$WHOGrowthStandardsWeigthForLengthFromJson(json);
 
   num get _adjustedLength => whoAdjustedLengthHeight(

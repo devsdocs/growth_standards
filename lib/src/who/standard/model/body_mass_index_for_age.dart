@@ -42,8 +42,10 @@ class WHOGrowthStandardsBodyMassIndexForAgeData {
 @freezed
 class WHOGrowthStandardsBodyMassIndexMeasurement
     with _$WHOGrowthStandardsBodyMassIndexMeasurement {
-  factory WHOGrowthStandardsBodyMassIndexMeasurement(num value,
-      {required Age age,}) = _WHOGrowthStandardsBodyMassIndexMeasurement;
+  factory WHOGrowthStandardsBodyMassIndexMeasurement(
+    num value, {
+    required Age age,
+  }) = _WHOGrowthStandardsBodyMassIndexMeasurement;
   const WHOGrowthStandardsBodyMassIndexMeasurement._();
 
   factory WHOGrowthStandardsBodyMassIndexMeasurement.fromMeasurement({
@@ -94,7 +96,8 @@ class WHOGrowthStandardsBodyMassIndexForAge
   const WHOGrowthStandardsBodyMassIndexForAge._();
 
   factory WHOGrowthStandardsBodyMassIndexForAge.fromJson(
-          Map<String, dynamic> json,) =>
+    Map<String, dynamic> json,
+  ) =>
       _$WHOGrowthStandardsBodyMassIndexForAgeFromJson(json);
 
   WHOGrowthStandardsBodyMassIndexForAgeData get _bodyMassIndexData =>
