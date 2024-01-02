@@ -5,7 +5,21 @@ export 'cdc/cdc.dart'
     show
         CDCBodyMassIndexForAge,
         CDCBodyMassIndexForAgeData,
-        CDCBodyMassIndexMeasurement;
+        CDCBodyMassIndexMeasurement,
+        CDCInfantHeadCircumferenceForAge,
+        CDCInfantHeadCircumferenceForAgeData,
+        CDCInfantLengthForAge,
+        CDCInfantLengthForAgeData,
+        CDCInfantWeightForAge,
+        CDCInfantWeightForAgeData,
+        CDCInfantWeigthForLength,
+        CDCInfantWeigthForLengthData,
+        CDCStatureForAge,
+        CDCStatureForAgeData,
+        CDCWeightForAge,
+        CDCWeightForAgeData,
+        CDCWeigthForStature,
+        CDCWeigthForStatureData;
 
 export 'common/model/age.dart' show Age, Date;
 export 'common/model/bmi.dart' show BodyMassIndex;
@@ -20,42 +34,53 @@ export 'common/types.dart'
 
 export 'who/reference/reference.dart'
     show
-        GrowthReferenceBodyMassIndexForAge,
-        GrowthReferenceBodyMassIndexForAgeData,
-        GrowthReferenceBodyMassIndexMeasurement,
-        GrowthReferenceHeightForAge,
-        GrowthReferenceHeightForAgeData,
-        GrowthReferenceWeightForAge,
-        GrowthReferenceWeightForAgeData;
+        WHOGrowthReferenceBodyMassIndexForAge,
+        WHOGrowthReferenceBodyMassIndexForAgeData,
+        WHOGrowthReferenceBodyMassIndexMeasurement,
+        WHOGrowthReferenceHeightForAge,
+        WHOGrowthReferenceHeightForAgeData,
+        WHOGrowthReferenceWeightForAge,
+        WHOGrowthReferenceWeightForAgeData;
 
 export 'who/standard/standard.dart'
     show
-        ArmCircumferenceForAge,
-        ArmCircumferenceForAgeData,
-        BodyMassIndexForAge,
-        BodyMassIndexForAgeData,
-        BodyMassIndexMeasurement,
-        HeadCircumferenceForAge,
-        HeadCircumferenceForAgeData,
-        LengthForAge,
-        LengthForAgeData,
-        SubscapularSkinfoldForAge,
-        SubscapularSkinfoldForAgeData,
-        TricepsSkinfoldForAge,
-        TricepsSkinfoldForAgeData,
-        WeightForAge,
-        WeightForAgeData,
-        WeightForHeight,
-        WeightForHeightData,
-        WeigthForLength,
-        WeigthForLengthData;
+        WHOGrowthStandardsArmCircumferenceForAge,
+        WHOGrowthStandardsArmCircumferenceForAgeData,
+        WHOGrowthStandardsBodyMassIndexForAge,
+        WHOGrowthStandardsBodyMassIndexForAgeData,
+        WHOGrowthStandardsBodyMassIndexMeasurement,
+        WHOGrowthStandardsHeadCircumferenceForAge,
+        WHOGrowthStandardsHeadCircumferenceForAgeData,
+        WHOGrowthStandardsLengthForAge,
+        WHOGrowthStandardsLengthForAgeData,
+        WHOGrowthStandardsSubscapularSkinfoldForAge,
+        WHOGrowthStandardsSubscapularSkinfoldForAgeData,
+        WHOGrowthStandardsTricepsSkinfoldForAge,
+        WHOGrowthStandardsTricepsSkinfoldForAgeData,
+        WHOGrowthStandardsWeightForAge,
+        WHOGrowthStandardsWeightForAgeData,
+        WHOGrowthStandardsWeightForHeight,
+        WHOGrowthStandardsWeightForHeightData,
+        WHOGrowthStandardsWeigthForLength,
+        WHOGrowthStandardsWeigthForLengthData;
 
-final class GrowthStandard {
+class GrowthStandard {
+  static _WHO get who => _WHO();
+  static _CDC get cdc => _CDC();
+}
+
+class _WHO {
   /// For age 0 to 5 years old (<= 1856 days)
-  static WHOGrowthStandard get whoGrowthStandard => WHOGrowthStandard();
+  WHOGrowthStandard get fromBirthTo5Years => WHOGrowthStandard();
 
   /// For age 5 to 18 years old (> 1856 days)
-  static WHOGrowthReference get whoGrowthReference => WHOGrowthReference();
+  WHOGrowthReference get from5YearsAndAbove => WHOGrowthReference();
+}
 
-  static CDCGrowthStandard get cdcGrowthStandard => CDCGrowthStandard();
+class _CDC {
+  CDCGrowthStandardFromTwoYearsOldAndAbove get from2YearsAndAbove =>
+      CDCGrowthStandardFromTwoYearsOldAndAbove();
+
+  CDCGrowthStandardFromBirthTo36Months get fromBirthTo36Months =>
+      CDCGrowthStandardFromBirthTo36Months();
 }

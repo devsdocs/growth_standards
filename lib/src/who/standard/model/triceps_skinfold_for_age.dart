@@ -1,10 +1,11 @@
 part of '../standard.dart';
 
-class TricepsSkinfoldForAgeData {
-  factory TricepsSkinfoldForAgeData() => _singleton;
-  TricepsSkinfoldForAgeData._(this._data);
+class WHOGrowthStandardsTricepsSkinfoldForAgeData {
+  factory WHOGrowthStandardsTricepsSkinfoldForAgeData() => _singleton;
+  WHOGrowthStandardsTricepsSkinfoldForAgeData._(this._data);
 
-  static final _singleton = TricepsSkinfoldForAgeData._(_parse());
+  static final _singleton =
+      WHOGrowthStandardsTricepsSkinfoldForAgeData._(_parse());
 
   static Map<Sex, _TricepsSkinfoldAgeGender> _parse() =>
       _tsanthro.toJsonObjectAsMap.map(
@@ -17,7 +18,7 @@ class TricepsSkinfoldForAgeData {
                   (l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
               return MapEntry(
                 int.parse(k2),
-                _TricepsSkinfoldForAgeLMS(
+                _WHOGrowthStandardsTricepsSkinfoldForAgeLMS(
                   lms: lms,
                   percentileCutOff: lms.percentileCutOff,
                   standardDeviationCutOff: lms.stDevCutOff,
@@ -35,7 +36,8 @@ class TricepsSkinfoldForAgeData {
 }
 
 @freezed
-class TricepsSkinfoldForAge with _$TricepsSkinfoldForAge {
+class WHOGrowthStandardsTricepsSkinfoldForAge
+    with _$WHOGrowthStandardsTricepsSkinfoldForAge {
   @Assert(
     'age.ageInTotalDaysByNow >= 91 && age.ageInTotalDaysByNow <= 1856',
     'Age must be in range of 91 - 1856 days',
@@ -48,27 +50,28 @@ class TricepsSkinfoldForAge with _$TricepsSkinfoldForAge {
     'observationDate == null || observationDate.isSameOrAfter(age.dateAtDaysAfterBirth(91)) ',
     'Observation date is impossible, because happen after today or before birth',
   )
-  factory TricepsSkinfoldForAge({
+  factory WHOGrowthStandardsTricepsSkinfoldForAge({
     Date? observationDate,
     required Sex sex,
     required Age age,
     @LengthConverter() required Length measurementResult,
-  }) = _TricepsSkinfoldForAge;
+  }) = _WHOGrowthStandardsTricepsSkinfoldForAge;
 
-  const TricepsSkinfoldForAge._();
+  const WHOGrowthStandardsTricepsSkinfoldForAge._();
 
-  factory TricepsSkinfoldForAge.fromJson(Map<String, dynamic> json) =>
-      _$TricepsSkinfoldForAgeFromJson(json);
+  factory WHOGrowthStandardsTricepsSkinfoldForAge.fromJson(
+          Map<String, dynamic> json,) =>
+      _$WHOGrowthStandardsTricepsSkinfoldForAgeFromJson(json);
 
-  TricepsSkinfoldForAgeData get _tricepsSkinfoldData =>
-      TricepsSkinfoldForAgeData();
+  WHOGrowthStandardsTricepsSkinfoldForAgeData get _tricepsSkinfoldData =>
+      WHOGrowthStandardsTricepsSkinfoldForAgeData();
 
   _TricepsSkinfoldAgeGender get _maleData =>
       _tricepsSkinfoldData._data[Sex.male]!;
   _TricepsSkinfoldAgeGender get _femaleData =>
       _tricepsSkinfoldData._data[Sex.female]!;
 
-  _TricepsSkinfoldForAgeLMS get _ageData =>
+  _WHOGrowthStandardsTricepsSkinfoldForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)
           .ageData[_ageAtObservationDate.ageInTotalDaysByNow]!;
 
@@ -94,13 +97,13 @@ class TricepsSkinfoldForAge with _$TricepsSkinfoldForAge {
 
 class _TricepsSkinfoldAgeGender {
   _TricepsSkinfoldAgeGender({required this.ageData});
-  final Map<int, _TricepsSkinfoldForAgeLMS> ageData;
+  final Map<int, _WHOGrowthStandardsTricepsSkinfoldForAgeLMS> ageData;
   @override
   String toString() => 'Gender Data($ageData)';
 }
 
-class _TricepsSkinfoldForAgeLMS {
-  _TricepsSkinfoldForAgeLMS({
+class _WHOGrowthStandardsTricepsSkinfoldForAgeLMS {
+  _WHOGrowthStandardsTricepsSkinfoldForAgeLMS({
     required this.lms,
     required this.standardDeviationCutOff,
     required this.percentileCutOff,

@@ -16,7 +16,7 @@ class CDCStatureForAgeData {
               final lms =
                   (l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
               return MapEntry(
-                int.parse(k2),
+                double.parse(k2),
                 _CDCStatureForAgeLMS(
                   lms: lms,
                   percentileCutOff: lms.percentileCutOff,
@@ -74,7 +74,7 @@ class CDCStatureForAge with _$CDCStatureForAge {
               ? 24
               : _ageAtObservationDate.ageInTotalMonthsByNow == 240
                   ? 240
-                  : _ageAtObservationDate.cdcAge]!;
+                  : _ageAtObservationDate.ageInTotalMonthsByNow + 0.5]!;
 
   num get _adjustedLength => cdcAdjustedLengthHeight(
         measure: measure,
@@ -103,7 +103,7 @@ class CDCStatureForAge with _$CDCStatureForAge {
 
 class _CDCStatureForAgeGender {
   _CDCStatureForAgeGender({required this.ageData});
-  final Map<int, _CDCStatureForAgeLMS> ageData;
+  final Map<double, _CDCStatureForAgeLMS> ageData;
 
   @override
   String toString() => 'Gender Data($ageData)';

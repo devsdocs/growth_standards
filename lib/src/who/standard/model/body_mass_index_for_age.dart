@@ -1,23 +1,24 @@
 part of '../standard.dart';
 
-class BodyMassIndexForAgeData {
-  factory BodyMassIndexForAgeData() => _singleton;
-  const BodyMassIndexForAgeData._(this._data);
+class WHOGrowthStandardsBodyMassIndexForAgeData {
+  factory WHOGrowthStandardsBodyMassIndexForAgeData() => _singleton;
+  const WHOGrowthStandardsBodyMassIndexForAgeData._(this._data);
 
-  static final _singleton = BodyMassIndexForAgeData._(_parse());
+  static final _singleton =
+      WHOGrowthStandardsBodyMassIndexForAgeData._(_parse());
 
-  static Map<Sex, _BodyMassIndexForAgeGender> _parse() =>
+  static Map<Sex, _WHOGrowthStandardsBodyMassIndexForAgeGender> _parse() =>
       _bmianthro.toJsonObjectAsMap.map(
         (k1, v1) => MapEntry(
           k1 == '1' ? Sex.male : Sex.female,
-          _BodyMassIndexForAgeGender(
+          _WHOGrowthStandardsBodyMassIndexForAgeGender(
             ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
               v2 as Map<String, dynamic>;
               final lms =
                   (l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
               return MapEntry(
                 int.parse(k2),
-                _BodyMassIndexForAgeLMS(
+                _WHOGrowthStandardsBodyMassIndexForAgeLMS(
                   lms: lms,
                   percentileCutOff: lms.percentileCutOff,
                   standardDeviationCutOff: lms.stDevCutOff,
@@ -31,20 +32,21 @@ class BodyMassIndexForAgeData {
         ),
       );
 
-  final Map<Sex, _BodyMassIndexForAgeGender> _data;
-  Map<Sex, _BodyMassIndexForAgeGender> get data => _data;
+  final Map<Sex, _WHOGrowthStandardsBodyMassIndexForAgeGender> _data;
+  Map<Sex, _WHOGrowthStandardsBodyMassIndexForAgeGender> get data => _data;
 
   @override
   String toString() => 'Body Mass Index For Age Data($_data)';
 }
 
 @freezed
-class BodyMassIndexMeasurement with _$BodyMassIndexMeasurement {
-  factory BodyMassIndexMeasurement(num value, {required Age age}) =
-      _BodyMassIndexMeasurement;
-  const BodyMassIndexMeasurement._();
+class WHOGrowthStandardsBodyMassIndexMeasurement
+    with _$WHOGrowthStandardsBodyMassIndexMeasurement {
+  factory WHOGrowthStandardsBodyMassIndexMeasurement(num value,
+      {required Age age,}) = _WHOGrowthStandardsBodyMassIndexMeasurement;
+  const WHOGrowthStandardsBodyMassIndexMeasurement._();
 
-  factory BodyMassIndexMeasurement.fromMeasurement({
+  factory WHOGrowthStandardsBodyMassIndexMeasurement.fromMeasurement({
     @LengthConverter() required Length lengthHeight,
     @MassConverter() required Mass weight,
     required LengthHeigthMeasurementPosition measure,
@@ -58,20 +60,21 @@ class BodyMassIndexMeasurement with _$BodyMassIndexMeasurement {
 
     final bmi = BodyMassIndex(lengthHeight: adjustedLength, weight: weight);
 
-    return BodyMassIndexMeasurement(
+    return WHOGrowthStandardsBodyMassIndexMeasurement(
       bmi.value,
       age: age,
     );
   }
 
-  factory BodyMassIndexMeasurement.fromJson(
+  factory WHOGrowthStandardsBodyMassIndexMeasurement.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BodyMassIndexMeasurementFromJson(json);
+      _$WHOGrowthStandardsBodyMassIndexMeasurementFromJson(json);
 }
 
 @freezed
-class BodyMassIndexForAge with _$BodyMassIndexForAge {
+class WHOGrowthStandardsBodyMassIndexForAge
+    with _$WHOGrowthStandardsBodyMassIndexForAge {
   @Assert(
     'bodyMassIndexMeasurement.age.ageInTotalDaysByNow >= 0 && bodyMassIndexMeasurement.age.ageInTotalDaysByNow <= 1856',
     'Age must be in range of 0 - 1856 days',
@@ -80,26 +83,29 @@ class BodyMassIndexForAge with _$BodyMassIndexForAge {
     'observationDate == null || observationDate.isSameOrBefore(Date.today()) || observationDate.isSameOrAfter(bodyMassIndexMeasurement.age.dateOfBirth)',
     'Observation date is impossible, because happen after today or before birth',
   )
-  factory BodyMassIndexForAge({
+  factory WHOGrowthStandardsBodyMassIndexForAge({
     Date? observationDate,
     required Sex sex,
-    @BodyMassIndexMeasurementConverter()
-    required BodyMassIndexMeasurement bodyMassIndexMeasurement,
-  }) = _BodyMassIndexForAge;
+    @WHOGrowthStandardsBodyMassIndexMeasurementConverter()
+    required WHOGrowthStandardsBodyMassIndexMeasurement
+        bodyMassIndexMeasurement,
+  }) = _WHOGrowthStandardsBodyMassIndexForAge;
 
-  const BodyMassIndexForAge._();
+  const WHOGrowthStandardsBodyMassIndexForAge._();
 
-  factory BodyMassIndexForAge.fromJson(Map<String, dynamic> json) =>
-      _$BodyMassIndexForAgeFromJson(json);
+  factory WHOGrowthStandardsBodyMassIndexForAge.fromJson(
+          Map<String, dynamic> json,) =>
+      _$WHOGrowthStandardsBodyMassIndexForAgeFromJson(json);
 
-  BodyMassIndexForAgeData get _bodyMassIndexData => BodyMassIndexForAgeData();
+  WHOGrowthStandardsBodyMassIndexForAgeData get _bodyMassIndexData =>
+      WHOGrowthStandardsBodyMassIndexForAgeData();
 
-  _BodyMassIndexForAgeGender get _maleData =>
+  _WHOGrowthStandardsBodyMassIndexForAgeGender get _maleData =>
       _bodyMassIndexData._data[Sex.male]!;
-  _BodyMassIndexForAgeGender get _femaleData =>
+  _WHOGrowthStandardsBodyMassIndexForAgeGender get _femaleData =>
       _bodyMassIndexData._data[Sex.female]!;
 
-  _BodyMassIndexForAgeLMS get _ageData =>
+  _WHOGrowthStandardsBodyMassIndexForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)
           .ageData[_ageAtObservationDate.ageInTotalDaysByNow]!;
 
@@ -123,17 +129,17 @@ class BodyMassIndexForAge with _$BodyMassIndexForAge {
       (pnorm(_zScore) * 100).precision(precision);
 }
 
-class _BodyMassIndexForAgeGender {
-  _BodyMassIndexForAgeGender({required this.ageData});
+class _WHOGrowthStandardsBodyMassIndexForAgeGender {
+  _WHOGrowthStandardsBodyMassIndexForAgeGender({required this.ageData});
 
-  final Map<int, _BodyMassIndexForAgeLMS> ageData;
+  final Map<int, _WHOGrowthStandardsBodyMassIndexForAgeLMS> ageData;
 
   @override
   String toString() => 'Gender Data($ageData)';
 }
 
-class _BodyMassIndexForAgeLMS {
-  _BodyMassIndexForAgeLMS({
+class _WHOGrowthStandardsBodyMassIndexForAgeLMS {
+  _WHOGrowthStandardsBodyMassIndexForAgeLMS({
     required this.lms,
     required this.loh,
     required this.percentileCutOff,

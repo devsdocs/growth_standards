@@ -1,23 +1,23 @@
 part of '../standard.dart';
 
-class WeightForAgeData {
-  factory WeightForAgeData() => _singleton;
-  WeightForAgeData._(this._data);
+class WHOGrowthStandardsWeightForAgeData {
+  factory WHOGrowthStandardsWeightForAgeData() => _singleton;
+  WHOGrowthStandardsWeightForAgeData._(this._data);
 
-  static final _singleton = WeightForAgeData._(_parse());
+  static final _singleton = WHOGrowthStandardsWeightForAgeData._(_parse());
 
-  static Map<Sex, _WeightForAgeGender> _parse() =>
+  static Map<Sex, _WHOGrowthStandardsWeightForAgeGender> _parse() =>
       _weianthro.toJsonObjectAsMap.map(
         (k1, v1) => MapEntry(
           k1 == '1' ? Sex.male : Sex.female,
-          _WeightForAgeGender(
+          _WHOGrowthStandardsWeightForAgeGender(
             ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
               v2 as Map<String, dynamic>;
               final lms =
                   (l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
               return MapEntry(
                 int.parse(k2),
-                _WeightForAgeLMS(
+                _WHOGrowthStandardsWeightForAgeLMS(
                   lms: lms,
                   percentileCutOff: lms.percentileCutOff,
                   standardDeviationCutOff: lms.stDevCutOff,
@@ -27,15 +27,15 @@ class WeightForAgeData {
           ),
         ),
       );
-  final Map<Sex, _WeightForAgeGender> _data;
-  Map<Sex, _WeightForAgeGender> get data => _data;
+  final Map<Sex, _WHOGrowthStandardsWeightForAgeGender> _data;
+  Map<Sex, _WHOGrowthStandardsWeightForAgeGender> get data => _data;
 
   @override
   String toString() => 'Weight For Age Data($_data)';
 }
 
 @freezed
-class WeightForAge with _$WeightForAge {
+class WHOGrowthStandardsWeightForAge with _$WHOGrowthStandardsWeightForAge {
   @Assert(
     'age.ageInTotalDaysByNow >= 0 && age.ageInTotalDaysByNow <= 1856',
     'Age must be in range of 0 - 1856 days',
@@ -44,25 +44,29 @@ class WeightForAge with _$WeightForAge {
     'observationDate == null || observationDate.isSameOrBefore(Date.today()) || observationDate.isSameOrAfter(age.dateOfBirth)',
     'Observation date is impossible, because happen after today or before birth',
   )
-  factory WeightForAge({
+  factory WHOGrowthStandardsWeightForAge({
     Date? observationDate,
     required Sex sex,
     required Age age,
     @MassConverter() required Mass weight,
-  }) = _WeightForAge;
+  }) = _WHOGrowthStandardsWeightForAge;
 
-  const WeightForAge._();
+  const WHOGrowthStandardsWeightForAge._();
 
-  factory WeightForAge.fromJson(Map<String, dynamic> json) =>
-      _$WeightForAgeFromJson(json);
+  factory WHOGrowthStandardsWeightForAge.fromJson(Map<String, dynamic> json) =>
+      _$WHOGrowthStandardsWeightForAgeFromJson(json);
 
-  WeightForAgeData get _weightForAgeData => WeightForAgeData();
+  WHOGrowthStandardsWeightForAgeData get _weightForAgeData =>
+      WHOGrowthStandardsWeightForAgeData();
 
-  _WeightForAgeGender get _maleData => _weightForAgeData._data[Sex.male]!;
-  _WeightForAgeGender get _femaleData => _weightForAgeData._data[Sex.female]!;
+  _WHOGrowthStandardsWeightForAgeGender get _maleData =>
+      _weightForAgeData._data[Sex.male]!;
+  _WHOGrowthStandardsWeightForAgeGender get _femaleData =>
+      _weightForAgeData._data[Sex.female]!;
 
-  _WeightForAgeLMS get _ageData => (sex == Sex.male ? _maleData : _femaleData)
-      .ageData[_ageAtObservationDate.ageInTotalDaysByNow]!;
+  _WHOGrowthStandardsWeightForAgeLMS get _ageData =>
+      (sex == Sex.male ? _maleData : _femaleData)
+          .ageData[_ageAtObservationDate.ageInTotalDaysByNow]!;
 
   num get _zScore => _ageData.lms.adjustedZScore(weight.toKilograms.value!);
 
@@ -83,16 +87,16 @@ class WeightForAge with _$WeightForAge {
       (pnorm(_zScore) * 100).precision(precision);
 }
 
-class _WeightForAgeGender {
-  _WeightForAgeGender({required this.ageData});
+class _WHOGrowthStandardsWeightForAgeGender {
+  _WHOGrowthStandardsWeightForAgeGender({required this.ageData});
 
-  final Map<int, _WeightForAgeLMS> ageData;
+  final Map<int, _WHOGrowthStandardsWeightForAgeLMS> ageData;
   @override
   String toString() => 'Gender Data($ageData)';
 }
 
-class _WeightForAgeLMS {
-  _WeightForAgeLMS({
+class _WHOGrowthStandardsWeightForAgeLMS {
+  _WHOGrowthStandardsWeightForAgeLMS({
     required this.lms,
     required this.percentileCutOff,
     required this.standardDeviationCutOff,

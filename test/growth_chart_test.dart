@@ -4,7 +4,7 @@ import 'package:test/test.dart';
 
 const dateBase = [28, 29, 30, 31];
 
-final whoGS = GrowthStandard.whoGrowthStandard;
+final whoGS = GrowthStandard.who.fromBirthTo5Years;
 
 void main() {
   final dateTime1 = DateTime(2023, 1, 31);
@@ -124,7 +124,7 @@ void main() {
     test('WHO BMI', () {
       final observationDate = Date.monthsAgoByNow(40);
       final age = Age.byMonthsAgo(44);
-      final bmi = BodyMassIndexMeasurement(
+      final bmi = WHOGrowthStandardsBodyMassIndexMeasurement(
         20.5,
         age: age,
       );
@@ -141,7 +141,8 @@ void main() {
         male
             .copyWith(
               observationDate: null,
-              bodyMassIndexMeasurement: BodyMassIndexMeasurement(
+              bodyMassIndexMeasurement:
+                  WHOGrowthStandardsBodyMassIndexMeasurement(
                 20.5,
                 age: Age.byDate(observationDate),
               ),
@@ -153,7 +154,8 @@ void main() {
         whoGS
             .bodyMassIndexForAge(
               sex: Sex.male,
-              bodyMassIndexMeasurement: BodyMassIndexMeasurement(
+              bodyMassIndexMeasurement:
+                  WHOGrowthStandardsBodyMassIndexMeasurement(
                 12,
                 age: Age.byMonthsAgo(28),
               ),
@@ -165,7 +167,8 @@ void main() {
         whoGS
             .bodyMassIndexForAge(
               sex: Sex.male,
-              bodyMassIndexMeasurement: BodyMassIndexMeasurement(
+              bodyMassIndexMeasurement:
+                  WHOGrowthStandardsBodyMassIndexMeasurement(
                 18.8,
                 age: Age.byMonthsAgo(52),
               ),

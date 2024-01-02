@@ -1,10 +1,11 @@
 part of '../standard.dart';
 
-class SubscapularSkinfoldForAgeData {
-  factory SubscapularSkinfoldForAgeData() => _singleton;
-  SubscapularSkinfoldForAgeData._(this._data);
+class WHOGrowthStandardsSubscapularSkinfoldForAgeData {
+  factory WHOGrowthStandardsSubscapularSkinfoldForAgeData() => _singleton;
+  WHOGrowthStandardsSubscapularSkinfoldForAgeData._(this._data);
 
-  static final _singleton = SubscapularSkinfoldForAgeData._(_parse());
+  static final _singleton =
+      WHOGrowthStandardsSubscapularSkinfoldForAgeData._(_parse());
 
   static Map<Sex, _SubscapularSkinfoldAgeGender> _parse() =>
       _ssanthro.toJsonObjectAsMap.map(
@@ -17,7 +18,7 @@ class SubscapularSkinfoldForAgeData {
                   (l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
               return MapEntry(
                 int.parse(k2),
-                _SubscapularSkinfoldForAgeLMS(
+                _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS(
                   lms: lms,
                   percentileCutOff: lms.percentileCutOff,
                   standardDeviationCutOff: lms.stDevCutOff,
@@ -36,7 +37,8 @@ class SubscapularSkinfoldForAgeData {
 }
 
 @freezed
-class SubscapularSkinfoldForAge with _$SubscapularSkinfoldForAge {
+class WHOGrowthStandardsSubscapularSkinfoldForAge
+    with _$WHOGrowthStandardsSubscapularSkinfoldForAge {
   @Assert(
     'age.ageInTotalDaysByNow >= 91 && age.ageInTotalDaysByNow <= 1856',
     'Age must be in range of 91 - 1856 days',
@@ -49,27 +51,29 @@ class SubscapularSkinfoldForAge with _$SubscapularSkinfoldForAge {
     'observationDate == null || observationDate.isSameOrAfter(age.dateAtDaysAfterBirth(91)) ',
     'Observation date is impossible, because happen after today or before birth',
   )
-  factory SubscapularSkinfoldForAge({
+  factory WHOGrowthStandardsSubscapularSkinfoldForAge({
     Date? observationDate,
     required Sex sex,
     required Age age,
     @LengthConverter() required Length measurementResult,
-  }) = _SubscapularSkinfoldForAge;
+  }) = _WHOGrowthStandardsSubscapularSkinfoldForAge;
 
-  const SubscapularSkinfoldForAge._();
+  const WHOGrowthStandardsSubscapularSkinfoldForAge._();
 
-  factory SubscapularSkinfoldForAge.fromJson(Map<String, dynamic> json) =>
-      _$SubscapularSkinfoldForAgeFromJson(json);
+  factory WHOGrowthStandardsSubscapularSkinfoldForAge.fromJson(
+          Map<String, dynamic> json,) =>
+      _$WHOGrowthStandardsSubscapularSkinfoldForAgeFromJson(json);
 
-  SubscapularSkinfoldForAgeData get _subscapularSkinfoldData =>
-      SubscapularSkinfoldForAgeData();
+  WHOGrowthStandardsSubscapularSkinfoldForAgeData
+      get _subscapularSkinfoldData =>
+          WHOGrowthStandardsSubscapularSkinfoldForAgeData();
 
   _SubscapularSkinfoldAgeGender get _maleData =>
       _subscapularSkinfoldData._data[Sex.male]!;
   _SubscapularSkinfoldAgeGender get _femaleData =>
       _subscapularSkinfoldData._data[Sex.female]!;
 
-  _SubscapularSkinfoldForAgeLMS get _ageData =>
+  _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)
           .ageData[_ageAtObservationDate.ageInTotalDaysByNow]!;
 
@@ -95,13 +99,13 @@ class SubscapularSkinfoldForAge with _$SubscapularSkinfoldForAge {
 
 class _SubscapularSkinfoldAgeGender {
   _SubscapularSkinfoldAgeGender({required this.ageData});
-  final Map<int, _SubscapularSkinfoldForAgeLMS> ageData;
+  final Map<int, _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS> ageData;
   @override
   String toString() => 'Gender Data($ageData)';
 }
 
-class _SubscapularSkinfoldForAgeLMS {
-  _SubscapularSkinfoldForAgeLMS({
+class _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS {
+  _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS({
     required this.lms,
     required this.percentileCutOff,
     required this.standardDeviationCutOff,

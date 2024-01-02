@@ -1,23 +1,24 @@
 part of '../standard.dart';
 
-class HeadCircumferenceForAgeData {
-  factory HeadCircumferenceForAgeData() => _singleton;
-  HeadCircumferenceForAgeData._(this._data);
+class WHOGrowthStandardsHeadCircumferenceForAgeData {
+  factory WHOGrowthStandardsHeadCircumferenceForAgeData() => _singleton;
+  WHOGrowthStandardsHeadCircumferenceForAgeData._(this._data);
 
-  static final _singleton = HeadCircumferenceForAgeData._(_parse());
+  static final _singleton =
+      WHOGrowthStandardsHeadCircumferenceForAgeData._(_parse());
 
-  static Map<Sex, _HeadCircumferenceForAgeGender> _parse() =>
+  static Map<Sex, _WHOGrowthStandardsHeadCircumferenceForAgeGender> _parse() =>
       _hcanthro.toJsonObjectAsMap.map(
         (k1, v1) => MapEntry(
           k1 == '1' ? Sex.male : Sex.female,
-          _HeadCircumferenceForAgeGender(
+          _WHOGrowthStandardsHeadCircumferenceForAgeGender(
             ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
               v2 as Map<String, dynamic>;
               final lms =
                   (l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
               return MapEntry(
                 int.parse(k2),
-                _HeadCircumferenceForAgeLMS(
+                _WHOGrowthStandardsHeadCircumferenceForAgeLMS(
                   lms: lms,
                   percentileCutOff: lms.percentileCutOff,
                   standardDeviationCutOff: lms.stDevCutOff,
@@ -28,15 +29,16 @@ class HeadCircumferenceForAgeData {
         ),
       );
 
-  final Map<Sex, _HeadCircumferenceForAgeGender> _data;
-  Map<Sex, _HeadCircumferenceForAgeGender> get data => _data;
+  final Map<Sex, _WHOGrowthStandardsHeadCircumferenceForAgeGender> _data;
+  Map<Sex, _WHOGrowthStandardsHeadCircumferenceForAgeGender> get data => _data;
 
   @override
   String toString() => 'Head Circumference For Age Data($_data)';
 }
 
 @freezed
-class HeadCircumferenceForAge with _$HeadCircumferenceForAge {
+class WHOGrowthStandardsHeadCircumferenceForAge
+    with _$WHOGrowthStandardsHeadCircumferenceForAge {
   @Assert(
     'age.ageInTotalDaysByNow >= 0 && age.ageInTotalDaysByNow <= 1856',
     'Age must be in range of 0 - 1856 days',
@@ -45,27 +47,28 @@ class HeadCircumferenceForAge with _$HeadCircumferenceForAge {
     'observationDate == null || observationDate.isSameOrBefore(Date.today()) || observationDate.isSameOrAfter(age.dateOfBirth)',
     'Observation date is impossible, because happen after today or before birth',
   )
-  factory HeadCircumferenceForAge({
+  factory WHOGrowthStandardsHeadCircumferenceForAge({
     Date? observationDate,
     required Sex sex,
     required Age age,
     @LengthConverter() required Length measurementResult,
-  }) = _HeadCircumferenceForAge;
+  }) = _WHOGrowthStandardsHeadCircumferenceForAge;
 
-  const HeadCircumferenceForAge._();
+  const WHOGrowthStandardsHeadCircumferenceForAge._();
 
-  factory HeadCircumferenceForAge.fromJson(Map<String, dynamic> json) =>
-      _$HeadCircumferenceForAgeFromJson(json);
+  factory WHOGrowthStandardsHeadCircumferenceForAge.fromJson(
+          Map<String, dynamic> json,) =>
+      _$WHOGrowthStandardsHeadCircumferenceForAgeFromJson(json);
 
-  HeadCircumferenceForAgeData get _headCircumferenceData =>
-      HeadCircumferenceForAgeData();
+  WHOGrowthStandardsHeadCircumferenceForAgeData get _headCircumferenceData =>
+      WHOGrowthStandardsHeadCircumferenceForAgeData();
 
-  _HeadCircumferenceForAgeGender get _maleData =>
+  _WHOGrowthStandardsHeadCircumferenceForAgeGender get _maleData =>
       _headCircumferenceData._data[Sex.male]!;
-  _HeadCircumferenceForAgeGender get _femaleData =>
+  _WHOGrowthStandardsHeadCircumferenceForAgeGender get _femaleData =>
       _headCircumferenceData._data[Sex.female]!;
 
-  _HeadCircumferenceForAgeLMS get _ageData =>
+  _WHOGrowthStandardsHeadCircumferenceForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)
           .ageData[_ageAtObservationDate.ageInTotalDaysByNow]!;
 
@@ -89,17 +92,17 @@ class HeadCircumferenceForAge with _$HeadCircumferenceForAge {
       (pnorm(_zScore) * 100).precision(precision);
 }
 
-class _HeadCircumferenceForAgeGender {
-  _HeadCircumferenceForAgeGender({required this.ageData});
+class _WHOGrowthStandardsHeadCircumferenceForAgeGender {
+  _WHOGrowthStandardsHeadCircumferenceForAgeGender({required this.ageData});
 
-  final Map<int, _HeadCircumferenceForAgeLMS> ageData;
+  final Map<int, _WHOGrowthStandardsHeadCircumferenceForAgeLMS> ageData;
 
   @override
   String toString() => 'Gender Data($ageData)';
 }
 
-class _HeadCircumferenceForAgeLMS {
-  _HeadCircumferenceForAgeLMS({
+class _WHOGrowthStandardsHeadCircumferenceForAgeLMS {
+  _WHOGrowthStandardsHeadCircumferenceForAgeLMS({
     required this.lms,
     required this.percentileCutOff,
     required this.standardDeviationCutOff,

@@ -106,27 +106,6 @@ Centimeters whoAdjustedLengthHeight({
   }
 }
 
-// num rounding(num value) {
-//   // Remove the decimal part to work with integers
-//   final integerPart = value.toInt();
-//   final decimalPart = value - integerPart;
-
-//   // Check if the decimal part is exactly 0.5
-//   if (decimalPart == 0.5) {
-//     // If the integer part is even, round down by returning the integer part
-//     if (integerPart.isEven) {
-//       return integerPart.toDouble();
-//     }
-//     // If the integer part is odd, round up by adding 1
-//     else {
-//       return (integerPart + 1).toDouble();
-//     }
-//   } else {
-//     // Use the default rounding method for other cases
-//     return value.roundToDouble();
-//   }
-// }
-
 num pnorm(num zScore) => 0.5 * (1 + erf(zScore / sqrt(2)));
 
 num qnorm(num percentile) => sqrt(2) * erfInv(2 * percentile - 1);

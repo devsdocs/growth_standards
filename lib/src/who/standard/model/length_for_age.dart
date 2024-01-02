@@ -1,22 +1,22 @@
 part of '../standard.dart';
 
-class LengthForAgeData {
-  factory LengthForAgeData() => _singleton;
-  LengthForAgeData._(this._data);
-  static final _singleton = LengthForAgeData._(_parse());
+class WHOGrowthStandardsLengthForAgeData {
+  factory WHOGrowthStandardsLengthForAgeData() => _singleton;
+  WHOGrowthStandardsLengthForAgeData._(this._data);
+  static final _singleton = WHOGrowthStandardsLengthForAgeData._(_parse());
 
-  static Map<Sex, _LengthForAgeGender> _parse() =>
+  static Map<Sex, _WHOGrowthStandardsLengthForAgeGender> _parse() =>
       _lenanthro.toJsonObjectAsMap.map(
         (k1, v1) => MapEntry(
           k1 == '1' ? Sex.male : Sex.female,
-          _LengthForAgeGender(
+          _WHOGrowthStandardsLengthForAgeGender(
             ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
               v2 as Map<String, dynamic>;
               final lms =
                   (l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
               return MapEntry(
                 int.parse(k2),
-                _LengthForAgeLMS(
+                _WHOGrowthStandardsLengthForAgeLMS(
                   lms: lms,
                   percentileCutOff: lms.percentileCutOff,
                   standardDeviationCutOff: lms.stDevCutOff,
@@ -29,15 +29,15 @@ class LengthForAgeData {
           ),
         ),
       );
-  final Map<Sex, _LengthForAgeGender> _data;
-  Map<Sex, _LengthForAgeGender> get data => _data;
+  final Map<Sex, _WHOGrowthStandardsLengthForAgeGender> _data;
+  Map<Sex, _WHOGrowthStandardsLengthForAgeGender> get data => _data;
 
   @override
   String toString() => 'Length For Age Data($_data)';
 }
 
 @freezed
-class LengthForAge with _$LengthForAge {
+class WHOGrowthStandardsLengthForAge with _$WHOGrowthStandardsLengthForAge {
   @Assert(
     'age.ageInTotalDaysByNow >= 0 && age.ageInTotalDaysByNow <= 1856',
     'Age must be in range of 0 - 1856 days',
@@ -46,26 +46,30 @@ class LengthForAge with _$LengthForAge {
     'observationDate == null || observationDate.isSameOrBefore(Date.today()) || observationDate.isSameOrAfter(age.dateOfBirth)',
     'Observation date is impossible, because happen after today or before birth',
   )
-  factory LengthForAge({
+  factory WHOGrowthStandardsLengthForAge({
     Date? observationDate,
     required Sex sex,
     required Age age,
     @LengthConverter() required Length lengthHeight,
     required LengthHeigthMeasurementPosition measure,
-  }) = _LengthForAge;
+  }) = _WHOGrowthStandardsLengthForAge;
 
-  const LengthForAge._();
+  const WHOGrowthStandardsLengthForAge._();
 
-  factory LengthForAge.fromJson(Map<String, dynamic> json) =>
-      _$LengthForAgeFromJson(json);
+  factory WHOGrowthStandardsLengthForAge.fromJson(Map<String, dynamic> json) =>
+      _$WHOGrowthStandardsLengthForAgeFromJson(json);
 
-  LengthForAgeData get _lengthForAgeData => LengthForAgeData();
+  WHOGrowthStandardsLengthForAgeData get _lengthForAgeData =>
+      WHOGrowthStandardsLengthForAgeData();
 
-  _LengthForAgeGender get _maleData => _lengthForAgeData._data[Sex.male]!;
-  _LengthForAgeGender get _femaleData => _lengthForAgeData._data[Sex.female]!;
+  _WHOGrowthStandardsLengthForAgeGender get _maleData =>
+      _lengthForAgeData._data[Sex.male]!;
+  _WHOGrowthStandardsLengthForAgeGender get _femaleData =>
+      _lengthForAgeData._data[Sex.female]!;
 
-  _LengthForAgeLMS get _ageData => (sex == Sex.male ? _maleData : _femaleData)
-      .ageData[_ageAtObservationDate.ageInTotalDaysByNow]!;
+  _WHOGrowthStandardsLengthForAgeLMS get _ageData =>
+      (sex == Sex.male ? _maleData : _femaleData)
+          .ageData[_ageAtObservationDate.ageInTotalDaysByNow]!;
 
   num get _adjustedLength => whoAdjustedLengthHeight(
         measure: measure,
@@ -92,16 +96,16 @@ class LengthForAge with _$LengthForAge {
       (pnorm(_zScore) * 100).precision(precision);
 }
 
-class _LengthForAgeGender {
-  _LengthForAgeGender({required this.ageData});
-  final Map<int, _LengthForAgeLMS> ageData;
+class _WHOGrowthStandardsLengthForAgeGender {
+  _WHOGrowthStandardsLengthForAgeGender({required this.ageData});
+  final Map<int, _WHOGrowthStandardsLengthForAgeLMS> ageData;
 
   @override
   String toString() => 'Gender Data($ageData)';
 }
 
-class _LengthForAgeLMS {
-  _LengthForAgeLMS({
+class _WHOGrowthStandardsLengthForAgeLMS {
+  _WHOGrowthStandardsLengthForAgeLMS({
     required this.lms,
     required this.loh,
     required this.percentileCutOff,

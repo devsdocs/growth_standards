@@ -48,8 +48,6 @@ class Age with _$Age {
     return checkMonth == true ? months + 1 : months;
   }
 
-  double get cdcAge => ageInTotalMonthsByNow + 0.5;
-
   int get ageInTotalDaysByNow =>
       DTU.getDaysDifference(DTU.now(), _dobCount.dob);
 

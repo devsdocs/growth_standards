@@ -4,12 +4,16 @@ import 'package:growth_standards/src/common/typedef.dart';
 import 'package:growth_standards/src/who/standard/standard.dart';
 import 'package:reusable_tools/reusable_tools.dart';
 
-class BodyMassIndexMeasurementConverter
-    implements JsonConverter<BodyMassIndexMeasurement, Map<String, dynamic>> {
-  const BodyMassIndexMeasurementConverter();
+class WHOGrowthStandardsBodyMassIndexMeasurementConverter
+    implements
+        JsonConverter<WHOGrowthStandardsBodyMassIndexMeasurement,
+            Map<String, dynamic>> {
+  const WHOGrowthStandardsBodyMassIndexMeasurementConverter();
   @override
-  BodyMassIndexMeasurement fromJson(Map<String, dynamic> json) =>
-      BodyMassIndexMeasurement(
+  WHOGrowthStandardsBodyMassIndexMeasurement fromJson(
+    Map<String, dynamic> json,
+  ) =>
+      WHOGrowthStandardsBodyMassIndexMeasurement(
         json['value'] as num,
         age: Age.fromJson(
           json['age'] as Map<String, dynamic>,
@@ -17,7 +21,9 @@ class BodyMassIndexMeasurementConverter
       );
 
   @override
-  Map<String, dynamic> toJson(BodyMassIndexMeasurement object) =>
+  Map<String, dynamic> toJson(
+    WHOGrowthStandardsBodyMassIndexMeasurement object,
+  ) =>
       {'value': object.value, 'age': object.age.toJson()};
 }
 

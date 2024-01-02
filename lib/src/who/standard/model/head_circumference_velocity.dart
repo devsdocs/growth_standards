@@ -1,48 +1,50 @@
 part of '../standard.dart';
 
-class HeadCircumferenceVelocityForAgeData {
-  factory HeadCircumferenceVelocityForAgeData() => _singleton;
-  HeadCircumferenceVelocityForAgeData._(this._data);
+class WHOGrowthStandardsHeadCircumferenceVelocityForAgeData {
+  factory WHOGrowthStandardsHeadCircumferenceVelocityForAgeData() => _singleton;
+  WHOGrowthStandardsHeadCircumferenceVelocityForAgeData._(this._data);
 
-  static final _singleton = HeadCircumferenceVelocityForAgeData._(_parse());
+  static final _singleton =
+      WHOGrowthStandardsHeadCircumferenceVelocityForAgeData._(_parse());
 
-  static Map<Sex, HeadCircumferenceVelocityForAgeGender> _parse() =>
-      _hv.toJsonObjectAsMap.map(
-        (k1, v1) => MapEntry(
-          k1 == '1' ? Sex.male : Sex.female,
-          HeadCircumferenceVelocityForAgeGender(
-            incrementData: (v1 as Map<String, dynamic>).map(
-              (k2, v2) => MapEntry(
-                parseIncrement(k2),
-                HeadCircumferenceVelocityForAgeIncrement(
-                  lmsData: (v2 as Map<String, dynamic>).map((k3, v3) {
-                    v3 as Map<String, dynamic>;
-                    final lms = (
-                      l: v3['l'] as num,
-                      m: v3['m'] as num,
-                      s: v3['s'] as num
-                    );
-                    return MapEntry(
-                      parseVelocityIncrement(k3),
-                      HeadCircumferenceVelocityForAgeLMS(
-                        lms: lms,
-                        percentileCutOff: lms.percentileCutOff,
-                        standardDeviationCutOff: lms.stDevCutOff,
-                      ),
-                    );
-                  }),
+  static Map<Sex, WHOGrowthStandardsHeadCircumferenceVelocityForAgeGender>
+      _parse() => _hv.toJsonObjectAsMap.map(
+            (k1, v1) => MapEntry(
+              k1 == '1' ? Sex.male : Sex.female,
+              WHOGrowthStandardsHeadCircumferenceVelocityForAgeGender(
+                incrementData: (v1 as Map<String, dynamic>).map(
+                  (k2, v2) => MapEntry(
+                    parseIncrement(k2),
+                    WHOGrowthStandardsHeadCircumferenceVelocityForAgeIncrement(
+                      lmsData: (v2 as Map<String, dynamic>).map((k3, v3) {
+                        v3 as Map<String, dynamic>;
+                        final lms = (
+                          l: v3['l'] as num,
+                          m: v3['m'] as num,
+                          s: v3['s'] as num
+                        );
+                        return MapEntry(
+                          parseVelocityIncrement(k3),
+                          WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS(
+                            lms: lms,
+                            percentileCutOff: lms.percentileCutOff,
+                            standardDeviationCutOff: lms.stDevCutOff,
+                          ),
+                        );
+                      }),
+                    ),
+                  ),
                 ),
               ),
             ),
-          ),
-        ),
-      );
+          );
 
-  final Map<Sex, HeadCircumferenceVelocityForAgeGender> _data;
+  final Map<Sex, WHOGrowthStandardsHeadCircumferenceVelocityForAgeGender> _data;
 }
 
 @freezed
-class HeadCircumferenceVelocityForAge with _$HeadCircumferenceVelocityForAge {
+class WHOGrowthStandardsHeadCircumferenceVelocityForAge
+    with _$WHOGrowthStandardsHeadCircumferenceVelocityForAge {
   @Assert(
     'age.ageInTotalDaysByNow >= 0 && age.ageInTotalMonthsByNow <= 24',
     'Age must be in range of 0 days - 24 months',
@@ -63,25 +65,27 @@ class HeadCircumferenceVelocityForAge with _$HeadCircumferenceVelocityForAge {
     'pastMeasurement.keys.every((element) => element.isSameOrAfter(age.dateOfBirth))',
     'Calculation can not be done as there is date less than Date of Birth in past measurement, if you find this exception is a mistake, try to provide exact \$Age by using \${Age.byDate} or \$Date by using \${Date.fromDateTime} in Past Measurement',
   )
-  factory HeadCircumferenceVelocityForAge({
+  factory WHOGrowthStandardsHeadCircumferenceVelocityForAge({
     Date? observationDate,
     required Sex sex,
     required Age age,
     required Map<Date, Length> pastMeasurement,
-  }) = _HeadCircumferenceVelocityForAge;
+  }) = _WHOGrowthStandardsHeadCircumferenceVelocityForAge;
 
-  const HeadCircumferenceVelocityForAge._();
+  const WHOGrowthStandardsHeadCircumferenceVelocityForAge._();
 
-  HeadCircumferenceVelocityForAgeData get _headCircumferenceData =>
-      HeadCircumferenceVelocityForAgeData();
+  WHOGrowthStandardsHeadCircumferenceVelocityForAgeData
+      get _headCircumferenceData =>
+          WHOGrowthStandardsHeadCircumferenceVelocityForAgeData();
 
-  HeadCircumferenceVelocityForAgeGender get _maleData =>
+  WHOGrowthStandardsHeadCircumferenceVelocityForAgeGender get _maleData =>
       _headCircumferenceData._data[Sex.male]!;
-  HeadCircumferenceVelocityForAgeGender get _femaleData =>
+  WHOGrowthStandardsHeadCircumferenceVelocityForAgeGender get _femaleData =>
       _headCircumferenceData._data[Sex.female]!;
 
   ///TODO(devsdocs): need help implement this
-  Map<VelocityIncrement, HeadCircumferenceVelocityForAgeIncrement>
+  Map<VelocityIncrement,
+          WHOGrowthStandardsHeadCircumferenceVelocityForAgeIncrement>
       get _incrementData =>
           (sex == Sex.male ? _maleData : _femaleData).incrementData;
 
@@ -92,20 +96,23 @@ class HeadCircumferenceVelocityForAge with _$HeadCircumferenceVelocityForAge {
           : age.ageAtPastDate(observationDate!);
 }
 
-class HeadCircumferenceVelocityForAgeGender {
-  HeadCircumferenceVelocityForAgeGender({required this.incrementData});
+class WHOGrowthStandardsHeadCircumferenceVelocityForAgeGender {
+  WHOGrowthStandardsHeadCircumferenceVelocityForAgeGender(
+      {required this.incrementData,});
 
-  final Map<VelocityIncrement, HeadCircumferenceVelocityForAgeIncrement>
-      incrementData;
+  final Map<VelocityIncrement,
+      WHOGrowthStandardsHeadCircumferenceVelocityForAgeIncrement> incrementData;
 }
 
-class HeadCircumferenceVelocityForAgeIncrement {
-  HeadCircumferenceVelocityForAgeIncrement({required this.lmsData});
-  final Map<WeeksMonths, HeadCircumferenceVelocityForAgeLMS> lmsData;
+class WHOGrowthStandardsHeadCircumferenceVelocityForAgeIncrement {
+  WHOGrowthStandardsHeadCircumferenceVelocityForAgeIncrement(
+      {required this.lmsData,});
+  final Map<WeeksMonths, WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS>
+      lmsData;
 }
 
-class HeadCircumferenceVelocityForAgeLMS {
-  HeadCircumferenceVelocityForAgeLMS({
+class WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS {
+  WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS({
     required this.lms,
     required this.percentileCutOff,
     required this.standardDeviationCutOff,

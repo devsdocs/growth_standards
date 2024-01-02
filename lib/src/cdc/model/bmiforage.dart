@@ -93,7 +93,7 @@ class CDCBodyMassIndexForAge with _$CDCBodyMassIndexForAge {
       (sex == Sex.male ? _maleData : _femaleData).ageData[
           _ageAtObservationDate.ageInTotalMonthsByNow == 24
               ? 24
-              : _ageAtObservationDate.cdcAge]!;
+              : _ageAtObservationDate.ageInTotalMonthsByNow + 0.5]!;
 
   num get _zScore => _ageData.lms.zScore(bodyMassIndexMeasurement.value);
 

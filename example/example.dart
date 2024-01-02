@@ -12,8 +12,7 @@ const centimeters = Centimeters(length);
 const kilograms = Kilograms(weight);
 final age = Age.byDate(birthDay);
 
-final gs = GrowthStandard.whoGrowthStandard;
-final gsFromJson = gs.fromJson;
+final gs = GrowthStandard.who.fromBirthTo5Years;
 const sex = Sex.male;
 
 void main() {
@@ -31,7 +30,11 @@ void main() {
   print(calcLengthForAgeStanding.percentile(Precision.two));
   final encode = json.encode(calcLengthForAgeStanding.toJson());
   print(encode);
-  print(gsFromJson.lengthForAge(json.decode(encode) as Map<String, dynamic>));
+  print(
+    WHOGrowthStandardsLengthForAge.fromJson(
+      json.decode(encode) as Map<String, dynamic>,
+    ),
+  );
 
   final calcLengthForAgeRecumbent = calcLengthForAgeStanding.copyWith(
     measure: LengthHeigthMeasurementPosition.recumbent,
@@ -61,7 +64,8 @@ void main() {
   print(json.encode(calcWeigthForLength.toJson()));
 
   final calcBMIForAge = gs.bodyMassIndexForAge(
-    bodyMassIndexMeasurement: BodyMassIndexMeasurement.fromMeasurement(
+    bodyMassIndexMeasurement:
+        WHOGrowthStandardsBodyMassIndexMeasurement.fromMeasurement(
       measure: LengthHeigthMeasurementPosition.recumbent,
       lengthHeight: centimeters,
       weight: kilograms,

@@ -1,23 +1,24 @@
 part of '../standard.dart';
 
-class ArmCircumferenceForAgeData {
-  factory ArmCircumferenceForAgeData() => _singleton;
-  const ArmCircumferenceForAgeData._(this._data);
+class WHOGrowthStandardsArmCircumferenceForAgeData {
+  factory WHOGrowthStandardsArmCircumferenceForAgeData() => _singleton;
+  const WHOGrowthStandardsArmCircumferenceForAgeData._(this._data);
 
-  static final _singleton = ArmCircumferenceForAgeData._(_parse());
+  static final _singleton =
+      WHOGrowthStandardsArmCircumferenceForAgeData._(_parse());
 
-  static Map<Sex, _ArmCircumferenceForAgeGender> _parse() =>
+  static Map<Sex, _WHOGrowthStandardsArmCircumferenceForAgeGender> _parse() =>
       _acanthro.toJsonObjectAsMap.map(
         (k1, v1) => MapEntry(
           k1 == '1' ? Sex.male : Sex.female,
-          _ArmCircumferenceForAgeGender(
+          _WHOGrowthStandardsArmCircumferenceForAgeGender(
             ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
               v2 as Map<String, dynamic>;
               final lms =
                   (l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
               return MapEntry(
                 int.parse(k2),
-                _ArmCircumferenceForAgeLMS(
+                _WHOGrowthStandardsArmCircumferenceForAgeLMS(
                   lms: lms,
                   percentileCutOff: lms.percentileCutOff,
                   standardDeviationCutOff: lms.stDevCutOff,
@@ -28,16 +29,17 @@ class ArmCircumferenceForAgeData {
         ),
       );
 
-  final Map<Sex, _ArmCircumferenceForAgeGender> _data;
+  final Map<Sex, _WHOGrowthStandardsArmCircumferenceForAgeGender> _data;
 
-  Map<Sex, _ArmCircumferenceForAgeGender> get data => _data;
+  Map<Sex, _WHOGrowthStandardsArmCircumferenceForAgeGender> get data => _data;
 
   @override
   String toString() => 'Arm Circumference For Age Data($_data)';
 }
 
 @freezed
-class ArmCircumferenceForAge with _$ArmCircumferenceForAge {
+class WHOGrowthStandardsArmCircumferenceForAge
+    with _$WHOGrowthStandardsArmCircumferenceForAge {
   @Assert(
     'age.ageInTotalDaysByNow >= 91 && age.ageInTotalDaysByNow <= 1856',
     'Age must be in range of 91 - 1856 days',
@@ -50,27 +52,28 @@ class ArmCircumferenceForAge with _$ArmCircumferenceForAge {
     'observationDate == null || observationDate.isSameOrAfter(age.dateAtDaysAfterBirth(91)) ',
     'Observation date is impossible, because happen after today or before birth',
   )
-  factory ArmCircumferenceForAge({
+  factory WHOGrowthStandardsArmCircumferenceForAge({
     Date? observationDate,
     required Sex sex,
     required Age age,
     @LengthConverter() required Length measurementResult,
-  }) = _ArmCircumferenceForAge;
+  }) = _WHOGrowthStandardsArmCircumferenceForAge;
 
-  const ArmCircumferenceForAge._();
+  const WHOGrowthStandardsArmCircumferenceForAge._();
 
-  factory ArmCircumferenceForAge.fromJson(Map<String, dynamic> json) =>
-      _$ArmCircumferenceForAgeFromJson(json);
+  factory WHOGrowthStandardsArmCircumferenceForAge.fromJson(
+          Map<String, dynamic> json,) =>
+      _$WHOGrowthStandardsArmCircumferenceForAgeFromJson(json);
 
-  ArmCircumferenceForAgeData get _armCircumferenceData =>
-      ArmCircumferenceForAgeData();
+  WHOGrowthStandardsArmCircumferenceForAgeData get _armCircumferenceData =>
+      WHOGrowthStandardsArmCircumferenceForAgeData();
 
-  _ArmCircumferenceForAgeGender get _maleData =>
+  _WHOGrowthStandardsArmCircumferenceForAgeGender get _maleData =>
       _armCircumferenceData._data[Sex.male]!;
-  _ArmCircumferenceForAgeGender get _femaleData =>
+  _WHOGrowthStandardsArmCircumferenceForAgeGender get _femaleData =>
       _armCircumferenceData._data[Sex.female]!;
 
-  _ArmCircumferenceForAgeLMS get _ageData =>
+  _WHOGrowthStandardsArmCircumferenceForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)
           .ageData[_ageAtObservationDate.ageInTotalDaysByNow]!;
 
@@ -93,17 +96,17 @@ class ArmCircumferenceForAge with _$ArmCircumferenceForAge {
       (pnorm(_zScore) * 100).precision(precision);
 }
 
-class _ArmCircumferenceForAgeGender {
-  _ArmCircumferenceForAgeGender({required this.ageData});
+class _WHOGrowthStandardsArmCircumferenceForAgeGender {
+  _WHOGrowthStandardsArmCircumferenceForAgeGender({required this.ageData});
 
-  final Map<int, _ArmCircumferenceForAgeLMS> ageData;
+  final Map<int, _WHOGrowthStandardsArmCircumferenceForAgeLMS> ageData;
 
   @override
   String toString() => 'Gender Data($ageData)';
 }
 
-class _ArmCircumferenceForAgeLMS {
-  _ArmCircumferenceForAgeLMS({
+class _WHOGrowthStandardsArmCircumferenceForAgeLMS {
+  _WHOGrowthStandardsArmCircumferenceForAgeLMS({
     required this.lms,
     required this.standardDeviationCutOff,
     required this.percentileCutOff,

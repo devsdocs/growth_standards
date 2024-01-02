@@ -119,9 +119,9 @@ Map<String, dynamic> _$$GrowthReferenceHeightForAgeImplToJson(
       'measure': _$LengthHeigthMeasurementPositionEnumMap[instance.measure]!,
     };
 
-_$GrowthReferenceWeightForAgeImpl _$$GrowthReferenceWeightForAgeImplFromJson(
+_$CDCWeightForAgeImpl _$$CDCWeightForAgeImplFromJson(
         Map<String, dynamic> json) =>
-    _$GrowthReferenceWeightForAgeImpl(
+    _$CDCWeightForAgeImpl(
       observationDate: json['observationDate'] == null
           ? null
           : Date.fromJson(json['observationDate'] as Map<String, dynamic>),
@@ -131,11 +131,86 @@ _$GrowthReferenceWeightForAgeImpl _$$GrowthReferenceWeightForAgeImplFromJson(
           .fromJson(json['weight'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$GrowthReferenceWeightForAgeImplToJson(
-        _$GrowthReferenceWeightForAgeImpl instance) =>
+Map<String, dynamic> _$$CDCWeightForAgeImplToJson(
+        _$CDCWeightForAgeImpl instance) =>
     <String, dynamic>{
       'observationDate': instance.observationDate,
       'sex': _$SexEnumMap[instance.sex]!,
       'age': instance.age,
       'weight': const MassConverter().toJson(instance.weight),
+    };
+
+_$CDCInfantWeightForAgeImpl _$$CDCInfantWeightForAgeImplFromJson(
+        Map<String, dynamic> json) =>
+    _$CDCInfantWeightForAgeImpl(
+      observationDate: json['observationDate'] == null
+          ? null
+          : Date.fromJson(json['observationDate'] as Map<String, dynamic>),
+      sex: $enumDecode(_$SexEnumMap, json['sex']),
+      age: Age.fromJson(json['age'] as Map<String, dynamic>),
+      weight: const MassConverter()
+          .fromJson(json['weight'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$CDCInfantWeightForAgeImplToJson(
+        _$CDCInfantWeightForAgeImpl instance) =>
+    <String, dynamic>{
+      'observationDate': instance.observationDate,
+      'sex': _$SexEnumMap[instance.sex]!,
+      'age': instance.age,
+      'weight': const MassConverter().toJson(instance.weight),
+    };
+
+_$CDCInfantWeigthForLengthImpl _$$CDCInfantWeigthForLengthImplFromJson(
+        Map<String, dynamic> json) =>
+    _$CDCInfantWeigthForLengthImpl(
+      observationDate: json['observationDate'] == null
+          ? null
+          : Date.fromJson(json['observationDate'] as Map<String, dynamic>),
+      sex: $enumDecode(_$SexEnumMap, json['sex']),
+      age: Age.fromJson(json['age'] as Map<String, dynamic>),
+      length: const LengthConverter()
+          .fromJson(json['length'] as Map<String, dynamic>),
+      weight: const MassConverter()
+          .fromJson(json['weight'] as Map<String, dynamic>),
+      measure: $enumDecode(
+          _$LengthHeigthMeasurementPositionEnumMap, json['measure']),
+    );
+
+Map<String, dynamic> _$$CDCInfantWeigthForLengthImplToJson(
+        _$CDCInfantWeigthForLengthImpl instance) =>
+    <String, dynamic>{
+      'observationDate': instance.observationDate,
+      'sex': _$SexEnumMap[instance.sex]!,
+      'age': instance.age,
+      'length': const LengthConverter().toJson(instance.length),
+      'weight': const MassConverter().toJson(instance.weight),
+      'measure': _$LengthHeigthMeasurementPositionEnumMap[instance.measure]!,
+    };
+
+_$CDCWeigthForStatureImpl _$$CDCWeigthForStatureImplFromJson(
+        Map<String, dynamic> json) =>
+    _$CDCWeigthForStatureImpl(
+      observationDate: json['observationDate'] == null
+          ? null
+          : Date.fromJson(json['observationDate'] as Map<String, dynamic>),
+      sex: $enumDecode(_$SexEnumMap, json['sex']),
+      age: Age.fromJson(json['age'] as Map<String, dynamic>),
+      length: const LengthConverter()
+          .fromJson(json['length'] as Map<String, dynamic>),
+      weight: const MassConverter()
+          .fromJson(json['weight'] as Map<String, dynamic>),
+      measure: $enumDecode(
+          _$LengthHeigthMeasurementPositionEnumMap, json['measure']),
+    );
+
+Map<String, dynamic> _$$CDCWeigthForStatureImplToJson(
+        _$CDCWeigthForStatureImpl instance) =>
+    <String, dynamic>{
+      'observationDate': instance.observationDate,
+      'sex': _$SexEnumMap[instance.sex]!,
+      'age': instance.age,
+      'length': const LengthConverter().toJson(instance.length),
+      'weight': const MassConverter().toJson(instance.weight),
+      'measure': _$LengthHeigthMeasurementPositionEnumMap[instance.measure]!,
     };

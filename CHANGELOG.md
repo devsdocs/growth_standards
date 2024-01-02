@@ -1,4 +1,8 @@
-## 1.0.3
+## 1.0.4
+
+- Add CDC measurement
+
+## 1.0.3 
 
 - Exposing additional types
 

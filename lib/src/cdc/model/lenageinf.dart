@@ -1,22 +1,22 @@
 part of '../cdc.dart';
 
-class CDCLengthForAgeData {
-  factory CDCLengthForAgeData() => _singleton;
-  CDCLengthForAgeData._(this._data);
-  static final _singleton = CDCLengthForAgeData._(_parse());
+class CDCInfantLengthForAgeData {
+  factory CDCInfantLengthForAgeData() => _singleton;
+  CDCInfantLengthForAgeData._(this._data);
+  static final _singleton = CDCInfantLengthForAgeData._(_parse());
 
-  static Map<Sex, _CDCLengthForAgeGender> _parse() =>
+  static Map<Sex, _CDCInfantLengthForAgeGender> _parse() =>
       cdclenageinf.toJsonObjectAsMap.map(
         (k1, v1) => MapEntry(
           k1 == '1' ? Sex.male : Sex.female,
-          _CDCLengthForAgeGender(
+          _CDCInfantLengthForAgeGender(
             ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
               v2 as Map<String, dynamic>;
               final lms =
                   (l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
               return MapEntry(
-                int.parse(k2),
-                _CDCLengthForAgeLMS(
+                double.parse(k2),
+                _CDCInfantLengthForAgeLMS(
                   lms: lms,
                   percentileCutOff: lms.percentileCutOff,
                   standardDeviationCutOff: lms.stDevCutOff,
@@ -26,15 +26,15 @@ class CDCLengthForAgeData {
           ),
         ),
       );
-  final Map<Sex, _CDCLengthForAgeGender> _data;
-  Map<Sex, _CDCLengthForAgeGender> get data => _data;
+  final Map<Sex, _CDCInfantLengthForAgeGender> _data;
+  Map<Sex, _CDCInfantLengthForAgeGender> get data => _data;
 
   @override
-  String toString() => 'Length For Age Data($_data)';
+  String toString() => 'Infant Length For Age Data($_data)';
 }
 
 @freezed
-class CDCLengthForAge with _$CDCLengthForAge {
+class CDCInfantLengthForAge with _$CDCInfantLengthForAge {
   @Assert(
     'age.ageInTotalDaysByNow >= 0 && age.ageInTotalMonthsByNow < 36',
     'Age must be in range of 0 - 35 months',
@@ -43,7 +43,7 @@ class CDCLengthForAge with _$CDCLengthForAge {
     'observationDate == null || observationDate.isSameOrBefore(Date.today()) || observationDate.isSameOrAfter(age.dateOfBirth)',
     'Observation date is impossible, because happen after today or before birth',
   )
-  factory CDCLengthForAge({
+  factory CDCInfantLengthForAge({
     Date? observationDate,
     required Sex sex,
     required Age age,
@@ -51,22 +51,24 @@ class CDCLengthForAge with _$CDCLengthForAge {
     required LengthHeigthMeasurementPosition measure,
   }) = _LengthForAge;
 
-  const CDCLengthForAge._();
+  const CDCInfantLengthForAge._();
 
-  factory CDCLengthForAge.fromJson(Map<String, dynamic> json) =>
-      _$CDCLengthForAgeFromJson(json);
+  factory CDCInfantLengthForAge.fromJson(Map<String, dynamic> json) =>
+      _$CDCInfantLengthForAgeFromJson(json);
 
-  CDCLengthForAgeData get _lengthForAgeData => CDCLengthForAgeData();
+  CDCInfantLengthForAgeData get _lengthForAgeData =>
+      CDCInfantLengthForAgeData();
 
-  _CDCLengthForAgeGender get _maleData => _lengthForAgeData._data[Sex.male]!;
-  _CDCLengthForAgeGender get _femaleData =>
+  _CDCInfantLengthForAgeGender get _maleData =>
+      _lengthForAgeData._data[Sex.male]!;
+  _CDCInfantLengthForAgeGender get _femaleData =>
       _lengthForAgeData._data[Sex.female]!;
 
-  _CDCLengthForAgeLMS get _ageData =>
+  _CDCInfantLengthForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData).ageData[
           _ageAtObservationDate.ageInTotalDaysByNow == 0
               ? 0
-              : _ageAtObservationDate.cdcAge]!;
+              : _ageAtObservationDate.ageInTotalMonthsByNow + 0.5]!;
 
   num get _adjustedLength => cdcAdjustedLengthHeight(
         measure: measure,
@@ -93,16 +95,16 @@ class CDCLengthForAge with _$CDCLengthForAge {
       (pnorm(_zScore) * 100).precision(precision);
 }
 
-class _CDCLengthForAgeGender {
-  _CDCLengthForAgeGender({required this.ageData});
-  final Map<int, _CDCLengthForAgeLMS> ageData;
+class _CDCInfantLengthForAgeGender {
+  _CDCInfantLengthForAgeGender({required this.ageData});
+  final Map<double, _CDCInfantLengthForAgeLMS> ageData;
 
   @override
   String toString() => 'Gender Data($ageData)';
 }
 
-class _CDCLengthForAgeLMS {
-  _CDCLengthForAgeLMS({
+class _CDCInfantLengthForAgeLMS {
+  _CDCInfantLengthForAgeLMS({
     required this.lms,
     required this.percentileCutOff,
     required this.standardDeviationCutOff,

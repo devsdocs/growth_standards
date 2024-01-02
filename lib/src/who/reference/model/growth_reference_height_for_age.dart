@@ -1,23 +1,23 @@
 part of '../reference.dart';
 
-class GrowthReferenceHeightForAgeData {
-  factory GrowthReferenceHeightForAgeData() => _singleton;
-  const GrowthReferenceHeightForAgeData._(this._data);
+class WHOGrowthReferenceHeightForAgeData {
+  factory WHOGrowthReferenceHeightForAgeData() => _singleton;
+  const WHOGrowthReferenceHeightForAgeData._(this._data);
 
-  static final _singleton = GrowthReferenceHeightForAgeData._(_parse());
+  static final _singleton = WHOGrowthReferenceHeightForAgeData._(_parse());
 
-  static Map<Sex, _GrowthReferenceHeightForAgeGender> _parse() =>
+  static Map<Sex, _WHOGrowthReferenceHeightForAgeGender> _parse() =>
       _hfa5yo.toJsonObjectAsMap.map(
         (k1, v1) => MapEntry(
           k1 == '1' ? Sex.male : Sex.female,
-          _GrowthReferenceHeightForAgeGender(
+          _WHOGrowthReferenceHeightForAgeGender(
             ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
               v2 as Map<String, dynamic>;
               final lms =
                   (l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
               return MapEntry(
                 int.parse(k2),
-                _GrowthReferenceHeightForAgeLMS(
+                _WHOGrowthReferenceHeightForAgeLMS(
                   lms: lms,
                   percentileCutOff: lms.percentileCutOff,
                   standardDeviationCutOff: lms.stDevCutOff,
@@ -27,15 +27,15 @@ class GrowthReferenceHeightForAgeData {
           ),
         ),
       );
-  final Map<Sex, _GrowthReferenceHeightForAgeGender> _data;
-  Map<Sex, _GrowthReferenceHeightForAgeGender> get data => _data;
+  final Map<Sex, _WHOGrowthReferenceHeightForAgeGender> _data;
+  Map<Sex, _WHOGrowthReferenceHeightForAgeGender> get data => _data;
 
   @override
   String toString() => 'Height For Age Data($_data)';
 }
 
 @freezed
-class GrowthReferenceHeightForAge with _$GrowthReferenceHeightForAge {
+class WHOGrowthReferenceHeightForAge with _$WHOGrowthReferenceHeightForAge {
   @Assert(
     'age.ageInTotalMonthsByNow >= 61 && age.ageInTotalMonthsByNow <= 228',
     'Age must be in range of 61 - 228 months',
@@ -48,28 +48,28 @@ class GrowthReferenceHeightForAge with _$GrowthReferenceHeightForAge {
     'observationDate == null || observationDate.isSameOrAfter(age.dateAtMonthsAfterBirth(61)) ',
     'Observation date is impossible, because happen after today or before birth',
   )
-  factory GrowthReferenceHeightForAge({
+  factory WHOGrowthReferenceHeightForAge({
     Date? observationDate,
     required Sex sex,
     required Age age,
     @LengthConverter() required Length lengthHeight,
-  }) = _GrowthReferenceHeightForAge;
+  }) = _WHOGrowthReferenceHeightForAge;
 
-  const GrowthReferenceHeightForAge._();
-  factory GrowthReferenceHeightForAge.fromJson(
+  const WHOGrowthReferenceHeightForAge._();
+  factory WHOGrowthReferenceHeightForAge.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$GrowthReferenceHeightForAgeFromJson(json);
+      _$WHOGrowthReferenceHeightForAgeFromJson(json);
 
-  GrowthReferenceHeightForAgeData get _lengthForAgeData =>
-      GrowthReferenceHeightForAgeData();
+  WHOGrowthReferenceHeightForAgeData get _lengthForAgeData =>
+      WHOGrowthReferenceHeightForAgeData();
 
-  _GrowthReferenceHeightForAgeGender get _maleData =>
+  _WHOGrowthReferenceHeightForAgeGender get _maleData =>
       _lengthForAgeData._data[Sex.male]!;
-  _GrowthReferenceHeightForAgeGender get _femaleData =>
+  _WHOGrowthReferenceHeightForAgeGender get _femaleData =>
       _lengthForAgeData._data[Sex.female]!;
 
-  _GrowthReferenceHeightForAgeLMS get _ageData =>
+  _WHOGrowthReferenceHeightForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)
           .ageData[_ageAtObservationDate.ageInTotalMonthsByNow]!;
 
@@ -92,16 +92,16 @@ class GrowthReferenceHeightForAge with _$GrowthReferenceHeightForAge {
       (pnorm(_zScore) * 100).precision(precision);
 }
 
-class _GrowthReferenceHeightForAgeGender {
-  _GrowthReferenceHeightForAgeGender({required this.ageData});
-  final Map<int, _GrowthReferenceHeightForAgeLMS> ageData;
+class _WHOGrowthReferenceHeightForAgeGender {
+  _WHOGrowthReferenceHeightForAgeGender({required this.ageData});
+  final Map<int, _WHOGrowthReferenceHeightForAgeLMS> ageData;
 
   @override
   String toString() => 'Gender Data($ageData)';
 }
 
-class _GrowthReferenceHeightForAgeLMS {
-  _GrowthReferenceHeightForAgeLMS({
+class _WHOGrowthReferenceHeightForAgeLMS {
+  _WHOGrowthReferenceHeightForAgeLMS({
     required this.lms,
     required this.percentileCutOff,
     required this.standardDeviationCutOff,

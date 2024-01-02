@@ -1,23 +1,23 @@
 part of '../reference.dart';
 
-class GrowthReferenceBodyMassIndexForAgeData {
-  factory GrowthReferenceBodyMassIndexForAgeData() => _singleton;
-  const GrowthReferenceBodyMassIndexForAgeData._(this._data);
+class WHOGrowthReferenceBodyMassIndexForAgeData {
+  factory WHOGrowthReferenceBodyMassIndexForAgeData() => _singleton;
+  const WHOGrowthReferenceBodyMassIndexForAgeData._(this._data);
 
-  static final _singleton = GrowthReferenceBodyMassIndexForAgeData._(_parse());
+  static final _singleton = WHOGrowthReferenceBodyMassIndexForAgeData._(_parse());
 
-  static Map<Sex, _GrowthReferenceBodyMassIndexForAgeGender> _parse() =>
+  static Map<Sex, _WHOGrowthReferenceBodyMassIndexForAgeGender> _parse() =>
       _bmi5yo.toJsonObjectAsMap.map(
         (k1, v1) => MapEntry(
           k1 == '1' ? Sex.male : Sex.female,
-          _GrowthReferenceBodyMassIndexForAgeGender(
+          _WHOGrowthReferenceBodyMassIndexForAgeGender(
             ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
               v2 as Map<String, dynamic>;
               final lms =
                   (l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
               return MapEntry(
                 int.parse(k2),
-                _GrowthReferenceBodyMassIndexForAgeLMS(
+                _WHOGrowthReferenceBodyMassIndexForAgeLMS(
                   lms: lms,
                   percentileCutOff: lms.percentileCutOff,
                   standardDeviationCutOff: lms.stDevCutOff,
@@ -28,34 +28,34 @@ class GrowthReferenceBodyMassIndexForAgeData {
         ),
       );
 
-  final Map<Sex, _GrowthReferenceBodyMassIndexForAgeGender> _data;
-  Map<Sex, _GrowthReferenceBodyMassIndexForAgeGender> get data => _data;
+  final Map<Sex, _WHOGrowthReferenceBodyMassIndexForAgeGender> _data;
+  Map<Sex, _WHOGrowthReferenceBodyMassIndexForAgeGender> get data => _data;
 
   @override
   String toString() => 'Body Mass Index For Age Data($_data)';
 }
 
 @freezed
-class GrowthReferenceBodyMassIndexMeasurement
-    with _$GrowthReferenceBodyMassIndexMeasurement {
-  factory GrowthReferenceBodyMassIndexMeasurement(num value) =
-      _GrowthReferenceBodyMassIndexMeasurement;
-  const GrowthReferenceBodyMassIndexMeasurement._();
+class WHOGrowthReferenceBodyMassIndexMeasurement
+    with _$WHOGrowthReferenceBodyMassIndexMeasurement {
+  factory WHOGrowthReferenceBodyMassIndexMeasurement(num value) =
+      _WHOGrowthReferenceBodyMassIndexMeasurement;
+  const WHOGrowthReferenceBodyMassIndexMeasurement._();
 
-  factory GrowthReferenceBodyMassIndexMeasurement.fromMeasurement(
+  factory WHOGrowthReferenceBodyMassIndexMeasurement.fromMeasurement(
     BodyMassIndex bodyMassIndex,
   ) =>
-      GrowthReferenceBodyMassIndexMeasurement(bodyMassIndex.value);
+      WHOGrowthReferenceBodyMassIndexMeasurement(bodyMassIndex.value);
 
-  factory GrowthReferenceBodyMassIndexMeasurement.fromJson(
+  factory WHOGrowthReferenceBodyMassIndexMeasurement.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$GrowthReferenceBodyMassIndexMeasurementFromJson(json);
+      _$WHOGrowthReferenceBodyMassIndexMeasurementFromJson(json);
 }
 
 @freezed
-class GrowthReferenceBodyMassIndexForAge
-    with _$GrowthReferenceBodyMassIndexForAge {
+class WHOGrowthReferenceBodyMassIndexForAge
+    with _$WHOGrowthReferenceBodyMassIndexForAge {
   @Assert(
     'age.ageInTotalMonthsByNow >= 61 && age.ageInTotalMonthsByNow <= 228',
     'Age must be in range of 61 - 228 months',
@@ -68,29 +68,29 @@ class GrowthReferenceBodyMassIndexForAge
     'observationDate == null || observationDate.isSameOrAfter(age.dateAtMonthsAfterBirth(61)) ',
     'Observation date is impossible, because happen after today or before birth',
   )
-  factory GrowthReferenceBodyMassIndexForAge({
+  factory WHOGrowthReferenceBodyMassIndexForAge({
     Date? observationDate,
     required Sex sex,
     required Age age,
-    required GrowthReferenceBodyMassIndexMeasurement bodyMassIndexMeasurement,
-  }) = _GrowthReferenceBodyMassIndexForAge;
+    required WHOGrowthReferenceBodyMassIndexMeasurement bodyMassIndexMeasurement,
+  }) = _WHOGrowthReferenceBodyMassIndexForAge;
 
-  const GrowthReferenceBodyMassIndexForAge._();
+  const WHOGrowthReferenceBodyMassIndexForAge._();
 
-  factory GrowthReferenceBodyMassIndexForAge.fromJson(
+  factory WHOGrowthReferenceBodyMassIndexForAge.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$GrowthReferenceBodyMassIndexForAgeFromJson(json);
+      _$WHOGrowthReferenceBodyMassIndexForAgeFromJson(json);
 
-  GrowthReferenceBodyMassIndexForAgeData get _bodyMassIndexData =>
-      GrowthReferenceBodyMassIndexForAgeData();
+  WHOGrowthReferenceBodyMassIndexForAgeData get _bodyMassIndexData =>
+      WHOGrowthReferenceBodyMassIndexForAgeData();
 
-  _GrowthReferenceBodyMassIndexForAgeGender get _maleData =>
+  _WHOGrowthReferenceBodyMassIndexForAgeGender get _maleData =>
       _bodyMassIndexData._data[Sex.male]!;
-  _GrowthReferenceBodyMassIndexForAgeGender get _femaleData =>
+  _WHOGrowthReferenceBodyMassIndexForAgeGender get _femaleData =>
       _bodyMassIndexData._data[Sex.female]!;
 
-  _GrowthReferenceBodyMassIndexForAgeLMS get _ageData =>
+  _WHOGrowthReferenceBodyMassIndexForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)
           .ageData[_ageAtObservationDate.ageInTotalMonthsByNow]!;
 
@@ -114,16 +114,16 @@ class GrowthReferenceBodyMassIndexForAge
       (pnorm(_zScore) * 100).precision(precision);
 }
 
-class _GrowthReferenceBodyMassIndexForAgeGender {
-  _GrowthReferenceBodyMassIndexForAgeGender({required this.ageData});
-  final Map<int, _GrowthReferenceBodyMassIndexForAgeLMS> ageData;
+class _WHOGrowthReferenceBodyMassIndexForAgeGender {
+  _WHOGrowthReferenceBodyMassIndexForAgeGender({required this.ageData});
+  final Map<int, _WHOGrowthReferenceBodyMassIndexForAgeLMS> ageData;
 
   @override
   String toString() => 'Gender Data($ageData)';
 }
 
-class _GrowthReferenceBodyMassIndexForAgeLMS {
-  _GrowthReferenceBodyMassIndexForAgeLMS({
+class _WHOGrowthReferenceBodyMassIndexForAgeLMS {
+  _WHOGrowthReferenceBodyMassIndexForAgeLMS({
     required this.lms,
     required this.percentileCutOff,
     required this.standardDeviationCutOff,

@@ -1,23 +1,23 @@
 part of '../cdc.dart';
 
-class CDCHeadCircumferenceForAgeData {
-  factory CDCHeadCircumferenceForAgeData() => _singleton;
-  CDCHeadCircumferenceForAgeData._(this._data);
+class CDCInfantHeadCircumferenceForAgeData {
+  factory CDCInfantHeadCircumferenceForAgeData() => _singleton;
+  CDCInfantHeadCircumferenceForAgeData._(this._data);
 
-  static final _singleton = CDCHeadCircumferenceForAgeData._(_parse());
+  static final _singleton = CDCInfantHeadCircumferenceForAgeData._(_parse());
 
-  static Map<Sex, _CDCHeadCircumferenceForAgeGender> _parse() =>
+  static Map<Sex, _CDCInfantHeadCircumferenceForAgeGender> _parse() =>
       cdchcageinf.toJsonObjectAsMap.map(
         (k1, v1) => MapEntry(
           k1 == '1' ? Sex.male : Sex.female,
-          _CDCHeadCircumferenceForAgeGender(
+          _CDCInfantHeadCircumferenceForAgeGender(
             ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
               v2 as Map<String, dynamic>;
               final lms =
                   (l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
               return MapEntry(
                 double.parse(k2),
-                _CDCHeadCircumferenceForAgeLMS(
+                _CDCInfantHeadCircumferenceForAgeLMS(
                   lms: lms,
                   percentileCutOff: lms.percentileCutOff,
                   standardDeviationCutOff: lms.stDevCutOff,
@@ -28,15 +28,15 @@ class CDCHeadCircumferenceForAgeData {
         ),
       );
 
-  final Map<Sex, _CDCHeadCircumferenceForAgeGender> _data;
-  Map<Sex, _CDCHeadCircumferenceForAgeGender> get data => _data;
+  final Map<Sex, _CDCInfantHeadCircumferenceForAgeGender> _data;
+  Map<Sex, _CDCInfantHeadCircumferenceForAgeGender> get data => _data;
 
   @override
-  String toString() => 'Head Circumference For Age Data($_data)';
+  String toString() => 'Infant Head Circumference For Age Data($_data)';
 }
 
 @freezed
-class CDCHeadCircumferenceForAge with _$CDCHeadCircumferenceForAge {
+class CDCInfantHeadCircumferenceForAge with _$CDCInfantHeadCircumferenceForAge {
   @Assert(
     'age.ageInTotalDaysByNow >= 0 && age.ageInTotalMonthsByNow <= 36',
     'Age must be in range of 0 - 36 months',
@@ -45,33 +45,36 @@ class CDCHeadCircumferenceForAge with _$CDCHeadCircumferenceForAge {
     'observationDate == null || observationDate.isSameOrBefore(Date.today()) || observationDate.isSameOrAfter(age.dateOfBirth)',
     'Observation date is impossible, because happen after today or before birth',
   )
-  factory CDCHeadCircumferenceForAge({
+  factory CDCInfantHeadCircumferenceForAge({
     Date? observationDate,
     required Sex sex,
     required Age age,
     @LengthConverter() required Length measurementResult,
   }) = _HeadCircumferenceForAge;
 
-  const CDCHeadCircumferenceForAge._();
+  const CDCInfantHeadCircumferenceForAge._();
 
-  factory CDCHeadCircumferenceForAge.fromJson(Map<String, dynamic> json) =>
-      _$CDCHeadCircumferenceForAgeFromJson(json);
+  factory CDCInfantHeadCircumferenceForAge.fromJson(
+          Map<String, dynamic> json,) =>
+      _$CDCInfantHeadCircumferenceForAgeFromJson(json);
 
-  CDCHeadCircumferenceForAgeData get _headCircumferenceData =>
-      CDCHeadCircumferenceForAgeData();
+  CDCInfantHeadCircumferenceForAgeData get _headCircumferenceData =>
+      CDCInfantHeadCircumferenceForAgeData();
 
-  _CDCHeadCircumferenceForAgeGender get _maleData =>
+  _CDCInfantHeadCircumferenceForAgeGender get _maleData =>
       _headCircumferenceData._data[Sex.male]!;
-  _CDCHeadCircumferenceForAgeGender get _femaleData =>
+  _CDCInfantHeadCircumferenceForAgeGender get _femaleData =>
       _headCircumferenceData._data[Sex.female]!;
 
-  _CDCHeadCircumferenceForAgeLMS get _ageData =>
-      (sex == Sex.male ? _maleData : _femaleData).ageData[
-          _ageAtObservationDate.ageInTotalDaysByNow == 0
-              ? 0
-              : _ageAtObservationDate.ageInTotalMonthsByNow == 36
-                  ? 36
-                  : _ageAtObservationDate.cdcAge]!;
+  _CDCInfantHeadCircumferenceForAgeLMS get _ageData {
+    final finalAge = _ageAtObservationDate.ageInTotalDaysByNow == 0
+        ? 0
+        : _ageAtObservationDate.ageInTotalMonthsByNow == 36
+            ? 36
+            : _ageAtObservationDate.ageInTotalMonthsByNow + 0.5;
+
+    return (sex == Sex.male ? _maleData : _femaleData).ageData[finalAge]!;
+  }
 
   num get _zScore =>
       _ageData.lms.zScore(measurementResult.toCentimeters.value!);
@@ -93,17 +96,17 @@ class CDCHeadCircumferenceForAge with _$CDCHeadCircumferenceForAge {
       (pnorm(_zScore) * 100).precision(precision);
 }
 
-class _CDCHeadCircumferenceForAgeGender {
-  _CDCHeadCircumferenceForAgeGender({required this.ageData});
+class _CDCInfantHeadCircumferenceForAgeGender {
+  _CDCInfantHeadCircumferenceForAgeGender({required this.ageData});
 
-  final Map<double, _CDCHeadCircumferenceForAgeLMS> ageData;
+  final Map<double, _CDCInfantHeadCircumferenceForAgeLMS> ageData;
 
   @override
   String toString() => 'Gender Data($ageData)';
 }
 
-class _CDCHeadCircumferenceForAgeLMS {
-  _CDCHeadCircumferenceForAgeLMS({
+class _CDCInfantHeadCircumferenceForAgeLMS {
+  _CDCInfantHeadCircumferenceForAgeLMS({
     required this.lms,
     required this.percentileCutOff,
     required this.standardDeviationCutOff,

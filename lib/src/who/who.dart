@@ -4,107 +4,126 @@ import 'package:growth_standards/src/who/reference/reference.dart';
 import 'package:growth_standards/src/who/standard/standard.dart';
 import 'package:super_measurement/super_measurement.dart';
 
-final class WHOGrowthStandardData {
-  ArmCircumferenceForAgeData get armCircumferenceForAge =>
-      ArmCircumferenceForAgeData();
+final class WHOGrowthStandardsData {
+  WHOGrowthStandardsArmCircumferenceForAgeData get armCircumferenceForAge =>
+      WHOGrowthStandardsArmCircumferenceForAgeData();
 
-  BodyMassIndexForAgeData get bodyMassIndexForAge => BodyMassIndexForAgeData();
+  WHOGrowthStandardsBodyMassIndexForAgeData get bodyMassIndexForAge =>
+      WHOGrowthStandardsBodyMassIndexForAgeData();
 
-  HeadCircumferenceForAgeData get headCircumferenceForAge =>
-      HeadCircumferenceForAgeData();
+  WHOGrowthStandardsHeadCircumferenceForAgeData get headCircumferenceForAge =>
+      WHOGrowthStandardsHeadCircumferenceForAgeData();
 
-  LengthForAgeData get lengthForAgeData => LengthForAgeData();
+  WHOGrowthStandardsLengthForAgeData get lengthForAgeData =>
+      WHOGrowthStandardsLengthForAgeData();
 
-  SubscapularSkinfoldForAgeData get subscapularSkinfoldForAgeData =>
-      SubscapularSkinfoldForAgeData();
+  WHOGrowthStandardsSubscapularSkinfoldForAgeData
+      get subscapularSkinfoldForAgeData =>
+          WHOGrowthStandardsSubscapularSkinfoldForAgeData();
 
-  TricepsSkinfoldForAgeData get tricepsSkinfoldForAgeData =>
-      TricepsSkinfoldForAgeData();
+  WHOGrowthStandardsTricepsSkinfoldForAgeData get tricepsSkinfoldForAgeData =>
+      WHOGrowthStandardsTricepsSkinfoldForAgeData();
 
-  WeightForAgeData get weightForAgeData => WeightForAgeData();
+  WHOGrowthStandardsWeightForAgeData get weightForAgeData =>
+      WHOGrowthStandardsWeightForAgeData();
 
-  WeightForHeightData get weightForHeightData => WeightForHeightData();
+  WHOGrowthStandardsWeightForHeightData get weightForHeightData =>
+      WHOGrowthStandardsWeightForHeightData();
 
-  WeigthForLengthData get weigthForLengthData => WeigthForLengthData();
+  WHOGrowthStandardsWeigthForLengthData get weigthForLengthData =>
+      WHOGrowthStandardsWeigthForLengthData();
 }
 
 final class WHOGrowthStandardFromJson {
-  ArmCircumferenceForAge armCircumferenceForAge(Map<String, dynamic> json) =>
-      ArmCircumferenceForAge.fromJson(json);
-
-  BodyMassIndexForAge bodyMassIndexForAge(Map<String, dynamic> json) =>
-      BodyMassIndexForAge.fromJson(json);
-
-  HeadCircumferenceForAge headCircumferenceForAge(Map<String, dynamic> json) =>
-      HeadCircumferenceForAge.fromJson(json);
-  LengthForAge lengthForAge(Map<String, dynamic> json) =>
-      LengthForAge.fromJson(json);
-
-  SubscapularSkinfoldForAge subscapularSkinfoldForAge(
+  WHOGrowthStandardsArmCircumferenceForAge armCircumferenceForAge(
     Map<String, dynamic> json,
   ) =>
-      SubscapularSkinfoldForAge.fromJson(json);
+      WHOGrowthStandardsArmCircumferenceForAge.fromJson(json);
 
-  TricepsSkinfoldForAge tricepsSkinfoldForAge(Map<String, dynamic> json) =>
-      TricepsSkinfoldForAge.fromJson(json);
-  WeightForAge weightForAge(Map<String, dynamic> json) =>
-      WeightForAge.fromJson(json);
-  WeightForHeight weightForHeight(Map<String, dynamic> json) =>
-      WeightForHeight.fromJson(json);
+  WHOGrowthStandardsBodyMassIndexForAge bodyMassIndexForAge(
+    Map<String, dynamic> json,
+  ) =>
+      WHOGrowthStandardsBodyMassIndexForAge.fromJson(json);
 
-  WeigthForLength weightForLength(Map<String, dynamic> json) =>
-      WeigthForLength.fromJson(json);
+  WHOGrowthStandardsHeadCircumferenceForAge headCircumferenceForAge(
+    Map<String, dynamic> json,
+  ) =>
+      WHOGrowthStandardsHeadCircumferenceForAge.fromJson(json);
+  WHOGrowthStandardsLengthForAge lengthForAge(Map<String, dynamic> json) =>
+      WHOGrowthStandardsLengthForAge.fromJson(json);
+
+  WHOGrowthStandardsSubscapularSkinfoldForAge subscapularSkinfoldForAge(
+    Map<String, dynamic> json,
+  ) =>
+      WHOGrowthStandardsSubscapularSkinfoldForAge.fromJson(json);
+
+  WHOGrowthStandardsTricepsSkinfoldForAge tricepsSkinfoldForAge(
+    Map<String, dynamic> json,
+  ) =>
+      WHOGrowthStandardsTricepsSkinfoldForAge.fromJson(json);
+  WHOGrowthStandardsWeightForAge weightForAge(Map<String, dynamic> json) =>
+      WHOGrowthStandardsWeightForAge.fromJson(json);
+  WHOGrowthStandardsWeightForHeight weightForHeight(
+    Map<String, dynamic> json,
+  ) =>
+      WHOGrowthStandardsWeightForHeight.fromJson(json);
+
+  WHOGrowthStandardsWeigthForLength weightForLength(
+    Map<String, dynamic> json,
+  ) =>
+      WHOGrowthStandardsWeigthForLength.fromJson(json);
 }
 
 /// For age 0 to 5 years old (<= 1856 days)
 final class WHOGrowthStandard {
-  WHOGrowthStandardData get data => WHOGrowthStandardData();
+  WHOGrowthStandardsData get data => WHOGrowthStandardsData();
   WHOGrowthStandardFromJson get fromJson => WHOGrowthStandardFromJson();
 
-  ArmCircumferenceForAge armCircumferenceForAge({
+  WHOGrowthStandardsArmCircumferenceForAge armCircumferenceForAge({
     required Sex sex,
     required Age age,
     required Length measurementResult,
     Date? observationDate,
   }) =>
-      ArmCircumferenceForAge(
+      WHOGrowthStandardsArmCircumferenceForAge(
         sex: sex,
         age: age,
         measurementResult: measurementResult,
         observationDate: observationDate,
       );
 
-  BodyMassIndexForAge bodyMassIndexForAge({
+  WHOGrowthStandardsBodyMassIndexForAge bodyMassIndexForAge({
     required Sex sex,
-    required BodyMassIndexMeasurement bodyMassIndexMeasurement,
+    required WHOGrowthStandardsBodyMassIndexMeasurement
+        bodyMassIndexMeasurement,
     Date? observationDate,
   }) =>
-      BodyMassIndexForAge(
+      WHOGrowthStandardsBodyMassIndexForAge(
         sex: sex,
         bodyMassIndexMeasurement: bodyMassIndexMeasurement,
         observationDate: observationDate,
       );
 
-  HeadCircumferenceForAge headCircumferenceForAge({
+  WHOGrowthStandardsHeadCircumferenceForAge headCircumferenceForAge({
     Date? observationDate,
     required Sex sex,
     required Age age,
     required Length measurementResult,
   }) =>
-      HeadCircumferenceForAge(
+      WHOGrowthStandardsHeadCircumferenceForAge(
         sex: sex,
         age: age,
         measurementResult: measurementResult,
       );
 
-  LengthForAge lengthForAge({
+  WHOGrowthStandardsLengthForAge lengthForAge({
     Date? observationDate,
     required Sex sex,
     required Age age,
     required Length lengthHeight,
     required LengthHeigthMeasurementPosition measure,
   }) =>
-      LengthForAge(
+      WHOGrowthStandardsLengthForAge(
         observationDate: observationDate,
         sex: sex,
         age: age,
@@ -112,45 +131,45 @@ final class WHOGrowthStandard {
         measure: measure,
       );
 
-  SubscapularSkinfoldForAge subscapularSkinfoldForAge({
+  WHOGrowthStandardsSubscapularSkinfoldForAge subscapularSkinfoldForAge({
     Date? observationDate,
     required Sex sex,
     required Age age,
     required Length measurementResult,
   }) =>
-      SubscapularSkinfoldForAge(
+      WHOGrowthStandardsSubscapularSkinfoldForAge(
         observationDate: observationDate,
         sex: sex,
         age: age,
         measurementResult: measurementResult,
       );
 
-  TricepsSkinfoldForAge tricepsSkinfoldForAge({
+  WHOGrowthStandardsTricepsSkinfoldForAge tricepsSkinfoldForAge({
     Date? observationDate,
     required Sex sex,
     required Age age,
     required Length measurementResult,
   }) =>
-      TricepsSkinfoldForAge(
+      WHOGrowthStandardsTricepsSkinfoldForAge(
         observationDate: observationDate,
         sex: sex,
         age: age,
         measurementResult: measurementResult,
       );
-  WeightForAge weightForAge({
+  WHOGrowthStandardsWeightForAge weightForAge({
     Date? observationDate,
     required Sex sex,
     required Age age,
     required Mass weight,
   }) =>
-      WeightForAge(
+      WHOGrowthStandardsWeightForAge(
         observationDate: observationDate,
         sex: sex,
         age: age,
         weight: weight,
       );
 
-  WeightForHeight weightForHeight({
+  WHOGrowthStandardsWeightForHeight weightForHeight({
     Date? observationDate,
     required Sex sex,
     required Age age,
@@ -158,7 +177,7 @@ final class WHOGrowthStandard {
     required Mass mass,
     required LengthHeigthMeasurementPosition measure,
   }) =>
-      WeightForHeight(
+      WHOGrowthStandardsWeightForHeight(
         observationDate: observationDate,
         sex: sex,
         age: age,
@@ -167,7 +186,7 @@ final class WHOGrowthStandard {
         measure: measure,
       );
 
-  WeigthForLength weightForLength({
+  WHOGrowthStandardsWeigthForLength weightForLength({
     Date? observationDate,
     required Sex sex,
     required Length lengthMeasurementResult,
@@ -175,7 +194,7 @@ final class WHOGrowthStandard {
     required Age age,
     required LengthHeigthMeasurementPosition measure,
   }) =>
-      WeigthForLength(
+      WHOGrowthStandardsWeigthForLength(
         observationDate: observationDate,
         sex: sex,
         length: lengthMeasurementResult,
@@ -186,68 +205,69 @@ final class WHOGrowthStandard {
 }
 
 final class WHOGrowthReferenceData {
-  GrowthReferenceBodyMassIndexForAgeData get bodyMassIndexForAge =>
-      GrowthReferenceBodyMassIndexForAgeData();
+  WHOGrowthReferenceBodyMassIndexForAgeData get bodyMassIndexForAge =>
+      WHOGrowthReferenceBodyMassIndexForAgeData();
 
-  GrowthReferenceHeightForAgeData get heightForAge =>
-      GrowthReferenceHeightForAgeData();
+  WHOGrowthReferenceHeightForAgeData get heightForAge =>
+      WHOGrowthReferenceHeightForAgeData();
 
-  GrowthReferenceWeightForAgeData get weightForAge =>
-      GrowthReferenceWeightForAgeData();
+  WHOGrowthReferenceWeightForAgeData get weightForAge =>
+      WHOGrowthReferenceWeightForAgeData();
 }
 
 final class WHOGrowthReferenceFromJson {
-  GrowthReferenceBodyMassIndexForAge bodyMassIndexForAge(
+  WHOGrowthReferenceBodyMassIndexForAge bodyMassIndexForAge(
     Map<String, dynamic> json,
   ) =>
-      GrowthReferenceBodyMassIndexForAge.fromJson(json);
+      WHOGrowthReferenceBodyMassIndexForAge.fromJson(json);
 
-  GrowthReferenceHeightForAge heightForAge(Map<String, dynamic> json) =>
-      GrowthReferenceHeightForAge.fromJson(json);
+  WHOGrowthReferenceHeightForAge heightForAge(Map<String, dynamic> json) =>
+      WHOGrowthReferenceHeightForAge.fromJson(json);
 
-  GrowthReferenceWeightForAge weightForAge(Map<String, dynamic> json) =>
-      GrowthReferenceWeightForAge.fromJson(json);
+  WHOGrowthReferenceWeightForAge weightForAge(Map<String, dynamic> json) =>
+      WHOGrowthReferenceWeightForAge.fromJson(json);
 }
 
 /// For age 5 to 18 years old (> 1856 days)
 final class WHOGrowthReference {
   WHOGrowthReferenceData get data => WHOGrowthReferenceData();
+
   WHOGrowthReferenceFromJson get fromJson => WHOGrowthReferenceFromJson();
 
-  GrowthReferenceBodyMassIndexForAge bodyMassIndexForAge({
+  WHOGrowthReferenceBodyMassIndexForAge bodyMassIndexForAge({
     Date? observationDate,
     required Sex sex,
-    required GrowthReferenceBodyMassIndexMeasurement bodyMassIndexMeasurement,
+    required WHOGrowthReferenceBodyMassIndexMeasurement bodyMassIndexMeasurement,
     required Age age,
   }) =>
-      GrowthReferenceBodyMassIndexForAge(
+      WHOGrowthReferenceBodyMassIndexForAge(
         observationDate: observationDate,
         age: age,
         sex: sex,
         bodyMassIndexMeasurement: bodyMassIndexMeasurement,
       );
 
-  GrowthReferenceHeightForAge heightForAge({
+  WHOGrowthReferenceHeightForAge heightForAge({
     Date? observationDate,
     required Sex sex,
     required Age age,
     required Length lengthHeight,
     required LengthHeigthMeasurementPosition measure,
   }) =>
-      GrowthReferenceHeightForAge(
+      WHOGrowthReferenceHeightForAge(
         observationDate: observationDate,
         sex: sex,
         age: age,
         lengthHeight: lengthHeight,
       );
 
-  GrowthReferenceWeightForAge weightForAge({
+  WHOGrowthReferenceWeightForAge weightForAge({
     Date? observationDate,
     required Sex sex,
     required Age age,
     required Mass weight,
   }) =>
-      GrowthReferenceWeightForAge(
+      WHOGrowthReferenceWeightForAge(
         observationDate: observationDate,
         sex: sex,
         age: age,
