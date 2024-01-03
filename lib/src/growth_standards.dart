@@ -1,4 +1,5 @@
 import 'package:growth_standards/src/cdc/cdc.dart';
+import 'package:growth_standards/src/fenton/fenton.dart';
 import 'package:growth_standards/src/who/who.dart';
 
 export 'cdc/cdc.dart'
@@ -20,10 +21,8 @@ export 'cdc/cdc.dart'
         CDCWeightForAgeData,
         CDCWeigthForStature,
         CDCWeigthForStatureData;
-
 export 'common/model/age.dart' show Age, Date;
 export 'common/model/bmi.dart' show BodyMassIndex;
-
 export 'common/types.dart'
     show
         LengthHeigthMeasurementPosition,
@@ -31,7 +30,14 @@ export 'common/types.dart'
         PercentileValue,
         Sex,
         ZScoreValue;
-
+export 'fenton/fenton.dart'
+    show
+        FentonHeadCircumferenceForAge,
+        FentonHeadCircumferenceForAgeData,
+        FentonLengthForAge,
+        FentonLengthForAgeData,
+        FentonWeightForAge,
+        FentonWeightForAgeData;
 export 'who/reference/reference.dart'
     show
         WHOGrowthReferenceBodyMassIndexForAge,
@@ -41,7 +47,6 @@ export 'who/reference/reference.dart'
         WHOGrowthReferenceHeightForAgeData,
         WHOGrowthReferenceWeightForAge,
         WHOGrowthReferenceWeightForAgeData;
-
 export 'who/standard/standard.dart'
     show
         WHOGrowthStandardsArmCircumferenceForAge,
@@ -67,6 +72,7 @@ export 'who/standard/standard.dart'
 class GrowthStandard {
   static _WHO get who => _WHO();
   static _CDC get cdc => _CDC();
+  static Fenton get fenton => Fenton();
 }
 
 class _WHO {
