@@ -58,6 +58,10 @@ class Age with _$Age {
         DTU.addDays(dateOfBirth.toDateTime(), daysAfterBirth),
       );
 
+  Date dateAtWeeksAfterBirth(int weeksAfterBirth) => Date.fromDateTime(
+        DTU.addWeeks(dateOfBirth.toDateTime(), weeksAfterBirth),
+      );
+
   Date dateAtMonthsAfterBirth(int monthsAfterBirth) => Date.fromDateTime(
         DTU.addMonths(dateOfBirth.toDateTime(), monthsAfterBirth),
       );
