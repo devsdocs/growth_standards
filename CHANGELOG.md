@@ -1,8 +1,12 @@
+## 1.0.5
+
+- Add Fenton preterm growth standards
+
 ## 1.0.4
 
 - Add CDC measurement
 
-## 1.0.3 
+## 1.0.3
 
 - Exposing additional types
 
