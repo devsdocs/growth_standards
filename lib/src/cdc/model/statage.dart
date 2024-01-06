@@ -70,7 +70,7 @@ class CDCStatureForAge with _$CDCStatureForAge {
 
   _CDCStatureForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData).ageData[
-          _ageAtObservationDate.ageInTotalDaysByNow == 24
+          _ageAtObservationDate.ageInTotalMonthsByNow == 24
               ? 24
               : _ageAtObservationDate.ageInTotalMonthsByNow == 240
                   ? 240
