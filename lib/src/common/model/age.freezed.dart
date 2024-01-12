@@ -21,7 +21,7 @@ Age _$AgeFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Age {
   Date get dateOfBirth => throw _privateConstructorUsedError;
-  bool get checkMonth => throw _privateConstructorUsedError;
+  bool? get checkMonth => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -33,7 +33,7 @@ abstract class $AgeCopyWith<$Res> {
   factory $AgeCopyWith(Age value, $Res Function(Age) then) =
       _$AgeCopyWithImpl<$Res, Age>;
   @useResult
-  $Res call({Date dateOfBirth, bool checkMonth});
+  $Res call({Date dateOfBirth, bool? checkMonth});
 
   $DateCopyWith<$Res> get dateOfBirth;
 }
@@ -51,17 +51,17 @@ class _$AgeCopyWithImpl<$Res, $Val extends Age> implements $AgeCopyWith<$Res> {
   @override
   $Res call({
     Object? dateOfBirth = null,
-    Object? checkMonth = null,
+    Object? checkMonth = freezed,
   }) {
     return _then(_value.copyWith(
       dateOfBirth: null == dateOfBirth
           ? _value.dateOfBirth
           : dateOfBirth // ignore: cast_nullable_to_non_nullable
               as Date,
-      checkMonth: null == checkMonth
+      checkMonth: freezed == checkMonth
           ? _value.checkMonth
           : checkMonth // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
     ) as $Val);
   }
 
@@ -80,7 +80,7 @@ abstract class _$$AgeImplCopyWith<$Res> implements $AgeCopyWith<$Res> {
       __$$AgeImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Date dateOfBirth, bool checkMonth});
+  $Res call({Date dateOfBirth, bool? checkMonth});
 
   @override
   $DateCopyWith<$Res> get dateOfBirth;
@@ -96,17 +96,17 @@ class __$$AgeImplCopyWithImpl<$Res> extends _$AgeCopyWithImpl<$Res, _$AgeImpl>
   @override
   $Res call({
     Object? dateOfBirth = null,
-    Object? checkMonth = null,
+    Object? checkMonth = freezed,
   }) {
     return _then(_$AgeImpl(
       null == dateOfBirth
           ? _value.dateOfBirth
           : dateOfBirth // ignore: cast_nullable_to_non_nullable
               as Date,
-      null == checkMonth
+      freezed == checkMonth
           ? _value.checkMonth
           : checkMonth // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
     ));
   }
 }
@@ -114,7 +114,7 @@ class __$$AgeImplCopyWithImpl<$Res> extends _$AgeCopyWithImpl<$Res, _$AgeImpl>
 /// @nodoc
 @JsonSerializable()
 class _$AgeImpl extends _Age {
-  _$AgeImpl(this.dateOfBirth, this.checkMonth)
+  _$AgeImpl(this.dateOfBirth, [this.checkMonth])
       : assert(
             !(DateTime(DTU.now().year, DTU.now().month, DTU.now().day)
                 .difference(
@@ -134,27 +134,12 @@ class _$AgeImpl extends _Age {
   @override
   final Date dateOfBirth;
   @override
-  final bool checkMonth;
+  final bool? checkMonth;
 
   @override
   String toString() {
     return 'Age(dateOfBirth: $dateOfBirth, checkMonth: $checkMonth)';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AgeImpl &&
-            (identical(other.dateOfBirth, dateOfBirth) ||
-                other.dateOfBirth == dateOfBirth) &&
-            (identical(other.checkMonth, checkMonth) ||
-                other.checkMonth == checkMonth));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, dateOfBirth, checkMonth);
 
   @JsonKey(ignore: true)
   @override
@@ -171,7 +156,7 @@ class _$AgeImpl extends _Age {
 }
 
 abstract class _Age extends Age {
-  factory _Age(final Date dateOfBirth, final bool checkMonth) = _$AgeImpl;
+  factory _Age(final Date dateOfBirth, [final bool? checkMonth]) = _$AgeImpl;
   _Age._() : super._();
 
   factory _Age.fromJson(Map<String, dynamic> json) = _$AgeImpl.fromJson;
@@ -179,7 +164,7 @@ abstract class _Age extends Age {
   @override
   Date get dateOfBirth;
   @override
-  bool get checkMonth;
+  bool? get checkMonth;
   @override
   @JsonKey(ignore: true)
   _$$AgeImplCopyWith<_$AgeImpl> get copyWith =>

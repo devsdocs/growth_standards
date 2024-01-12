@@ -1,3 +1,7 @@
+// ignore_for_file: avoid_print
+
+import 'dart:collection';
+
 import 'package:growth_standards/growth_standards.dart';
 
 import 'package:test/test.dart';
@@ -30,6 +34,29 @@ void main() {
   final list2 = [date4, date5, date6];
 
   group('A group of tests', () {
+    test('Date Sort', () {
+      final dateMap = {
+        date1: 'date1',
+        date2: 'date2',
+        date3: 'date3',
+        date4: 'date4',
+        date5: 'date5',
+        date6: 'date6',
+      };
+
+      print(dateMap);
+      final splayTreeMap = SplayTreeMap<Date, String>.from(dateMap);
+      print(splayTreeMap);
+      splayTreeMap[Date(year: 2021, month: Months.september, date: 2)] =
+          'date7';
+      print(splayTreeMap);
+
+      expect(list.first == date1, true);
+      print(list);
+      list.sort(); // Sort Test
+      expect(list.first == date2, true);
+      print(list);
+    });
     test('Date Compare', () {
       expect(list == list2, false);
       expect(list != list2, true);
@@ -51,10 +78,6 @@ void main() {
 
       expect(date1 > date2, true);
       expect(dateTime1.isAfter(dateTime2), true);
-
-      expect(list.first == date1, true);
-      list.sort(); // Sort Test
-      expect(list.first == date2, true);
     });
     test('Age', () {
       expect(Age.byMonthsAgo(1).ageInTotalDaysByNow, anyOf(dateBase));

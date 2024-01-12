@@ -7,8 +7,9 @@ part 'age.freezed.dart';
 part 'age.g.dart';
 part 'date_utils.dart';
 
-Months _monthFromNumber(int number) =>
-    Months.values.singleWhere((element) => element.number == number);
+Months _monthFromNumber(int number) => _reverseMonthsEnum[number]!;
+
+final _reverseMonthsEnum = _$MonthsEnumMap.map((k, v) => MapEntry(v, k));
 
 @freezed
 class Age with _$Age {
@@ -16,7 +17,7 @@ class Age with _$Age {
     '!(DateTime(DTU.now().year, DTU.now().month, DTU.now().day).difference(DateTime(dateOfBirth.year,dateOfBirth.month.number,dateOfBirth.date,),).isNegative)',
     'Age is impossible',
   )
-  factory Age(Date dateOfBirth, bool checkMonth) = _Age;
+  factory Age(Date dateOfBirth, [bool? checkMonth]) = _Age;
 
   const Age._();
 
@@ -76,6 +77,14 @@ class Age with _$Age {
       ),
     );
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Age && other.dateOfBirth == dateOfBirth;
+
+  @override
+  int get hashCode => dateOfBirth.hashCode;
 }
 
 @freezed
@@ -155,6 +164,9 @@ class Date with _$Date implements Comparable<Date> {
 
   Date add(Duration duration) => this + duration;
   Date subtract(Duration duration) => this - duration;
+
+  Duration difference(Date other) =>
+      Duration(days: DTU.getDaysDifference(toDateTime(), other.toDateTime()));
 
   DateTime toDateTime() => DateTime(year, month.number, date);
 

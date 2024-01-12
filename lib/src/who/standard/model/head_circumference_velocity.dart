@@ -54,10 +54,6 @@ class WHOGrowthStandardsHeadCircumferenceVelocityForAge
     'Calculation can not be done as past measurment is empty',
   )
   @Assert(
-    'pastMeasurement.keys.every((element) => element.isNotSameAs(Date.today()))',
-    'Calculation can not be done as there is todays date in past measurment',
-  )
-  @Assert(
     'pastMeasurement.keys.every((element) => element.isBefore(Date.today()))',
     'Calculation can not be done as there is future date in past measurment',
   )
@@ -69,7 +65,7 @@ class WHOGrowthStandardsHeadCircumferenceVelocityForAge
     Date? observationDate,
     required Sex sex,
     required Age age,
-    required Map<Date, Length> pastMeasurement,
+    required List<LengthMeasurementHistory> pastMeasurement,
   }) = _WHOGrowthStandardsHeadCircumferenceVelocityForAge;
 
   const WHOGrowthStandardsHeadCircumferenceVelocityForAge._();
@@ -109,8 +105,8 @@ class WHOGrowthStandardsHeadCircumferenceVelocityForAgeIncrement {
   WHOGrowthStandardsHeadCircumferenceVelocityForAgeIncrement({
     required this.lmsData,
   });
-  final Map<WeeksMonths, WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS>
-      lmsData;
+  final Map<VelocityMonths,
+      WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS> lmsData;
 }
 
 class WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS {

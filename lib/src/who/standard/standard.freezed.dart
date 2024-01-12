@@ -991,7 +991,8 @@ mixin _$WHOGrowthStandardsHeadCircumferenceVelocityForAge {
   Date? get observationDate => throw _privateConstructorUsedError;
   Sex get sex => throw _privateConstructorUsedError;
   Age get age => throw _privateConstructorUsedError;
-  Map<Date, Length> get pastMeasurement => throw _privateConstructorUsedError;
+  List<LengthMeasurementHistory> get pastMeasurement =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $WHOGrowthStandardsHeadCircumferenceVelocityForAgeCopyWith<
@@ -1013,7 +1014,7 @@ abstract class $WHOGrowthStandardsHeadCircumferenceVelocityForAgeCopyWith<
       {Date? observationDate,
       Sex sex,
       Age age,
-      Map<Date, Length> pastMeasurement});
+      List<LengthMeasurementHistory> pastMeasurement});
 
   $DateCopyWith<$Res>? get observationDate;
   $AgeCopyWith<$Res> get age;
@@ -1056,7 +1057,7 @@ class _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeCopyWithImpl<$Res,
       pastMeasurement: null == pastMeasurement
           ? _value.pastMeasurement
           : pastMeasurement // ignore: cast_nullable_to_non_nullable
-              as Map<Date, Length>,
+              as List<LengthMeasurementHistory>,
     ) as $Val);
   }
 
@@ -1098,7 +1099,7 @@ abstract class _$$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImplCopyWith<
       {Date? observationDate,
       Sex sex,
       Age age,
-      Map<Date, Length> pastMeasurement});
+      List<LengthMeasurementHistory> pastMeasurement});
 
   @override
   $DateCopyWith<$Res>? get observationDate;
@@ -1143,7 +1144,7 @@ class __$$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImplCopyWithImpl<
       pastMeasurement: null == pastMeasurement
           ? _value._pastMeasurement
           : pastMeasurement // ignore: cast_nullable_to_non_nullable
-              as Map<Date, Length>,
+              as List<LengthMeasurementHistory>,
     ));
   }
 }
@@ -1156,15 +1157,11 @@ class _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl
       {this.observationDate,
       required this.sex,
       required this.age,
-      required final Map<Date, Length> pastMeasurement})
+      required final List<LengthMeasurementHistory> pastMeasurement})
       : assert(age.ageInTotalDaysByNow >= 0 && age.ageInTotalMonthsByNow <= 24,
             'Age must be in range of 0 days - 24 months'),
         assert(pastMeasurement.isNotEmpty,
             'Calculation can not be done as past measurment is empty'),
-        assert(
-            pastMeasurement.keys
-                .every((element) => element.isNotSameAs(Date.today())),
-            'Calculation can not be done as there is todays date in past measurment'),
         assert(
             pastMeasurement.keys
                 .every((element) => element.isBefore(Date.today())),
@@ -1182,12 +1179,12 @@ class _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl
   final Sex sex;
   @override
   final Age age;
-  final Map<Date, Length> _pastMeasurement;
+  final List<LengthMeasurementHistory> _pastMeasurement;
   @override
-  Map<Date, Length> get pastMeasurement {
-    if (_pastMeasurement is EqualUnmodifiableMapView) return _pastMeasurement;
+  List<LengthMeasurementHistory> get pastMeasurement {
+    if (_pastMeasurement is EqualUnmodifiableListView) return _pastMeasurement;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_pastMeasurement);
+    return EqualUnmodifiableListView(_pastMeasurement);
   }
 
   @override
@@ -1229,7 +1226,7 @@ abstract class _WHOGrowthStandardsHeadCircumferenceVelocityForAge
           {final Date? observationDate,
           required final Sex sex,
           required final Age age,
-          required final Map<Date, Length> pastMeasurement}) =
+          required final List<LengthMeasurementHistory> pastMeasurement}) =
       _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl;
   _WHOGrowthStandardsHeadCircumferenceVelocityForAge._() : super._();
 
@@ -1240,7 +1237,7 @@ abstract class _WHOGrowthStandardsHeadCircumferenceVelocityForAge
   @override
   Age get age;
   @override
-  Map<Date, Length> get pastMeasurement;
+  List<LengthMeasurementHistory> get pastMeasurement;
   @override
   @JsonKey(ignore: true)
   _$$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImplCopyWith<

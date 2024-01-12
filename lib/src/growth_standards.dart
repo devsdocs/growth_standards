@@ -68,5 +68,6 @@ export 'who/standard/standard.dart'
         WHOGrowthStandardsWeightForHeightData,
         WHOGrowthStandardsWeigthForLength,
         WHOGrowthStandardsWeigthForLengthData;
+export 'who/tools.dart' show LengthMeasurementHistory, MassMeasurementHistory;
 
 part 'growth_standards.part.dart';
