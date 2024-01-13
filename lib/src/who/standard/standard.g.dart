@@ -96,6 +96,30 @@ Map<String, dynamic> _$$WHOGrowthStandardsHeadCircumferenceForAgeImplToJson(
           const LengthConverter().toJson(instance.measurementResult),
     };
 
+_$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl
+    _$$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImplFromJson(
+            Map<String, dynamic> json) =>
+        _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl(
+          observationDate: json['observationDate'] == null
+              ? null
+              : Date.fromJson(json['observationDate'] as Map<String, dynamic>),
+          sex: $enumDecode(_$SexEnumMap, json['sex']),
+          age: Age.fromJson(json['age'] as Map<String, dynamic>),
+          pastMeasurement: const LengthMeasurementHistoryConverter()
+              .fromJson(json['pastMeasurement'] as List),
+        );
+
+Map<String, dynamic>
+    _$$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImplToJson(
+            _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl instance) =>
+        <String, dynamic>{
+          'observationDate': instance.observationDate,
+          'sex': _$SexEnumMap[instance.sex]!,
+          'age': instance.age,
+          'pastMeasurement': const LengthMeasurementHistoryConverter()
+              .toJson(instance.pastMeasurement),
+        };
+
 _$WHOGrowthStandardsLengthForAgeImpl
     _$$WHOGrowthStandardsLengthForAgeImplFromJson(Map<String, dynamic> json) =>
         _$WHOGrowthStandardsLengthForAgeImpl(
@@ -124,6 +148,29 @@ const _$LengthHeigthMeasurementPositionEnumMap = {
   LengthHeigthMeasurementPosition.recumbent: 'recumbent',
   LengthHeigthMeasurementPosition.standing: 'standing',
 };
+
+_$WHOGrowthStandardsLengthVelocityForAgeImpl
+    _$$WHOGrowthStandardsLengthVelocityForAgeImplFromJson(
+            Map<String, dynamic> json) =>
+        _$WHOGrowthStandardsLengthVelocityForAgeImpl(
+          observationDate: json['observationDate'] == null
+              ? null
+              : Date.fromJson(json['observationDate'] as Map<String, dynamic>),
+          sex: $enumDecode(_$SexEnumMap, json['sex']),
+          age: Age.fromJson(json['age'] as Map<String, dynamic>),
+          pastMeasurement: const LengthMeasurementHistoryConverter()
+              .fromJson(json['pastMeasurement'] as List),
+        );
+
+Map<String, dynamic> _$$WHOGrowthStandardsLengthVelocityForAgeImplToJson(
+        _$WHOGrowthStandardsLengthVelocityForAgeImpl instance) =>
+    <String, dynamic>{
+      'observationDate': instance.observationDate,
+      'sex': _$SexEnumMap[instance.sex]!,
+      'age': instance.age,
+      'pastMeasurement': const LengthMeasurementHistoryConverter()
+          .toJson(instance.pastMeasurement),
+    };
 
 _$WHOGrowthStandardsSubscapularSkinfoldForAgeImpl
     _$$WHOGrowthStandardsSubscapularSkinfoldForAgeImplFromJson(
@@ -169,6 +216,29 @@ Map<String, dynamic> _$$WHOGrowthStandardsTricepsSkinfoldForAgeImplToJson(
       'age': instance.age,
       'measurementResult':
           const LengthConverter().toJson(instance.measurementResult),
+    };
+
+_$WHOGrowthStandardsWeightVelocityForAgeImpl
+    _$$WHOGrowthStandardsWeightVelocityForAgeImplFromJson(
+            Map<String, dynamic> json) =>
+        _$WHOGrowthStandardsWeightVelocityForAgeImpl(
+          observationDate: json['observationDate'] == null
+              ? null
+              : Date.fromJson(json['observationDate'] as Map<String, dynamic>),
+          sex: $enumDecode(_$SexEnumMap, json['sex']),
+          age: Age.fromJson(json['age'] as Map<String, dynamic>),
+          pastMeasurement: const MassMeasurementHistoryConverter()
+              .fromJson(json['pastMeasurement'] as List),
+        );
+
+Map<String, dynamic> _$$WHOGrowthStandardsWeightVelocityForAgeImplToJson(
+        _$WHOGrowthStandardsWeightVelocityForAgeImpl instance) =>
+    <String, dynamic>{
+      'observationDate': instance.observationDate,
+      'sex': _$SexEnumMap[instance.sex]!,
+      'age': instance.age,
+      'pastMeasurement': const MassMeasurementHistoryConverter()
+          .toJson(instance.pastMeasurement),
     };
 
 _$WHOGrowthStandardsWeightForAgeImpl

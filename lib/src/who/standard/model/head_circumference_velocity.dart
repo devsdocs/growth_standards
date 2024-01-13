@@ -40,6 +40,8 @@ class WHOGrowthStandardsHeadCircumferenceVelocityForAgeData {
           );
 
   final Map<Sex, WHOGrowthStandardsHeadCircumferenceVelocityForAgeGender> _data;
+  Map<Sex, WHOGrowthStandardsHeadCircumferenceVelocityForAgeGender> get data =>
+      _data;
 }
 
 @freezed
@@ -54,21 +56,27 @@ class WHOGrowthStandardsHeadCircumferenceVelocityForAge
     'Calculation can not be done as past measurment is empty',
   )
   @Assert(
-    'pastMeasurement.keys.every((element) => element.isBefore(Date.today()))',
+    'pastMeasurement.every((element) => element.date.isSameOrBefore(Date.today()))',
     'Calculation can not be done as there is future date in past measurment',
   )
   @Assert(
-    'pastMeasurement.keys.every((element) => element.isSameOrAfter(age.dateOfBirth))',
-    'Calculation can not be done as there is date less than Date of Birth in past measurement, if you find this exception is a mistake, try to provide exact \$Age by using \${Age.byDate} or \$Date by using \${Date.fromDateTime} in Past Measurement',
+    'pastMeasurement.every((element) => element.date.isSameOrAfter(age.dateOfBirth))',
+    'Calculation can not be done as there is date less than Date of Birth in past measurement, if you find this exception is a mistake, try to provide exact \$Age',
   )
   factory WHOGrowthStandardsHeadCircumferenceVelocityForAge({
     Date? observationDate,
     required Sex sex,
     required Age age,
+    @LengthMeasurementHistoryConverter()
     required List<LengthMeasurementHistory> pastMeasurement,
   }) = _WHOGrowthStandardsHeadCircumferenceVelocityForAge;
 
   const WHOGrowthStandardsHeadCircumferenceVelocityForAge._();
+
+  factory WHOGrowthStandardsHeadCircumferenceVelocityForAge.fromJson(
+    Map<String, dynamic> json,
+  ) =>
+      _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeFromJson(json);
 
   WHOGrowthStandardsHeadCircumferenceVelocityForAgeData
       get _headCircumferenceData =>
@@ -79,11 +87,67 @@ class WHOGrowthStandardsHeadCircumferenceVelocityForAge
   WHOGrowthStandardsHeadCircumferenceVelocityForAgeGender get _femaleData =>
       _headCircumferenceData._data[Sex.female]!;
 
-  ///TODO(devsdocs): need help implement this
+  //TODO(devsdocs): need help implement this
   Map<VelocityIncrement,
           WHOGrowthStandardsHeadCircumferenceVelocityForAgeIncrement>
       get _incrementData =>
           (sex == Sex.male ? _maleData : _femaleData).incrementData;
+
+  Map<VelocityIncrement,
+          Map<({Date dateBefore, Date dateAfter, Duration duration}), num>>
+      get _incrementalData =>
+          VelocityPastMeasurement(_sanitizePastMeasurement).incrementalData;
+
+  Map<VelocityIncrement, Map<VelocityMonths, ({num zScore, num percentile})>>
+      zScorePercentileMap(Precision precision) {
+    final joinMap = _incrementData.map((k1, v1) {
+      final alt = _incrementalData[k1];
+      if (alt == null || alt.isEmpty) return MapEntry(k1, null);
+
+      final alv = alt.map((k2, v2) {
+        final VelocityMonths vm = (
+          low: ageAtObservationDate.ageInTotalMonthsByNow -
+              Age(k2.dateBefore).ageInTotalMonthsByNow,
+          high: ageAtObservationDate.ageInTotalMonthsByNow -
+              Age(k2.dateAfter).ageInTotalMonthsByNow
+        );
+
+        final whoGrowthStandardsHeadCircumferenceVelocityForAgeLMS =
+            v1.lmsData[vm];
+
+        if (whoGrowthStandardsHeadCircumferenceVelocityForAgeLMS != null) {
+          final adjustedZScore =
+              whoGrowthStandardsHeadCircumferenceVelocityForAgeLMS.lms
+                  .adjustedZScore(v2);
+          return MapEntry(
+            vm,
+            (
+              zScore: adjustedZScore.precision(precision),
+              percentile: (pnorm(adjustedZScore) * 100).precision(precision)
+            ),
+          );
+        }
+        return MapEntry(
+          vm,
+          null,
+        );
+      });
+      final rVal = alv.entries.every((e) => e.value == null)
+          ? null
+          : (alv..removeWhere((_, v) => v == null))
+              .map((k3, v3) => MapEntry(k3, v3!));
+      return MapEntry(k1, rVal);
+    });
+    return (joinMap..removeWhere((k4, v4) => v4 == null)).map(
+      (k5, v5) => MapEntry(k5, v5!),
+    );
+  }
+
+  List<LengthMeasurementHistory> get _sanitizePastMeasurement => pastMeasurement
+      .map(
+        (e) => LengthMeasurementHistory(e.date, e.unit.toCentimeters),
+      )
+      .toList();
 
   Age get ageAtObservationDate => observationDate == null
       ? age

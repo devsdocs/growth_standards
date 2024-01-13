@@ -3,6 +3,7 @@
 import 'dart:collection';
 
 import 'package:growth_standards/growth_standards.dart';
+import 'package:growth_standards/src/who/standard/standard.dart';
 
 import 'package:test/test.dart';
 
@@ -119,7 +120,7 @@ void main() {
         male.zScore(Precision.two),
         equals(
           male
-              .copyWith(age: Age.byDate(observationDate), observationDate: null)
+              .copyWith(age: Age(observationDate), observationDate: null)
               .zScore(Precision.two),
         ),
       );
@@ -167,7 +168,7 @@ void main() {
               bodyMassIndexMeasurement:
                   WHOGrowthStandardsBodyMassIndexMeasurement(
                 20.5,
-                age: Age.byDate(observationDate),
+                age: Age(observationDate),
               ),
             )
             .zScore(Precision.two),
@@ -199,6 +200,156 @@ void main() {
             .zScore(Precision.two),
         anyOf(2.36, 2.37),
       );
+    });
+
+    test('WHO Length Velocity 1', () {
+      final age = Age.byMonthsAgo(12);
+      final msr1 = LengthMeasurementHistory(
+        age.dateAtMonthsAfterBirth(9),
+        const Centimeters(72.5),
+      );
+      final dateAtMonthsAfterBirth = age.dateAtMonthsAfterBirth(12);
+      print(age.dateOfBirth);
+      print(dateAtMonthsAfterBirth);
+      final msr2 = LengthMeasurementHistory(
+        dateAtMonthsAfterBirth,
+        const Centimeters(80),
+      );
+
+      final msrmnt = WHOGrowthStandardsLengthVelocityForAge(
+        age: age,
+        sex: Sex.female,
+        pastMeasurement: [msr1, msr2],
+      );
+
+      print(msrmnt.zScorePercentileMap);
+    });
+    test('WHO Length Velocity 2', () {
+      final age = Age.byMonthsAgo(18);
+      final msr1 = LengthMeasurementHistory(
+        age.dateAtMonthsAfterBirth(15),
+        const Centimeters(85),
+      );
+      final dateAtMonthsAfterBirth = age.dateAtMonthsAfterBirth(18);
+      print(age.dateOfBirth);
+      print(dateAtMonthsAfterBirth);
+      final msr2 = LengthMeasurementHistory(
+        dateAtMonthsAfterBirth,
+        const Centimeters(85.5),
+      );
+
+      final msrmnt = WHOGrowthStandardsLengthVelocityForAge(
+        age: age,
+        sex: Sex.female,
+        pastMeasurement: [msr1, msr2],
+      );
+
+      print(msrmnt.zScorePercentileMap);
+    });
+    test('WHO Length Velocity 3', () {
+      final age = Age.byMonthsAgo(6);
+      final msr1 = LengthMeasurementHistory(
+        age.dateAtMonthsAfterBirth(3),
+        const Centimeters(47),
+      );
+
+      final dateAtMonthsAfterBirth = age.dateAtMonthsAfterBirth(6);
+      print(age.dateOfBirth);
+      print(dateAtMonthsAfterBirth);
+      final msr2 = LengthMeasurementHistory(
+        dateAtMonthsAfterBirth,
+        const Centimeters(55),
+      );
+
+      final msrmnt = WHOGrowthStandardsLengthVelocityForAge(
+        age: age,
+        sex: Sex.female,
+        pastMeasurement: [msr1, msr2],
+      );
+
+      print(msrmnt.zScorePercentileMap);
+    });
+    test('WHO Weight Velocity Data', () {
+      final whoGrowthStandardsWeightVelocityForAgeLMS =
+          WHOGrowthStandardsWeightVelocityForAgeData()
+              .data[Sex.male]!
+              .incrementData[VelocityIncrement.$2]!
+              .lmsData[(high: 2, low: 0)]!;
+      print(
+        whoGrowthStandardsWeightVelocityForAgeLMS
+            .percentileCutOff[PercentileValue.$85],
+      );
+      print(
+        whoGrowthStandardsWeightVelocityForAgeLMS
+            .standardDeviationCutOff[ZScoreValue.pos1],
+      );
+    });
+    test('WHO Weight Velocity 1', () {
+      final age = Age.byMonthsAgo(6);
+      final msr1 = MassMeasurementHistory(
+        age.dateAtMonthsAfterBirth(4),
+        const Kilograms(4),
+      );
+      final dateAtMonthsAfterBirth = age.dateAtMonthsAfterBirth(6);
+      print(age.dateOfBirth);
+      print(dateAtMonthsAfterBirth);
+      final msr2 = MassMeasurementHistory(
+        dateAtMonthsAfterBirth,
+        const Kilograms(6.2),
+      );
+
+      final msrmnt = WHOGrowthStandardsWeightVelocityForAge(
+        age: age,
+        sex: Sex.male,
+        pastMeasurement: [msr1, msr2],
+      );
+
+      print(msrmnt.zScorePercentileMap);
+    });
+    test('WHO Weight Velocity 2', () {
+      final age = Age.byMonthsAgo(18);
+      final msr1 = MassMeasurementHistory(
+        age.dateAtMonthsAfterBirth(16),
+        const Kilograms(12),
+      );
+      final dateAtMonthsAfterBirth = age.dateAtMonthsAfterBirth(18);
+      print(age.dateOfBirth);
+      print(dateAtMonthsAfterBirth);
+      final msr2 = MassMeasurementHistory(
+        dateAtMonthsAfterBirth,
+        const Kilograms(11.5),
+      );
+
+      final msrmnt = WHOGrowthStandardsWeightVelocityForAge(
+        age: age,
+        sex: Sex.male,
+        pastMeasurement: [msr1, msr2],
+      );
+
+      print(msrmnt.zScorePercentileMap);
+    });
+    test('WHO Weight Velocity 3', () {
+      final age = Age.byMonthsAgo(13);
+      final msr1 = MassMeasurementHistory(
+        age.dateAtMonthsAfterBirth(11),
+        const Kilograms(9),
+      );
+
+      final dateAtMonthsAfterBirth = age.dateAtMonthsAfterBirth(13);
+      print(age.dateOfBirth);
+      print(dateAtMonthsAfterBirth);
+      final msr2 = MassMeasurementHistory(
+        dateAtMonthsAfterBirth,
+        const Kilograms(10.2),
+      );
+
+      final msrmnt = WHOGrowthStandardsWeightVelocityForAge(
+        age: age,
+        sex: Sex.male,
+        pastMeasurement: [msr1, msr2],
+      );
+
+      print(msrmnt.zScorePercentileMap);
     });
   });
 

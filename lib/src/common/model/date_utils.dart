@@ -28,69 +28,16 @@ class TimeTools {
           : daysInMonth[month - 1];
 
   static DateTime calculateBirthDateInDaysBeforeByNow(int daysOld) =>
-      DTU.now().subtract(Duration(days: daysOld));
+      DTU.addDays(DTU.now(), -daysOld);
 
-  static DateTime calculateBirthDateInYearsBeforeByNow(int yearsOld) {
-    // Get the current date
-    final DateTime currentDate = DTU.now();
+  static DateTime calculateBirthDateInWeeksBeforeByNow(int weeksOld) =>
+      DTU.addWeeks(DTU.now(), -weeksOld);
 
-    // Calculate the target date
-    return currentDate
-        .subtract(Duration(days: yearsToDays(yearsOld, currentDate)));
-  }
+  static DateTime calculateBirthDateInYearsBeforeByNow(int yearsOld) =>
+      DTU.addYears(DTU.now(), -yearsOld);
 
-  static DateTime calculateBirthDateInMonthsBeforeByNow(int monthsOld) {
-    // Get the current date
-    final DateTime currentDate = DTU.now();
-
-    // Calculate the target date
-    final DateTime targetDate = currentDate.subtract(
-      Duration(
-        days: monthsToDays(currentDate.year, currentDate.month, monthsOld),
-      ),
-    );
-
-    return targetDate;
-  }
-
-  static int yearsToDays(int years, DateTime currentDate) {
-    // Calculate the total number of days in the given years, considering leap years
-    int days = 0;
-    for (int i = 0; i < years; i++) {
-      days += DTU.getDaysInYear(currentDate.year - i);
-    }
-
-    return days;
-  }
-
-  static int monthsToDays(int year, int startingMonth, int months) {
-    // Calculate the total number of days in the given months
-    int days = 0;
-    int currentMonth = startingMonth;
-    int currentYear = year;
-
-    for (int i = 0; i < months; i++) {
-      final daysInCurrentMonth = DateTime(currentYear, currentMonth, 0).day;
-      days += daysInCurrentMonth;
-
-      currentMonth++;
-
-      if (currentMonth > 12) {
-        currentMonth = 1;
-        currentYear++;
-      }
-    }
-
-    return days;
-  }
-}
-
-bool checkMonths(int number) {
-  final date = Date.fromDateTime(
-    TimeTools.calculateBirthDateInMonthsBeforeByNow(number),
-  );
-
-  return number != Age.byDate(date).ageInTotalMonthsByNow;
+  static DateTime calculateBirthDateInMonthsBeforeByNow(int monthsOld) =>
+      DTU.addMonths(DTU.now(), -monthsOld);
 }
 
 class TimeIntervalCount {

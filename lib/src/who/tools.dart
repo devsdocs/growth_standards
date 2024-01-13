@@ -1,7 +1,9 @@
 import 'dart:collection';
+import 'dart:convert';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:growth_standards/src/common/model/age.dart';
+import 'package:growth_standards/src/common/tools.dart';
 import 'package:growth_standards/src/common/typedef.dart';
 import 'package:growth_standards/src/who/standard/standard.dart';
 import 'package:reusable_tools/reusable_tools.dart';
@@ -75,33 +77,67 @@ class VelocityPastMeasurement<T extends Unit<T>> {
   /// Either [List] of [MassMeasurementHistory] or [List] of [LengthMeasurementHistory]
   final List<MeasurementHistory<T>> measurementHistory;
 
-  Map<Date, T> get sortedMap => Map<Date, T>.fromEntries(
+  Map<Date, T> get sortedByDate => Map<Date, T>.fromEntries(
         _splayMap.entries,
       );
 
   SplayTreeMap<Date, T> get _splayMap => SplayTreeMap<Date, T>.of(
-        unsortedMap,
+        unsortedDate,
       );
 
-  Map<Date, T> get unsortedMap =>
+  Map<Date, T> get unsortedDate =>
       measurementHistory.asMap().map((_, v) => MapEntry(v.date, v.unit));
 
-  Map<({Date dateBefore, Date dateAfter, Duration duration}), num>
+  Map<VelocityIncrement,
+          Map<({Date dateBefore, Date dateAfter, Duration duration}), num>>
       get incrementalData {
-    final List<Date> keys = sortedMap.keys.toList();
-    if (keys.isEmpty || keys.length == 1) return {};
-    final Map<({Date dateBefore, Date dateAfter, Duration duration}), num>
+    final List<Date> keys = sortedByDate.keys.toList();
+    final length = keys.length;
+    if (keys.isEmpty || length == 1) return {};
+    final Map<VelocityIncrement,
+            Map<({Date dateBefore, Date dateAfter, Duration duration}), num>>
         result = {};
 
-    for (int i = 1; i < keys.length; i++) {
-      final ({Date dateBefore, Date dateAfter, Duration duration}) duration = (
-        duration: keys[i].difference(keys[i - 1]),
-        dateBefore: keys[i - 1],
-        dateAfter: keys[i]
-      );
-      final num valueDifference =
-          sortedMap[keys[i]]!.value! - sortedMap[keys[i - 1]]!.value!;
-      result[duration] = valueDifference;
+    for (int i = 0; i < length - 1; i++) {
+      for (int j = i + 1; j < length; j++) {
+        final before = keys[i];
+        final now = keys[j];
+        final ({Date dateBefore, Date dateAfter, Duration duration}) data = (
+          duration: now.difference(before),
+          dateBefore: before,
+          dateAfter: now
+        );
+
+        //! Concept
+        final countMos =
+            TimeIntervalCount(before.year, before.month.number, before.date)
+                .ageAtDate(now.toDateTime())
+                .months;
+
+        VelocityIncrement incremental;
+        if (countMos == 1) {
+          incremental = VelocityIncrement.$1;
+        } else if (countMos == 2) {
+          incremental = VelocityIncrement.$2;
+        } else if (countMos == 3) {
+          incremental = VelocityIncrement.$3;
+        } else if (countMos == 4) {
+          incremental = VelocityIncrement.$4;
+        } else if (countMos == 6) {
+          incremental = VelocityIncrement.$6;
+        } else {
+          continue; // Skip durations other than 1, 2, 3, 4, and 6 months
+        }
+
+        if (!result.containsKey(incremental)) {
+          result[incremental] = {};
+        }
+
+        final num valueDifference =
+            sortedByDate[now]!.value! - sortedByDate[before]!.value!;
+
+        result[incremental]![data] = valueDifference;
+      }
     }
 
     return result;
@@ -129,4 +165,67 @@ class LengthMeasurementHistory extends MeasurementHistory<Length> {
 abstract class MeasurementHistory<T extends Unit<T>> {
   T get unit;
   Date get date;
+}
+
+class MassMeasurementHistoryConverter
+    implements JsonConverter<List<MassMeasurementHistory>, List<dynamic>> {
+  const MassMeasurementHistoryConverter();
+
+  @override
+  List<MassMeasurementHistory> fromJson(List json) => json
+      .map(
+        (e) => MassMeasurementHistory(
+          Date.fromJson(
+            jsonDecode(
+              (e as Map<String, dynamic>)['date'].toString(),
+            ) as Map<String, dynamic>,
+          ),
+          const MassConverter().fromJson(
+            jsonDecode(
+              e['unit'].toString(),
+            ) as Map<String, dynamic>,
+          ),
+        ),
+      )
+      .toList();
+
+  @override
+  List toJson(List<MassMeasurementHistory> object) => object
+      .map(
+        (e) => {
+          'date': e.date.toJson(),
+          'unit': e.unit.toJson(),
+        },
+      )
+      .toList();
+}
+
+class LengthMeasurementHistoryConverter
+    implements JsonConverter<List<LengthMeasurementHistory>, List<dynamic>> {
+  const LengthMeasurementHistoryConverter();
+
+  @override
+  List<LengthMeasurementHistory> fromJson(List json) => json.map(
+        (e) {
+          e as Map<String, dynamic>;
+          return LengthMeasurementHistory(
+            Date.fromJson(
+              e['date'] as Map<String, dynamic>,
+            ),
+            const LengthConverter().fromJson(
+              e['unit'] as Map<String, dynamic>,
+            ),
+          );
+        },
+      ).toList();
+
+  @override
+  List toJson(List<LengthMeasurementHistory> object) => object
+      .map(
+        (e) => {
+          'date': e.date.toJson(),
+          'unit': e.unit.toJson(),
+        },
+      )
+      .toList();
 }

@@ -10,7 +10,7 @@ const length = 82;
 
 const centimeters = Centimeters(length);
 const kilograms = Kilograms(weight);
-final age = Age.byDate(birthDay);
+final age = Age(birthDay);
 
 final gs = GrowthStandard.who.fromBirthTo5Years;
 const sex = Sex.male;

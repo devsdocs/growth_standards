@@ -32,6 +32,16 @@ final class WHOGrowthStandardsData {
 
   WHOGrowthStandardsWeigthForLengthData get weigthForLengthData =>
       WHOGrowthStandardsWeigthForLengthData();
+
+  WHOGrowthStandardsHeadCircumferenceVelocityForAgeData
+      get headCircumferenceVelocityForAgeData =>
+          WHOGrowthStandardsHeadCircumferenceVelocityForAgeData();
+
+  WHOGrowthStandardsLengthVelocityForAgeData get lengthVelocityForAgeData =>
+      WHOGrowthStandardsLengthVelocityForAgeData();
+
+  WHOGrowthStandardsWeightVelocityForAgeData get weightVelocityForAgeData =>
+      WHOGrowthStandardsWeightVelocityForAgeData();
 }
 
 final class WHOGrowthStandardFromJson {
@@ -72,6 +82,20 @@ final class WHOGrowthStandardFromJson {
     Map<String, dynamic> json,
   ) =>
       WHOGrowthStandardsWeigthForLength.fromJson(json);
+
+  WHOGrowthStandardsHeadCircumferenceVelocityForAge
+      headCircumferenceVelocityForAge(Map<String, dynamic> json) =>
+          WHOGrowthStandardsHeadCircumferenceVelocityForAge.fromJson(json);
+
+  WHOGrowthStandardsLengthVelocityForAge lengthVelocityForAge(
+    Map<String, dynamic> json,
+  ) =>
+      WHOGrowthStandardsLengthVelocityForAge.fromJson(json);
+
+  WHOGrowthStandardsWeightVelocityForAge weightVelocityForAge(
+    Map<String, dynamic> json,
+  ) =>
+      WHOGrowthStandardsWeightVelocityForAge.fromJson(json);
 }
 
 /// For age 0 to 5 years old (<= 1856 days)

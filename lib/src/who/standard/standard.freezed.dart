@@ -986,14 +986,22 @@ abstract class _WHOGrowthStandardsHeadCircumferenceForAge
       get copyWith => throw _privateConstructorUsedError;
 }
 
+WHOGrowthStandardsHeadCircumferenceVelocityForAge
+    _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeFromJson(
+        Map<String, dynamic> json) {
+  return _WHOGrowthStandardsHeadCircumferenceVelocityForAge.fromJson(json);
+}
+
 /// @nodoc
 mixin _$WHOGrowthStandardsHeadCircumferenceVelocityForAge {
   Date? get observationDate => throw _privateConstructorUsedError;
   Sex get sex => throw _privateConstructorUsedError;
   Age get age => throw _privateConstructorUsedError;
+  @LengthMeasurementHistoryConverter()
   List<LengthMeasurementHistory> get pastMeasurement =>
       throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $WHOGrowthStandardsHeadCircumferenceVelocityForAgeCopyWith<
           WHOGrowthStandardsHeadCircumferenceVelocityForAge>
@@ -1014,6 +1022,7 @@ abstract class $WHOGrowthStandardsHeadCircumferenceVelocityForAgeCopyWith<
       {Date? observationDate,
       Sex sex,
       Age age,
+      @LengthMeasurementHistoryConverter()
       List<LengthMeasurementHistory> pastMeasurement});
 
   $DateCopyWith<$Res>? get observationDate;
@@ -1099,6 +1108,7 @@ abstract class _$$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImplCopyWith<
       {Date? observationDate,
       Sex sex,
       Age age,
+      @LengthMeasurementHistoryConverter()
       List<LengthMeasurementHistory> pastMeasurement});
 
   @override
@@ -1150,28 +1160,33 @@ class __$$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImplCopyWithImpl<
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl
     extends _WHOGrowthStandardsHeadCircumferenceVelocityForAge {
   _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl(
       {this.observationDate,
       required this.sex,
       required this.age,
+      @LengthMeasurementHistoryConverter()
       required final List<LengthMeasurementHistory> pastMeasurement})
       : assert(age.ageInTotalDaysByNow >= 0 && age.ageInTotalMonthsByNow <= 24,
             'Age must be in range of 0 days - 24 months'),
         assert(pastMeasurement.isNotEmpty,
             'Calculation can not be done as past measurment is empty'),
         assert(
-            pastMeasurement.keys
-                .every((element) => element.isBefore(Date.today())),
+            pastMeasurement
+                .every((element) => element.date.isSameOrBefore(Date.today())),
             'Calculation can not be done as there is future date in past measurment'),
         assert(
-            pastMeasurement.keys
-                .every((element) => element.isSameOrAfter(age.dateOfBirth)),
-            'Calculation can not be done as there is date less than Date of Birth in past measurement, if you find this exception is a mistake, try to provide exact $Age by using ${Age.byDate} or $Date by using ${Date.fromDateTime} in Past Measurement'),
+            pastMeasurement.every(
+                (element) => element.date.isSameOrAfter(age.dateOfBirth)),
+            'Calculation can not be done as there is date less than Date of Birth in past measurement, if you find this exception is a mistake, try to provide exact $Age'),
         _pastMeasurement = pastMeasurement,
         super._();
+
+  factory _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImplFromJson(json);
 
   @override
   final Date? observationDate;
@@ -1181,6 +1196,7 @@ class _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl
   final Age age;
   final List<LengthMeasurementHistory> _pastMeasurement;
   @override
+  @LengthMeasurementHistoryConverter()
   List<LengthMeasurementHistory> get pastMeasurement {
     if (_pastMeasurement is EqualUnmodifiableListView) return _pastMeasurement;
     // ignore: implicit_dynamic_type
@@ -1205,6 +1221,7 @@ class _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl
                 .equals(other._pastMeasurement, _pastMeasurement));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, observationDate, sex, age,
       const DeepCollectionEquality().hash(_pastMeasurement));
@@ -1218,6 +1235,13 @@ class _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl
           __$$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImplCopyWithImpl<
                   _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl>(
               this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _WHOGrowthStandardsHeadCircumferenceVelocityForAge
@@ -1226,9 +1250,14 @@ abstract class _WHOGrowthStandardsHeadCircumferenceVelocityForAge
           {final Date? observationDate,
           required final Sex sex,
           required final Age age,
+          @LengthMeasurementHistoryConverter()
           required final List<LengthMeasurementHistory> pastMeasurement}) =
       _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl;
   _WHOGrowthStandardsHeadCircumferenceVelocityForAge._() : super._();
+
+  factory _WHOGrowthStandardsHeadCircumferenceVelocityForAge.fromJson(
+          Map<String, dynamic> json) =
+      _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl.fromJson;
 
   @override
   Date? get observationDate;
@@ -1237,6 +1266,7 @@ abstract class _WHOGrowthStandardsHeadCircumferenceVelocityForAge
   @override
   Age get age;
   @override
+  @LengthMeasurementHistoryConverter()
   List<LengthMeasurementHistory> get pastMeasurement;
   @override
   @JsonKey(ignore: true)
@@ -1520,6 +1550,283 @@ abstract class _WHOGrowthStandardsLengthForAge
   @JsonKey(ignore: true)
   _$$WHOGrowthStandardsLengthForAgeImplCopyWith<
           _$WHOGrowthStandardsLengthForAgeImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+WHOGrowthStandardsLengthVelocityForAge
+    _$WHOGrowthStandardsLengthVelocityForAgeFromJson(
+        Map<String, dynamic> json) {
+  return _WHOGrowthStandardsLengthVelocityForAge.fromJson(json);
+}
+
+/// @nodoc
+mixin _$WHOGrowthStandardsLengthVelocityForAge {
+  Date? get observationDate => throw _privateConstructorUsedError;
+  Sex get sex => throw _privateConstructorUsedError;
+  Age get age => throw _privateConstructorUsedError;
+  @LengthMeasurementHistoryConverter()
+  List<LengthMeasurementHistory> get pastMeasurement =>
+      throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $WHOGrowthStandardsLengthVelocityForAgeCopyWith<
+          WHOGrowthStandardsLengthVelocityForAge>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $WHOGrowthStandardsLengthVelocityForAgeCopyWith<$Res> {
+  factory $WHOGrowthStandardsLengthVelocityForAgeCopyWith(
+          WHOGrowthStandardsLengthVelocityForAge value,
+          $Res Function(WHOGrowthStandardsLengthVelocityForAge) then) =
+      _$WHOGrowthStandardsLengthVelocityForAgeCopyWithImpl<$Res,
+          WHOGrowthStandardsLengthVelocityForAge>;
+  @useResult
+  $Res call(
+      {Date? observationDate,
+      Sex sex,
+      Age age,
+      @LengthMeasurementHistoryConverter()
+      List<LengthMeasurementHistory> pastMeasurement});
+
+  $DateCopyWith<$Res>? get observationDate;
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class _$WHOGrowthStandardsLengthVelocityForAgeCopyWithImpl<$Res,
+        $Val extends WHOGrowthStandardsLengthVelocityForAge>
+    implements $WHOGrowthStandardsLengthVelocityForAgeCopyWith<$Res> {
+  _$WHOGrowthStandardsLengthVelocityForAgeCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? observationDate = freezed,
+    Object? sex = null,
+    Object? age = null,
+    Object? pastMeasurement = null,
+  }) {
+    return _then(_value.copyWith(
+      observationDate: freezed == observationDate
+          ? _value.observationDate
+          : observationDate // ignore: cast_nullable_to_non_nullable
+              as Date?,
+      sex: null == sex
+          ? _value.sex
+          : sex // ignore: cast_nullable_to_non_nullable
+              as Sex,
+      age: null == age
+          ? _value.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+      pastMeasurement: null == pastMeasurement
+          ? _value.pastMeasurement
+          : pastMeasurement // ignore: cast_nullable_to_non_nullable
+              as List<LengthMeasurementHistory>,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DateCopyWith<$Res>? get observationDate {
+    if (_value.observationDate == null) {
+      return null;
+    }
+
+    return $DateCopyWith<$Res>(_value.observationDate!, (value) {
+      return _then(_value.copyWith(observationDate: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AgeCopyWith<$Res> get age {
+    return $AgeCopyWith<$Res>(_value.age, (value) {
+      return _then(_value.copyWith(age: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$WHOGrowthStandardsLengthVelocityForAgeImplCopyWith<$Res>
+    implements $WHOGrowthStandardsLengthVelocityForAgeCopyWith<$Res> {
+  factory _$$WHOGrowthStandardsLengthVelocityForAgeImplCopyWith(
+          _$WHOGrowthStandardsLengthVelocityForAgeImpl value,
+          $Res Function(_$WHOGrowthStandardsLengthVelocityForAgeImpl) then) =
+      __$$WHOGrowthStandardsLengthVelocityForAgeImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {Date? observationDate,
+      Sex sex,
+      Age age,
+      @LengthMeasurementHistoryConverter()
+      List<LengthMeasurementHistory> pastMeasurement});
+
+  @override
+  $DateCopyWith<$Res>? get observationDate;
+  @override
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class __$$WHOGrowthStandardsLengthVelocityForAgeImplCopyWithImpl<$Res>
+    extends _$WHOGrowthStandardsLengthVelocityForAgeCopyWithImpl<$Res,
+        _$WHOGrowthStandardsLengthVelocityForAgeImpl>
+    implements _$$WHOGrowthStandardsLengthVelocityForAgeImplCopyWith<$Res> {
+  __$$WHOGrowthStandardsLengthVelocityForAgeImplCopyWithImpl(
+      _$WHOGrowthStandardsLengthVelocityForAgeImpl _value,
+      $Res Function(_$WHOGrowthStandardsLengthVelocityForAgeImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? observationDate = freezed,
+    Object? sex = null,
+    Object? age = null,
+    Object? pastMeasurement = null,
+  }) {
+    return _then(_$WHOGrowthStandardsLengthVelocityForAgeImpl(
+      observationDate: freezed == observationDate
+          ? _value.observationDate
+          : observationDate // ignore: cast_nullable_to_non_nullable
+              as Date?,
+      sex: null == sex
+          ? _value.sex
+          : sex // ignore: cast_nullable_to_non_nullable
+              as Sex,
+      age: null == age
+          ? _value.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+      pastMeasurement: null == pastMeasurement
+          ? _value._pastMeasurement
+          : pastMeasurement // ignore: cast_nullable_to_non_nullable
+              as List<LengthMeasurementHistory>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$WHOGrowthStandardsLengthVelocityForAgeImpl
+    extends _WHOGrowthStandardsLengthVelocityForAge {
+  _$WHOGrowthStandardsLengthVelocityForAgeImpl(
+      {this.observationDate,
+      required this.sex,
+      required this.age,
+      @LengthMeasurementHistoryConverter()
+      required final List<LengthMeasurementHistory> pastMeasurement})
+      : assert(age.ageInTotalDaysByNow >= 0 && age.ageInTotalMonthsByNow <= 24,
+            'Age must be in range of 0 days - 24 months'),
+        assert(pastMeasurement.isNotEmpty,
+            'Calculation can not be done as past measurment is empty'),
+        assert(
+            pastMeasurement
+                .every((element) => element.date.isSameOrBefore(Date.today())),
+            'Calculation can not be done as there is future date in past measurment'),
+        assert(
+            pastMeasurement.every(
+                (element) => element.date.isSameOrAfter(age.dateOfBirth)),
+            'Calculation can not be done as there is date less than Date of Birth in past measurement, if you find this exception is a mistake, try to provide exact $Age'),
+        _pastMeasurement = pastMeasurement,
+        super._();
+
+  factory _$WHOGrowthStandardsLengthVelocityForAgeImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$WHOGrowthStandardsLengthVelocityForAgeImplFromJson(json);
+
+  @override
+  final Date? observationDate;
+  @override
+  final Sex sex;
+  @override
+  final Age age;
+  final List<LengthMeasurementHistory> _pastMeasurement;
+  @override
+  @LengthMeasurementHistoryConverter()
+  List<LengthMeasurementHistory> get pastMeasurement {
+    if (_pastMeasurement is EqualUnmodifiableListView) return _pastMeasurement;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_pastMeasurement);
+  }
+
+  @override
+  String toString() {
+    return 'WHOGrowthStandardsLengthVelocityForAge(observationDate: $observationDate, sex: $sex, age: $age, pastMeasurement: $pastMeasurement)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$WHOGrowthStandardsLengthVelocityForAgeImpl &&
+            (identical(other.observationDate, observationDate) ||
+                other.observationDate == observationDate) &&
+            (identical(other.sex, sex) || other.sex == sex) &&
+            (identical(other.age, age) || other.age == age) &&
+            const DeepCollectionEquality()
+                .equals(other._pastMeasurement, _pastMeasurement));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, observationDate, sex, age,
+      const DeepCollectionEquality().hash(_pastMeasurement));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$WHOGrowthStandardsLengthVelocityForAgeImplCopyWith<
+          _$WHOGrowthStandardsLengthVelocityForAgeImpl>
+      get copyWith =>
+          __$$WHOGrowthStandardsLengthVelocityForAgeImplCopyWithImpl<
+              _$WHOGrowthStandardsLengthVelocityForAgeImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$WHOGrowthStandardsLengthVelocityForAgeImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _WHOGrowthStandardsLengthVelocityForAge
+    extends WHOGrowthStandardsLengthVelocityForAge {
+  factory _WHOGrowthStandardsLengthVelocityForAge(
+          {final Date? observationDate,
+          required final Sex sex,
+          required final Age age,
+          @LengthMeasurementHistoryConverter()
+          required final List<LengthMeasurementHistory> pastMeasurement}) =
+      _$WHOGrowthStandardsLengthVelocityForAgeImpl;
+  _WHOGrowthStandardsLengthVelocityForAge._() : super._();
+
+  factory _WHOGrowthStandardsLengthVelocityForAge.fromJson(
+          Map<String, dynamic> json) =
+      _$WHOGrowthStandardsLengthVelocityForAgeImpl.fromJson;
+
+  @override
+  Date? get observationDate;
+  @override
+  Sex get sex;
+  @override
+  Age get age;
+  @override
+  @LengthMeasurementHistoryConverter()
+  List<LengthMeasurementHistory> get pastMeasurement;
+  @override
+  @JsonKey(ignore: true)
+  _$$WHOGrowthStandardsLengthVelocityForAgeImplCopyWith<
+          _$WHOGrowthStandardsLengthVelocityForAgeImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -2055,6 +2362,283 @@ abstract class _WHOGrowthStandardsTricepsSkinfoldForAge
   @JsonKey(ignore: true)
   _$$WHOGrowthStandardsTricepsSkinfoldForAgeImplCopyWith<
           _$WHOGrowthStandardsTricepsSkinfoldForAgeImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+WHOGrowthStandardsWeightVelocityForAge
+    _$WHOGrowthStandardsWeightVelocityForAgeFromJson(
+        Map<String, dynamic> json) {
+  return _WHOGrowthStandardsWeightVelocityForAge.fromJson(json);
+}
+
+/// @nodoc
+mixin _$WHOGrowthStandardsWeightVelocityForAge {
+  Date? get observationDate => throw _privateConstructorUsedError;
+  Sex get sex => throw _privateConstructorUsedError;
+  Age get age => throw _privateConstructorUsedError;
+  @MassMeasurementHistoryConverter()
+  List<MassMeasurementHistory> get pastMeasurement =>
+      throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $WHOGrowthStandardsWeightVelocityForAgeCopyWith<
+          WHOGrowthStandardsWeightVelocityForAge>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $WHOGrowthStandardsWeightVelocityForAgeCopyWith<$Res> {
+  factory $WHOGrowthStandardsWeightVelocityForAgeCopyWith(
+          WHOGrowthStandardsWeightVelocityForAge value,
+          $Res Function(WHOGrowthStandardsWeightVelocityForAge) then) =
+      _$WHOGrowthStandardsWeightVelocityForAgeCopyWithImpl<$Res,
+          WHOGrowthStandardsWeightVelocityForAge>;
+  @useResult
+  $Res call(
+      {Date? observationDate,
+      Sex sex,
+      Age age,
+      @MassMeasurementHistoryConverter()
+      List<MassMeasurementHistory> pastMeasurement});
+
+  $DateCopyWith<$Res>? get observationDate;
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class _$WHOGrowthStandardsWeightVelocityForAgeCopyWithImpl<$Res,
+        $Val extends WHOGrowthStandardsWeightVelocityForAge>
+    implements $WHOGrowthStandardsWeightVelocityForAgeCopyWith<$Res> {
+  _$WHOGrowthStandardsWeightVelocityForAgeCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? observationDate = freezed,
+    Object? sex = null,
+    Object? age = null,
+    Object? pastMeasurement = null,
+  }) {
+    return _then(_value.copyWith(
+      observationDate: freezed == observationDate
+          ? _value.observationDate
+          : observationDate // ignore: cast_nullable_to_non_nullable
+              as Date?,
+      sex: null == sex
+          ? _value.sex
+          : sex // ignore: cast_nullable_to_non_nullable
+              as Sex,
+      age: null == age
+          ? _value.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+      pastMeasurement: null == pastMeasurement
+          ? _value.pastMeasurement
+          : pastMeasurement // ignore: cast_nullable_to_non_nullable
+              as List<MassMeasurementHistory>,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DateCopyWith<$Res>? get observationDate {
+    if (_value.observationDate == null) {
+      return null;
+    }
+
+    return $DateCopyWith<$Res>(_value.observationDate!, (value) {
+      return _then(_value.copyWith(observationDate: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AgeCopyWith<$Res> get age {
+    return $AgeCopyWith<$Res>(_value.age, (value) {
+      return _then(_value.copyWith(age: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$WHOGrowthStandardsWeightVelocityForAgeImplCopyWith<$Res>
+    implements $WHOGrowthStandardsWeightVelocityForAgeCopyWith<$Res> {
+  factory _$$WHOGrowthStandardsWeightVelocityForAgeImplCopyWith(
+          _$WHOGrowthStandardsWeightVelocityForAgeImpl value,
+          $Res Function(_$WHOGrowthStandardsWeightVelocityForAgeImpl) then) =
+      __$$WHOGrowthStandardsWeightVelocityForAgeImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {Date? observationDate,
+      Sex sex,
+      Age age,
+      @MassMeasurementHistoryConverter()
+      List<MassMeasurementHistory> pastMeasurement});
+
+  @override
+  $DateCopyWith<$Res>? get observationDate;
+  @override
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class __$$WHOGrowthStandardsWeightVelocityForAgeImplCopyWithImpl<$Res>
+    extends _$WHOGrowthStandardsWeightVelocityForAgeCopyWithImpl<$Res,
+        _$WHOGrowthStandardsWeightVelocityForAgeImpl>
+    implements _$$WHOGrowthStandardsWeightVelocityForAgeImplCopyWith<$Res> {
+  __$$WHOGrowthStandardsWeightVelocityForAgeImplCopyWithImpl(
+      _$WHOGrowthStandardsWeightVelocityForAgeImpl _value,
+      $Res Function(_$WHOGrowthStandardsWeightVelocityForAgeImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? observationDate = freezed,
+    Object? sex = null,
+    Object? age = null,
+    Object? pastMeasurement = null,
+  }) {
+    return _then(_$WHOGrowthStandardsWeightVelocityForAgeImpl(
+      observationDate: freezed == observationDate
+          ? _value.observationDate
+          : observationDate // ignore: cast_nullable_to_non_nullable
+              as Date?,
+      sex: null == sex
+          ? _value.sex
+          : sex // ignore: cast_nullable_to_non_nullable
+              as Sex,
+      age: null == age
+          ? _value.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+      pastMeasurement: null == pastMeasurement
+          ? _value._pastMeasurement
+          : pastMeasurement // ignore: cast_nullable_to_non_nullable
+              as List<MassMeasurementHistory>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$WHOGrowthStandardsWeightVelocityForAgeImpl
+    extends _WHOGrowthStandardsWeightVelocityForAge {
+  _$WHOGrowthStandardsWeightVelocityForAgeImpl(
+      {this.observationDate,
+      required this.sex,
+      required this.age,
+      @MassMeasurementHistoryConverter()
+      required final List<MassMeasurementHistory> pastMeasurement})
+      : assert(age.ageInTotalDaysByNow >= 0 && age.ageInTotalMonthsByNow <= 24,
+            'Age must be in range of 0 days - 24 months'),
+        assert(pastMeasurement.isNotEmpty,
+            'Calculation can not be done as past measurment is empty'),
+        assert(
+            pastMeasurement
+                .every((element) => element.date.isSameOrBefore(Date.today())),
+            'Calculation can not be done as there is future date in past measurment'),
+        assert(
+            pastMeasurement.every(
+                (element) => element.date.isSameOrAfter(age.dateOfBirth)),
+            'Calculation can not be done as there is date less than Date of Birth in past measurement, if you find this exception is a mistake, try to provide exact $Age'),
+        _pastMeasurement = pastMeasurement,
+        super._();
+
+  factory _$WHOGrowthStandardsWeightVelocityForAgeImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$WHOGrowthStandardsWeightVelocityForAgeImplFromJson(json);
+
+  @override
+  final Date? observationDate;
+  @override
+  final Sex sex;
+  @override
+  final Age age;
+  final List<MassMeasurementHistory> _pastMeasurement;
+  @override
+  @MassMeasurementHistoryConverter()
+  List<MassMeasurementHistory> get pastMeasurement {
+    if (_pastMeasurement is EqualUnmodifiableListView) return _pastMeasurement;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_pastMeasurement);
+  }
+
+  @override
+  String toString() {
+    return 'WHOGrowthStandardsWeightVelocityForAge(observationDate: $observationDate, sex: $sex, age: $age, pastMeasurement: $pastMeasurement)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$WHOGrowthStandardsWeightVelocityForAgeImpl &&
+            (identical(other.observationDate, observationDate) ||
+                other.observationDate == observationDate) &&
+            (identical(other.sex, sex) || other.sex == sex) &&
+            (identical(other.age, age) || other.age == age) &&
+            const DeepCollectionEquality()
+                .equals(other._pastMeasurement, _pastMeasurement));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, observationDate, sex, age,
+      const DeepCollectionEquality().hash(_pastMeasurement));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$WHOGrowthStandardsWeightVelocityForAgeImplCopyWith<
+          _$WHOGrowthStandardsWeightVelocityForAgeImpl>
+      get copyWith =>
+          __$$WHOGrowthStandardsWeightVelocityForAgeImplCopyWithImpl<
+              _$WHOGrowthStandardsWeightVelocityForAgeImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$WHOGrowthStandardsWeightVelocityForAgeImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _WHOGrowthStandardsWeightVelocityForAge
+    extends WHOGrowthStandardsWeightVelocityForAge {
+  factory _WHOGrowthStandardsWeightVelocityForAge(
+          {final Date? observationDate,
+          required final Sex sex,
+          required final Age age,
+          @MassMeasurementHistoryConverter()
+          required final List<MassMeasurementHistory> pastMeasurement}) =
+      _$WHOGrowthStandardsWeightVelocityForAgeImpl;
+  _WHOGrowthStandardsWeightVelocityForAge._() : super._();
+
+  factory _WHOGrowthStandardsWeightVelocityForAge.fromJson(
+          Map<String, dynamic> json) =
+      _$WHOGrowthStandardsWeightVelocityForAgeImpl.fromJson;
+
+  @override
+  Date? get observationDate;
+  @override
+  Sex get sex;
+  @override
+  Age get age;
+  @override
+  @MassMeasurementHistoryConverter()
+  List<MassMeasurementHistory> get pastMeasurement;
+  @override
+  @JsonKey(ignore: true)
+  _$$WHOGrowthStandardsWeightVelocityForAgeImplCopyWith<
+          _$WHOGrowthStandardsWeightVelocityForAgeImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
