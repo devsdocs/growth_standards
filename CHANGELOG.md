@@ -1,3 +1,9 @@
+## 1.0.7
+
+- API fix
+- Remove some unused code
+- More test
+
 ## 1.0.6
 
 - Several Bug fix

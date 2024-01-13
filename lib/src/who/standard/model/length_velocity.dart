@@ -58,7 +58,7 @@ class WHOGrowthStandardsLengthVelocityForAge
     'pastMeasurement.every((element) => element.date.isSameOrBefore(Date.today()))',
     'Calculation can not be done as there is future date in past measurment',
   )
- @Assert(
+  @Assert(
     'observationDate == null || pastMeasurement.every((element) => element.date.isSameOrBefore(observationDate))',
     'Calculation can not be done as there is future date in past measurment',
   )
@@ -94,8 +94,7 @@ class WHOGrowthStandardsLengthVelocityForAge
       get _incrementData =>
           (sex == Sex.male ? _maleData : _femaleData).incrementData;
 
-  Map<VelocityIncrement,
-          Map<({Date dateBefore, Date dateAfter, Duration duration}), num>>
+  Map<VelocityIncrement, Map<({Date dateBefore, Date dateAfter}), num>>
       get _incrementalData =>
           VelocityPastMeasurement(_sanitizePastMeasurement).incrementalData;
 

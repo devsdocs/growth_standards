@@ -229,12 +229,12 @@ final class WHOGrowthStandard {
       );
 
   WHOGrowthStandardsHeadCircumferenceVelocityForAge
-      headCircumferenceVelocityForAge(
+      headCircumferenceVelocityForAge({
     Date? observationDate,
-    Sex sex,
-    Age age,
-    List<LengthMeasurementHistory> pastMeasurement,
-  ) =>
+    required Sex sex,
+    required Age age,
+    required List<LengthMeasurementHistory> pastMeasurement,
+  }) =>
           WHOGrowthStandardsHeadCircumferenceVelocityForAge(
             age: age,
             pastMeasurement: pastMeasurement,
@@ -242,12 +242,12 @@ final class WHOGrowthStandard {
             observationDate: observationDate,
           );
 
-  WHOGrowthStandardsLengthVelocityForAge lengthVelocityForAge(
+  WHOGrowthStandardsLengthVelocityForAge lengthVelocityForAge({
     Date? observationDate,
-    Sex sex,
-    Age age,
-    List<LengthMeasurementHistory> pastMeasurement,
-  ) =>
+    required Sex sex,
+    required Age age,
+    required List<LengthMeasurementHistory> pastMeasurement,
+  }) =>
       WHOGrowthStandardsLengthVelocityForAge(
         age: age,
         pastMeasurement: pastMeasurement,
@@ -255,12 +255,12 @@ final class WHOGrowthStandard {
         observationDate: observationDate,
       );
 
-  WHOGrowthStandardsWeightVelocityForAge weightVelocityForAge(
+  WHOGrowthStandardsWeightVelocityForAge weightVelocityForAge({
     Date? observationDate,
-    Sex sex,
-    Age age,
-    List<MassMeasurementHistory> pastMeasurement,
-  ) =>
+    required Sex sex,
+    required Age age,
+    required List<MassMeasurementHistory> pastMeasurement,
+  }) =>
       WHOGrowthStandardsWeightVelocityForAge(
         age: age,
         pastMeasurement: pastMeasurement,

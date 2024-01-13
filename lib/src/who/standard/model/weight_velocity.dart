@@ -98,8 +98,7 @@ class WHOGrowthStandardsWeightVelocityForAge
       get _incrementData =>
           (sex == Sex.male ? _maleData : _femaleData).incrementData;
 
-  Map<VelocityIncrement,
-          Map<({Date dateBefore, Date dateAfter, Duration duration}), num>>
+  Map<VelocityIncrement, Map<({Date dateBefore, Date dateAfter}), num>>
       get _incrementalData =>
           VelocityPastMeasurement(_sanitizePastMeasurement).incrementalData;
 

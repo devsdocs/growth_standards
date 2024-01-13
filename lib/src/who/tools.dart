@@ -1,5 +1,4 @@
 import 'dart:collection';
-import 'dart:convert';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:growth_standards/src/common/model/age.dart';
@@ -95,25 +94,20 @@ class VelocityPastMeasurement<T extends Unit<T>> {
   Map<Date, T> get unsortedDate =>
       measurementHistory.asMap().map((_, v) => MapEntry(v.date, v.unit));
 
-  Map<VelocityIncrement,
-          Map<({Date dateBefore, Date dateAfter, Duration duration}), num>>
+  Map<VelocityIncrement, Map<({Date dateBefore, Date dateAfter}), num>>
       get incrementalData {
     final List<Date> keys = sortedByDate.keys.toList();
     final length = keys.length;
     if (keys.isEmpty || length == 1) return {};
-    final Map<VelocityIncrement,
-            Map<({Date dateBefore, Date dateAfter, Duration duration}), num>>
+    final Map<VelocityIncrement, Map<({Date dateBefore, Date dateAfter}), num>>
         result = {};
 
     for (int i = 0; i < length - 1; i++) {
       for (int j = i + 1; j < length; j++) {
         final before = keys[i];
         final now = keys[j];
-        final ({Date dateBefore, Date dateAfter, Duration duration}) data = (
-          duration: now.difference(before),
-          dateBefore: before,
-          dateAfter: now
-        );
+        final ({Date dateBefore, Date dateAfter}) data =
+            (dateBefore: before, dateAfter: now);
 
         //! Concept
         final countMos =
@@ -179,22 +173,19 @@ class MassMeasurementHistoryConverter
   const MassMeasurementHistoryConverter();
 
   @override
-  List<MassMeasurementHistory> fromJson(List json) => json
-      .map(
-        (e) => MassMeasurementHistory(
-          Date.fromJson(
-            jsonDecode(
-              (e as Map<String, dynamic>)['date'].toString(),
-            ) as Map<String, dynamic>,
-          ),
-          const MassConverter().fromJson(
-            jsonDecode(
-              e['unit'].toString(),
-            ) as Map<String, dynamic>,
-          ),
-        ),
-      )
-      .toList();
+  List<MassMeasurementHistory> fromJson(List json) => json.map(
+        (e) {
+          e as Map<String, dynamic>;
+          return MassMeasurementHistory(
+            Date.fromJson(
+              e['date'] as Map<String, dynamic>,
+            ),
+            const MassConverter().fromJson(
+              e['unit'] as Map<String, dynamic>,
+            ),
+          );
+        },
+      ).toList();
 
   @override
   List toJson(List<MassMeasurementHistory> object) => object

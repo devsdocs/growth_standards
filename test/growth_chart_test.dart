@@ -1,39 +1,34 @@
-// ignore_for_file: avoid_print
-
 import 'dart:collection';
 
 import 'package:growth_standards/growth_standards.dart';
 
 import 'package:test/test.dart';
 
-const dateBase = [28, 29, 30, 31];
-
 final whoGS = GrowthStandard.who.fromBirthTo5Years;
 
 void main() {
-  final dateTime1 = DateTime(2023, 1, 31);
-  final date1 = Date.fromDateTime(dateTime1);
+  group('Date and Age test', () {
+    final dateTime1 = DateTime(2023, 1, 31);
+    final date1 = Date.fromDateTime(dateTime1);
 
-  final dateTime2 = DateTime(2022, 2, 29);
-  //! (NOTE) date2 Should throw if using other constructor as February 2022 max at day 28, because dateTime2 add exceeded day to the next months, this will produce 2022-03-01 instead of throwing
-  final date2 = Date.fromDateTime(dateTime2);
+    final dateTime2 = DateTime(2022, 2, 29);
+    //! (NOTE) date2 Should throw if using other constructor as February 2022 max at day 28, because dateTime2 add exceeded day to the next months, this will produce 2022-03-01 instead of throwing
+    final date2 = Date.fromDateTime(dateTime2);
 
-  final dateTime3 = DateTime(2024, 1, 2);
-  final date3 = Date.fromDateTime(dateTime3);
+    final dateTime3 = DateTime(2024, 1, 2);
+    final date3 = Date.fromDateTime(dateTime3);
 
-  final dateTime4 = DateTime(2021, 5, 2);
-  final date4 = Date.fromDateTime(dateTime4);
+    final dateTime4 = DateTime(2021, 5, 2);
+    final date4 = Date.fromDateTime(dateTime4);
 
-  final dateTime5 = DateTime(2023, 1, 31);
-  final date5 = Date.fromDateTime(dateTime5);
+    final dateTime5 = DateTime(2023, 1, 31);
+    final date5 = Date.fromDateTime(dateTime5);
 
-  final dateTime6 = DateTime(2021, 8, 2);
-  final date6 = Date.fromDateTime(dateTime6);
+    final dateTime6 = DateTime(2021, 8, 2);
+    final date6 = Date.fromDateTime(dateTime6);
 
-  final list = [date1, date2, date3];
-  final list2 = [date4, date5, date6];
-
-  group('A group of tests', () {
+    final list = [date1, date2, date3];
+    final list2 = [date4, date5, date6];
     test('Date Sort', () {
       final dateMap = {
         date1: 'date1',
@@ -43,19 +38,16 @@ void main() {
         date5: 'date5',
         date6: 'date6',
       };
+      final newMap = {Date(year: 2021, month: Months.april, date: 2): 'date7'};
 
-      print(dateMap);
-      final splayTreeMap = SplayTreeMap<Date, String>.from(dateMap);
-      print(splayTreeMap);
-      splayTreeMap[Date(year: 2021, month: Months.september, date: 2)] =
-          'date7';
-      print(splayTreeMap);
+      final splayTreeMap = SplayTreeMap<Date, String>.of(dateMap);
+      expect(splayTreeMap.entries.first.value, 'date4');
+      splayTreeMap.addAll(newMap);
+      expect(splayTreeMap.entries.first.value, 'date7');
 
       expect(list.first == date1, true);
-      print(list);
       list.sort(); // Sort Test
       expect(list.first == date2, true);
-      print(list);
     });
     test('Date Compare', () {
       expect(list == list2, false);
@@ -80,6 +72,8 @@ void main() {
       expect(dateTime1.isAfter(dateTime2), true);
     });
     test('Age', () {
+      const dateBase = [28, 29, 30, 31];
+
       expect(Age.byMonthsAgo(1).ageInTotalDaysByNow, anyOf(dateBase));
       expect(
         Age.byMonthsAgo(2).ageInTotalDaysByNow,
@@ -103,9 +97,11 @@ void main() {
       expect(Age.byYearsAgo(1).ageInTotalMonthsByNow, 12);
       expect(Age.byYearsAgo(2).ageInTotalMonthsByNow, 24);
       expect(Age.byYearsAgo(20).ageInTotalMonthsByNow, 240);
-      expect(Age.byYearsAgo(20), 240);
     });
-    test('WHO Arm Circ', () {
+  });
+
+  group('WHO Test', () {
+    test('Arm Circ', () {
       final age = Age.byMonthsAgo(24);
       final observationDate = Date.monthsAgoByNow(18);
       final male = whoGS.armCircumferenceForAge(
@@ -146,7 +142,7 @@ void main() {
         1.57,
       );
     });
-    test('WHO BMI', () {
+    test('BMI', () {
       final observationDate = Date.monthsAgoByNow(40);
       final age = Age.byMonthsAgo(44);
       final bmi = WHOGrowthStandardsBodyMassIndexMeasurement(
@@ -203,158 +199,160 @@ void main() {
       );
     });
 
-    test('WHO Length Velocity 1', () {
+    test('Length Velocity 1', () {
       final age = Age.byMonthsAgo(12);
       final msr1 = LengthMeasurementHistory(
         age.dateAtMonthsAfterBirth(9),
         const Centimeters(72.5),
       );
-      final dateAtMonthsAfterBirth = age.dateAtMonthsAfterBirth(12);
-      print(age.dateOfBirth);
-      print(dateAtMonthsAfterBirth);
+
       final msr2 = LengthMeasurementHistory(
-        dateAtMonthsAfterBirth,
+        age.dateAtMonthsAfterBirth(12),
         const Centimeters(80),
       );
 
-      final msrmnt = WHOGrowthStandardsLengthVelocityForAge(
+      final msrmnt = whoGS.lengthVelocityForAge(
         age: age,
         sex: Sex.female,
         pastMeasurement: [msr1, msr2],
       );
-
-      print(msrmnt.zScorePercentileMap());
+      final result = msrmnt.zScorePercentileMap(Precision.two);
+      expect(result.containsKey(VelocityIncrement.$3), true);
+      expect(
+        result[VelocityIncrement.$3]?.containsKey((high: 12, low: 9)),
+        true,
+      );
+      expect(result[VelocityIncrement.$3]?[(high: 12, low: 9)]?.zScore, 3.80);
     });
-    test('WHO Length Velocity 2', () {
+    test('Length Velocity 2', () {
       final age = Age.byMonthsAgo(18);
       final msr1 = LengthMeasurementHistory(
         age.dateAtMonthsAfterBirth(15),
         const Centimeters(85),
       );
-      final dateAtMonthsAfterBirth = age.dateAtMonthsAfterBirth(18);
-      print(age.dateOfBirth);
-      print(dateAtMonthsAfterBirth);
+
       final msr2 = LengthMeasurementHistory(
-        dateAtMonthsAfterBirth,
+        age.dateAtMonthsAfterBirth(18),
         const Centimeters(85.5),
       );
 
-      final msrmnt = WHOGrowthStandardsLengthVelocityForAge(
+      final msrmnt = whoGS.lengthVelocityForAge(
         age: age,
         sex: Sex.female,
         pastMeasurement: [msr1, msr2],
       );
-
-      print(msrmnt.zScorePercentileMap());
+      final result = msrmnt.zScorePercentileMap(Precision.two);
+      expect(result.containsKey(VelocityIncrement.$3), true);
+      expect(
+        result[VelocityIncrement.$3]?.containsKey((high: 18, low: 15)),
+        true,
+      );
+      expect(result[VelocityIncrement.$3]?[(high: 18, low: 15)]?.zScore, -3.26);
     });
-    test('WHO Length Velocity 3', () {
+    test('Length Velocity 3', () {
       final age = Age.byMonthsAgo(6);
       final msr1 = LengthMeasurementHistory(
         age.dateAtMonthsAfterBirth(3),
         const Centimeters(47),
       );
 
-      final dateAtMonthsAfterBirth = age.dateAtMonthsAfterBirth(6);
-      print(age.dateOfBirth);
-      print(dateAtMonthsAfterBirth);
       final msr2 = LengthMeasurementHistory(
-        dateAtMonthsAfterBirth,
+        age.dateAtMonthsAfterBirth(6),
         const Centimeters(55),
       );
 
-      final msrmnt = WHOGrowthStandardsLengthVelocityForAge(
+      final msrmnt = whoGS.lengthVelocityForAge(
         age: age,
         sex: Sex.female,
         pastMeasurement: [msr1, msr2],
       );
+      final result = msrmnt.zScorePercentileMap(Precision.two);
+      expect(result.containsKey(VelocityIncrement.$3), true);
+      expect(
+        result[VelocityIncrement.$3]?.containsKey((high: 6, low: 3)),
+        true,
+      );
+      expect(result[VelocityIncrement.$3]?[(high: 6, low: 3)]?.zScore, 1.90);
+    });
 
-      print(msrmnt.zScorePercentileMap());
-    });
-    test('WHO Weight Velocity Data', () {
-      final whoGrowthStandardsWeightVelocityForAgeLMS =
-          WHOGrowthStandardsWeightVelocityForAgeData()
-              .data[Sex.male]!
-              .incrementData[VelocityIncrement.$2]!
-              .lmsData[(high: 2, low: 0)]!;
-      print(
-        whoGrowthStandardsWeightVelocityForAgeLMS
-            .percentileCutOff[PercentileValue.$85],
-      );
-      print(
-        whoGrowthStandardsWeightVelocityForAgeLMS
-            .standardDeviationCutOff[ZScoreValue.pos1],
-      );
-    });
-    test('WHO Weight Velocity 1', () {
+    test('Weight Velocity 1', () {
       final age = Age.byMonthsAgo(6);
       final msr1 = MassMeasurementHistory(
         age.dateAtMonthsAfterBirth(4),
         const Kilograms(4),
       );
-      final dateAtMonthsAfterBirth = age.dateAtMonthsAfterBirth(6);
-      print(age.dateOfBirth);
-      print(dateAtMonthsAfterBirth);
+
       final msr2 = MassMeasurementHistory(
-        dateAtMonthsAfterBirth,
+        age.dateAtMonthsAfterBirth(6),
         const Kilograms(6.2),
       );
 
-      final msrmnt = WHOGrowthStandardsWeightVelocityForAge(
+      final msrmnt = whoGS.weightVelocityForAge(
         age: age,
         sex: Sex.male,
         pastMeasurement: [msr1, msr2],
       );
-
-      print(msrmnt.zScorePercentileMap());
+      final result = msrmnt.zScorePercentileMap(Precision.two);
+      expect(result.containsKey(VelocityIncrement.$2), true);
+      expect(
+        result[VelocityIncrement.$2]?.containsKey((high: 6, low: 4)),
+        true,
+      );
+      expect(result[VelocityIncrement.$2]?[(high: 6, low: 4)]?.zScore, 3.58);
     });
-    test('WHO Weight Velocity 2', () {
+    test('Weight Velocity 2', () {
       final age = Age.byMonthsAgo(18);
       final msr1 = MassMeasurementHistory(
         age.dateAtMonthsAfterBirth(16),
         const Kilograms(12),
       );
-      final dateAtMonthsAfterBirth = age.dateAtMonthsAfterBirth(18);
-      print(age.dateOfBirth);
-      print(dateAtMonthsAfterBirth);
+
       final msr2 = MassMeasurementHistory(
-        dateAtMonthsAfterBirth,
+        age.dateAtMonthsAfterBirth(18),
         const Kilograms(11.5),
       );
 
-      final msrmnt = WHOGrowthStandardsWeightVelocityForAge(
+      final msrmnt = whoGS.weightVelocityForAge(
         age: age,
         sex: Sex.male,
         pastMeasurement: [msr1, msr2],
       );
-
-      print(msrmnt.zScorePercentileMap());
+      final result = msrmnt.zScorePercentileMap(Precision.two);
+      expect(result.containsKey(VelocityIncrement.$2), true);
+      expect(
+        result[VelocityIncrement.$2]?.containsKey((high: 18, low: 16)),
+        true,
+      );
+      expect(result[VelocityIncrement.$2]?[(high: 18, low: 16)]?.zScore, -3.27);
     });
-    test('WHO Weight Velocity 3', () {
+    test('Weight Velocity 3', () {
       final age = Age.byMonthsAgo(13);
       final msr1 = MassMeasurementHistory(
         age.dateAtMonthsAfterBirth(11),
         const Kilograms(9),
       );
 
-      final dateAtMonthsAfterBirth = age.dateAtMonthsAfterBirth(13);
-      print(age.dateOfBirth);
-      print(dateAtMonthsAfterBirth);
       final msr2 = MassMeasurementHistory(
-        dateAtMonthsAfterBirth,
+        age.dateAtMonthsAfterBirth(13),
         const Kilograms(10.2),
       );
 
-      final msrmnt = WHOGrowthStandardsWeightVelocityForAge(
+      final msrmnt = whoGS.weightVelocityForAge(
         age: age,
         sex: Sex.male,
         pastMeasurement: [msr1, msr2],
       );
-
-      print(msrmnt.zScorePercentileMap());
+      final result = msrmnt.zScorePercentileMap(Precision.two);
+      expect(result.containsKey(VelocityIncrement.$2), true);
+      expect(
+        result[VelocityIncrement.$2]?.containsKey((high: 13, low: 11)),
+        true,
+      );
+      expect(result[VelocityIncrement.$2]?[(high: 13, low: 11)]?.zScore, 2.27);
     });
   });
 
-  group('CDC', () {
+  group('CDC Test', () {
     test('BMI 1', () {
       final age = Age.byMonthsAgo(50);
       const sex = Sex.male;
