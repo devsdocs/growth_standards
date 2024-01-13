@@ -3,7 +3,6 @@
 import 'dart:collection';
 
 import 'package:growth_standards/growth_standards.dart';
-import 'package:growth_standards/src/who/standard/standard.dart';
 
 import 'package:test/test.dart';
 
@@ -99,10 +98,12 @@ void main() {
       expect(Age.byMonthsAgo(111).ageInTotalMonthsByNow, 111);
       expect(Age.byMonthsAgo(112).ageInTotalMonthsByNow, 112);
       expect(Age.byMonthsAgo(113).ageInTotalMonthsByNow, 113);
+      expect(Age.byWeeksAgo(113).ageInTotalWeeksByNow, 113);
 
       expect(Age.byYearsAgo(1).ageInTotalMonthsByNow, 12);
       expect(Age.byYearsAgo(2).ageInTotalMonthsByNow, 24);
       expect(Age.byYearsAgo(20).ageInTotalMonthsByNow, 240);
+      expect(Age.byYearsAgo(20), 240);
     });
     test('WHO Arm Circ', () {
       final age = Age.byMonthsAgo(24);
@@ -222,7 +223,7 @@ void main() {
         pastMeasurement: [msr1, msr2],
       );
 
-      print(msrmnt.zScorePercentileMap);
+      print(msrmnt.zScorePercentileMap());
     });
     test('WHO Length Velocity 2', () {
       final age = Age.byMonthsAgo(18);
@@ -244,7 +245,7 @@ void main() {
         pastMeasurement: [msr1, msr2],
       );
 
-      print(msrmnt.zScorePercentileMap);
+      print(msrmnt.zScorePercentileMap());
     });
     test('WHO Length Velocity 3', () {
       final age = Age.byMonthsAgo(6);
@@ -267,7 +268,7 @@ void main() {
         pastMeasurement: [msr1, msr2],
       );
 
-      print(msrmnt.zScorePercentileMap);
+      print(msrmnt.zScorePercentileMap());
     });
     test('WHO Weight Velocity Data', () {
       final whoGrowthStandardsWeightVelocityForAgeLMS =
@@ -304,7 +305,7 @@ void main() {
         pastMeasurement: [msr1, msr2],
       );
 
-      print(msrmnt.zScorePercentileMap);
+      print(msrmnt.zScorePercentileMap());
     });
     test('WHO Weight Velocity 2', () {
       final age = Age.byMonthsAgo(18);
@@ -326,7 +327,7 @@ void main() {
         pastMeasurement: [msr1, msr2],
       );
 
-      print(msrmnt.zScorePercentileMap);
+      print(msrmnt.zScorePercentileMap());
     });
     test('WHO Weight Velocity 3', () {
       final age = Age.byMonthsAgo(13);
@@ -349,7 +350,7 @@ void main() {
         pastMeasurement: [msr1, msr2],
       );
 
-      print(msrmnt.zScorePercentileMap);
+      print(msrmnt.zScorePercentileMap());
     });
   });
 

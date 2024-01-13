@@ -2,6 +2,7 @@ import 'package:growth_standards/src/common/model/age.dart';
 import 'package:growth_standards/src/common/types.dart';
 import 'package:growth_standards/src/who/reference/reference.dart';
 import 'package:growth_standards/src/who/standard/standard.dart';
+import 'package:growth_standards/src/who/tools.dart';
 import 'package:super_measurement/super_measurement.dart';
 
 final class WHOGrowthStandardsData {
@@ -225,6 +226,46 @@ final class WHOGrowthStandard {
         weight: massMeasurementResult,
         age: age,
         measure: measure,
+      );
+
+  WHOGrowthStandardsHeadCircumferenceVelocityForAge
+      headCircumferenceVelocityForAge(
+    Date? observationDate,
+    Sex sex,
+    Age age,
+    List<LengthMeasurementHistory> pastMeasurement,
+  ) =>
+          WHOGrowthStandardsHeadCircumferenceVelocityForAge(
+            age: age,
+            pastMeasurement: pastMeasurement,
+            sex: sex,
+            observationDate: observationDate,
+          );
+
+  WHOGrowthStandardsLengthVelocityForAge lengthVelocityForAge(
+    Date? observationDate,
+    Sex sex,
+    Age age,
+    List<LengthMeasurementHistory> pastMeasurement,
+  ) =>
+      WHOGrowthStandardsLengthVelocityForAge(
+        age: age,
+        pastMeasurement: pastMeasurement,
+        sex: sex,
+        observationDate: observationDate,
+      );
+
+  WHOGrowthStandardsWeightVelocityForAge weightVelocityForAge(
+    Date? observationDate,
+    Sex sex,
+    Age age,
+    List<MassMeasurementHistory> pastMeasurement,
+  ) =>
+      WHOGrowthStandardsWeightVelocityForAge(
+        age: age,
+        pastMeasurement: pastMeasurement,
+        sex: sex,
+        observationDate: observationDate,
       );
 }
 

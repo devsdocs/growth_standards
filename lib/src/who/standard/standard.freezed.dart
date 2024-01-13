@@ -1178,6 +1178,11 @@ class _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl
                 .every((element) => element.date.isSameOrBefore(Date.today())),
             'Calculation can not be done as there is future date in past measurment'),
         assert(
+            observationDate == null ||
+                pastMeasurement.every(
+                    (element) => element.date.isSameOrBefore(observationDate)),
+            'Calculation can not be done as there is future date in past measurment'),
+        assert(
             pastMeasurement.every(
                 (element) => element.date.isSameOrAfter(age.dateOfBirth)),
             'Calculation can not be done as there is date less than Date of Birth in past measurement, if you find this exception is a mistake, try to provide exact $Age'),
@@ -1732,6 +1737,11 @@ class _$WHOGrowthStandardsLengthVelocityForAgeImpl
         assert(
             pastMeasurement
                 .every((element) => element.date.isSameOrBefore(Date.today())),
+            'Calculation can not be done as there is future date in past measurment'),
+        assert(
+            observationDate == null ||
+                pastMeasurement.every(
+                    (element) => element.date.isSameOrBefore(observationDate)),
             'Calculation can not be done as there is future date in past measurment'),
         assert(
             pastMeasurement.every(
@@ -2544,6 +2554,11 @@ class _$WHOGrowthStandardsWeightVelocityForAgeImpl
         assert(
             pastMeasurement
                 .every((element) => element.date.isSameOrBefore(Date.today())),
+            'Calculation can not be done as there is future date in past measurment'),
+        assert(
+            observationDate == null ||
+                pastMeasurement.every(
+                    (element) => element.date.isSameOrBefore(observationDate)),
             'Calculation can not be done as there is future date in past measurment'),
         assert(
             pastMeasurement.every(

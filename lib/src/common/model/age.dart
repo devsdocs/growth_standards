@@ -45,6 +45,9 @@ class Age with _$Age {
   YearsMonthsDays get yearsMonthsDaysOfAge =>
       (years: _ageNowIn.years, months: _ageNowIn.months, days: _ageNowIn.days);
 
+  int get ageInTotalYearsByNow =>
+      ageInTotalMonthsByNow < 12 ? 0 : ageInTotalMonthsByNow ~/ 12;
+
   int get ageInTotalMonthsByNow =>
       (yearsMonthsDaysOfAge.years * 12) + yearsMonthsDaysOfAge.months;
 
@@ -101,41 +104,17 @@ class Date with _$Date implements Comparable<Date> {
 
   const Date._();
 
-  factory Date.daysAgoByNow(int days) {
-    final calc = TimeTools.calculateBirthDateInDaysBeforeByNow(days);
-    return Date(
-      year: calc.year,
-      month: _monthFromNumber(calc.month),
-      date: calc.day,
-    );
-  }
+  factory Date.daysAgoByNow(int days) =>
+      Date.fromDateTime(DTU.addDays(DTU.now(), -days));
 
-  factory Date.weeksAgoByNow(int weeks) {
-    final calc = TimeTools.calculateBirthDateInWeeksBeforeByNow(weeks);
-    return Date(
-      year: calc.year,
-      month: _monthFromNumber(calc.month),
-      date: calc.day,
-    );
-  }
+  factory Date.weeksAgoByNow(int weeks) =>
+      Date.fromDateTime(DTU.addWeeks(DTU.now(), -weeks));
 
-  factory Date.monthsAgoByNow(int months) {
-    final calc = TimeTools.calculateBirthDateInMonthsBeforeByNow(months);
-    return Date(
-      year: calc.year,
-      month: _monthFromNumber(calc.month),
-      date: calc.day,
-    );
-  }
+  factory Date.monthsAgoByNow(int months) =>
+      Date.fromDateTime(DTU.addMonths(DTU.now(), -months));
 
-  factory Date.yearsAgoByNow(int years) {
-    final calc = TimeTools.calculateBirthDateInYearsBeforeByNow(years);
-    return Date(
-      year: calc.year,
-      month: _monthFromNumber(calc.month),
-      date: calc.day,
-    );
-  }
+  factory Date.yearsAgoByNow(int years) =>
+      Date.fromDateTime(DTU.addYears(DTU.now(), -years));
 
   factory Date.today() => Date.fromDateTime(DTU.now());
 
@@ -190,29 +169,19 @@ class Date with _$Date implements Comparable<Date> {
         DTU.addYears(toDateTime(), years),
       );
 
-  Date subtractDays(int days) => Date.fromDateTime(
-        DTU.addDays(toDateTime(), -days),
-      );
-  Date subtractWeeks(int weeks) => Date.fromDateTime(
-        DTU.addWeeks(toDateTime(), -weeks),
-      );
-  Date subtractMonths(int months) => Date.fromDateTime(
-        DTU.addMonths(toDateTime(), -months),
-      );
-  Date subtractYears(int years) => Date.fromDateTime(
-        DTU.addYears(toDateTime(), -years),
-      );
+  Date subtractDays(int days) => addDays(-days);
+  Date subtractWeeks(int weeks) => addWeeks(-weeks);
+  Date subtractMonths(int months) => addMonths(-months);
+  Date subtractYears(int years) => addYears(-years);
 
   Date operator +(Duration duration) {
     if (duration.inDays < 1) return this;
-    return Date.fromDateTime(DateTime(year, month.number, date).add(duration));
+    return addDays(duration.inDays);
   }
 
   Date operator -(Duration duration) {
     if (duration.inDays < 1) return this;
-    return Date.fromDateTime(
-      DateTime(year, month.number, date).subtract(duration),
-    );
+    return subtractDays(duration.inDays);
   }
 
   bool operator >=(Date other) {

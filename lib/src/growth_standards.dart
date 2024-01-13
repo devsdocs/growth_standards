@@ -56,8 +56,12 @@ export 'who/standard/standard.dart'
         WHOGrowthStandardsBodyMassIndexMeasurement,
         WHOGrowthStandardsHeadCircumferenceForAge,
         WHOGrowthStandardsHeadCircumferenceForAgeData,
+        WHOGrowthStandardsHeadCircumferenceVelocityForAge,
+        WHOGrowthStandardsHeadCircumferenceVelocityForAgeData,
         WHOGrowthStandardsLengthForAge,
         WHOGrowthStandardsLengthForAgeData,
+        WHOGrowthStandardsLengthVelocityForAge,
+        WHOGrowthStandardsLengthVelocityForAgeData,
         WHOGrowthStandardsSubscapularSkinfoldForAge,
         WHOGrowthStandardsSubscapularSkinfoldForAgeData,
         WHOGrowthStandardsTricepsSkinfoldForAge,
@@ -66,6 +70,8 @@ export 'who/standard/standard.dart'
         WHOGrowthStandardsWeightForAgeData,
         WHOGrowthStandardsWeightForHeight,
         WHOGrowthStandardsWeightForHeightData,
+        WHOGrowthStandardsWeightVelocityForAge,
+        WHOGrowthStandardsWeightVelocityForAgeData,
         WHOGrowthStandardsWeigthForLength,
         WHOGrowthStandardsWeigthForLengthData;
 export 'who/tools.dart'

@@ -63,6 +63,10 @@ class WHOGrowthStandardsWeightVelocityForAge
     'Calculation can not be done as there is future date in past measurment',
   )
   @Assert(
+    'observationDate == null || pastMeasurement.every((element) => element.date.isSameOrBefore(observationDate))',
+    'Calculation can not be done as there is future date in past measurment',
+  )
+  @Assert(
     'pastMeasurement.every((element) => element.date.isSameOrAfter(age.dateOfBirth))',
     'Calculation can not be done as there is date less than Date of Birth in past measurement, if you find this exception is a mistake, try to provide exact \$Age',
   )
@@ -100,7 +104,7 @@ class WHOGrowthStandardsWeightVelocityForAge
           VelocityPastMeasurement(_sanitizePastMeasurement).incrementalData;
 
   Map<VelocityIncrement, Map<VelocityMonths, ({num zScore, num percentile})>>
-      zScorePercentileMap(Precision precision) {
+      zScorePercentileMap([Precision precision = Precision.ten]) {
     final joinMap = _incrementData.map((k1, v1) {
       final alt = _incrementalData[k1];
       if (alt == null || alt.isEmpty) return MapEntry(k1, null);

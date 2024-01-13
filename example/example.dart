@@ -5,8 +5,8 @@ import 'dart:convert';
 import 'package:growth_standards/growth_standards.dart';
 
 final birthDay = Date(year: 2022, month: Months.june, date: 30);
-const weight = 12.1;
-const length = 82;
+const weight = 11.75;
+const length = 82.8;
 
 const centimeters = Centimeters(length);
 const kilograms = Kilograms(weight);

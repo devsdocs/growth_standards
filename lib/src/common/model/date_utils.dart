@@ -26,18 +26,6 @@ class TimeTools {
       (month == DateTime.february && isLeapYear(year))
           ? 29
           : daysInMonth[month - 1];
-
-  static DateTime calculateBirthDateInDaysBeforeByNow(int daysOld) =>
-      DTU.addDays(DTU.now(), -daysOld);
-
-  static DateTime calculateBirthDateInWeeksBeforeByNow(int weeksOld) =>
-      DTU.addWeeks(DTU.now(), -weeksOld);
-
-  static DateTime calculateBirthDateInYearsBeforeByNow(int yearsOld) =>
-      DTU.addYears(DTU.now(), -yearsOld);
-
-  static DateTime calculateBirthDateInMonthsBeforeByNow(int monthsOld) =>
-      DTU.addMonths(DTU.now(), -monthsOld);
 }
 
 class TimeIntervalCount {

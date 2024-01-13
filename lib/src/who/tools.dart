@@ -67,8 +67,15 @@ enum VelocityIncrement {
   final int value;
 }
 
-VelocityIncrement parseIncrement(String val) => VelocityIncrement.values
-    .singleWhere((element) => element.value == int.parse(val));
+const velocityEnum = {
+  '1': VelocityIncrement.$1,
+  '2': VelocityIncrement.$2,
+  '3': VelocityIncrement.$3,
+  '4': VelocityIncrement.$4,
+  '6': VelocityIncrement.$6,
+};
+
+VelocityIncrement parseIncrement(String val) => velocityEnum[val]!;
 
 /// [measurementHistory] field can be either [List] of [MassMeasurementHistory] or [List] of [LengthMeasurementHistory]
 class VelocityPastMeasurement<T extends Unit<T>> {
