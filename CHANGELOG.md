@@ -1,3 +1,8 @@
+## 1.0.6
+
+- Several Bug fix
+- Add WHO Growth Velocity
+
 ## 1.0.5
 
 - Add Fenton preterm growth standards
