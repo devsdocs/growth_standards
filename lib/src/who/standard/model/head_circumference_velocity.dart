@@ -59,6 +59,10 @@ class WHOGrowthStandardsHeadCircumferenceVelocityForAge
     'Calculation can not be done as past measurment is empty',
   )
   @Assert(
+    'pastMeasurement.length > 1',
+    'Calculation can not be done as there is only one measurment history',
+  )
+  @Assert(
     'pastMeasurement.every((element) => element.date.isSameOrBefore(Date.today()))',
     'Calculation can not be done as there is future date in past measurment',
   )

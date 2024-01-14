@@ -1,33 +1,5 @@
 part of 'age.dart';
 
-class TimeTools {
-  /// _daysInMonth cost contains days per months; daysInMonth method to be used instead.
-  static final List<int> daysInMonth = [
-    31, // Jan
-    28, // Feb, it varies from 28 to 29
-    31,
-    30,
-    31,
-    30,
-    31,
-    31,
-    30,
-    31,
-    30,
-    31, // Dec
-  ];
-
-  /// isLeapYear method
-  static bool isLeapYear(int year) =>
-      (year % 4 == 0) && ((year % 100 != 0) || (year % 400 == 0));
-
-  /// daysInMonth method
-  static int datesInMonth(int year, int month) =>
-      (month == DateTime.february && isLeapYear(year))
-          ? 29
-          : daysInMonth[month - 1];
-}
-
 class TimeIntervalCount {
   TimeIntervalCount(
     int year, [
@@ -42,7 +14,7 @@ class TimeIntervalCount {
           hours,
           minutes,
         ) {
-    if (date > TimeTools.datesInMonth(year, month)) {
+    if (date > datesInMonth(year, month)) {
       throw Exception('Days exceeded');
     }
   }
@@ -68,7 +40,7 @@ class TimeIntervalCount {
 
       if (fromDate.day > endDate.day) {
         months--;
-        days = TimeTools.datesInMonth(
+        days = datesInMonth(
               fromDate.year + years,
               ((fromDate.month + months - 1) % DateTime.monthsPerYear) + 1,
             ) +
@@ -81,7 +53,7 @@ class TimeIntervalCount {
       if (fromDate.day > endDate.day) {
         years--;
         months = DateTime.monthsPerYear - 1;
-        days = TimeTools.datesInMonth(
+        days = datesInMonth(
               fromDate.year + years,
               ((fromDate.month + months - 1) % DateTime.monthsPerYear) + 1,
             ) +
@@ -95,7 +67,7 @@ class TimeIntervalCount {
 
       if (fromDate.day > endDate.day) {
         months--;
-        days = TimeTools.datesInMonth(
+        days = datesInMonth(
               fromDate.year + years,
               fromDate.month + months,
             ) +
@@ -148,10 +120,6 @@ class TimeIntervalCount {
         toDate: day,
       );
 
-  AgeInternal get ageNow => ageAtDate(DTU.now());
-  AgeInternal get timeUntilNextBirthdayFromNow =>
-      timeUntilNextBirthday(DTU.now());
-
   AgeInternal timeUntilNextBirthday(DateTime fromDate) {
     final DateTime endDate = fromDate;
     final DateTime tempDate = DateTime(endDate.year, dob.month, dob.day);
@@ -160,6 +128,32 @@ class TimeIntervalCount {
         : tempDate;
     return timeDifference(fromDate: endDate, toDate: nextBirthdayDate);
   }
+
+  /// _daysInMonth cost contains days per months; daysInMonth method to be used instead.
+  final List<int> daysInMonth = [
+    31, // Jan
+    28, // Feb, it varies from 28 to 29
+    31,
+    30,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31, // Dec
+  ];
+
+  /// isLeapYear method
+  bool isLeapYear(int year) =>
+      (year % 4 == 0) && ((year % 100 != 0) || (year % 400 == 0));
+
+  /// daysInMonth method
+  int datesInMonth(int year, int month) =>
+      (month == DateTime.february && isLeapYear(year))
+          ? 29
+          : daysInMonth[month - 1];
 }
 
 class AgeInternal {

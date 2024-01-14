@@ -67,14 +67,14 @@ enum VelocityIncrement {
 }
 
 const velocityEnum = {
-  '1': VelocityIncrement.$1,
-  '2': VelocityIncrement.$2,
-  '3': VelocityIncrement.$3,
-  '4': VelocityIncrement.$4,
-  '6': VelocityIncrement.$6,
+  1: VelocityIncrement.$1,
+  2: VelocityIncrement.$2,
+  3: VelocityIncrement.$3,
+  4: VelocityIncrement.$4,
+  6: VelocityIncrement.$6,
 };
 
-VelocityIncrement parseIncrement(String val) => velocityEnum[val]!;
+VelocityIncrement parseIncrement(String val) => velocityEnum[int.parse(val)]!;
 
 /// [measurementHistory] field can be either [List] of [MassMeasurementHistory] or [List] of [LengthMeasurementHistory]
 class VelocityPastMeasurement<T extends Unit<T>> {
@@ -111,21 +111,16 @@ class VelocityPastMeasurement<T extends Unit<T>> {
             TimeIntervalCount(before.year, before.month.number, before.date)
                 .ageAtDate(now.toDateTime());
 
-        final countMos = (ageAtDate.years * 12) + ageAtDate.months;
+        if (ageAtDate.years > 0) {
+          continue;
+        }
 
-        VelocityIncrement incremental;
-        if (countMos == 1) {
-          incremental = VelocityIncrement.$1;
-        } else if (countMos == 2) {
-          incremental = VelocityIncrement.$2;
-        } else if (countMos == 3) {
-          incremental = VelocityIncrement.$3;
-        } else if (countMos == 4) {
-          incremental = VelocityIncrement.$4;
-        } else if (countMos == 6) {
-          incremental = VelocityIncrement.$6;
-        } else {
-          continue; // Skip durations other than 1, 2, 3, 4, and 6 months
+        final countMos = ageAtDate.months;
+
+        final incremental = velocityEnum[countMos];
+
+        if (incremental == null) {
+          continue;
         }
 
         if (!result.containsKey(incremental)) {
@@ -134,7 +129,7 @@ class VelocityPastMeasurement<T extends Unit<T>> {
 
         final data = (dateBefore: before, dateAfter: now);
 
-        final num valueDifference =
+        final valueDifference =
             sortedByDate[now]!.value! - sortedByDate[before]!.value!;
 
         result[incremental]![data] = valueDifference;

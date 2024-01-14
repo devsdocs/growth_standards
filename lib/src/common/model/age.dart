@@ -40,22 +40,74 @@ class Age with _$Age {
         dateOfBirth.date,
       );
 
-  AgeInternal get _ageNowIn => _dobCount.ageNow;
+  YearsMonthsDays timeUntilNextBirthdayFromDate(Date date) {
+    final timeUntilNextBirthday =
+        _dobCount.timeUntilNextBirthday(date.toDateTime());
+    return (
+      years: timeUntilNextBirthday.years,
+      months: timeUntilNextBirthday.months,
+      days: timeUntilNextBirthday.days
+    );
+  }
 
-  YearsMonthsDays get yearsMonthsDaysOfAge =>
-      (years: _ageNowIn.years, months: _ageNowIn.months, days: _ageNowIn.days);
+  bool _checkDate(Date date) => date.isSameOrBefore(dateOfBirth);
 
-  int get ageInTotalYearsByNow =>
-      ageInTotalMonthsByNow < 12 ? 0 : ageInTotalMonthsByNow ~/ 12;
+  YearsMonthsDays yearsMonthsDaysOfAgeAtDate(Date date) {
+    if (_checkDate(date)) {
+      return (years: 0, days: 0, months: 0);
+    }
+    final ageAtDate = _dobCount.ageAtDate(date.toDateTime());
+    return (
+      years: ageAtDate.years,
+      months: ageAtDate.months,
+      days: ageAtDate.days
+    );
+  }
 
-  int get ageInTotalMonthsByNow =>
-      (yearsMonthsDaysOfAge.years * 12) + yearsMonthsDaysOfAge.months;
+  int ageInTotalYearsAtDate(Date date) {
+    if (_checkDate(date)) {
+      return 0;
+    }
+    final count = ageInTotalMonthsAtDate(date);
+    return count < 12 ? 0 : count ~/ 12;
+  }
 
-  int get ageInTotalDaysByNow =>
-      DTU.getDaysDifference(DTU.now(), _dobCount.dob);
+  int ageInTotalMonthsAtDate(Date date) {
+    if (_checkDate(date)) {
+      return 0;
+    }
+    final count = yearsMonthsDaysOfAgeAtDate(date);
+    return (count.years * 12) + count.months;
+  }
 
-  int get ageInTotalWeeksByNow =>
-      ageInTotalDaysByNow < 7 ? 0 : ageInTotalDaysByNow ~/ 7;
+  int ageInTotalWeeksAtDate(Date date) {
+    if (_checkDate(date)) {
+      return 0;
+    }
+    final count = ageInTotalDaysAtDate(date);
+    return count < 7 ? 0 : count ~/ 7;
+  }
+
+  int ageInTotalDaysAtDate(Date date) {
+    if (_checkDate(date)) {
+      return 0;
+    }
+    return DTU.getDaysDifference(date.toDateTime(), dateOfBirth.toDateTime());
+  }
+
+  YearsMonthsDays get timeUntilNextBirtdayByNow =>
+      timeUntilNextBirthdayFromDate(Date.today());
+
+  YearsMonthsDays get yearsMonthsDaysOfAgeByNow =>
+      yearsMonthsDaysOfAgeAtDate(Date.today());
+
+  int get ageInTotalYearsByNow => ageInTotalYearsAtDate(Date.today());
+
+  int get ageInTotalMonthsByNow => ageInTotalMonthsAtDate(Date.today());
+
+  int get ageInTotalWeeksByNow => ageInTotalWeeksAtDate(Date.today());
+
+  int get ageInTotalDaysByNow => ageInTotalDaysAtDate(Date.today());
 
   Date dateAtDaysAfterBirth(int daysAfterBirth) =>
       dateOfBirth.addDays(daysAfterBirth);
@@ -70,7 +122,7 @@ class Age with _$Age {
       dateOfBirth.addYears(yearsAfterBirth);
 
   Age ageAtPastDate(Date date) {
-    if (date.isSameOrAfter(Date.today())) {
+    if (date.isSameOrAfter(Date.today()) || date.isSameOrBefore(dateOfBirth)) {
       return this;
     }
     return Age(
@@ -156,8 +208,6 @@ class Date with _$Date implements Comparable<Date> {
       Duration(days: DTU.getDaysDifference(toDateTime(), other.toDateTime()));
 
   DateTime toDateTime() => DateTime(year, month.number, date);
-
-  Date dateAtPastDays(int daysAgo) => Date.today() - Duration(days: daysAgo);
 
   Date addDays(int days) => Date.fromDateTime(
         DTU.addDays(toDateTime(), days),

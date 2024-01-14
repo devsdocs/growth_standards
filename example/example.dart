@@ -17,7 +17,7 @@ const sex = Sex.male;
 
 void main() {
   print(
-    'Age: ${age.yearsMonthsDaysOfAge.years} Years, ${age.yearsMonthsDaysOfAge.months} Months, ${age.yearsMonthsDaysOfAge.days} Days, with total ${age.ageInTotalMonthsByNow} in Months or ${age.ageInTotalDaysByNow} in Days',
+    'Age: ${age.yearsMonthsDaysOfAgeByNow.years} Years, ${age.yearsMonthsDaysOfAgeByNow.months} Months, ${age.yearsMonthsDaysOfAgeByNow.days} Days, with total ${age.ageInTotalMonthsByNow} in Months or ${age.ageInTotalDaysByNow} in Days',
   );
   // Demonstrating adjusted zscore calculation
   final calcLengthForAgeStanding = gs.lengthForAge(

@@ -1173,6 +1173,8 @@ class _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl
             'Age must be in range of 0 days - 24 months'),
         assert(pastMeasurement.isNotEmpty,
             'Calculation can not be done as past measurment is empty'),
+        assert(pastMeasurement.length > 1,
+            'Calculation can not be done as there is only one measurment history'),
         assert(
             pastMeasurement
                 .every((element) => element.date.isSameOrBefore(Date.today())),
@@ -1734,6 +1736,8 @@ class _$WHOGrowthStandardsLengthVelocityForAgeImpl
             'Age must be in range of 0 days - 24 months'),
         assert(pastMeasurement.isNotEmpty,
             'Calculation can not be done as past measurment is empty'),
+        assert(pastMeasurement.length > 1,
+            'Calculation can not be done as there is only one measurment history'),
         assert(
             pastMeasurement
                 .every((element) => element.date.isSameOrBefore(Date.today())),
@@ -2551,6 +2555,8 @@ class _$WHOGrowthStandardsWeightVelocityForAgeImpl
             'Age must be in range of 0 days - 24 months'),
         assert(pastMeasurement.isNotEmpty,
             'Calculation can not be done as past measurment is empty'),
+        assert(pastMeasurement.length > 1,
+            'Calculation can not be done as there is only one measurment history'),
         assert(
             pastMeasurement
                 .every((element) => element.date.isSameOrBefore(Date.today())),
