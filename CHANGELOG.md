@@ -1,3 +1,9 @@
+## 1.0.8
+
+- Refractoring
+- Bug fix
+- Improved API
+
 ## 1.0.7
 
 - API fix
