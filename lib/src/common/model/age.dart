@@ -66,6 +66,9 @@ class Age with _$Age {
   Date dateAtMonthsAfterBirth(int monthsAfterBirth) =>
       dateOfBirth.addMonths(monthsAfterBirth);
 
+  Date dateAtYearsAfterBirth(int yearsAfterBirth) =>
+      dateOfBirth.addYears(yearsAfterBirth);
+
   Age ageAtPastDate(Date date) {
     if (date.isSameOrAfter(Date.today())) {
       return this;

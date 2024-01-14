@@ -41,6 +41,9 @@ class WHOGrowthStandardsLengthVelocityForAgeData {
 
   final Map<Sex, WHOGrowthStandardsLengthVelocityForAgeGender> _data;
   Map<Sex, WHOGrowthStandardsLengthVelocityForAgeGender> get data => _data;
+
+  @override
+  String toString() => 'Length Velocity For Age Data($_data)';
 }
 
 @freezed
@@ -89,7 +92,6 @@ class WHOGrowthStandardsLengthVelocityForAge
   WHOGrowthStandardsLengthVelocityForAgeGender get _femaleData =>
       _headCircumferenceData._data[Sex.female]!;
 
-  //TODO(devsdocs): need help implement this
   Map<VelocityIncrement, WHOGrowthStandardsLengthVelocityForAgeIncrement>
       get _incrementData =>
           (sex == Sex.male ? _maleData : _femaleData).incrementData;
@@ -161,6 +163,9 @@ class WHOGrowthStandardsLengthVelocityForAgeGender {
 
   final Map<VelocityIncrement, WHOGrowthStandardsLengthVelocityForAgeIncrement>
       incrementData;
+
+  @override
+  String toString() => 'Gender Data($incrementData)';
 }
 
 class WHOGrowthStandardsLengthVelocityForAgeIncrement {
@@ -168,6 +173,9 @@ class WHOGrowthStandardsLengthVelocityForAgeIncrement {
     required this.lmsData,
   });
   final Map<VelocityMonths, WHOGrowthStandardsLengthVelocityForAgeLMS> lmsData;
+
+  @override
+  String toString() => 'Increment Data($lmsData)';
 }
 
 class WHOGrowthStandardsLengthVelocityForAgeLMS {
@@ -181,4 +189,8 @@ class WHOGrowthStandardsLengthVelocityForAgeLMS {
   final ZScoreCutOff standardDeviationCutOff;
 
   final PercentileCutOff percentileCutOff;
+
+  @override
+  String toString() =>
+      'Age Data(LMS: $lms, Standard Deviation CutOff: $standardDeviationCutOff, Percentile CutOff: $percentileCutOff)';
 }

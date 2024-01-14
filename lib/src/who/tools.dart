@@ -96,7 +96,7 @@ class VelocityPastMeasurement<T extends Unit<T>> {
 
   Map<VelocityIncrement, Map<({Date dateBefore, Date dateAfter}), num>>
       get incrementalData {
-    final List<Date> keys = sortedByDate.keys.toList();
+    final keys = sortedByDate.keys.toList();
     final length = keys.length;
     if (keys.isEmpty || length == 1) return {};
     final Map<VelocityIncrement, Map<({Date dateBefore, Date dateAfter}), num>>
@@ -106,14 +106,12 @@ class VelocityPastMeasurement<T extends Unit<T>> {
       for (int j = i + 1; j < length; j++) {
         final before = keys[i];
         final now = keys[j];
-        final ({Date dateBefore, Date dateAfter}) data =
-            (dateBefore: before, dateAfter: now);
 
-        //! Concept
-        final countMos =
+        final ageAtDate =
             TimeIntervalCount(before.year, before.month.number, before.date)
-                .ageAtDate(now.toDateTime())
-                .months;
+                .ageAtDate(now.toDateTime());
+
+        final countMos = (ageAtDate.years * 12) + ageAtDate.months;
 
         VelocityIncrement incremental;
         if (countMos == 1) {
@@ -134,6 +132,8 @@ class VelocityPastMeasurement<T extends Unit<T>> {
           result[incremental] = {};
         }
 
+        final data = (dateBefore: before, dateAfter: now);
+
         final num valueDifference =
             sortedByDate[now]!.value! - sortedByDate[before]!.value!;
 
@@ -146,7 +146,7 @@ class VelocityPastMeasurement<T extends Unit<T>> {
 }
 
 class MassMeasurementHistory extends MeasurementHistory<Mass> {
-  MassMeasurementHistory(this.date, this.unit);
+  const MassMeasurementHistory(this.date, this.unit);
 
   @override
   final Date date;
@@ -155,7 +155,7 @@ class MassMeasurementHistory extends MeasurementHistory<Mass> {
 }
 
 class LengthMeasurementHistory extends MeasurementHistory<Length> {
-  LengthMeasurementHistory(this.date, this.unit);
+  const LengthMeasurementHistory(this.date, this.unit);
 
   @override
   final Date date;
@@ -164,6 +164,7 @@ class LengthMeasurementHistory extends MeasurementHistory<Length> {
 }
 
 abstract class MeasurementHistory<T extends Unit<T>> {
+  const MeasurementHistory();
   T get unit;
   Date get date;
 }
