@@ -90,12 +90,6 @@ class WHOGrowthStandardsWeightForHeight
 
   num get _zScore => _ageData.lms.adjustedZScore(weight.toKilograms.value!);
 
-  // Age get _ageAtObservationDate => observationDate == null
-  //     ? age
-  //     : observationDate == Date.today()
-  //         ? age
-  //         : age.ageAtAnyPastDate(observationDate!);
-
   num zScore([
     Precision precision = Precision.ten,
   ]) =>

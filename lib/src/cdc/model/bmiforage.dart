@@ -114,11 +114,7 @@ class CDCBodyMassIndexForAge with _$CDCBodyMassIndexForAge {
               ))
       : (pnorm(_zScore) * 100);
 
-  Age get _ageAtObservationDate => observationDate == null
-      ? age
-      : observationDate == Date.today()
-          ? age
-          : age.ageAtPastDate(observationDate!);
+  Age get _ageAtObservationDate => checkObservationDate(age, observationDate);
 
   num zScore([
     Precision precision = Precision.ten,

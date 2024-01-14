@@ -1,38 +1,90 @@
-part of 'age.dart';
+import 'package:clock/clock.dart';
 
 class TimeIntervalCount {
   TimeIntervalCount(
     int year, [
     int month = 1,
     int date = 1,
-    int hours = 0,
-    int minutes = 0,
-  ]) : dob = DateTime(
-          year,
-          month,
-          date,
-          hours,
-          minutes,
+  ]) : dob = DateTimeUtils.startOfDay(
+          DateTime(
+            year,
+            month,
+            date,
+          ),
         ) {
-    if (date > datesInMonth(year, month)) {
+    if (date > DateTimeUtils.datesInMonth(year, month)) {
       throw Exception('Days exceeded');
     }
   }
 
   final DateTime dob;
 
-  AgeInternal timeDifference({
+  AgeInYearMonthsWeeksDays ageAtDate(DateTime day) =>
+      DateTimeUtils.timeDifference(
+        fromDate: dob,
+        toDate: DateTimeUtils.startOfDay(day),
+      );
+
+  AgeInYearMonthsWeeksDays timeUntilNextBirthday(DateTime fromDate) {
+    final DateTime endDate = fromDate;
+    final DateTime tempDate = DateTime(endDate.year, dob.month, dob.day);
+    final DateTime nextBirthdayDate = tempDate.isBefore(endDate)
+        ? _add(date: tempDate, duration: AgeInYearMonthsWeeksDays(years: 1))
+        : tempDate;
+
+    return DateTimeUtils.timeDifference(
+      fromDate: DateTimeUtils.startOfDay(endDate),
+      toDate: DateTimeUtils.startOfDay(nextBirthdayDate),
+    );
+  }
+
+  DateTime _add({
+    required DateTime date,
+    required AgeInYearMonthsWeeksDays duration,
+  }) {
+    int years = date.year + duration.years;
+    years += (date.month + duration.months) ~/ DateTime.monthsPerYear;
+    final int months = (date.month + duration.months) % DateTime.monthsPerYear;
+
+    final int days = date.day + duration.days - 1;
+
+    return DateTime(years, months).add(Duration(days: days));
+  }
+}
+
+class AgeInYearMonthsWeeksDays {
+  AgeInYearMonthsWeeksDays({
+    this.days = 0,
+    this.months = 0,
+    this.years = 0,
+    this.weeks = 0,
+  });
+  int days;
+  int months;
+  int years;
+  int weeks;
+
+  @override
+  String toString() =>
+      'Age(Years: $years, Months: $months, Weeks: $weeks, Days: $days)';
+}
+
+/// Utils to work with [DateTime].
+class DateTimeUtils {
+  DateTimeUtils._();
+
+  /// Returns current time.
+  static DateTime now() => clock.now();
+
+  static AgeInYearMonthsWeeksDays timeDifference({
     required DateTime fromDate,
     required DateTime toDate,
   }) {
-    // Check if toDate to be included in the calculation
     final DateTime endDate = toDate;
 
     int years = endDate.year - fromDate.year;
     int months = 0;
     int days = 0;
-    int hours = 0;
-    int minutes = 0;
 
     if (fromDate.month > endDate.month) {
       years--;
@@ -78,59 +130,19 @@ class TimeIntervalCount {
       }
     }
 
-    if (fromDate.hour > endDate.hour) {
-      days--;
-      hours = 24 - fromDate.hour + endDate.hour;
-    } else {
-      hours = endDate.hour - fromDate.hour;
-    }
+    final remainingDays = days < 7 ? days : days % 7;
+    final remainingWeeks = days < 7 ? 0 : (days - remainingDays) ~/ 7;
 
-    if (fromDate.minute > endDate.minute) {
-      hours--;
-      minutes = 60 - fromDate.minute + endDate.minute;
-    } else {
-      minutes = endDate.minute - fromDate.minute;
-    }
-
-    return AgeInternal(
+    return AgeInYearMonthsWeeksDays(
       years: years,
-      days: days,
+      weeks: remainingWeeks,
+      days: remainingDays,
       months: months,
-      hours: hours,
-      minutes: minutes,
     );
   }
 
-  /// add method
-  DateTime add({
-    required DateTime date,
-    required AgeInternal duration,
-  }) {
-    int years = date.year + duration.years;
-    years += (date.month + duration.months) ~/ DateTime.monthsPerYear;
-    final int months = (date.month + duration.months) % DateTime.monthsPerYear;
-
-    final int days = date.day + duration.days - 1;
-
-    return DateTime(years, months).add(Duration(days: days));
-  }
-
-  AgeInternal ageAtDate(DateTime day) => timeDifference(
-        fromDate: dob,
-        toDate: day,
-      );
-
-  AgeInternal timeUntilNextBirthday(DateTime fromDate) {
-    final DateTime endDate = fromDate;
-    final DateTime tempDate = DateTime(endDate.year, dob.month, dob.day);
-    final DateTime nextBirthdayDate = tempDate.isBefore(endDate)
-        ? add(date: tempDate, duration: AgeInternal(years: 1))
-        : tempDate;
-    return timeDifference(fromDate: endDate, toDate: nextBirthdayDate);
-  }
-
   /// _daysInMonth cost contains days per months; daysInMonth method to be used instead.
-  final List<int> daysInMonth = [
+  static final List<int> daysInMonth = [
     31, // Jan
     28, // Feb, it varies from 28 to 29
     31,
@@ -146,37 +158,14 @@ class TimeIntervalCount {
   ];
 
   /// isLeapYear method
-  bool isLeapYear(int year) =>
+  static bool isLeapYear(int year) =>
       (year % 4 == 0) && ((year % 100 != 0) || (year % 400 == 0));
 
   /// daysInMonth method
-  int datesInMonth(int year, int month) =>
+  static int datesInMonth(int year, int month) =>
       (month == DateTime.february && isLeapYear(year))
           ? 29
           : daysInMonth[month - 1];
-}
-
-class AgeInternal {
-  AgeInternal({
-    this.days = 0,
-    this.months = 0,
-    this.years = 0,
-    this.hours = 0,
-    this.minutes = 0,
-  });
-  int days;
-  int months;
-  int years;
-  int hours;
-  int minutes;
-}
-
-/// Utils to work with [DateTime].
-class DTU {
-  DTU._();
-
-  /// Returns current time.
-  static DateTime now() => clock.now();
 
   /// Check if [a] and [b] are on the same day.
   static bool isSameDay(DateTime a, DateTime b) {

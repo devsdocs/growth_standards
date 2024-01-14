@@ -59,19 +59,19 @@ class WHOGrowthStandardsWeightVelocityForAge
   )
   @Assert(
     'pastMeasurement.isNotEmpty',
-    'Calculation can not be done as past measurment is empty',
+    'Calculation can not be done as past measurement is empty',
   )
   @Assert(
-    'pastMeasurement.length > 1',
-    'Calculation can not be done as there is only one measurment history',
+    'pastMeasurement.toSet().length > 1',
+    'Calculation can not be done as there is only one measurement history',
   )
   @Assert(
     'pastMeasurement.every((element) => element.date.isSameOrBefore(Date.today()))',
-    'Calculation can not be done as there is future date in past measurment',
+    'Calculation can not be done as there is future date in past measurement',
   )
   @Assert(
     'observationDate == null || pastMeasurement.every((element) => element.date.isSameOrBefore(observationDate))',
-    'Calculation can not be done as there is future date in past measurment',
+    'Calculation can not be done as there is future date in past measurement',
   )
   @Assert(
     'pastMeasurement.every((element) => element.date.isSameOrAfter(age.dateOfBirth))',
@@ -116,9 +116,9 @@ class WHOGrowthStandardsWeightVelocityForAge
 
       final alv = alt.map((k2, v2) {
         final VelocityMonths vm = (
-          low: ageAtObservationDate.ageInTotalMonthsByNow -
+          low: _ageAtObservationDate.ageInTotalMonthsByNow -
               Age(k2.dateBefore).ageInTotalMonthsByNow,
-          high: ageAtObservationDate.ageInTotalMonthsByNow -
+          high: _ageAtObservationDate.ageInTotalMonthsByNow -
               Age(k2.dateAfter).ageInTotalMonthsByNow
         );
 
@@ -159,11 +159,7 @@ class WHOGrowthStandardsWeightVelocityForAge
       )
       .toList();
 
-  Age get ageAtObservationDate => observationDate == null
-      ? age
-      : observationDate == Date.today()
-          ? age
-          : age.ageAtPastDate(observationDate!);
+  Age get _ageAtObservationDate => checkObservationDate(age, observationDate);
 }
 
 class WHOGrowthStandardsWeightVelocityForAgeGender {

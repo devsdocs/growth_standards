@@ -75,11 +75,7 @@ class WHOGrowthReferenceHeightForAge with _$WHOGrowthReferenceHeightForAge {
 
   num get _zScore => _ageData.lms.zScore(lengthHeight.toCentimeters.value!);
 
-  Age get _ageAtObservationDate => observationDate == null
-      ? age
-      : observationDate == Date.today()
-          ? age
-          : age.ageAtPastDate(observationDate!);
+  Age get _ageAtObservationDate => checkObservationDate(age, observationDate);
 
   num zScore([
     Precision precision = Precision.ten,

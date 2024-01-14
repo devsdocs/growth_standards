@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:growth_standards/src/common/model/age.dart';
 import 'package:super_measurement/super_measurement.dart';
 
 class MassConverter implements JsonConverter<Mass, Map<String, dynamic>> {
@@ -26,3 +27,6 @@ class LengthConverter implements JsonConverter<Length, Map<String, dynamic>> {
   @override
   Map<String, dynamic> toJson(Length object) => object.toJson();
 }
+
+Age checkObservationDate(Age age, [Date? observationDate]) =>
+    observationDate == null ? age : age.ageAtPastDate(observationDate);

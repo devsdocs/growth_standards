@@ -84,12 +84,6 @@ class CDCInfantWeigthForLength with _$CDCInfantWeigthForLength {
 
   num get _zScore => _ageData.lms.zScore(weight.toKilograms.value!);
 
-  // Age get _ageAtObservationDate => observationDate == null
-  //     ? age
-  //     : observationDate == Date.today()
-  //         ? age
-  //         : age.ageAtAnyPastDate(observationDate!);
-
   num zScore([
     Precision precision = Precision.ten,
   ]) =>

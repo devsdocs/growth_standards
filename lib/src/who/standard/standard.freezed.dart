@@ -1172,18 +1172,18 @@ class _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl
       : assert(age.ageInTotalDaysByNow >= 0 && age.ageInTotalMonthsByNow <= 24,
             'Age must be in range of 0 days - 24 months'),
         assert(pastMeasurement.isNotEmpty,
-            'Calculation can not be done as past measurment is empty'),
-        assert(pastMeasurement.length > 1,
-            'Calculation can not be done as there is only one measurment history'),
+            'Calculation can not be done as past measurement is empty'),
+        assert(pastMeasurement.toSet().length > 1,
+            'Calculation can not be done as there is only one measurement history'),
         assert(
             pastMeasurement
                 .every((element) => element.date.isSameOrBefore(Date.today())),
-            'Calculation can not be done as there is future date in past measurment'),
+            'Calculation can not be done as there is future date in past measurement'),
         assert(
             observationDate == null ||
                 pastMeasurement.every(
                     (element) => element.date.isSameOrBefore(observationDate)),
-            'Calculation can not be done as there is future date in past measurment'),
+            'Calculation can not be done as there is future date in past measurement'),
         assert(
             pastMeasurement.every(
                 (element) => element.date.isSameOrAfter(age.dateOfBirth)),
@@ -1735,18 +1735,18 @@ class _$WHOGrowthStandardsLengthVelocityForAgeImpl
       : assert(age.ageInTotalDaysByNow >= 0 && age.ageInTotalMonthsByNow <= 24,
             'Age must be in range of 0 days - 24 months'),
         assert(pastMeasurement.isNotEmpty,
-            'Calculation can not be done as past measurment is empty'),
-        assert(pastMeasurement.length > 1,
-            'Calculation can not be done as there is only one measurment history'),
+            'Calculation can not be done as past measurement is empty'),
+        assert(pastMeasurement.toSet().length > 1,
+            'Calculation can not be done as there is only one measurement history'),
         assert(
             pastMeasurement
                 .every((element) => element.date.isSameOrBefore(Date.today())),
-            'Calculation can not be done as there is future date in past measurment'),
+            'Calculation can not be done as there is future date in past measurement'),
         assert(
             observationDate == null ||
                 pastMeasurement.every(
                     (element) => element.date.isSameOrBefore(observationDate)),
-            'Calculation can not be done as there is future date in past measurment'),
+            'Calculation can not be done as there is future date in past measurement'),
         assert(
             pastMeasurement.every(
                 (element) => element.date.isSameOrAfter(age.dateOfBirth)),
@@ -2554,18 +2554,18 @@ class _$WHOGrowthStandardsWeightVelocityForAgeImpl
       : assert(age.ageInTotalDaysByNow >= 0 && age.ageInTotalMonthsByNow <= 24,
             'Age must be in range of 0 days - 24 months'),
         assert(pastMeasurement.isNotEmpty,
-            'Calculation can not be done as past measurment is empty'),
-        assert(pastMeasurement.length > 1,
-            'Calculation can not be done as there is only one measurment history'),
+            'Calculation can not be done as past measurement is empty'),
+        assert(pastMeasurement.toSet().length > 1,
+            'Calculation can not be done as there is only one measurement history'),
         assert(
             pastMeasurement
                 .every((element) => element.date.isSameOrBefore(Date.today())),
-            'Calculation can not be done as there is future date in past measurment'),
+            'Calculation can not be done as there is future date in past measurement'),
         assert(
             observationDate == null ||
                 pastMeasurement.every(
                     (element) => element.date.isSameOrBefore(observationDate)),
-            'Calculation can not be done as there is future date in past measurment'),
+            'Calculation can not be done as there is future date in past measurement'),
         assert(
             pastMeasurement.every(
                 (element) => element.date.isSameOrAfter(age.dateOfBirth)),

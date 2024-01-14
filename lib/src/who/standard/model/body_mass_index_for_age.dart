@@ -115,11 +115,8 @@ class WHOGrowthStandardsBodyMassIndexForAge
   num get _zScore =>
       _ageData.lms.adjustedZScore(bodyMassIndexMeasurement.value);
 
-  Age get _ageAtObservationDate => observationDate == null
-      ? bodyMassIndexMeasurement.age
-      : observationDate == Date.today()
-          ? bodyMassIndexMeasurement.age
-          : bodyMassIndexMeasurement.age.ageAtPastDate(observationDate!);
+  Age get _ageAtObservationDate =>
+      checkObservationDate(bodyMassIndexMeasurement.age, observationDate);
 
   num zScore([
     Precision precision = Precision.ten,

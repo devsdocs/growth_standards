@@ -65,11 +65,7 @@ class FentonLengthForAge with _$FentonLengthForAge {
 
   num get _zScore => _ageData.lms.zScore(_adjustedLength);
 
-  Age get _ageAtObservationDate => observationDate == null
-      ? age
-      : observationDate == Date.today()
-          ? age
-          : age.ageAtPastDate(observationDate!);
+  Age get _ageAtObservationDate => checkObservationDate(age, observationDate);
 
   num zScore([
     Precision precision = Precision.ten,

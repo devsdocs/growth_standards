@@ -1,11 +1,9 @@
-import 'package:clock/clock.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:growth_standards/src/common/typedef.dart';
+import 'package:growth_standards/src/common/model/age.part.dart';
 import 'package:growth_standards/src/common/types.dart';
 
 part 'age.freezed.dart';
 part 'age.g.dart';
-part 'date_utils.dart';
 
 Months _monthFromNumber(int number) => _reverseMonthsEnum[number]!;
 
@@ -14,7 +12,7 @@ final _reverseMonthsEnum = _$MonthsEnumMap.map((k, v) => MapEntry(v, k));
 @freezed
 class Age with _$Age {
   @Assert(
-    '!(DateTime(DTU.now().year, DTU.now().month, DTU.now().day).difference(DateTime(dateOfBirth.year,dateOfBirth.month.number,dateOfBirth.date,),).isNegative)',
+    '!(DateTime(DateTimeUtils.now().year, DateTimeUtils.now().month, DateTimeUtils.now().day).difference(DateTime(dateOfBirth.year,dateOfBirth.month.number,dateOfBirth.date,),).isNegative)',
     'Age is impossible',
   )
   factory Age(Date dateOfBirth) = _Age;
@@ -40,27 +38,29 @@ class Age with _$Age {
         dateOfBirth.date,
       );
 
-  YearsMonthsDays timeUntilNextBirthdayFromDate(Date date) {
+  AgeInYearMonthsWeeksDays timeUntilNextBirthdayFromDate(Date date) {
     final timeUntilNextBirthday =
         _dobCount.timeUntilNextBirthday(date.toDateTime());
-    return (
+    return AgeInYearMonthsWeeksDays(
       years: timeUntilNextBirthday.years,
       months: timeUntilNextBirthday.months,
-      days: timeUntilNextBirthday.days
+      weeks: timeUntilNextBirthday.weeks,
+      days: timeUntilNextBirthday.days,
     );
   }
 
   bool _checkDate(Date date) => date.isSameOrBefore(dateOfBirth);
 
-  YearsMonthsDays yearsMonthsDaysOfAgeAtDate(Date date) {
+  AgeInYearMonthsWeeksDays yearsMonthsWeeksDaysOfAgeAtDate(Date date) {
     if (_checkDate(date)) {
-      return (years: 0, days: 0, months: 0);
+      return AgeInYearMonthsWeeksDays();
     }
     final ageAtDate = _dobCount.ageAtDate(date.toDateTime());
-    return (
+    return AgeInYearMonthsWeeksDays(
       years: ageAtDate.years,
       months: ageAtDate.months,
-      days: ageAtDate.days
+      days: ageAtDate.days,
+      weeks: ageAtDate.weeks,
     );
   }
 
@@ -69,15 +69,15 @@ class Age with _$Age {
       return 0;
     }
     final count = ageInTotalMonthsAtDate(date);
-    return count < 12 ? 0 : count ~/ 12;
+    return count < DateTime.monthsPerYear ? 0 : count ~/ DateTime.monthsPerYear;
   }
 
   int ageInTotalMonthsAtDate(Date date) {
     if (_checkDate(date)) {
       return 0;
     }
-    final count = yearsMonthsDaysOfAgeAtDate(date);
-    return (count.years * 12) + count.months;
+    final count = yearsMonthsWeeksDaysOfAgeAtDate(date);
+    return (count.years * DateTime.monthsPerYear) + count.months;
   }
 
   int ageInTotalWeeksAtDate(Date date) {
@@ -85,21 +85,24 @@ class Age with _$Age {
       return 0;
     }
     final count = ageInTotalDaysAtDate(date);
-    return count < 7 ? 0 : count ~/ 7;
+    return count < DateTime.daysPerWeek ? 0 : count ~/ DateTime.daysPerWeek;
   }
 
   int ageInTotalDaysAtDate(Date date) {
     if (_checkDate(date)) {
       return 0;
     }
-    return DTU.getDaysDifference(date.toDateTime(), dateOfBirth.toDateTime());
+    return DateTimeUtils.getDaysDifference(
+      date.toDateTime(),
+      dateOfBirth.toDateTime(),
+    );
   }
 
-  YearsMonthsDays get timeUntilNextBirtdayByNow =>
+  AgeInYearMonthsWeeksDays get timeUntilNextBirtdayByNow =>
       timeUntilNextBirthdayFromDate(Date.today());
 
-  YearsMonthsDays get yearsMonthsDaysOfAgeByNow =>
-      yearsMonthsDaysOfAgeAtDate(Date.today());
+  AgeInYearMonthsWeeksDays get yearsMonthsWeeksDaysOfAgeByNow =>
+      yearsMonthsWeeksDaysOfAgeAtDate(Date.today());
 
   int get ageInTotalYearsByNow => ageInTotalYearsAtDate(Date.today());
 
@@ -148,8 +151,8 @@ class Date with _$Date implements Comparable<Date> {
     'Date impossible, use \${Date.fromDateTime} for safety, in cost of increased risk of wrong growth calculation',
   )
   @Assert(
-    'date <= TimeTools.datesInMonth(year, month.number)',
-    'Date exceeded, max date is at \${TimeTools.datesInMonth(year, month.number)} in \${month.text} \$year',
+    'date <= DateTimeUtils.datesInMonth(year, month.number)',
+    'Date exceeded, max date is at \${DateTimeUtils.datesInMonth(year, month.number)} in \${month.text} \$year',
   )
   factory Date({
     required int year,
@@ -160,18 +163,18 @@ class Date with _$Date implements Comparable<Date> {
   const Date._();
 
   factory Date.daysAgoByNow(int days) =>
-      Date.fromDateTime(DTU.addDays(DTU.now(), -days));
+      Date.fromDateTime(DateTimeUtils.addDays(DateTimeUtils.now(), -days));
 
   factory Date.weeksAgoByNow(int weeks) =>
-      Date.fromDateTime(DTU.addWeeks(DTU.now(), -weeks));
+      Date.fromDateTime(DateTimeUtils.addWeeks(DateTimeUtils.now(), -weeks));
 
   factory Date.monthsAgoByNow(int months) =>
-      Date.fromDateTime(DTU.addMonths(DTU.now(), -months));
+      Date.fromDateTime(DateTimeUtils.addMonths(DateTimeUtils.now(), -months));
 
   factory Date.yearsAgoByNow(int years) =>
-      Date.fromDateTime(DTU.addYears(DTU.now(), -years));
+      Date.fromDateTime(DateTimeUtils.addYears(DateTimeUtils.now(), -years));
 
-  factory Date.today() => Date.fromDateTime(DTU.now());
+  factory Date.today() => Date.fromDateTime(DateTimeUtils.now());
 
   factory Date.fromDateTime(DateTime dateTime) => Date(
         year: dateTime.year,
@@ -204,22 +207,23 @@ class Date with _$Date implements Comparable<Date> {
   Date add(Duration duration) => this + duration;
   Date subtract(Duration duration) => this - duration;
 
-  Duration difference(Date other) =>
-      Duration(days: DTU.getDaysDifference(toDateTime(), other.toDateTime()));
+  Duration difference(Date other) => Duration(
+        days: DateTimeUtils.getDaysDifference(toDateTime(), other.toDateTime()),
+      );
 
   DateTime toDateTime() => DateTime(year, month.number, date);
 
   Date addDays(int days) => Date.fromDateTime(
-        DTU.addDays(toDateTime(), days),
+        DateTimeUtils.addDays(toDateTime(), days),
       );
   Date addWeeks(int weeks) => Date.fromDateTime(
-        DTU.addWeeks(toDateTime(), weeks),
+        DateTimeUtils.addWeeks(toDateTime(), weeks),
       );
   Date addMonths(int months) => Date.fromDateTime(
-        DTU.addMonths(toDateTime(), months),
+        DateTimeUtils.addMonths(toDateTime(), months),
       );
   Date addYears(int years) => Date.fromDateTime(
-        DTU.addYears(toDateTime(), years),
+        DateTimeUtils.addYears(toDateTime(), years),
       );
 
   Date subtractDays(int days) => addDays(-days);
