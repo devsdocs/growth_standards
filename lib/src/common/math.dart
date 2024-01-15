@@ -1,9 +1,8 @@
 import 'dart:math';
 
 import 'package:dart_numerics/dart_numerics.dart';
-import 'package:growth_standards/src/common/extension.dart';
 import 'package:growth_standards/src/common/model/age.dart';
-import 'package:growth_standards/src/common/typedef.dart';
+import 'package:growth_standards/src/common/model/lms.dart';
 import 'package:growth_standards/src/common/types.dart';
 import 'package:super_measurement/super_measurement.dart';
 

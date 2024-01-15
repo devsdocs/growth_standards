@@ -1,7 +1,5 @@
 import 'package:growth_standards/src/common/types.dart';
 
-typedef LMS = ({num l, num m, num s});
-
 typedef ZScorePercentile = ({num zScore, num percentile});
 typedef VelocityMonths = ({int low, int high});
 

@@ -18,10 +18,10 @@ class WHOGrowthStandardsLengthVelocityForAgeData {
                 WHOGrowthStandardsLengthVelocityForAgeIncrement(
                   lmsData: (v2 as Map<String, dynamic>).map((k3, v3) {
                     v3 as Map<String, dynamic>;
-                    final lms = (
+                    final lms = LMS(
                       l: v3['l'] as num,
                       m: v3['m'] as num,
-                      s: v3['s'] as num
+                      s: v3['s'] as num,
                     );
                     return MapEntry(
                       parseVelocityIncrement(k3),

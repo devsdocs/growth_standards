@@ -8,7 +8,7 @@ class FentonLengthForAgeData {
   static Map<int, _FentonLengthForAgeLMS> _parse() =>
       fentonLfA.toJsonObjectAsMap.map((k1, v1) {
         v1 as Map<String, dynamic>;
-        final lms = (l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
+        final lms = LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
         return MapEntry(
           int.parse(k1),
           _FentonLengthForAgeLMS(

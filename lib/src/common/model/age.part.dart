@@ -12,7 +12,7 @@ class TimeIntervalCount {
             date,
           ),
         ) {
-    if (date > DateTimeUtils.datesInMonth(year, month)) {
+    if (date > DateTimeUtils.getDaysInMonth(year, month)) {
       throw Exception('Days exceeded');
     }
   }
@@ -65,8 +65,7 @@ class AgeInYearMonthsWeeksDays {
   int weeks;
 
   @override
-  String toString() =>
-      'Age(Years: $years, Months: $months, Weeks: $weeks, Days: $days)';
+  String toString() => '$years Years, $months Months, $weeks Weeks, $days Days';
 }
 
 /// Utils to work with [DateTime].
@@ -92,7 +91,7 @@ class DateTimeUtils {
 
       if (fromDate.day > endDate.day) {
         months--;
-        days = datesInMonth(
+        days = getDaysInMonth(
               fromDate.year + years,
               ((fromDate.month + months - 1) % DateTime.monthsPerYear) + 1,
             ) +
@@ -105,7 +104,7 @@ class DateTimeUtils {
       if (fromDate.day > endDate.day) {
         years--;
         months = DateTime.monthsPerYear - 1;
-        days = datesInMonth(
+        days = getDaysInMonth(
               fromDate.year + years,
               ((fromDate.month + months - 1) % DateTime.monthsPerYear) + 1,
             ) +
@@ -119,7 +118,7 @@ class DateTimeUtils {
 
       if (fromDate.day > endDate.day) {
         months--;
-        days = datesInMonth(
+        days = getDaysInMonth(
               fromDate.year + years,
               fromDate.month + months,
             ) +
@@ -130,8 +129,11 @@ class DateTimeUtils {
       }
     }
 
-    final remainingDays = days < 7 ? days : days % 7;
-    final remainingWeeks = days < 7 ? 0 : (days - remainingDays) ~/ 7;
+    final remainingDays =
+        days < DateTime.daysPerWeek ? days : days % DateTime.daysPerWeek;
+    final remainingWeeks = days < DateTime.daysPerWeek
+        ? 0
+        : (days - remainingDays) ~/ DateTime.daysPerWeek;
 
     return AgeInYearMonthsWeeksDays(
       years: years,
@@ -140,32 +142,6 @@ class DateTimeUtils {
       months: months,
     );
   }
-
-  /// _daysInMonth cost contains days per months; daysInMonth method to be used instead.
-  static final List<int> daysInMonth = [
-    31, // Jan
-    28, // Feb, it varies from 28 to 29
-    31,
-    30,
-    31,
-    30,
-    31,
-    31,
-    30,
-    31,
-    30,
-    31, // Dec
-  ];
-
-  /// isLeapYear method
-  static bool isLeapYear(int year) =>
-      (year % 4 == 0) && ((year % 100 != 0) || (year % 400 == 0));
-
-  /// daysInMonth method
-  static int datesInMonth(int year, int month) =>
-      (month == DateTime.february && isLeapYear(year))
-          ? 29
-          : daysInMonth[month - 1];
 
   /// Check if [a] and [b] are on the same day.
   static bool isSameDay(DateTime a, DateTime b) {

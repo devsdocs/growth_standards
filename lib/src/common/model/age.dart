@@ -38,16 +38,8 @@ class Age with _$Age {
         dateOfBirth.date,
       );
 
-  AgeInYearMonthsWeeksDays timeUntilNextBirthdayFromDate(Date date) {
-    final timeUntilNextBirthday =
-        _dobCount.timeUntilNextBirthday(date.toDateTime());
-    return AgeInYearMonthsWeeksDays(
-      years: timeUntilNextBirthday.years,
-      months: timeUntilNextBirthday.months,
-      weeks: timeUntilNextBirthday.weeks,
-      days: timeUntilNextBirthday.days,
-    );
-  }
+  AgeInYearMonthsWeeksDays timeUntilNextBirthdayFromDate(Date date) =>
+      _dobCount.timeUntilNextBirthday(date.toDateTime());
 
   bool _checkDate(Date date) => date.isSameOrBefore(dateOfBirth);
 
@@ -55,13 +47,7 @@ class Age with _$Age {
     if (_checkDate(date)) {
       return AgeInYearMonthsWeeksDays();
     }
-    final ageAtDate = _dobCount.ageAtDate(date.toDateTime());
-    return AgeInYearMonthsWeeksDays(
-      years: ageAtDate.years,
-      months: ageAtDate.months,
-      days: ageAtDate.days,
-      weeks: ageAtDate.weeks,
-    );
+    return _dobCount.ageAtDate(date.toDateTime());
   }
 
   int ageInTotalYearsAtDate(Date date) {
@@ -151,8 +137,8 @@ class Date with _$Date implements Comparable<Date> {
     'Date impossible, use \${Date.fromDateTime} for safety, in cost of increased risk of wrong growth calculation',
   )
   @Assert(
-    'date <= DateTimeUtils.datesInMonth(year, month.number)',
-    'Date exceeded, max date is at \${DateTimeUtils.datesInMonth(year, month.number)} in \${month.text} \$year',
+    'date <= DateTimeUtils.getDaysInMonth(year, month.number)',
+    'Date exceeded, max date is at \${DateTimeUtils.getDaysInMonth(year, month.number)} in \${month.text} \$year',
   )
   factory Date({
     required int year,

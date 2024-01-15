@@ -14,7 +14,7 @@ class CDCWeigthForStatureData {
             lengthData: (v1 as Map<String, dynamic>).map((k2, v2) {
               v2 as Map<String, dynamic>;
               final lms =
-                  (l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
+                  LMS(l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
               return MapEntry(
                 num.parse(k2),
                 _CDCWeigthForStatureLMS(
