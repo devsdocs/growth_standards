@@ -1,7 +1,5 @@
 // ignore_for_file: avoid_print
 
-import 'dart:convert';
-
 import 'package:growth_standards/growth_standards.dart';
 
 final birthDay = Date(year: 2022, month: Months.june, date: 30);
@@ -17,7 +15,7 @@ const sex = Sex.male;
 
 void main() {
   print(
-    'Age: ${age.yearsMonthsWeeksDaysOfAgeByNow.years} Years, ${age.yearsMonthsWeeksDaysOfAgeByNow.months} Months, ${age.yearsMonthsWeeksDaysOfAgeByNow.days} Days, with total ${age.ageInTotalMonthsByNow} in Months or ${age.ageInTotalDaysByNow} in Days',
+    'Age: ${age.yearsMonthsWeeksDaysOfAgeByNow} with total ${age.ageInTotalMonthsByNow} in Months or ${age.ageInTotalDaysByNow} in Days',
   );
   // Demonstrating adjusted zscore calculation
   final calcLengthForAgeStanding = gs.lengthForAge(
@@ -28,12 +26,9 @@ void main() {
   );
   print(calcLengthForAgeStanding.zScore(Precision.two));
   print(calcLengthForAgeStanding.percentile(Precision.two));
-  final encode = json.encode(calcLengthForAgeStanding.toJson());
-  print(encode);
+
   print(
-    gs.fromJson.lengthForAge(
-      json.decode(encode) as Map<String, dynamic>,
-    ),
+    gs.fromJson.lengthForAge(calcLengthForAgeStanding.toJson()),
   );
 
   final calcLengthForAgeRecumbent = calcLengthForAgeStanding.copyWith(
@@ -41,7 +36,7 @@ void main() {
   );
   print(calcLengthForAgeRecumbent.zScore(Precision.two));
   print(calcLengthForAgeRecumbent.percentile(Precision.two));
-  print(json.encode(calcLengthForAgeRecumbent.toJson()));
+  print(calcLengthForAgeRecumbent.toJson());
 
   final calcWeigthForAge = gs.weightForAge(
     age: age,
@@ -50,7 +45,7 @@ void main() {
   );
   print(calcWeigthForAge.zScore(Precision.two));
   print(calcWeigthForAge.percentile(Precision.two));
-  print(json.encode(calcWeigthForAge.toJson()));
+  print(calcWeigthForAge.toJson());
 
   final calcWeigthForLength = gs.weightForLength(
     lengthMeasurementResult: centimeters,
@@ -61,7 +56,7 @@ void main() {
   );
   print(calcWeigthForLength.zScore(Precision.two));
   print(calcWeigthForLength.percentile(Precision.two));
-  print(json.encode(calcWeigthForLength.toJson()));
+  print(calcWeigthForLength.toJson());
 
   final calcBMIForAge = gs.bodyMassIndexForAge(
     bodyMassIndexMeasurement:
@@ -76,5 +71,5 @@ void main() {
 
   print(calcBMIForAge.zScore(Precision.two));
   print(calcBMIForAge.percentile(Precision.two));
-  print(json.encode(calcBMIForAge.toJson()));
+  print(calcBMIForAge.toJson());
 }

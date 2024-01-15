@@ -51,9 +51,9 @@ class CDCWeigthForStature with _$CDCWeigthForStature {
     'Observation date is impossible, because happen after today or before birth',
   )
   factory CDCWeigthForStature({
-    Date? observationDate,
+    @DateConverter() Date? observationDate,
     required Sex sex,
-    required Age age,
+    @AgeConverter() required Age age,
     @LengthConverter() required Length length,
     @MassConverter() required Mass weight,
     required LengthHeigthMeasurementPosition measure,

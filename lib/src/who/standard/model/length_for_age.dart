@@ -47,9 +47,9 @@ class WHOGrowthStandardsLengthForAge with _$WHOGrowthStandardsLengthForAge {
     'Observation date is impossible, because happen after today or before birth',
   )
   factory WHOGrowthStandardsLengthForAge({
-    Date? observationDate,
+    @DateConverter() Date? observationDate,
     required Sex sex,
-    required Age age,
+    @AgeConverter() required Age age,
     @LengthConverter() required Length lengthHeight,
     required LengthHeigthMeasurementPosition measure,
   }) = _WHOGrowthStandardsLengthForAge;

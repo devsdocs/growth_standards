@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:growth_standards/src/common/model/age.part.dart';
+import 'package:growth_standards/src/common/tools.dart';
 import 'package:growth_standards/src/common/types.dart';
 
 part 'age.freezed.dart';
@@ -15,7 +16,7 @@ class Age with _$Age {
     '!(DateTime(DateTimeUtils.now().year, DateTimeUtils.now().month, DateTimeUtils.now().day).difference(DateTime(dateOfBirth.year,dateOfBirth.month.number,dateOfBirth.date,),).isNegative)',
     'Age is impossible',
   )
-  factory Age(Date dateOfBirth) = _Age;
+  factory Age(@DateConverter() Date dateOfBirth) = _Age;
 
   const Age._();
 

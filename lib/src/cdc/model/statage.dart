@@ -49,9 +49,9 @@ class CDCStatureForAge with _$CDCStatureForAge {
     'Observation date is impossible, because happen after today or before birth',
   )
   factory CDCStatureForAge({
-    Date? observationDate,
+    @DateConverter() Date? observationDate,
     required Sex sex,
-    required Age age,
+    @AgeConverter() required Age age,
     @LengthConverter() required Length lengthHeight,
     required LengthHeigthMeasurementPosition measure,
   }) = _GrowthReferenceHeightForAge;

@@ -49,9 +49,9 @@ class CDCWeightForAge with _$CDCWeightForAge {
     'Observation date is impossible, because happen after today or before birth',
   )
   factory CDCWeightForAge({
-    Date? observationDate,
+    @DateConverter() Date? observationDate,
     required Sex sex,
-    required Age age,
+    @AgeConverter() required Age age,
     @MassConverter() required Mass weight,
   }) = _CDCWeightForAge;
 

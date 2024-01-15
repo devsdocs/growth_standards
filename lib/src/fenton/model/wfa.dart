@@ -9,7 +9,8 @@ class FentonWeightForAgeData {
   static Map<int, _FentonWeightForAgeLMS> _parse() =>
       fentonWfA.toJsonObjectAsMap.map((k1, v1) {
         v1 as Map<String, dynamic>;
-        final lms = LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
+        final lms =
+            LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
         return MapEntry(
           int.parse(k1),
           _FentonWeightForAgeLMS(
@@ -41,9 +42,9 @@ class FentonWeightForAge with _$FentonWeightForAge {
     'Observation date is impossible, because happen after today or before birth',
   )
   factory FentonWeightForAge({
-    Date? observationDate,
+    @DateConverter() Date? observationDate,
     required Sex sex,
-    required Age age,
+    @AgeConverter() required Age age,
     @MassConverter() required Mass weight,
   }) = _FentonWeightForAge;
 

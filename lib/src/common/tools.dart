@@ -30,3 +30,29 @@ class LengthConverter implements JsonConverter<Length, Map<String, dynamic>> {
 
 Age checkObservationDate(Age age, [Date? observationDate]) =>
     observationDate == null ? age : age.ageAtPastDate(observationDate);
+
+class AgeConverter implements JsonConverter<Age, Map<String, dynamic>> {
+  const AgeConverter();
+  @override
+  Age fromJson(Map<String, dynamic> json) {
+    return Age.fromJson(json);
+  }
+
+  @override
+  Map<String, dynamic> toJson(Age object) {
+    return object.toJson();
+  }
+}
+
+class DateConverter implements JsonConverter<Date, Map<String, dynamic>> {
+  const DateConverter();
+  @override
+  Date fromJson(Map<String, dynamic> json) {
+    return Date.fromJson(json);
+  }
+
+  @override
+  Map<String, dynamic> toJson(Date object) {
+    return object.toJson();
+  }
+}

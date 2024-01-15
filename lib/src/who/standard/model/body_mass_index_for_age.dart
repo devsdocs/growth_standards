@@ -52,7 +52,7 @@ class WHOGrowthStandardsBodyMassIndexMeasurement
     @LengthConverter() required Length lengthHeight,
     @MassConverter() required Mass weight,
     required LengthHeigthMeasurementPosition measure,
-    required Age age,
+    @AgeConverter() required Age age,
   }) {
     final adjustedLength = whoAdjustedLengthHeight(
       age: age,
@@ -86,7 +86,7 @@ class WHOGrowthStandardsBodyMassIndexForAge
     'Observation date is impossible, because happen after today or before birth',
   )
   factory WHOGrowthStandardsBodyMassIndexForAge({
-    Date? observationDate,
+    @DateConverter() Date? observationDate,
     required Sex sex,
     @WHOGrowthStandardsBodyMassIndexMeasurementConverter()
     required WHOGrowthStandardsBodyMassIndexMeasurement

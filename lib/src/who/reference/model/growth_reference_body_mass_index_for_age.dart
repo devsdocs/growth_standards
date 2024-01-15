@@ -70,9 +70,9 @@ class WHOGrowthReferenceBodyMassIndexForAge
     'Observation date is impossible, because happen after today or before birth',
   )
   factory WHOGrowthReferenceBodyMassIndexForAge({
-    Date? observationDate,
+    @DateConverter() Date? observationDate,
     required Sex sex,
-    required Age age,
+    @AgeConverter() required Age age,
     required WHOGrowthReferenceBodyMassIndexMeasurement
         bodyMassIndexMeasurement,
   }) = _WHOGrowthReferenceBodyMassIndexForAge;

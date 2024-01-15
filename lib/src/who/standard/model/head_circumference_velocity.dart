@@ -75,9 +75,9 @@ class WHOGrowthStandardsHeadCircumferenceVelocityForAge
     'Calculation can not be done as there is date less than Date of Birth in past measurement, if you find this exception is a mistake, try to provide exact \$Age',
   )
   factory WHOGrowthStandardsHeadCircumferenceVelocityForAge({
-    Date? observationDate,
+    @DateConverter() Date? observationDate,
     required Sex sex,
-    required Age age,
+    @AgeConverter() required Age age,
     @LengthMeasurementHistoryConverter()
     required List<LengthMeasurementHistory> pastMeasurement,
   }) = _WHOGrowthStandardsHeadCircumferenceVelocityForAge;

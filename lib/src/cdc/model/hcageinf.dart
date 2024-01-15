@@ -46,9 +46,9 @@ class CDCInfantHeadCircumferenceForAge with _$CDCInfantHeadCircumferenceForAge {
     'Observation date is impossible, because happen after today or before birth',
   )
   factory CDCInfantHeadCircumferenceForAge({
-    Date? observationDate,
+    @DateConverter() Date? observationDate,
     required Sex sex,
-    required Age age,
+    @AgeConverter() required Age age,
     @LengthConverter() required Length measurementResult,
   }) = _HeadCircumferenceForAge;
 

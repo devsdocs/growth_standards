@@ -148,6 +148,10 @@ class MassMeasurementHistory extends MeasurementHistory<Mass> {
   final Date date;
   @override
   final Mass unit;
+
+  @override
+  String toString() =>
+      'Mass Measurement History(Date: $date, Measurement: $unit)';
 }
 
 class LengthMeasurementHistory extends MeasurementHistory<Length> {
@@ -157,6 +161,10 @@ class LengthMeasurementHistory extends MeasurementHistory<Length> {
   final Date date;
   @override
   final Length unit;
+
+  @override
+  String toString() =>
+      'Length Measurement History(Date: $date, Measurement: $unit)';
 }
 
 abstract class MeasurementHistory<T extends Unit<T>> {
@@ -178,7 +186,7 @@ class MassMeasurementHistoryConverter
               e['date'] as Map<String, dynamic>,
             ),
             const MassConverter().fromJson(
-              e['unit'] as Map<String, dynamic>,
+              e['measurement'] as Map<String, dynamic>,
             ),
           );
         },
@@ -189,7 +197,7 @@ class MassMeasurementHistoryConverter
       .map(
         (e) => {
           'date': e.date.toJson(),
-          'unit': e.unit.toJson(),
+          'measurement': e.unit.toJson(),
         },
       )
       .toList();
@@ -208,7 +216,7 @@ class LengthMeasurementHistoryConverter
               e['date'] as Map<String, dynamic>,
             ),
             const LengthConverter().fromJson(
-              e['unit'] as Map<String, dynamic>,
+              e['measurement'] as Map<String, dynamic>,
             ),
           );
         },
@@ -219,7 +227,7 @@ class LengthMeasurementHistoryConverter
       .map(
         (e) => {
           'date': e.date.toJson(),
-          'unit': e.unit.toJson(),
+          'measurement': e.unit.toJson(),
         },
       )
       .toList();

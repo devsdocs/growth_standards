@@ -9,11 +9,11 @@ part of 'fenton.dart';
 _$FentonHeadCircumferenceForAgeImpl
     _$$FentonHeadCircumferenceForAgeImplFromJson(Map<String, dynamic> json) =>
         _$FentonHeadCircumferenceForAgeImpl(
-          observationDate: json['observationDate'] == null
-              ? null
-              : Date.fromJson(json['observationDate'] as Map<String, dynamic>),
+          observationDate: _$JsonConverterFromJson<Map<String, dynamic>, Date>(
+              json['observationDate'], const DateConverter().fromJson),
           sex: $enumDecode(_$SexEnumMap, json['sex']),
-          age: Age.fromJson(json['age'] as Map<String, dynamic>),
+          age: const AgeConverter()
+              .fromJson(json['age'] as Map<String, dynamic>),
           measurementResult: const LengthConverter()
               .fromJson(json['measurementResult'] as Map<String, dynamic>),
         );
@@ -21,26 +21,38 @@ _$FentonHeadCircumferenceForAgeImpl
 Map<String, dynamic> _$$FentonHeadCircumferenceForAgeImplToJson(
         _$FentonHeadCircumferenceForAgeImpl instance) =>
     <String, dynamic>{
-      'observationDate': instance.observationDate,
+      'observationDate': _$JsonConverterToJson<Map<String, dynamic>, Date>(
+          instance.observationDate, const DateConverter().toJson),
       'sex': _$SexEnumMap[instance.sex]!,
-      'age': instance.age,
+      'age': const AgeConverter().toJson(instance.age),
       'measurementResult':
           const LengthConverter().toJson(instance.measurementResult),
     };
+
+Value? _$JsonConverterFromJson<Json, Value>(
+  Object? json,
+  Value? Function(Json json) fromJson,
+) =>
+    json == null ? null : fromJson(json as Json);
 
 const _$SexEnumMap = {
   Sex.male: 1,
   Sex.female: 2,
 };
 
+Json? _$JsonConverterToJson<Json, Value>(
+  Value? value,
+  Json? Function(Value value) toJson,
+) =>
+    value == null ? null : toJson(value);
+
 _$FentonLengthForAgeImpl _$$FentonLengthForAgeImplFromJson(
         Map<String, dynamic> json) =>
     _$FentonLengthForAgeImpl(
-      observationDate: json['observationDate'] == null
-          ? null
-          : Date.fromJson(json['observationDate'] as Map<String, dynamic>),
+      observationDate: _$JsonConverterFromJson<Map<String, dynamic>, Date>(
+          json['observationDate'], const DateConverter().fromJson),
       sex: $enumDecode(_$SexEnumMap, json['sex']),
-      age: Age.fromJson(json['age'] as Map<String, dynamic>),
+      age: const AgeConverter().fromJson(json['age'] as Map<String, dynamic>),
       lengthHeight: const LengthConverter()
           .fromJson(json['lengthHeight'] as Map<String, dynamic>),
       measure: $enumDecode(
@@ -50,9 +62,10 @@ _$FentonLengthForAgeImpl _$$FentonLengthForAgeImplFromJson(
 Map<String, dynamic> _$$FentonLengthForAgeImplToJson(
         _$FentonLengthForAgeImpl instance) =>
     <String, dynamic>{
-      'observationDate': instance.observationDate,
+      'observationDate': _$JsonConverterToJson<Map<String, dynamic>, Date>(
+          instance.observationDate, const DateConverter().toJson),
       'sex': _$SexEnumMap[instance.sex]!,
-      'age': instance.age,
+      'age': const AgeConverter().toJson(instance.age),
       'lengthHeight': const LengthConverter().toJson(instance.lengthHeight),
       'measure': _$LengthHeigthMeasurementPositionEnumMap[instance.measure]!,
     };
@@ -65,11 +78,10 @@ const _$LengthHeigthMeasurementPositionEnumMap = {
 _$FentonWeightForAgeImpl _$$FentonWeightForAgeImplFromJson(
         Map<String, dynamic> json) =>
     _$FentonWeightForAgeImpl(
-      observationDate: json['observationDate'] == null
-          ? null
-          : Date.fromJson(json['observationDate'] as Map<String, dynamic>),
+      observationDate: _$JsonConverterFromJson<Map<String, dynamic>, Date>(
+          json['observationDate'], const DateConverter().fromJson),
       sex: $enumDecode(_$SexEnumMap, json['sex']),
-      age: Age.fromJson(json['age'] as Map<String, dynamic>),
+      age: const AgeConverter().fromJson(json['age'] as Map<String, dynamic>),
       weight: const MassConverter()
           .fromJson(json['weight'] as Map<String, dynamic>),
     );
@@ -77,8 +89,9 @@ _$FentonWeightForAgeImpl _$$FentonWeightForAgeImplFromJson(
 Map<String, dynamic> _$$FentonWeightForAgeImplToJson(
         _$FentonWeightForAgeImpl instance) =>
     <String, dynamic>{
-      'observationDate': instance.observationDate,
+      'observationDate': _$JsonConverterToJson<Map<String, dynamic>, Date>(
+          instance.observationDate, const DateConverter().toJson),
       'sex': _$SexEnumMap[instance.sex]!,
-      'age': instance.age,
+      'age': const AgeConverter().toJson(instance.age),
       'weight': const MassConverter().toJson(instance.weight),
     };

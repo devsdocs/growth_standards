@@ -49,9 +49,9 @@ class WHOGrowthReferenceWeightForAge with _$WHOGrowthReferenceWeightForAge {
     'Observation date is impossible, because happen after today or before birth',
   )
   factory WHOGrowthReferenceWeightForAge({
-    Date? observationDate,
+    @DateConverter() Date? observationDate,
     required Sex sex,
-    required Age age,
+    @AgeConverter() required Age age,
     @MassConverter() required Mass weight,
   }) = _WHOGrowthReferenceWeightForAge;
 
