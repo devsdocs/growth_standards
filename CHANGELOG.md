@@ -1,3 +1,7 @@
+## 1.1.1
+
+- Various bug fix
+
 ## 1.1.0
 
 - Refractoring
