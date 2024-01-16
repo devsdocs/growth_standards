@@ -54,10 +54,11 @@ class WHOGrowthStandardsBodyMassIndexMeasurement
     required LengthHeigthMeasurementPosition measure,
     @AgeConverter() required Age age,
   }) {
-    final adjustedLength = whoAdjustedLengthHeight(
+    final adjustedLength = adjustedLengthHeight(
       age: age,
       measure: measure,
       lengthHeight: lengthHeight,
+      type: AdjustedLengthType.who,
     );
 
     final bmi = BodyMassIndex(lengthHeight: adjustedLength, weight: weight);

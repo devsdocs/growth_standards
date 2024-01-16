@@ -64,10 +64,11 @@ class CDCWeigthForStature with _$CDCWeigthForStature {
   factory CDCWeigthForStature.fromJson(Map<String, dynamic> json) =>
       _$CDCWeigthForStatureFromJson(json);
 
-  num get _adjustedLength => cdcAdjustedLengthHeight(
+  num get _adjustedLength => adjustedLengthHeight(
         measure: measure,
         age: age,
         lengthHeight: length,
+        type: AdjustedLengthType.cdc,
       ).value!;
 
   CDCWeigthForStatureData get _weigthForLengthData => CDCWeigthForStatureData();

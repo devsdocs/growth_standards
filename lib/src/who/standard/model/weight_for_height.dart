@@ -70,10 +70,11 @@ class WHOGrowthStandardsWeightForHeight
   ) =>
       _$WHOGrowthStandardsWeightForHeightFromJson(json);
 
-  num get _adjustedHeight => whoAdjustedLengthHeight(
+  num get _adjustedHeight => adjustedLengthHeight(
         measure: measure,
         age: age,
         lengthHeight: height,
+        type: AdjustedLengthType.who,
       ).value!;
 
   WHOGrowthStandardsWeightForHeightData get _weightForHeightData =>

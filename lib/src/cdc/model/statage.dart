@@ -76,10 +76,11 @@ class CDCStatureForAge with _$CDCStatureForAge {
                   ? 240
                   : _ageAtObservationDate.ageInTotalMonthsByNow + 0.5]!;
 
-  num get _adjustedLength => cdcAdjustedLengthHeight(
+  num get _adjustedLength => adjustedLengthHeight(
         measure: measure,
         age: age,
         lengthHeight: lengthHeight,
+        type: AdjustedLengthType.cdc,
       ).value!;
 
   num get _zScore => _ageData.lms.zScore(_adjustedLength);

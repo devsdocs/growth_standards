@@ -177,3 +177,9 @@ enum PercentileValue {
   const PercentileValue(this.value);
   final num value;
 }
+
+enum AdjustedLengthType {
+  who,
+  cdc,
+  ;
+}

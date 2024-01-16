@@ -58,13 +58,7 @@ class FentonLengthForAge with _$FentonLengthForAge {
   _FentonLengthForAgeLMS get _ageData =>
       _lengthForAgeData._data[_ageAtObservationDate.ageInTotalWeeksByNow]!;
 
-  num get _adjustedLength => cdcAdjustedLengthHeight(
-        measure: measure,
-        age: age,
-        lengthHeight: lengthHeight,
-      ).value!;
-
-  num get _zScore => _ageData.lms.zScore(_adjustedLength);
+  num get _zScore => _ageData.lms.zScore(lengthHeight.toCentimeters.value!);
 
   Age get _ageAtObservationDate => checkObservationDate(age, observationDate);
 

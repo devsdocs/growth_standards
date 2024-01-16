@@ -34,25 +34,17 @@ Age checkObservationDate(Age age, [Date? observationDate]) =>
 class AgeConverter implements JsonConverter<Age, Map<String, dynamic>> {
   const AgeConverter();
   @override
-  Age fromJson(Map<String, dynamic> json) {
-    return Age.fromJson(json);
-  }
+  Age fromJson(Map<String, dynamic> json) => Age.fromJson(json);
 
   @override
-  Map<String, dynamic> toJson(Age object) {
-    return object.toJson();
-  }
+  Map<String, dynamic> toJson(Age object) => object.toJson();
 }
 
 class DateConverter implements JsonConverter<Date, Map<String, dynamic>> {
   const DateConverter();
   @override
-  Date fromJson(Map<String, dynamic> json) {
-    return Date.fromJson(json);
-  }
+  Date fromJson(Map<String, dynamic> json) => Date.fromJson(json);
 
   @override
-  Map<String, dynamic> toJson(Date object) {
-    return object.toJson();
-  }
+  Map<String, dynamic> toJson(Date object) => object.toJson();
 }
