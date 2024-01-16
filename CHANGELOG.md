@@ -1,3 +1,6 @@
+## 1.1.2
+- Dependencies update
+
 ## 1.1.1
 
 - Various bug fix
