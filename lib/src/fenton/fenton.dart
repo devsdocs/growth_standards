@@ -43,8 +43,10 @@ class FentonFromJson {
 }
 
 class Fenton {
+  /// Access all statistical data
   FentonData get data => FentonData();
 
+  /// Because why not?
   FentonFromJson get fromJson => FentonFromJson();
 
   FentonHeadCircumferenceForAge headCircumferenceForAge({

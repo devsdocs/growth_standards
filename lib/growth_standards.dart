@@ -1,4 +1,5 @@
-/// WHO Child Growth Standard Implementation in Dart
+/// Various Growth Standard Implementation in Dart
+/// WHO, CDC, Fenton, and more to come
 library growth_standards;
 
 export 'package:super_measurement/super_measurement.dart'

@@ -64,9 +64,11 @@ class CDCGrowthStandardFromTwoYearsOldAndAboveFromJson {
 }
 
 class CDCGrowthStandardFromTwoYearsOldAndAbove {
+  /// Access all statistical data
   CDCGrowthStandardFromTwoYearsOldAndAboveData get data =>
       CDCGrowthStandardFromTwoYearsOldAndAboveData();
 
+  /// Because why not?
   CDCGrowthStandardFromTwoYearsOldAndAboveFromJson get fromJson =>
       CDCGrowthStandardFromTwoYearsOldAndAboveFromJson();
 

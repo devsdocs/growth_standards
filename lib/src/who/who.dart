@@ -101,7 +101,10 @@ final class WHOGrowthStandardFromJson {
 
 /// For age 0 to 5 years old (<= 1856 days)
 final class WHOGrowthStandard {
+  /// Access all statistical data
   WHOGrowthStandardsData get data => WHOGrowthStandardsData();
+
+  /// Because why not?
   WHOGrowthStandardFromJson get fromJson => WHOGrowthStandardFromJson();
 
   WHOGrowthStandardsArmCircumferenceForAge armCircumferenceForAge({

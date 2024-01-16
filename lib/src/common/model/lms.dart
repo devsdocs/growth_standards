@@ -2,6 +2,7 @@ import 'package:growth_standards/src/common/math.dart';
 import 'package:growth_standards/src/common/typedef.dart';
 import 'package:growth_standards/src/common/types.dart';
 
+/// [LMS] model for statistical calculation
 class LMS {
   const LMS({required this.l, required this.m, required this.s});
   final num l;

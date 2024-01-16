@@ -6,6 +6,7 @@ import 'package:growth_standards/src/common/model/lms.dart';
 import 'package:growth_standards/src/common/types.dart';
 import 'package:super_measurement/super_measurement.dart';
 
+/// SD calculation using [LMS]
 num standardDeviationCalculation(
   num sd, {
   required LMS lms,
@@ -65,6 +66,8 @@ num adjustedZScoreCalculation(
   return zScore;
 }
 
+/// Adjusted [Length] flaged by [LengthHeigthMeasurementPosition]
+/// based on WHO/CDC requirements
 Centimeters adjustedLengthHeight({
   required Age age,
   required LengthHeigthMeasurementPosition measure,
@@ -95,6 +98,8 @@ Centimeters adjustedLengthHeight({
   return Centimeters(adjustedLenHeight);
 }
 
+/// Normal distribution equation, the name [pnorm] inspired from R language
 num pnorm(num zScore) => 0.5 * (1 + erf(zScore / sqrt(2)));
 
+/// Normal distribution equation, the name [qnorm] inspired from R language
 num qnorm(num percentile) => sqrt(2) * erfInv(2 * percentile - 1);

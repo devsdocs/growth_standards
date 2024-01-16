@@ -2,6 +2,10 @@ import 'package:growth_standards/src/cdc/cdc.dart';
 import 'package:growth_standards/src/fenton/fenton.dart';
 import 'package:growth_standards/src/who/who.dart';
 
+/// Directly exporting all required model for direct access
+///
+/// All the source data are singleton, so it is safe to be called repeatedly
+/// in single code execution
 export 'cdc/cdc.dart'
     show
         CDCBodyMassIndexForAge,
