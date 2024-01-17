@@ -74,28 +74,28 @@ Centimeters adjustedLengthHeight({
   required Length lengthHeight,
   required AdjustedLengthType type,
 }) {
-  num adjustedLenHeight = lengthHeight.toCentimeters.value!;
+  num toCm = lengthHeight.toCentimeters.value!;
+  final isStanding = measure == LengthHeigthMeasurementPosition.standing;
+  final ageMos = age.ageInTotalMonthsByNow;
+  final ageDays = age.ageInTotalDaysByNow;
+  final val = type.value;
 
   if (type == AdjustedLengthType.who) {
-    if (age.ageInTotalDaysByNow <= 730 &&
-        measure == LengthHeigthMeasurementPosition.standing) {
-      adjustedLenHeight += 0.7;
+    if (ageDays <= 730 && isStanding) {
+      toCm += val;
     }
-    if (age.ageInTotalDaysByNow > 730 &&
-        measure == LengthHeigthMeasurementPosition.recumbent) {
-      adjustedLenHeight -= 0.7;
+    if (ageDays > 730 && !isStanding) {
+      toCm -= val;
     }
   } else {
-    if (age.ageInTotalMonthsByNow < 24 &&
-        measure == LengthHeigthMeasurementPosition.standing) {
-      adjustedLenHeight += 0.8;
+    if (ageMos < 24 && isStanding) {
+      toCm += val;
     }
-    if (age.ageInTotalMonthsByNow >= 24 &&
-        measure == LengthHeigthMeasurementPosition.recumbent) {
-      adjustedLenHeight -= 0.8;
+    if (ageMos >= 24 && !isStanding) {
+      toCm -= val;
     }
   }
-  return Centimeters(adjustedLenHeight);
+  return Centimeters(toCm);
 }
 
 /// Normal distribution equation, the name [pnorm] inspired from R language
