@@ -1962,32 +1962,36 @@ class _$CDCInfantWeigthForLengthImpl extends _CDCInfantWeigthForLength {
       @MassConverter() required this.weight,
       required this.measure})
       : assert(
-            cdcAdjustedLengthHeight(
+            adjustedLengthHeight(
                       measure: measure,
                       age: age,
                       lengthHeight: length,
+                      type: AdjustedLengthType.cdc,
                     ).value! >=
                     45 &&
-                cdcAdjustedLengthHeight(
+                adjustedLengthHeight(
                       measure: measure,
                       age: age,
                       lengthHeight: length,
+                      type: AdjustedLengthType.cdc,
                     ).value! <
                     104 &&
                 length.toCentimeters.value! >= 45 &&
                 length.toCentimeters.value! < 104,
             'Please correcting measurement position based on age'),
         assert(
-            cdcAdjustedLengthHeight(
+            adjustedLengthHeight(
                       measure: measure,
                       age: age,
                       lengthHeight: length,
+                      type: AdjustedLengthType.cdc,
                     ).value! >=
                     45 &&
-                cdcAdjustedLengthHeight(
+                adjustedLengthHeight(
                       measure: measure,
                       age: age,
                       lengthHeight: length,
+                      type: AdjustedLengthType.cdc,
                     ).value! <
                     104,
             'Length must be in range of 45.0 - 103.9 cm'),
@@ -2284,32 +2288,36 @@ class _$CDCWeigthForStatureImpl extends _CDCWeigthForStature {
       @MassConverter() required this.weight,
       required this.measure})
       : assert(
-            cdcAdjustedLengthHeight(
+            adjustedLengthHeight(
                       measure: measure,
                       age: age,
                       lengthHeight: length,
+                      type: AdjustedLengthType.cdc,
                     ).value! >=
                     77 &&
-                cdcAdjustedLengthHeight(
+                adjustedLengthHeight(
                       measure: measure,
                       age: age,
                       lengthHeight: length,
+                      type: AdjustedLengthType.cdc,
                     ).value! <
                     122 &&
                 length.toCentimeters.value! >= 77 &&
                 length.toCentimeters.value! < 122,
             'Please correcting measurement position based on age'),
         assert(
-            cdcAdjustedLengthHeight(
+            adjustedLengthHeight(
                       measure: measure,
                       age: age,
                       lengthHeight: length,
+                      type: AdjustedLengthType.cdc,
                     ).value! >=
                     77 &&
-                cdcAdjustedLengthHeight(
+                adjustedLengthHeight(
                       measure: measure,
                       age: age,
                       lengthHeight: length,
+                      type: AdjustedLengthType.cdc,
                     ).value! <
                     122,
             'Length must be in range of 77.0 - 121.9 cm'),

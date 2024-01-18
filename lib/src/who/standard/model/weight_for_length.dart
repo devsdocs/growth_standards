@@ -42,12 +42,12 @@ class WHOGrowthStandardsWeigthForLength
     with _$WHOGrowthStandardsWeigthForLength {
   //TODO(devsdocs): Test this!
   @Assert(
-    'whoAdjustedLengthHeight(measure: measure,age: age,lengthHeight: length,).value! >= 45 && whoAdjustedLengthHeight(measure: measure,age: age,lengthHeight: length,).value! <= 110 && length.toCentimeters.value! >= 45 && length.toCentimeters.value! <= 110',
+    'adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.who).value! >= 45 && adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.who).value! <= 110 && length.toCentimeters.value! >= 45 && length.toCentimeters.value! <= 110',
     'Please correcting measurement position based on age',
   )
   //TODO(devsdocs): Test this!
   @Assert(
-    'whoAdjustedLengthHeight(measure: measure,age: age,lengthHeight: length,).value! >= 45 && whoAdjustedLengthHeight(measure: measure,age: age,lengthHeight: length,).value! <= 110',
+    'adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.who).value! >= 45 && adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.who).value! <= 110',
     'Length must be in range of 45 - 110 cm',
   )
   @Assert(

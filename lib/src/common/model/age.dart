@@ -180,7 +180,14 @@ class Date with _$Date implements Comparable<Date> {
           other.date == date;
 
   @override
-  int get hashCode => year.hashCode ^ month.number.hashCode ^ date.hashCode;
+  int get hashCode {
+    const prime = 31;
+    var result = 1;
+    result = prime * result + year.hashCode;
+    result = prime * result + month.number.hashCode;
+    result = prime * result + date.hashCode;
+    return result;
+  }
 
   bool isBefore(Date other) => this < other;
   bool isSameOrBefore(Date other) => this <= other;
@@ -245,26 +252,13 @@ class Date with _$Date implements Comparable<Date> {
 
   bool operator <(Date other) {
     if (this == other) return false;
-    if (year == other.year) {
-      if (month == other.month) {
-        if (date > other.date) {
-          return false;
-        } else {
-          return true;
-        }
-      } else {
-        if (month.number > other.month.number) {
-          return false;
-        } else {
-          return true;
-        }
-      }
-    } else {
-      if (year > other.year) {
-        return false;
-      }
-      return true;
+    if (year != other.year) {
+      return year < other.year;
     }
+    if (month != other.month) {
+      return month.number < other.month.number;
+    }
+    return date < other.date;
   }
 
   @override

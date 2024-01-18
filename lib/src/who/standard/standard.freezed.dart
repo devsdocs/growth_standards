@@ -3175,32 +3175,36 @@ class _$WHOGrowthStandardsWeightForHeightImpl
       @MassConverter() required this.weight,
       required this.measure})
       : assert(
-            whoAdjustedLengthHeight(
+            adjustedLengthHeight(
                       measure: measure,
                       age: age,
                       lengthHeight: height,
+                      type: AdjustedLengthType.who,
                     ).value! >=
                     65 &&
-                whoAdjustedLengthHeight(
+                adjustedLengthHeight(
                       measure: measure,
                       age: age,
                       lengthHeight: height,
+                      type: AdjustedLengthType.who,
                     ).value! <=
                     120 &&
                 height.toCentimeters.value! >= 65 &&
                 height.toCentimeters.value! <= 120,
             'Please correcting measurement position based on age'),
         assert(
-            whoAdjustedLengthHeight(
+            adjustedLengthHeight(
                       measure: measure,
                       age: age,
                       lengthHeight: height,
+                      type: AdjustedLengthType.who,
                     ).value! >=
                     65 &&
-                whoAdjustedLengthHeight(
+                adjustedLengthHeight(
                       measure: measure,
                       age: age,
                       lengthHeight: height,
+                      type: AdjustedLengthType.who,
                     ).value! <=
                     120,
             'Height must be in range of 65 - 120 cm'),
@@ -3510,33 +3514,37 @@ class _$WHOGrowthStandardsWeigthForLengthImpl
       @MassConverter() required this.weight,
       required this.measure})
       : assert(
-            whoAdjustedLengthHeight(
-                      measure: measure,
-                      age: age,
-                      lengthHeight: length,
-                    ).value! >=
+            adjustedLengthHeight(
+                            measure: measure,
+                            age: age,
+                            lengthHeight: length,
+                            type: AdjustedLengthType.who)
+                        .value! >=
                     45 &&
-                whoAdjustedLengthHeight(
-                      measure: measure,
-                      age: age,
-                      lengthHeight: length,
-                    ).value! <=
+                adjustedLengthHeight(
+                            measure: measure,
+                            age: age,
+                            lengthHeight: length,
+                            type: AdjustedLengthType.who)
+                        .value! <=
                     110 &&
                 length.toCentimeters.value! >= 45 &&
                 length.toCentimeters.value! <= 110,
             'Please correcting measurement position based on age'),
         assert(
-            whoAdjustedLengthHeight(
-                      measure: measure,
-                      age: age,
-                      lengthHeight: length,
-                    ).value! >=
+            adjustedLengthHeight(
+                            measure: measure,
+                            age: age,
+                            lengthHeight: length,
+                            type: AdjustedLengthType.who)
+                        .value! >=
                     45 &&
-                whoAdjustedLengthHeight(
-                      measure: measure,
-                      age: age,
-                      lengthHeight: length,
-                    ).value! <=
+                adjustedLengthHeight(
+                            measure: measure,
+                            age: age,
+                            lengthHeight: length,
+                            type: AdjustedLengthType.who)
+                        .value! <=
                     110,
             'Length must be in range of 45 - 110 cm'),
         assert(
