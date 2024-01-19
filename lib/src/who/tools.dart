@@ -77,12 +77,15 @@ const velocityEnum = {
 
 VelocityIncrement parseIncrement(String val) => velocityEnum[int.parse(val)]!;
 
-/// [measurementHistory] field can be either [List] of [MassMeasurementHistory] or [List] of [LengthMeasurementHistory]
+/// [measurementHistory] field can be either [List] of [MassMeasurementHistory]
+/// or [List] of [LengthMeasurementHistory]
 class VelocityPastMeasurement<T extends Unit<T>> {
-  VelocityPastMeasurement(this.measurementHistory);
+  VelocityPastMeasurement(this.measurementHistory, this.convertTo);
 
   /// Either [List] of [MassMeasurementHistory] or [List] of [LengthMeasurementHistory]
   final List<MeasurementHistory<T>> measurementHistory;
+
+  final T convertTo;
 
   Map<Date, T> get sortedByDate => Map<Date, T>.fromEntries(
         _splayMap.entries,
@@ -130,8 +133,9 @@ class VelocityPastMeasurement<T extends Unit<T>> {
 
         final data = (dateBefore: before, dateAfter: now);
 
-        final valueDifference =
-            sortedByDate[now]!.value! - sortedByDate[before]!.value!;
+        final convertNow = sortedByDate[now]!.convertTo(convertTo);
+        final convertBefore = sortedByDate[before]!.convertTo(convertTo);
+        final valueDifference = convertNow.value! - convertBefore.value!;
 
         result[incremental]![data] = valueDifference;
       }
@@ -231,4 +235,18 @@ class LengthMeasurementHistoryConverter
         },
       )
       .toList();
+}
+
+extension MapExt1
+    on Map<VelocityIncrement, Map<VelocityMonths, ZScorePercentile>?> {
+  Map<VelocityIncrement, Map<VelocityMonths, ZScorePercentile>>
+      get removeAllNull => (this..removeWhere((_, v) => v == null))
+          .map((k3, v3) => MapEntry(k3, v3!));
+}
+
+extension MapExt2 on Map<VelocityMonths, ZScorePercentile?> {
+  bool get isAllValuesNull => entries.every((e) => e.value == null);
+  Map<VelocityMonths, ZScorePercentile> get removeAllNull =>
+      (this..removeWhere((_, v) => v == null))
+          .map((k3, v3) => MapEntry(k3, v3!));
 }

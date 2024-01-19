@@ -102,9 +102,10 @@ class WHOGrowthStandardsLengthVelocityForAge
 
   Map<VelocityIncrement, Map<({Date dateBefore, Date dateAfter}), num>>
       get _incrementalData =>
-          VelocityPastMeasurement(_sanitizePastMeasurement).incrementalData;
+          VelocityPastMeasurement(pastMeasurement, const Centimeters())
+              .incrementalData;
 
-  Map<VelocityIncrement, Map<VelocityMonths, ({num zScore, num percentile})>>
+  Map<VelocityIncrement, Map<VelocityMonths, ZScorePercentile>>
       zScorePercentileMap([Precision precision = Precision.ten]) {
     final joinMap = _incrementData.map((k1, v1) {
       final alt = _incrementalData[k1];
@@ -112,10 +113,10 @@ class WHOGrowthStandardsLengthVelocityForAge
 
       final alv = alt.map((k2, v2) {
         final VelocityMonths vm = (
-          low: _ageAtObservationDate.ageInTotalMonthsByNow -
-              Age(k2.dateBefore).ageInTotalMonthsByNow,
-          high: _ageAtObservationDate.ageInTotalMonthsByNow -
-              Age(k2.dateAfter).ageInTotalMonthsByNow
+          low: _ageAtObservationDate.ageInTotalMonthsAtDate(
+            k2.dateBefore,
+          ),
+          high: _ageAtObservationDate.ageInTotalMonthsAtDate(k2.dateAfter),
         );
 
         final whoGrowthStandardsLengthVelocityForAgeLMS = v1.lmsData[vm];
@@ -136,22 +137,11 @@ class WHOGrowthStandardsLengthVelocityForAge
           null,
         );
       });
-      final rVal = alv.entries.every((e) => e.value == null)
-          ? null
-          : (alv..removeWhere((_, v) => v == null))
-              .map((k3, v3) => MapEntry(k3, v3!));
+      final rVal = alv.isAllValuesNull ? null : alv.removeAllNull;
       return MapEntry(k1, rVal);
     });
-    return (joinMap..removeWhere((k4, v4) => v4 == null)).map(
-      (k5, v5) => MapEntry(k5, v5!),
-    );
+    return joinMap.removeAllNull;
   }
-
-  List<LengthMeasurementHistory> get _sanitizePastMeasurement => pastMeasurement
-      .map(
-        (e) => LengthMeasurementHistory(e.date, e.unit.toCentimeters),
-      )
-      .toList();
 
   Age get _ageAtObservationDate => checkObservationDate(age, observationDate);
 }

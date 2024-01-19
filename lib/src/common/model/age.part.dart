@@ -129,11 +129,10 @@ class DateTimeUtils {
       }
     }
 
-    final remainingDays =
-        days < DateTime.daysPerWeek ? days : days % DateTime.daysPerWeek;
-    final remainingWeeks = days < DateTime.daysPerWeek
-        ? 0
-        : (days - remainingDays) ~/ DateTime.daysPerWeek;
+    final isZeroWeek = days < DateTime.daysPerWeek;
+    final remainingDays = isZeroWeek ? days : days % DateTime.daysPerWeek;
+    final remainingWeeks =
+        isZeroWeek ? 0 : (days - remainingDays) ~/ DateTime.daysPerWeek;
 
     return AgeInYearMonthsWeeksDays(
       years: years,
