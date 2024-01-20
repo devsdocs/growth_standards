@@ -1,3 +1,7 @@
+## 1.1.3
+- Bug fix
+- Minor refractor
+
 ## 1.1.2
 - Dependencies update
 
