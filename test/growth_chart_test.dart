@@ -121,6 +121,13 @@ void main() {
               .zScore(Precision.two),
         ),
       );
+
+      expect(
+        whoGS.fromJson.armCircumferenceForAge(male.toJson()).measurementResult,
+        equals(
+          const Centimeters(20.3).toMeters,
+        ),
+      );
       expect(
         whoGS
             .armCircumferenceForAge(

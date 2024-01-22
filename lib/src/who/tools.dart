@@ -115,21 +115,15 @@ class VelocityPastMeasurement<T extends Unit<T>> {
             TimeIntervalCount(before.year, before.month.number, before.date)
                 .ageAtDate(now.toDateTime());
 
-        if (ageAtDate.years > 0) {
-          continue;
-        }
+        if (ageAtDate.years > 0) continue;
 
         final countMos = ageAtDate.months;
 
         final incremental = velocityEnum[countMos];
 
-        if (incremental == null) {
-          continue;
-        }
+        if (incremental == null) continue;
 
-        if (!result.containsKey(incremental)) {
-          result[incremental] = {};
-        }
+        if (!result.containsKey(incremental)) result[incremental] = {};
 
         final data = (dateBefore: before, dateAfter: now);
 
