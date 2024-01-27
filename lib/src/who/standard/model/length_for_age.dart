@@ -76,7 +76,7 @@ class WHOGrowthStandardsLengthForAge with _$WHOGrowthStandardsLengthForAge {
         age: age,
         lengthHeight: lengthHeight,
         type: AdjustedLengthType.who,
-      ).value!;
+      ).value;
 
   num get _zScore => _ageData.lms.zScore(_adjustedLength);
 

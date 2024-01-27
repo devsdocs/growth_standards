@@ -76,7 +76,7 @@ class CDCInfantWeightForAge with _$CDCInfantWeightForAge {
     return (sex == Sex.male ? _maleData : _femaleData).ageData[finalAge]!;
   }
 
-  num get _zScore => _ageData.lms.zScore(weight.toKilograms.value!);
+  num get _zScore => _ageData.lms.zScore(weight.toKilograms.value);
 
   Age get _ageAtObservationDate => checkObservationDate(age, observationDate);
 

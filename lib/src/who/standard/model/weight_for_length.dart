@@ -42,12 +42,12 @@ class WHOGrowthStandardsWeigthForLength
     with _$WHOGrowthStandardsWeigthForLength {
   //TODO(devsdocs): Test this!
   @Assert(
-    'adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.who).value! >= 45 && adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.who).value! <= 110 && length.toCentimeters.value! >= 45 && length.toCentimeters.value! <= 110',
+    'adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.who).value >= 45 && adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.who).value <= 110 && length.toCentimeters.value >= 45 && length.toCentimeters.value <= 110',
     'Please correcting measurement position based on age',
   )
   //TODO(devsdocs): Test this!
   @Assert(
-    'adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.who).value! >= 45 && adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.who).value! <= 110',
+    'adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.who).value >= 45 && adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.who).value <= 110',
     'Length must be in range of 45 - 110 cm',
   )
   @Assert(
@@ -75,7 +75,7 @@ class WHOGrowthStandardsWeigthForLength
         age: age,
         lengthHeight: length,
         type: AdjustedLengthType.who,
-      ).value!;
+      ).value;
 
   WHOGrowthStandardsWeigthForLengthData get _weigthForLengthData =>
       WHOGrowthStandardsWeigthForLengthData();
@@ -89,7 +89,7 @@ class WHOGrowthStandardsWeigthForLength
       (sex == Sex.male ? _maleData : _femaleData)
           .lengthData[_adjustedLength.toDouble().toPrecision(1)]!;
 
-  num get _zScore => _ageData.lms.adjustedZScore(weight.toKilograms.value!);
+  num get _zScore => _ageData.lms.adjustedZScore(weight.toKilograms.value);
 
   num zScore([
     Precision precision = Precision.ten,

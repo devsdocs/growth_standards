@@ -75,7 +75,7 @@ class CDCInfantLengthForAge with _$CDCInfantLengthForAge {
         age: age,
         lengthHeight: lengthHeight,
         type: AdjustedLengthType.cdc,
-      ).value!;
+      ).value;
 
   num get _zScore => _ageData.lms.zScore(_adjustedLength);
 

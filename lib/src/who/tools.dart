@@ -129,7 +129,7 @@ class VelocityPastMeasurement<T extends Unit<T>> {
 
         final convertNow = sortedByDate[now]!.convertTo(convertTo);
         final convertBefore = sortedByDate[before]!.convertTo(convertTo);
-        final valueDifference = convertNow.value! - convertBefore.value!;
+        final valueDifference = convertNow.value - convertBefore.value;
 
         result[incremental]![data] = valueDifference;
       }

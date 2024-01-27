@@ -74,7 +74,7 @@ class WHOGrowthStandardsHeadCircumferenceForAge
           .ageData[_ageAtObservationDate.ageInTotalDaysByNow]!;
 
   num get _zScore =>
-      _ageData.lms.zScore(measurementResult.toCentimeters.value!);
+      _ageData.lms.zScore(measurementResult.toCentimeters.value);
 
   Age get _ageAtObservationDate => checkObservationDate(age, observationDate);
 

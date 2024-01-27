@@ -38,12 +38,12 @@ class CDCWeigthForStatureData {
 class CDCWeigthForStature with _$CDCWeigthForStature {
   //TODO(devsdocs): Test this!
   @Assert(
-    'adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.cdc,).value! >= 77 && adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.cdc,).value! < 122 && length.toCentimeters.value! >= 77 && length.toCentimeters.value! < 122',
+    'adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.cdc,).value >= 77 && adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.cdc,).value < 122 && length.toCentimeters.value >= 77 && length.toCentimeters.value < 122',
     'Please correcting measurement position based on age',
   )
   //TODO(devsdocs): Test this!
   @Assert(
-    'adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.cdc,).value! >= 77 && adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.cdc,).value! < 122',
+    'adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.cdc,).value >= 77 && adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.cdc,).value < 122',
     'Length must be in range of 77.0 - 121.9 cm',
   )
   @Assert(
@@ -69,7 +69,7 @@ class CDCWeigthForStature with _$CDCWeigthForStature {
         age: age,
         lengthHeight: length,
         type: AdjustedLengthType.cdc,
-      ).value!;
+      ).value;
 
   CDCWeigthForStatureData get _weigthForLengthData => CDCWeigthForStatureData();
 
@@ -82,7 +82,7 @@ class CDCWeigthForStature with _$CDCWeigthForStature {
       (sex == Sex.male ? _maleData : _femaleData).lengthData[
           _adjustedLength == 77 ? 77 : _adjustedLength.truncate() + 0.5]!;
 
-  num get _zScore => _ageData.lms.zScore(weight.toKilograms.value!);
+  num get _zScore => _ageData.lms.zScore(weight.toKilograms.value);
 
   num zScore([
     Precision precision = Precision.ten,

@@ -38,12 +38,12 @@ class CDCInfantWeigthForLengthData {
 class CDCInfantWeigthForLength with _$CDCInfantWeigthForLength {
   //TODO(devsdocs): Test this!
   @Assert(
-    'adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.cdc,).value! >= 45 && adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.cdc,).value! < 104 && length.toCentimeters.value! >= 45 && length.toCentimeters.value! < 104',
+    'adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.cdc,).value >= 45 && adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.cdc,).value < 104 && length.toCentimeters.value >= 45 && length.toCentimeters.value < 104',
     'Please correcting measurement position based on age',
   )
   //TODO(devsdocs): Test this!
   @Assert(
-    'adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.cdc,).value! >= 45 && adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.cdc,).value! < 104',
+    'adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.cdc,).value >= 45 && adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.cdc,).value < 104',
     'Length must be in range of 45.0 - 103.9 cm',
   )
   @Assert(
@@ -69,7 +69,7 @@ class CDCInfantWeigthForLength with _$CDCInfantWeigthForLength {
         age: age,
         lengthHeight: length,
         type: AdjustedLengthType.cdc,
-      ).value!;
+      ).value;
 
   CDCInfantWeigthForLengthData get _weigthForLengthData =>
       CDCInfantWeigthForLengthData();
@@ -83,7 +83,7 @@ class CDCInfantWeigthForLength with _$CDCInfantWeigthForLength {
       (sex == Sex.male ? _maleData : _femaleData).lengthData[
           _adjustedLength == 45 ? 45 : _adjustedLength.truncate() + 0.5]!;
 
-  num get _zScore => _ageData.lms.zScore(weight.toKilograms.value!);
+  num get _zScore => _ageData.lms.zScore(weight.toKilograms.value);
 
   num zScore([
     Precision precision = Precision.ten,

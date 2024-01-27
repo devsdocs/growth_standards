@@ -74,7 +74,7 @@ class WHOGrowthReferenceWeightForAge with _$WHOGrowthReferenceWeightForAge {
       (sex == Sex.male ? _maleData : _femaleData)
           .ageData[_ageAtObservationDate.ageInTotalMonthsByNow]!;
 
-  num get _zScore => _ageData.lms.adjustedZScore(weight.toKilograms.value!);
+  num get _zScore => _ageData.lms.adjustedZScore(weight.toKilograms.value);
 
   Age get _ageAtObservationDate => checkObservationDate(age, observationDate);
 

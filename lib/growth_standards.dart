@@ -10,6 +10,7 @@ export 'package:super_measurement/super_measurement.dart'
         Inches,
         IterableOfLength,
         IterableOfMass,
+        IterableOfTExtendsUnit,
         Kilograms,
         Length,
         LengthUnit,
@@ -21,7 +22,6 @@ export 'package:super_measurement/super_measurement.dart'
         NumOfMass,
         Ounces,
         Pounds,
-        Precision,
-        UnitExtension;
+        Precision;
 
 export 'src/growth_standards.dart';

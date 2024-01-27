@@ -74,7 +74,7 @@ Centimeters adjustedLengthHeight({
   required Length lengthHeight,
   required AdjustedLengthType type,
 }) {
-  num toCm = lengthHeight.toCentimeters.value!;
+  num toCm = lengthHeight.toCentimeters.value;
   final isStanding = measure == LengthHeigthMeasurementPosition.standing;
   final ageMos = age.ageInTotalMonthsByNow;
   final ageDays = age.ageInTotalDaysByNow;

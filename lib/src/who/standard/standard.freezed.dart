@@ -3180,17 +3180,17 @@ class _$WHOGrowthStandardsWeightForHeightImpl
                       age: age,
                       lengthHeight: height,
                       type: AdjustedLengthType.who,
-                    ).value! >=
+                    ).value >=
                     65 &&
                 adjustedLengthHeight(
                       measure: measure,
                       age: age,
                       lengthHeight: height,
                       type: AdjustedLengthType.who,
-                    ).value! <=
+                    ).value <=
                     120 &&
-                height.toCentimeters.value! >= 65 &&
-                height.toCentimeters.value! <= 120,
+                height.toCentimeters.value >= 65 &&
+                height.toCentimeters.value <= 120,
             'Please correcting measurement position based on age'),
         assert(
             adjustedLengthHeight(
@@ -3198,14 +3198,14 @@ class _$WHOGrowthStandardsWeightForHeightImpl
                       age: age,
                       lengthHeight: height,
                       type: AdjustedLengthType.who,
-                    ).value! >=
+                    ).value >=
                     65 &&
                 adjustedLengthHeight(
                       measure: measure,
                       age: age,
                       lengthHeight: height,
                       type: AdjustedLengthType.who,
-                    ).value! <=
+                    ).value <=
                     120,
             'Height must be in range of 65 - 120 cm'),
         assert(
@@ -3519,17 +3519,17 @@ class _$WHOGrowthStandardsWeigthForLengthImpl
                             age: age,
                             lengthHeight: length,
                             type: AdjustedLengthType.who)
-                        .value! >=
+                        .value >=
                     45 &&
                 adjustedLengthHeight(
                             measure: measure,
                             age: age,
                             lengthHeight: length,
                             type: AdjustedLengthType.who)
-                        .value! <=
+                        .value <=
                     110 &&
-                length.toCentimeters.value! >= 45 &&
-                length.toCentimeters.value! <= 110,
+                length.toCentimeters.value >= 45 &&
+                length.toCentimeters.value <= 110,
             'Please correcting measurement position based on age'),
         assert(
             adjustedLengthHeight(
@@ -3537,14 +3537,14 @@ class _$WHOGrowthStandardsWeigthForLengthImpl
                             age: age,
                             lengthHeight: length,
                             type: AdjustedLengthType.who)
-                        .value! >=
+                        .value >=
                     45 &&
                 adjustedLengthHeight(
                             measure: measure,
                             age: age,
                             lengthHeight: length,
                             type: AdjustedLengthType.who)
-                        .value! <=
+                        .value <=
                     110,
             'Length must be in range of 45 - 110 cm'),
         assert(
