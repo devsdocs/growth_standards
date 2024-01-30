@@ -78,7 +78,7 @@ class CDCInfantHeadCircumferenceForAge with _$CDCInfantHeadCircumferenceForAge {
   }
 
   num get _zScore =>
-      _ageData.lms.zScore(measurementResult.toCentimeters.value);
+      _ageData.lms.zScore(measurementResult.toCentimeter.value);
 
   Age get _ageAtObservationDate => checkObservationDate(age, observationDate);
 

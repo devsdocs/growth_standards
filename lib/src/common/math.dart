@@ -68,13 +68,13 @@ num adjustedZScoreCalculation(
 
 /// Adjusted [Length] flaged by [LengthHeigthMeasurementPosition]
 /// based on WHO/CDC requirements
-Centimeters adjustedLengthHeight({
+Length$Centimeter adjustedLengthHeight({
   required Age age,
   required LengthHeigthMeasurementPosition measure,
   required Length lengthHeight,
   required AdjustedLengthType type,
 }) {
-  num toCm = lengthHeight.toCentimeters.value;
+  num toCm = lengthHeight.toCentimeter.value;
   final isStanding = measure == LengthHeigthMeasurementPosition.standing;
   final ageMos = age.ageInTotalMonthsByNow;
   final ageDays = age.ageInTotalDaysByNow;
@@ -95,7 +95,7 @@ Centimeters adjustedLengthHeight({
       toCm -= val;
     }
   }
-  return Centimeters(toCm);
+  return Length$Centimeter(toCm);
 }
 
 /// Normal distribution equation, the name [pnorm] inspired from R language

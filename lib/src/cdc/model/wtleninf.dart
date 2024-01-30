@@ -83,7 +83,7 @@ class CDCInfantWeigthForLength with _$CDCInfantWeigthForLength {
       (sex == Sex.male ? _maleData : _femaleData).lengthData[
           _adjustedLength == 45 ? 45 : _adjustedLength.truncate() + 0.5]!;
 
-  num get _zScore => _ageData.lms.zScore(weight.toKilograms.value);
+  num get _zScore => _ageData.lms.zScore(weight.toKilogram.value);
 
   num zScore([
     Precision precision = Precision.ten,

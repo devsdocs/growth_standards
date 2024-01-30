@@ -1,3 +1,7 @@
+## 1.1.4
+- Dependecy update
+- Some measurement API changes
+
 ## 1.1.3
 - Bug fix
 - Minor refractor

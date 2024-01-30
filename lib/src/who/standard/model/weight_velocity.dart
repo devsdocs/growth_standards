@@ -106,7 +106,7 @@ class WHOGrowthStandardsWeightVelocityForAge
 
   Map<VelocityIncrement, Map<({Date dateBefore, Date dateAfter}), num>>
       get _incrementalData =>
-          VelocityPastMeasurement(pastMeasurement, const Grams())
+          VelocityPastMeasurement(pastMeasurement, const Mass$Gram())
               .incrementalData;
 
   Map<VelocityIncrement, Map<VelocityMonths, ZScorePercentile>>

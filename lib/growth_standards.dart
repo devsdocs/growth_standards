@@ -4,24 +4,24 @@ library growth_standards;
 
 export 'package:super_measurement/super_measurement.dart'
     show
-        Centimeters,
-        Feet,
-        Grams,
-        Inches,
         IterableOfLength,
         IterableOfMass,
         IterableOfTExtendsUnit,
-        Kilograms,
         Length,
+        Length$Centimeter,
+        Length$Foot,
+        Length$Inch,
+        Length$Meter,
+        Length$Millimeter,
         LengthUnit,
         Mass,
+        Mass$Gram,
+        Mass$Kilogram,
+        Mass$Ounce,
+        Mass$Pound,
         MassUnit,
-        Meters,
-        Millimeters,
         NumOfLength,
         NumOfMass,
-        Ounces,
-        Pounds,
         Precision;
 
 export 'src/growth_standards.dart';

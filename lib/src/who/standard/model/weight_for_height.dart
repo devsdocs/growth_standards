@@ -89,7 +89,7 @@ class WHOGrowthStandardsWeightForHeight
       (sex == Sex.male ? _maleData : _femaleData)
           .heightData[_adjustedHeight.toDouble().toPrecision(1)]!;
 
-  num get _zScore => _ageData.lms.adjustedZScore(weight.toKilograms.value);
+  num get _zScore => _ageData.lms.adjustedZScore(weight.toKilogram.value);
 
   num zScore([
     Precision precision = Precision.ten,

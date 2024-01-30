@@ -6,8 +6,8 @@ final birthDay = Date(year: 2022, month: Months.june, date: 30);
 const weight = 11.75;
 const length = 82.8;
 
-const centimeters = Centimeters(length);
-const kilograms = Kilograms(weight);
+const centimeters = Length$Centimeter(length);
+const kilograms = Mass$Kilogram(weight);
 final age = Age(birthDay);
 
 final gs = GrowthStandard.who.fromBirthTo5Years;

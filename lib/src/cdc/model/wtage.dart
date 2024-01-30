@@ -76,7 +76,7 @@ class CDCWeightForAge with _$CDCWeightForAge {
                   ? 240
                   : _ageAtObservationDate.ageInTotalMonthsByNow + 0.5]!;
 
-  num get _zScore => _ageData.lms.zScore(weight.toKilograms.value);
+  num get _zScore => _ageData.lms.zScore(weight.toKilogram.value);
 
   Age get _ageAtObservationDate => checkObservationDate(age, observationDate);
 

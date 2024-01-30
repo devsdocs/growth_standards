@@ -22,10 +22,10 @@ class BodyMassIndex with _$BodyMassIndex {
 
   num get value {
     final toMeterSquare = pow(
-      lengthHeight.toMeters.value,
+      lengthHeight.toMeter.value,
       2,
     );
-    final toKg = weight.toKilograms.value;
+    final toKg = weight.toKilogram.value;
 
     return toKg / toMeterSquare;
   }

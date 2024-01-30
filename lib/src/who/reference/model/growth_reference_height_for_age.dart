@@ -73,7 +73,7 @@ class WHOGrowthReferenceHeightForAge with _$WHOGrowthReferenceHeightForAge {
       (sex == Sex.male ? _maleData : _femaleData)
           .ageData[_ageAtObservationDate.ageInTotalMonthsByNow]!;
 
-  num get _zScore => _ageData.lms.zScore(lengthHeight.toCentimeters.value);
+  num get _zScore => _ageData.lms.zScore(lengthHeight.toCentimeter.value);
 
   Age get _ageAtObservationDate => checkObservationDate(age, observationDate);
 

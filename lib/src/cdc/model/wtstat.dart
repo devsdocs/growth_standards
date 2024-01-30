@@ -82,7 +82,7 @@ class CDCWeigthForStature with _$CDCWeigthForStature {
       (sex == Sex.male ? _maleData : _femaleData).lengthData[
           _adjustedLength == 77 ? 77 : _adjustedLength.truncate() + 0.5]!;
 
-  num get _zScore => _ageData.lms.zScore(weight.toKilograms.value);
+  num get _zScore => _ageData.lms.zScore(weight.toKilogram.value);
 
   num zScore([
     Precision precision = Precision.ten,

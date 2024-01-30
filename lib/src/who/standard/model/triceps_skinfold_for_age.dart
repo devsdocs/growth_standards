@@ -77,7 +77,7 @@ class WHOGrowthStandardsTricepsSkinfoldForAge
           .ageData[_ageAtObservationDate.ageInTotalDaysByNow]!;
 
   num get _zScore =>
-      _ageData.lms.adjustedZScore(measurementResult.toCentimeters.value);
+      _ageData.lms.adjustedZScore(measurementResult.toCentimeter.value);
 
   Age get _ageAtObservationDate => checkObservationDate(age, observationDate);
 

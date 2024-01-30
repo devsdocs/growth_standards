@@ -60,7 +60,7 @@ class FentonWeightForAge with _$FentonWeightForAge {
   _FentonWeightForAgeLMS get _ageData =>
       _weightForAgeData._data[_ageAtObservationDate.ageInTotalWeeksByNow]!;
 
-  num get _zScore => _ageData.lms.zScore(weight.toKilograms.value);
+  num get _zScore => _ageData.lms.zScore(weight.toKilogram.value);
 
   Age get _ageAtObservationDate => checkObservationDate(age, observationDate);
 

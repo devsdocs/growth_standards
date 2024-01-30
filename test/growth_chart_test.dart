@@ -107,7 +107,7 @@ void main() {
       final male = whoGS.armCircumferenceForAge(
         sex: Sex.male,
         age: age,
-        measurementResult: const Centimeters(20.3),
+        measurementResult: const Length$Centimeter(20.3),
         observationDate: observationDate,
       );
 
@@ -125,14 +125,14 @@ void main() {
       expect(
         whoGS.fromJson.armCircumferenceForAge(male.toJson()).measurementResult,
         equals(
-          const Centimeters(20.3).toMeters,
+          const Length$Centimeter(20.3).toMeter,
         ),
       );
       expect(
         whoGS
             .armCircumferenceForAge(
               age: Age.byMonthsAgo(44),
-              measurementResult: const Centimeters(11.5),
+              measurementResult: const Length$Centimeter(11.5),
               sex: Sex.male,
             )
             .zScore(Precision.two),
@@ -142,7 +142,7 @@ void main() {
         whoGS
             .armCircumferenceForAge(
               age: Age.byMonthsAgo(28),
-              measurementResult: const Centimeters(17.4),
+              measurementResult: const Length$Centimeter(17.4),
               sex: Sex.male,
             )
             .zScore(Precision.two),
@@ -210,12 +210,12 @@ void main() {
       final age = Age.byMonthsAgo(12);
       final msr1 = LengthMeasurementHistory(
         age.dateAtMonthsAfterBirth(9),
-        const Centimeters(72.5),
+        const Length$Centimeter(72.5),
       );
 
       final msr2 = LengthMeasurementHistory(
         age.dateAtMonthsAfterBirth(12),
-        const Centimeters(80),
+        const Length$Centimeter(80),
       );
 
       final msrmnt = whoGS.lengthVelocityForAge(
@@ -235,12 +235,12 @@ void main() {
       final age = Age.byMonthsAgo(18);
       final msr1 = LengthMeasurementHistory(
         age.dateAtMonthsAfterBirth(15),
-        const Centimeters(85),
+        const Length$Centimeter(85),
       );
 
       final msr2 = LengthMeasurementHistory(
         age.dateAtMonthsAfterBirth(18),
-        const Centimeters(85.5),
+        const Length$Centimeter(85.5),
       );
 
       final msrmnt = whoGS.lengthVelocityForAge(
@@ -260,12 +260,12 @@ void main() {
       final age = Age.byMonthsAgo(6);
       final msr1 = LengthMeasurementHistory(
         age.dateAtMonthsAfterBirth(3),
-        const Centimeters(47),
+        const Length$Centimeter(47),
       );
 
       final msr2 = LengthMeasurementHistory(
         age.dateAtMonthsAfterBirth(6),
-        const Centimeters(55),
+        const Length$Centimeter(55),
       );
 
       final msrmnt = whoGS.lengthVelocityForAge(
@@ -286,12 +286,12 @@ void main() {
       final age = Age.byMonthsAgo(6);
       final msr1 = MassMeasurementHistory(
         age.dateAtMonthsAfterBirth(4),
-        const Kilograms(4),
+        const Mass$Kilogram(4),
       );
 
       final msr2 = MassMeasurementHistory(
         age.dateAtMonthsAfterBirth(6),
-        const Kilograms(6.2),
+        const Mass$Kilogram(6.2),
       );
 
       final msrmnt = whoGS.weightVelocityForAge(
@@ -311,12 +311,12 @@ void main() {
       final age = Age.byMonthsAgo(18);
       final msr1 = MassMeasurementHistory(
         age.dateAtMonthsAfterBirth(16),
-        const Kilograms(12),
+        const Mass$Kilogram(12),
       );
 
       final msr2 = MassMeasurementHistory(
         age.dateAtMonthsAfterBirth(18),
-        const Kilograms(11.5),
+        const Mass$Kilogram(11.5),
       );
 
       final msrmnt = whoGS.weightVelocityForAge(
@@ -336,12 +336,12 @@ void main() {
       final age = Age.byMonthsAgo(13);
       final msr1 = MassMeasurementHistory(
         age.dateAtMonthsAfterBirth(11),
-        const Kilograms(9),
+        const Mass$Kilogram(9),
       );
 
       final msr2 = MassMeasurementHistory(
         age.dateAtMonthsAfterBirth(13),
-        const Kilograms(10.2),
+        const Mass$Kilogram(10.2),
       );
 
       final msrmnt = whoGS.weightVelocityForAge(
