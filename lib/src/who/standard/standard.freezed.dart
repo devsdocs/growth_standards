@@ -3189,8 +3189,8 @@ class _$WHOGrowthStandardsWeightForHeightImpl
                       type: AdjustedLengthType.who,
                     ).value <=
                     120 &&
-                height.toCentimeters.value >= 65 &&
-                height.toCentimeters.value <= 120,
+                height.toCentimeter.value >= 65 &&
+                height.toCentimeter.value <= 120,
             'Please correcting measurement position based on age'),
         assert(
             adjustedLengthHeight(
@@ -3528,8 +3528,8 @@ class _$WHOGrowthStandardsWeigthForLengthImpl
                             type: AdjustedLengthType.who)
                         .value <=
                     110 &&
-                length.toCentimeters.value >= 45 &&
-                length.toCentimeters.value <= 110,
+                length.toCentimeter.value >= 45 &&
+                length.toCentimeter.value <= 110,
             'Please correcting measurement position based on age'),
         assert(
             adjustedLengthHeight(

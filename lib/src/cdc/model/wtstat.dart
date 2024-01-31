@@ -38,7 +38,7 @@ class CDCWeigthForStatureData {
 class CDCWeigthForStature with _$CDCWeigthForStature {
   //TODO(devsdocs): Test this!
   @Assert(
-    'adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.cdc,).value >= 77 && adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.cdc,).value < 122 && length.toCentimeters.value >= 77 && length.toCentimeters.value < 122',
+    'adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.cdc,).value >= 77 && adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.cdc,).value < 122 && length.toCentimeter.value >= 77 && length.toCentimeter.value < 122',
     'Please correcting measurement position based on age',
   )
   //TODO(devsdocs): Test this!

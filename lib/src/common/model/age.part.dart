@@ -75,72 +75,72 @@ class DateTimeUtils {
   /// Returns current time.
   static DateTime now() => clock.now();
 
-  static AgeInYearMonthsWeeksDays timeDifference({
-    required DateTime fromDate,
-    required DateTime toDate,
-  }) {
-    final DateTime endDate = toDate;
+  // static AgeInYearMonthsWeeksDays timeDifference({
+  //   required DateTime fromDate,
+  //   required DateTime toDate,
+  // }) {
+  //   final DateTime endDate = toDate;
 
-    int years = endDate.year - fromDate.year;
-    int months = 0;
-    int days = 0;
+  //   int years = endDate.year - fromDate.year;
+  //   int months = 0;
+  //   int days = 0;
 
-    if (fromDate.month > endDate.month) {
-      years--;
-      months = DateTime.monthsPerYear + endDate.month - fromDate.month;
+  //   if (fromDate.month > endDate.month) {
+  //     years--;
+  //     months = DateTime.monthsPerYear + endDate.month - fromDate.month;
 
-      if (fromDate.day > endDate.day) {
-        months--;
-        days = getDaysInMonth(
-              fromDate.year + years,
-              ((fromDate.month + months - 1) % DateTime.monthsPerYear) + 1,
-            ) +
-            endDate.day -
-            fromDate.day;
-      } else {
-        days = endDate.day - fromDate.day;
-      }
-    } else if (endDate.month == fromDate.month) {
-      if (fromDate.day > endDate.day) {
-        years--;
-        months = DateTime.monthsPerYear - 1;
-        days = getDaysInMonth(
-              fromDate.year + years,
-              ((fromDate.month + months - 1) % DateTime.monthsPerYear) + 1,
-            ) +
-            endDate.day -
-            fromDate.day;
-      } else {
-        days = endDate.day - fromDate.day;
-      }
-    } else {
-      months = endDate.month - fromDate.month;
+  //     if (fromDate.day > endDate.day) {
+  //       months--;
+  //       days = getDaysInMonth(
+  //             fromDate.year + years,
+  //             ((fromDate.month + months - 1) % DateTime.monthsPerYear) + 1,
+  //           ) +
+  //           endDate.day -
+  //           fromDate.day;
+  //     } else {
+  //       days = endDate.day - fromDate.day;
+  //     }
+  //   } else if (endDate.month == fromDate.month) {
+  //     if (fromDate.day > endDate.day) {
+  //       years--;
+  //       months = DateTime.monthsPerYear - 1;
+  //       days = getDaysInMonth(
+  //             fromDate.year + years,
+  //             ((fromDate.month + months - 1) % DateTime.monthsPerYear) + 1,
+  //           ) +
+  //           endDate.day -
+  //           fromDate.day;
+  //     } else {
+  //       days = endDate.day - fromDate.day;
+  //     }
+  //   } else {
+  //     months = endDate.month - fromDate.month;
 
-      if (fromDate.day > endDate.day) {
-        months--;
-        days = getDaysInMonth(
-              fromDate.year + years,
-              fromDate.month + months,
-            ) +
-            endDate.day -
-            fromDate.day;
-      } else {
-        days = endDate.day - fromDate.day;
-      }
-    }
+  //     if (fromDate.day > endDate.day) {
+  //       months--;
+  //       days = getDaysInMonth(
+  //             fromDate.year + years,
+  //             fromDate.month + months,
+  //           ) +
+  //           endDate.day -
+  //           fromDate.day;
+  //     } else {
+  //       days = endDate.day - fromDate.day;
+  //     }
+  //   }
 
-    final isZeroWeek = days < DateTime.daysPerWeek;
-    final remainingDays = isZeroWeek ? days : days % DateTime.daysPerWeek;
-    final remainingWeeks =
-        isZeroWeek ? 0 : (days - remainingDays) ~/ DateTime.daysPerWeek;
+  //   final isZeroWeek = days < DateTime.daysPerWeek;
+  //   final remainingDays = isZeroWeek ? days : days % DateTime.daysPerWeek;
+  //   final remainingWeeks =
+  //       isZeroWeek ? 0 : (days - remainingDays) ~/ DateTime.daysPerWeek;
 
-    return AgeInYearMonthsWeeksDays(
-      years: years,
-      weeks: remainingWeeks,
-      days: remainingDays,
-      months: months,
-    );
-  }
+  //   return AgeInYearMonthsWeeksDays(
+  //     years: years,
+  //     weeks: remainingWeeks,
+  //     days: remainingDays,
+  //     months: months,
+  //   );
+  // }
 
   /// Check if [a] and [b] are on the same day.
   static bool isSameDay(DateTime a, DateTime b) {
@@ -595,13 +595,85 @@ class DateTimeUtils {
     DateTime start,
     DateTime end,
   ) sync* {
-    if (end.isBefore(start)) return;
+    DateTime start0;
+    DateTime end0;
+    if (end.isBefore(start)) {
+      start0 = startOfDay(end);
+      end0 = startOfDay(start);
+    } else {
+      start0 = startOfDay(start);
+      end0 = startOfDay(end);
+    }
 
-    var date = start;
+    var date = start0;
     do {
       yield date;
       date = nextDay(date);
-    } while (date.isBefore(end));
+    } while (date.isBefore(end0));
+  }
+
+  static AgeInYearMonthsWeeksDays timeDifference({
+    required DateTime fromDate,
+    required DateTime toDate,
+  }) {
+    final startOfDayTo = startOfDay(toDate);
+    final startOfDayFrom = startOfDay(fromDate);
+
+    if (startOfDayTo == startOfDayFrom) {
+      return AgeInYearMonthsWeeksDays();
+    }
+
+    DateTime workingTo;
+    DateTime workingFrom;
+
+    if (startOfDayTo.isBefore(startOfDayFrom)) {
+      workingTo = startOfDayFrom;
+      workingFrom = startOfDayTo;
+    } else {
+      workingTo = startOfDayTo;
+      workingFrom = startOfDayFrom;
+    }
+
+    int years = workingTo.year - workingFrom.year;
+    int months = workingTo.month - workingFrom.month;
+    int days = workingTo.day - workingFrom.day;
+
+    if (months < 0 || (months == 0 && days < 0)) {
+      years--;
+      months += 12; // Since we go back one year, add 12 months
+    }
+
+    if (days < 0) {
+      months--;
+      final int daysInFromMonth =
+          getDaysInMonth(workingFrom.year, workingFrom.month);
+      days += daysInFromMonth;
+    }
+
+    // Adjust for full months acquired from the days difference.
+    if (days >= 30) {
+      final int addMonths =
+          days ~/ 30; // Approximately one month for each 30 days
+      months += addMonths;
+      days -= addMonths * 30;
+    }
+
+    // Adjust weeks and days
+    final int weeks = days ~/ 7;
+    days %= 7;
+
+    // Normalize months and years if needed
+    if (months >= 12) {
+      years += months ~/ 12;
+      months %= 12;
+    }
+
+    return AgeInYearMonthsWeeksDays(
+      years: years,
+      months: months,
+      weeks: weeks,
+      days: days,
+    );
   }
 
   /// Checks if week, that contains [date] is in [year].

@@ -135,6 +135,7 @@ class VelocityPastMeasurement<T extends Unit<T>> {
       }
     }
 
+
     return result;
   }
 }

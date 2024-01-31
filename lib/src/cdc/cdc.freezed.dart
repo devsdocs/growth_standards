@@ -1976,8 +1976,8 @@ class _$CDCInfantWeigthForLengthImpl extends _CDCInfantWeigthForLength {
                       type: AdjustedLengthType.cdc,
                     ).value <
                     104 &&
-                length.toCentimeters.value >= 45 &&
-                length.toCentimeters.value < 104,
+                length.toCentimeter.value >= 45 &&
+                length.toCentimeter.value < 104,
             'Please correcting measurement position based on age'),
         assert(
             adjustedLengthHeight(
@@ -2302,8 +2302,8 @@ class _$CDCWeigthForStatureImpl extends _CDCWeigthForStature {
                       type: AdjustedLengthType.cdc,
                     ).value <
                     122 &&
-                length.toCentimeters.value >= 77 &&
-                length.toCentimeters.value < 122,
+                length.toCentimeter.value >= 77 &&
+                length.toCentimeter.value < 122,
             'Please correcting measurement position based on age'),
         assert(
             adjustedLengthHeight(
