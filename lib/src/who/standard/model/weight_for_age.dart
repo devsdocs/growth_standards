@@ -47,6 +47,7 @@ class WHOGrowthStandardsWeightForAge with _$WHOGrowthStandardsWeightForAge {
   factory WHOGrowthStandardsWeightForAge({
     @DateConverter() Date? observationDate,
     required Sex sex,
+    @Default(false) bool oedemExist,
     @AgeConverter() required Age age,
     @MassConverter() required Mass weight,
   }) = _WHOGrowthStandardsWeightForAge;

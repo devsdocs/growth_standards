@@ -58,6 +58,7 @@ class WHOGrowthStandardsWeigthForLength
     @DateConverter() Date? observationDate,
     required Sex sex,
     @AgeConverter() required Age age,
+    @Default(false) bool oedemExist,
     @LengthConverter() required Length length,
     @MassConverter() required Mass weight,
     required LengthHeigthMeasurementPosition measure,

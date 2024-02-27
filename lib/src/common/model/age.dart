@@ -39,14 +39,18 @@ class Age with _$Age {
         dateOfBirth.date,
       );
 
-  AgeInYearMonthsWeeksDays timeUntilNextBirthdayFromDate(Date date) =>
+  TimeDifferenceInYearMonthsWeeksDays timeUntilNextBirthdayFromDate(
+    Date date,
+  ) =>
       _dobCount.timeUntilNextBirthday(date.toDateTime());
 
   bool _checkDate(Date date) => date.isSameOrBefore(dateOfBirth);
 
-  AgeInYearMonthsWeeksDays yearsMonthsWeeksDaysOfAgeAtDate(Date date) {
+  TimeDifferenceInYearMonthsWeeksDays yearsMonthsWeeksDaysOfAgeAtDate(
+    Date date,
+  ) {
     if (_checkDate(date)) {
-      return AgeInYearMonthsWeeksDays();
+      return TimeIntervalCount.zeroAgeInYearMonthsWeeksDays();
     }
     return _dobCount.ageAtDate(date.toDateTime());
   }
@@ -85,10 +89,10 @@ class Age with _$Age {
     );
   }
 
-  AgeInYearMonthsWeeksDays get timeUntilNextBirtdayByNow =>
+  TimeDifferenceInYearMonthsWeeksDays get timeUntilNextBirtdayByNow =>
       timeUntilNextBirthdayFromDate(Date.today());
 
-  AgeInYearMonthsWeeksDays get yearsMonthsWeeksDaysOfAgeByNow =>
+  TimeDifferenceInYearMonthsWeeksDays get yearsMonthsWeeksDaysOfAgeByNow =>
       yearsMonthsWeeksDaysOfAgeAtDate(Date.today());
 
   int get ageInTotalYearsByNow => ageInTotalYearsAtDate(Date.today());
@@ -203,6 +207,10 @@ class Date with _$Date implements Comparable<Date> {
 
   Duration difference(Date other) => Duration(
         days: DateTimeUtils.getDaysDifference(toDateTime(), other.toDateTime()),
+      );
+
+  Duration differenceWithDateTime(DateTime other) => Duration(
+        days: DateTimeUtils.getDaysDifference(toDateTime(), other),
       );
 
   DateTime toDateTime() => DateTime(year, month.number, date);

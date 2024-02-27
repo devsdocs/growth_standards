@@ -26,12 +26,6 @@ enum LengthHeigthMeasurementPosition {
   final String value;
 }
 
-enum OedemaExist {
-  yes,
-  no,
-  ;
-}
-
 @JsonEnum(valueField: 'number')
 enum Months {
   january(DateTime.january, 'January', 31),

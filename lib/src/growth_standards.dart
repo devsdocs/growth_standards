@@ -25,6 +25,7 @@ export 'cdc/cdc.dart'
         CDCWeightForAgeData,
         CDCWeigthForStature,
         CDCWeigthForStatureData;
+export 'common/extension.dart' show DateTimeToDate;
 export 'common/model/age.dart' show Age, Date;
 export 'common/model/bmi.dart' show BodyMassIndex;
 export 'common/types.dart'

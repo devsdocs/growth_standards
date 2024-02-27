@@ -130,11 +130,30 @@ class WHOGrowthStandardsWeightVelocityForAge
               whoGrowthStandardsWeightVelocityForAgeLMS.lms.adjustedZScore(
             v2 + whoGrowthStandardsWeightVelocityForAgeLMS.delta,
           );
+
+          final map = pastMeasurement.where((e) => e.oedemExist);
+
+          final isValid = map.isEmpty ||
+              (map.isNotEmpty &&
+                  !map
+                      .map((e) => e.date)
+                      .containsAnyOf([k2.dateAfter, k2.dateBefore]));
+
+          if (isValid) {
+            return MapEntry(
+              vm,
+              (
+                zScore: adjustedZScore.precision(precision),
+                percentile: (pnorm(adjustedZScore) * 100).precision(precision)
+              ),
+            );
+          }
+
           return MapEntry(
             vm,
             (
-              zScore: adjustedZScore.precision(precision),
-              percentile: (pnorm(adjustedZScore) * 100).precision(precision)
+              zScore: double.nan,
+              percentile: double.nan,
             ),
           );
         }

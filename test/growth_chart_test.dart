@@ -100,6 +100,287 @@ void main() {
     });
   });
 
+  group('AgeInYearMonthsWeeksDays Time Difference Tests', () {
+    // Normal Cases
+    test('Same day', () {
+      final result = Age(
+        Date.fromDateTime(
+          DateTime(2021),
+        ),
+      ).yearsMonthsWeeksDaysOfAgeAtDate(
+        Date.fromDateTime(
+          DateTime(2021),
+        ),
+      );
+      expect(result.years, 0);
+      expect(result.months, 0);
+      expect(result.weeks, 0);
+      expect(result.days, 0);
+    });
+
+    test('One year apart', () {
+      final result = Age(
+        Date.fromDateTime(
+          DateTime(2020, 2, 29),
+        ),
+      ).yearsMonthsWeeksDaysOfAgeAtDate(
+        Date.fromDateTime(
+          DateTime(2021, 2, 28),
+        ),
+      );
+
+      expect(result.years, 0);
+      expect(result.months, 11);
+      expect(result.weeks, 4);
+      expect(result.days, 2);
+    });
+
+    // Edge Cases
+    test('End of Month to Beginning of Next Month', () {
+      final result = Age(
+        Date.fromDateTime(
+          DateTime(2023, 1, 31),
+        ),
+      ).yearsMonthsWeeksDaysOfAgeAtDate(
+        Date.fromDateTime(
+          DateTime(2023, 2),
+        ),
+      );
+      expect(result.years, 0);
+      expect(result.months, 0);
+      expect(result.weeks, 0);
+      expect(result.days, 1);
+    });
+
+    test('Leap year February', () {
+      final result = Age(
+        Date.fromDateTime(
+          DateTime(2020, 2, 29),
+        ),
+      ).yearsMonthsWeeksDaysOfAgeAtDate(
+        Date.fromDateTime(
+          DateTime(2024, 2, 29),
+        ),
+      );
+      expect(result.years, 4);
+      expect(result.months, 0);
+      expect(result.weeks, 0);
+      expect(result.days, 0);
+    });
+
+    test('Non-leap year February', () {
+      final result = Age(
+        Date.fromDateTime(
+          DateTime(2019, 2, 28),
+        ),
+      ).yearsMonthsWeeksDaysOfAgeAtDate(
+        Date.fromDateTime(
+          DateTime(2020, 2, 29),
+        ),
+      );
+      expect(result.years, 1);
+      expect(result.months, 0);
+      expect(result.weeks, 0);
+      expect(result.days, 1);
+    });
+
+    test('Crossing Year Boundary', () {
+      final result = Age(
+        Date.fromDateTime(
+          DateTime(2023, 12, 31),
+        ),
+      ).yearsMonthsWeeksDaysOfAgeAtDate(
+        Date.fromDateTime(
+          DateTime(2024),
+        ),
+      );
+
+      expect(result.years, 0);
+      expect(result.months, 0);
+      expect(result.weeks, 0);
+      expect(result.days, 1);
+    });
+
+    test('Full Month Difference of 28 Days February', () {
+      final result = Age(
+        Date.fromDateTime(
+          DateTime(2023, 2),
+        ),
+      ).yearsMonthsWeeksDaysOfAgeAtDate(
+        Date.fromDateTime(
+          DateTime(2023, 3),
+        ),
+      );
+      expect(result.years, 0);
+      expect(result.months, 1);
+      expect(result.weeks, 0);
+      expect(result.days, 0);
+    });
+
+    test('Multiple Years with February Difference', () {
+      final result = Age(
+        Date.fromDateTime(
+          DateTime(2020, 2, 29),
+        ),
+      ).yearsMonthsWeeksDaysOfAgeAtDate(
+        Date.fromDateTime(
+          DateTime(2024, 2),
+        ),
+      );
+      expect(result.years, 3);
+      expect(result.months, 11);
+      expect(result.weeks, 0);
+      expect(result.days, 3); // Adjust based on accurate calculation.
+    });
+
+    test('Same day', () {
+      final result = Age(
+        Date.fromDateTime(
+          DateTime(2021, 5, 15),
+        ),
+      ).yearsMonthsWeeksDaysOfAgeAtDate(
+        Date.fromDateTime(DateTime(2021, 5, 15)),
+      );
+
+      expect(result.years, 0);
+      expect(result.months, 0);
+      expect(result.weeks, 0);
+      expect(result.days, 0);
+    });
+
+    test('Exactly one year', () {
+      final result = Age(
+        Date.fromDateTime(
+          DateTime(2021, 5, 15),
+        ),
+      ).yearsMonthsWeeksDaysOfAgeAtDate(
+        Date.fromDateTime(DateTime(2022, 5, 15)),
+      );
+
+      expect(result.years, 1);
+      expect(result.months, 0);
+      expect(result.weeks, 0);
+      expect(result.days, 0);
+    });
+
+    test('Leap year to non-leap year, February 28 to February 28', () {
+      final result = Age(
+        Date.fromDateTime(
+          DateTime(2020, 2, 28),
+        ),
+      ).yearsMonthsWeeksDaysOfAgeAtDate(
+        Date.fromDateTime(DateTime(2021, 2, 28)),
+      );
+
+      expect(result.years, 1);
+      expect(result.months, 0);
+      expect(result.weeks, 0);
+      expect(result.days, 0);
+    });
+    test('Leap year to non-leap year, February 29 to February 28', () {
+      final result = Age(
+        Date.fromDateTime(
+          DateTime(2020, 2, 29),
+        ),
+      ).yearsMonthsWeeksDaysOfAgeAtDate(
+        Date.fromDateTime(DateTime(2021, 2, 28)),
+      );
+
+      expect(result.years, 0);
+      expect(result.months, 11);
+      expect(result.weeks, 4);
+      expect(result.days, 2);
+    });
+
+    test('One month difference', () {
+      final result = Age(
+        Date.fromDateTime(
+          DateTime(2021, 4, 15),
+        ),
+      ).yearsMonthsWeeksDaysOfAgeAtDate(
+        Date.fromDateTime(DateTime(2021, 5, 15)),
+      );
+
+      expect(result.years, 0);
+      expect(result.months, 1);
+      expect(result.weeks, 0);
+      expect(result.days, 0);
+    });
+
+    test('Crossing year boundary by one day', () {
+      final result = Age(
+        Date.fromDateTime(
+          DateTime(2020, 12, 31),
+        ),
+      ).yearsMonthsWeeksDaysOfAgeAtDate(
+        Date.fromDateTime(DateTime(2021)),
+      );
+
+      expect(result.years, 0);
+      expect(result.months, 0);
+      expect(result.weeks, 0);
+      expect(result.days, 1);
+    });
+
+    test('Multiple year span with leap year included', () {
+      final result = Age(
+        Date.fromDateTime(
+          DateTime(2019, 1, 15),
+        ),
+      ).yearsMonthsWeeksDaysOfAgeAtDate(
+        Date.fromDateTime(DateTime(2022, 2, 20)),
+      );
+
+      expect(result.years, 3);
+      expect(result.months, 1);
+      expect(result.weeks, 0);
+      expect(result.days, 5);
+    });
+
+    test('Short span crossing month boundary', () {
+      final result = Age(
+        Date.fromDateTime(
+          DateTime(2021, 4, 30),
+        ),
+      ).yearsMonthsWeeksDaysOfAgeAtDate(
+        Date.fromDateTime(DateTime(2021, 5, 2)),
+      );
+
+      expect(result.years, 0);
+      expect(result.months, 0);
+      expect(result.weeks, 0);
+      expect(result.days, 2);
+    });
+    test('Short span crossing month boundary 2', () {
+      final result = Age(
+        Date.fromDateTime(
+          DateTime(2021, 4, 30),
+        ),
+      ).yearsMonthsWeeksDaysOfAgeAtDate(
+        Date.fromDateTime(DateTime(2021, 5)),
+      );
+
+      expect(result.years, 0);
+      expect(result.months, 0);
+      expect(result.weeks, 0);
+      expect(result.days, 1);
+    });
+    test('Short span crossing month boundary 3', () {
+      final result = Age(
+        Date.fromDateTime(
+          DateTime(2024, 1, 31),
+        ),
+      ).yearsMonthsWeeksDaysOfAgeAtDate(
+        Date.fromDateTime(DateTime(2024, 2)),
+      );
+
+      expect(result.years, 0);
+      expect(result.months, 0);
+      expect(result.weeks, 0);
+      expect(result.days, 1);
+    });
+  });
+
   group('WHO Test', () {
     test('Arm Circ', () {
       final age = Age.byMonthsAgo(24);
@@ -165,6 +446,23 @@ void main() {
         male.zScore(Precision.two),
         3.39,
       );
+
+      expect(
+        male
+            .copyWith(
+              observationDate: null,
+              bodyMassIndexMeasurement:
+                  WHOGrowthStandardsBodyMassIndexMeasurement(
+                20.5,
+                age: Age(observationDate),
+              ),
+              oedemExist: true,
+            )
+            .zScore(Precision.two)
+            .isNaN,
+        true,
+      );
+
       expect(
         male
             .copyWith(

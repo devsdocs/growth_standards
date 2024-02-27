@@ -19,4 +19,6 @@ void main() {
   // cell(zScore);
   print(percentileToZScore(zScoreToPercentile(zScore)));
   print(zScoreToPercentile(percentileToZScore(zScore)));
+
+  print(num.parse('NaN'));
 }

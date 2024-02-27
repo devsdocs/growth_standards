@@ -486,6 +486,7 @@ mixin _$WHOGrowthStandardsBodyMassIndexForAge {
   @DateConverter()
   Date? get observationDate => throw _privateConstructorUsedError;
   Sex get sex => throw _privateConstructorUsedError;
+  bool get oedemExist => throw _privateConstructorUsedError;
   @WHOGrowthStandardsBodyMassIndexMeasurementConverter()
   WHOGrowthStandardsBodyMassIndexMeasurement get bodyMassIndexMeasurement =>
       throw _privateConstructorUsedError;
@@ -508,6 +509,7 @@ abstract class $WHOGrowthStandardsBodyMassIndexForAgeCopyWith<$Res> {
   $Res call(
       {@DateConverter() Date? observationDate,
       Sex sex,
+      bool oedemExist,
       @WHOGrowthStandardsBodyMassIndexMeasurementConverter()
       WHOGrowthStandardsBodyMassIndexMeasurement bodyMassIndexMeasurement});
 
@@ -532,6 +534,7 @@ class _$WHOGrowthStandardsBodyMassIndexForAgeCopyWithImpl<$Res,
   $Res call({
     Object? observationDate = freezed,
     Object? sex = null,
+    Object? oedemExist = null,
     Object? bodyMassIndexMeasurement = null,
   }) {
     return _then(_value.copyWith(
@@ -543,6 +546,10 @@ class _$WHOGrowthStandardsBodyMassIndexForAgeCopyWithImpl<$Res,
           ? _value.sex
           : sex // ignore: cast_nullable_to_non_nullable
               as Sex,
+      oedemExist: null == oedemExist
+          ? _value.oedemExist
+          : oedemExist // ignore: cast_nullable_to_non_nullable
+              as bool,
       bodyMassIndexMeasurement: null == bodyMassIndexMeasurement
           ? _value.bodyMassIndexMeasurement
           : bodyMassIndexMeasurement // ignore: cast_nullable_to_non_nullable
@@ -585,6 +592,7 @@ abstract class _$$WHOGrowthStandardsBodyMassIndexForAgeImplCopyWith<$Res>
   $Res call(
       {@DateConverter() Date? observationDate,
       Sex sex,
+      bool oedemExist,
       @WHOGrowthStandardsBodyMassIndexMeasurementConverter()
       WHOGrowthStandardsBodyMassIndexMeasurement bodyMassIndexMeasurement});
 
@@ -610,6 +618,7 @@ class __$$WHOGrowthStandardsBodyMassIndexForAgeImplCopyWithImpl<$Res>
   $Res call({
     Object? observationDate = freezed,
     Object? sex = null,
+    Object? oedemExist = null,
     Object? bodyMassIndexMeasurement = null,
   }) {
     return _then(_$WHOGrowthStandardsBodyMassIndexForAgeImpl(
@@ -621,6 +630,10 @@ class __$$WHOGrowthStandardsBodyMassIndexForAgeImplCopyWithImpl<$Res>
           ? _value.sex
           : sex // ignore: cast_nullable_to_non_nullable
               as Sex,
+      oedemExist: null == oedemExist
+          ? _value.oedemExist
+          : oedemExist // ignore: cast_nullable_to_non_nullable
+              as bool,
       bodyMassIndexMeasurement: null == bodyMassIndexMeasurement
           ? _value.bodyMassIndexMeasurement
           : bodyMassIndexMeasurement // ignore: cast_nullable_to_non_nullable
@@ -636,6 +649,7 @@ class _$WHOGrowthStandardsBodyMassIndexForAgeImpl
   _$WHOGrowthStandardsBodyMassIndexForAgeImpl(
       {@DateConverter() this.observationDate,
       required this.sex,
+      this.oedemExist = false,
       @WHOGrowthStandardsBodyMassIndexMeasurementConverter()
       required this.bodyMassIndexMeasurement})
       : assert(
@@ -660,12 +674,15 @@ class _$WHOGrowthStandardsBodyMassIndexForAgeImpl
   @override
   final Sex sex;
   @override
+  @JsonKey()
+  final bool oedemExist;
+  @override
   @WHOGrowthStandardsBodyMassIndexMeasurementConverter()
   final WHOGrowthStandardsBodyMassIndexMeasurement bodyMassIndexMeasurement;
 
   @override
   String toString() {
-    return 'WHOGrowthStandardsBodyMassIndexForAge(observationDate: $observationDate, sex: $sex, bodyMassIndexMeasurement: $bodyMassIndexMeasurement)';
+    return 'WHOGrowthStandardsBodyMassIndexForAge(observationDate: $observationDate, sex: $sex, oedemExist: $oedemExist, bodyMassIndexMeasurement: $bodyMassIndexMeasurement)';
   }
 
   @override
@@ -676,6 +693,8 @@ class _$WHOGrowthStandardsBodyMassIndexForAgeImpl
             (identical(other.observationDate, observationDate) ||
                 other.observationDate == observationDate) &&
             (identical(other.sex, sex) || other.sex == sex) &&
+            (identical(other.oedemExist, oedemExist) ||
+                other.oedemExist == oedemExist) &&
             (identical(
                     other.bodyMassIndexMeasurement, bodyMassIndexMeasurement) ||
                 other.bodyMassIndexMeasurement == bodyMassIndexMeasurement));
@@ -683,8 +702,8 @@ class _$WHOGrowthStandardsBodyMassIndexForAgeImpl
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, observationDate, sex, bodyMassIndexMeasurement);
+  int get hashCode => Object.hash(
+      runtimeType, observationDate, sex, oedemExist, bodyMassIndexMeasurement);
 
   @JsonKey(ignore: true)
   @override
@@ -707,6 +726,7 @@ abstract class _WHOGrowthStandardsBodyMassIndexForAge
   factory _WHOGrowthStandardsBodyMassIndexForAge(
           {@DateConverter() final Date? observationDate,
           required final Sex sex,
+          final bool oedemExist,
           @WHOGrowthStandardsBodyMassIndexMeasurementConverter()
           required final WHOGrowthStandardsBodyMassIndexMeasurement
               bodyMassIndexMeasurement}) =
@@ -722,6 +742,8 @@ abstract class _WHOGrowthStandardsBodyMassIndexForAge
   Date? get observationDate;
   @override
   Sex get sex;
+  @override
+  bool get oedemExist;
   @override
   @WHOGrowthStandardsBodyMassIndexMeasurementConverter()
   WHOGrowthStandardsBodyMassIndexMeasurement get bodyMassIndexMeasurement;
@@ -2724,6 +2746,7 @@ mixin _$WHOGrowthStandardsWeightForAge {
   @DateConverter()
   Date? get observationDate => throw _privateConstructorUsedError;
   Sex get sex => throw _privateConstructorUsedError;
+  bool get oedemExist => throw _privateConstructorUsedError;
   @AgeConverter()
   Age get age => throw _privateConstructorUsedError;
   @MassConverter()
@@ -2746,6 +2769,7 @@ abstract class $WHOGrowthStandardsWeightForAgeCopyWith<$Res> {
   $Res call(
       {@DateConverter() Date? observationDate,
       Sex sex,
+      bool oedemExist,
       @AgeConverter() Age age,
       @MassConverter() Mass weight});
 
@@ -2769,6 +2793,7 @@ class _$WHOGrowthStandardsWeightForAgeCopyWithImpl<$Res,
   $Res call({
     Object? observationDate = freezed,
     Object? sex = null,
+    Object? oedemExist = null,
     Object? age = null,
     Object? weight = null,
   }) {
@@ -2781,6 +2806,10 @@ class _$WHOGrowthStandardsWeightForAgeCopyWithImpl<$Res,
           ? _value.sex
           : sex // ignore: cast_nullable_to_non_nullable
               as Sex,
+      oedemExist: null == oedemExist
+          ? _value.oedemExist
+          : oedemExist // ignore: cast_nullable_to_non_nullable
+              as bool,
       age: null == age
           ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
@@ -2825,6 +2854,7 @@ abstract class _$$WHOGrowthStandardsWeightForAgeImplCopyWith<$Res>
   $Res call(
       {@DateConverter() Date? observationDate,
       Sex sex,
+      bool oedemExist,
       @AgeConverter() Age age,
       @MassConverter() Mass weight});
 
@@ -2849,6 +2879,7 @@ class __$$WHOGrowthStandardsWeightForAgeImplCopyWithImpl<$Res>
   $Res call({
     Object? observationDate = freezed,
     Object? sex = null,
+    Object? oedemExist = null,
     Object? age = null,
     Object? weight = null,
   }) {
@@ -2861,6 +2892,10 @@ class __$$WHOGrowthStandardsWeightForAgeImplCopyWithImpl<$Res>
           ? _value.sex
           : sex // ignore: cast_nullable_to_non_nullable
               as Sex,
+      oedemExist: null == oedemExist
+          ? _value.oedemExist
+          : oedemExist // ignore: cast_nullable_to_non_nullable
+              as bool,
       age: null == age
           ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
@@ -2880,6 +2915,7 @@ class _$WHOGrowthStandardsWeightForAgeImpl
   _$WHOGrowthStandardsWeightForAgeImpl(
       {@DateConverter() this.observationDate,
       required this.sex,
+      this.oedemExist = false,
       @AgeConverter() required this.age,
       @MassConverter() required this.weight})
       : assert(age.ageInTotalDaysByNow >= 0 && age.ageInTotalDaysByNow <= 1856,
@@ -2901,6 +2937,9 @@ class _$WHOGrowthStandardsWeightForAgeImpl
   @override
   final Sex sex;
   @override
+  @JsonKey()
+  final bool oedemExist;
+  @override
   @AgeConverter()
   final Age age;
   @override
@@ -2909,7 +2948,7 @@ class _$WHOGrowthStandardsWeightForAgeImpl
 
   @override
   String toString() {
-    return 'WHOGrowthStandardsWeightForAge(observationDate: $observationDate, sex: $sex, age: $age, weight: $weight)';
+    return 'WHOGrowthStandardsWeightForAge(observationDate: $observationDate, sex: $sex, oedemExist: $oedemExist, age: $age, weight: $weight)';
   }
 
   @override
@@ -2920,6 +2959,8 @@ class _$WHOGrowthStandardsWeightForAgeImpl
             (identical(other.observationDate, observationDate) ||
                 other.observationDate == observationDate) &&
             (identical(other.sex, sex) || other.sex == sex) &&
+            (identical(other.oedemExist, oedemExist) ||
+                other.oedemExist == oedemExist) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.weight, weight) || other.weight == weight));
   }
@@ -2927,7 +2968,7 @@ class _$WHOGrowthStandardsWeightForAgeImpl
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, observationDate, sex, age, weight);
+      Object.hash(runtimeType, observationDate, sex, oedemExist, age, weight);
 
   @JsonKey(ignore: true)
   @override
@@ -2950,6 +2991,7 @@ abstract class _WHOGrowthStandardsWeightForAge
   factory _WHOGrowthStandardsWeightForAge(
           {@DateConverter() final Date? observationDate,
           required final Sex sex,
+          final bool oedemExist,
           @AgeConverter() required final Age age,
           @MassConverter() required final Mass weight}) =
       _$WHOGrowthStandardsWeightForAgeImpl;
@@ -2963,6 +3005,8 @@ abstract class _WHOGrowthStandardsWeightForAge
   Date? get observationDate;
   @override
   Sex get sex;
+  @override
+  bool get oedemExist;
   @override
   @AgeConverter()
   Age get age;
@@ -2988,6 +3032,7 @@ mixin _$WHOGrowthStandardsWeightForHeight {
   Sex get sex => throw _privateConstructorUsedError;
   @AgeConverter()
   Age get age => throw _privateConstructorUsedError;
+  bool get oedemExist => throw _privateConstructorUsedError;
   @LengthConverter()
   Length get height => throw _privateConstructorUsedError;
   @MassConverter()
@@ -3013,6 +3058,7 @@ abstract class $WHOGrowthStandardsWeightForHeightCopyWith<$Res> {
       {@DateConverter() Date? observationDate,
       Sex sex,
       @AgeConverter() Age age,
+      bool oedemExist,
       @LengthConverter() Length height,
       @MassConverter() Mass weight,
       LengthHeigthMeasurementPosition measure});
@@ -3038,6 +3084,7 @@ class _$WHOGrowthStandardsWeightForHeightCopyWithImpl<$Res,
     Object? observationDate = freezed,
     Object? sex = null,
     Object? age = null,
+    Object? oedemExist = null,
     Object? height = null,
     Object? weight = null,
     Object? measure = null,
@@ -3055,6 +3102,10 @@ class _$WHOGrowthStandardsWeightForHeightCopyWithImpl<$Res,
           ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
               as Age,
+      oedemExist: null == oedemExist
+          ? _value.oedemExist
+          : oedemExist // ignore: cast_nullable_to_non_nullable
+              as bool,
       height: null == height
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
@@ -3104,6 +3155,7 @@ abstract class _$$WHOGrowthStandardsWeightForHeightImplCopyWith<$Res>
       {@DateConverter() Date? observationDate,
       Sex sex,
       @AgeConverter() Age age,
+      bool oedemExist,
       @LengthConverter() Length height,
       @MassConverter() Mass weight,
       LengthHeigthMeasurementPosition measure});
@@ -3130,6 +3182,7 @@ class __$$WHOGrowthStandardsWeightForHeightImplCopyWithImpl<$Res>
     Object? observationDate = freezed,
     Object? sex = null,
     Object? age = null,
+    Object? oedemExist = null,
     Object? height = null,
     Object? weight = null,
     Object? measure = null,
@@ -3147,6 +3200,10 @@ class __$$WHOGrowthStandardsWeightForHeightImplCopyWithImpl<$Res>
           ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
               as Age,
+      oedemExist: null == oedemExist
+          ? _value.oedemExist
+          : oedemExist // ignore: cast_nullable_to_non_nullable
+              as bool,
       height: null == height
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
@@ -3171,6 +3228,7 @@ class _$WHOGrowthStandardsWeightForHeightImpl
       {@DateConverter() this.observationDate,
       required this.sex,
       @AgeConverter() required this.age,
+      this.oedemExist = false,
       @LengthConverter() required this.height,
       @MassConverter() required this.weight,
       required this.measure})
@@ -3228,6 +3286,9 @@ class _$WHOGrowthStandardsWeightForHeightImpl
   @AgeConverter()
   final Age age;
   @override
+  @JsonKey()
+  final bool oedemExist;
+  @override
   @LengthConverter()
   final Length height;
   @override
@@ -3238,7 +3299,7 @@ class _$WHOGrowthStandardsWeightForHeightImpl
 
   @override
   String toString() {
-    return 'WHOGrowthStandardsWeightForHeight(observationDate: $observationDate, sex: $sex, age: $age, height: $height, weight: $weight, measure: $measure)';
+    return 'WHOGrowthStandardsWeightForHeight(observationDate: $observationDate, sex: $sex, age: $age, oedemExist: $oedemExist, height: $height, weight: $weight, measure: $measure)';
   }
 
   @override
@@ -3250,6 +3311,8 @@ class _$WHOGrowthStandardsWeightForHeightImpl
                 other.observationDate == observationDate) &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
+            (identical(other.oedemExist, oedemExist) ||
+                other.oedemExist == oedemExist) &&
             (identical(other.height, height) || other.height == height) &&
             (identical(other.weight, weight) || other.weight == weight) &&
             (identical(other.measure, measure) || other.measure == measure));
@@ -3257,8 +3320,8 @@ class _$WHOGrowthStandardsWeightForHeightImpl
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, observationDate, sex, age, height, weight, measure);
+  int get hashCode => Object.hash(runtimeType, observationDate, sex, age,
+      oedemExist, height, weight, measure);
 
   @JsonKey(ignore: true)
   @override
@@ -3282,6 +3345,7 @@ abstract class _WHOGrowthStandardsWeightForHeight
           {@DateConverter() final Date? observationDate,
           required final Sex sex,
           @AgeConverter() required final Age age,
+          final bool oedemExist,
           @LengthConverter() required final Length height,
           @MassConverter() required final Mass weight,
           required final LengthHeigthMeasurementPosition measure}) =
@@ -3300,6 +3364,8 @@ abstract class _WHOGrowthStandardsWeightForHeight
   @override
   @AgeConverter()
   Age get age;
+  @override
+  bool get oedemExist;
   @override
   @LengthConverter()
   Length get height;
@@ -3327,6 +3393,7 @@ mixin _$WHOGrowthStandardsWeigthForLength {
   Sex get sex => throw _privateConstructorUsedError;
   @AgeConverter()
   Age get age => throw _privateConstructorUsedError;
+  bool get oedemExist => throw _privateConstructorUsedError;
   @LengthConverter()
   Length get length => throw _privateConstructorUsedError;
   @MassConverter()
@@ -3352,6 +3419,7 @@ abstract class $WHOGrowthStandardsWeigthForLengthCopyWith<$Res> {
       {@DateConverter() Date? observationDate,
       Sex sex,
       @AgeConverter() Age age,
+      bool oedemExist,
       @LengthConverter() Length length,
       @MassConverter() Mass weight,
       LengthHeigthMeasurementPosition measure});
@@ -3377,6 +3445,7 @@ class _$WHOGrowthStandardsWeigthForLengthCopyWithImpl<$Res,
     Object? observationDate = freezed,
     Object? sex = null,
     Object? age = null,
+    Object? oedemExist = null,
     Object? length = null,
     Object? weight = null,
     Object? measure = null,
@@ -3394,6 +3463,10 @@ class _$WHOGrowthStandardsWeigthForLengthCopyWithImpl<$Res,
           ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
               as Age,
+      oedemExist: null == oedemExist
+          ? _value.oedemExist
+          : oedemExist // ignore: cast_nullable_to_non_nullable
+              as bool,
       length: null == length
           ? _value.length
           : length // ignore: cast_nullable_to_non_nullable
@@ -3443,6 +3516,7 @@ abstract class _$$WHOGrowthStandardsWeigthForLengthImplCopyWith<$Res>
       {@DateConverter() Date? observationDate,
       Sex sex,
       @AgeConverter() Age age,
+      bool oedemExist,
       @LengthConverter() Length length,
       @MassConverter() Mass weight,
       LengthHeigthMeasurementPosition measure});
@@ -3469,6 +3543,7 @@ class __$$WHOGrowthStandardsWeigthForLengthImplCopyWithImpl<$Res>
     Object? observationDate = freezed,
     Object? sex = null,
     Object? age = null,
+    Object? oedemExist = null,
     Object? length = null,
     Object? weight = null,
     Object? measure = null,
@@ -3486,6 +3561,10 @@ class __$$WHOGrowthStandardsWeigthForLengthImplCopyWithImpl<$Res>
           ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
               as Age,
+      oedemExist: null == oedemExist
+          ? _value.oedemExist
+          : oedemExist // ignore: cast_nullable_to_non_nullable
+              as bool,
       length: null == length
           ? _value.length
           : length // ignore: cast_nullable_to_non_nullable
@@ -3510,6 +3589,7 @@ class _$WHOGrowthStandardsWeigthForLengthImpl
       {@DateConverter() this.observationDate,
       required this.sex,
       @AgeConverter() required this.age,
+      this.oedemExist = false,
       @LengthConverter() required this.length,
       @MassConverter() required this.weight,
       required this.measure})
@@ -3567,6 +3647,9 @@ class _$WHOGrowthStandardsWeigthForLengthImpl
   @AgeConverter()
   final Age age;
   @override
+  @JsonKey()
+  final bool oedemExist;
+  @override
   @LengthConverter()
   final Length length;
   @override
@@ -3577,7 +3660,7 @@ class _$WHOGrowthStandardsWeigthForLengthImpl
 
   @override
   String toString() {
-    return 'WHOGrowthStandardsWeigthForLength(observationDate: $observationDate, sex: $sex, age: $age, length: $length, weight: $weight, measure: $measure)';
+    return 'WHOGrowthStandardsWeigthForLength(observationDate: $observationDate, sex: $sex, age: $age, oedemExist: $oedemExist, length: $length, weight: $weight, measure: $measure)';
   }
 
   @override
@@ -3589,6 +3672,8 @@ class _$WHOGrowthStandardsWeigthForLengthImpl
                 other.observationDate == observationDate) &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
+            (identical(other.oedemExist, oedemExist) ||
+                other.oedemExist == oedemExist) &&
             (identical(other.length, length) || other.length == length) &&
             (identical(other.weight, weight) || other.weight == weight) &&
             (identical(other.measure, measure) || other.measure == measure));
@@ -3596,8 +3681,8 @@ class _$WHOGrowthStandardsWeigthForLengthImpl
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, observationDate, sex, age, length, weight, measure);
+  int get hashCode => Object.hash(runtimeType, observationDate, sex, age,
+      oedemExist, length, weight, measure);
 
   @JsonKey(ignore: true)
   @override
@@ -3621,6 +3706,7 @@ abstract class _WHOGrowthStandardsWeigthForLength
           {@DateConverter() final Date? observationDate,
           required final Sex sex,
           @AgeConverter() required final Age age,
+          final bool oedemExist,
           @LengthConverter() required final Length length,
           @MassConverter() required final Mass weight,
           required final LengthHeigthMeasurementPosition measure}) =
@@ -3639,6 +3725,8 @@ abstract class _WHOGrowthStandardsWeigthForLength
   @override
   @AgeConverter()
   Age get age;
+  @override
+  bool get oedemExist;
   @override
   @LengthConverter()
   Length get length;

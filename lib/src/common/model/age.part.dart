@@ -19,28 +19,34 @@ class TimeIntervalCount {
 
   final DateTime dob;
 
-  AgeInYearMonthsWeeksDays ageAtDate(DateTime day) =>
+  static TimeDifferenceInYearMonthsWeeksDays zeroAgeInYearMonthsWeeksDays() =>
+      TimeDifferenceInYearMonthsWeeksDays._();
+
+  TimeDifferenceInYearMonthsWeeksDays ageAtDate(DateTime day) =>
       DateTimeUtils.timeDifference(
         fromDate: dob,
-        toDate: DateTimeUtils.startOfDay(day),
+        toDate: day,
       );
 
-  AgeInYearMonthsWeeksDays timeUntilNextBirthday(DateTime fromDate) {
+  TimeDifferenceInYearMonthsWeeksDays timeUntilNextBirthday(DateTime fromDate) {
     final DateTime endDate = fromDate;
     final DateTime tempDate = DateTime(endDate.year, dob.month, dob.day);
     final DateTime nextBirthdayDate = tempDate.isBefore(endDate)
-        ? _add(date: tempDate, duration: AgeInYearMonthsWeeksDays(years: 1))
+        ? _add(
+            date: tempDate,
+            duration: TimeDifferenceInYearMonthsWeeksDays._(1),
+          )
         : tempDate;
 
     return DateTimeUtils.timeDifference(
-      fromDate: DateTimeUtils.startOfDay(endDate),
-      toDate: DateTimeUtils.startOfDay(nextBirthdayDate),
+      fromDate: endDate,
+      toDate: nextBirthdayDate,
     );
   }
 
   DateTime _add({
     required DateTime date,
-    required AgeInYearMonthsWeeksDays duration,
+    required TimeDifferenceInYearMonthsWeeksDays duration,
   }) {
     int years = date.year + duration.years;
     years += (date.month + duration.months) ~/ DateTime.monthsPerYear;
@@ -52,21 +58,85 @@ class TimeIntervalCount {
   }
 }
 
-class AgeInYearMonthsWeeksDays {
-  AgeInYearMonthsWeeksDays({
-    this.days = 0,
-    this.months = 0,
+class TimeDifferenceInYearMonthsWeeksDays
+    implements Comparable<TimeDifferenceInYearMonthsWeeksDays> {
+  TimeDifferenceInYearMonthsWeeksDays._([
     this.years = 0,
+    this.months = 0,
     this.weeks = 0,
-  });
+    this.days = 0,
+  ]) : assert(
+          [days, months, weeks, years].every((e) => e >= 0),
+          'All value can not below zero',
+        );
+
   int days;
   int months;
   int years;
   int weeks;
 
   @override
-  String toString() => '$years Years, $months Months, $weeks Weeks, $days Days';
+  int get hashCode {
+    const prime = 31;
+    var result = 1;
+    result = prime * result + years.hashCode;
+    result = prime * result + months.hashCode;
+    result = prime * result + weeks.hashCode;
+    result = prime * result + days.hashCode;
+    return result;
+  }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is TimeDifferenceInYearMonthsWeeksDays &&
+          other.years == years &&
+          other.months == months &&
+          other.weeks == weeks &&
+          other.days == days;
+
+  bool operator >(TimeDifferenceInYearMonthsWeeksDays other) {
+    if (this == other) return false;
+    return !(this < other);
+  }
+
+  bool operator <(TimeDifferenceInYearMonthsWeeksDays other) {
+    if (this == other) return false;
+    if (years != other.years) {
+      return years < other.years;
+    }
+    if (months != other.months) {
+      return months < other.months;
+    }
+    if (weeks != other.weeks) {
+      return weeks < other.weeks;
+    }
+    return days < other.days;
+  }
+
+  bool operator >=(TimeDifferenceInYearMonthsWeeksDays other) {
+    if (this == other) return true;
+    return this > other;
+  }
+
+  bool operator <=(TimeDifferenceInYearMonthsWeeksDays other) {
+    if (this == other) return true;
+    return this < other;
+  }
+
+  @override
+  int compareTo(TimeDifferenceInYearMonthsWeeksDays other) {
+    if (this == other) return 0;
+    return this > other ? 1 : -1;
+  }
+
+  @override
+  String toString() =>
+      'Time Difference : ${_fmtSes(years, 'Year')}, ${_fmtSes(months, 'Month')}, ${_fmtSes(weeks, 'Week')}, ${_fmtSes(days, 'Day')}';
 }
+
+String _fmtSes(int number, String prefix) =>
+    '$number $prefix${number > 1 ? 's' : ''}';
 
 /// Utils to work with [DateTime].
 class DateTimeUtils {
@@ -74,73 +144,6 @@ class DateTimeUtils {
 
   /// Returns current time.
   static DateTime now() => clock.now();
-
-  // static AgeInYearMonthsWeeksDays timeDifference({
-  //   required DateTime fromDate,
-  //   required DateTime toDate,
-  // }) {
-  //   final DateTime endDate = toDate;
-
-  //   int years = endDate.year - fromDate.year;
-  //   int months = 0;
-  //   int days = 0;
-
-  //   if (fromDate.month > endDate.month) {
-  //     years--;
-  //     months = DateTime.monthsPerYear + endDate.month - fromDate.month;
-
-  //     if (fromDate.day > endDate.day) {
-  //       months--;
-  //       days = getDaysInMonth(
-  //             fromDate.year + years,
-  //             ((fromDate.month + months - 1) % DateTime.monthsPerYear) + 1,
-  //           ) +
-  //           endDate.day -
-  //           fromDate.day;
-  //     } else {
-  //       days = endDate.day - fromDate.day;
-  //     }
-  //   } else if (endDate.month == fromDate.month) {
-  //     if (fromDate.day > endDate.day) {
-  //       years--;
-  //       months = DateTime.monthsPerYear - 1;
-  //       days = getDaysInMonth(
-  //             fromDate.year + years,
-  //             ((fromDate.month + months - 1) % DateTime.monthsPerYear) + 1,
-  //           ) +
-  //           endDate.day -
-  //           fromDate.day;
-  //     } else {
-  //       days = endDate.day - fromDate.day;
-  //     }
-  //   } else {
-  //     months = endDate.month - fromDate.month;
-
-  //     if (fromDate.day > endDate.day) {
-  //       months--;
-  //       days = getDaysInMonth(
-  //             fromDate.year + years,
-  //             fromDate.month + months,
-  //           ) +
-  //           endDate.day -
-  //           fromDate.day;
-  //     } else {
-  //       days = endDate.day - fromDate.day;
-  //     }
-  //   }
-
-  //   final isZeroWeek = days < DateTime.daysPerWeek;
-  //   final remainingDays = isZeroWeek ? days : days % DateTime.daysPerWeek;
-  //   final remainingWeeks =
-  //       isZeroWeek ? 0 : (days - remainingDays) ~/ DateTime.daysPerWeek;
-
-  //   return AgeInYearMonthsWeeksDays(
-  //     years: years,
-  //     weeks: remainingWeeks,
-  //     days: remainingDays,
-  //     months: months,
-  //   );
-  // }
 
   /// Check if [a] and [b] are on the same day.
   static bool isSameDay(DateTime a, DateTime b) {
@@ -151,13 +154,13 @@ class DateTimeUtils {
   ///
   /// (2020, 4, 9, 16, 50) -> (2020, 4, 9, 0, 0)
   static DateTime startOfDay(DateTime dateTime) =>
-      _date(dateTime.isUtc, dateTime.year, dateTime.month, dateTime.day);
+      _date(dateTime.year, dateTime.month, dateTime.day);
 
   /// Returns [DateTime] for the beginning of the next day (00:00:00).
   ///
   /// (2020, 4, 9, 16, 50) -> (2020, 4, 10, 0, 0)
   static DateTime startOfNextDay(DateTime dateTime) =>
-      _date(dateTime.isUtc, dateTime.year, dateTime.month, dateTime.day + 1);
+      _date(dateTime.year, dateTime.month, dateTime.day + 1);
 
   /// Returns [DateTime] for the beginning of today (00:00:00).
   static DateTime startOfToday() => startOfDay(now());
@@ -172,7 +175,6 @@ class DateTimeUtils {
     int microseconds = 0,
   ]) =>
       _date(
-        date.isUtc,
         date.year,
         date.month,
         date.day,
@@ -197,7 +199,6 @@ class DateTimeUtils {
     int? microsecond,
   }) =>
       _date(
-        date.isUtc,
         year ?? date.year,
         month ?? date.month,
         day ?? date.day,
@@ -428,7 +429,6 @@ class DateTimeUtils {
     if (days < 0) days += DateTime.daysPerWeek;
 
     return _date(
-      dateTime.isUtc,
       dateTime.year,
       dateTime.month,
       dateTime.day - days,
@@ -469,7 +469,6 @@ class DateTimeUtils {
     var days = dateTime.weekday - (firstWeekday ?? DateTime.monday);
     if (days >= 0) days -= DateTime.daysPerWeek;
     return _date(
-      dateTime.isUtc,
       dateTime.year,
       dateTime.month,
       dateTime.day - days,
@@ -493,7 +492,6 @@ class DateTimeUtils {
     if (days < 0) days += DateTime.daysPerWeek;
 
     return _date(
-      dateTime.isUtc,
       dateTime.year,
       dateTime.month,
       dateTime.day + days,
@@ -505,7 +503,7 @@ class DateTimeUtils {
   ///
   /// Example: (2020, 4, 9, 15, 16) -> (2020, 4, 1, 0, 0, 0, 0).
   static DateTime firstDayOfMonth(DateTime date) {
-    return _date(date.isUtc, date.year, date.month);
+    return _date(date.year, date.month);
   }
 
   /// Returns [DateTime] that represents a beginning
@@ -516,8 +514,8 @@ class DateTimeUtils {
     final month = dateTime.month;
     final year = dateTime.year;
     final nextMonthStart = (month < DateTime.monthsPerYear)
-        ? _date(dateTime.isUtc, year, month + 1)
-        : _date(dateTime.isUtc, year + 1);
+        ? _date(year, month + 1)
+        : _date(year + 1);
     return nextMonthStart;
   }
 
@@ -534,7 +532,7 @@ class DateTimeUtils {
   ///
   /// Example: (2020, 3, 9, 15, 16) -> (2020, 1, 1, 0, 0, 0, 0).
   static DateTime firstDayOfYear(DateTime dateTime) {
-    return _date(dateTime.isUtc, dateTime.year);
+    return _date(dateTime.year);
   }
 
   /// Returns [DateTime] that represents a beginning
@@ -542,7 +540,7 @@ class DateTimeUtils {
   ///
   /// Example: (2020, 3, 9, 15, 16) -> (2021, 1, 1, 0, 0, 0, 0).
   static DateTime firstDayOfNextYear(DateTime dateTime) {
-    return _date(dateTime.isUtc, dateTime.year + 1);
+    return _date(dateTime.year + 1);
   }
 
   /// Returns [DateTime] that represents a beginning
@@ -550,7 +548,7 @@ class DateTimeUtils {
   ///
   /// Example: (2020, 4, 9, 15, 16) -> (2020, 12, 31, 0, 0, 0, 0).
   static DateTime lastDayOfYear(DateTime dateTime) {
-    return _date(dateTime.isUtc, dateTime.year, DateTime.december, 31);
+    return _date(dateTime.year, DateTime.december, 31);
   }
 
   /// Проверяет является ли заданная дата текущей.
@@ -612,7 +610,7 @@ class DateTimeUtils {
     } while (date.isBefore(end0));
   }
 
-  static AgeInYearMonthsWeeksDays timeDifference({
+  static TimeDifferenceInYearMonthsWeeksDays timeDifference({
     required DateTime fromDate,
     required DateTime toDate,
   }) {
@@ -620,7 +618,7 @@ class DateTimeUtils {
     final startOfDayFrom = startOfDay(fromDate);
 
     if (startOfDayTo == startOfDayFrom) {
-      return AgeInYearMonthsWeeksDays();
+      return TimeDifferenceInYearMonthsWeeksDays._();
     }
 
     DateTime workingTo;
@@ -638,43 +636,66 @@ class DateTimeUtils {
     int months = workingTo.month - workingFrom.month;
     int days = workingTo.day - workingFrom.day;
 
-    if (months < 0 || (months == 0 && days < 0)) {
-      years--;
-      months += 12; // Since we go back one year, add 12 months
-    }
-
     if (days < 0) {
-      months--;
-      final int daysInFromMonth =
-          getDaysInMonth(workingFrom.year, workingFrom.month);
-      days += daysInFromMonth;
+      months -= 1;
+
+      int monthLength;
+      // If crossing year boundary and only difference is in days.
+      if (months < 0 && years > 0) {
+        monthLength = getDaysInMonth(
+          workingTo.year - 1,
+          12,
+        ); // December of the previous year.
+        days += monthLength;
+        months += 12; // Adjusting months after reducing a year above.
+        years -=
+            1; // Correcting years since we're effectively within a 1-day difference, not a full year.
+      } else {
+        final int adjYear =
+            workingFrom.month == 1 ? workingFrom.year - 1 : workingFrom.year;
+        final int adjMonth =
+            workingFrom.month == 1 ? 12 : workingFrom.month - 1;
+
+        monthLength =
+            getDaysInMonth(adjYear, adjMonth == 12 ? 1 : adjMonth + 1);
+
+        days += monthLength;
+      }
     }
 
-    // Adjust for full months acquired from the days difference.
-    if (days >= 30) {
-      final int addMonths =
-          days ~/ 30; // Approximately one month for each 30 days
-      months += addMonths;
-      days -= addMonths * 30;
+    if (months < 0) {
+      years -= 1;
+      months += 12; // Normalize months after adjusting for negative days.
     }
 
-    // Adjust weeks and days
+// Special handling for leap years, specifically around February calculations
+// Example: If starting in February of a leap year, ensure we recognize February 29th as valid.
+    if ((workingFrom.month == 2 &&
+            workingTo.month > 2 &&
+            workingFrom.day == 29) ||
+        (workingTo.month == 2 && workingTo.day == 29)) {
+      // Leap day exists, ensure it is considered in the day count between the years
+      if (!isLeapYear(workingTo.year)) {
+        // If the end year is not a leap year but we are counting from a leap day,
+        // adjust the computation to reflect that the leap day "does not exist" in the ending year
+        days -= 1;
+      }
+    }
+
+// Normalize the days into weeks and remaining days
     final int weeks = days ~/ 7;
     days %= 7;
 
-    // Normalize months and years if needed
     if (months >= 12) {
-      years += months ~/ 12;
-      months %= 12;
+      years += 1;
+      months -= 12; // Normalize beyond 12 months into years
     }
 
-    return AgeInYearMonthsWeeksDays(
-      years: years,
-      months: months,
-      weeks: weeks,
-      days: days,
-    );
+    return TimeDifferenceInYearMonthsWeeksDays._(years, months, weeks, days);
   }
+
+  static bool isLeapYear(int year) =>
+      (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 
   /// Checks if week, that contains [date] is in [year].
   static bool isWeekInYear(DateTime date, int year, int? firstWeekday) {
@@ -699,7 +720,6 @@ class DateTimeUtils {
   }
 
   static DateTime _date(
-    bool utc,
     int year, [
     int month = 1,
     int day = 1,
@@ -709,25 +729,103 @@ class DateTimeUtils {
     int millisecond = 0,
     int microsecond = 0,
   ]) =>
-      utc
-          ? DateTime.utc(
-              year,
-              month,
-              day,
-              hour,
-              minute,
-              second,
-              millisecond,
-              microsecond,
-            )
-          : DateTime(
-              year,
-              month,
-              day,
-              hour,
-              minute,
-              second,
-              millisecond,
-              microsecond,
-            );
+      DateTime.utc(
+        year,
+        month,
+        day,
+        hour,
+        minute,
+        second,
+        millisecond,
+        microsecond,
+      );
+}
+
+extension DateTimeSmartCopyWith on DateTime {
+  /// Update the DateTime with the given fields,
+  /// using mutate mappers for selected fields.
+  ///
+  /// If a field is not mentioned, and it is smaller than
+  /// any field mentioned, a field-specific default value is used.
+  ///
+  /// If a field is not mentioned, but is not smaller than
+  /// any field mentioned, it is passed though from the original,
+  /// subject to any over-/under-flows from smaller fields as with
+  /// the standard DateTime constructor.
+  ///
+  /// Mutate mappers conform to:
+  /// ```
+  ///   int Function (int)
+  /// ```
+  ///
+  /// The mapper is called with the current value of the field,
+  /// and is expected to return the new value.
+  ///
+  /// For example, to get "the beginning of the next day", you use:
+  /// ```
+  ///   aDateTime.smartCopyWith(day: (d) => d + 1)
+  /// ```
+  ///
+  /// Because `day` is specified, the year and month are copied,
+  /// but hour, minute, second (and so on) are set to zero.
+  ///
+  /// For convenience, an integer may also be specified directly:
+  /// ```
+  ///   aDateTime.smartCopyWith(day: 1)
+  /// ```
+  /// Because of the overflow rules, "the beginning of the next day"
+  /// (as in the earlier example) can also be written as:
+  /// ```
+  ///   aDateTime.smartCopyWith(hour: 24)
+  /// ```
+  ///
+  /// As an edge case, if no fields are specified,
+  /// the first day of the referenced year is returned.
+  ///
+  /// `isUtc` is preserved from the original DateTime,
+  /// which can impact some overflow situations,
+  /// including what it means to "set the time to midnight".
+  DateTime smartCopyWith({
+    dynamic year,
+    dynamic month,
+    dynamic day,
+    dynamic hour,
+    dynamic minute,
+    dynamic second,
+    dynamic millisecond,
+    dynamic microsecond,
+    bool? isUtc,
+  }) {
+    var seen = false;
+    int fix(dynamic newValue, int prevValue, [int defaultValue = 0]) {
+      int asSeen(int value) {
+        seen = true;
+        return value;
+      }
+
+      return switch (newValue) {
+        null when seen => prevValue,
+        final int n => asSeen(n),
+        null => defaultValue,
+        final dynamic Function(int) m => asSeen(m(prevValue) as int),
+        final v => throw ArgumentError('$v'),
+      };
+    }
+
+    return Function.apply(
+      (isUtc ?? this.isUtc) ? DateTime.utc : DateTime.new,
+      [
+        ...[
+          fix(microsecond, this.microsecond),
+          fix(millisecond, this.millisecond),
+          fix(second, this.second),
+          fix(minute, this.minute),
+          fix(hour, this.hour),
+          fix(day, this.day, 1), // mimic standard constructor
+          fix(month, this.month, 1), // mimic standard constructor
+          fix(year, this.year, this.year), // year is required
+        ].reversed,
+      ],
+    ) as DateTime;
+  }
 }

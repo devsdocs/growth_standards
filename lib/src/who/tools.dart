@@ -9,6 +9,8 @@ import 'package:growth_standards/src/who/typedef.dart';
 import 'package:reusable_tools/reusable_tools.dart';
 import 'package:super_measurement/super_measurement.dart';
 
+part 'tools.freezed.dart';
+
 class WHOGrowthStandardsBodyMassIndexMeasurementConverter
     implements
         JsonConverter<WHOGrowthStandardsBodyMassIndexMeasurement,
@@ -135,38 +137,28 @@ class VelocityPastMeasurement<T extends Unit<T>> {
       }
     }
 
-
     return result;
   }
 }
 
-class MassMeasurementHistory extends MeasurementHistory<Mass> {
-  const MassMeasurementHistory(this.date, this.unit);
-
-  @override
-  final Date date;
-  @override
-  final Mass unit;
-
-  @override
-  String toString() =>
-      'Mass Measurement History(Date: $date, Measurement: $unit)';
+@freezed
+class MassMeasurementHistory extends MeasurementHistory<Mass>
+    with _$MassMeasurementHistory {
+  factory MassMeasurementHistory(
+    Date date,
+    Mass unit, {
+    @Default(false) bool oedemExist,
+  }) = _MassMeasurementHistory;
 }
 
-class LengthMeasurementHistory extends MeasurementHistory<Length> {
-  const LengthMeasurementHistory(this.date, this.unit);
-
-  @override
-  final Date date;
-  @override
-  final Length unit;
-
-  @override
-  String toString() =>
-      'Length Measurement History(Date: $date, Measurement: $unit)';
+@freezed
+class LengthMeasurementHistory extends MeasurementHistory<Length>
+    with _$LengthMeasurementHistory {
+  factory LengthMeasurementHistory(Date date, Length unit) =
+      _LengthMeasurementHistory;
 }
 
-abstract class MeasurementHistory<T extends Unit<T>> {
+sealed class MeasurementHistory<T extends Unit<T>> {
   const MeasurementHistory();
   T get unit;
   Date get date;
@@ -187,6 +179,7 @@ class MassMeasurementHistoryConverter
             const MassConverter().fromJson(
               e['measurement'] as Map<String, dynamic>,
             ),
+            oedemExist: e['oedem'] as bool,
           );
         },
       ).toList();
@@ -197,6 +190,7 @@ class MassMeasurementHistoryConverter
         (e) => {
           'date': e.date.toJson(),
           'measurement': e.unit.toJson(),
+          'oedem': e.oedemExist,
         },
       )
       .toList();

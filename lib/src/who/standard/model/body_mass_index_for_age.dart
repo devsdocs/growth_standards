@@ -89,6 +89,7 @@ class WHOGrowthStandardsBodyMassIndexForAge
   factory WHOGrowthStandardsBodyMassIndexForAge({
     @DateConverter() Date? observationDate,
     required Sex sex,
+    @Default(false) bool oedemExist,
     @WHOGrowthStandardsBodyMassIndexMeasurementConverter()
     required WHOGrowthStandardsBodyMassIndexMeasurement
         bodyMassIndexMeasurement,
@@ -122,12 +123,12 @@ class WHOGrowthStandardsBodyMassIndexForAge
   num zScore([
     Precision precision = Precision.ten,
   ]) =>
-      _zScore.precision(precision);
+      oedemExist ? double.nan : _zScore.precision(precision);
 
   num percentile([
     Precision precision = Precision.ten,
   ]) =>
-      (pnorm(_zScore) * 100).precision(precision);
+      oedemExist ? double.nan : (pnorm(_zScore) * 100).precision(precision);
 }
 
 class _WHOGrowthStandardsBodyMassIndexForAgeGender {
