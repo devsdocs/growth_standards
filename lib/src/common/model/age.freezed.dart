@@ -131,6 +131,19 @@ class _$AgeImpl extends _Age {
     return 'Age(dateOfBirth: $dateOfBirth)';
   }
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AgeImpl &&
+            (identical(other.dateOfBirth, dateOfBirth) ||
+                other.dateOfBirth == dateOfBirth));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, dateOfBirth);
+
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
@@ -282,6 +295,20 @@ class _$DateImpl extends _Date {
   String toString() {
     return 'Date(year: $year, month: $month, date: $date)';
   }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DateImpl &&
+            (identical(other.year, year) || other.year == year) &&
+            (identical(other.month, month) || other.month == month) &&
+            (identical(other.date, date) || other.date == date));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, year, month, date);
 
   @JsonKey(ignore: true)
   @override

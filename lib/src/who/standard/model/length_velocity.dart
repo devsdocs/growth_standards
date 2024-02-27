@@ -65,16 +65,16 @@ class WHOGrowthStandardsLengthVelocityForAge
     'pastMeasurement.every((element) => element.date.isSameOrBefore(Date.today()))',
     'Calculation can not be done as there is future date in past measurement',
   )
-  @Assert(
-    'observationDate == null || pastMeasurement.every((element) => element.date.isSameOrBefore(observationDate))',
-    'Calculation can not be done as there is future date in past measurement',
-  )
+  // @Assert(
+  //   'observationDate == null || pastMeasurement.every((element) => element.date.isSameOrBefore(observationDate))',
+  //   'Calculation can not be done as there is future date in past measurement',
+  // )
   @Assert(
     'pastMeasurement.every((element) => element.date.isSameOrAfter(age.dateOfBirth))',
     'Calculation can not be done as there is date less than Date of Birth in past measurement, if you find this exception is a mistake, try to provide exact \$Age',
   )
   factory WHOGrowthStandardsLengthVelocityForAge({
-    @DateConverter() Date? observationDate,
+    
     required Sex sex,
     @AgeConverter() required Age age,
     @LengthMeasurementHistoryConverter()
@@ -101,9 +101,21 @@ class WHOGrowthStandardsLengthVelocityForAge
           (sex == Sex.male ? _maleData : _femaleData).incrementData;
 
   Map<VelocityIncrement, Map<({Date dateBefore, Date dateAfter}), num>>
-      get _incrementalData =>
-          VelocityPastMeasurement(pastMeasurement, const Length$Centimeter())
-              .incrementalData;
+      get _incrementalData => VelocityPastMeasurement(
+            pastMeasurement
+                .map(
+                  (e) => e.copyWith(
+                    unit: adjustedLengthHeight(
+                      age: age.ageAtPastDate(e.date),
+                      measure: e.measurementPosition!,
+                      type: AdjustedLengthType.who,
+                      lengthHeight: e.unit,
+                    ),
+                  ),
+                )
+                .toList(),
+            const Length$Centimeter(),
+          ).incrementalData;
 
   Map<VelocityIncrement, Map<VelocityMonths, ZScorePercentile>>
       zScorePercentileMap([Precision precision = Precision.ten]) {
@@ -113,10 +125,10 @@ class WHOGrowthStandardsLengthVelocityForAge
 
       final alv = alt.map((k2, v2) {
         final VelocityMonths vm = (
-          low: _ageAtObservationDate.ageInTotalMonthsAtDate(
+          low: age.ageInTotalMonthsAtDate(
             k2.dateBefore,
           ),
-          high: _ageAtObservationDate.ageInTotalMonthsAtDate(k2.dateAfter),
+          high: age.ageInTotalMonthsAtDate(k2.dateAfter),
         );
 
         final whoGrowthStandardsLengthVelocityForAgeLMS = v1.lmsData[vm];
@@ -143,7 +155,7 @@ class WHOGrowthStandardsLengthVelocityForAge
     return joinMap.removeAllNull;
   }
 
-  Age get _ageAtObservationDate => checkObservationDate(age, observationDate);
+  
 }
 
 class WHOGrowthStandardsLengthVelocityForAgeGender {

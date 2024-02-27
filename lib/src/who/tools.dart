@@ -4,6 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:growth_standards/src/common/model/age.dart';
 import 'package:growth_standards/src/common/model/age.part.dart';
 import 'package:growth_standards/src/common/tools.dart';
+import 'package:growth_standards/src/common/types.dart';
 import 'package:growth_standards/src/who/standard/standard.dart';
 import 'package:growth_standards/src/who/typedef.dart';
 import 'package:reusable_tools/reusable_tools.dart';
@@ -141,21 +142,30 @@ class VelocityPastMeasurement<T extends Unit<T>> {
   }
 }
 
+extension Measurement<T extends Unit<T>> on List<MeasurementHistory<T>> {
+  Map<Date, T> get mapByDate => asMap().map((_, v) => MapEntry(v.date, v.unit));
+  Map<T, Date> get mapByUnit => asMap().map((_, v) => MapEntry(v.unit, v.date));
+}
+
 @freezed
 class MassMeasurementHistory extends MeasurementHistory<Mass>
     with _$MassMeasurementHistory {
   factory MassMeasurementHistory(
     Date date,
     Mass unit, {
-    @Default(false) bool oedemExist,
+    @Default(false) bool? isOedema,
   }) = _MassMeasurementHistory;
 }
 
 @freezed
 class LengthMeasurementHistory extends MeasurementHistory<Length>
     with _$LengthMeasurementHistory {
-  factory LengthMeasurementHistory(Date date, Length unit) =
-      _LengthMeasurementHistory;
+  factory LengthMeasurementHistory(
+    Date date,
+    Length unit, {
+    @Default(LengthHeigthMeasurementPosition.recumbent)
+    LengthHeigthMeasurementPosition? measurementPosition,
+  }) = _LengthMeasurementHistory;
 }
 
 sealed class MeasurementHistory<T extends Unit<T>> {
@@ -179,7 +189,7 @@ class MassMeasurementHistoryConverter
             const MassConverter().fromJson(
               e['measurement'] as Map<String, dynamic>,
             ),
-            oedemExist: e['oedem'] as bool,
+            isOedema: e['oedem'] as bool?,
           );
         },
       ).toList();
@@ -190,7 +200,7 @@ class MassMeasurementHistoryConverter
         (e) => {
           'date': e.date.toJson(),
           'measurement': e.unit.toJson(),
-          'oedem': e.oedemExist,
+          'oedem': e.isOedema,
         },
       )
       .toList();
@@ -211,6 +221,9 @@ class LengthMeasurementHistoryConverter
             const LengthConverter().fromJson(
               e['measurement'] as Map<String, dynamic>,
             ),
+            measurementPosition: LengthHeigthMeasurementPosition.values
+                .asMap()
+                .map((_, v) => MapEntry(v.value, v))[e['position'] as String],
           );
         },
       ).toList();
@@ -221,6 +234,7 @@ class LengthMeasurementHistoryConverter
         (e) => {
           'date': e.date.toJson(),
           'measurement': e.unit.toJson(),
+          'position': e.measurementPosition?.value,
         },
       )
       .toList();

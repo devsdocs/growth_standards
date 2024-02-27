@@ -66,16 +66,16 @@ class WHOGrowthStandardsHeadCircumferenceVelocityForAge
     'pastMeasurement.every((element) => element.date.isSameOrBefore(Date.today()))',
     'Calculation can not be done as there is future date in past measurement',
   )
-  @Assert(
-    'observationDate == null || pastMeasurement.every((element) => element.date.isSameOrBefore(observationDate))',
-    'Calculation can not be done as there is future date in past measurement',
-  )
+  // @Assert(
+  //   'observationDate == null || pastMeasurement.every((element) => element.date.isSameOrBefore(observationDate))',
+  //   'Calculation can not be done as there is future date in past measurement',
+  // )
   @Assert(
     'pastMeasurement.every((element) => element.date.isSameOrAfter(age.dateOfBirth))',
     'Calculation can not be done as there is date less than Date of Birth in past measurement, if you find this exception is a mistake, try to provide exact \$Age',
   )
   factory WHOGrowthStandardsHeadCircumferenceVelocityForAge({
-    @DateConverter() Date? observationDate,
+    
     required Sex sex,
     @AgeConverter() required Age age,
     @LengthMeasurementHistoryConverter()
@@ -116,10 +116,10 @@ class WHOGrowthStandardsHeadCircumferenceVelocityForAge
 
       final alv = alt.map((k2, v2) {
         final VelocityMonths vm = (
-          low: _ageAtObservationDate.ageInTotalMonthsAtDate(
+          low: age.ageInTotalMonthsAtDate(
             k2.dateBefore,
           ),
-          high: _ageAtObservationDate.ageInTotalMonthsAtDate(k2.dateAfter),
+          high: age.ageInTotalMonthsAtDate(k2.dateAfter),
         );
 
         final whoGrowthStandardsHeadCircumferenceVelocityForAgeLMS =
@@ -148,7 +148,7 @@ class WHOGrowthStandardsHeadCircumferenceVelocityForAge
     return joinMap.removeAllNull;
   }
 
-  Age get _ageAtObservationDate => checkObservationDate(age, observationDate);
+  
 }
 
 class WHOGrowthStandardsHeadCircumferenceVelocityForAgeGender {

@@ -242,7 +242,6 @@ final class WHOGrowthStandard {
             age: age,
             pastMeasurement: pastMeasurement,
             sex: sex,
-            observationDate: observationDate,
           );
 
   WHOGrowthStandardsLengthVelocityForAge lengthVelocityForAge({
@@ -255,7 +254,6 @@ final class WHOGrowthStandard {
         age: age,
         pastMeasurement: pastMeasurement,
         sex: sex,
-        observationDate: observationDate,
       );
 
   WHOGrowthStandardsWeightVelocityForAge weightVelocityForAge({
@@ -268,7 +266,6 @@ final class WHOGrowthStandard {
         age: age,
         pastMeasurement: pastMeasurement,
         sex: sex,
-        observationDate: observationDate,
       );
 }
 

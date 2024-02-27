@@ -125,14 +125,6 @@ class Age with _$Age {
       ),
     );
   }
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Age && other.dateOfBirth == dateOfBirth;
-
-  @override
-  int get hashCode => dateOfBirth.hashCode;
 }
 
 @freezed
@@ -174,24 +166,6 @@ class Date with _$Date implements Comparable<Date> {
       );
 
   factory Date.fromJson(Map<String, dynamic> json) => _$DateFromJson(json);
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Date &&
-          other.year == year &&
-          other.month.number == month.number &&
-          other.date == date;
-
-  @override
-  int get hashCode {
-    const prime = 31;
-    var result = 1;
-    result = prime * result + year.hashCode;
-    result = prime * result + month.number.hashCode;
-    result = prime * result + date.hashCode;
-    return result;
-  }
 
   bool isBefore(Date other) => this < other;
   bool isSameOrBefore(Date other) => this <= other;

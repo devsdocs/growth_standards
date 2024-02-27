@@ -116,8 +116,6 @@ _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl
     _$$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImplFromJson(
             Map<String, dynamic> json) =>
         _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl(
-          observationDate: _$JsonConverterFromJson<Map<String, dynamic>, Date>(
-              json['observationDate'], const DateConverter().fromJson),
           sex: $enumDecode(_$SexEnumMap, json['sex']),
           age: const AgeConverter()
               .fromJson(json['age'] as Map<String, dynamic>),
@@ -129,8 +127,6 @@ Map<String, dynamic>
     _$$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImplToJson(
             _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl instance) =>
         <String, dynamic>{
-          'observationDate': _$JsonConverterToJson<Map<String, dynamic>, Date>(
-              instance.observationDate, const DateConverter().toJson),
           'sex': _$SexEnumMap[instance.sex]!,
           'age': const AgeConverter().toJson(instance.age),
           'pastMeasurement': const LengthMeasurementHistoryConverter()
@@ -171,8 +167,6 @@ _$WHOGrowthStandardsLengthVelocityForAgeImpl
     _$$WHOGrowthStandardsLengthVelocityForAgeImplFromJson(
             Map<String, dynamic> json) =>
         _$WHOGrowthStandardsLengthVelocityForAgeImpl(
-          observationDate: _$JsonConverterFromJson<Map<String, dynamic>, Date>(
-              json['observationDate'], const DateConverter().fromJson),
           sex: $enumDecode(_$SexEnumMap, json['sex']),
           age: const AgeConverter()
               .fromJson(json['age'] as Map<String, dynamic>),
@@ -183,8 +177,6 @@ _$WHOGrowthStandardsLengthVelocityForAgeImpl
 Map<String, dynamic> _$$WHOGrowthStandardsLengthVelocityForAgeImplToJson(
         _$WHOGrowthStandardsLengthVelocityForAgeImpl instance) =>
     <String, dynamic>{
-      'observationDate': _$JsonConverterToJson<Map<String, dynamic>, Date>(
-          instance.observationDate, const DateConverter().toJson),
       'sex': _$SexEnumMap[instance.sex]!,
       'age': const AgeConverter().toJson(instance.age),
       'pastMeasurement': const LengthMeasurementHistoryConverter()
@@ -243,8 +235,6 @@ _$WHOGrowthStandardsWeightVelocityForAgeImpl
     _$$WHOGrowthStandardsWeightVelocityForAgeImplFromJson(
             Map<String, dynamic> json) =>
         _$WHOGrowthStandardsWeightVelocityForAgeImpl(
-          observationDate: _$JsonConverterFromJson<Map<String, dynamic>, Date>(
-              json['observationDate'], const DateConverter().fromJson),
           sex: $enumDecode(_$SexEnumMap, json['sex']),
           age: const AgeConverter()
               .fromJson(json['age'] as Map<String, dynamic>),
@@ -255,8 +245,6 @@ _$WHOGrowthStandardsWeightVelocityForAgeImpl
 Map<String, dynamic> _$$WHOGrowthStandardsWeightVelocityForAgeImplToJson(
         _$WHOGrowthStandardsWeightVelocityForAgeImpl instance) =>
     <String, dynamic>{
-      'observationDate': _$JsonConverterToJson<Map<String, dynamic>, Date>(
-          instance.observationDate, const DateConverter().toJson),
       'sex': _$SexEnumMap[instance.sex]!,
       'age': const AgeConverter().toJson(instance.age),
       'pastMeasurement': const MassMeasurementHistoryConverter()
