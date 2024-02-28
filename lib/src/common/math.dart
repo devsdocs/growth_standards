@@ -80,21 +80,21 @@ Length$Centimeter adjustedLengthHeight({
   final ageDays = age.ageInTotalDaysByNow;
   final val = type.value;
 
-  if (type == AdjustedLengthType.who) {
-    if (ageDays <= 730 && isStanding) {
-      toCm += val;
-    }
-    if (ageDays > 730 && !isStanding) {
-      toCm -= val;
-    }
-  } else {
-    if (ageMos < 24 && isStanding) {
-      toCm += val;
-    }
-    if (ageMos >= 24 && !isStanding) {
-      toCm -= val;
-    }
+  final isAdd = type == AdjustedLengthType.who
+      ? ageDays <= 730 && isStanding
+      : ageMos < 24 && isStanding;
+
+  final isSubtract = type == AdjustedLengthType.who
+      ? ageDays > 730 && !isStanding
+      : ageMos >= 24 && !isStanding;
+
+  if (isAdd) {
+    toCm += val;
   }
+  if (isSubtract) {
+    toCm -= val;
+  }
+
   return Length$Centimeter(toCm);
 }
 

@@ -78,7 +78,7 @@ class CDCInfantWeigthForLength with _$CDCInfantWeigthForLength {
       _weigthForLengthData._data[Sex.male]!;
   _CDCInfantWeigthForLengthGender get _femaleData =>
       _weigthForLengthData._data[Sex.female]!;
-
+//TODO(devsdocs): Fix CDC length calculation
   _CDCInfantWeigthForLengthLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData).lengthData[
           _adjustedLength == 45 ? 45 : _adjustedLength.truncate() + 0.5]!;

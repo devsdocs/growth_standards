@@ -69,7 +69,7 @@ class WHOGrowthStandardsWeightVelocityForAge
     'pastMeasurement.every((element) => element.date.isSameOrBefore(Date.today()))',
     'Calculation can not be done as there is future date in past measurement',
   )
-  // @Assert(
+  // @Assert(]
   //   'observationDate == null || pastMeasurement.every((element) => element.date.isSameOrBefore(observationDate))',
   //   'Calculation can not be done as there is future date in past measurement',
   // )

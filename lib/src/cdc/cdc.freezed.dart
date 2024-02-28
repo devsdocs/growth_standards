@@ -2109,7 +2109,7 @@ mixin _$CDCWeigthForStature {
   @AgeConverter()
   Age get age => throw _privateConstructorUsedError;
   @LengthConverter()
-  Length get length => throw _privateConstructorUsedError;
+  Length get height => throw _privateConstructorUsedError;
   @MassConverter()
   Mass get weight => throw _privateConstructorUsedError;
   LengthHeigthMeasurementPosition get measure =>
@@ -2131,7 +2131,7 @@ abstract class $CDCWeigthForStatureCopyWith<$Res> {
       {@DateConverter() Date? observationDate,
       Sex sex,
       @AgeConverter() Age age,
-      @LengthConverter() Length length,
+      @LengthConverter() Length height,
       @MassConverter() Mass weight,
       LengthHeigthMeasurementPosition measure});
 
@@ -2155,7 +2155,7 @@ class _$CDCWeigthForStatureCopyWithImpl<$Res, $Val extends CDCWeigthForStature>
     Object? observationDate = freezed,
     Object? sex = null,
     Object? age = null,
-    Object? length = null,
+    Object? height = null,
     Object? weight = null,
     Object? measure = null,
   }) {
@@ -2172,9 +2172,9 @@ class _$CDCWeigthForStatureCopyWithImpl<$Res, $Val extends CDCWeigthForStature>
           ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
               as Age,
-      length: null == length
-          ? _value.length
-          : length // ignore: cast_nullable_to_non_nullable
+      height: null == height
+          ? _value.height
+          : height // ignore: cast_nullable_to_non_nullable
               as Length,
       weight: null == weight
           ? _value.weight
@@ -2220,7 +2220,7 @@ abstract class _$$CDCWeigthForStatureImplCopyWith<$Res>
       {@DateConverter() Date? observationDate,
       Sex sex,
       @AgeConverter() Age age,
-      @LengthConverter() Length length,
+      @LengthConverter() Length height,
       @MassConverter() Mass weight,
       LengthHeigthMeasurementPosition measure});
 
@@ -2244,7 +2244,7 @@ class __$$CDCWeigthForStatureImplCopyWithImpl<$Res>
     Object? observationDate = freezed,
     Object? sex = null,
     Object? age = null,
-    Object? length = null,
+    Object? height = null,
     Object? weight = null,
     Object? measure = null,
   }) {
@@ -2261,9 +2261,9 @@ class __$$CDCWeigthForStatureImplCopyWithImpl<$Res>
           ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
               as Age,
-      length: null == length
-          ? _value.length
-          : length // ignore: cast_nullable_to_non_nullable
+      height: null == height
+          ? _value.height
+          : height // ignore: cast_nullable_to_non_nullable
               as Length,
       weight: null == weight
           ? _value.weight
@@ -2284,7 +2284,7 @@ class _$CDCWeigthForStatureImpl extends _CDCWeigthForStature {
       {@DateConverter() this.observationDate,
       required this.sex,
       @AgeConverter() required this.age,
-      @LengthConverter() required this.length,
+      @LengthConverter() required this.height,
       @MassConverter() required this.weight,
       required this.measure})
       : assert(
@@ -2341,7 +2341,7 @@ class _$CDCWeigthForStatureImpl extends _CDCWeigthForStature {
   final Age age;
   @override
   @LengthConverter()
-  final Length length;
+  final Length height;
   @override
   @MassConverter()
   final Mass weight;
@@ -2350,7 +2350,7 @@ class _$CDCWeigthForStatureImpl extends _CDCWeigthForStature {
 
   @override
   String toString() {
-    return 'CDCWeigthForStature(observationDate: $observationDate, sex: $sex, age: $age, length: $length, weight: $weight, measure: $measure)';
+    return 'CDCWeigthForStature(observationDate: $observationDate, sex: $sex, age: $age, height: $height, weight: $weight, measure: $measure)';
   }
 
   @override
@@ -2362,7 +2362,7 @@ class _$CDCWeigthForStatureImpl extends _CDCWeigthForStature {
                 other.observationDate == observationDate) &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
-            (identical(other.length, length) || other.length == length) &&
+            (identical(other.height, height) || other.height == height) &&
             (identical(other.weight, weight) || other.weight == weight) &&
             (identical(other.measure, measure) || other.measure == measure));
   }
@@ -2370,7 +2370,7 @@ class _$CDCWeigthForStatureImpl extends _CDCWeigthForStature {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, observationDate, sex, age, length, weight, measure);
+      runtimeType, observationDate, sex, age, height, weight, measure);
 
   @JsonKey(ignore: true)
   @override
@@ -2392,7 +2392,7 @@ abstract class _CDCWeigthForStature extends CDCWeigthForStature {
           {@DateConverter() final Date? observationDate,
           required final Sex sex,
           @AgeConverter() required final Age age,
-          @LengthConverter() required final Length length,
+          @LengthConverter() required final Length height,
           @MassConverter() required final Mass weight,
           required final LengthHeigthMeasurementPosition measure}) =
       _$CDCWeigthForStatureImpl;
@@ -2411,7 +2411,7 @@ abstract class _CDCWeigthForStature extends CDCWeigthForStature {
   Age get age;
   @override
   @LengthConverter()
-  Length get length;
+  Length get height;
   @override
   @MassConverter()
   Mass get weight;

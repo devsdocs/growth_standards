@@ -12,6 +12,7 @@ import 'package:super_measurement/super_measurement.dart';
 
 part 'survey.freezed.dart';
 part 'survey.g.dart';
+part 'survey.part.dart';
 
 @freezed
 class PersonSurvery with _$PersonSurvery {
@@ -117,149 +118,39 @@ class PersonSurvery with _$PersonSurvery {
             .toList(),
       );
 
-  ///
-  /// Will return null if none of [massMeasurementHistory]
-  /// and [lengthHeightMeasurementHistory] that measured on same day or any is
-  /// empty. Returning null as value if the requirement of calculations is not
-  /// met
-  ///
   Map<Date, ({num zscore, num percentile, num bmiValue})?>? get bodyMassIndex =>
-      _isLengthAndMassMeasuredAtTheSameDay
+      _isLengthAndMassMeasuredAtTheSameDay &&
+              measurementType != MeasurementType.fenton &&
+              _generalAssert
           ? _lengthAndMassMap.map((_, v) {
-              final bmiValue = _getBMIValue(v);
+              final bmiValue =
+                  _getBMIForAgeValue(v, person, precision!, measurementType);
 
               return MapEntry(v.length.date, bmiValue);
             })
           : null;
 
-  ({num zscore, num percentile, num bmiValue})? _getBMIValue(
-    ({LengthMeasurementHistory length, MassMeasurementHistory mass}) v,
-  ) {
-    final ageInDays = person.age.ageInTotalDaysAtDate(v.length.date);
-    final ageInMonths = person.age.ageInTotalMonthsAtDate(v.length.date);
-
-    final cdcBodyMassIndexForAge = CDCBodyMassIndexForAge(
-      observationDate: v.length.date,
-      sex: person.sex,
-      age: person.age,
-      bodyMassIndexMeasurement: CDCBodyMassIndexMeasurement.fromMeasurement(
-        BodyMassIndex(
-          lengthHeight: v.length.unit,
-          weight: v.mass.unit,
-        ),
-      ),
-    );
-
-    final whoGrowthStandardsBodyMassIndexForAge =
-        WHOGrowthStandardsBodyMassIndexForAge(
-      sex: person.sex,
-      oedemExist: v.mass.isOedema!,
-      observationDate: v.mass.date,
-      bodyMassIndexMeasurement:
-          WHOGrowthStandardsBodyMassIndexMeasurement.fromMeasurement(
-        lengthHeight: v.length.unit,
-        weight: v.mass.unit,
-        measure: v.length.measurementPosition!,
-        age: person.age,
-      ),
-    );
-
-    final whoGrowthReferenceBodyMassIndexForAge =
-        WHOGrowthReferenceBodyMassIndexForAge(
-      age: person.age,
-      sex: person.sex,
-      observationDate: v.mass.date,
-      bodyMassIndexMeasurement:
-          WHOGrowthReferenceBodyMassIndexMeasurement.fromMeasurement(
-        BodyMassIndex(
-          lengthHeight: v.length.unit,
-          weight: v.mass.unit,
-        ),
-      ),
-    );
-
-    final whoLessThan2YO = (
-      zscore: whoGrowthStandardsBodyMassIndexForAge.zScore(precision!),
-      percentile: whoGrowthStandardsBodyMassIndexForAge.percentile(precision!),
-      bmiValue:
-          whoGrowthStandardsBodyMassIndexForAge.bodyMassIndexMeasurement.value
-    );
-
-    final cdc = (
-      zscore: cdcBodyMassIndexForAge.zScore(precision!),
-      percentile: cdcBodyMassIndexForAge.percentile(precision!),
-      bmiValue: cdcBodyMassIndexForAge.bodyMassIndexMeasurement.value
-    );
-
-    final whoMoreThan2YO = (
-      zscore: whoGrowthReferenceBodyMassIndexForAge.zScore(precision!),
-      percentile: whoGrowthReferenceBodyMassIndexForAge.percentile(precision!),
-      bmiValue:
-          whoGrowthReferenceBodyMassIndexForAge.bodyMassIndexMeasurement.value
-    );
-
-    return switch (measurementType) {
-      MeasurementType.cdc => ageInMonths < 24 && ageInMonths > 240 ? null : cdc,
-      MeasurementType.who => ageInDays <= 1856
-          ? v.mass.isOedema!
-              ? null
-              : whoLessThan2YO
-          : ageInMonths <= 228
-              ? whoMoreThan2YO
-              : null,
-      _ => null,
-    };
-  }
-
-  Map<Date, ({num zscore, num percentile})?>? get lengthHeightForAge {
-    if (lengthHeightMeasurementHistory.isNotEmpty) {}
-    return null;
-  }
-
-  Map<Date, ({num zscore, num percentile})?>? get weightForAge {
-    if (massMeasurementHistory.isNotEmpty) {}
-    return null;
-  }
-
   Map<Date, ({num zscore, num percentile})?>? get weightForLengthHeight =>
-      _isLengthAndMassMeasuredAtTheSameDay
+      _isLengthAndMassMeasuredAtTheSameDay &&
+              measurementType != MeasurementType.fenton &&
+              _generalAssert
           ? _lengthAndMassMap.map((_, v) {
-              final value = _getWeigthForLengthValue(v);
+              final value = _getWeigthForLengthValue(
+                v,
+                person,
+                precision!,
+                measurementType,
+              );
 
               return MapEntry(v.length.date, value);
             })
           : null;
 
-  ({num zscore, num percentile})? _getWeigthForLengthValue(
-    ({LengthMeasurementHistory length, MassMeasurementHistory mass}) v,
-  ) {
-    final adjusted = switch (measurementType) {
-      MeasurementType.cdc => adjustedLengthHeight(
-          age: person.age,
-          measure: v.length.measurementPosition!,
-          lengthHeight: v.length.unit,
-          type: AdjustedLengthType.cdc,
-        ),
-      MeasurementType.who => adjustedLengthHeight(
-          age: person.age,
-          measure: v.length.measurementPosition!,
-          lengthHeight: v.length.unit,
-          type: AdjustedLengthType.who,
-        ),
-      _ => null,
-    };
+  Map<Date, ({num zscore, num percentile})?>? get lengthHeightForAge =>
+      _generalAssert && lengthHeightMeasurementHistory.isNotEmpty ? {} : null;
 
-    if (adjusted == null) return null;
-
-    final ageInDays = person.age.ageInTotalDaysAtDate(v.length.date);
-    final ageInMonths = person.age.ageInTotalMonthsAtDate(v.length.date);
-
-    return switch (measurementType) {
-      MeasurementType.cdc => null,
-      MeasurementType.who => null,
-      _ => null,
-    };
-  }
+  Map<Date, ({num zscore, num percentile})?>? get weightForAge =>
+      _generalAssert && massMeasurementHistory.isNotEmpty ? {} : null;
 
   Map<int, ({LengthMeasurementHistory length, MassMeasurementHistory mass})>
       get _lengthAndMassMap => massMeasurementHistory
@@ -282,6 +173,66 @@ class PersonSurvery with _$PersonSurvery {
       massMeasurementHistory.any(
         (e) => lengthHeightMeasurementHistory.any((x) => e.date == x.date),
       );
+
+  bool get _generalAssert {
+    final age = person.age;
+
+    final lengthMeasurementCategory = ([
+      lengthHeightMeasurementHistory,
+      headCircumferenceMeasurementHistory,
+      subscapularSkinfoldMeasurementHistory,
+      tricepsSkinfoldMeasurementHistory,
+      armCircumferenceMeasurementHistory,
+    ]..removeWhere((e) => e == null))
+        .map((e) => e!);
+
+    final isLengthDateConstraint = lengthMeasurementCategory.every(
+      (e) => e.every(
+        (x) => x.date >= age.dateOfBirth && x.date <= Date.today(),
+      ),
+    );
+
+    final isWeigthDateConstraint = massMeasurementHistory.every(
+      (x) => x.date >= age.dateOfBirth && x.date <= Date.today(),
+    );
+
+    final isMeasurementTypeConstraint = switch (measurementType) {
+      MeasurementType.cdc => lengthMeasurementCategory.every(
+            (e) => e.every((x) {
+              final ageInTotalMonthsAtDate = age.ageInTotalMonthsAtDate(x.date);
+              return ageInTotalMonthsAtDate <= 240;
+            }),
+          ) &&
+          massMeasurementHistory.every((x) {
+            final ageInTotalMonthsAtDate = age.ageInTotalMonthsAtDate(x.date);
+            return ageInTotalMonthsAtDate <= 240;
+          }),
+      MeasurementType.who => lengthMeasurementCategory.every(
+            (e) => e.every((x) {
+              final ageInTotalMonthsAtDate = age.ageInTotalMonthsAtDate(x.date);
+              return ageInTotalMonthsAtDate <= 228;
+            }),
+          ) &&
+          massMeasurementHistory.every((x) {
+            final ageInTotalMonthsAtDate = age.ageInTotalMonthsAtDate(x.date);
+            return ageInTotalMonthsAtDate <= 228;
+          }),
+      MeasurementType.fenton => lengthMeasurementCategory.every(
+            (e) => e.every((x) {
+              final ageInTotalWeeksAtDate = age.ageInTotalWeeksAtDate(x.date);
+              return ageInTotalWeeksAtDate >= 22 && ageInTotalWeeksAtDate <= 50;
+            }),
+          ) &&
+          massMeasurementHistory.every((x) {
+            final ageInTotalWeeksAtDate = age.ageInTotalWeeksAtDate(x.date);
+            return ageInTotalWeeksAtDate >= 22 && ageInTotalWeeksAtDate <= 50;
+          }),
+    };
+
+    return isLengthDateConstraint &&
+        isWeigthDateConstraint &&
+        isMeasurementTypeConstraint;
+  }
 }
 
 enum MeasurementType {
@@ -328,7 +279,6 @@ class Person with _$Person {
 
   Age get age => Age(dateOfBirth);
 }
-
 
 @freezed
 class Survey with _$Survey {

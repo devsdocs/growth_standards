@@ -208,8 +208,8 @@ _$CDCWeigthForStatureImpl _$$CDCWeigthForStatureImplFromJson(
           json['observationDate'], const DateConverter().fromJson),
       sex: $enumDecode(_$SexEnumMap, json['sex']),
       age: const AgeConverter().fromJson(json['age'] as Map<String, dynamic>),
-      length: const LengthConverter()
-          .fromJson(json['length'] as Map<String, dynamic>),
+      height: const LengthConverter()
+          .fromJson(json['height'] as Map<String, dynamic>),
       weight: const MassConverter()
           .fromJson(json['weight'] as Map<String, dynamic>),
       measure: $enumDecode(
@@ -223,7 +223,7 @@ Map<String, dynamic> _$$CDCWeigthForStatureImplToJson(
           instance.observationDate, const DateConverter().toJson),
       'sex': _$SexEnumMap[instance.sex]!,
       'age': const AgeConverter().toJson(instance.age),
-      'length': const LengthConverter().toJson(instance.length),
+      'height': const LengthConverter().toJson(instance.height),
       'weight': const MassConverter().toJson(instance.weight),
       'measure': _$LengthHeigthMeasurementPositionEnumMap[instance.measure]!,
     };

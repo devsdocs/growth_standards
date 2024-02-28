@@ -117,7 +117,7 @@ class CDCGrowthStandardFromTwoYearsOldAndAbove {
     Date? observationDate,
     required Sex sex,
     required Age age,
-    required Length length,
+    required Length height,
     required Mass weight,
     required LengthHeigthMeasurementPosition measure,
   }) =>
@@ -125,7 +125,7 @@ class CDCGrowthStandardFromTwoYearsOldAndAbove {
         observationDate: observationDate,
         sex: sex,
         age: age,
-        length: length,
+        height: height,
         weight: weight,
         measure: measure,
       );

@@ -54,7 +54,7 @@ class CDCWeigthForStature with _$CDCWeigthForStature {
     @DateConverter() Date? observationDate,
     required Sex sex,
     @AgeConverter() required Age age,
-    @LengthConverter() required Length length,
+    @LengthConverter() required Length height,
     @MassConverter() required Mass weight,
     required LengthHeigthMeasurementPosition measure,
   }) = _CDCWeigthForStature;
@@ -67,7 +67,7 @@ class CDCWeigthForStature with _$CDCWeigthForStature {
   num get _adjustedLength => adjustedLengthHeight(
         measure: measure,
         age: age,
-        lengthHeight: length,
+        lengthHeight: height,
         type: AdjustedLengthType.cdc,
       ).value;
 
@@ -77,7 +77,7 @@ class CDCWeigthForStature with _$CDCWeigthForStature {
       _weigthForLengthData._data[Sex.male]!;
   _CDCWeigthForStatureGender get _femaleData =>
       _weigthForLengthData._data[Sex.female]!;
-
+//TODO(devsdocs): Fix CDC length calculation
   _CDCWeigthForStatureLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData).lengthData[
           _adjustedLength == 77 ? 77 : _adjustedLength.truncate() + 0.5]!;
