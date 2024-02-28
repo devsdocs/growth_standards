@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:growth_standards/src/cdc/cdc.dart';
+import 'package:growth_standards/src/common/extension.dart';
 import 'package:growth_standards/src/common/math.dart';
 import 'package:growth_standards/src/common/model/age.dart';
 import 'package:growth_standards/src/common/model/bmi.dart';
@@ -15,8 +16,8 @@ part 'survey.g.dart';
 part 'survey.part.dart';
 
 @freezed
-class PersonSurvery with _$PersonSurvery {
-  factory PersonSurvery({
+class PersonSurvey with _$PersonSurvey {
+  factory PersonSurvey({
     required Person person,
     required MeasurementType measurementType,
     @Default(Precision.two) Precision? precision,
@@ -32,109 +33,134 @@ class PersonSurvery with _$PersonSurvery {
     List<LengthMeasurementHistory>? tricepsSkinfoldMeasurementHistory,
     @LengthMeasurementHistoryConverter()
     List<LengthMeasurementHistory>? armCircumferenceMeasurementHistory,
-  }) = _PersonSurvery;
+  }) = _PersonSurvey;
 
-  const PersonSurvery._();
+  const PersonSurvey._();
 
-  factory PersonSurvery.fromJson(Map<String, dynamic> json) =>
-      _$PersonSurveryFromJson(json);
+  factory PersonSurvey.fromJson(Map<String, dynamic> json) =>
+      _$PersonSurveyFromJson(json);
 
-  factory PersonSurvery.sameDayMeasurement({
-    required Person person,
+  factory PersonSurvey.sameDayMeasurement({
     required MeasurementType measurementType,
-    required List<SameDayMeasurement> sameDayMeasurement,
+    required PersonMeasurement personMeasurement,
     Precision precision = Precision.two,
   }) =>
-      PersonSurvery(
-        person: person,
-        measurementType: measurementType,
-        precision: precision,
-        massMeasurementHistory: sameDayMeasurement
-            .map(
-              (e) =>
-                  MassMeasurementHistory(e.date, e.mass, isOedema: e.isOedema),
-            )
-            .toList(),
-        lengthHeightMeasurementHistory: sameDayMeasurement
-            .map(
-              (e) => LengthMeasurementHistory(
-                e.date,
-                e.lengthHeight,
-                measurementPosition: e.measurementPosition,
-              ),
-            )
-            .toList(),
-        armCircumferenceMeasurementHistory: (sameDayMeasurement
-                .map(
-                  (e) => e.armCircumferenceMeasurement == null
-                      ? null
-                      : LengthMeasurementHistory(
-                          e.date,
-                          e.armCircumferenceMeasurement!,
-                        ),
-                )
-                .toList()
-              ..removeWhere((e) => e == null))
-            .map((e) => e!)
-            .toList(),
-        headCircumferenceMeasurementHistory: (sameDayMeasurement
-                .map(
-                  (e) => e.headCircumferenceMeasurement == null
-                      ? null
-                      : LengthMeasurementHistory(
-                          e.date,
-                          e.headCircumferenceMeasurement!,
-                        ),
-                )
-                .toList()
-              ..removeWhere((e) => e == null))
-            .map((e) => e!)
-            .toList(),
-        subscapularSkinfoldMeasurementHistory: (sameDayMeasurement
-                .map(
-                  (e) => e.subscapularSkinfoldMeasurement == null
-                      ? null
-                      : LengthMeasurementHistory(
-                          e.date,
-                          e.subscapularSkinfoldMeasurement!,
-                        ),
-                )
-                .toList()
-              ..removeWhere((e) => e == null))
-            .map((e) => e!)
-            .toList(),
-        tricepsSkinfoldMeasurementHistory: (sameDayMeasurement
-                .map(
-                  (e) => e.tricepsSkinfoldMeasurement == null
-                      ? null
-                      : LengthMeasurementHistory(
-                          e.date,
-                          e.tricepsSkinfoldMeasurement!,
-                        ),
-                )
-                .toList()
-              ..removeWhere((e) => e == null))
-            .map((e) => e!)
-            .toList(),
-      );
+      personMeasurement.measurements.isEmpty
+          ? throw Exception('Empty measurement is not allowed')
+          : PersonSurvey(
+              person: personMeasurement.person,
+              measurementType: measurementType,
+              precision: precision,
+              massMeasurementHistory: personMeasurement.measurements
+                  .map(
+                    (e) => MassMeasurementHistory(
+                      e.date,
+                      e.mass,
+                      isOedema: e.isOedema,
+                    ),
+                  )
+                  .toList(),
+              lengthHeightMeasurementHistory: personMeasurement.measurements
+                  .map(
+                    (e) => LengthMeasurementHistory(
+                      e.date,
+                      e.lengthHeight,
+                      measurementPosition: e.measurementPosition,
+                    ),
+                  )
+                  .toList(),
+              armCircumferenceMeasurementHistory: personMeasurement.measurements
+                      .every((e) => e.armCircumferenceMeasurement == null)
+                  ? null
+                  : (personMeasurement.measurements
+                          .map(
+                            (e) => e.armCircumferenceMeasurement == null
+                                ? null
+                                : LengthMeasurementHistory(
+                                    e.date,
+                                    e.armCircumferenceMeasurement!,
+                                  ),
+                          )
+                          .toList()
+                        ..removeWhere((e) => e == null))
+                      .map((e) => e!)
+                      .toList(),
+              headCircumferenceMeasurementHistory: personMeasurement
+                      .measurements
+                      .every((e) => e.headCircumferenceMeasurement == null)
+                  ? null
+                  : (personMeasurement.measurements
+                          .map(
+                            (e) => e.headCircumferenceMeasurement == null
+                                ? null
+                                : LengthMeasurementHistory(
+                                    e.date,
+                                    e.headCircumferenceMeasurement!,
+                                  ),
+                          )
+                          .toList()
+                        ..removeWhere((e) => e == null))
+                      .map((e) => e!)
+                      .toList(),
+              subscapularSkinfoldMeasurementHistory: personMeasurement
+                      .measurements
+                      .every((e) => e.subscapularSkinfoldMeasurement == null)
+                  ? null
+                  : (personMeasurement.measurements
+                          .map(
+                            (e) => e.subscapularSkinfoldMeasurement == null
+                                ? null
+                                : LengthMeasurementHistory(
+                                    e.date,
+                                    e.subscapularSkinfoldMeasurement!,
+                                  ),
+                          )
+                          .toList()
+                        ..removeWhere((e) => e == null))
+                      .map((e) => e!)
+                      .toList(),
+              tricepsSkinfoldMeasurementHistory: personMeasurement.measurements
+                      .every((e) => e.tricepsSkinfoldMeasurement == null)
+                  ? null
+                  : (personMeasurement.measurements
+                          .map(
+                            (e) => e.tricepsSkinfoldMeasurement == null
+                                ? null
+                                : LengthMeasurementHistory(
+                                    e.date,
+                                    e.tricepsSkinfoldMeasurement!,
+                                  ),
+                          )
+                          .toList()
+                        ..removeWhere((e) => e == null))
+                      .map((e) => e!)
+                      .toList(),
+            );
 
-  Map<Date, ({num zscore, num percentile, num bmiValue})?>? get bodyMassIndex =>
+  List<Result>? get bodyMassIndex => _isLengthAndMassMeasuredAtTheSameDay &&
+          measurementType != MeasurementType.fenton &&
+          _generalAssert
+      ? _lengthAndMassMap.values.map((v) {
+          final value = _getBMIForAgeValue(
+            v,
+            person,
+            precision!,
+            measurementType,
+          );
+
+          return Result(
+            v.length.date,
+            zscore: value?.zscore,
+            percentile: value?.percentile,
+          );
+        }).toList()
+      : null;
+
+  List<Result>? get weightForLengthHeight =>
       _isLengthAndMassMeasuredAtTheSameDay &&
               measurementType != MeasurementType.fenton &&
               _generalAssert
-          ? _lengthAndMassMap.map((_, v) {
-              final bmiValue =
-                  _getBMIForAgeValue(v, person, precision!, measurementType);
-
-              return MapEntry(v.length.date, bmiValue);
-            })
-          : null;
-
-  Map<Date, ({num zscore, num percentile})?>? get weightForLengthHeight =>
-      _isLengthAndMassMeasuredAtTheSameDay &&
-              measurementType != MeasurementType.fenton &&
-              _generalAssert
-          ? _lengthAndMassMap.map((_, v) {
+          ? _lengthAndMassMap.values.map((v) {
               final value = _getWeigthForLengthValue(
                 v,
                 person,
@@ -142,15 +168,118 @@ class PersonSurvery with _$PersonSurvery {
                 measurementType,
               );
 
-              return MapEntry(v.length.date, value);
-            })
+              return Result(
+                v.length.date,
+                zscore: value?.zscore,
+                percentile: value?.percentile,
+              );
+            }).toList()
           : null;
 
-  Map<Date, ({num zscore, num percentile})?>? get lengthHeightForAge =>
-      _generalAssert && lengthHeightMeasurementHistory.isNotEmpty ? {} : null;
+  List<Result>? get lengthHeightForAge =>
+      _generalAssert && lengthHeightMeasurementHistory.isNotEmpty
+          ? lengthHeightMeasurementHistory.map((v) {
+              final value = _getLengthHeightForAgeValue(
+                v,
+                person,
+                precision!,
+                measurementType,
+              );
+              return Result(
+                v.date,
+                zscore: value?.zscore,
+                percentile: value?.percentile,
+              );
+            }).toList()
+          : null;
 
-  Map<Date, ({num zscore, num percentile})?>? get weightForAge =>
-      _generalAssert && massMeasurementHistory.isNotEmpty ? {} : null;
+  List<Result>? get weightForAge =>
+      _generalAssert && massMeasurementHistory.isNotEmpty
+          ? massMeasurementHistory.map((v) {
+              final value = _getWeightForAgeValue(
+                v,
+                person,
+                precision!,
+                measurementType,
+              );
+              return Result(
+                v.date,
+                zscore: value?.zscore,
+                percentile: value?.percentile,
+              );
+            }).toList()
+          : null;
+
+  List<Result>? get headCircumferenceForAge =>
+      _generalAssert && headCircumferenceMeasurementHistory.notNullAndNotEmpty
+          ? headCircumferenceMeasurementHistory!.map((v) {
+              final value = _getHeadCircumferenceForAgeValue(
+                v,
+                person,
+                precision!,
+                measurementType,
+              );
+              return Result(
+                v.date,
+                zscore: value?.zscore,
+                percentile: value?.percentile,
+              );
+            }).toList()
+          : null;
+
+  List<Result>? get subscapularSkinfoldForAge => _generalAssert &&
+          measurementType != MeasurementType.fenton &&
+          subscapularSkinfoldMeasurementHistory.notNullAndNotEmpty
+      ? subscapularSkinfoldMeasurementHistory!.map((v) {
+          final value = _getSubscapularSkinfoldForAgeValue(
+            v,
+            person,
+            precision!,
+            measurementType,
+          );
+          return Result(
+            v.date,
+            zscore: value?.zscore,
+            percentile: value?.percentile,
+          );
+        }).toList()
+      : null;
+
+  List<Result>? get tricepsSkinfoldForAge => _generalAssert &&
+          measurementType != MeasurementType.fenton &&
+          tricepsSkinfoldMeasurementHistory.notNullAndNotEmpty
+      ? tricepsSkinfoldMeasurementHistory!.map((v) {
+          final value = _getTricepsSkinfoldForAgeValue(
+            v,
+            person,
+            precision!,
+            measurementType,
+          );
+          return Result(
+            v.date,
+            zscore: value?.zscore,
+            percentile: value?.percentile,
+          );
+        }).toList()
+      : null;
+
+  List<Result>? get armCircumferenceForAge => _generalAssert &&
+          measurementType != MeasurementType.fenton &&
+          armCircumferenceMeasurementHistory.notNullAndNotEmpty
+      ? armCircumferenceMeasurementHistory!.map((v) {
+          final value = _getArmCircumferenceForAgeValue(
+            v,
+            person,
+            precision!,
+            measurementType,
+          );
+          return Result(
+            v.date,
+            zscore: value?.zscore,
+            percentile: value?.percentile,
+          );
+        }).toList()
+      : null;
 
   Map<int, ({LengthMeasurementHistory length, MassMeasurementHistory mass})>
       get _lengthAndMassMap => massMeasurementHistory
@@ -184,12 +313,11 @@ class PersonSurvery with _$PersonSurvery {
       tricepsSkinfoldMeasurementHistory,
       armCircumferenceMeasurementHistory,
     ]..removeWhere((e) => e == null))
-        .map((e) => e!);
+        .map((e) => e!)
+        .expand((e) => e);
 
     final isLengthDateConstraint = lengthMeasurementCategory.every(
-      (e) => e.every(
-        (x) => x.date >= age.dateOfBirth && x.date <= Date.today(),
-      ),
+      (x) => x.date >= age.dateOfBirth && x.date <= Date.today(),
     );
 
     final isWeigthDateConstraint = massMeasurementHistory.every(
@@ -198,31 +326,21 @@ class PersonSurvery with _$PersonSurvery {
 
     final isMeasurementTypeConstraint = switch (measurementType) {
       MeasurementType.cdc => lengthMeasurementCategory.every(
-            (e) => e.every((x) {
-              final ageInTotalMonthsAtDate = age.ageInTotalMonthsAtDate(x.date);
-              return ageInTotalMonthsAtDate <= 240;
-            }),
+            (x) => age.ageInTotalMonthsAtDate(x.date) <= 240,
           ) &&
-          massMeasurementHistory.every((x) {
-            final ageInTotalMonthsAtDate = age.ageInTotalMonthsAtDate(x.date);
-            return ageInTotalMonthsAtDate <= 240;
-          }),
+          massMeasurementHistory.every(
+            (x) => age.ageInTotalMonthsAtDate(x.date) <= 240,
+          ),
       MeasurementType.who => lengthMeasurementCategory.every(
-            (e) => e.every((x) {
-              final ageInTotalMonthsAtDate = age.ageInTotalMonthsAtDate(x.date);
-              return ageInTotalMonthsAtDate <= 228;
-            }),
+            (x) => age.ageInTotalMonthsAtDate(x.date) <= 228,
           ) &&
-          massMeasurementHistory.every((x) {
-            final ageInTotalMonthsAtDate = age.ageInTotalMonthsAtDate(x.date);
-            return ageInTotalMonthsAtDate <= 228;
-          }),
-      MeasurementType.fenton => lengthMeasurementCategory.every(
-            (e) => e.every((x) {
-              final ageInTotalWeeksAtDate = age.ageInTotalWeeksAtDate(x.date);
-              return ageInTotalWeeksAtDate >= 22 && ageInTotalWeeksAtDate <= 50;
-            }),
-          ) &&
+          massMeasurementHistory.every(
+            (x) => age.ageInTotalMonthsAtDate(x.date) <= 228,
+          ),
+      MeasurementType.fenton => lengthMeasurementCategory.every((x) {
+            final ageInTotalWeeksAtDate = age.ageInTotalWeeksAtDate(x.date);
+            return ageInTotalWeeksAtDate >= 22 && ageInTotalWeeksAtDate <= 50;
+          }) &&
           massMeasurementHistory.every((x) {
             final ageInTotalWeeksAtDate = age.ageInTotalWeeksAtDate(x.date);
             return ageInTotalWeeksAtDate >= 22 && ageInTotalWeeksAtDate <= 50;
@@ -240,6 +358,30 @@ enum MeasurementType {
   who,
   fenton,
   ;
+}
+
+@freezed
+class Result with _$Result {
+  factory Result(
+    Date date, {
+    num? zscore,
+    num? percentile,
+  }) = _Result;
+  const Result._();
+
+  factory Result.fromJson(Map<String, dynamic> json) => _$ResultFromJson(json);
+}
+
+@freezed
+class PersonMeasurement with _$PersonMeasurement {
+  factory PersonMeasurement(
+    Person person, {
+    required List<SameDayMeasurement> measurements,
+  }) = _PersonMeasurement;
+  const PersonMeasurement._();
+
+  factory PersonMeasurement.fromJson(Map<String, dynamic> json) =>
+      _$PersonMeasurementFromJson(json);
 }
 
 @freezed
@@ -282,11 +424,57 @@ class Person with _$Person {
 
 @freezed
 class Survey with _$Survey {
-  factory Survey(List<List<dynamic>> surveyData) = _Survey;
+  factory Survey(List<PersonSurvey> surveyData) = _Survey;
 
   const Survey._();
 
-  factory Survey.fromData() {
-    return Survey([[]]);
-  }
+  factory Survey.who({
+    Precision precision = Precision.two,
+    required List<PersonMeasurement> data,
+  }) =>
+      Survey(
+        data
+            .map(
+              (e) => PersonSurvey.sameDayMeasurement(
+                measurementType: MeasurementType.who,
+                personMeasurement: e,
+                precision: precision,
+              ),
+            )
+            .toList(),
+      );
+
+  factory Survey.cdc({
+    Precision precision = Precision.two,
+    required List<PersonMeasurement> data,
+  }) =>
+      Survey(
+        data
+            .map(
+              (e) => PersonSurvey.sameDayMeasurement(
+                measurementType: MeasurementType.cdc,
+                personMeasurement: e,
+                precision: precision,
+              ),
+            )
+            .toList(),
+      );
+
+  factory Survey.fenton({
+    Precision precision = Precision.two,
+    required List<PersonMeasurement> data,
+  }) =>
+      Survey(
+        data
+            .map(
+              (e) => PersonSurvey.sameDayMeasurement(
+                measurementType: MeasurementType.fenton,
+                personMeasurement: e,
+                precision: precision,
+              ),
+            )
+            .toList(),
+      );
+
+  factory Survey.fromJson(Map<String, dynamic> json) => _$SurveyFromJson(json);
 }

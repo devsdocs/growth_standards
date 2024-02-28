@@ -15,3 +15,13 @@ extension DateTimeToDate on DateTime {
 extension IterableExtension<T> on Iterable<T> {
   bool containsAnyOf(Iterable<T> iter) => any((e) => iter.any((x) => e == x));
 }
+
+extension IterableNullableExtension<T> on Iterable<T>? {
+  bool get nullOrEmpty {
+    if (this == null) return true;
+    if (this!.isEmpty) return true;
+    return false;
+  }
+
+  bool get notNullAndNotEmpty => !nullOrEmpty;
+}

@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-PersonSurvery _$PersonSurveryFromJson(Map<String, dynamic> json) {
-  return _PersonSurvery.fromJson(json);
+PersonSurvey _$PersonSurveyFromJson(Map<String, dynamic> json) {
+  return _PersonSurvey.fromJson(json);
 }
 
 /// @nodoc
-mixin _$PersonSurvery {
+mixin _$PersonSurvey {
   Person get person => throw _privateConstructorUsedError;
   MeasurementType get measurementType => throw _privateConstructorUsedError;
   Precision? get precision => throw _privateConstructorUsedError;
@@ -44,15 +44,15 @@ mixin _$PersonSurvery {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $PersonSurveryCopyWith<PersonSurvery> get copyWith =>
+  $PersonSurveyCopyWith<PersonSurvey> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PersonSurveryCopyWith<$Res> {
-  factory $PersonSurveryCopyWith(
-          PersonSurvery value, $Res Function(PersonSurvery) then) =
-      _$PersonSurveryCopyWithImpl<$Res, PersonSurvery>;
+abstract class $PersonSurveyCopyWith<$Res> {
+  factory $PersonSurveyCopyWith(
+          PersonSurvey value, $Res Function(PersonSurvey) then) =
+      _$PersonSurveyCopyWithImpl<$Res, PersonSurvey>;
   @useResult
   $Res call(
       {Person person,
@@ -75,9 +75,9 @@ abstract class $PersonSurveryCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PersonSurveryCopyWithImpl<$Res, $Val extends PersonSurvery>
-    implements $PersonSurveryCopyWith<$Res> {
-  _$PersonSurveryCopyWithImpl(this._value, this._then);
+class _$PersonSurveyCopyWithImpl<$Res, $Val extends PersonSurvey>
+    implements $PersonSurveyCopyWith<$Res> {
+  _$PersonSurveyCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -151,11 +151,11 @@ class _$PersonSurveryCopyWithImpl<$Res, $Val extends PersonSurvery>
 }
 
 /// @nodoc
-abstract class _$$PersonSurveryImplCopyWith<$Res>
-    implements $PersonSurveryCopyWith<$Res> {
-  factory _$$PersonSurveryImplCopyWith(
-          _$PersonSurveryImpl value, $Res Function(_$PersonSurveryImpl) then) =
-      __$$PersonSurveryImplCopyWithImpl<$Res>;
+abstract class _$$PersonSurveyImplCopyWith<$Res>
+    implements $PersonSurveyCopyWith<$Res> {
+  factory _$$PersonSurveyImplCopyWith(
+          _$PersonSurveyImpl value, $Res Function(_$PersonSurveyImpl) then) =
+      __$$PersonSurveyImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -180,11 +180,11 @@ abstract class _$$PersonSurveryImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$PersonSurveryImplCopyWithImpl<$Res>
-    extends _$PersonSurveryCopyWithImpl<$Res, _$PersonSurveryImpl>
-    implements _$$PersonSurveryImplCopyWith<$Res> {
-  __$$PersonSurveryImplCopyWithImpl(
-      _$PersonSurveryImpl _value, $Res Function(_$PersonSurveryImpl) _then)
+class __$$PersonSurveyImplCopyWithImpl<$Res>
+    extends _$PersonSurveyCopyWithImpl<$Res, _$PersonSurveyImpl>
+    implements _$$PersonSurveyImplCopyWith<$Res> {
+  __$$PersonSurveyImplCopyWithImpl(
+      _$PersonSurveyImpl _value, $Res Function(_$PersonSurveyImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -200,7 +200,7 @@ class __$$PersonSurveryImplCopyWithImpl<$Res>
     Object? tricepsSkinfoldMeasurementHistory = freezed,
     Object? armCircumferenceMeasurementHistory = freezed,
   }) {
-    return _then(_$PersonSurveryImpl(
+    return _then(_$PersonSurveyImpl(
       person: null == person
           ? _value.person
           : person // ignore: cast_nullable_to_non_nullable
@@ -247,8 +247,8 @@ class __$$PersonSurveryImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$PersonSurveryImpl extends _PersonSurvery {
-  _$PersonSurveryImpl(
+class _$PersonSurveyImpl extends _PersonSurvey {
+  _$PersonSurveyImpl(
       {required this.person,
       required this.measurementType,
       this.precision = Precision.two,
@@ -277,8 +277,8 @@ class _$PersonSurveryImpl extends _PersonSurvery {
             armCircumferenceMeasurementHistory,
         super._();
 
-  factory _$PersonSurveryImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PersonSurveryImplFromJson(json);
+  factory _$PersonSurveyImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PersonSurveyImplFromJson(json);
 
   @override
   final Person person;
@@ -357,14 +357,14 @@ class _$PersonSurveryImpl extends _PersonSurvery {
 
   @override
   String toString() {
-    return 'PersonSurvery(person: $person, measurementType: $measurementType, precision: $precision, massMeasurementHistory: $massMeasurementHistory, lengthHeightMeasurementHistory: $lengthHeightMeasurementHistory, headCircumferenceMeasurementHistory: $headCircumferenceMeasurementHistory, subscapularSkinfoldMeasurementHistory: $subscapularSkinfoldMeasurementHistory, tricepsSkinfoldMeasurementHistory: $tricepsSkinfoldMeasurementHistory, armCircumferenceMeasurementHistory: $armCircumferenceMeasurementHistory)';
+    return 'PersonSurvey(person: $person, measurementType: $measurementType, precision: $precision, massMeasurementHistory: $massMeasurementHistory, lengthHeightMeasurementHistory: $lengthHeightMeasurementHistory, headCircumferenceMeasurementHistory: $headCircumferenceMeasurementHistory, subscapularSkinfoldMeasurementHistory: $subscapularSkinfoldMeasurementHistory, tricepsSkinfoldMeasurementHistory: $tricepsSkinfoldMeasurementHistory, armCircumferenceMeasurementHistory: $armCircumferenceMeasurementHistory)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersonSurveryImpl &&
+            other is _$PersonSurveyImpl &&
             (identical(other.person, person) || other.person == person) &&
             (identical(other.measurementType, measurementType) ||
                 other.measurementType == measurementType) &&
@@ -407,19 +407,19 @@ class _$PersonSurveryImpl extends _PersonSurvery {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersonSurveryImplCopyWith<_$PersonSurveryImpl> get copyWith =>
-      __$$PersonSurveryImplCopyWithImpl<_$PersonSurveryImpl>(this, _$identity);
+  _$$PersonSurveyImplCopyWith<_$PersonSurveyImpl> get copyWith =>
+      __$$PersonSurveyImplCopyWithImpl<_$PersonSurveyImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$PersonSurveryImplToJson(
+    return _$$PersonSurveyImplToJson(
       this,
     );
   }
 }
 
-abstract class _PersonSurvery extends PersonSurvery {
-  factory _PersonSurvery(
+abstract class _PersonSurvey extends PersonSurvey {
+  factory _PersonSurvey(
       {required final Person person,
       required final MeasurementType measurementType,
       final Precision? precision,
@@ -437,11 +437,11 @@ abstract class _PersonSurvery extends PersonSurvery {
       final List<LengthMeasurementHistory>? tricepsSkinfoldMeasurementHistory,
       @LengthMeasurementHistoryConverter()
       final List<LengthMeasurementHistory>?
-          armCircumferenceMeasurementHistory}) = _$PersonSurveryImpl;
-  _PersonSurvery._() : super._();
+          armCircumferenceMeasurementHistory}) = _$PersonSurveyImpl;
+  _PersonSurvey._() : super._();
 
-  factory _PersonSurvery.fromJson(Map<String, dynamic> json) =
-      _$PersonSurveryImpl.fromJson;
+  factory _PersonSurvey.fromJson(Map<String, dynamic> json) =
+      _$PersonSurveyImpl.fromJson;
 
   @override
   Person get person;
@@ -469,7 +469,367 @@ abstract class _PersonSurvery extends PersonSurvery {
   List<LengthMeasurementHistory>? get armCircumferenceMeasurementHistory;
   @override
   @JsonKey(ignore: true)
-  _$$PersonSurveryImplCopyWith<_$PersonSurveryImpl> get copyWith =>
+  _$$PersonSurveyImplCopyWith<_$PersonSurveyImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Result _$ResultFromJson(Map<String, dynamic> json) {
+  return _Result.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Result {
+  Date get date => throw _privateConstructorUsedError;
+  num? get zscore => throw _privateConstructorUsedError;
+  num? get percentile => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ResultCopyWith<Result> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ResultCopyWith<$Res> {
+  factory $ResultCopyWith(Result value, $Res Function(Result) then) =
+      _$ResultCopyWithImpl<$Res, Result>;
+  @useResult
+  $Res call({Date date, num? zscore, num? percentile});
+
+  $DateCopyWith<$Res> get date;
+}
+
+/// @nodoc
+class _$ResultCopyWithImpl<$Res, $Val extends Result>
+    implements $ResultCopyWith<$Res> {
+  _$ResultCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? date = null,
+    Object? zscore = freezed,
+    Object? percentile = freezed,
+  }) {
+    return _then(_value.copyWith(
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as Date,
+      zscore: freezed == zscore
+          ? _value.zscore
+          : zscore // ignore: cast_nullable_to_non_nullable
+              as num?,
+      percentile: freezed == percentile
+          ? _value.percentile
+          : percentile // ignore: cast_nullable_to_non_nullable
+              as num?,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DateCopyWith<$Res> get date {
+    return $DateCopyWith<$Res>(_value.date, (value) {
+      return _then(_value.copyWith(date: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$ResultImplCopyWith<$Res> implements $ResultCopyWith<$Res> {
+  factory _$$ResultImplCopyWith(
+          _$ResultImpl value, $Res Function(_$ResultImpl) then) =
+      __$$ResultImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Date date, num? zscore, num? percentile});
+
+  @override
+  $DateCopyWith<$Res> get date;
+}
+
+/// @nodoc
+class __$$ResultImplCopyWithImpl<$Res>
+    extends _$ResultCopyWithImpl<$Res, _$ResultImpl>
+    implements _$$ResultImplCopyWith<$Res> {
+  __$$ResultImplCopyWithImpl(
+      _$ResultImpl _value, $Res Function(_$ResultImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? date = null,
+    Object? zscore = freezed,
+    Object? percentile = freezed,
+  }) {
+    return _then(_$ResultImpl(
+      null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as Date,
+      zscore: freezed == zscore
+          ? _value.zscore
+          : zscore // ignore: cast_nullable_to_non_nullable
+              as num?,
+      percentile: freezed == percentile
+          ? _value.percentile
+          : percentile // ignore: cast_nullable_to_non_nullable
+              as num?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ResultImpl extends _Result {
+  _$ResultImpl(this.date, {this.zscore, this.percentile}) : super._();
+
+  factory _$ResultImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ResultImplFromJson(json);
+
+  @override
+  final Date date;
+  @override
+  final num? zscore;
+  @override
+  final num? percentile;
+
+  @override
+  String toString() {
+    return 'Result(date: $date, zscore: $zscore, percentile: $percentile)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ResultImpl &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.zscore, zscore) || other.zscore == zscore) &&
+            (identical(other.percentile, percentile) ||
+                other.percentile == percentile));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, date, zscore, percentile);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ResultImplCopyWith<_$ResultImpl> get copyWith =>
+      __$$ResultImplCopyWithImpl<_$ResultImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ResultImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Result extends Result {
+  factory _Result(final Date date, {final num? zscore, final num? percentile}) =
+      _$ResultImpl;
+  _Result._() : super._();
+
+  factory _Result.fromJson(Map<String, dynamic> json) = _$ResultImpl.fromJson;
+
+  @override
+  Date get date;
+  @override
+  num? get zscore;
+  @override
+  num? get percentile;
+  @override
+  @JsonKey(ignore: true)
+  _$$ResultImplCopyWith<_$ResultImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+PersonMeasurement _$PersonMeasurementFromJson(Map<String, dynamic> json) {
+  return _PersonMeasurement.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PersonMeasurement {
+  Person get person => throw _privateConstructorUsedError;
+  List<SameDayMeasurement> get measurements =>
+      throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PersonMeasurementCopyWith<PersonMeasurement> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PersonMeasurementCopyWith<$Res> {
+  factory $PersonMeasurementCopyWith(
+          PersonMeasurement value, $Res Function(PersonMeasurement) then) =
+      _$PersonMeasurementCopyWithImpl<$Res, PersonMeasurement>;
+  @useResult
+  $Res call({Person person, List<SameDayMeasurement> measurements});
+
+  $PersonCopyWith<$Res> get person;
+}
+
+/// @nodoc
+class _$PersonMeasurementCopyWithImpl<$Res, $Val extends PersonMeasurement>
+    implements $PersonMeasurementCopyWith<$Res> {
+  _$PersonMeasurementCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? person = null,
+    Object? measurements = null,
+  }) {
+    return _then(_value.copyWith(
+      person: null == person
+          ? _value.person
+          : person // ignore: cast_nullable_to_non_nullable
+              as Person,
+      measurements: null == measurements
+          ? _value.measurements
+          : measurements // ignore: cast_nullable_to_non_nullable
+              as List<SameDayMeasurement>,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PersonCopyWith<$Res> get person {
+    return $PersonCopyWith<$Res>(_value.person, (value) {
+      return _then(_value.copyWith(person: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$PersonMeasurementImplCopyWith<$Res>
+    implements $PersonMeasurementCopyWith<$Res> {
+  factory _$$PersonMeasurementImplCopyWith(_$PersonMeasurementImpl value,
+          $Res Function(_$PersonMeasurementImpl) then) =
+      __$$PersonMeasurementImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Person person, List<SameDayMeasurement> measurements});
+
+  @override
+  $PersonCopyWith<$Res> get person;
+}
+
+/// @nodoc
+class __$$PersonMeasurementImplCopyWithImpl<$Res>
+    extends _$PersonMeasurementCopyWithImpl<$Res, _$PersonMeasurementImpl>
+    implements _$$PersonMeasurementImplCopyWith<$Res> {
+  __$$PersonMeasurementImplCopyWithImpl(_$PersonMeasurementImpl _value,
+      $Res Function(_$PersonMeasurementImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? person = null,
+    Object? measurements = null,
+  }) {
+    return _then(_$PersonMeasurementImpl(
+      null == person
+          ? _value.person
+          : person // ignore: cast_nullable_to_non_nullable
+              as Person,
+      measurements: null == measurements
+          ? _value._measurements
+          : measurements // ignore: cast_nullable_to_non_nullable
+              as List<SameDayMeasurement>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$PersonMeasurementImpl extends _PersonMeasurement {
+  _$PersonMeasurementImpl(this.person,
+      {required final List<SameDayMeasurement> measurements})
+      : _measurements = measurements,
+        super._();
+
+  factory _$PersonMeasurementImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PersonMeasurementImplFromJson(json);
+
+  @override
+  final Person person;
+  final List<SameDayMeasurement> _measurements;
+  @override
+  List<SameDayMeasurement> get measurements {
+    if (_measurements is EqualUnmodifiableListView) return _measurements;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_measurements);
+  }
+
+  @override
+  String toString() {
+    return 'PersonMeasurement(person: $person, measurements: $measurements)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PersonMeasurementImpl &&
+            (identical(other.person, person) || other.person == person) &&
+            const DeepCollectionEquality()
+                .equals(other._measurements, _measurements));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, person, const DeepCollectionEquality().hash(_measurements));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PersonMeasurementImplCopyWith<_$PersonMeasurementImpl> get copyWith =>
+      __$$PersonMeasurementImplCopyWithImpl<_$PersonMeasurementImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$PersonMeasurementImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PersonMeasurement extends PersonMeasurement {
+  factory _PersonMeasurement(final Person person,
+          {required final List<SameDayMeasurement> measurements}) =
+      _$PersonMeasurementImpl;
+  _PersonMeasurement._() : super._();
+
+  factory _PersonMeasurement.fromJson(Map<String, dynamic> json) =
+      _$PersonMeasurementImpl.fromJson;
+
+  @override
+  Person get person;
+  @override
+  List<SameDayMeasurement> get measurements;
+  @override
+  @JsonKey(ignore: true)
+  _$$PersonMeasurementImplCopyWith<_$PersonMeasurementImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1069,10 +1429,15 @@ abstract class _Person extends Person {
       throw _privateConstructorUsedError;
 }
 
+Survey _$SurveyFromJson(Map<String, dynamic> json) {
+  return _Survey.fromJson(json);
+}
+
 /// @nodoc
 mixin _$Survey {
-  List<List<dynamic>> get surveyData => throw _privateConstructorUsedError;
+  List<PersonSurvey> get surveyData => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $SurveyCopyWith<Survey> get copyWith => throw _privateConstructorUsedError;
 }
@@ -1082,7 +1447,7 @@ abstract class $SurveyCopyWith<$Res> {
   factory $SurveyCopyWith(Survey value, $Res Function(Survey) then) =
       _$SurveyCopyWithImpl<$Res, Survey>;
   @useResult
-  $Res call({List<List<dynamic>> surveyData});
+  $Res call({List<PersonSurvey> surveyData});
 }
 
 /// @nodoc
@@ -1104,7 +1469,7 @@ class _$SurveyCopyWithImpl<$Res, $Val extends Survey>
       surveyData: null == surveyData
           ? _value.surveyData
           : surveyData // ignore: cast_nullable_to_non_nullable
-              as List<List<dynamic>>,
+              as List<PersonSurvey>,
     ) as $Val);
   }
 }
@@ -1116,7 +1481,7 @@ abstract class _$$SurveyImplCopyWith<$Res> implements $SurveyCopyWith<$Res> {
       __$$SurveyImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<List<dynamic>> surveyData});
+  $Res call({List<PersonSurvey> surveyData});
 }
 
 /// @nodoc
@@ -1136,21 +1501,24 @@ class __$$SurveyImplCopyWithImpl<$Res>
       null == surveyData
           ? _value._surveyData
           : surveyData // ignore: cast_nullable_to_non_nullable
-              as List<List<dynamic>>,
+              as List<PersonSurvey>,
     ));
   }
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$SurveyImpl extends _Survey {
-  _$SurveyImpl(final List<List<dynamic>> surveyData)
+  _$SurveyImpl(final List<PersonSurvey> surveyData)
       : _surveyData = surveyData,
         super._();
 
-  final List<List<dynamic>> _surveyData;
+  factory _$SurveyImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SurveyImplFromJson(json);
+
+  final List<PersonSurvey> _surveyData;
   @override
-  List<List<dynamic>> get surveyData {
+  List<PersonSurvey> get surveyData {
     if (_surveyData is EqualUnmodifiableListView) return _surveyData;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_surveyData);
@@ -1170,6 +1538,7 @@ class _$SurveyImpl extends _Survey {
                 .equals(other._surveyData, _surveyData));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_surveyData));
@@ -1179,14 +1548,23 @@ class _$SurveyImpl extends _Survey {
   @pragma('vm:prefer-inline')
   _$$SurveyImplCopyWith<_$SurveyImpl> get copyWith =>
       __$$SurveyImplCopyWithImpl<_$SurveyImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SurveyImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Survey extends Survey {
-  factory _Survey(final List<List<dynamic>> surveyData) = _$SurveyImpl;
+  factory _Survey(final List<PersonSurvey> surveyData) = _$SurveyImpl;
   _Survey._() : super._();
 
+  factory _Survey.fromJson(Map<String, dynamic> json) = _$SurveyImpl.fromJson;
+
   @override
-  List<List<dynamic>> get surveyData;
+  List<PersonSurvey> get surveyData;
   @override
   @JsonKey(ignore: true)
   _$$SurveyImplCopyWith<_$SurveyImpl> get copyWith =>

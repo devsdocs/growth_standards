@@ -1,6 +1,6 @@
 part of 'survey.dart';
 
-({num zscore, num percentile, num bmiValue})? _getBMIForAgeValue(
+({num zscore, num percentile})? _getBMIForAgeValue(
   ({LengthMeasurementHistory length, MassMeasurementHistory mass}) v,
   Person person,
   Precision precision,
@@ -62,21 +62,16 @@ part of 'survey.dart';
   final whoLessThan2YO = (
     zscore: whoGrowthStandardsBodyMassIndexForAge.zScore(precision),
     percentile: whoGrowthStandardsBodyMassIndexForAge.percentile(precision),
-    bmiValue:
-        whoGrowthStandardsBodyMassIndexForAge.bodyMassIndexMeasurement.value
   );
 
   final cdc = (
     zscore: cdcBodyMassIndexForAge.zScore(precision),
     percentile: cdcBodyMassIndexForAge.percentile(precision),
-    bmiValue: cdcBodyMassIndexForAge.bodyMassIndexMeasurement.value
   );
 
   final whoMoreThan2YO = (
     zscore: whoGrowthReferenceBodyMassIndexForAge.zScore(precision),
     percentile: whoGrowthReferenceBodyMassIndexForAge.percentile(precision),
-    bmiValue:
-        whoGrowthReferenceBodyMassIndexForAge.bodyMassIndexMeasurement.value
   );
 
   return switch (measurementType) {
@@ -185,6 +180,84 @@ part of 'survey.dart';
       ageInMonths <= 36 ? cdcLessThan36Months : cdcMoreThan36Months,
     MeasurementType.who =>
       ageInMonths <= 24 ? whoLessThan24Months : whoMoreThan24Months,
+    _ => null,
+  };
+}
+
+({num zscore, num percentile})? _getLengthHeightForAgeValue(
+  LengthMeasurementHistory v,
+  Person person,
+  Precision precision,
+  MeasurementType measurementType,
+) {
+  return switch (measurementType) {
+    MeasurementType.cdc => null,
+    MeasurementType.who => null,
+    MeasurementType.fenton => null,
+  };
+}
+
+({num zscore, num percentile})? _getWeightForAgeValue(
+  MassMeasurementHistory v,
+  Person person,
+  Precision precision,
+  MeasurementType measurementType,
+) {
+  return switch (measurementType) {
+    MeasurementType.cdc => null,
+    MeasurementType.who => null,
+    MeasurementType.fenton => null,
+  };
+}
+
+({num zscore, num percentile})? _getHeadCircumferenceForAgeValue(
+  LengthMeasurementHistory v,
+  Person person,
+  Precision precision,
+  MeasurementType measurementType,
+) {
+  return switch (measurementType) {
+    MeasurementType.cdc => null,
+    MeasurementType.who => null,
+    MeasurementType.fenton => null,
+  };
+}
+
+({num zscore, num percentile})? _getSubscapularSkinfoldForAgeValue(
+  LengthMeasurementHistory v,
+  Person person,
+  Precision precision,
+  MeasurementType measurementType,
+) {
+  return switch (measurementType) {
+    MeasurementType.cdc => null,
+    MeasurementType.who => null,
+    _ => null,
+  };
+}
+
+({num zscore, num percentile})? _getTricepsSkinfoldForAgeValue(
+  LengthMeasurementHistory v,
+  Person person,
+  Precision precision,
+  MeasurementType measurementType,
+) {
+  return switch (measurementType) {
+    MeasurementType.cdc => null,
+    MeasurementType.who => null,
+    _ => null,
+  };
+}
+
+({num zscore, num percentile})? _getArmCircumferenceForAgeValue(
+  LengthMeasurementHistory v,
+  Person person,
+  Precision precision,
+  MeasurementType measurementType,
+) {
+  return switch (measurementType) {
+    MeasurementType.cdc => null,
+    MeasurementType.who => null,
     _ => null,
   };
 }

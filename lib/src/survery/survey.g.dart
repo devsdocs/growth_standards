@@ -6,8 +6,8 @@ part of 'survey.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$PersonSurveryImpl _$$PersonSurveryImplFromJson(Map<String, dynamic> json) =>
-    _$PersonSurveryImpl(
+_$PersonSurveyImpl _$$PersonSurveyImplFromJson(Map<String, dynamic> json) =>
+    _$PersonSurveyImpl(
       person: Person.fromJson(json['person'] as Map<String, dynamic>),
       measurementType:
           $enumDecode(_$MeasurementTypeEnumMap, json['measurementType']),
@@ -35,7 +35,7 @@ _$PersonSurveryImpl _$$PersonSurveryImplFromJson(Map<String, dynamic> json) =>
           const LengthMeasurementHistoryConverter().fromJson),
     );
 
-Map<String, dynamic> _$$PersonSurveryImplToJson(_$PersonSurveryImpl instance) =>
+Map<String, dynamic> _$$PersonSurveyImplToJson(_$PersonSurveyImpl instance) =>
     <String, dynamic>{
       'person': instance.person,
       'measurementType': _$MeasurementTypeEnumMap[instance.measurementType]!,
@@ -95,6 +95,35 @@ Json? _$JsonConverterToJson<Json, Value>(
   Json? Function(Value value) toJson,
 ) =>
     value == null ? null : toJson(value);
+
+_$ResultImpl _$$ResultImplFromJson(Map<String, dynamic> json) => _$ResultImpl(
+      Date.fromJson(json['date'] as Map<String, dynamic>),
+      zscore: json['zscore'] as num?,
+      percentile: json['percentile'] as num?,
+    );
+
+Map<String, dynamic> _$$ResultImplToJson(_$ResultImpl instance) =>
+    <String, dynamic>{
+      'date': instance.date,
+      'zscore': instance.zscore,
+      'percentile': instance.percentile,
+    };
+
+_$PersonMeasurementImpl _$$PersonMeasurementImplFromJson(
+        Map<String, dynamic> json) =>
+    _$PersonMeasurementImpl(
+      Person.fromJson(json['person'] as Map<String, dynamic>),
+      measurements: (json['measurements'] as List<dynamic>)
+          .map((e) => SameDayMeasurement.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$$PersonMeasurementImplToJson(
+        _$PersonMeasurementImpl instance) =>
+    <String, dynamic>{
+      'person': instance.person,
+      'measurements': instance.measurements,
+    };
 
 _$SameDayMeasurementImpl _$$SameDayMeasurementImplFromJson(
         Map<String, dynamic> json) =>
@@ -181,3 +210,14 @@ const _$SexEnumMap = {
   Sex.male: 1,
   Sex.female: 2,
 };
+
+_$SurveyImpl _$$SurveyImplFromJson(Map<String, dynamic> json) => _$SurveyImpl(
+      (json['surveyData'] as List<dynamic>)
+          .map((e) => PersonSurvey.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$$SurveyImplToJson(_$SurveyImpl instance) =>
+    <String, dynamic>{
+      'surveyData': instance.surveyData,
+    };
