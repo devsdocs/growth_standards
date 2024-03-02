@@ -49,10 +49,10 @@ class WHOGrowthStandardsBodyMassIndexMeasurement
   const WHOGrowthStandardsBodyMassIndexMeasurement._();
 
   factory WHOGrowthStandardsBodyMassIndexMeasurement.fromMeasurement({
-    @LengthConverter() required Length lengthHeight,
-    @MassConverter() required Mass weight,
+    required Length lengthHeight,
+    required Mass weight,
     required LengthHeightMeasurementPosition measure,
-    @AgeConverter() required Age age,
+    required Age age,
   }) {
     final adjustedLength = adjustedLengthHeight(
       age: age,
@@ -87,7 +87,7 @@ class WHOGrowthStandardsBodyMassIndexForAge
     'Observation date is impossible, because happen after today or before birth',
   )
   factory WHOGrowthStandardsBodyMassIndexForAge({
-    @DateConverter() Date? observationDate,
+    Date? observationDate,
     required Sex sex,
     @Default(false) bool oedemaExist,
     @WHOGrowthStandardsBodyMassIndexMeasurementConverter()

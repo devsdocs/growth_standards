@@ -45,11 +45,11 @@ class WHOGrowthStandardsWeightForAge with _$WHOGrowthStandardsWeightForAge {
     'Observation date is impossible, because happen after today or before birth',
   )
   factory WHOGrowthStandardsWeightForAge({
-    @DateConverter() Date? observationDate,
+    Date? observationDate,
     required Sex sex,
     @Default(false) bool oedemaExist,
-    @AgeConverter() required Age age,
-    @MassConverter() required Mass weight,
+    required Age age,
+    required Mass weight,
   }) = _WHOGrowthStandardsWeightForAge;
 
   const WHOGrowthStandardsWeightForAge._();

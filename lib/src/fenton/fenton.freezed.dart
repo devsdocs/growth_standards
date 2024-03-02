@@ -21,12 +21,9 @@ FentonHeadCircumferenceForAge _$FentonHeadCircumferenceForAgeFromJson(
 
 /// @nodoc
 mixin _$FentonHeadCircumferenceForAge {
-  @DateConverter()
   Date? get observationDate => throw _privateConstructorUsedError;
   Sex get sex => throw _privateConstructorUsedError;
-  @AgeConverter()
   Age get age => throw _privateConstructorUsedError;
-  @LengthConverter()
   Length get measurementResult => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -44,10 +41,7 @@ abstract class $FentonHeadCircumferenceForAgeCopyWith<$Res> {
           FentonHeadCircumferenceForAge>;
   @useResult
   $Res call(
-      {@DateConverter() Date? observationDate,
-      Sex sex,
-      @AgeConverter() Age age,
-      @LengthConverter() Length measurementResult});
+      {Date? observationDate, Sex sex, Age age, Length measurementResult});
 
   $DateCopyWith<$Res>? get observationDate;
   $AgeCopyWith<$Res> get age;
@@ -123,10 +117,7 @@ abstract class _$$FentonHeadCircumferenceForAgeImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@DateConverter() Date? observationDate,
-      Sex sex,
-      @AgeConverter() Age age,
-      @LengthConverter() Length measurementResult});
+      {Date? observationDate, Sex sex, Age age, Length measurementResult});
 
   @override
   $DateCopyWith<$Res>? get observationDate;
@@ -178,10 +169,10 @@ class __$$FentonHeadCircumferenceForAgeImplCopyWithImpl<$Res>
 class _$FentonHeadCircumferenceForAgeImpl
     extends _FentonHeadCircumferenceForAge {
   _$FentonHeadCircumferenceForAgeImpl(
-      {@DateConverter() this.observationDate,
+      {this.observationDate,
       required this.sex,
-      @AgeConverter() required this.age,
-      @LengthConverter() required this.measurementResult})
+      required this.age,
+      required this.measurementResult})
       : assert(age.ageInTotalWeeksByNow >= 22 && age.ageInTotalWeeksByNow <= 50,
             'Age must be in range of 22 - 50 weeks'),
         assert(
@@ -200,15 +191,12 @@ class _$FentonHeadCircumferenceForAgeImpl
       _$$FentonHeadCircumferenceForAgeImplFromJson(json);
 
   @override
-  @DateConverter()
   final Date? observationDate;
   @override
   final Sex sex;
   @override
-  @AgeConverter()
   final Age age;
   @override
-  @LengthConverter()
   final Length measurementResult;
 
   @override
@@ -253,10 +241,10 @@ class _$FentonHeadCircumferenceForAgeImpl
 abstract class _FentonHeadCircumferenceForAge
     extends FentonHeadCircumferenceForAge {
   factory _FentonHeadCircumferenceForAge(
-          {@DateConverter() final Date? observationDate,
+          {final Date? observationDate,
           required final Sex sex,
-          @AgeConverter() required final Age age,
-          @LengthConverter() required final Length measurementResult}) =
+          required final Age age,
+          required final Length measurementResult}) =
       _$FentonHeadCircumferenceForAgeImpl;
   _FentonHeadCircumferenceForAge._() : super._();
 
@@ -264,15 +252,12 @@ abstract class _FentonHeadCircumferenceForAge
       _$FentonHeadCircumferenceForAgeImpl.fromJson;
 
   @override
-  @DateConverter()
   Date? get observationDate;
   @override
   Sex get sex;
   @override
-  @AgeConverter()
   Age get age;
   @override
-  @LengthConverter()
   Length get measurementResult;
   @override
   @JsonKey(ignore: true)
@@ -287,12 +272,9 @@ FentonLengthForAge _$FentonLengthForAgeFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FentonLengthForAge {
-  @DateConverter()
   Date? get observationDate => throw _privateConstructorUsedError;
   Sex get sex => throw _privateConstructorUsedError;
-  @AgeConverter()
   Age get age => throw _privateConstructorUsedError;
-  @LengthConverter()
   Length get lengthHeight => throw _privateConstructorUsedError;
   LengthHeightMeasurementPosition get measure =>
       throw _privateConstructorUsedError;
@@ -310,10 +292,10 @@ abstract class $FentonLengthForAgeCopyWith<$Res> {
       _$FentonLengthForAgeCopyWithImpl<$Res, FentonLengthForAge>;
   @useResult
   $Res call(
-      {@DateConverter() Date? observationDate,
+      {Date? observationDate,
       Sex sex,
-      @AgeConverter() Age age,
-      @LengthConverter() Length lengthHeight,
+      Age age,
+      Length lengthHeight,
       LengthHeightMeasurementPosition measure});
 
   $DateCopyWith<$Res>? get observationDate;
@@ -393,10 +375,10 @@ abstract class _$$FentonLengthForAgeImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@DateConverter() Date? observationDate,
+      {Date? observationDate,
       Sex sex,
-      @AgeConverter() Age age,
-      @LengthConverter() Length lengthHeight,
+      Age age,
+      Length lengthHeight,
       LengthHeightMeasurementPosition measure});
 
   @override
@@ -451,10 +433,10 @@ class __$$FentonLengthForAgeImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$FentonLengthForAgeImpl extends _FentonLengthForAge {
   _$FentonLengthForAgeImpl(
-      {@DateConverter() this.observationDate,
+      {this.observationDate,
       required this.sex,
-      @AgeConverter() required this.age,
-      @LengthConverter() required this.lengthHeight,
+      required this.age,
+      required this.lengthHeight,
       required this.measure})
       : assert(age.ageInTotalWeeksByNow >= 22 && age.ageInTotalWeeksByNow <= 50,
             'Age must be in range of 22 - 50 weeks'),
@@ -473,15 +455,12 @@ class _$FentonLengthForAgeImpl extends _FentonLengthForAge {
       _$$FentonLengthForAgeImplFromJson(json);
 
   @override
-  @DateConverter()
   final Date? observationDate;
   @override
   final Sex sex;
   @override
-  @AgeConverter()
   final Age age;
   @override
-  @LengthConverter()
   final Length lengthHeight;
   @override
   final LengthHeightMeasurementPosition measure;
@@ -527,10 +506,10 @@ class _$FentonLengthForAgeImpl extends _FentonLengthForAge {
 
 abstract class _FentonLengthForAge extends FentonLengthForAge {
   factory _FentonLengthForAge(
-          {@DateConverter() final Date? observationDate,
+          {final Date? observationDate,
           required final Sex sex,
-          @AgeConverter() required final Age age,
-          @LengthConverter() required final Length lengthHeight,
+          required final Age age,
+          required final Length lengthHeight,
           required final LengthHeightMeasurementPosition measure}) =
       _$FentonLengthForAgeImpl;
   _FentonLengthForAge._() : super._();
@@ -539,15 +518,12 @@ abstract class _FentonLengthForAge extends FentonLengthForAge {
       _$FentonLengthForAgeImpl.fromJson;
 
   @override
-  @DateConverter()
   Date? get observationDate;
   @override
   Sex get sex;
   @override
-  @AgeConverter()
   Age get age;
   @override
-  @LengthConverter()
   Length get lengthHeight;
   @override
   LengthHeightMeasurementPosition get measure;
@@ -563,12 +539,9 @@ FentonWeightForAge _$FentonWeightForAgeFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FentonWeightForAge {
-  @DateConverter()
   Date? get observationDate => throw _privateConstructorUsedError;
   Sex get sex => throw _privateConstructorUsedError;
-  @AgeConverter()
   Age get age => throw _privateConstructorUsedError;
-  @MassConverter()
   Mass get weight => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -583,11 +556,7 @@ abstract class $FentonWeightForAgeCopyWith<$Res> {
           FentonWeightForAge value, $Res Function(FentonWeightForAge) then) =
       _$FentonWeightForAgeCopyWithImpl<$Res, FentonWeightForAge>;
   @useResult
-  $Res call(
-      {@DateConverter() Date? observationDate,
-      Sex sex,
-      @AgeConverter() Age age,
-      @MassConverter() Mass weight});
+  $Res call({Date? observationDate, Sex sex, Age age, Mass weight});
 
   $DateCopyWith<$Res>? get observationDate;
   $AgeCopyWith<$Res> get age;
@@ -660,11 +629,7 @@ abstract class _$$FentonWeightForAgeImplCopyWith<$Res>
       __$$FentonWeightForAgeImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@DateConverter() Date? observationDate,
-      Sex sex,
-      @AgeConverter() Age age,
-      @MassConverter() Mass weight});
+  $Res call({Date? observationDate, Sex sex, Age age, Mass weight});
 
   @override
   $DateCopyWith<$Res>? get observationDate;
@@ -713,10 +678,10 @@ class __$$FentonWeightForAgeImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$FentonWeightForAgeImpl extends _FentonWeightForAge {
   _$FentonWeightForAgeImpl(
-      {@DateConverter() this.observationDate,
+      {this.observationDate,
       required this.sex,
-      @AgeConverter() required this.age,
-      @MassConverter() required this.weight})
+      required this.age,
+      required this.weight})
       : assert(age.ageInTotalWeeksByNow >= 22 && age.ageInTotalWeeksByNow <= 50,
             'Age must be in range of 22 - 50 weeks'),
         assert(
@@ -734,15 +699,12 @@ class _$FentonWeightForAgeImpl extends _FentonWeightForAge {
       _$$FentonWeightForAgeImplFromJson(json);
 
   @override
-  @DateConverter()
   final Date? observationDate;
   @override
   final Sex sex;
   @override
-  @AgeConverter()
   final Age age;
   @override
-  @MassConverter()
   final Mass weight;
 
   @override
@@ -784,25 +746,22 @@ class _$FentonWeightForAgeImpl extends _FentonWeightForAge {
 
 abstract class _FentonWeightForAge extends FentonWeightForAge {
   factory _FentonWeightForAge(
-      {@DateConverter() final Date? observationDate,
+      {final Date? observationDate,
       required final Sex sex,
-      @AgeConverter() required final Age age,
-      @MassConverter() required final Mass weight}) = _$FentonWeightForAgeImpl;
+      required final Age age,
+      required final Mass weight}) = _$FentonWeightForAgeImpl;
   _FentonWeightForAge._() : super._();
 
   factory _FentonWeightForAge.fromJson(Map<String, dynamic> json) =
       _$FentonWeightForAgeImpl.fromJson;
 
   @override
-  @DateConverter()
   Date? get observationDate;
   @override
   Sex get sex;
   @override
-  @AgeConverter()
   Age get age;
   @override
-  @MassConverter()
   Mass get weight;
   @override
   @JsonKey(ignore: true)

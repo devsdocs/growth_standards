@@ -7,12 +7,11 @@ part of 'age.dart';
 // **************************************************************************
 
 _$AgeImpl _$$AgeImplFromJson(Map<String, dynamic> json) => _$AgeImpl(
-      const DateConverter()
-          .fromJson(json['dateOfBirth'] as Map<String, dynamic>),
+      Date.fromJson(json['dateOfBirth'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$AgeImplToJson(_$AgeImpl instance) => <String, dynamic>{
-      'dateOfBirth': const DateConverter().toJson(instance.dateOfBirth),
+      'dateOfBirth': instance.dateOfBirth.toJson(),
     };
 
 _$DateImpl _$$DateImplFromJson(Map<String, dynamic> json) => _$DateImpl(

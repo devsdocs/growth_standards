@@ -52,10 +52,10 @@ class WHOGrowthStandardsSubscapularSkinfoldForAge
     'Observation date is impossible, because happen after today or before birth',
   )
   factory WHOGrowthStandardsSubscapularSkinfoldForAge({
-    @DateConverter() Date? observationDate,
+    Date? observationDate,
     required Sex sex,
-    @AgeConverter() required Age age,
-    @LengthConverter() required Length measurementResult,
+    required Age age,
+    required Length measurementResult,
   }) = _WHOGrowthStandardsSubscapularSkinfoldForAge;
 
   const WHOGrowthStandardsSubscapularSkinfoldForAge._();

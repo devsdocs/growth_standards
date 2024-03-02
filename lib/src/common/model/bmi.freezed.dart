@@ -20,9 +20,7 @@ BodyMassIndex _$BodyMassIndexFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$BodyMassIndex {
-  @LengthConverter()
   Length get lengthHeight => throw _privateConstructorUsedError;
-  @MassConverter()
   Mass get weight => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,8 +35,7 @@ abstract class $BodyMassIndexCopyWith<$Res> {
           BodyMassIndex value, $Res Function(BodyMassIndex) then) =
       _$BodyMassIndexCopyWithImpl<$Res, BodyMassIndex>;
   @useResult
-  $Res call(
-      {@LengthConverter() Length lengthHeight, @MassConverter() Mass weight});
+  $Res call({Length lengthHeight, Mass weight});
 }
 
 /// @nodoc
@@ -78,8 +75,7 @@ abstract class _$$BodyMassIndexImplCopyWith<$Res>
       __$$BodyMassIndexImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@LengthConverter() Length lengthHeight, @MassConverter() Mass weight});
+  $Res call({Length lengthHeight, Mass weight});
 }
 
 /// @nodoc
@@ -112,19 +108,15 @@ class __$$BodyMassIndexImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$BodyMassIndexImpl extends _BodyMassIndex {
-  _$BodyMassIndexImpl(
-      {@LengthConverter() required this.lengthHeight,
-      @MassConverter() required this.weight})
+  _$BodyMassIndexImpl({required this.lengthHeight, required this.weight})
       : super._();
 
   factory _$BodyMassIndexImpl.fromJson(Map<String, dynamic> json) =>
       _$$BodyMassIndexImplFromJson(json);
 
   @override
-  @LengthConverter()
   final Length lengthHeight;
   @override
-  @MassConverter()
   final Mass weight;
 
   @override
@@ -162,18 +154,16 @@ class _$BodyMassIndexImpl extends _BodyMassIndex {
 
 abstract class _BodyMassIndex extends BodyMassIndex {
   factory _BodyMassIndex(
-      {@LengthConverter() required final Length lengthHeight,
-      @MassConverter() required final Mass weight}) = _$BodyMassIndexImpl;
+      {required final Length lengthHeight,
+      required final Mass weight}) = _$BodyMassIndexImpl;
   _BodyMassIndex._() : super._();
 
   factory _BodyMassIndex.fromJson(Map<String, dynamic> json) =
       _$BodyMassIndexImpl.fromJson;
 
   @override
-  @LengthConverter()
   Length get lengthHeight;
   @override
-  @MassConverter()
   Mass get weight;
   @override
   @JsonKey(ignore: true)

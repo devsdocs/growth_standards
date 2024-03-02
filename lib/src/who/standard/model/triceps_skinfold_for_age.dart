@@ -51,10 +51,10 @@ class WHOGrowthStandardsTricepsSkinfoldForAge
     'Observation date is impossible, because happen after today or before birth',
   )
   factory WHOGrowthStandardsTricepsSkinfoldForAge({
-    @DateConverter() Date? observationDate,
+    Date? observationDate,
     required Sex sex,
-    @AgeConverter() required Age age,
-    @LengthConverter() required Length measurementResult,
+    required Age age,
+    required Length measurementResult,
   }) = _WHOGrowthStandardsTricepsSkinfoldForAge;
 
   const WHOGrowthStandardsTricepsSkinfoldForAge._();

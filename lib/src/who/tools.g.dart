@@ -17,8 +17,8 @@ _$MassMeasurementHistoryImpl _$$MassMeasurementHistoryImplFromJson(
 Map<String, dynamic> _$$MassMeasurementHistoryImplToJson(
         _$MassMeasurementHistoryImpl instance) =>
     <String, dynamic>{
-      'date': instance.date,
-      'unit': instance.unit,
+      'date': instance.date.toJson(),
+      'unit': instance.unit.toJson(),
       'isOedema': instance.isOedema,
     };
 
@@ -36,8 +36,8 @@ _$LengthMeasurementHistoryImpl _$$LengthMeasurementHistoryImplFromJson(
 Map<String, dynamic> _$$LengthMeasurementHistoryImplToJson(
         _$LengthMeasurementHistoryImpl instance) =>
     <String, dynamic>{
-      'date': instance.date,
-      'unit': instance.unit,
+      'date': instance.date.toJson(),
+      'unit': instance.unit.toJson(),
       'measurementPosition': _$LengthHeightMeasurementPositionEnumMap[
           instance.measurementPosition],
     };

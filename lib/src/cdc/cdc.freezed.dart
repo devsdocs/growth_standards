@@ -174,10 +174,8 @@ CDCBodyMassIndexForAge _$CDCBodyMassIndexForAgeFromJson(
 
 /// @nodoc
 mixin _$CDCBodyMassIndexForAge {
-  @DateConverter()
   Date? get observationDate => throw _privateConstructorUsedError;
   Sex get sex => throw _privateConstructorUsedError;
-  @AgeConverter()
   Age get age => throw _privateConstructorUsedError;
   CDCBodyMassIndexMeasurement get bodyMassIndexMeasurement =>
       throw _privateConstructorUsedError;
@@ -195,9 +193,9 @@ abstract class $CDCBodyMassIndexForAgeCopyWith<$Res> {
       _$CDCBodyMassIndexForAgeCopyWithImpl<$Res, CDCBodyMassIndexForAge>;
   @useResult
   $Res call(
-      {@DateConverter() Date? observationDate,
+      {Date? observationDate,
       Sex sex,
-      @AgeConverter() Age age,
+      Age age,
       CDCBodyMassIndexMeasurement bodyMassIndexMeasurement});
 
   $DateCopyWith<$Res>? get observationDate;
@@ -284,9 +282,9 @@ abstract class _$$GrowthReferenceBodyMassIndexForAgeImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@DateConverter() Date? observationDate,
+      {Date? observationDate,
       Sex sex,
-      @AgeConverter() Age age,
+      Age age,
       CDCBodyMassIndexMeasurement bodyMassIndexMeasurement});
 
   @override
@@ -341,9 +339,9 @@ class __$$GrowthReferenceBodyMassIndexForAgeImplCopyWithImpl<$Res>
 class _$GrowthReferenceBodyMassIndexForAgeImpl
     extends _GrowthReferenceBodyMassIndexForAge {
   _$GrowthReferenceBodyMassIndexForAgeImpl(
-      {@DateConverter() this.observationDate,
+      {this.observationDate,
       required this.sex,
-      @AgeConverter() required this.age,
+      required this.age,
       required this.bodyMassIndexMeasurement})
       : assert(
             age.ageInTotalMonthsByNow >= 24 && age.ageInTotalMonthsByNow < 241,
@@ -364,12 +362,10 @@ class _$GrowthReferenceBodyMassIndexForAgeImpl
       _$$GrowthReferenceBodyMassIndexForAgeImplFromJson(json);
 
   @override
-  @DateConverter()
   final Date? observationDate;
   @override
   final Sex sex;
   @override
-  @AgeConverter()
   final Age age;
   @override
   final CDCBodyMassIndexMeasurement bodyMassIndexMeasurement;
@@ -417,9 +413,9 @@ class _$GrowthReferenceBodyMassIndexForAgeImpl
 abstract class _GrowthReferenceBodyMassIndexForAge
     extends CDCBodyMassIndexForAge {
   factory _GrowthReferenceBodyMassIndexForAge(
-      {@DateConverter() final Date? observationDate,
+      {final Date? observationDate,
       required final Sex sex,
-      @AgeConverter() required final Age age,
+      required final Age age,
       required final CDCBodyMassIndexMeasurement
           bodyMassIndexMeasurement}) = _$GrowthReferenceBodyMassIndexForAgeImpl;
   _GrowthReferenceBodyMassIndexForAge._() : super._();
@@ -429,12 +425,10 @@ abstract class _GrowthReferenceBodyMassIndexForAge
       _$GrowthReferenceBodyMassIndexForAgeImpl.fromJson;
 
   @override
-  @DateConverter()
   Date? get observationDate;
   @override
   Sex get sex;
   @override
-  @AgeConverter()
   Age get age;
   @override
   CDCBodyMassIndexMeasurement get bodyMassIndexMeasurement;
@@ -452,12 +446,9 @@ CDCInfantHeadCircumferenceForAge _$CDCInfantHeadCircumferenceForAgeFromJson(
 
 /// @nodoc
 mixin _$CDCInfantHeadCircumferenceForAge {
-  @DateConverter()
   Date? get observationDate => throw _privateConstructorUsedError;
   Sex get sex => throw _privateConstructorUsedError;
-  @AgeConverter()
   Age get age => throw _privateConstructorUsedError;
-  @LengthConverter()
   Length get measurementResult => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -475,10 +466,7 @@ abstract class $CDCInfantHeadCircumferenceForAgeCopyWith<$Res> {
           CDCInfantHeadCircumferenceForAge>;
   @useResult
   $Res call(
-      {@DateConverter() Date? observationDate,
-      Sex sex,
-      @AgeConverter() Age age,
-      @LengthConverter() Length measurementResult});
+      {Date? observationDate, Sex sex, Age age, Length measurementResult});
 
   $DateCopyWith<$Res>? get observationDate;
   $AgeCopyWith<$Res> get age;
@@ -554,10 +542,7 @@ abstract class _$$HeadCircumferenceForAgeImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@DateConverter() Date? observationDate,
-      Sex sex,
-      @AgeConverter() Age age,
-      @LengthConverter() Length measurementResult});
+      {Date? observationDate, Sex sex, Age age, Length measurementResult});
 
   @override
   $DateCopyWith<$Res>? get observationDate;
@@ -608,10 +593,10 @@ class __$$HeadCircumferenceForAgeImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$HeadCircumferenceForAgeImpl extends _HeadCircumferenceForAge {
   _$HeadCircumferenceForAgeImpl(
-      {@DateConverter() this.observationDate,
+      {this.observationDate,
       required this.sex,
-      @AgeConverter() required this.age,
-      @LengthConverter() required this.measurementResult})
+      required this.age,
+      required this.measurementResult})
       : assert(age.ageInTotalDaysByNow >= 0 && age.ageInTotalMonthsByNow <= 36,
             'Age must be in range of 0 - 36 months'),
         assert(
@@ -625,15 +610,12 @@ class _$HeadCircumferenceForAgeImpl extends _HeadCircumferenceForAge {
       _$$HeadCircumferenceForAgeImplFromJson(json);
 
   @override
-  @DateConverter()
   final Date? observationDate;
   @override
   final Sex sex;
   @override
-  @AgeConverter()
   final Age age;
   @override
-  @LengthConverter()
   final Length measurementResult;
 
   @override
@@ -677,26 +659,22 @@ class _$HeadCircumferenceForAgeImpl extends _HeadCircumferenceForAge {
 abstract class _HeadCircumferenceForAge
     extends CDCInfantHeadCircumferenceForAge {
   factory _HeadCircumferenceForAge(
-          {@DateConverter() final Date? observationDate,
-          required final Sex sex,
-          @AgeConverter() required final Age age,
-          @LengthConverter() required final Length measurementResult}) =
-      _$HeadCircumferenceForAgeImpl;
+      {final Date? observationDate,
+      required final Sex sex,
+      required final Age age,
+      required final Length measurementResult}) = _$HeadCircumferenceForAgeImpl;
   _HeadCircumferenceForAge._() : super._();
 
   factory _HeadCircumferenceForAge.fromJson(Map<String, dynamic> json) =
       _$HeadCircumferenceForAgeImpl.fromJson;
 
   @override
-  @DateConverter()
   Date? get observationDate;
   @override
   Sex get sex;
   @override
-  @AgeConverter()
   Age get age;
   @override
-  @LengthConverter()
   Length get measurementResult;
   @override
   @JsonKey(ignore: true)
@@ -711,12 +689,9 @@ CDCInfantLengthForAge _$CDCInfantLengthForAgeFromJson(
 
 /// @nodoc
 mixin _$CDCInfantLengthForAge {
-  @DateConverter()
   Date? get observationDate => throw _privateConstructorUsedError;
   Sex get sex => throw _privateConstructorUsedError;
-  @AgeConverter()
   Age get age => throw _privateConstructorUsedError;
-  @LengthConverter()
   Length get lengthHeight => throw _privateConstructorUsedError;
   LengthHeightMeasurementPosition get measure =>
       throw _privateConstructorUsedError;
@@ -734,10 +709,10 @@ abstract class $CDCInfantLengthForAgeCopyWith<$Res> {
       _$CDCInfantLengthForAgeCopyWithImpl<$Res, CDCInfantLengthForAge>;
   @useResult
   $Res call(
-      {@DateConverter() Date? observationDate,
+      {Date? observationDate,
       Sex sex,
-      @AgeConverter() Age age,
-      @LengthConverter() Length lengthHeight,
+      Age age,
+      Length lengthHeight,
       LengthHeightMeasurementPosition measure});
 
   $DateCopyWith<$Res>? get observationDate;
@@ -818,10 +793,10 @@ abstract class _$$LengthForAgeImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@DateConverter() Date? observationDate,
+      {Date? observationDate,
       Sex sex,
-      @AgeConverter() Age age,
-      @LengthConverter() Length lengthHeight,
+      Age age,
+      Length lengthHeight,
       LengthHeightMeasurementPosition measure});
 
   @override
@@ -876,10 +851,10 @@ class __$$LengthForAgeImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$LengthForAgeImpl extends _LengthForAge {
   _$LengthForAgeImpl(
-      {@DateConverter() this.observationDate,
+      {this.observationDate,
       required this.sex,
-      @AgeConverter() required this.age,
-      @LengthConverter() required this.lengthHeight,
+      required this.age,
+      required this.lengthHeight,
       required this.measure})
       : assert(age.ageInTotalDaysByNow >= 0 && age.ageInTotalMonthsByNow < 36,
             'Age must be in range of 0 - 35 months'),
@@ -894,15 +869,12 @@ class _$LengthForAgeImpl extends _LengthForAge {
       _$$LengthForAgeImplFromJson(json);
 
   @override
-  @DateConverter()
   final Date? observationDate;
   @override
   final Sex sex;
   @override
-  @AgeConverter()
   final Age age;
   @override
-  @LengthConverter()
   final Length lengthHeight;
   @override
   final LengthHeightMeasurementPosition measure;
@@ -947,10 +919,10 @@ class _$LengthForAgeImpl extends _LengthForAge {
 
 abstract class _LengthForAge extends CDCInfantLengthForAge {
   factory _LengthForAge(
-          {@DateConverter() final Date? observationDate,
+          {final Date? observationDate,
           required final Sex sex,
-          @AgeConverter() required final Age age,
-          @LengthConverter() required final Length lengthHeight,
+          required final Age age,
+          required final Length lengthHeight,
           required final LengthHeightMeasurementPosition measure}) =
       _$LengthForAgeImpl;
   _LengthForAge._() : super._();
@@ -959,15 +931,12 @@ abstract class _LengthForAge extends CDCInfantLengthForAge {
       _$LengthForAgeImpl.fromJson;
 
   @override
-  @DateConverter()
   Date? get observationDate;
   @override
   Sex get sex;
   @override
-  @AgeConverter()
   Age get age;
   @override
-  @LengthConverter()
   Length get lengthHeight;
   @override
   LengthHeightMeasurementPosition get measure;
@@ -983,12 +952,9 @@ CDCStatureForAge _$CDCStatureForAgeFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CDCStatureForAge {
-  @DateConverter()
   Date? get observationDate => throw _privateConstructorUsedError;
   Sex get sex => throw _privateConstructorUsedError;
-  @AgeConverter()
   Age get age => throw _privateConstructorUsedError;
-  @LengthConverter()
   Length get lengthHeight => throw _privateConstructorUsedError;
   LengthHeightMeasurementPosition get measure =>
       throw _privateConstructorUsedError;
@@ -1006,10 +972,10 @@ abstract class $CDCStatureForAgeCopyWith<$Res> {
       _$CDCStatureForAgeCopyWithImpl<$Res, CDCStatureForAge>;
   @useResult
   $Res call(
-      {@DateConverter() Date? observationDate,
+      {Date? observationDate,
       Sex sex,
-      @AgeConverter() Age age,
-      @LengthConverter() Length lengthHeight,
+      Age age,
+      Length lengthHeight,
       LengthHeightMeasurementPosition measure});
 
   $DateCopyWith<$Res>? get observationDate;
@@ -1090,10 +1056,10 @@ abstract class _$$GrowthReferenceHeightForAgeImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@DateConverter() Date? observationDate,
+      {Date? observationDate,
       Sex sex,
-      @AgeConverter() Age age,
-      @LengthConverter() Length lengthHeight,
+      Age age,
+      Length lengthHeight,
       LengthHeightMeasurementPosition measure});
 
   @override
@@ -1150,10 +1116,10 @@ class __$$GrowthReferenceHeightForAgeImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$GrowthReferenceHeightForAgeImpl extends _GrowthReferenceHeightForAge {
   _$GrowthReferenceHeightForAgeImpl(
-      {@DateConverter() this.observationDate,
+      {this.observationDate,
       required this.sex,
-      @AgeConverter() required this.age,
-      @LengthConverter() required this.lengthHeight,
+      required this.age,
+      required this.lengthHeight,
       required this.measure})
       : assert(
             age.ageInTotalMonthsByNow >= 24 && age.ageInTotalMonthsByNow <= 240,
@@ -1174,15 +1140,12 @@ class _$GrowthReferenceHeightForAgeImpl extends _GrowthReferenceHeightForAge {
       _$$GrowthReferenceHeightForAgeImplFromJson(json);
 
   @override
-  @DateConverter()
   final Date? observationDate;
   @override
   final Sex sex;
   @override
-  @AgeConverter()
   final Age age;
   @override
-  @LengthConverter()
   final Length lengthHeight;
   @override
   final LengthHeightMeasurementPosition measure;
@@ -1228,10 +1191,10 @@ class _$GrowthReferenceHeightForAgeImpl extends _GrowthReferenceHeightForAge {
 
 abstract class _GrowthReferenceHeightForAge extends CDCStatureForAge {
   factory _GrowthReferenceHeightForAge(
-          {@DateConverter() final Date? observationDate,
+          {final Date? observationDate,
           required final Sex sex,
-          @AgeConverter() required final Age age,
-          @LengthConverter() required final Length lengthHeight,
+          required final Age age,
+          required final Length lengthHeight,
           required final LengthHeightMeasurementPosition measure}) =
       _$GrowthReferenceHeightForAgeImpl;
   _GrowthReferenceHeightForAge._() : super._();
@@ -1240,15 +1203,12 @@ abstract class _GrowthReferenceHeightForAge extends CDCStatureForAge {
       _$GrowthReferenceHeightForAgeImpl.fromJson;
 
   @override
-  @DateConverter()
   Date? get observationDate;
   @override
   Sex get sex;
   @override
-  @AgeConverter()
   Age get age;
   @override
-  @LengthConverter()
   Length get lengthHeight;
   @override
   LengthHeightMeasurementPosition get measure;
@@ -1264,12 +1224,9 @@ CDCWeightForAge _$CDCWeightForAgeFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CDCWeightForAge {
-  @DateConverter()
   Date? get observationDate => throw _privateConstructorUsedError;
   Sex get sex => throw _privateConstructorUsedError;
-  @AgeConverter()
   Age get age => throw _privateConstructorUsedError;
-  @MassConverter()
   Mass get weight => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1284,11 +1241,7 @@ abstract class $CDCWeightForAgeCopyWith<$Res> {
           CDCWeightForAge value, $Res Function(CDCWeightForAge) then) =
       _$CDCWeightForAgeCopyWithImpl<$Res, CDCWeightForAge>;
   @useResult
-  $Res call(
-      {@DateConverter() Date? observationDate,
-      Sex sex,
-      @AgeConverter() Age age,
-      @MassConverter() Mass weight});
+  $Res call({Date? observationDate, Sex sex, Age age, Mass weight});
 
   $DateCopyWith<$Res>? get observationDate;
   $AgeCopyWith<$Res> get age;
@@ -1361,11 +1314,7 @@ abstract class _$$CDCWeightForAgeImplCopyWith<$Res>
       __$$CDCWeightForAgeImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@DateConverter() Date? observationDate,
-      Sex sex,
-      @AgeConverter() Age age,
-      @MassConverter() Mass weight});
+  $Res call({Date? observationDate, Sex sex, Age age, Mass weight});
 
   @override
   $DateCopyWith<$Res>? get observationDate;
@@ -1414,10 +1363,10 @@ class __$$CDCWeightForAgeImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CDCWeightForAgeImpl extends _CDCWeightForAge {
   _$CDCWeightForAgeImpl(
-      {@DateConverter() this.observationDate,
+      {this.observationDate,
       required this.sex,
-      @AgeConverter() required this.age,
-      @MassConverter() required this.weight})
+      required this.age,
+      required this.weight})
       : assert(
             age.ageInTotalMonthsByNow >= 24 && age.ageInTotalMonthsByNow <= 240,
             'Age must be in range of 24 - 240 months'),
@@ -1436,15 +1385,12 @@ class _$CDCWeightForAgeImpl extends _CDCWeightForAge {
       _$$CDCWeightForAgeImplFromJson(json);
 
   @override
-  @DateConverter()
   final Date? observationDate;
   @override
   final Sex sex;
   @override
-  @AgeConverter()
   final Age age;
   @override
-  @MassConverter()
   final Mass weight;
 
   @override
@@ -1486,25 +1432,22 @@ class _$CDCWeightForAgeImpl extends _CDCWeightForAge {
 
 abstract class _CDCWeightForAge extends CDCWeightForAge {
   factory _CDCWeightForAge(
-      {@DateConverter() final Date? observationDate,
+      {final Date? observationDate,
       required final Sex sex,
-      @AgeConverter() required final Age age,
-      @MassConverter() required final Mass weight}) = _$CDCWeightForAgeImpl;
+      required final Age age,
+      required final Mass weight}) = _$CDCWeightForAgeImpl;
   _CDCWeightForAge._() : super._();
 
   factory _CDCWeightForAge.fromJson(Map<String, dynamic> json) =
       _$CDCWeightForAgeImpl.fromJson;
 
   @override
-  @DateConverter()
   Date? get observationDate;
   @override
   Sex get sex;
   @override
-  @AgeConverter()
   Age get age;
   @override
-  @MassConverter()
   Mass get weight;
   @override
   @JsonKey(ignore: true)
@@ -1519,12 +1462,9 @@ CDCInfantWeightForAge _$CDCInfantWeightForAgeFromJson(
 
 /// @nodoc
 mixin _$CDCInfantWeightForAge {
-  @DateConverter()
   Date? get observationDate => throw _privateConstructorUsedError;
   Sex get sex => throw _privateConstructorUsedError;
-  @AgeConverter()
   Age get age => throw _privateConstructorUsedError;
-  @MassConverter()
   Mass get weight => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1539,11 +1479,7 @@ abstract class $CDCInfantWeightForAgeCopyWith<$Res> {
           $Res Function(CDCInfantWeightForAge) then) =
       _$CDCInfantWeightForAgeCopyWithImpl<$Res, CDCInfantWeightForAge>;
   @useResult
-  $Res call(
-      {@DateConverter() Date? observationDate,
-      Sex sex,
-      @AgeConverter() Age age,
-      @MassConverter() Mass weight});
+  $Res call({Date? observationDate, Sex sex, Age age, Mass weight});
 
   $DateCopyWith<$Res>? get observationDate;
   $AgeCopyWith<$Res> get age;
@@ -1618,11 +1554,7 @@ abstract class _$$CDCInfantWeightForAgeImplCopyWith<$Res>
       __$$CDCInfantWeightForAgeImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@DateConverter() Date? observationDate,
-      Sex sex,
-      @AgeConverter() Age age,
-      @MassConverter() Mass weight});
+  $Res call({Date? observationDate, Sex sex, Age age, Mass weight});
 
   @override
   $DateCopyWith<$Res>? get observationDate;
@@ -1672,10 +1604,10 @@ class __$$CDCInfantWeightForAgeImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CDCInfantWeightForAgeImpl extends _CDCInfantWeightForAge {
   _$CDCInfantWeightForAgeImpl(
-      {@DateConverter() this.observationDate,
+      {this.observationDate,
       required this.sex,
-      @AgeConverter() required this.age,
-      @MassConverter() required this.weight})
+      required this.age,
+      required this.weight})
       : assert(age.ageInTotalDaysByNow >= 0 && age.ageInTotalMonthsByNow <= 36,
             'Age must be in range of 0 - 36 months'),
         assert(
@@ -1689,15 +1621,12 @@ class _$CDCInfantWeightForAgeImpl extends _CDCInfantWeightForAge {
       _$$CDCInfantWeightForAgeImplFromJson(json);
 
   @override
-  @DateConverter()
   final Date? observationDate;
   @override
   final Sex sex;
   @override
-  @AgeConverter()
   final Age age;
   @override
-  @MassConverter()
   final Mass weight;
 
   @override
@@ -1739,26 +1668,22 @@ class _$CDCInfantWeightForAgeImpl extends _CDCInfantWeightForAge {
 
 abstract class _CDCInfantWeightForAge extends CDCInfantWeightForAge {
   factory _CDCInfantWeightForAge(
-          {@DateConverter() final Date? observationDate,
-          required final Sex sex,
-          @AgeConverter() required final Age age,
-          @MassConverter() required final Mass weight}) =
-      _$CDCInfantWeightForAgeImpl;
+      {final Date? observationDate,
+      required final Sex sex,
+      required final Age age,
+      required final Mass weight}) = _$CDCInfantWeightForAgeImpl;
   _CDCInfantWeightForAge._() : super._();
 
   factory _CDCInfantWeightForAge.fromJson(Map<String, dynamic> json) =
       _$CDCInfantWeightForAgeImpl.fromJson;
 
   @override
-  @DateConverter()
   Date? get observationDate;
   @override
   Sex get sex;
   @override
-  @AgeConverter()
   Age get age;
   @override
-  @MassConverter()
   Mass get weight;
   @override
   @JsonKey(ignore: true)
@@ -1773,14 +1698,10 @@ CDCInfantWeightForLength _$CDCInfantWeightForLengthFromJson(
 
 /// @nodoc
 mixin _$CDCInfantWeightForLength {
-  @DateConverter()
   Date? get observationDate => throw _privateConstructorUsedError;
   Sex get sex => throw _privateConstructorUsedError;
-  @AgeConverter()
   Age get age => throw _privateConstructorUsedError;
-  @LengthConverter()
   Length get length => throw _privateConstructorUsedError;
-  @MassConverter()
   Mass get weight => throw _privateConstructorUsedError;
   LengthHeightMeasurementPosition get measure =>
       throw _privateConstructorUsedError;
@@ -1798,11 +1719,11 @@ abstract class $CDCInfantWeightForLengthCopyWith<$Res> {
       _$CDCInfantWeightForLengthCopyWithImpl<$Res, CDCInfantWeightForLength>;
   @useResult
   $Res call(
-      {@DateConverter() Date? observationDate,
+      {Date? observationDate,
       Sex sex,
-      @AgeConverter() Age age,
-      @LengthConverter() Length length,
-      @MassConverter() Mass weight,
+      Age age,
+      Length length,
+      Mass weight,
       LengthHeightMeasurementPosition measure});
 
   $DateCopyWith<$Res>? get observationDate;
@@ -1889,11 +1810,11 @@ abstract class _$$CDCInfantWeightForLengthImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@DateConverter() Date? observationDate,
+      {Date? observationDate,
       Sex sex,
-      @AgeConverter() Age age,
-      @LengthConverter() Length length,
-      @MassConverter() Mass weight,
+      Age age,
+      Length length,
+      Mass weight,
       LengthHeightMeasurementPosition measure});
 
   @override
@@ -1955,11 +1876,11 @@ class __$$CDCInfantWeightForLengthImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CDCInfantWeightForLengthImpl extends _CDCInfantWeightForLength {
   _$CDCInfantWeightForLengthImpl(
-      {@DateConverter() this.observationDate,
+      {this.observationDate,
       required this.sex,
-      @AgeConverter() required this.age,
-      @LengthConverter() required this.length,
-      @MassConverter() required this.weight,
+      required this.age,
+      required this.length,
+      required this.weight,
       required this.measure})
       : assert(
             adjustedLengthHeight(
@@ -2006,18 +1927,14 @@ class _$CDCInfantWeightForLengthImpl extends _CDCInfantWeightForLength {
       _$$CDCInfantWeightForLengthImplFromJson(json);
 
   @override
-  @DateConverter()
   final Date? observationDate;
   @override
   final Sex sex;
   @override
-  @AgeConverter()
   final Age age;
   @override
-  @LengthConverter()
   final Length length;
   @override
-  @MassConverter()
   final Mass weight;
   @override
   final LengthHeightMeasurementPosition measure;
@@ -2063,11 +1980,11 @@ class _$CDCInfantWeightForLengthImpl extends _CDCInfantWeightForLength {
 
 abstract class _CDCInfantWeightForLength extends CDCInfantWeightForLength {
   factory _CDCInfantWeightForLength(
-          {@DateConverter() final Date? observationDate,
+          {final Date? observationDate,
           required final Sex sex,
-          @AgeConverter() required final Age age,
-          @LengthConverter() required final Length length,
-          @MassConverter() required final Mass weight,
+          required final Age age,
+          required final Length length,
+          required final Mass weight,
           required final LengthHeightMeasurementPosition measure}) =
       _$CDCInfantWeightForLengthImpl;
   _CDCInfantWeightForLength._() : super._();
@@ -2076,18 +1993,14 @@ abstract class _CDCInfantWeightForLength extends CDCInfantWeightForLength {
       _$CDCInfantWeightForLengthImpl.fromJson;
 
   @override
-  @DateConverter()
   Date? get observationDate;
   @override
   Sex get sex;
   @override
-  @AgeConverter()
   Age get age;
   @override
-  @LengthConverter()
   Length get length;
   @override
-  @MassConverter()
   Mass get weight;
   @override
   LengthHeightMeasurementPosition get measure;
@@ -2103,14 +2016,10 @@ CDCWeightForStature _$CDCWeightForStatureFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CDCWeightForStature {
-  @DateConverter()
   Date? get observationDate => throw _privateConstructorUsedError;
   Sex get sex => throw _privateConstructorUsedError;
-  @AgeConverter()
   Age get age => throw _privateConstructorUsedError;
-  @LengthConverter()
   Length get height => throw _privateConstructorUsedError;
-  @MassConverter()
   Mass get weight => throw _privateConstructorUsedError;
   LengthHeightMeasurementPosition get measure =>
       throw _privateConstructorUsedError;
@@ -2128,11 +2037,11 @@ abstract class $CDCWeightForStatureCopyWith<$Res> {
       _$CDCWeightForStatureCopyWithImpl<$Res, CDCWeightForStature>;
   @useResult
   $Res call(
-      {@DateConverter() Date? observationDate,
+      {Date? observationDate,
       Sex sex,
-      @AgeConverter() Age age,
-      @LengthConverter() Length height,
-      @MassConverter() Mass weight,
+      Age age,
+      Length height,
+      Mass weight,
       LengthHeightMeasurementPosition measure});
 
   $DateCopyWith<$Res>? get observationDate;
@@ -2217,11 +2126,11 @@ abstract class _$$CDCWeightForStatureImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@DateConverter() Date? observationDate,
+      {Date? observationDate,
       Sex sex,
-      @AgeConverter() Age age,
-      @LengthConverter() Length height,
-      @MassConverter() Mass weight,
+      Age age,
+      Length height,
+      Mass weight,
       LengthHeightMeasurementPosition measure});
 
   @override
@@ -2281,11 +2190,11 @@ class __$$CDCWeightForStatureImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CDCWeightForStatureImpl extends _CDCWeightForStature {
   _$CDCWeightForStatureImpl(
-      {@DateConverter() this.observationDate,
+      {this.observationDate,
       required this.sex,
-      @AgeConverter() required this.age,
-      @LengthConverter() required this.height,
-      @MassConverter() required this.weight,
+      required this.age,
+      required this.height,
+      required this.weight,
       required this.measure})
       : assert(
             adjustedLengthHeight(
@@ -2332,18 +2241,14 @@ class _$CDCWeightForStatureImpl extends _CDCWeightForStature {
       _$$CDCWeightForStatureImplFromJson(json);
 
   @override
-  @DateConverter()
   final Date? observationDate;
   @override
   final Sex sex;
   @override
-  @AgeConverter()
   final Age age;
   @override
-  @LengthConverter()
   final Length height;
   @override
-  @MassConverter()
   final Mass weight;
   @override
   final LengthHeightMeasurementPosition measure;
@@ -2389,11 +2294,11 @@ class _$CDCWeightForStatureImpl extends _CDCWeightForStature {
 
 abstract class _CDCWeightForStature extends CDCWeightForStature {
   factory _CDCWeightForStature(
-          {@DateConverter() final Date? observationDate,
+          {final Date? observationDate,
           required final Sex sex,
-          @AgeConverter() required final Age age,
-          @LengthConverter() required final Length height,
-          @MassConverter() required final Mass weight,
+          required final Age age,
+          required final Length height,
+          required final Mass weight,
           required final LengthHeightMeasurementPosition measure}) =
       _$CDCWeightForStatureImpl;
   _CDCWeightForStature._() : super._();
@@ -2402,18 +2307,14 @@ abstract class _CDCWeightForStature extends CDCWeightForStature {
       _$CDCWeightForStatureImpl.fromJson;
 
   @override
-  @DateConverter()
   Date? get observationDate;
   @override
   Sex get sex;
   @override
-  @AgeConverter()
   Age get age;
   @override
-  @LengthConverter()
   Length get height;
   @override
-  @MassConverter()
   Mass get weight;
   @override
   LengthHeightMeasurementPosition get measure;

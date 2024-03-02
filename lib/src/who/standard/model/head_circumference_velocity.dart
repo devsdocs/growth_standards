@@ -76,7 +76,7 @@ class WHOGrowthStandardsHeadCircumferenceVelocityForAge
   )
   factory WHOGrowthStandardsHeadCircumferenceVelocityForAge({
     required Sex sex,
-    @AgeConverter() required Age age,
+    required Age age,
     @ListOfLengthMeasurementHistoryConverter()
     required List<LengthMeasurementHistory> pastMeasurement,
   }) = _WHOGrowthStandardsHeadCircumferenceVelocityForAge;

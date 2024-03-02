@@ -68,9 +68,9 @@ class CDCBodyMassIndexForAge with _$CDCBodyMassIndexForAge {
     'Observation date is impossible, because happen after today or before birth',
   )
   factory CDCBodyMassIndexForAge({
-    @DateConverter() Date? observationDate,
+    Date? observationDate,
     required Sex sex,
-    @AgeConverter() required Age age,
+    required Age age,
     required CDCBodyMassIndexMeasurement bodyMassIndexMeasurement,
   }) = _GrowthReferenceBodyMassIndexForAge;
 

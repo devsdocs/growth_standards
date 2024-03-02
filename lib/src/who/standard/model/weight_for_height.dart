@@ -55,12 +55,12 @@ class WHOGrowthStandardsWeightForHeight
     'Observation date is impossible, because happen after today or before birth',
   )
   factory WHOGrowthStandardsWeightForHeight({
-    @DateConverter() Date? observationDate,
+    Date? observationDate,
     required Sex sex,
-    @AgeConverter() required Age age,
+    required Age age,
     @Default(false) bool oedemaExist,
-    @LengthConverter() required Length height,
-    @MassConverter() required Mass weight,
+    required Length height,
+    required Mass weight,
     required LengthHeightMeasurementPosition measure,
   }) = _WHOGrowthStandardsWeightForHeight;
 

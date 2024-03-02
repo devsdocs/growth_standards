@@ -8,14 +8,13 @@ part of 'bmi.dart';
 
 _$BodyMassIndexImpl _$$BodyMassIndexImplFromJson(Map<String, dynamic> json) =>
     _$BodyMassIndexImpl(
-      lengthHeight: const LengthConverter()
-          .fromJson(json['lengthHeight'] as Map<String, dynamic>),
-      weight: const MassConverter()
-          .fromJson(json['weight'] as Map<String, dynamic>),
+      lengthHeight:
+          Length.fromJson(json['lengthHeight'] as Map<String, dynamic>),
+      weight: Mass.fromJson(json['weight'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$BodyMassIndexImplToJson(_$BodyMassIndexImpl instance) =>
     <String, dynamic>{
-      'lengthHeight': const LengthConverter().toJson(instance.lengthHeight),
-      'weight': const MassConverter().toJson(instance.weight),
+      'lengthHeight': instance.lengthHeight.toJson(),
+      'weight': instance.weight.toJson(),
     };

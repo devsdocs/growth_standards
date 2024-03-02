@@ -42,10 +42,10 @@ class FentonWeightForAge with _$FentonWeightForAge {
     'Observation date is impossible, because happen after today or before birth',
   )
   factory FentonWeightForAge({
-    @DateConverter() Date? observationDate,
+    Date? observationDate,
     required Sex sex,
-    @AgeConverter() required Age age,
-    @MassConverter() required Mass weight,
+    required Age age,
+    required Mass weight,
   }) = _FentonWeightForAge;
 
   const FentonWeightForAge._();

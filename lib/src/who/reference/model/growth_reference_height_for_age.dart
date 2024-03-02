@@ -49,10 +49,10 @@ class WHOGrowthReferenceHeightForAge with _$WHOGrowthReferenceHeightForAge {
     'Observation date is impossible, because happen after today or before birth',
   )
   factory WHOGrowthReferenceHeightForAge({
-    @DateConverter() Date? observationDate,
+    Date? observationDate,
     required Sex sex,
-    @AgeConverter() required Age age,
-    @LengthConverter() required Length lengthHeight,
+    required Age age,
+    required Length lengthHeight,
   }) = _WHOGrowthReferenceHeightForAge;
 
   const WHOGrowthReferenceHeightForAge._();

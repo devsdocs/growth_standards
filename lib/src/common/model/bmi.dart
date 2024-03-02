@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:growth_standards/src/common/tools.dart';
 
 import 'package:super_measurement/super_measurement.dart';
 
@@ -11,8 +10,8 @@ part 'bmi.g.dart';
 @freezed
 class BodyMassIndex with _$BodyMassIndex {
   factory BodyMassIndex({
-    @LengthConverter() required Length lengthHeight,
-    @MassConverter() required Mass weight,
+    required Length lengthHeight,
+    required Mass weight,
   }) = _BodyMassIndex;
 
   factory BodyMassIndex.fromJson(Map<String, dynamic> json) =>

@@ -3,7 +3,6 @@ import 'dart:collection';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:growth_standards/src/common/model/age.dart';
 import 'package:growth_standards/src/common/model/age.part.dart';
-import 'package:growth_standards/src/common/tools.dart';
 import 'package:growth_standards/src/common/types.dart';
 import 'package:growth_standards/src/who/standard/standard.dart';
 import 'package:growth_standards/src/who/typedef.dart';
@@ -194,7 +193,7 @@ class MassMeasurementHistoryConverter
             Date.fromJson(
               e['date'] as Map<String, dynamic>,
             ),
-            const MassConverter().fromJson(
+            Mass.fromJson(
               e['measurement'] as Map<String, dynamic>,
             ),
             isOedema: e['isOedema'] as bool?,
@@ -226,7 +225,7 @@ class ListOfLengthMeasurementHistoryConverter
             Date.fromJson(
               e['date'] as Map<String, dynamic>,
             ),
-            const LengthConverter().fromJson(
+            Length.fromJson(
               e['measurement'] as Map<String, dynamic>,
             ),
             measurementPosition: LengthHeightMeasurementPosition.values

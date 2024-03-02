@@ -22,12 +22,9 @@ WHOGrowthStandardsArmCircumferenceForAge
 
 /// @nodoc
 mixin _$WHOGrowthStandardsArmCircumferenceForAge {
-  @DateConverter()
   Date? get observationDate => throw _privateConstructorUsedError;
   Sex get sex => throw _privateConstructorUsedError;
-  @AgeConverter()
   Age get age => throw _privateConstructorUsedError;
-  @LengthConverter()
   Length get measurementResult => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -46,10 +43,7 @@ abstract class $WHOGrowthStandardsArmCircumferenceForAgeCopyWith<$Res> {
           WHOGrowthStandardsArmCircumferenceForAge>;
   @useResult
   $Res call(
-      {@DateConverter() Date? observationDate,
-      Sex sex,
-      @AgeConverter() Age age,
-      @LengthConverter() Length measurementResult});
+      {Date? observationDate, Sex sex, Age age, Length measurementResult});
 
   $DateCopyWith<$Res>? get observationDate;
   $AgeCopyWith<$Res> get age;
@@ -126,10 +120,7 @@ abstract class _$$WHOGrowthStandardsArmCircumferenceForAgeImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@DateConverter() Date? observationDate,
-      Sex sex,
-      @AgeConverter() Age age,
-      @LengthConverter() Length measurementResult});
+      {Date? observationDate, Sex sex, Age age, Length measurementResult});
 
   @override
   $DateCopyWith<$Res>? get observationDate;
@@ -181,10 +172,10 @@ class __$$WHOGrowthStandardsArmCircumferenceForAgeImplCopyWithImpl<$Res>
 class _$WHOGrowthStandardsArmCircumferenceForAgeImpl
     extends _WHOGrowthStandardsArmCircumferenceForAge {
   _$WHOGrowthStandardsArmCircumferenceForAgeImpl(
-      {@DateConverter() this.observationDate,
+      {this.observationDate,
       required this.sex,
-      @AgeConverter() required this.age,
-      @LengthConverter() required this.measurementResult})
+      required this.age,
+      required this.measurementResult})
       : assert(age.ageInTotalDaysByNow >= 91 && age.ageInTotalDaysByNow <= 1856,
             'Age must be in range of 91 - 1856 days'),
         assert(
@@ -203,15 +194,12 @@ class _$WHOGrowthStandardsArmCircumferenceForAgeImpl
       _$$WHOGrowthStandardsArmCircumferenceForAgeImplFromJson(json);
 
   @override
-  @DateConverter()
   final Date? observationDate;
   @override
   final Sex sex;
   @override
-  @AgeConverter()
   final Age age;
   @override
-  @LengthConverter()
   final Length measurementResult;
 
   @override
@@ -257,10 +245,10 @@ class _$WHOGrowthStandardsArmCircumferenceForAgeImpl
 abstract class _WHOGrowthStandardsArmCircumferenceForAge
     extends WHOGrowthStandardsArmCircumferenceForAge {
   factory _WHOGrowthStandardsArmCircumferenceForAge(
-          {@DateConverter() final Date? observationDate,
+          {final Date? observationDate,
           required final Sex sex,
-          @AgeConverter() required final Age age,
-          @LengthConverter() required final Length measurementResult}) =
+          required final Age age,
+          required final Length measurementResult}) =
       _$WHOGrowthStandardsArmCircumferenceForAgeImpl;
   _WHOGrowthStandardsArmCircumferenceForAge._() : super._();
 
@@ -269,15 +257,12 @@ abstract class _WHOGrowthStandardsArmCircumferenceForAge
       _$WHOGrowthStandardsArmCircumferenceForAgeImpl.fromJson;
 
   @override
-  @DateConverter()
   Date? get observationDate;
   @override
   Sex get sex;
   @override
-  @AgeConverter()
   Age get age;
   @override
-  @LengthConverter()
   Length get measurementResult;
   @override
   @JsonKey(ignore: true)
@@ -483,7 +468,6 @@ WHOGrowthStandardsBodyMassIndexForAge
 
 /// @nodoc
 mixin _$WHOGrowthStandardsBodyMassIndexForAge {
-  @DateConverter()
   Date? get observationDate => throw _privateConstructorUsedError;
   Sex get sex => throw _privateConstructorUsedError;
   bool get oedemaExist => throw _privateConstructorUsedError;
@@ -507,7 +491,7 @@ abstract class $WHOGrowthStandardsBodyMassIndexForAgeCopyWith<$Res> {
           WHOGrowthStandardsBodyMassIndexForAge>;
   @useResult
   $Res call(
-      {@DateConverter() Date? observationDate,
+      {Date? observationDate,
       Sex sex,
       bool oedemaExist,
       @WHOGrowthStandardsBodyMassIndexMeasurementConverter()
@@ -590,7 +574,7 @@ abstract class _$$WHOGrowthStandardsBodyMassIndexForAgeImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@DateConverter() Date? observationDate,
+      {Date? observationDate,
       Sex sex,
       bool oedemaExist,
       @WHOGrowthStandardsBodyMassIndexMeasurementConverter()
@@ -647,7 +631,7 @@ class __$$WHOGrowthStandardsBodyMassIndexForAgeImplCopyWithImpl<$Res>
 class _$WHOGrowthStandardsBodyMassIndexForAgeImpl
     extends _WHOGrowthStandardsBodyMassIndexForAge {
   _$WHOGrowthStandardsBodyMassIndexForAgeImpl(
-      {@DateConverter() this.observationDate,
+      {this.observationDate,
       required this.sex,
       this.oedemaExist = false,
       @WHOGrowthStandardsBodyMassIndexMeasurementConverter()
@@ -669,7 +653,6 @@ class _$WHOGrowthStandardsBodyMassIndexForAgeImpl
       _$$WHOGrowthStandardsBodyMassIndexForAgeImplFromJson(json);
 
   @override
-  @DateConverter()
   final Date? observationDate;
   @override
   final Sex sex;
@@ -724,7 +707,7 @@ class _$WHOGrowthStandardsBodyMassIndexForAgeImpl
 abstract class _WHOGrowthStandardsBodyMassIndexForAge
     extends WHOGrowthStandardsBodyMassIndexForAge {
   factory _WHOGrowthStandardsBodyMassIndexForAge(
-          {@DateConverter() final Date? observationDate,
+          {final Date? observationDate,
           required final Sex sex,
           final bool oedemaExist,
           @WHOGrowthStandardsBodyMassIndexMeasurementConverter()
@@ -738,7 +721,6 @@ abstract class _WHOGrowthStandardsBodyMassIndexForAge
       _$WHOGrowthStandardsBodyMassIndexForAgeImpl.fromJson;
 
   @override
-  @DateConverter()
   Date? get observationDate;
   @override
   Sex get sex;
@@ -762,12 +744,9 @@ WHOGrowthStandardsHeadCircumferenceForAge
 
 /// @nodoc
 mixin _$WHOGrowthStandardsHeadCircumferenceForAge {
-  @DateConverter()
   Date? get observationDate => throw _privateConstructorUsedError;
   Sex get sex => throw _privateConstructorUsedError;
-  @AgeConverter()
   Age get age => throw _privateConstructorUsedError;
-  @LengthConverter()
   Length get measurementResult => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -786,10 +765,7 @@ abstract class $WHOGrowthStandardsHeadCircumferenceForAgeCopyWith<$Res> {
           WHOGrowthStandardsHeadCircumferenceForAge>;
   @useResult
   $Res call(
-      {@DateConverter() Date? observationDate,
-      Sex sex,
-      @AgeConverter() Age age,
-      @LengthConverter() Length measurementResult});
+      {Date? observationDate, Sex sex, Age age, Length measurementResult});
 
   $DateCopyWith<$Res>? get observationDate;
   $AgeCopyWith<$Res> get age;
@@ -866,10 +842,7 @@ abstract class _$$WHOGrowthStandardsHeadCircumferenceForAgeImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@DateConverter() Date? observationDate,
-      Sex sex,
-      @AgeConverter() Age age,
-      @LengthConverter() Length measurementResult});
+      {Date? observationDate, Sex sex, Age age, Length measurementResult});
 
   @override
   $DateCopyWith<$Res>? get observationDate;
@@ -921,10 +894,10 @@ class __$$WHOGrowthStandardsHeadCircumferenceForAgeImplCopyWithImpl<$Res>
 class _$WHOGrowthStandardsHeadCircumferenceForAgeImpl
     extends _WHOGrowthStandardsHeadCircumferenceForAge {
   _$WHOGrowthStandardsHeadCircumferenceForAgeImpl(
-      {@DateConverter() this.observationDate,
+      {this.observationDate,
       required this.sex,
-      @AgeConverter() required this.age,
-      @LengthConverter() required this.measurementResult})
+      required this.age,
+      required this.measurementResult})
       : assert(age.ageInTotalDaysByNow >= 0 && age.ageInTotalDaysByNow <= 1856,
             'Age must be in range of 0 - 1856 days'),
         assert(
@@ -939,15 +912,12 @@ class _$WHOGrowthStandardsHeadCircumferenceForAgeImpl
       _$$WHOGrowthStandardsHeadCircumferenceForAgeImplFromJson(json);
 
   @override
-  @DateConverter()
   final Date? observationDate;
   @override
   final Sex sex;
   @override
-  @AgeConverter()
   final Age age;
   @override
-  @LengthConverter()
   final Length measurementResult;
 
   @override
@@ -994,10 +964,10 @@ class _$WHOGrowthStandardsHeadCircumferenceForAgeImpl
 abstract class _WHOGrowthStandardsHeadCircumferenceForAge
     extends WHOGrowthStandardsHeadCircumferenceForAge {
   factory _WHOGrowthStandardsHeadCircumferenceForAge(
-          {@DateConverter() final Date? observationDate,
+          {final Date? observationDate,
           required final Sex sex,
-          @AgeConverter() required final Age age,
-          @LengthConverter() required final Length measurementResult}) =
+          required final Age age,
+          required final Length measurementResult}) =
       _$WHOGrowthStandardsHeadCircumferenceForAgeImpl;
   _WHOGrowthStandardsHeadCircumferenceForAge._() : super._();
 
@@ -1006,15 +976,12 @@ abstract class _WHOGrowthStandardsHeadCircumferenceForAge
       _$WHOGrowthStandardsHeadCircumferenceForAgeImpl.fromJson;
 
   @override
-  @DateConverter()
   Date? get observationDate;
   @override
   Sex get sex;
   @override
-  @AgeConverter()
   Age get age;
   @override
-  @LengthConverter()
   Length get measurementResult;
   @override
   @JsonKey(ignore: true)
@@ -1032,7 +999,6 @@ WHOGrowthStandardsHeadCircumferenceVelocityForAge
 /// @nodoc
 mixin _$WHOGrowthStandardsHeadCircumferenceVelocityForAge {
   Sex get sex => throw _privateConstructorUsedError;
-  @AgeConverter()
   Age get age => throw _privateConstructorUsedError;
   @ListOfLengthMeasurementHistoryConverter()
   List<LengthMeasurementHistory> get pastMeasurement =>
@@ -1057,7 +1023,7 @@ abstract class $WHOGrowthStandardsHeadCircumferenceVelocityForAgeCopyWith<
   @useResult
   $Res call(
       {Sex sex,
-      @AgeConverter() Age age,
+      Age age,
       @ListOfLengthMeasurementHistoryConverter()
       List<LengthMeasurementHistory> pastMeasurement});
 
@@ -1124,7 +1090,7 @@ abstract class _$$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImplCopyWith<
   @useResult
   $Res call(
       {Sex sex,
-      @AgeConverter() Age age,
+      Age age,
       @ListOfLengthMeasurementHistoryConverter()
       List<LengthMeasurementHistory> pastMeasurement});
 
@@ -1175,7 +1141,7 @@ class _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl
     extends _WHOGrowthStandardsHeadCircumferenceVelocityForAge {
   _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl(
       {required this.sex,
-      @AgeConverter() required this.age,
+      required this.age,
       @ListOfLengthMeasurementHistoryConverter()
       required final List<LengthMeasurementHistory> pastMeasurement})
       : assert(age.ageInTotalDaysByNow >= 0 && age.ageInTotalMonthsByNow <= 24,
@@ -1202,7 +1168,6 @@ class _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl
   @override
   final Sex sex;
   @override
-  @AgeConverter()
   final Age age;
   final List<LengthMeasurementHistory> _pastMeasurement;
   @override
@@ -1256,7 +1221,7 @@ abstract class _WHOGrowthStandardsHeadCircumferenceVelocityForAge
     extends WHOGrowthStandardsHeadCircumferenceVelocityForAge {
   factory _WHOGrowthStandardsHeadCircumferenceVelocityForAge(
           {required final Sex sex,
-          @AgeConverter() required final Age age,
+          required final Age age,
           @ListOfLengthMeasurementHistoryConverter()
           required final List<LengthMeasurementHistory> pastMeasurement}) =
       _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl;
@@ -1269,7 +1234,6 @@ abstract class _WHOGrowthStandardsHeadCircumferenceVelocityForAge
   @override
   Sex get sex;
   @override
-  @AgeConverter()
   Age get age;
   @override
   @ListOfLengthMeasurementHistoryConverter()
@@ -1288,12 +1252,9 @@ WHOGrowthStandardsLengthForAge _$WHOGrowthStandardsLengthForAgeFromJson(
 
 /// @nodoc
 mixin _$WHOGrowthStandardsLengthForAge {
-  @DateConverter()
   Date? get observationDate => throw _privateConstructorUsedError;
   Sex get sex => throw _privateConstructorUsedError;
-  @AgeConverter()
   Age get age => throw _privateConstructorUsedError;
-  @LengthConverter()
   Length get lengthHeight => throw _privateConstructorUsedError;
   LengthHeightMeasurementPosition get measure =>
       throw _privateConstructorUsedError;
@@ -1313,10 +1274,10 @@ abstract class $WHOGrowthStandardsLengthForAgeCopyWith<$Res> {
           WHOGrowthStandardsLengthForAge>;
   @useResult
   $Res call(
-      {@DateConverter() Date? observationDate,
+      {Date? observationDate,
       Sex sex,
-      @AgeConverter() Age age,
-      @LengthConverter() Length lengthHeight,
+      Age age,
+      Length lengthHeight,
       LengthHeightMeasurementPosition measure});
 
   $DateCopyWith<$Res>? get observationDate;
@@ -1398,10 +1359,10 @@ abstract class _$$WHOGrowthStandardsLengthForAgeImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@DateConverter() Date? observationDate,
+      {Date? observationDate,
       Sex sex,
-      @AgeConverter() Age age,
-      @LengthConverter() Length lengthHeight,
+      Age age,
+      Length lengthHeight,
       LengthHeightMeasurementPosition measure});
 
   @override
@@ -1459,10 +1420,10 @@ class __$$WHOGrowthStandardsLengthForAgeImplCopyWithImpl<$Res>
 class _$WHOGrowthStandardsLengthForAgeImpl
     extends _WHOGrowthStandardsLengthForAge {
   _$WHOGrowthStandardsLengthForAgeImpl(
-      {@DateConverter() this.observationDate,
+      {this.observationDate,
       required this.sex,
-      @AgeConverter() required this.age,
-      @LengthConverter() required this.lengthHeight,
+      required this.age,
+      required this.lengthHeight,
       required this.measure})
       : assert(age.ageInTotalDaysByNow >= 0 && age.ageInTotalDaysByNow <= 1856,
             'Age must be in range of 0 - 1856 days'),
@@ -1478,15 +1439,12 @@ class _$WHOGrowthStandardsLengthForAgeImpl
       _$$WHOGrowthStandardsLengthForAgeImplFromJson(json);
 
   @override
-  @DateConverter()
   final Date? observationDate;
   @override
   final Sex sex;
   @override
-  @AgeConverter()
   final Age age;
   @override
-  @LengthConverter()
   final Length lengthHeight;
   @override
   final LengthHeightMeasurementPosition measure;
@@ -1534,10 +1492,10 @@ class _$WHOGrowthStandardsLengthForAgeImpl
 abstract class _WHOGrowthStandardsLengthForAge
     extends WHOGrowthStandardsLengthForAge {
   factory _WHOGrowthStandardsLengthForAge(
-          {@DateConverter() final Date? observationDate,
+          {final Date? observationDate,
           required final Sex sex,
-          @AgeConverter() required final Age age,
-          @LengthConverter() required final Length lengthHeight,
+          required final Age age,
+          required final Length lengthHeight,
           required final LengthHeightMeasurementPosition measure}) =
       _$WHOGrowthStandardsLengthForAgeImpl;
   _WHOGrowthStandardsLengthForAge._() : super._();
@@ -1546,15 +1504,12 @@ abstract class _WHOGrowthStandardsLengthForAge
       _$WHOGrowthStandardsLengthForAgeImpl.fromJson;
 
   @override
-  @DateConverter()
   Date? get observationDate;
   @override
   Sex get sex;
   @override
-  @AgeConverter()
   Age get age;
   @override
-  @LengthConverter()
   Length get lengthHeight;
   @override
   LengthHeightMeasurementPosition get measure;
@@ -1574,7 +1529,6 @@ WHOGrowthStandardsLengthVelocityForAge
 /// @nodoc
 mixin _$WHOGrowthStandardsLengthVelocityForAge {
   Sex get sex => throw _privateConstructorUsedError;
-  @AgeConverter()
   Age get age => throw _privateConstructorUsedError;
   @ListOfLengthMeasurementHistoryConverter()
   List<LengthMeasurementHistory> get pastMeasurement =>
@@ -1597,7 +1551,7 @@ abstract class $WHOGrowthStandardsLengthVelocityForAgeCopyWith<$Res> {
   @useResult
   $Res call(
       {Sex sex,
-      @AgeConverter() Age age,
+      Age age,
       @ListOfLengthMeasurementHistoryConverter()
       List<LengthMeasurementHistory> pastMeasurement});
 
@@ -1658,7 +1612,7 @@ abstract class _$$WHOGrowthStandardsLengthVelocityForAgeImplCopyWith<$Res>
   @useResult
   $Res call(
       {Sex sex,
-      @AgeConverter() Age age,
+      Age age,
       @ListOfLengthMeasurementHistoryConverter()
       List<LengthMeasurementHistory> pastMeasurement});
 
@@ -1706,7 +1660,7 @@ class _$WHOGrowthStandardsLengthVelocityForAgeImpl
     extends _WHOGrowthStandardsLengthVelocityForAge {
   _$WHOGrowthStandardsLengthVelocityForAgeImpl(
       {required this.sex,
-      @AgeConverter() required this.age,
+      required this.age,
       @ListOfLengthMeasurementHistoryConverter()
       required final List<LengthMeasurementHistory> pastMeasurement})
       : assert(age.ageInTotalDaysByNow >= 0 && age.ageInTotalMonthsByNow <= 24,
@@ -1733,7 +1687,6 @@ class _$WHOGrowthStandardsLengthVelocityForAgeImpl
   @override
   final Sex sex;
   @override
-  @AgeConverter()
   final Age age;
   final List<LengthMeasurementHistory> _pastMeasurement;
   @override
@@ -1786,7 +1739,7 @@ abstract class _WHOGrowthStandardsLengthVelocityForAge
     extends WHOGrowthStandardsLengthVelocityForAge {
   factory _WHOGrowthStandardsLengthVelocityForAge(
           {required final Sex sex,
-          @AgeConverter() required final Age age,
+          required final Age age,
           @ListOfLengthMeasurementHistoryConverter()
           required final List<LengthMeasurementHistory> pastMeasurement}) =
       _$WHOGrowthStandardsLengthVelocityForAgeImpl;
@@ -1799,7 +1752,6 @@ abstract class _WHOGrowthStandardsLengthVelocityForAge
   @override
   Sex get sex;
   @override
-  @AgeConverter()
   Age get age;
   @override
   @ListOfLengthMeasurementHistoryConverter()
@@ -1819,12 +1771,9 @@ WHOGrowthStandardsSubscapularSkinfoldForAge
 
 /// @nodoc
 mixin _$WHOGrowthStandardsSubscapularSkinfoldForAge {
-  @DateConverter()
   Date? get observationDate => throw _privateConstructorUsedError;
   Sex get sex => throw _privateConstructorUsedError;
-  @AgeConverter()
   Age get age => throw _privateConstructorUsedError;
-  @LengthConverter()
   Length get measurementResult => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1843,10 +1792,7 @@ abstract class $WHOGrowthStandardsSubscapularSkinfoldForAgeCopyWith<$Res> {
           WHOGrowthStandardsSubscapularSkinfoldForAge>;
   @useResult
   $Res call(
-      {@DateConverter() Date? observationDate,
-      Sex sex,
-      @AgeConverter() Age age,
-      @LengthConverter() Length measurementResult});
+      {Date? observationDate, Sex sex, Age age, Length measurementResult});
 
   $DateCopyWith<$Res>? get observationDate;
   $AgeCopyWith<$Res> get age;
@@ -1924,10 +1870,7 @@ abstract class _$$WHOGrowthStandardsSubscapularSkinfoldForAgeImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@DateConverter() Date? observationDate,
-      Sex sex,
-      @AgeConverter() Age age,
-      @LengthConverter() Length measurementResult});
+      {Date? observationDate, Sex sex, Age age, Length measurementResult});
 
   @override
   $DateCopyWith<$Res>? get observationDate;
@@ -1980,10 +1923,10 @@ class __$$WHOGrowthStandardsSubscapularSkinfoldForAgeImplCopyWithImpl<$Res>
 class _$WHOGrowthStandardsSubscapularSkinfoldForAgeImpl
     extends _WHOGrowthStandardsSubscapularSkinfoldForAge {
   _$WHOGrowthStandardsSubscapularSkinfoldForAgeImpl(
-      {@DateConverter() this.observationDate,
+      {this.observationDate,
       required this.sex,
-      @AgeConverter() required this.age,
-      @LengthConverter() required this.measurementResult})
+      required this.age,
+      required this.measurementResult})
       : assert(age.ageInTotalDaysByNow >= 91 && age.ageInTotalDaysByNow <= 1856,
             'Age must be in range of 91 - 1856 days'),
         assert(
@@ -2002,15 +1945,12 @@ class _$WHOGrowthStandardsSubscapularSkinfoldForAgeImpl
       _$$WHOGrowthStandardsSubscapularSkinfoldForAgeImplFromJson(json);
 
   @override
-  @DateConverter()
   final Date? observationDate;
   @override
   final Sex sex;
   @override
-  @AgeConverter()
   final Age age;
   @override
-  @LengthConverter()
   final Length measurementResult;
 
   @override
@@ -2057,10 +1997,10 @@ class _$WHOGrowthStandardsSubscapularSkinfoldForAgeImpl
 abstract class _WHOGrowthStandardsSubscapularSkinfoldForAge
     extends WHOGrowthStandardsSubscapularSkinfoldForAge {
   factory _WHOGrowthStandardsSubscapularSkinfoldForAge(
-          {@DateConverter() final Date? observationDate,
+          {final Date? observationDate,
           required final Sex sex,
-          @AgeConverter() required final Age age,
-          @LengthConverter() required final Length measurementResult}) =
+          required final Age age,
+          required final Length measurementResult}) =
       _$WHOGrowthStandardsSubscapularSkinfoldForAgeImpl;
   _WHOGrowthStandardsSubscapularSkinfoldForAge._() : super._();
 
@@ -2069,15 +2009,12 @@ abstract class _WHOGrowthStandardsSubscapularSkinfoldForAge
       _$WHOGrowthStandardsSubscapularSkinfoldForAgeImpl.fromJson;
 
   @override
-  @DateConverter()
   Date? get observationDate;
   @override
   Sex get sex;
   @override
-  @AgeConverter()
   Age get age;
   @override
-  @LengthConverter()
   Length get measurementResult;
   @override
   @JsonKey(ignore: true)
@@ -2094,12 +2031,9 @@ WHOGrowthStandardsTricepsSkinfoldForAge
 
 /// @nodoc
 mixin _$WHOGrowthStandardsTricepsSkinfoldForAge {
-  @DateConverter()
   Date? get observationDate => throw _privateConstructorUsedError;
   Sex get sex => throw _privateConstructorUsedError;
-  @AgeConverter()
   Age get age => throw _privateConstructorUsedError;
-  @LengthConverter()
   Length get measurementResult => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -2118,10 +2052,7 @@ abstract class $WHOGrowthStandardsTricepsSkinfoldForAgeCopyWith<$Res> {
           WHOGrowthStandardsTricepsSkinfoldForAge>;
   @useResult
   $Res call(
-      {@DateConverter() Date? observationDate,
-      Sex sex,
-      @AgeConverter() Age age,
-      @LengthConverter() Length measurementResult});
+      {Date? observationDate, Sex sex, Age age, Length measurementResult});
 
   $DateCopyWith<$Res>? get observationDate;
   $AgeCopyWith<$Res> get age;
@@ -2198,10 +2129,7 @@ abstract class _$$WHOGrowthStandardsTricepsSkinfoldForAgeImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@DateConverter() Date? observationDate,
-      Sex sex,
-      @AgeConverter() Age age,
-      @LengthConverter() Length measurementResult});
+      {Date? observationDate, Sex sex, Age age, Length measurementResult});
 
   @override
   $DateCopyWith<$Res>? get observationDate;
@@ -2253,10 +2181,10 @@ class __$$WHOGrowthStandardsTricepsSkinfoldForAgeImplCopyWithImpl<$Res>
 class _$WHOGrowthStandardsTricepsSkinfoldForAgeImpl
     extends _WHOGrowthStandardsTricepsSkinfoldForAge {
   _$WHOGrowthStandardsTricepsSkinfoldForAgeImpl(
-      {@DateConverter() this.observationDate,
+      {this.observationDate,
       required this.sex,
-      @AgeConverter() required this.age,
-      @LengthConverter() required this.measurementResult})
+      required this.age,
+      required this.measurementResult})
       : assert(age.ageInTotalDaysByNow >= 91 && age.ageInTotalDaysByNow <= 1856,
             'Age must be in range of 91 - 1856 days'),
         assert(
@@ -2275,15 +2203,12 @@ class _$WHOGrowthStandardsTricepsSkinfoldForAgeImpl
       _$$WHOGrowthStandardsTricepsSkinfoldForAgeImplFromJson(json);
 
   @override
-  @DateConverter()
   final Date? observationDate;
   @override
   final Sex sex;
   @override
-  @AgeConverter()
   final Age age;
   @override
-  @LengthConverter()
   final Length measurementResult;
 
   @override
@@ -2329,10 +2254,10 @@ class _$WHOGrowthStandardsTricepsSkinfoldForAgeImpl
 abstract class _WHOGrowthStandardsTricepsSkinfoldForAge
     extends WHOGrowthStandardsTricepsSkinfoldForAge {
   factory _WHOGrowthStandardsTricepsSkinfoldForAge(
-          {@DateConverter() final Date? observationDate,
+          {final Date? observationDate,
           required final Sex sex,
-          @AgeConverter() required final Age age,
-          @LengthConverter() required final Length measurementResult}) =
+          required final Age age,
+          required final Length measurementResult}) =
       _$WHOGrowthStandardsTricepsSkinfoldForAgeImpl;
   _WHOGrowthStandardsTricepsSkinfoldForAge._() : super._();
 
@@ -2341,15 +2266,12 @@ abstract class _WHOGrowthStandardsTricepsSkinfoldForAge
       _$WHOGrowthStandardsTricepsSkinfoldForAgeImpl.fromJson;
 
   @override
-  @DateConverter()
   Date? get observationDate;
   @override
   Sex get sex;
   @override
-  @AgeConverter()
   Age get age;
   @override
-  @LengthConverter()
   Length get measurementResult;
   @override
   @JsonKey(ignore: true)
@@ -2367,7 +2289,6 @@ WHOGrowthStandardsWeightVelocityForAge
 /// @nodoc
 mixin _$WHOGrowthStandardsWeightVelocityForAge {
   Sex get sex => throw _privateConstructorUsedError;
-  @AgeConverter()
   Age get age => throw _privateConstructorUsedError;
   @MassMeasurementHistoryConverter()
   List<MassMeasurementHistory> get pastMeasurement =>
@@ -2390,7 +2311,7 @@ abstract class $WHOGrowthStandardsWeightVelocityForAgeCopyWith<$Res> {
   @useResult
   $Res call(
       {Sex sex,
-      @AgeConverter() Age age,
+      Age age,
       @MassMeasurementHistoryConverter()
       List<MassMeasurementHistory> pastMeasurement});
 
@@ -2451,7 +2372,7 @@ abstract class _$$WHOGrowthStandardsWeightVelocityForAgeImplCopyWith<$Res>
   @useResult
   $Res call(
       {Sex sex,
-      @AgeConverter() Age age,
+      Age age,
       @MassMeasurementHistoryConverter()
       List<MassMeasurementHistory> pastMeasurement});
 
@@ -2499,7 +2420,7 @@ class _$WHOGrowthStandardsWeightVelocityForAgeImpl
     extends _WHOGrowthStandardsWeightVelocityForAge {
   _$WHOGrowthStandardsWeightVelocityForAgeImpl(
       {required this.sex,
-      @AgeConverter() required this.age,
+      required this.age,
       @MassMeasurementHistoryConverter()
       required final List<MassMeasurementHistory> pastMeasurement})
       : assert(age.ageInTotalDaysByNow >= 0 && age.ageInTotalMonthsByNow <= 24,
@@ -2526,7 +2447,6 @@ class _$WHOGrowthStandardsWeightVelocityForAgeImpl
   @override
   final Sex sex;
   @override
-  @AgeConverter()
   final Age age;
   final List<MassMeasurementHistory> _pastMeasurement;
   @override
@@ -2579,7 +2499,7 @@ abstract class _WHOGrowthStandardsWeightVelocityForAge
     extends WHOGrowthStandardsWeightVelocityForAge {
   factory _WHOGrowthStandardsWeightVelocityForAge(
           {required final Sex sex,
-          @AgeConverter() required final Age age,
+          required final Age age,
           @MassMeasurementHistoryConverter()
           required final List<MassMeasurementHistory> pastMeasurement}) =
       _$WHOGrowthStandardsWeightVelocityForAgeImpl;
@@ -2592,7 +2512,6 @@ abstract class _WHOGrowthStandardsWeightVelocityForAge
   @override
   Sex get sex;
   @override
-  @AgeConverter()
   Age get age;
   @override
   @MassMeasurementHistoryConverter()
@@ -2611,13 +2530,10 @@ WHOGrowthStandardsWeightForAge _$WHOGrowthStandardsWeightForAgeFromJson(
 
 /// @nodoc
 mixin _$WHOGrowthStandardsWeightForAge {
-  @DateConverter()
   Date? get observationDate => throw _privateConstructorUsedError;
   Sex get sex => throw _privateConstructorUsedError;
   bool get oedemaExist => throw _privateConstructorUsedError;
-  @AgeConverter()
   Age get age => throw _privateConstructorUsedError;
-  @MassConverter()
   Mass get weight => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -2635,11 +2551,7 @@ abstract class $WHOGrowthStandardsWeightForAgeCopyWith<$Res> {
           WHOGrowthStandardsWeightForAge>;
   @useResult
   $Res call(
-      {@DateConverter() Date? observationDate,
-      Sex sex,
-      bool oedemaExist,
-      @AgeConverter() Age age,
-      @MassConverter() Mass weight});
+      {Date? observationDate, Sex sex, bool oedemaExist, Age age, Mass weight});
 
   $DateCopyWith<$Res>? get observationDate;
   $AgeCopyWith<$Res> get age;
@@ -2720,11 +2632,7 @@ abstract class _$$WHOGrowthStandardsWeightForAgeImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@DateConverter() Date? observationDate,
-      Sex sex,
-      bool oedemaExist,
-      @AgeConverter() Age age,
-      @MassConverter() Mass weight});
+      {Date? observationDate, Sex sex, bool oedemaExist, Age age, Mass weight});
 
   @override
   $DateCopyWith<$Res>? get observationDate;
@@ -2781,11 +2689,11 @@ class __$$WHOGrowthStandardsWeightForAgeImplCopyWithImpl<$Res>
 class _$WHOGrowthStandardsWeightForAgeImpl
     extends _WHOGrowthStandardsWeightForAge {
   _$WHOGrowthStandardsWeightForAgeImpl(
-      {@DateConverter() this.observationDate,
+      {this.observationDate,
       required this.sex,
       this.oedemaExist = false,
-      @AgeConverter() required this.age,
-      @MassConverter() required this.weight})
+      required this.age,
+      required this.weight})
       : assert(age.ageInTotalDaysByNow >= 0 && age.ageInTotalDaysByNow <= 1856,
             'Age must be in range of 0 - 1856 days'),
         assert(
@@ -2800,7 +2708,6 @@ class _$WHOGrowthStandardsWeightForAgeImpl
       _$$WHOGrowthStandardsWeightForAgeImplFromJson(json);
 
   @override
-  @DateConverter()
   final Date? observationDate;
   @override
   final Sex sex;
@@ -2808,10 +2715,8 @@ class _$WHOGrowthStandardsWeightForAgeImpl
   @JsonKey()
   final bool oedemaExist;
   @override
-  @AgeConverter()
   final Age age;
   @override
-  @MassConverter()
   final Mass weight;
 
   @override
@@ -2857,29 +2762,25 @@ class _$WHOGrowthStandardsWeightForAgeImpl
 abstract class _WHOGrowthStandardsWeightForAge
     extends WHOGrowthStandardsWeightForAge {
   factory _WHOGrowthStandardsWeightForAge(
-          {@DateConverter() final Date? observationDate,
-          required final Sex sex,
-          final bool oedemaExist,
-          @AgeConverter() required final Age age,
-          @MassConverter() required final Mass weight}) =
-      _$WHOGrowthStandardsWeightForAgeImpl;
+      {final Date? observationDate,
+      required final Sex sex,
+      final bool oedemaExist,
+      required final Age age,
+      required final Mass weight}) = _$WHOGrowthStandardsWeightForAgeImpl;
   _WHOGrowthStandardsWeightForAge._() : super._();
 
   factory _WHOGrowthStandardsWeightForAge.fromJson(Map<String, dynamic> json) =
       _$WHOGrowthStandardsWeightForAgeImpl.fromJson;
 
   @override
-  @DateConverter()
   Date? get observationDate;
   @override
   Sex get sex;
   @override
   bool get oedemaExist;
   @override
-  @AgeConverter()
   Age get age;
   @override
-  @MassConverter()
   Mass get weight;
   @override
   @JsonKey(ignore: true)
@@ -2895,15 +2796,11 @@ WHOGrowthStandardsWeightForHeight _$WHOGrowthStandardsWeightForHeightFromJson(
 
 /// @nodoc
 mixin _$WHOGrowthStandardsWeightForHeight {
-  @DateConverter()
   Date? get observationDate => throw _privateConstructorUsedError;
   Sex get sex => throw _privateConstructorUsedError;
-  @AgeConverter()
   Age get age => throw _privateConstructorUsedError;
   bool get oedemaExist => throw _privateConstructorUsedError;
-  @LengthConverter()
   Length get height => throw _privateConstructorUsedError;
-  @MassConverter()
   Mass get weight => throw _privateConstructorUsedError;
   LengthHeightMeasurementPosition get measure =>
       throw _privateConstructorUsedError;
@@ -2923,12 +2820,12 @@ abstract class $WHOGrowthStandardsWeightForHeightCopyWith<$Res> {
           WHOGrowthStandardsWeightForHeight>;
   @useResult
   $Res call(
-      {@DateConverter() Date? observationDate,
+      {Date? observationDate,
       Sex sex,
-      @AgeConverter() Age age,
+      Age age,
       bool oedemaExist,
-      @LengthConverter() Length height,
-      @MassConverter() Mass weight,
+      Length height,
+      Mass weight,
       LengthHeightMeasurementPosition measure});
 
   $DateCopyWith<$Res>? get observationDate;
@@ -3020,12 +2917,12 @@ abstract class _$$WHOGrowthStandardsWeightForHeightImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@DateConverter() Date? observationDate,
+      {Date? observationDate,
       Sex sex,
-      @AgeConverter() Age age,
+      Age age,
       bool oedemaExist,
-      @LengthConverter() Length height,
-      @MassConverter() Mass weight,
+      Length height,
+      Mass weight,
       LengthHeightMeasurementPosition measure});
 
   @override
@@ -3093,12 +2990,12 @@ class __$$WHOGrowthStandardsWeightForHeightImplCopyWithImpl<$Res>
 class _$WHOGrowthStandardsWeightForHeightImpl
     extends _WHOGrowthStandardsWeightForHeight {
   _$WHOGrowthStandardsWeightForHeightImpl(
-      {@DateConverter() this.observationDate,
+      {this.observationDate,
       required this.sex,
-      @AgeConverter() required this.age,
+      required this.age,
       this.oedemaExist = false,
-      @LengthConverter() required this.height,
-      @MassConverter() required this.weight,
+      required this.height,
+      required this.weight,
       required this.measure})
       : assert(
             adjustedLengthHeight(
@@ -3146,21 +3043,17 @@ class _$WHOGrowthStandardsWeightForHeightImpl
       _$$WHOGrowthStandardsWeightForHeightImplFromJson(json);
 
   @override
-  @DateConverter()
   final Date? observationDate;
   @override
   final Sex sex;
   @override
-  @AgeConverter()
   final Age age;
   @override
   @JsonKey()
   final bool oedemaExist;
   @override
-  @LengthConverter()
   final Length height;
   @override
-  @MassConverter()
   final Mass weight;
   @override
   final LengthHeightMeasurementPosition measure;
@@ -3210,12 +3103,12 @@ class _$WHOGrowthStandardsWeightForHeightImpl
 abstract class _WHOGrowthStandardsWeightForHeight
     extends WHOGrowthStandardsWeightForHeight {
   factory _WHOGrowthStandardsWeightForHeight(
-          {@DateConverter() final Date? observationDate,
+          {final Date? observationDate,
           required final Sex sex,
-          @AgeConverter() required final Age age,
+          required final Age age,
           final bool oedemaExist,
-          @LengthConverter() required final Length height,
-          @MassConverter() required final Mass weight,
+          required final Length height,
+          required final Mass weight,
           required final LengthHeightMeasurementPosition measure}) =
       _$WHOGrowthStandardsWeightForHeightImpl;
   _WHOGrowthStandardsWeightForHeight._() : super._();
@@ -3225,20 +3118,16 @@ abstract class _WHOGrowthStandardsWeightForHeight
       _$WHOGrowthStandardsWeightForHeightImpl.fromJson;
 
   @override
-  @DateConverter()
   Date? get observationDate;
   @override
   Sex get sex;
   @override
-  @AgeConverter()
   Age get age;
   @override
   bool get oedemaExist;
   @override
-  @LengthConverter()
   Length get height;
   @override
-  @MassConverter()
   Mass get weight;
   @override
   LengthHeightMeasurementPosition get measure;
@@ -3256,15 +3145,11 @@ WHOGrowthStandardsWeightForLength _$WHOGrowthStandardsWeightForLengthFromJson(
 
 /// @nodoc
 mixin _$WHOGrowthStandardsWeightForLength {
-  @DateConverter()
   Date? get observationDate => throw _privateConstructorUsedError;
   Sex get sex => throw _privateConstructorUsedError;
-  @AgeConverter()
   Age get age => throw _privateConstructorUsedError;
   bool get oedemaExist => throw _privateConstructorUsedError;
-  @LengthConverter()
   Length get length => throw _privateConstructorUsedError;
-  @MassConverter()
   Mass get weight => throw _privateConstructorUsedError;
   LengthHeightMeasurementPosition get measure =>
       throw _privateConstructorUsedError;
@@ -3284,12 +3169,12 @@ abstract class $WHOGrowthStandardsWeightForLengthCopyWith<$Res> {
           WHOGrowthStandardsWeightForLength>;
   @useResult
   $Res call(
-      {@DateConverter() Date? observationDate,
+      {Date? observationDate,
       Sex sex,
-      @AgeConverter() Age age,
+      Age age,
       bool oedemaExist,
-      @LengthConverter() Length length,
-      @MassConverter() Mass weight,
+      Length length,
+      Mass weight,
       LengthHeightMeasurementPosition measure});
 
   $DateCopyWith<$Res>? get observationDate;
@@ -3381,12 +3266,12 @@ abstract class _$$WHOGrowthStandardsWeightForLengthImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@DateConverter() Date? observationDate,
+      {Date? observationDate,
       Sex sex,
-      @AgeConverter() Age age,
+      Age age,
       bool oedemaExist,
-      @LengthConverter() Length length,
-      @MassConverter() Mass weight,
+      Length length,
+      Mass weight,
       LengthHeightMeasurementPosition measure});
 
   @override
@@ -3454,12 +3339,12 @@ class __$$WHOGrowthStandardsWeightForLengthImplCopyWithImpl<$Res>
 class _$WHOGrowthStandardsWeightForLengthImpl
     extends _WHOGrowthStandardsWeightForLength {
   _$WHOGrowthStandardsWeightForLengthImpl(
-      {@DateConverter() this.observationDate,
+      {this.observationDate,
       required this.sex,
-      @AgeConverter() required this.age,
+      required this.age,
       this.oedemaExist = false,
-      @LengthConverter() required this.length,
-      @MassConverter() required this.weight,
+      required this.length,
+      required this.weight,
       required this.measure})
       : assert(
             adjustedLengthHeight(
@@ -3507,21 +3392,17 @@ class _$WHOGrowthStandardsWeightForLengthImpl
       _$$WHOGrowthStandardsWeightForLengthImplFromJson(json);
 
   @override
-  @DateConverter()
   final Date? observationDate;
   @override
   final Sex sex;
   @override
-  @AgeConverter()
   final Age age;
   @override
   @JsonKey()
   final bool oedemaExist;
   @override
-  @LengthConverter()
   final Length length;
   @override
-  @MassConverter()
   final Mass weight;
   @override
   final LengthHeightMeasurementPosition measure;
@@ -3571,12 +3452,12 @@ class _$WHOGrowthStandardsWeightForLengthImpl
 abstract class _WHOGrowthStandardsWeightForLength
     extends WHOGrowthStandardsWeightForLength {
   factory _WHOGrowthStandardsWeightForLength(
-          {@DateConverter() final Date? observationDate,
+          {final Date? observationDate,
           required final Sex sex,
-          @AgeConverter() required final Age age,
+          required final Age age,
           final bool oedemaExist,
-          @LengthConverter() required final Length length,
-          @MassConverter() required final Mass weight,
+          required final Length length,
+          required final Mass weight,
           required final LengthHeightMeasurementPosition measure}) =
       _$WHOGrowthStandardsWeightForLengthImpl;
   _WHOGrowthStandardsWeightForLength._() : super._();
@@ -3586,20 +3467,16 @@ abstract class _WHOGrowthStandardsWeightForLength
       _$WHOGrowthStandardsWeightForLengthImpl.fromJson;
 
   @override
-  @DateConverter()
   Date? get observationDate;
   @override
   Sex get sex;
   @override
-  @AgeConverter()
   Age get age;
   @override
   bool get oedemaExist;
   @override
-  @LengthConverter()
   Length get length;
   @override
-  @MassConverter()
   Mass get weight;
   @override
   LengthHeightMeasurementPosition get measure;

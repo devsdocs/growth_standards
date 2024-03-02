@@ -46,10 +46,10 @@ class CDCInfantHeadCircumferenceForAge with _$CDCInfantHeadCircumferenceForAge {
     'Observation date is impossible, because happen after today or before birth',
   )
   factory CDCInfantHeadCircumferenceForAge({
-    @DateConverter() Date? observationDate,
+    Date? observationDate,
     required Sex sex,
-    @AgeConverter() required Age age,
-    @LengthConverter() required Length measurementResult,
+    required Age age,
+    required Length measurementResult,
   }) = _HeadCircumferenceForAge;
 
   const CDCInfantHeadCircumferenceForAge._();

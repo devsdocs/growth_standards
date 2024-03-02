@@ -75,7 +75,7 @@ class WHOGrowthStandardsLengthVelocityForAge
   )
   factory WHOGrowthStandardsLengthVelocityForAge({
     required Sex sex,
-    @AgeConverter() required Age age,
+    required Age age,
     @ListOfLengthMeasurementHistoryConverter()
     required List<LengthMeasurementHistory> pastMeasurement,
   }) = _WHOGrowthStandardsLengthVelocityForAge;

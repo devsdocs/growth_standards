@@ -45,10 +45,10 @@ class FentonHeadCircumferenceForAge with _$FentonHeadCircumferenceForAge {
     'Observation date is impossible, because happen after today or before birth',
   )
   factory FentonHeadCircumferenceForAge({
-    @DateConverter() Date? observationDate,
+    Date? observationDate,
     required Sex sex,
-    @AgeConverter() required Age age,
-    @LengthConverter() required Length measurementResult,
+    required Age age,
+    required Length measurementResult,
   }) = _FentonHeadCircumferenceForAge;
 
   const FentonHeadCircumferenceForAge._();

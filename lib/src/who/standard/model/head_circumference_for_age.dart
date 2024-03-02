@@ -48,10 +48,10 @@ class WHOGrowthStandardsHeadCircumferenceForAge
     'Observation date is impossible, because happen after today or before birth',
   )
   factory WHOGrowthStandardsHeadCircumferenceForAge({
-    @DateConverter() Date? observationDate,
+    Date? observationDate,
     required Sex sex,
-    @AgeConverter() required Age age,
-    @LengthConverter() required Length measurementResult,
+    required Age age,
+    required Length measurementResult,
   }) = _WHOGrowthStandardsHeadCircumferenceForAge;
 
   const WHOGrowthStandardsHeadCircumferenceForAge._();

@@ -49,10 +49,10 @@ class CDCWeightForAge with _$CDCWeightForAge {
     'Observation date is impossible, because happen after today or before birth',
   )
   factory CDCWeightForAge({
-    @DateConverter() Date? observationDate,
+    Date? observationDate,
     required Sex sex,
-    @AgeConverter() required Age age,
-    @MassConverter() required Mass weight,
+    required Age age,
+    required Mass weight,
   }) = _CDCWeightForAge;
 
   const CDCWeightForAge._();
