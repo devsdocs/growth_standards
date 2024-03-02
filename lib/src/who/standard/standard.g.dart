@@ -102,8 +102,10 @@ _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl
         _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl(
           sex: $enumDecode(_$SexEnumMap, json['sex']),
           age: Age.fromJson(json['age'] as Map<String, dynamic>),
-          pastMeasurement: const ListOfLengthMeasurementHistoryConverter()
-              .fromJson(json['pastMeasurement'] as List),
+          pastMeasurement: (json['pastMeasurement'] as List<dynamic>)
+              .map((e) =>
+                  LengthMeasurementHistory.fromJson(e as Map<String, dynamic>))
+              .toList(),
         );
 
 Map<String, dynamic>
@@ -112,8 +114,8 @@ Map<String, dynamic>
         <String, dynamic>{
           'sex': _$SexEnumMap[instance.sex]!,
           'age': instance.age.toJson(),
-          'pastMeasurement': const ListOfLengthMeasurementHistoryConverter()
-              .toJson(instance.pastMeasurement),
+          'pastMeasurement':
+              instance.pastMeasurement.map((e) => e.toJson()).toList(),
         };
 
 _$WHOGrowthStandardsLengthForAgeImpl
@@ -151,8 +153,10 @@ _$WHOGrowthStandardsLengthVelocityForAgeImpl
         _$WHOGrowthStandardsLengthVelocityForAgeImpl(
           sex: $enumDecode(_$SexEnumMap, json['sex']),
           age: Age.fromJson(json['age'] as Map<String, dynamic>),
-          pastMeasurement: const ListOfLengthMeasurementHistoryConverter()
-              .fromJson(json['pastMeasurement'] as List),
+          pastMeasurement: (json['pastMeasurement'] as List<dynamic>)
+              .map((e) =>
+                  LengthMeasurementHistory.fromJson(e as Map<String, dynamic>))
+              .toList(),
         );
 
 Map<String, dynamic> _$$WHOGrowthStandardsLengthVelocityForAgeImplToJson(
@@ -160,8 +164,8 @@ Map<String, dynamic> _$$WHOGrowthStandardsLengthVelocityForAgeImplToJson(
     <String, dynamic>{
       'sex': _$SexEnumMap[instance.sex]!,
       'age': instance.age.toJson(),
-      'pastMeasurement': const ListOfLengthMeasurementHistoryConverter()
-          .toJson(instance.pastMeasurement),
+      'pastMeasurement':
+          instance.pastMeasurement.map((e) => e.toJson()).toList(),
     };
 
 _$WHOGrowthStandardsSubscapularSkinfoldForAgeImpl
@@ -214,8 +218,10 @@ _$WHOGrowthStandardsWeightVelocityForAgeImpl
         _$WHOGrowthStandardsWeightVelocityForAgeImpl(
           sex: $enumDecode(_$SexEnumMap, json['sex']),
           age: Age.fromJson(json['age'] as Map<String, dynamic>),
-          pastMeasurement: const MassMeasurementHistoryConverter()
-              .fromJson(json['pastMeasurement'] as List),
+          pastMeasurement: (json['pastMeasurement'] as List<dynamic>)
+              .map((e) =>
+                  MassMeasurementHistory.fromJson(e as Map<String, dynamic>))
+              .toList(),
         );
 
 Map<String, dynamic> _$$WHOGrowthStandardsWeightVelocityForAgeImplToJson(
@@ -223,8 +229,8 @@ Map<String, dynamic> _$$WHOGrowthStandardsWeightVelocityForAgeImplToJson(
     <String, dynamic>{
       'sex': _$SexEnumMap[instance.sex]!,
       'age': instance.age.toJson(),
-      'pastMeasurement': const MassMeasurementHistoryConverter()
-          .toJson(instance.pastMeasurement),
+      'pastMeasurement':
+          instance.pastMeasurement.map((e) => e.toJson()).toList(),
     };
 
 _$WHOGrowthStandardsWeightForAgeImpl

@@ -76,7 +76,6 @@ class WHOGrowthStandardsLengthVelocityForAge
   factory WHOGrowthStandardsLengthVelocityForAge({
     required Sex sex,
     required Age age,
-    @ListOfLengthMeasurementHistoryConverter()
     required List<LengthMeasurementHistory> pastMeasurement,
   }) = _WHOGrowthStandardsLengthVelocityForAge;
 
@@ -104,11 +103,11 @@ class WHOGrowthStandardsLengthVelocityForAge
             pastMeasurement
                 .map(
                   (e) => e.copyWith(
-                    unit: adjustedLengthHeight(
+                    measurement: adjustedLengthHeight(
                       age: age.ageAtPastDate(e.date),
                       measure: e.measurementPosition!,
                       type: AdjustedLengthType.who,
-                      lengthHeight: e.unit,
+                      lengthHeight: e.measurement,
                     ),
                   ),
                 )

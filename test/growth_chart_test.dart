@@ -604,6 +604,17 @@ void main() {
         true,
       );
       expect(result[VelocityIncrement.$2]?[(high: 6, low: 4)]?.zScore, 3.58);
+
+      final fromJson = whoGS.fromJson
+          .weightVelocityForAge(measurement.toJson())
+          .zScorePercentileMap(Precision.two);
+
+      expect(fromJson.containsKey(VelocityIncrement.$2), true);
+      expect(
+        fromJson[VelocityIncrement.$2]?.containsKey((high: 6, low: 4)),
+        true,
+      );
+      expect(fromJson[VelocityIncrement.$2]?[(high: 6, low: 4)]?.zScore, 3.58);
     });
     test('Weight Velocity 2', () {
       final age = Age.byMonthsAgo(18);

@@ -22,7 +22,7 @@ MassMeasurementHistory _$MassMeasurementHistoryFromJson(
 /// @nodoc
 mixin _$MassMeasurementHistory {
   Date get date => throw _privateConstructorUsedError;
-  Mass get unit => throw _privateConstructorUsedError;
+  Mass get measurement => throw _privateConstructorUsedError;
   bool? get isOedema => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,7 +37,7 @@ abstract class $MassMeasurementHistoryCopyWith<$Res> {
           $Res Function(MassMeasurementHistory) then) =
       _$MassMeasurementHistoryCopyWithImpl<$Res, MassMeasurementHistory>;
   @useResult
-  $Res call({Date date, Mass unit, bool? isOedema});
+  $Res call({Date date, Mass measurement, bool? isOedema});
 
   $DateCopyWith<$Res> get date;
 }
@@ -57,7 +57,7 @@ class _$MassMeasurementHistoryCopyWithImpl<$Res,
   @override
   $Res call({
     Object? date = null,
-    Object? unit = null,
+    Object? measurement = null,
     Object? isOedema = freezed,
   }) {
     return _then(_value.copyWith(
@@ -65,9 +65,9 @@ class _$MassMeasurementHistoryCopyWithImpl<$Res,
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as Date,
-      unit: null == unit
-          ? _value.unit
-          : unit // ignore: cast_nullable_to_non_nullable
+      measurement: null == measurement
+          ? _value.measurement
+          : measurement // ignore: cast_nullable_to_non_nullable
               as Mass,
       isOedema: freezed == isOedema
           ? _value.isOedema
@@ -94,7 +94,7 @@ abstract class _$$MassMeasurementHistoryImplCopyWith<$Res>
       __$$MassMeasurementHistoryImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Date date, Mass unit, bool? isOedema});
+  $Res call({Date date, Mass measurement, bool? isOedema});
 
   @override
   $DateCopyWith<$Res> get date;
@@ -114,7 +114,7 @@ class __$$MassMeasurementHistoryImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? date = null,
-    Object? unit = null,
+    Object? measurement = null,
     Object? isOedema = freezed,
   }) {
     return _then(_$MassMeasurementHistoryImpl(
@@ -122,9 +122,9 @@ class __$$MassMeasurementHistoryImplCopyWithImpl<$Res>
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as Date,
-      null == unit
-          ? _value.unit
-          : unit // ignore: cast_nullable_to_non_nullable
+      null == measurement
+          ? _value.measurement
+          : measurement // ignore: cast_nullable_to_non_nullable
               as Mass,
       isOedema: freezed == isOedema
           ? _value.isOedema
@@ -137,7 +137,8 @@ class __$$MassMeasurementHistoryImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$MassMeasurementHistoryImpl implements _MassMeasurementHistory {
-  _$MassMeasurementHistoryImpl(this.date, this.unit, {this.isOedema = false});
+  _$MassMeasurementHistoryImpl(this.date, this.measurement,
+      {this.isOedema = false});
 
   factory _$MassMeasurementHistoryImpl.fromJson(Map<String, dynamic> json) =>
       _$$MassMeasurementHistoryImplFromJson(json);
@@ -145,14 +146,14 @@ class _$MassMeasurementHistoryImpl implements _MassMeasurementHistory {
   @override
   final Date date;
   @override
-  final Mass unit;
+  final Mass measurement;
   @override
   @JsonKey()
   final bool? isOedema;
 
   @override
   String toString() {
-    return 'MassMeasurementHistory(date: $date, unit: $unit, isOedema: $isOedema)';
+    return 'MassMeasurementHistory(date: $date, measurement: $measurement, isOedema: $isOedema)';
   }
 
   @override
@@ -161,14 +162,15 @@ class _$MassMeasurementHistoryImpl implements _MassMeasurementHistory {
         (other.runtimeType == runtimeType &&
             other is _$MassMeasurementHistoryImpl &&
             (identical(other.date, date) || other.date == date) &&
-            (identical(other.unit, unit) || other.unit == unit) &&
+            (identical(other.measurement, measurement) ||
+                other.measurement == measurement) &&
             (identical(other.isOedema, isOedema) ||
                 other.isOedema == isOedema));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, date, unit, isOedema);
+  int get hashCode => Object.hash(runtimeType, date, measurement, isOedema);
 
   @JsonKey(ignore: true)
   @override
@@ -186,7 +188,7 @@ class _$MassMeasurementHistoryImpl implements _MassMeasurementHistory {
 }
 
 abstract class _MassMeasurementHistory implements MassMeasurementHistory {
-  factory _MassMeasurementHistory(final Date date, final Mass unit,
+  factory _MassMeasurementHistory(final Date date, final Mass measurement,
       {final bool? isOedema}) = _$MassMeasurementHistoryImpl;
 
   factory _MassMeasurementHistory.fromJson(Map<String, dynamic> json) =
@@ -195,7 +197,7 @@ abstract class _MassMeasurementHistory implements MassMeasurementHistory {
   @override
   Date get date;
   @override
-  Mass get unit;
+  Mass get measurement;
   @override
   bool? get isOedema;
   @override
@@ -212,7 +214,7 @@ LengthMeasurementHistory _$LengthMeasurementHistoryFromJson(
 /// @nodoc
 mixin _$LengthMeasurementHistory {
   Date get date => throw _privateConstructorUsedError;
-  Length get unit => throw _privateConstructorUsedError;
+  Length get measurement => throw _privateConstructorUsedError;
   LengthHeightMeasurementPosition? get measurementPosition =>
       throw _privateConstructorUsedError;
 
@@ -230,7 +232,7 @@ abstract class $LengthMeasurementHistoryCopyWith<$Res> {
   @useResult
   $Res call(
       {Date date,
-      Length unit,
+      Length measurement,
       LengthHeightMeasurementPosition? measurementPosition});
 
   $DateCopyWith<$Res> get date;
@@ -251,7 +253,7 @@ class _$LengthMeasurementHistoryCopyWithImpl<$Res,
   @override
   $Res call({
     Object? date = null,
-    Object? unit = null,
+    Object? measurement = null,
     Object? measurementPosition = freezed,
   }) {
     return _then(_value.copyWith(
@@ -259,9 +261,9 @@ class _$LengthMeasurementHistoryCopyWithImpl<$Res,
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as Date,
-      unit: null == unit
-          ? _value.unit
-          : unit // ignore: cast_nullable_to_non_nullable
+      measurement: null == measurement
+          ? _value.measurement
+          : measurement // ignore: cast_nullable_to_non_nullable
               as Length,
       measurementPosition: freezed == measurementPosition
           ? _value.measurementPosition
@@ -290,7 +292,7 @@ abstract class _$$LengthMeasurementHistoryImplCopyWith<$Res>
   @useResult
   $Res call(
       {Date date,
-      Length unit,
+      Length measurement,
       LengthHeightMeasurementPosition? measurementPosition});
 
   @override
@@ -311,7 +313,7 @@ class __$$LengthMeasurementHistoryImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? date = null,
-    Object? unit = null,
+    Object? measurement = null,
     Object? measurementPosition = freezed,
   }) {
     return _then(_$LengthMeasurementHistoryImpl(
@@ -319,9 +321,9 @@ class __$$LengthMeasurementHistoryImplCopyWithImpl<$Res>
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as Date,
-      null == unit
-          ? _value.unit
-          : unit // ignore: cast_nullable_to_non_nullable
+      null == measurement
+          ? _value.measurement
+          : measurement // ignore: cast_nullable_to_non_nullable
               as Length,
       measurementPosition: freezed == measurementPosition
           ? _value.measurementPosition
@@ -334,7 +336,7 @@ class __$$LengthMeasurementHistoryImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$LengthMeasurementHistoryImpl implements _LengthMeasurementHistory {
-  _$LengthMeasurementHistoryImpl(this.date, this.unit,
+  _$LengthMeasurementHistoryImpl(this.date, this.measurement,
       {this.measurementPosition = LengthHeightMeasurementPosition.recumbent});
 
   factory _$LengthMeasurementHistoryImpl.fromJson(Map<String, dynamic> json) =>
@@ -343,14 +345,14 @@ class _$LengthMeasurementHistoryImpl implements _LengthMeasurementHistory {
   @override
   final Date date;
   @override
-  final Length unit;
+  final Length measurement;
   @override
   @JsonKey()
   final LengthHeightMeasurementPosition? measurementPosition;
 
   @override
   String toString() {
-    return 'LengthMeasurementHistory(date: $date, unit: $unit, measurementPosition: $measurementPosition)';
+    return 'LengthMeasurementHistory(date: $date, measurement: $measurement, measurementPosition: $measurementPosition)';
   }
 
   @override
@@ -359,14 +361,16 @@ class _$LengthMeasurementHistoryImpl implements _LengthMeasurementHistory {
         (other.runtimeType == runtimeType &&
             other is _$LengthMeasurementHistoryImpl &&
             (identical(other.date, date) || other.date == date) &&
-            (identical(other.unit, unit) || other.unit == unit) &&
+            (identical(other.measurement, measurement) ||
+                other.measurement == measurement) &&
             (identical(other.measurementPosition, measurementPosition) ||
                 other.measurementPosition == measurementPosition));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, date, unit, measurementPosition);
+  int get hashCode =>
+      Object.hash(runtimeType, date, measurement, measurementPosition);
 
   @JsonKey(ignore: true)
   @override
@@ -384,7 +388,7 @@ class _$LengthMeasurementHistoryImpl implements _LengthMeasurementHistory {
 }
 
 abstract class _LengthMeasurementHistory implements LengthMeasurementHistory {
-  factory _LengthMeasurementHistory(final Date date, final Length unit,
+  factory _LengthMeasurementHistory(final Date date, final Length measurement,
           {final LengthHeightMeasurementPosition? measurementPosition}) =
       _$LengthMeasurementHistoryImpl;
 
@@ -394,7 +398,7 @@ abstract class _LengthMeasurementHistory implements LengthMeasurementHistory {
   @override
   Date get date;
   @override
-  Length get unit;
+  Length get measurement;
   @override
   LengthHeightMeasurementPosition? get measurementPosition;
   @override

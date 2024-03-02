@@ -100,7 +100,7 @@ class VelocityPastMeasurement<T extends Unit<T>> {
       );
 
   Map<Date, T> get unsortedDate =>
-      measurementHistory.asMap().map((_, v) => MapEntry(v.date, v.unit));
+      measurementHistory.asMap().map((_, v) => MapEntry(v.date, v.measurement));
 
   Map<VelocityIncrement, Map<({Date dateBefore, Date dateAfter}), num>>
       get incrementalData {
@@ -144,8 +144,10 @@ class VelocityPastMeasurement<T extends Unit<T>> {
 }
 
 extension Measurement<T extends Unit<T>> on List<MeasurementHistory<T>> {
-  Map<Date, T> get mapByDate => asMap().map((_, v) => MapEntry(v.date, v.unit));
-  Map<T, Date> get mapByUnit => asMap().map((_, v) => MapEntry(v.unit, v.date));
+  Map<Date, T> get mapByDate =>
+      asMap().map((_, v) => MapEntry(v.date, v.measurement));
+  Map<T, Date> get mapByUnit =>
+      asMap().map((_, v) => MapEntry(v.measurement, v.date));
 }
 
 @freezed
@@ -153,7 +155,7 @@ class MassMeasurementHistory extends MeasurementHistory<Mass>
     with _$MassMeasurementHistory {
   factory MassMeasurementHistory(
     Date date,
-    Mass unit, {
+    Mass measurement, {
     @Default(false) bool? isOedema,
   }) = _MassMeasurementHistory;
 
@@ -166,7 +168,7 @@ class LengthMeasurementHistory extends MeasurementHistory<Length>
     with _$LengthMeasurementHistory {
   factory LengthMeasurementHistory(
     Date date,
-    Length unit, {
+    Length measurement, {
     @Default(LengthHeightMeasurementPosition.recumbent)
     LengthHeightMeasurementPosition? measurementPosition,
   }) = _LengthMeasurementHistory;
@@ -177,75 +179,75 @@ class LengthMeasurementHistory extends MeasurementHistory<Length>
 
 sealed class MeasurementHistory<T extends Unit<T>> {
   const MeasurementHistory();
-  T get unit;
+  T get measurement;
   Date get date;
 }
 
-class MassMeasurementHistoryConverter
-    implements JsonConverter<List<MassMeasurementHistory>, List<dynamic>> {
-  const MassMeasurementHistoryConverter();
+// class MassMeasurementHistoryConverter
+//     implements JsonConverter<List<MassMeasurementHistory>, List<dynamic>> {
+//   const MassMeasurementHistoryConverter();
 
-  @override
-  List<MassMeasurementHistory> fromJson(List json) => json.map(
-        (e) {
-          e as Map<String, dynamic>;
-          return MassMeasurementHistory(
-            Date.fromJson(
-              e['date'] as Map<String, dynamic>,
-            ),
-            Mass.fromJson(
-              e['measurement'] as Map<String, dynamic>,
-            ),
-            isOedema: e['isOedema'] as bool?,
-          );
-        },
-      ).toList();
+//   @override
+//   List<MassMeasurementHistory> fromJson(List json) => json.map(
+//         (e) {
+//           e as Map<String, dynamic>;
+//           return MassMeasurementHistory(
+//             Date.fromJson(
+//               e['date'] as Map<String, dynamic>,
+//             ),
+//             Mass.fromJson(
+//               e['measurement'] as Map<String, dynamic>,
+//             ),
+//             isOedema: e['isOedema'] as bool?,
+//           );
+//         },
+//       ).toList();
 
-  @override
-  List toJson(List<MassMeasurementHistory> object) => object
-      .map(
-        (e) => {
-          'date': e.date.toJson(),
-          'measurement': e.unit.toJson(),
-          'isOedema': e.isOedema,
-        },
-      )
-      .toList();
-}
+//   @override
+//   List toJson(List<MassMeasurementHistory> object) => object
+//       .map(
+//         (e) => {
+//           'date': e.date.toJson(),
+//           'measurement': e.unit.toJson(),
+//           'isOedema': e.isOedema,
+//         },
+//       )
+//       .toList();
+// }
 
-class ListOfLengthMeasurementHistoryConverter
-    implements JsonConverter<List<LengthMeasurementHistory>, List<dynamic>> {
-  const ListOfLengthMeasurementHistoryConverter();
+// class ListOfLengthMeasurementHistoryConverter
+//     implements JsonConverter<List<LengthMeasurementHistory>, List<dynamic>> {
+//   const ListOfLengthMeasurementHistoryConverter();
 
-  @override
-  List<LengthMeasurementHistory> fromJson(List json) => json.map(
-        (e) {
-          e as Map<String, dynamic>;
-          return LengthMeasurementHistory(
-            Date.fromJson(
-              e['date'] as Map<String, dynamic>,
-            ),
-            Length.fromJson(
-              e['measurement'] as Map<String, dynamic>,
-            ),
-            measurementPosition: LengthHeightMeasurementPosition.values
-                .asMap()
-                .map((_, v) => MapEntry(v.value, v))[e['position'] as String],
-          );
-        },
-      ).toList();
+//   @override
+//   List<LengthMeasurementHistory> fromJson(List json) => json.map(
+//         (e) {
+//           e as Map<String, dynamic>;
+//           return LengthMeasurementHistory(
+//             Date.fromJson(
+//               e['date'] as Map<String, dynamic>,
+//             ),
+//             Length.fromJson(
+//               e['measurement'] as Map<String, dynamic>,
+//             ),
+//             measurementPosition: LengthHeightMeasurementPosition.values
+//                 .asMap()
+//                 .map((_, v) => MapEntry(v.value, v))[e['position'] as String],
+//           );
+//         },
+//       ).toList();
 
-  @override
-  List toJson(List<LengthMeasurementHistory> object) => object
-      .map(
-        (e) => {
-          'date': e.date.toJson(),
-          'measurement': e.unit.toJson(),
-          'position': e.measurementPosition?.value,
-        },
-      )
-      .toList();
-}
+//   @override
+//   List toJson(List<LengthMeasurementHistory> object) => object
+//       .map(
+//         (e) => {
+//           'date': e.date.toJson(),
+//           'measurement': e.unit.toJson(),
+//           'position': e.measurementPosition?.value,
+//         },
+//       )
+//       .toList();
+// }
 
 extension MapExt1
     on Map<VelocityIncrement, Map<VelocityMonths, ZScorePercentile>?> {

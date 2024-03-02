@@ -1000,7 +1000,6 @@ WHOGrowthStandardsHeadCircumferenceVelocityForAge
 mixin _$WHOGrowthStandardsHeadCircumferenceVelocityForAge {
   Sex get sex => throw _privateConstructorUsedError;
   Age get age => throw _privateConstructorUsedError;
-  @ListOfLengthMeasurementHistoryConverter()
   List<LengthMeasurementHistory> get pastMeasurement =>
       throw _privateConstructorUsedError;
 
@@ -1021,11 +1020,7 @@ abstract class $WHOGrowthStandardsHeadCircumferenceVelocityForAgeCopyWith<
       _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeCopyWithImpl<$Res,
           WHOGrowthStandardsHeadCircumferenceVelocityForAge>;
   @useResult
-  $Res call(
-      {Sex sex,
-      Age age,
-      @ListOfLengthMeasurementHistoryConverter()
-      List<LengthMeasurementHistory> pastMeasurement});
+  $Res call({Sex sex, Age age, List<LengthMeasurementHistory> pastMeasurement});
 
   $AgeCopyWith<$Res> get age;
 }
@@ -1088,11 +1083,7 @@ abstract class _$$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImplCopyWith<
           $Res>;
   @override
   @useResult
-  $Res call(
-      {Sex sex,
-      Age age,
-      @ListOfLengthMeasurementHistoryConverter()
-      List<LengthMeasurementHistory> pastMeasurement});
+  $Res call({Sex sex, Age age, List<LengthMeasurementHistory> pastMeasurement});
 
   @override
   $AgeCopyWith<$Res> get age;
@@ -1142,7 +1133,6 @@ class _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl
   _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl(
       {required this.sex,
       required this.age,
-      @ListOfLengthMeasurementHistoryConverter()
       required final List<LengthMeasurementHistory> pastMeasurement})
       : assert(age.ageInTotalDaysByNow >= 0 && age.ageInTotalMonthsByNow <= 24,
             'Age must be in range of 0 days - 24 months'),
@@ -1171,7 +1161,6 @@ class _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl
   final Age age;
   final List<LengthMeasurementHistory> _pastMeasurement;
   @override
-  @ListOfLengthMeasurementHistoryConverter()
   List<LengthMeasurementHistory> get pastMeasurement {
     if (_pastMeasurement is EqualUnmodifiableListView) return _pastMeasurement;
     // ignore: implicit_dynamic_type
@@ -1222,7 +1211,6 @@ abstract class _WHOGrowthStandardsHeadCircumferenceVelocityForAge
   factory _WHOGrowthStandardsHeadCircumferenceVelocityForAge(
           {required final Sex sex,
           required final Age age,
-          @ListOfLengthMeasurementHistoryConverter()
           required final List<LengthMeasurementHistory> pastMeasurement}) =
       _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl;
   _WHOGrowthStandardsHeadCircumferenceVelocityForAge._() : super._();
@@ -1236,7 +1224,6 @@ abstract class _WHOGrowthStandardsHeadCircumferenceVelocityForAge
   @override
   Age get age;
   @override
-  @ListOfLengthMeasurementHistoryConverter()
   List<LengthMeasurementHistory> get pastMeasurement;
   @override
   @JsonKey(ignore: true)
@@ -1530,7 +1517,6 @@ WHOGrowthStandardsLengthVelocityForAge
 mixin _$WHOGrowthStandardsLengthVelocityForAge {
   Sex get sex => throw _privateConstructorUsedError;
   Age get age => throw _privateConstructorUsedError;
-  @ListOfLengthMeasurementHistoryConverter()
   List<LengthMeasurementHistory> get pastMeasurement =>
       throw _privateConstructorUsedError;
 
@@ -1549,11 +1535,7 @@ abstract class $WHOGrowthStandardsLengthVelocityForAgeCopyWith<$Res> {
       _$WHOGrowthStandardsLengthVelocityForAgeCopyWithImpl<$Res,
           WHOGrowthStandardsLengthVelocityForAge>;
   @useResult
-  $Res call(
-      {Sex sex,
-      Age age,
-      @ListOfLengthMeasurementHistoryConverter()
-      List<LengthMeasurementHistory> pastMeasurement});
+  $Res call({Sex sex, Age age, List<LengthMeasurementHistory> pastMeasurement});
 
   $AgeCopyWith<$Res> get age;
 }
@@ -1610,11 +1592,7 @@ abstract class _$$WHOGrowthStandardsLengthVelocityForAgeImplCopyWith<$Res>
       __$$WHOGrowthStandardsLengthVelocityForAgeImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {Sex sex,
-      Age age,
-      @ListOfLengthMeasurementHistoryConverter()
-      List<LengthMeasurementHistory> pastMeasurement});
+  $Res call({Sex sex, Age age, List<LengthMeasurementHistory> pastMeasurement});
 
   @override
   $AgeCopyWith<$Res> get age;
@@ -1661,7 +1639,6 @@ class _$WHOGrowthStandardsLengthVelocityForAgeImpl
   _$WHOGrowthStandardsLengthVelocityForAgeImpl(
       {required this.sex,
       required this.age,
-      @ListOfLengthMeasurementHistoryConverter()
       required final List<LengthMeasurementHistory> pastMeasurement})
       : assert(age.ageInTotalDaysByNow >= 0 && age.ageInTotalMonthsByNow <= 24,
             'Age must be in range of 0 days - 24 months'),
@@ -1690,7 +1667,6 @@ class _$WHOGrowthStandardsLengthVelocityForAgeImpl
   final Age age;
   final List<LengthMeasurementHistory> _pastMeasurement;
   @override
-  @ListOfLengthMeasurementHistoryConverter()
   List<LengthMeasurementHistory> get pastMeasurement {
     if (_pastMeasurement is EqualUnmodifiableListView) return _pastMeasurement;
     // ignore: implicit_dynamic_type
@@ -1740,7 +1716,6 @@ abstract class _WHOGrowthStandardsLengthVelocityForAge
   factory _WHOGrowthStandardsLengthVelocityForAge(
           {required final Sex sex,
           required final Age age,
-          @ListOfLengthMeasurementHistoryConverter()
           required final List<LengthMeasurementHistory> pastMeasurement}) =
       _$WHOGrowthStandardsLengthVelocityForAgeImpl;
   _WHOGrowthStandardsLengthVelocityForAge._() : super._();
@@ -1754,7 +1729,6 @@ abstract class _WHOGrowthStandardsLengthVelocityForAge
   @override
   Age get age;
   @override
-  @ListOfLengthMeasurementHistoryConverter()
   List<LengthMeasurementHistory> get pastMeasurement;
   @override
   @JsonKey(ignore: true)
@@ -2290,7 +2264,6 @@ WHOGrowthStandardsWeightVelocityForAge
 mixin _$WHOGrowthStandardsWeightVelocityForAge {
   Sex get sex => throw _privateConstructorUsedError;
   Age get age => throw _privateConstructorUsedError;
-  @MassMeasurementHistoryConverter()
   List<MassMeasurementHistory> get pastMeasurement =>
       throw _privateConstructorUsedError;
 
@@ -2309,11 +2282,7 @@ abstract class $WHOGrowthStandardsWeightVelocityForAgeCopyWith<$Res> {
       _$WHOGrowthStandardsWeightVelocityForAgeCopyWithImpl<$Res,
           WHOGrowthStandardsWeightVelocityForAge>;
   @useResult
-  $Res call(
-      {Sex sex,
-      Age age,
-      @MassMeasurementHistoryConverter()
-      List<MassMeasurementHistory> pastMeasurement});
+  $Res call({Sex sex, Age age, List<MassMeasurementHistory> pastMeasurement});
 
   $AgeCopyWith<$Res> get age;
 }
@@ -2370,11 +2339,7 @@ abstract class _$$WHOGrowthStandardsWeightVelocityForAgeImplCopyWith<$Res>
       __$$WHOGrowthStandardsWeightVelocityForAgeImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {Sex sex,
-      Age age,
-      @MassMeasurementHistoryConverter()
-      List<MassMeasurementHistory> pastMeasurement});
+  $Res call({Sex sex, Age age, List<MassMeasurementHistory> pastMeasurement});
 
   @override
   $AgeCopyWith<$Res> get age;
@@ -2421,7 +2386,6 @@ class _$WHOGrowthStandardsWeightVelocityForAgeImpl
   _$WHOGrowthStandardsWeightVelocityForAgeImpl(
       {required this.sex,
       required this.age,
-      @MassMeasurementHistoryConverter()
       required final List<MassMeasurementHistory> pastMeasurement})
       : assert(age.ageInTotalDaysByNow >= 0 && age.ageInTotalMonthsByNow <= 24,
             'Age must be in range of 0 days - 24 months'),
@@ -2450,7 +2414,6 @@ class _$WHOGrowthStandardsWeightVelocityForAgeImpl
   final Age age;
   final List<MassMeasurementHistory> _pastMeasurement;
   @override
-  @MassMeasurementHistoryConverter()
   List<MassMeasurementHistory> get pastMeasurement {
     if (_pastMeasurement is EqualUnmodifiableListView) return _pastMeasurement;
     // ignore: implicit_dynamic_type
@@ -2500,7 +2463,6 @@ abstract class _WHOGrowthStandardsWeightVelocityForAge
   factory _WHOGrowthStandardsWeightVelocityForAge(
           {required final Sex sex,
           required final Age age,
-          @MassMeasurementHistoryConverter()
           required final List<MassMeasurementHistory> pastMeasurement}) =
       _$WHOGrowthStandardsWeightVelocityForAgeImpl;
   _WHOGrowthStandardsWeightVelocityForAge._() : super._();
@@ -2514,7 +2476,6 @@ abstract class _WHOGrowthStandardsWeightVelocityForAge
   @override
   Age get age;
   @override
-  @MassMeasurementHistoryConverter()
   List<MassMeasurementHistory> get pastMeasurement;
   @override
   @JsonKey(ignore: true)
