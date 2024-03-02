@@ -23,8 +23,8 @@ class WHOGrowthStandardsBodyMassIndexForAgeData {
                   percentileCutOff: lms.percentileCutOff,
                   standardDeviationCutOff: lms.stDevCutOff,
                   loh: v2['loh'].toString().toLowerCase() == 'l'
-                      ? LengthHeigthMeasurementPosition.recumbent
-                      : LengthHeigthMeasurementPosition.standing,
+                      ? LengthHeightMeasurementPosition.recumbent
+                      : LengthHeightMeasurementPosition.standing,
                 ),
               );
             }),
@@ -51,7 +51,7 @@ class WHOGrowthStandardsBodyMassIndexMeasurement
   factory WHOGrowthStandardsBodyMassIndexMeasurement.fromMeasurement({
     @LengthConverter() required Length lengthHeight,
     @MassConverter() required Mass weight,
-    required LengthHeigthMeasurementPosition measure,
+    required LengthHeightMeasurementPosition measure,
     @AgeConverter() required Age age,
   }) {
     final adjustedLength = adjustedLengthHeight(
@@ -89,7 +89,7 @@ class WHOGrowthStandardsBodyMassIndexForAge
   factory WHOGrowthStandardsBodyMassIndexForAge({
     @DateConverter() Date? observationDate,
     required Sex sex,
-    @Default(false) bool oedemExist,
+    @Default(false) bool oedemaExist,
     @WHOGrowthStandardsBodyMassIndexMeasurementConverter()
     required WHOGrowthStandardsBodyMassIndexMeasurement
         bodyMassIndexMeasurement,
@@ -123,12 +123,12 @@ class WHOGrowthStandardsBodyMassIndexForAge
   num zScore([
     Precision precision = Precision.ten,
   ]) =>
-      oedemExist ? double.nan : _zScore.precision(precision);
+      oedemaExist ? double.nan : _zScore.precision(precision);
 
   num percentile([
     Precision precision = Precision.ten,
   ]) =>
-      oedemExist ? double.nan : (pnorm(_zScore) * 100).precision(precision);
+      oedemaExist ? double.nan : (pnorm(_zScore) * 100).precision(precision);
 }
 
 class _WHOGrowthStandardsBodyMassIndexForAgeGender {
@@ -148,7 +148,7 @@ class _WHOGrowthStandardsBodyMassIndexForAgeLMS {
     required this.standardDeviationCutOff,
   });
   final LMS lms;
-  final LengthHeigthMeasurementPosition loh;
+  final LengthHeightMeasurementPosition loh;
 
   final ZScoreCutOff standardDeviationCutOff;
 

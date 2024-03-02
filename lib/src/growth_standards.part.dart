@@ -16,10 +16,6 @@ class GrowthStandard {
   ///
   /// For preterm infant
   static Fenton get fenton => Fenton();
-
-  /// For survey
-  ///
-  // static Survey get survey => Survey();
 }
 
 class _WHO {

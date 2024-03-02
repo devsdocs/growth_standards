@@ -22,7 +22,7 @@ void main() {
     age: age,
     lengthHeight: centimeters,
     sex: sex,
-    measure: LengthHeigthMeasurementPosition.standing,
+    measure: LengthHeightMeasurementPosition.standing,
   );
   print(calcLengthForAgeStanding.zScore(Precision.two));
   print(calcLengthForAgeStanding.percentile(Precision.two));
@@ -32,7 +32,7 @@ void main() {
   );
 
   final calcLengthForAgeRecumbent = calcLengthForAgeStanding.copyWith(
-    measure: LengthHeigthMeasurementPosition.recumbent,
+    measure: LengthHeightMeasurementPosition.recumbent,
   );
   print(calcLengthForAgeRecumbent.zScore(Precision.two));
   print(calcLengthForAgeRecumbent.percentile(Precision.two));
@@ -52,7 +52,7 @@ void main() {
     massMeasurementResult: kilograms,
     sex: sex,
     age: age,
-    measure: LengthHeigthMeasurementPosition.recumbent,
+    measure: LengthHeightMeasurementPosition.recumbent,
   );
   print(calcWeigthForLength.zScore(Precision.two));
   print(calcWeigthForLength.percentile(Precision.two));
@@ -61,7 +61,7 @@ void main() {
   final calcBMIForAge = gs.bodyMassIndexForAge(
     bodyMassIndexMeasurement:
         WHOGrowthStandardsBodyMassIndexMeasurement.fromMeasurement(
-      measure: LengthHeigthMeasurementPosition.recumbent,
+      measure: LengthHeightMeasurementPosition.recumbent,
       lengthHeight: centimeters,
       weight: kilograms,
       age: age,

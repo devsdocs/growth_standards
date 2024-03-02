@@ -456,7 +456,7 @@ void main() {
                 20.5,
                 age: Age(observationDate),
               ),
-              oedemExist: true,
+              oedemaExist: true,
             )
             .zScore(Precision.two)
             .isNaN,
@@ -516,12 +516,12 @@ void main() {
         const Length$Centimeter(80),
       );
 
-      final msrmnt = whoGS.lengthVelocityForAge(
+      final measurement = whoGS.lengthVelocityForAge(
         age: age,
         sex: Sex.female,
         pastMeasurement: [msr1, msr2],
       );
-      final result = msrmnt.zScorePercentileMap(Precision.two);
+      final result = measurement.zScorePercentileMap(Precision.two);
       expect(result.containsKey(VelocityIncrement.$3), true);
       expect(
         result[VelocityIncrement.$3]?.containsKey((high: 12, low: 9)),
@@ -541,12 +541,12 @@ void main() {
         const Length$Centimeter(85.5),
       );
 
-      final msrmnt = whoGS.lengthVelocityForAge(
+      final measurement = whoGS.lengthVelocityForAge(
         age: age,
         sex: Sex.female,
         pastMeasurement: [msr1, msr2],
       );
-      final result = msrmnt.zScorePercentileMap(Precision.two);
+      final result = measurement.zScorePercentileMap(Precision.two);
       expect(result.containsKey(VelocityIncrement.$3), true);
       expect(
         result[VelocityIncrement.$3]?.containsKey((high: 18, low: 15)),
@@ -566,12 +566,12 @@ void main() {
         const Length$Centimeter(55),
       );
 
-      final msrmnt = whoGS.lengthVelocityForAge(
+      final measurement = whoGS.lengthVelocityForAge(
         age: age,
         sex: Sex.female,
         pastMeasurement: [msr1, msr2],
       );
-      final result = msrmnt.zScorePercentileMap(Precision.two);
+      final result = measurement.zScorePercentileMap(Precision.two);
       expect(result.containsKey(VelocityIncrement.$3), true);
       expect(
         result[VelocityIncrement.$3]?.containsKey((high: 6, low: 3)),
@@ -592,12 +592,12 @@ void main() {
         const Mass$Kilogram(6.2),
       );
 
-      final msrmnt = whoGS.weightVelocityForAge(
+      final measurement = whoGS.weightVelocityForAge(
         age: age,
         sex: Sex.male,
         pastMeasurement: [msr1, msr2],
       );
-      final result = msrmnt.zScorePercentileMap(Precision.two);
+      final result = measurement.zScorePercentileMap(Precision.two);
       expect(result.containsKey(VelocityIncrement.$2), true);
       expect(
         result[VelocityIncrement.$2]?.containsKey((high: 6, low: 4)),
@@ -617,12 +617,12 @@ void main() {
         const Mass$Kilogram(11.5),
       );
 
-      final msrmnt = whoGS.weightVelocityForAge(
+      final measurement = whoGS.weightVelocityForAge(
         age: age,
         sex: Sex.male,
         pastMeasurement: [msr1, msr2],
       );
-      final result = msrmnt.zScorePercentileMap(Precision.two);
+      final result = measurement.zScorePercentileMap(Precision.two);
       expect(result.containsKey(VelocityIncrement.$2), true);
       expect(
         result[VelocityIncrement.$2]?.containsKey((high: 18, low: 16)),
@@ -642,12 +642,12 @@ void main() {
         const Mass$Kilogram(10.2),
       );
 
-      final msrmnt = whoGS.weightVelocityForAge(
+      final measurement = whoGS.weightVelocityForAge(
         age: age,
         sex: Sex.male,
         pastMeasurement: [msr1, msr2],
       );
-      final result = msrmnt.zScorePercentileMap(Precision.two);
+      final result = measurement.zScorePercentileMap(Precision.two);
       expect(result.containsKey(VelocityIncrement.$2), true);
       expect(
         result[VelocityIncrement.$2]?.containsKey((high: 13, low: 11)),

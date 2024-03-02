@@ -53,7 +53,7 @@ class CDCStatureForAge with _$CDCStatureForAge {
     required Sex sex,
     @AgeConverter() required Age age,
     @LengthConverter() required Length lengthHeight,
-    required LengthHeigthMeasurementPosition measure,
+    required LengthHeightMeasurementPosition measure,
   }) = _GrowthReferenceHeightForAge;
 
   const CDCStatureForAge._();

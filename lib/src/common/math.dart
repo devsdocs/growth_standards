@@ -66,16 +66,16 @@ num adjustedZScoreCalculation(
   return zScore;
 }
 
-/// Adjusted [Length] flaged by [LengthHeigthMeasurementPosition]
+/// Adjusted [Length] flagged by [LengthHeightMeasurementPosition]
 /// based on WHO/CDC requirements
 Length$Centimeter adjustedLengthHeight({
   required Age age,
-  required LengthHeigthMeasurementPosition measure,
+  required LengthHeightMeasurementPosition measure,
   required Length lengthHeight,
   required AdjustedLengthType type,
 }) {
   num toCm = lengthHeight.toCentimeter.value;
-  final isStanding = measure == LengthHeigthMeasurementPosition.standing;
+  final isStanding = measure == LengthHeightMeasurementPosition.standing;
   final ageMos = age.ageInTotalMonthsByNow;
   final ageDays = age.ageInTotalDaysByNow;
   final val = type.value;

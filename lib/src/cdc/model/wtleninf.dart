@@ -1,23 +1,23 @@
 part of '../cdc.dart';
 
-class CDCInfantWeigthForLengthData {
-  factory CDCInfantWeigthForLengthData() => _singleton;
-  CDCInfantWeigthForLengthData._(this._data);
+class CDCInfantWeightForLengthData {
+  factory CDCInfantWeightForLengthData() => _singleton;
+  CDCInfantWeightForLengthData._(this._data);
 
-  static final _singleton = CDCInfantWeigthForLengthData._(_parse());
+  static final _singleton = CDCInfantWeightForLengthData._(_parse());
 
-  static Map<Sex, _CDCInfantWeigthForLengthGender> _parse() =>
+  static Map<Sex, _CDCInfantWeightForLengthGender> _parse() =>
       cdcwtleninf.toJsonObjectAsMap.map(
         (k1, v1) => MapEntry(
           k1 == '1' ? Sex.male : Sex.female,
-          _CDCInfantWeigthForLengthGender(
+          _CDCInfantWeightForLengthGender(
             lengthData: (v1 as Map<String, dynamic>).map((k2, v2) {
               v2 as Map<String, dynamic>;
               final lms =
                   LMS(l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
               return MapEntry(
                 num.parse(k2),
-                _CDCInfantWeigthForLengthLMS(
+                _CDCInfantWeightForLengthLMS(
                   lms: lms,
                   percentileCutOff: lms.percentileCutOff,
                   standardDeviationCutOff: lms.stDevCutOff,
@@ -27,15 +27,15 @@ class CDCInfantWeigthForLengthData {
           ),
         ),
       );
-  final Map<Sex, _CDCInfantWeigthForLengthGender> _data;
-  Map<Sex, _CDCInfantWeigthForLengthGender> get data => _data;
+  final Map<Sex, _CDCInfantWeightForLengthGender> _data;
+  Map<Sex, _CDCInfantWeightForLengthGender> get data => _data;
 
   @override
   String toString() => 'Weight For Length Data($_data)';
 }
 
 @freezed
-class CDCInfantWeigthForLength with _$CDCInfantWeigthForLength {
+class CDCInfantWeightForLength with _$CDCInfantWeightForLength {
   //TODO(devsdocs): Test this!
   @Assert(
     'adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.cdc,).value >= 45 && adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.cdc,).value < 104 && length.toCentimeter.value >= 45 && length.toCentimeter.value < 104',
@@ -50,19 +50,19 @@ class CDCInfantWeigthForLength with _$CDCInfantWeigthForLength {
     'observationDate == null || observationDate.isSameOrBefore(Date.today()) || observationDate.isSameOrAfter(age.dateOfBirth)',
     'Observation date is impossible, because happen after today or before birth',
   )
-  factory CDCInfantWeigthForLength({
+  factory CDCInfantWeightForLength({
     @DateConverter() Date? observationDate,
     required Sex sex,
     @AgeConverter() required Age age,
     @LengthConverter() required Length length,
     @MassConverter() required Mass weight,
-    required LengthHeigthMeasurementPosition measure,
-  }) = _CDCInfantWeigthForLength;
+    required LengthHeightMeasurementPosition measure,
+  }) = _CDCInfantWeightForLength;
 
-  const CDCInfantWeigthForLength._();
+  const CDCInfantWeightForLength._();
 
-  factory CDCInfantWeigthForLength.fromJson(Map<String, dynamic> json) =>
-      _$CDCInfantWeigthForLengthFromJson(json);
+  factory CDCInfantWeightForLength.fromJson(Map<String, dynamic> json) =>
+      _$CDCInfantWeightForLengthFromJson(json);
 
   num get _adjustedLength => adjustedLengthHeight(
         measure: measure,
@@ -71,15 +71,15 @@ class CDCInfantWeigthForLength with _$CDCInfantWeigthForLength {
         type: AdjustedLengthType.cdc,
       ).value;
 
-  CDCInfantWeigthForLengthData get _weigthForLengthData =>
-      CDCInfantWeigthForLengthData();
+  CDCInfantWeightForLengthData get _weightForLengthData =>
+      CDCInfantWeightForLengthData();
 
-  _CDCInfantWeigthForLengthGender get _maleData =>
-      _weigthForLengthData._data[Sex.male]!;
-  _CDCInfantWeigthForLengthGender get _femaleData =>
-      _weigthForLengthData._data[Sex.female]!;
+  _CDCInfantWeightForLengthGender get _maleData =>
+      _weightForLengthData._data[Sex.male]!;
+  _CDCInfantWeightForLengthGender get _femaleData =>
+      _weightForLengthData._data[Sex.female]!;
 //TODO(devsdocs): Fix CDC length calculation
-  _CDCInfantWeigthForLengthLMS get _ageData =>
+  _CDCInfantWeightForLengthLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData).lengthData[
           _adjustedLength == 45 ? 45 : _adjustedLength.truncate() + 0.5]!;
 
@@ -96,16 +96,16 @@ class CDCInfantWeigthForLength with _$CDCInfantWeigthForLength {
       (pnorm(_zScore) * 100).precision(precision);
 }
 
-class _CDCInfantWeigthForLengthGender {
-  _CDCInfantWeigthForLengthGender({required this.lengthData});
+class _CDCInfantWeightForLengthGender {
+  _CDCInfantWeightForLengthGender({required this.lengthData});
 
-  final Map<num, _CDCInfantWeigthForLengthLMS> lengthData;
+  final Map<num, _CDCInfantWeightForLengthLMS> lengthData;
   @override
   String toString() => 'Gender Data($lengthData)';
 }
 
-class _CDCInfantWeigthForLengthLMS {
-  _CDCInfantWeigthForLengthLMS({
+class _CDCInfantWeightForLengthLMS {
+  _CDCInfantWeightForLengthLMS({
     required this.lms,
     required this.standardDeviationCutOff,
     required this.percentileCutOff,

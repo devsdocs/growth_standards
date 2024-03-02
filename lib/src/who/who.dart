@@ -31,8 +31,8 @@ final class WHOGrowthStandardsData {
   WHOGrowthStandardsWeightForHeightData get weightForHeightData =>
       WHOGrowthStandardsWeightForHeightData();
 
-  WHOGrowthStandardsWeigthForLengthData get weigthForLengthData =>
-      WHOGrowthStandardsWeigthForLengthData();
+  WHOGrowthStandardsWeightForLengthData get weightForLengthData =>
+      WHOGrowthStandardsWeightForLengthData();
 
   WHOGrowthStandardsHeadCircumferenceVelocityForAgeData
       get headCircumferenceVelocityForAgeData =>
@@ -79,10 +79,10 @@ final class WHOGrowthStandardFromJson {
   ) =>
       WHOGrowthStandardsWeightForHeight.fromJson(json);
 
-  WHOGrowthStandardsWeigthForLength weightForLength(
+  WHOGrowthStandardsWeightForLength weightForLength(
     Map<String, dynamic> json,
   ) =>
-      WHOGrowthStandardsWeigthForLength.fromJson(json);
+      WHOGrowthStandardsWeightForLength.fromJson(json);
 
   WHOGrowthStandardsHeadCircumferenceVelocityForAge
       headCircumferenceVelocityForAge(Map<String, dynamic> json) =>
@@ -149,7 +149,7 @@ final class WHOGrowthStandard {
     required Sex sex,
     required Age age,
     required Length lengthHeight,
-    required LengthHeigthMeasurementPosition measure,
+    required LengthHeightMeasurementPosition measure,
   }) =>
       WHOGrowthStandardsLengthForAge(
         observationDate: observationDate,
@@ -203,7 +203,7 @@ final class WHOGrowthStandard {
     required Age age,
     required Length height,
     required Mass mass,
-    required LengthHeigthMeasurementPosition measure,
+    required LengthHeightMeasurementPosition measure,
   }) =>
       WHOGrowthStandardsWeightForHeight(
         observationDate: observationDate,
@@ -214,15 +214,15 @@ final class WHOGrowthStandard {
         measure: measure,
       );
 
-  WHOGrowthStandardsWeigthForLength weightForLength({
+  WHOGrowthStandardsWeightForLength weightForLength({
     Date? observationDate,
     required Sex sex,
     required Length lengthMeasurementResult,
     required Mass massMeasurementResult,
     required Age age,
-    required LengthHeigthMeasurementPosition measure,
+    required LengthHeightMeasurementPosition measure,
   }) =>
-      WHOGrowthStandardsWeigthForLength(
+      WHOGrowthStandardsWeightForLength(
         observationDate: observationDate,
         sex: sex,
         length: lengthMeasurementResult,
@@ -318,7 +318,7 @@ final class WHOGrowthReference {
     required Sex sex,
     required Age age,
     required Length lengthHeight,
-    required LengthHeigthMeasurementPosition measure,
+    required LengthHeightMeasurementPosition measure,
   }) =>
       WHOGrowthReferenceHeightForAge(
         observationDate: observationDate,

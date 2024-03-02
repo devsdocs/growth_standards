@@ -48,7 +48,7 @@ class CDCInfantLengthForAge with _$CDCInfantLengthForAge {
     required Sex sex,
     @AgeConverter() required Age age,
     @LengthConverter() required Length lengthHeight,
-    required LengthHeigthMeasurementPosition measure,
+    required LengthHeightMeasurementPosition measure,
   }) = _LengthForAge;
 
   const CDCInfantLengthForAge._();

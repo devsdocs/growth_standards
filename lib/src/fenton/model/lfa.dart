@@ -45,7 +45,7 @@ class FentonLengthForAge with _$FentonLengthForAge {
     required Sex sex,
     @AgeConverter() required Age age,
     @LengthConverter() required Length lengthHeight,
-    required LengthHeigthMeasurementPosition measure,
+    required LengthHeightMeasurementPosition measure,
   }) = _FentonLengthForAge;
 
   const FentonLengthForAge._();

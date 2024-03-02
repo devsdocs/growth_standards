@@ -80,7 +80,7 @@ class Fenton {
     required Sex sex,
     required Age age,
     required Length lengthHeight,
-    required LengthHeigthMeasurementPosition measure,
+    required LengthHeightMeasurementPosition measure,
   }) =>
       FentonLengthForAge(
         observationDate: observationDate,

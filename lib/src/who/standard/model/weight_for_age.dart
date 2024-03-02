@@ -47,7 +47,7 @@ class WHOGrowthStandardsWeightForAge with _$WHOGrowthStandardsWeightForAge {
   factory WHOGrowthStandardsWeightForAge({
     @DateConverter() Date? observationDate,
     required Sex sex,
-    @Default(false) bool oedemExist,
+    @Default(false) bool oedemaExist,
     @AgeConverter() required Age age,
     @MassConverter() required Mass weight,
   }) = _WHOGrowthStandardsWeightForAge;
@@ -76,12 +76,12 @@ class WHOGrowthStandardsWeightForAge with _$WHOGrowthStandardsWeightForAge {
   num zScore([
     Precision precision = Precision.ten,
   ]) =>
-      _zScore.precision(precision);
+      oedemaExist ? double.nan : _zScore.precision(precision);
 
   num percentile([
     Precision precision = Precision.ten,
   ]) =>
-      (pnorm(_zScore) * 100).precision(precision);
+      oedemaExist ? double.nan : (pnorm(_zScore) * 100).precision(precision);
 }
 
 class _WHOGrowthStandardsWeightForAgeGender {

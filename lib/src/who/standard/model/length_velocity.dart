@@ -74,10 +74,9 @@ class WHOGrowthStandardsLengthVelocityForAge
     'Calculation can not be done as there is date less than Date of Birth in past measurement, if you find this exception is a mistake, try to provide exact \$Age',
   )
   factory WHOGrowthStandardsLengthVelocityForAge({
-    
     required Sex sex,
     @AgeConverter() required Age age,
-    @LengthMeasurementHistoryConverter()
+    @ListOfLengthMeasurementHistoryConverter()
     required List<LengthMeasurementHistory> pastMeasurement,
   }) = _WHOGrowthStandardsLengthVelocityForAge;
 
@@ -154,8 +153,6 @@ class WHOGrowthStandardsLengthVelocityForAge
     });
     return joinMap.removeAllNull;
   }
-
-  
 }
 
 class WHOGrowthStandardsLengthVelocityForAgeGender {

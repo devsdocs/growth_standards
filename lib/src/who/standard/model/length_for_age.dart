@@ -21,8 +21,8 @@ class WHOGrowthStandardsLengthForAgeData {
                   percentileCutOff: lms.percentileCutOff,
                   standardDeviationCutOff: lms.stDevCutOff,
                   loh: v2['loh'].toString().toLowerCase() == 'l'
-                      ? LengthHeigthMeasurementPosition.recumbent
-                      : LengthHeigthMeasurementPosition.standing,
+                      ? LengthHeightMeasurementPosition.recumbent
+                      : LengthHeightMeasurementPosition.standing,
                 ),
               );
             }),
@@ -51,7 +51,7 @@ class WHOGrowthStandardsLengthForAge with _$WHOGrowthStandardsLengthForAge {
     required Sex sex,
     @AgeConverter() required Age age,
     @LengthConverter() required Length lengthHeight,
-    required LengthHeigthMeasurementPosition measure,
+    required LengthHeightMeasurementPosition measure,
   }) = _WHOGrowthStandardsLengthForAge;
 
   const WHOGrowthStandardsLengthForAge._();
@@ -109,7 +109,7 @@ class _WHOGrowthStandardsLengthForAgeLMS {
     required this.standardDeviationCutOff,
   });
   final LMS lms;
-  final LengthHeigthMeasurementPosition loh;
+  final LengthHeightMeasurementPosition loh;
 
   final ZScoreCutOff standardDeviationCutOff;
 

@@ -294,7 +294,7 @@ mixin _$FentonLengthForAge {
   Age get age => throw _privateConstructorUsedError;
   @LengthConverter()
   Length get lengthHeight => throw _privateConstructorUsedError;
-  LengthHeigthMeasurementPosition get measure =>
+  LengthHeightMeasurementPosition get measure =>
       throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -314,7 +314,7 @@ abstract class $FentonLengthForAgeCopyWith<$Res> {
       Sex sex,
       @AgeConverter() Age age,
       @LengthConverter() Length lengthHeight,
-      LengthHeigthMeasurementPosition measure});
+      LengthHeightMeasurementPosition measure});
 
   $DateCopyWith<$Res>? get observationDate;
   $AgeCopyWith<$Res> get age;
@@ -359,7 +359,7 @@ class _$FentonLengthForAgeCopyWithImpl<$Res, $Val extends FentonLengthForAge>
       measure: null == measure
           ? _value.measure
           : measure // ignore: cast_nullable_to_non_nullable
-              as LengthHeigthMeasurementPosition,
+              as LengthHeightMeasurementPosition,
     ) as $Val);
   }
 
@@ -397,7 +397,7 @@ abstract class _$$FentonLengthForAgeImplCopyWith<$Res>
       Sex sex,
       @AgeConverter() Age age,
       @LengthConverter() Length lengthHeight,
-      LengthHeigthMeasurementPosition measure});
+      LengthHeightMeasurementPosition measure});
 
   @override
   $DateCopyWith<$Res>? get observationDate;
@@ -442,7 +442,7 @@ class __$$FentonLengthForAgeImplCopyWithImpl<$Res>
       measure: null == measure
           ? _value.measure
           : measure // ignore: cast_nullable_to_non_nullable
-              as LengthHeigthMeasurementPosition,
+              as LengthHeightMeasurementPosition,
     ));
   }
 }
@@ -484,7 +484,7 @@ class _$FentonLengthForAgeImpl extends _FentonLengthForAge {
   @LengthConverter()
   final Length lengthHeight;
   @override
-  final LengthHeigthMeasurementPosition measure;
+  final LengthHeightMeasurementPosition measure;
 
   @override
   String toString() {
@@ -531,7 +531,7 @@ abstract class _FentonLengthForAge extends FentonLengthForAge {
           required final Sex sex,
           @AgeConverter() required final Age age,
           @LengthConverter() required final Length lengthHeight,
-          required final LengthHeigthMeasurementPosition measure}) =
+          required final LengthHeightMeasurementPosition measure}) =
       _$FentonLengthForAgeImpl;
   _FentonLengthForAge._() : super._();
 
@@ -550,7 +550,7 @@ abstract class _FentonLengthForAge extends FentonLengthForAge {
   @LengthConverter()
   Length get lengthHeight;
   @override
-  LengthHeigthMeasurementPosition get measure;
+  LengthHeightMeasurementPosition get measure;
   @override
   @JsonKey(ignore: true)
   _$$FentonLengthForAgeImplCopyWith<_$FentonLengthForAgeImpl> get copyWith =>

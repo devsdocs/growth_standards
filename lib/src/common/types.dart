@@ -10,11 +10,11 @@ enum Sex {
   final int number;
 }
 
-/// [LengthHeigthMeasurementPosition.recumbent] for age <= 730 days
+/// [LengthHeightMeasurementPosition.recumbent] for age <= 730 days
 ///
-/// [LengthHeigthMeasurementPosition.standing] for age > 730 days
+/// [LengthHeightMeasurementPosition.standing] for age > 730 days
 @JsonEnum(valueField: 'value')
-enum LengthHeigthMeasurementPosition {
+enum LengthHeightMeasurementPosition {
   /// [recumbent] for age <= 730 days
   recumbent('recumbent'),
 
@@ -22,7 +22,7 @@ enum LengthHeigthMeasurementPosition {
   standing('standing'),
   ;
 
-  const LengthHeigthMeasurementPosition(this.value);
+  const LengthHeightMeasurementPosition(this.value);
   final String value;
 }
 

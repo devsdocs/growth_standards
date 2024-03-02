@@ -17,20 +17,20 @@ export 'cdc/cdc.dart'
         CDCInfantLengthForAgeData,
         CDCInfantWeightForAge,
         CDCInfantWeightForAgeData,
-        CDCInfantWeigthForLength,
-        CDCInfantWeigthForLengthData,
+        CDCInfantWeightForLength,
+        CDCInfantWeightForLengthData,
         CDCStatureForAge,
         CDCStatureForAgeData,
         CDCWeightForAge,
         CDCWeightForAgeData,
-        CDCWeigthForStature,
-        CDCWeigthForStatureData;
+        CDCWeightForStature,
+        CDCWeightForStatureData;
 export 'common/extension.dart' show DateTimeToDate;
 export 'common/model/age.dart' show Age, Date;
 export 'common/model/bmi.dart' show BodyMassIndex;
 export 'common/types.dart'
     show
-        LengthHeigthMeasurementPosition,
+        LengthHeightMeasurementPosition,
         Months,
         PercentileValue,
         Sex,
@@ -75,10 +75,10 @@ export 'who/standard/standard.dart'
         WHOGrowthStandardsWeightForAgeData,
         WHOGrowthStandardsWeightForHeight,
         WHOGrowthStandardsWeightForHeightData,
+        WHOGrowthStandardsWeightForLength,
+        WHOGrowthStandardsWeightForLengthData,
         WHOGrowthStandardsWeightVelocityForAge,
-        WHOGrowthStandardsWeightVelocityForAgeData,
-        WHOGrowthStandardsWeigthForLength,
-        WHOGrowthStandardsWeigthForLengthData;
+        WHOGrowthStandardsWeightVelocityForAgeData;
 export 'who/tools.dart'
     show LengthMeasurementHistory, MassMeasurementHistory, VelocityIncrement;
 

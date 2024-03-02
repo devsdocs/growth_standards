@@ -75,10 +75,9 @@ class WHOGrowthStandardsHeadCircumferenceVelocityForAge
     'Calculation can not be done as there is date less than Date of Birth in past measurement, if you find this exception is a mistake, try to provide exact \$Age',
   )
   factory WHOGrowthStandardsHeadCircumferenceVelocityForAge({
-    
     required Sex sex,
     @AgeConverter() required Age age,
-    @LengthMeasurementHistoryConverter()
+    @ListOfLengthMeasurementHistoryConverter()
     required List<LengthMeasurementHistory> pastMeasurement,
   }) = _WHOGrowthStandardsHeadCircumferenceVelocityForAge;
 
@@ -147,8 +146,6 @@ class WHOGrowthStandardsHeadCircumferenceVelocityForAge
     });
     return joinMap.removeAllNull;
   }
-
-  
 }
 
 class WHOGrowthStandardsHeadCircumferenceVelocityForAgeGender {

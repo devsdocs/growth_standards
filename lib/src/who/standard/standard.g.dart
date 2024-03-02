@@ -69,7 +69,7 @@ _$WHOGrowthStandardsBodyMassIndexForAgeImpl
           observationDate: _$JsonConverterFromJson<Map<String, dynamic>, Date>(
               json['observationDate'], const DateConverter().fromJson),
           sex: $enumDecode(_$SexEnumMap, json['sex']),
-          oedemExist: json['oedemExist'] as bool? ?? false,
+          oedemaExist: json['oedemaExist'] as bool? ?? false,
           bodyMassIndexMeasurement:
               const WHOGrowthStandardsBodyMassIndexMeasurementConverter()
                   .fromJson(
@@ -82,7 +82,7 @@ Map<String, dynamic> _$$WHOGrowthStandardsBodyMassIndexForAgeImplToJson(
       'observationDate': _$JsonConverterToJson<Map<String, dynamic>, Date>(
           instance.observationDate, const DateConverter().toJson),
       'sex': _$SexEnumMap[instance.sex]!,
-      'oedemExist': instance.oedemExist,
+      'oedemaExist': instance.oedemaExist,
       'bodyMassIndexMeasurement':
           const WHOGrowthStandardsBodyMassIndexMeasurementConverter()
               .toJson(instance.bodyMassIndexMeasurement),
@@ -119,7 +119,7 @@ _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl
           sex: $enumDecode(_$SexEnumMap, json['sex']),
           age: const AgeConverter()
               .fromJson(json['age'] as Map<String, dynamic>),
-          pastMeasurement: const LengthMeasurementHistoryConverter()
+          pastMeasurement: const ListOfLengthMeasurementHistoryConverter()
               .fromJson(json['pastMeasurement'] as List),
         );
 
@@ -129,7 +129,7 @@ Map<String, dynamic>
         <String, dynamic>{
           'sex': _$SexEnumMap[instance.sex]!,
           'age': const AgeConverter().toJson(instance.age),
-          'pastMeasurement': const LengthMeasurementHistoryConverter()
+          'pastMeasurement': const ListOfLengthMeasurementHistoryConverter()
               .toJson(instance.pastMeasurement),
         };
 
@@ -144,7 +144,7 @@ _$WHOGrowthStandardsLengthForAgeImpl
           lengthHeight: const LengthConverter()
               .fromJson(json['lengthHeight'] as Map<String, dynamic>),
           measure: $enumDecode(
-              _$LengthHeigthMeasurementPositionEnumMap, json['measure']),
+              _$LengthHeightMeasurementPositionEnumMap, json['measure']),
         );
 
 Map<String, dynamic> _$$WHOGrowthStandardsLengthForAgeImplToJson(
@@ -155,12 +155,12 @@ Map<String, dynamic> _$$WHOGrowthStandardsLengthForAgeImplToJson(
       'sex': _$SexEnumMap[instance.sex]!,
       'age': const AgeConverter().toJson(instance.age),
       'lengthHeight': const LengthConverter().toJson(instance.lengthHeight),
-      'measure': _$LengthHeigthMeasurementPositionEnumMap[instance.measure]!,
+      'measure': _$LengthHeightMeasurementPositionEnumMap[instance.measure]!,
     };
 
-const _$LengthHeigthMeasurementPositionEnumMap = {
-  LengthHeigthMeasurementPosition.recumbent: 'recumbent',
-  LengthHeigthMeasurementPosition.standing: 'standing',
+const _$LengthHeightMeasurementPositionEnumMap = {
+  LengthHeightMeasurementPosition.recumbent: 'recumbent',
+  LengthHeightMeasurementPosition.standing: 'standing',
 };
 
 _$WHOGrowthStandardsLengthVelocityForAgeImpl
@@ -170,7 +170,7 @@ _$WHOGrowthStandardsLengthVelocityForAgeImpl
           sex: $enumDecode(_$SexEnumMap, json['sex']),
           age: const AgeConverter()
               .fromJson(json['age'] as Map<String, dynamic>),
-          pastMeasurement: const LengthMeasurementHistoryConverter()
+          pastMeasurement: const ListOfLengthMeasurementHistoryConverter()
               .fromJson(json['pastMeasurement'] as List),
         );
 
@@ -179,7 +179,7 @@ Map<String, dynamic> _$$WHOGrowthStandardsLengthVelocityForAgeImplToJson(
     <String, dynamic>{
       'sex': _$SexEnumMap[instance.sex]!,
       'age': const AgeConverter().toJson(instance.age),
-      'pastMeasurement': const LengthMeasurementHistoryConverter()
+      'pastMeasurement': const ListOfLengthMeasurementHistoryConverter()
           .toJson(instance.pastMeasurement),
     };
 
@@ -257,7 +257,7 @@ _$WHOGrowthStandardsWeightForAgeImpl
           observationDate: _$JsonConverterFromJson<Map<String, dynamic>, Date>(
               json['observationDate'], const DateConverter().fromJson),
           sex: $enumDecode(_$SexEnumMap, json['sex']),
-          oedemExist: json['oedemExist'] as bool? ?? false,
+          oedemaExist: json['oedemaExist'] as bool? ?? false,
           age: const AgeConverter()
               .fromJson(json['age'] as Map<String, dynamic>),
           weight: const MassConverter()
@@ -270,7 +270,7 @@ Map<String, dynamic> _$$WHOGrowthStandardsWeightForAgeImplToJson(
       'observationDate': _$JsonConverterToJson<Map<String, dynamic>, Date>(
           instance.observationDate, const DateConverter().toJson),
       'sex': _$SexEnumMap[instance.sex]!,
-      'oedemExist': instance.oedemExist,
+      'oedemaExist': instance.oedemaExist,
       'age': const AgeConverter().toJson(instance.age),
       'weight': const MassConverter().toJson(instance.weight),
     };
@@ -284,13 +284,13 @@ _$WHOGrowthStandardsWeightForHeightImpl
           sex: $enumDecode(_$SexEnumMap, json['sex']),
           age: const AgeConverter()
               .fromJson(json['age'] as Map<String, dynamic>),
-          oedemExist: json['oedemExist'] as bool? ?? false,
+          oedemaExist: json['oedemaExist'] as bool? ?? false,
           height: const LengthConverter()
               .fromJson(json['height'] as Map<String, dynamic>),
           weight: const MassConverter()
               .fromJson(json['weight'] as Map<String, dynamic>),
           measure: $enumDecode(
-              _$LengthHeigthMeasurementPositionEnumMap, json['measure']),
+              _$LengthHeightMeasurementPositionEnumMap, json['measure']),
         );
 
 Map<String, dynamic> _$$WHOGrowthStandardsWeightForHeightImplToJson(
@@ -300,39 +300,39 @@ Map<String, dynamic> _$$WHOGrowthStandardsWeightForHeightImplToJson(
           instance.observationDate, const DateConverter().toJson),
       'sex': _$SexEnumMap[instance.sex]!,
       'age': const AgeConverter().toJson(instance.age),
-      'oedemExist': instance.oedemExist,
+      'oedemaExist': instance.oedemaExist,
       'height': const LengthConverter().toJson(instance.height),
       'weight': const MassConverter().toJson(instance.weight),
-      'measure': _$LengthHeigthMeasurementPositionEnumMap[instance.measure]!,
+      'measure': _$LengthHeightMeasurementPositionEnumMap[instance.measure]!,
     };
 
-_$WHOGrowthStandardsWeigthForLengthImpl
-    _$$WHOGrowthStandardsWeigthForLengthImplFromJson(
+_$WHOGrowthStandardsWeightForLengthImpl
+    _$$WHOGrowthStandardsWeightForLengthImplFromJson(
             Map<String, dynamic> json) =>
-        _$WHOGrowthStandardsWeigthForLengthImpl(
+        _$WHOGrowthStandardsWeightForLengthImpl(
           observationDate: _$JsonConverterFromJson<Map<String, dynamic>, Date>(
               json['observationDate'], const DateConverter().fromJson),
           sex: $enumDecode(_$SexEnumMap, json['sex']),
           age: const AgeConverter()
               .fromJson(json['age'] as Map<String, dynamic>),
-          oedemExist: json['oedemExist'] as bool? ?? false,
+          oedemaExist: json['oedemaExist'] as bool? ?? false,
           length: const LengthConverter()
               .fromJson(json['length'] as Map<String, dynamic>),
           weight: const MassConverter()
               .fromJson(json['weight'] as Map<String, dynamic>),
           measure: $enumDecode(
-              _$LengthHeigthMeasurementPositionEnumMap, json['measure']),
+              _$LengthHeightMeasurementPositionEnumMap, json['measure']),
         );
 
-Map<String, dynamic> _$$WHOGrowthStandardsWeigthForLengthImplToJson(
-        _$WHOGrowthStandardsWeigthForLengthImpl instance) =>
+Map<String, dynamic> _$$WHOGrowthStandardsWeightForLengthImplToJson(
+        _$WHOGrowthStandardsWeightForLengthImpl instance) =>
     <String, dynamic>{
       'observationDate': _$JsonConverterToJson<Map<String, dynamic>, Date>(
           instance.observationDate, const DateConverter().toJson),
       'sex': _$SexEnumMap[instance.sex]!,
       'age': const AgeConverter().toJson(instance.age),
-      'oedemExist': instance.oedemExist,
+      'oedemaExist': instance.oedemaExist,
       'length': const LengthConverter().toJson(instance.length),
       'weight': const MassConverter().toJson(instance.weight),
-      'measure': _$LengthHeigthMeasurementPositionEnumMap[instance.measure]!,
+      'measure': _$LengthHeightMeasurementPositionEnumMap[instance.measure]!,
     };

@@ -21,9 +21,9 @@ class WHOGrowthStandardsWeightForHeightData {
                   lms: lms,
                   percentileCutOff: lms.percentileCutOff,
                   standardDeviationCutOff: lms.stDevCutOff,
-                  lorh: v2['lorh'].toString().toLowerCase() == 'l'
-                      ? LengthHeigthMeasurementPosition.recumbent
-                      : LengthHeigthMeasurementPosition.standing,
+                  lengthOrHeight: v2['lorh'].toString().toLowerCase() == 'l'
+                      ? LengthHeightMeasurementPosition.recumbent
+                      : LengthHeightMeasurementPosition.standing,
                 ),
               );
             }),
@@ -58,10 +58,10 @@ class WHOGrowthStandardsWeightForHeight
     @DateConverter() Date? observationDate,
     required Sex sex,
     @AgeConverter() required Age age,
-    @Default(false) bool oedemExist,
+    @Default(false) bool oedemaExist,
     @LengthConverter() required Length height,
     @MassConverter() required Mass weight,
-    required LengthHeigthMeasurementPosition measure,
+    required LengthHeightMeasurementPosition measure,
   }) = _WHOGrowthStandardsWeightForHeight;
 
   const WHOGrowthStandardsWeightForHeight._();
@@ -95,12 +95,12 @@ class WHOGrowthStandardsWeightForHeight
   num zScore([
     Precision precision = Precision.ten,
   ]) =>
-      _zScore.precision(precision);
+      oedemaExist ? double.nan : _zScore.precision(precision);
 
   num percentile([
     Precision precision = Precision.ten,
   ]) =>
-      (pnorm(_zScore) * 100).precision(precision);
+      oedemaExist ? double.nan : (pnorm(_zScore) * 100).precision(precision);
 }
 
 class _WHOGrowthStandardsWeightForHeightGender {
@@ -114,17 +114,17 @@ class _WHOGrowthStandardsWeightForHeightGender {
 class _WHOGrowthStandardsWeightForHeightLMS {
   _WHOGrowthStandardsWeightForHeightLMS({
     required this.lms,
-    required this.lorh,
+    required this.lengthOrHeight,
     required this.percentileCutOff,
     required this.standardDeviationCutOff,
   });
   final LMS lms;
-  final LengthHeigthMeasurementPosition lorh;
+  final LengthHeightMeasurementPosition lengthOrHeight;
   final ZScoreCutOff standardDeviationCutOff;
 
   final PercentileCutOff percentileCutOff;
 
   @override
   String toString() =>
-      'Height Data(LMS: $lms, Length/Height Measurement Position: $lorh, Standard Deviation CutOff: $standardDeviationCutOff, Percentile CutOff: $percentileCutOff)';
+      'Height Data(LMS: $lms, Length/Height Measurement Position: $lengthOrHeight, Standard Deviation CutOff: $standardDeviationCutOff, Percentile CutOff: $percentileCutOff)';
 }

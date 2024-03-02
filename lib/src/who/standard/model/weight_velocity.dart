@@ -130,11 +130,12 @@ class WHOGrowthStandardsWeightVelocityForAge
             v2 + whoGrowthStandardsWeightVelocityForAgeLMS.delta,
           );
 
-          final map = pastMeasurement.where((e) => e.isOedema!);
+          final pastMeasurementWithOedema =
+              pastMeasurement.where((e) => e.isOedema!);
 
-          final isValid = map.isEmpty ||
-              (map.isNotEmpty &&
-                  !map
+          final isValid = pastMeasurementWithOedema.isEmpty ||
+              (pastMeasurementWithOedema.isNotEmpty &&
+                  !pastMeasurementWithOedema
                       .map((e) => e.date)
                       .containsAnyOf([k2.dateAfter, k2.dateBefore]));
 
