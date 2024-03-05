@@ -1,3 +1,7 @@
+## 1.2.0
+- Add Oedema field to weight based measurement
+- Fix age miscalculation
+
 ## 1.1.4
 - Dependecy update
 - Some measurement API changes
