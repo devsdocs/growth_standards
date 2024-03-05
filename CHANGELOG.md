@@ -3,7 +3,7 @@
 - Fix age miscalculation
 
 ## 1.1.4
-- Dependecy update
+- Dependency update
 - Some measurement API changes
 
 ## 1.1.3
@@ -19,7 +19,7 @@
 
 ## 1.1.0
 
-- Refractoring
+- Refactoring
 - Bug fix
 - Improved API
 
@@ -52,7 +52,7 @@
 
 ## 1.0.1
 
-- Some minor refractoring
+- Some minor refactoring
 
 ## 1.0.0
 
