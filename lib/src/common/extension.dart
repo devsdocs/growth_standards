@@ -1,5 +1,7 @@
+import 'dart:convert';
+
 import 'package:growth_standards/src/common/model/age.dart';
-import 'package:reusable_tools/reusable_tools.dart';
+// import 'package:reusable_tools/reusable_tools.dart';
 import 'package:super_measurement/super_measurement.dart';
 
 extension NumPrecision on num {
@@ -35,4 +37,11 @@ extension IterableNullableExtension<T> on Iterable<T>? {
     if (this!.isEmpty || this!.length == 1) return false;
     return true;
   }
+}
+
+extension StringExt on String {
+  Map<String, dynamic> get toJsonObjectAsMap =>
+      json.decode(this) as Map<String, dynamic>;
+  String get clean => trim().replaceAll(RegExp(r'\s{2,}|[\t\r\n]'), ' ');
+  List<String> get splitSpace => split(' ');
 }

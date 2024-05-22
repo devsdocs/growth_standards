@@ -1,4 +1,7 @@
-## 1.2.0
+## 1.2.1
+- Add support for web
+
+## 1.2.1
 - Add Oedema field to weight based measurement
 - Fix age miscalculation
 
