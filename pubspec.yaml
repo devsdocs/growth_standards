@@ -7,10 +7,10 @@ environment:
   sdk: ^3.5.4
 
 dependencies:
-  clock: ^1.1.1
+  clock: ^1.1.2
   dart_numerics: ^0.0.6
-  freezed_annotation: ^2.4.1
-  json_annotation: ^4.8.1
+  freezed_annotation: ^2.4.4
+  json_annotation: ^4.9.0
   super_measurement: ^2.0.2
 
 dev_dependencies:
