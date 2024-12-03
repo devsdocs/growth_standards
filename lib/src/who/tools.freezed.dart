@@ -12,7 +12,7 @@ part of 'tools.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 MassMeasurementHistory _$MassMeasurementHistoryFromJson(
     Map<String, dynamic> json) {
@@ -25,8 +25,12 @@ mixin _$MassMeasurementHistory {
   Mass get measurement => throw _privateConstructorUsedError;
   bool? get isOedema => throw _privateConstructorUsedError;
 
+  /// Serializes this MassMeasurementHistory to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MassMeasurementHistory
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MassMeasurementHistoryCopyWith<MassMeasurementHistory> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -53,6 +57,8 @@ class _$MassMeasurementHistoryCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MassMeasurementHistory
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -76,6 +82,8 @@ class _$MassMeasurementHistoryCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of MassMeasurementHistory
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DateCopyWith<$Res> get date {
@@ -110,6 +118,8 @@ class __$$MassMeasurementHistoryImplCopyWithImpl<$Res>
       $Res Function(_$MassMeasurementHistoryImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MassMeasurementHistory
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -168,11 +178,13 @@ class _$MassMeasurementHistoryImpl implements _MassMeasurementHistory {
                 other.isOedema == isOedema));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, date, measurement, isOedema);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MassMeasurementHistory
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MassMeasurementHistoryImplCopyWith<_$MassMeasurementHistoryImpl>
@@ -200,8 +212,11 @@ abstract class _MassMeasurementHistory implements MassMeasurementHistory {
   Mass get measurement;
   @override
   bool? get isOedema;
+
+  /// Create a copy of MassMeasurementHistory
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MassMeasurementHistoryImplCopyWith<_$MassMeasurementHistoryImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -218,8 +233,12 @@ mixin _$LengthMeasurementHistory {
   LengthHeightMeasurementPosition? get measurementPosition =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this LengthMeasurementHistory to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LengthMeasurementHistory
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $LengthMeasurementHistoryCopyWith<LengthMeasurementHistory> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -249,6 +268,8 @@ class _$LengthMeasurementHistoryCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of LengthMeasurementHistory
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -272,6 +293,8 @@ class _$LengthMeasurementHistoryCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of LengthMeasurementHistory
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DateCopyWith<$Res> get date {
@@ -309,6 +332,8 @@ class __$$LengthMeasurementHistoryImplCopyWithImpl<$Res>
       $Res Function(_$LengthMeasurementHistoryImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LengthMeasurementHistory
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -367,12 +392,14 @@ class _$LengthMeasurementHistoryImpl implements _LengthMeasurementHistory {
                 other.measurementPosition == measurementPosition));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, date, measurement, measurementPosition);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LengthMeasurementHistory
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LengthMeasurementHistoryImplCopyWith<_$LengthMeasurementHistoryImpl>
@@ -401,8 +428,11 @@ abstract class _LengthMeasurementHistory implements LengthMeasurementHistory {
   Length get measurement;
   @override
   LengthHeightMeasurementPosition? get measurementPosition;
+
+  /// Create a copy of LengthMeasurementHistory
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LengthMeasurementHistoryImplCopyWith<_$LengthMeasurementHistoryImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

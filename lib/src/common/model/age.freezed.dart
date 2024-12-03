@@ -12,7 +12,7 @@ part of 'age.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Age _$AgeFromJson(Map<String, dynamic> json) {
   return _Age.fromJson(json);
@@ -22,8 +22,12 @@ Age _$AgeFromJson(Map<String, dynamic> json) {
 mixin _$Age {
   Date get dateOfBirth => throw _privateConstructorUsedError;
 
+  /// Serializes this Age to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Age
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AgeCopyWith<Age> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -46,6 +50,8 @@ class _$AgeCopyWithImpl<$Res, $Val extends Age> implements $AgeCopyWith<$Res> {
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Age
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -59,6 +65,8 @@ class _$AgeCopyWithImpl<$Res, $Val extends Age> implements $AgeCopyWith<$Res> {
     ) as $Val);
   }
 
+  /// Create a copy of Age
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DateCopyWith<$Res> get dateOfBirth {
@@ -86,6 +94,8 @@ class __$$AgeImplCopyWithImpl<$Res> extends _$AgeCopyWithImpl<$Res, _$AgeImpl>
   __$$AgeImplCopyWithImpl(_$AgeImpl _value, $Res Function(_$AgeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Age
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -138,11 +148,13 @@ class _$AgeImpl extends _Age {
                 other.dateOfBirth == dateOfBirth));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, dateOfBirth);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Age
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AgeImplCopyWith<_$AgeImpl> get copyWith =>
@@ -164,8 +176,11 @@ abstract class _Age extends Age {
 
   @override
   Date get dateOfBirth;
+
+  /// Create a copy of Age
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AgeImplCopyWith<_$AgeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -180,8 +195,12 @@ mixin _$Date {
   Months get month => throw _privateConstructorUsedError;
   int get date => throw _privateConstructorUsedError;
 
+  /// Serializes this Date to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Date
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DateCopyWith<Date> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -203,6 +222,8 @@ class _$DateCopyWithImpl<$Res, $Val extends Date>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Date
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -244,6 +265,8 @@ class __$$DateImplCopyWithImpl<$Res>
   __$$DateImplCopyWithImpl(_$DateImpl _value, $Res Function(_$DateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Date
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -303,11 +326,13 @@ class _$DateImpl extends _Date {
             (identical(other.date, date) || other.date == date));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, year, month, date);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Date
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DateImplCopyWith<_$DateImpl> get copyWith =>
@@ -336,8 +361,11 @@ abstract class _Date extends Date {
   Months get month;
   @override
   int get date;
+
+  /// Create a copy of Date
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DateImplCopyWith<_$DateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

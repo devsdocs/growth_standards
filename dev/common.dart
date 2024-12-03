@@ -119,8 +119,8 @@ List<List<Map<String, dynamic>>> sanitize(List<List<dynamic>> data) {
                           .join(' ')
                       : v.trim()
               : v is TextCellValue
-                  ? int.tryParse(v.value) != null
-                      ? int.parse(v.value)
+                  ? int.tryParse(v.value.toString()) != null
+                      ? int.parse(v.value.toString())
                       : v.value
                   : v is IntCellValue
                       ? v.value

@@ -12,7 +12,7 @@ part of 'cdc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 CDCBodyMassIndexMeasurement _$CDCBodyMassIndexMeasurementFromJson(
     Map<String, dynamic> json) {
@@ -23,8 +23,12 @@ CDCBodyMassIndexMeasurement _$CDCBodyMassIndexMeasurementFromJson(
 mixin _$CDCBodyMassIndexMeasurement {
   num get value => throw _privateConstructorUsedError;
 
+  /// Serializes this CDCBodyMassIndexMeasurement to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CDCBodyMassIndexMeasurement
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CDCBodyMassIndexMeasurementCopyWith<CDCBodyMassIndexMeasurement>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -51,6 +55,8 @@ class _$CDCBodyMassIndexMeasurementCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CDCBodyMassIndexMeasurement
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -87,6 +93,8 @@ class __$$GrowthReferenceBodyMassIndexMeasurementImplCopyWithImpl<$Res>
       $Res Function(_$GrowthReferenceBodyMassIndexMeasurementImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CDCBodyMassIndexMeasurement
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -127,11 +135,13 @@ class _$GrowthReferenceBodyMassIndexMeasurementImpl
             (identical(other.value, value) || other.value == value));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, value);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CDCBodyMassIndexMeasurement
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GrowthReferenceBodyMassIndexMeasurementImplCopyWith<
@@ -160,8 +170,11 @@ abstract class _GrowthReferenceBodyMassIndexMeasurement
 
   @override
   num get value;
+
+  /// Create a copy of CDCBodyMassIndexMeasurement
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GrowthReferenceBodyMassIndexMeasurementImplCopyWith<
           _$GrowthReferenceBodyMassIndexMeasurementImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -180,8 +193,12 @@ mixin _$CDCBodyMassIndexForAge {
   CDCBodyMassIndexMeasurement get bodyMassIndexMeasurement =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this CDCBodyMassIndexForAge to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CDCBodyMassIndexForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CDCBodyMassIndexForAgeCopyWith<CDCBodyMassIndexForAge> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -214,6 +231,8 @@ class _$CDCBodyMassIndexForAgeCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CDCBodyMassIndexForAge
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -242,6 +261,8 @@ class _$CDCBodyMassIndexForAgeCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of CDCBodyMassIndexForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DateCopyWith<$Res>? get observationDate {
@@ -254,6 +275,8 @@ class _$CDCBodyMassIndexForAgeCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of CDCBodyMassIndexForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
@@ -262,6 +285,8 @@ class _$CDCBodyMassIndexForAgeCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of CDCBodyMassIndexForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CDCBodyMassIndexMeasurementCopyWith<$Res> get bodyMassIndexMeasurement {
@@ -305,6 +330,8 @@ class __$$GrowthReferenceBodyMassIndexForAgeImplCopyWithImpl<$Res>
       $Res Function(_$GrowthReferenceBodyMassIndexForAgeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CDCBodyMassIndexForAge
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -389,12 +416,14 @@ class _$GrowthReferenceBodyMassIndexForAgeImpl
                 other.bodyMassIndexMeasurement == bodyMassIndexMeasurement));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, observationDate, sex, age, bodyMassIndexMeasurement);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CDCBodyMassIndexForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GrowthReferenceBodyMassIndexForAgeImplCopyWith<
@@ -432,8 +461,11 @@ abstract class _GrowthReferenceBodyMassIndexForAge
   Age get age;
   @override
   CDCBodyMassIndexMeasurement get bodyMassIndexMeasurement;
+
+  /// Create a copy of CDCBodyMassIndexForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GrowthReferenceBodyMassIndexForAgeImplCopyWith<
           _$GrowthReferenceBodyMassIndexForAgeImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -451,8 +483,12 @@ mixin _$CDCInfantHeadCircumferenceForAge {
   Age get age => throw _privateConstructorUsedError;
   Length get measurementResult => throw _privateConstructorUsedError;
 
+  /// Serializes this CDCInfantHeadCircumferenceForAge to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CDCInfantHeadCircumferenceForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CDCInfantHeadCircumferenceForAgeCopyWith<CDCInfantHeadCircumferenceForAge>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -483,6 +519,8 @@ class _$CDCInfantHeadCircumferenceForAgeCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CDCInfantHeadCircumferenceForAge
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -511,6 +549,8 @@ class _$CDCInfantHeadCircumferenceForAgeCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of CDCInfantHeadCircumferenceForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DateCopyWith<$Res>? get observationDate {
@@ -523,6 +563,8 @@ class _$CDCInfantHeadCircumferenceForAgeCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of CDCInfantHeadCircumferenceForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
@@ -560,6 +602,8 @@ class __$$HeadCircumferenceForAgeImplCopyWithImpl<$Res>
       $Res Function(_$HeadCircumferenceForAgeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CDCInfantHeadCircumferenceForAge
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -636,12 +680,14 @@ class _$HeadCircumferenceForAgeImpl extends _HeadCircumferenceForAge {
                 other.measurementResult == measurementResult));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, observationDate, sex, age, measurementResult);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CDCInfantHeadCircumferenceForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$HeadCircumferenceForAgeImplCopyWith<_$HeadCircumferenceForAgeImpl>
@@ -676,8 +722,11 @@ abstract class _HeadCircumferenceForAge
   Age get age;
   @override
   Length get measurementResult;
+
+  /// Create a copy of CDCInfantHeadCircumferenceForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$HeadCircumferenceForAgeImplCopyWith<_$HeadCircumferenceForAgeImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -696,8 +745,12 @@ mixin _$CDCInfantLengthForAge {
   LengthHeightMeasurementPosition get measure =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this CDCInfantLengthForAge to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CDCInfantLengthForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CDCInfantLengthForAgeCopyWith<CDCInfantLengthForAge> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -730,6 +783,8 @@ class _$CDCInfantLengthForAgeCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CDCInfantLengthForAge
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -763,6 +818,8 @@ class _$CDCInfantLengthForAgeCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of CDCInfantLengthForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DateCopyWith<$Res>? get observationDate {
@@ -775,6 +832,8 @@ class _$CDCInfantLengthForAgeCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of CDCInfantLengthForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
@@ -813,6 +872,8 @@ class __$$LengthForAgeImplCopyWithImpl<$Res>
       _$LengthForAgeImpl _value, $Res Function(_$LengthForAgeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CDCInfantLengthForAge
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -898,12 +959,14 @@ class _$LengthForAgeImpl extends _LengthForAge {
             (identical(other.measure, measure) || other.measure == measure));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, observationDate, sex, age, lengthHeight, measure);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CDCInfantLengthForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LengthForAgeImplCopyWith<_$LengthForAgeImpl> get copyWith =>
@@ -940,8 +1003,11 @@ abstract class _LengthForAge extends CDCInfantLengthForAge {
   Length get lengthHeight;
   @override
   LengthHeightMeasurementPosition get measure;
+
+  /// Create a copy of CDCInfantLengthForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LengthForAgeImplCopyWith<_$LengthForAgeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -959,8 +1025,12 @@ mixin _$CDCStatureForAge {
   LengthHeightMeasurementPosition get measure =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this CDCStatureForAge to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CDCStatureForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CDCStatureForAgeCopyWith<CDCStatureForAge> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -992,6 +1062,8 @@ class _$CDCStatureForAgeCopyWithImpl<$Res, $Val extends CDCStatureForAge>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CDCStatureForAge
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1025,6 +1097,8 @@ class _$CDCStatureForAgeCopyWithImpl<$Res, $Val extends CDCStatureForAge>
     ) as $Val);
   }
 
+  /// Create a copy of CDCStatureForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DateCopyWith<$Res>? get observationDate {
@@ -1037,6 +1111,8 @@ class _$CDCStatureForAgeCopyWithImpl<$Res, $Val extends CDCStatureForAge>
     });
   }
 
+  /// Create a copy of CDCStatureForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
@@ -1078,6 +1154,8 @@ class __$$GrowthReferenceHeightForAgeImplCopyWithImpl<$Res>
       $Res Function(_$GrowthReferenceHeightForAgeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CDCStatureForAge
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1169,12 +1247,14 @@ class _$GrowthReferenceHeightForAgeImpl extends _GrowthReferenceHeightForAge {
             (identical(other.measure, measure) || other.measure == measure));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, observationDate, sex, age, lengthHeight, measure);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CDCStatureForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GrowthReferenceHeightForAgeImplCopyWith<_$GrowthReferenceHeightForAgeImpl>
@@ -1212,8 +1292,11 @@ abstract class _GrowthReferenceHeightForAge extends CDCStatureForAge {
   Length get lengthHeight;
   @override
   LengthHeightMeasurementPosition get measure;
+
+  /// Create a copy of CDCStatureForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GrowthReferenceHeightForAgeImplCopyWith<_$GrowthReferenceHeightForAgeImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1229,8 +1312,12 @@ mixin _$CDCWeightForAge {
   Age get age => throw _privateConstructorUsedError;
   Mass get weight => throw _privateConstructorUsedError;
 
+  /// Serializes this CDCWeightForAge to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CDCWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CDCWeightForAgeCopyWith<CDCWeightForAge> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1257,6 +1344,8 @@ class _$CDCWeightForAgeCopyWithImpl<$Res, $Val extends CDCWeightForAge>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CDCWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1285,6 +1374,8 @@ class _$CDCWeightForAgeCopyWithImpl<$Res, $Val extends CDCWeightForAge>
     ) as $Val);
   }
 
+  /// Create a copy of CDCWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DateCopyWith<$Res>? get observationDate {
@@ -1297,6 +1388,8 @@ class _$CDCWeightForAgeCopyWithImpl<$Res, $Val extends CDCWeightForAge>
     });
   }
 
+  /// Create a copy of CDCWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
@@ -1330,6 +1423,8 @@ class __$$CDCWeightForAgeImplCopyWithImpl<$Res>
       _$CDCWeightForAgeImpl _value, $Res Function(_$CDCWeightForAgeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CDCWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1410,12 +1505,14 @@ class _$CDCWeightForAgeImpl extends _CDCWeightForAge {
             (identical(other.weight, weight) || other.weight == weight));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, observationDate, sex, age, weight);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CDCWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CDCWeightForAgeImplCopyWith<_$CDCWeightForAgeImpl> get copyWith =>
@@ -1449,8 +1546,11 @@ abstract class _CDCWeightForAge extends CDCWeightForAge {
   Age get age;
   @override
   Mass get weight;
+
+  /// Create a copy of CDCWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CDCWeightForAgeImplCopyWith<_$CDCWeightForAgeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1467,8 +1567,12 @@ mixin _$CDCInfantWeightForAge {
   Age get age => throw _privateConstructorUsedError;
   Mass get weight => throw _privateConstructorUsedError;
 
+  /// Serializes this CDCInfantWeightForAge to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CDCInfantWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CDCInfantWeightForAgeCopyWith<CDCInfantWeightForAge> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1496,6 +1600,8 @@ class _$CDCInfantWeightForAgeCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CDCInfantWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1524,6 +1630,8 @@ class _$CDCInfantWeightForAgeCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of CDCInfantWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DateCopyWith<$Res>? get observationDate {
@@ -1536,6 +1644,8 @@ class _$CDCInfantWeightForAgeCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of CDCInfantWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
@@ -1571,6 +1681,8 @@ class __$$CDCInfantWeightForAgeImplCopyWithImpl<$Res>
       $Res Function(_$CDCInfantWeightForAgeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CDCInfantWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1646,12 +1758,14 @@ class _$CDCInfantWeightForAgeImpl extends _CDCInfantWeightForAge {
             (identical(other.weight, weight) || other.weight == weight));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, observationDate, sex, age, weight);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CDCInfantWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CDCInfantWeightForAgeImplCopyWith<_$CDCInfantWeightForAgeImpl>
@@ -1685,8 +1799,11 @@ abstract class _CDCInfantWeightForAge extends CDCInfantWeightForAge {
   Age get age;
   @override
   Mass get weight;
+
+  /// Create a copy of CDCInfantWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CDCInfantWeightForAgeImplCopyWith<_$CDCInfantWeightForAgeImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1706,8 +1823,12 @@ mixin _$CDCInfantWeightForLength {
   LengthHeightMeasurementPosition get measure =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this CDCInfantWeightForLength to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CDCInfantWeightForLength
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CDCInfantWeightForLengthCopyWith<CDCInfantWeightForLength> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1741,6 +1862,8 @@ class _$CDCInfantWeightForLengthCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CDCInfantWeightForLength
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1779,6 +1902,8 @@ class _$CDCInfantWeightForLengthCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of CDCInfantWeightForLength
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DateCopyWith<$Res>? get observationDate {
@@ -1791,6 +1916,8 @@ class _$CDCInfantWeightForLengthCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of CDCInfantWeightForLength
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
@@ -1833,6 +1960,8 @@ class __$$CDCInfantWeightForLengthImplCopyWithImpl<$Res>
       $Res Function(_$CDCInfantWeightForLengthImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CDCInfantWeightForLength
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1958,12 +2087,14 @@ class _$CDCInfantWeightForLengthImpl extends _CDCInfantWeightForLength {
             (identical(other.measure, measure) || other.measure == measure));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, observationDate, sex, age, length, weight, measure);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CDCInfantWeightForLength
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CDCInfantWeightForLengthImplCopyWith<_$CDCInfantWeightForLengthImpl>
@@ -2004,8 +2135,11 @@ abstract class _CDCInfantWeightForLength extends CDCInfantWeightForLength {
   Mass get weight;
   @override
   LengthHeightMeasurementPosition get measure;
+
+  /// Create a copy of CDCInfantWeightForLength
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CDCInfantWeightForLengthImplCopyWith<_$CDCInfantWeightForLengthImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -2024,8 +2158,12 @@ mixin _$CDCWeightForStature {
   LengthHeightMeasurementPosition get measure =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this CDCWeightForStature to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CDCWeightForStature
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CDCWeightForStatureCopyWith<CDCWeightForStature> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2058,6 +2196,8 @@ class _$CDCWeightForStatureCopyWithImpl<$Res, $Val extends CDCWeightForStature>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CDCWeightForStature
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2096,6 +2236,8 @@ class _$CDCWeightForStatureCopyWithImpl<$Res, $Val extends CDCWeightForStature>
     ) as $Val);
   }
 
+  /// Create a copy of CDCWeightForStature
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DateCopyWith<$Res>? get observationDate {
@@ -2108,6 +2250,8 @@ class _$CDCWeightForStatureCopyWithImpl<$Res, $Val extends CDCWeightForStature>
     });
   }
 
+  /// Create a copy of CDCWeightForStature
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
@@ -2147,6 +2291,8 @@ class __$$CDCWeightForStatureImplCopyWithImpl<$Res>
       $Res Function(_$CDCWeightForStatureImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CDCWeightForStature
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2272,12 +2418,14 @@ class _$CDCWeightForStatureImpl extends _CDCWeightForStature {
             (identical(other.measure, measure) || other.measure == measure));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, observationDate, sex, age, height, weight, measure);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CDCWeightForStature
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CDCWeightForStatureImplCopyWith<_$CDCWeightForStatureImpl> get copyWith =>
@@ -2318,8 +2466,11 @@ abstract class _CDCWeightForStature extends CDCWeightForStature {
   Mass get weight;
   @override
   LengthHeightMeasurementPosition get measure;
+
+  /// Create a copy of CDCWeightForStature
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CDCWeightForStatureImplCopyWith<_$CDCWeightForStatureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

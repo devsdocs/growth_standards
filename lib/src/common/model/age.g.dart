@@ -15,9 +15,9 @@ Map<String, dynamic> _$$AgeImplToJson(_$AgeImpl instance) => <String, dynamic>{
     };
 
 _$DateImpl _$$DateImplFromJson(Map<String, dynamic> json) => _$DateImpl(
-      year: json['year'] as int,
+      year: (json['year'] as num).toInt(),
       month: $enumDecode(_$MonthsEnumMap, json['month']),
-      date: json['date'] as int,
+      date: (json['date'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$DateImplToJson(_$DateImpl instance) =>

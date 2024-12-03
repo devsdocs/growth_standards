@@ -12,7 +12,7 @@ part of 'fenton.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 FentonHeadCircumferenceForAge _$FentonHeadCircumferenceForAgeFromJson(
     Map<String, dynamic> json) {
@@ -26,8 +26,12 @@ mixin _$FentonHeadCircumferenceForAge {
   Age get age => throw _privateConstructorUsedError;
   Length get measurementResult => throw _privateConstructorUsedError;
 
+  /// Serializes this FentonHeadCircumferenceForAge to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FentonHeadCircumferenceForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FentonHeadCircumferenceForAgeCopyWith<FentonHeadCircumferenceForAge>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -58,6 +62,8 @@ class _$FentonHeadCircumferenceForAgeCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FentonHeadCircumferenceForAge
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class _$FentonHeadCircumferenceForAgeCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of FentonHeadCircumferenceForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DateCopyWith<$Res>? get observationDate {
@@ -98,6 +106,8 @@ class _$FentonHeadCircumferenceForAgeCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of FentonHeadCircumferenceForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
@@ -135,6 +145,8 @@ class __$$FentonHeadCircumferenceForAgeImplCopyWithImpl<$Res>
       $Res Function(_$FentonHeadCircumferenceForAgeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FentonHeadCircumferenceForAge
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -217,12 +229,14 @@ class _$FentonHeadCircumferenceForAgeImpl
                 other.measurementResult == measurementResult));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, observationDate, sex, age, measurementResult);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FentonHeadCircumferenceForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FentonHeadCircumferenceForAgeImplCopyWith<
@@ -259,8 +273,11 @@ abstract class _FentonHeadCircumferenceForAge
   Age get age;
   @override
   Length get measurementResult;
+
+  /// Create a copy of FentonHeadCircumferenceForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FentonHeadCircumferenceForAgeImplCopyWith<
           _$FentonHeadCircumferenceForAgeImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -279,8 +296,12 @@ mixin _$FentonLengthForAge {
   LengthHeightMeasurementPosition get measure =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this FentonLengthForAge to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FentonLengthForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FentonLengthForAgeCopyWith<FentonLengthForAge> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -312,6 +333,8 @@ class _$FentonLengthForAgeCopyWithImpl<$Res, $Val extends FentonLengthForAge>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FentonLengthForAge
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -345,6 +368,8 @@ class _$FentonLengthForAgeCopyWithImpl<$Res, $Val extends FentonLengthForAge>
     ) as $Val);
   }
 
+  /// Create a copy of FentonLengthForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DateCopyWith<$Res>? get observationDate {
@@ -357,6 +382,8 @@ class _$FentonLengthForAgeCopyWithImpl<$Res, $Val extends FentonLengthForAge>
     });
   }
 
+  /// Create a copy of FentonLengthForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
@@ -395,6 +422,8 @@ class __$$FentonLengthForAgeImplCopyWithImpl<$Res>
       $Res Function(_$FentonLengthForAgeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FentonLengthForAge
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -484,12 +513,14 @@ class _$FentonLengthForAgeImpl extends _FentonLengthForAge {
             (identical(other.measure, measure) || other.measure == measure));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, observationDate, sex, age, lengthHeight, measure);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FentonLengthForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FentonLengthForAgeImplCopyWith<_$FentonLengthForAgeImpl> get copyWith =>
@@ -527,8 +558,11 @@ abstract class _FentonLengthForAge extends FentonLengthForAge {
   Length get lengthHeight;
   @override
   LengthHeightMeasurementPosition get measure;
+
+  /// Create a copy of FentonLengthForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FentonLengthForAgeImplCopyWith<_$FentonLengthForAgeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -544,8 +578,12 @@ mixin _$FentonWeightForAge {
   Age get age => throw _privateConstructorUsedError;
   Mass get weight => throw _privateConstructorUsedError;
 
+  /// Serializes this FentonWeightForAge to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FentonWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FentonWeightForAgeCopyWith<FentonWeightForAge> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -572,6 +610,8 @@ class _$FentonWeightForAgeCopyWithImpl<$Res, $Val extends FentonWeightForAge>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FentonWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -600,6 +640,8 @@ class _$FentonWeightForAgeCopyWithImpl<$Res, $Val extends FentonWeightForAge>
     ) as $Val);
   }
 
+  /// Create a copy of FentonWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DateCopyWith<$Res>? get observationDate {
@@ -612,6 +654,8 @@ class _$FentonWeightForAgeCopyWithImpl<$Res, $Val extends FentonWeightForAge>
     });
   }
 
+  /// Create a copy of FentonWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
@@ -645,6 +689,8 @@ class __$$FentonWeightForAgeImplCopyWithImpl<$Res>
       $Res Function(_$FentonWeightForAgeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FentonWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -724,12 +770,14 @@ class _$FentonWeightForAgeImpl extends _FentonWeightForAge {
             (identical(other.weight, weight) || other.weight == weight));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, observationDate, sex, age, weight);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FentonWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FentonWeightForAgeImplCopyWith<_$FentonWeightForAgeImpl> get copyWith =>
@@ -763,8 +811,11 @@ abstract class _FentonWeightForAge extends FentonWeightForAge {
   Age get age;
   @override
   Mass get weight;
+
+  /// Create a copy of FentonWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FentonWeightForAgeImplCopyWith<_$FentonWeightForAgeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -1,3 +1,6 @@
+## 1.2.2
+- Bump Dart SDK
+
 ## 1.2.1
 - Add support for web
 

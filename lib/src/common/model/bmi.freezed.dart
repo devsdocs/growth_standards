@@ -12,7 +12,7 @@ part of 'bmi.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 BodyMassIndex _$BodyMassIndexFromJson(Map<String, dynamic> json) {
   return _BodyMassIndex.fromJson(json);
@@ -23,8 +23,12 @@ mixin _$BodyMassIndex {
   Length get lengthHeight => throw _privateConstructorUsedError;
   Mass get weight => throw _privateConstructorUsedError;
 
+  /// Serializes this BodyMassIndex to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BodyMassIndex
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BodyMassIndexCopyWith<BodyMassIndex> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$BodyMassIndexCopyWithImpl<$Res, $Val extends BodyMassIndex>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BodyMassIndex
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class __$$BodyMassIndexImplCopyWithImpl<$Res>
       _$BodyMassIndexImpl _value, $Res Function(_$BodyMassIndexImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BodyMassIndex
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -134,11 +142,13 @@ class _$BodyMassIndexImpl extends _BodyMassIndex {
             (identical(other.weight, weight) || other.weight == weight));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, lengthHeight, weight);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BodyMassIndex
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BodyMassIndexImplCopyWith<_$BodyMassIndexImpl> get copyWith =>
@@ -165,8 +175,11 @@ abstract class _BodyMassIndex extends BodyMassIndex {
   Length get lengthHeight;
   @override
   Mass get weight;
+
+  /// Create a copy of BodyMassIndex
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BodyMassIndexImplCopyWith<_$BodyMassIndexImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

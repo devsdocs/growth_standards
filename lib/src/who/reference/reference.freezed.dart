@@ -12,7 +12,7 @@ part of 'reference.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 WHOGrowthReferenceBodyMassIndexMeasurement
     _$WHOGrowthReferenceBodyMassIndexMeasurementFromJson(
@@ -24,8 +24,12 @@ WHOGrowthReferenceBodyMassIndexMeasurement
 mixin _$WHOGrowthReferenceBodyMassIndexMeasurement {
   num get value => throw _privateConstructorUsedError;
 
+  /// Serializes this WHOGrowthReferenceBodyMassIndexMeasurement to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of WHOGrowthReferenceBodyMassIndexMeasurement
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $WHOGrowthReferenceBodyMassIndexMeasurementCopyWith<
           WHOGrowthReferenceBodyMassIndexMeasurement>
       get copyWith => throw _privateConstructorUsedError;
@@ -54,6 +58,8 @@ class _$WHOGrowthReferenceBodyMassIndexMeasurementCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of WHOGrowthReferenceBodyMassIndexMeasurement
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -91,6 +97,8 @@ class __$$WHOGrowthReferenceBodyMassIndexMeasurementImplCopyWithImpl<$Res>
       $Res Function(_$WHOGrowthReferenceBodyMassIndexMeasurementImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of WHOGrowthReferenceBodyMassIndexMeasurement
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -131,11 +139,13 @@ class _$WHOGrowthReferenceBodyMassIndexMeasurementImpl
             (identical(other.value, value) || other.value == value));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, value);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of WHOGrowthReferenceBodyMassIndexMeasurement
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$WHOGrowthReferenceBodyMassIndexMeasurementImplCopyWith<
@@ -165,8 +175,11 @@ abstract class _WHOGrowthReferenceBodyMassIndexMeasurement
 
   @override
   num get value;
+
+  /// Create a copy of WHOGrowthReferenceBodyMassIndexMeasurement
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$WHOGrowthReferenceBodyMassIndexMeasurementImplCopyWith<
           _$WHOGrowthReferenceBodyMassIndexMeasurementImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -185,8 +198,12 @@ mixin _$WHOGrowthReferenceBodyMassIndexForAge {
   WHOGrowthReferenceBodyMassIndexMeasurement get bodyMassIndexMeasurement =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this WHOGrowthReferenceBodyMassIndexForAge to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of WHOGrowthReferenceBodyMassIndexForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $WHOGrowthReferenceBodyMassIndexForAgeCopyWith<
           WHOGrowthReferenceBodyMassIndexForAge>
       get copyWith => throw _privateConstructorUsedError;
@@ -223,6 +240,8 @@ class _$WHOGrowthReferenceBodyMassIndexForAgeCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of WHOGrowthReferenceBodyMassIndexForAge
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -251,6 +270,8 @@ class _$WHOGrowthReferenceBodyMassIndexForAgeCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of WHOGrowthReferenceBodyMassIndexForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DateCopyWith<$Res>? get observationDate {
@@ -263,6 +284,8 @@ class _$WHOGrowthReferenceBodyMassIndexForAgeCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of WHOGrowthReferenceBodyMassIndexForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
@@ -271,6 +294,8 @@ class _$WHOGrowthReferenceBodyMassIndexForAgeCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of WHOGrowthReferenceBodyMassIndexForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $WHOGrowthReferenceBodyMassIndexMeasurementCopyWith<$Res>
@@ -316,6 +341,8 @@ class __$$WHOGrowthReferenceBodyMassIndexForAgeImplCopyWithImpl<$Res>
       $Res Function(_$WHOGrowthReferenceBodyMassIndexForAgeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of WHOGrowthReferenceBodyMassIndexForAge
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -400,12 +427,14 @@ class _$WHOGrowthReferenceBodyMassIndexForAgeImpl
                 other.bodyMassIndexMeasurement == bodyMassIndexMeasurement));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, observationDate, sex, age, bodyMassIndexMeasurement);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of WHOGrowthReferenceBodyMassIndexForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$WHOGrowthReferenceBodyMassIndexForAgeImplCopyWith<
@@ -444,8 +473,11 @@ abstract class _WHOGrowthReferenceBodyMassIndexForAge
   Age get age;
   @override
   WHOGrowthReferenceBodyMassIndexMeasurement get bodyMassIndexMeasurement;
+
+  /// Create a copy of WHOGrowthReferenceBodyMassIndexForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$WHOGrowthReferenceBodyMassIndexForAgeImplCopyWith<
           _$WHOGrowthReferenceBodyMassIndexForAgeImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -463,8 +495,12 @@ mixin _$WHOGrowthReferenceHeightForAge {
   Age get age => throw _privateConstructorUsedError;
   Length get lengthHeight => throw _privateConstructorUsedError;
 
+  /// Serializes this WHOGrowthReferenceHeightForAge to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of WHOGrowthReferenceHeightForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $WHOGrowthReferenceHeightForAgeCopyWith<WHOGrowthReferenceHeightForAge>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -494,6 +530,8 @@ class _$WHOGrowthReferenceHeightForAgeCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of WHOGrowthReferenceHeightForAge
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -522,6 +560,8 @@ class _$WHOGrowthReferenceHeightForAgeCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of WHOGrowthReferenceHeightForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DateCopyWith<$Res>? get observationDate {
@@ -534,6 +574,8 @@ class _$WHOGrowthReferenceHeightForAgeCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of WHOGrowthReferenceHeightForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
@@ -570,6 +612,8 @@ class __$$WHOGrowthReferenceHeightForAgeImplCopyWithImpl<$Res>
       $Res Function(_$WHOGrowthReferenceHeightForAgeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of WHOGrowthReferenceHeightForAge
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -653,12 +697,14 @@ class _$WHOGrowthReferenceHeightForAgeImpl
                 other.lengthHeight == lengthHeight));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, observationDate, sex, age, lengthHeight);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of WHOGrowthReferenceHeightForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$WHOGrowthReferenceHeightForAgeImplCopyWith<
@@ -695,8 +741,11 @@ abstract class _WHOGrowthReferenceHeightForAge
   Age get age;
   @override
   Length get lengthHeight;
+
+  /// Create a copy of WHOGrowthReferenceHeightForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$WHOGrowthReferenceHeightForAgeImplCopyWith<
           _$WHOGrowthReferenceHeightForAgeImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -714,8 +763,12 @@ mixin _$WHOGrowthReferenceWeightForAge {
   Age get age => throw _privateConstructorUsedError;
   Mass get weight => throw _privateConstructorUsedError;
 
+  /// Serializes this WHOGrowthReferenceWeightForAge to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of WHOGrowthReferenceWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $WHOGrowthReferenceWeightForAgeCopyWith<WHOGrowthReferenceWeightForAge>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -745,6 +798,8 @@ class _$WHOGrowthReferenceWeightForAgeCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of WHOGrowthReferenceWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -773,6 +828,8 @@ class _$WHOGrowthReferenceWeightForAgeCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of WHOGrowthReferenceWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DateCopyWith<$Res>? get observationDate {
@@ -785,6 +842,8 @@ class _$WHOGrowthReferenceWeightForAgeCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of WHOGrowthReferenceWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
@@ -821,6 +880,8 @@ class __$$WHOGrowthReferenceWeightForAgeImplCopyWithImpl<$Res>
       $Res Function(_$WHOGrowthReferenceWeightForAgeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of WHOGrowthReferenceWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -903,12 +964,14 @@ class _$WHOGrowthReferenceWeightForAgeImpl
             (identical(other.weight, weight) || other.weight == weight));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, observationDate, sex, age, weight);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of WHOGrowthReferenceWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$WHOGrowthReferenceWeightForAgeImplCopyWith<
@@ -944,8 +1007,11 @@ abstract class _WHOGrowthReferenceWeightForAge
   Age get age;
   @override
   Mass get weight;
+
+  /// Create a copy of WHOGrowthReferenceWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$WHOGrowthReferenceWeightForAgeImplCopyWith<
           _$WHOGrowthReferenceWeightForAgeImpl>
       get copyWith => throw _privateConstructorUsedError;
