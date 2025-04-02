@@ -754,7 +754,7 @@ extension DateTimeSmartCopyWith on DateTime {
   /// the standard DateTime constructor.
   ///
   /// Mutate mappers conform to:
-  /// ```
+  /// ``` dart
   ///   int Function (int)
   /// ```
   ///
@@ -762,7 +762,7 @@ extension DateTimeSmartCopyWith on DateTime {
   /// and is expected to return the new value.
   ///
   /// For example, to get "the beginning of the next day", you use:
-  /// ```
+  /// ``` dart
   ///   aDateTime.smartCopyWith(day: (d) => d + 1)
   /// ```
   ///
@@ -770,12 +770,12 @@ extension DateTimeSmartCopyWith on DateTime {
   /// but hour, minute, second (and so on) are set to zero.
   ///
   /// For convenience, an integer may also be specified directly:
-  /// ```
+  /// ``` dart
   ///   aDateTime.smartCopyWith(day: 1)
   /// ```
   /// Because of the overflow rules, "the beginning of the next day"
   /// (as in the earlier example) can also be written as:
-  /// ```
+  /// ``` dart
   ///   aDateTime.smartCopyWith(hour: 24)
   /// ```
   ///

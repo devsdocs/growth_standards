@@ -35,7 +35,7 @@ class WHOGrowthReferenceHeightForAgeData {
 }
 
 @freezed
-class WHOGrowthReferenceHeightForAge with _$WHOGrowthReferenceHeightForAge {
+sealed class WHOGrowthReferenceHeightForAge with _$WHOGrowthReferenceHeightForAge {
   @Assert(
     'age.ageInTotalMonthsByNow >= 61 && age.ageInTotalMonthsByNow <= 228',
     'Age must be in range of 61 - 228 months',

@@ -47,7 +47,7 @@ class WHOGrowthStandardsLengthVelocityForAgeData {
 }
 
 @freezed
-class WHOGrowthStandardsLengthVelocityForAge
+sealed class WHOGrowthStandardsLengthVelocityForAge
     with _$WHOGrowthStandardsLengthVelocityForAge {
   @Assert(
     'age.ageInTotalDaysByNow >= 0 && age.ageInTotalMonthsByNow <= 24',

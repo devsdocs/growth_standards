@@ -28,7 +28,7 @@ class FentonWeightForAgeData {
 }
 
 @freezed
-class FentonWeightForAge with _$FentonWeightForAge {
+sealed class FentonWeightForAge with _$FentonWeightForAge {
   @Assert(
     'age.ageInTotalWeeksByNow >= 22 && age.ageInTotalWeeksByNow <= 50',
     'Age must be in range of 22 - 50 weeks',

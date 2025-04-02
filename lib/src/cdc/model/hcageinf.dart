@@ -36,7 +36,7 @@ class CDCInfantHeadCircumferenceForAgeData {
 }
 
 @freezed
-class CDCInfantHeadCircumferenceForAge with _$CDCInfantHeadCircumferenceForAge {
+sealed class CDCInfantHeadCircumferenceForAge with _$CDCInfantHeadCircumferenceForAge {
   @Assert(
     'age.ageInTotalDaysByNow >= 0 && age.ageInTotalMonthsByNow <= 36',
     'Age must be in range of 0 - 36 months',

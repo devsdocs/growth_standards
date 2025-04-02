@@ -10,7 +10,7 @@ Months _monthFromNumber(int number) => _reverseMonthsEnum[number]!;
 final _reverseMonthsEnum = _$MonthsEnumMap.map((k, v) => MapEntry(v, k));
 
 @freezed
-class Age with _$Age {
+sealed class Age with _$Age {
   @Assert(
     '!(DateTime(DateTimeUtils.now().year, DateTimeUtils.now().month, DateTimeUtils.now().day).difference(DateTime(dateOfBirth.year,dateOfBirth.month.number,dateOfBirth.date,),).isNegative)',
     'Age is impossible',
@@ -127,7 +127,7 @@ class Age with _$Age {
 }
 
 @freezed
-class Date with _$Date implements Comparable<Date> {
+sealed class Date with _$Date implements Comparable<Date> {
   @Assert(
     'year > 0 || date > 0 || date < 32',
     'Date impossible, use \${Date.fromDateTime} for safety, in cost of increased risk of wrong growth calculation',

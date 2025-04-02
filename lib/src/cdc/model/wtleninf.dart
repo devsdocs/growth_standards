@@ -35,7 +35,7 @@ class CDCInfantWeightForLengthData {
 }
 
 @freezed
-class CDCInfantWeightForLength with _$CDCInfantWeightForLength {
+sealed class CDCInfantWeightForLength with _$CDCInfantWeightForLength {
   //TODO(devsdocs): Test this!
   @Assert(
     'adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.cdc,).value >= 45 && adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.cdc,).value < 104 && length.toCentimeter.value >= 45 && length.toCentimeter.value < 104',

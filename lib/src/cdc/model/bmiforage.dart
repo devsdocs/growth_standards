@@ -37,7 +37,7 @@ class CDCBodyMassIndexForAgeData {
 }
 
 @freezed
-class CDCBodyMassIndexMeasurement with _$CDCBodyMassIndexMeasurement {
+sealed class CDCBodyMassIndexMeasurement with _$CDCBodyMassIndexMeasurement {
   factory CDCBodyMassIndexMeasurement(num value) =
       _GrowthReferenceBodyMassIndexMeasurement;
   const CDCBodyMassIndexMeasurement._();
@@ -54,7 +54,7 @@ class CDCBodyMassIndexMeasurement with _$CDCBodyMassIndexMeasurement {
 }
 
 @freezed
-class CDCBodyMassIndexForAge with _$CDCBodyMassIndexForAge {
+sealed class CDCBodyMassIndexForAge with _$CDCBodyMassIndexForAge {
   @Assert(
     'age.ageInTotalMonthsByNow >= 24 && age.ageInTotalMonthsByNow < 241',
     'Age must be in range of 24 - 240 months',

@@ -1,6 +1,6 @@
 /// Various Growth Standard Implementation in Dart
 /// WHO, CDC, Fenton, and more to come
-library growth_standards;
+library;
 
 export 'package:super_measurement/super_measurement.dart'
     show

@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,168 +10,31 @@ part of 'tools.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-MassMeasurementHistory _$MassMeasurementHistoryFromJson(
-    Map<String, dynamic> json) {
-  return _MassMeasurementHistory.fromJson(json);
-}
 
 /// @nodoc
 mixin _$MassMeasurementHistory {
-  Date get date => throw _privateConstructorUsedError;
-  Mass get measurement => throw _privateConstructorUsedError;
-  bool? get isOedema => throw _privateConstructorUsedError;
-
-  /// Serializes this MassMeasurementHistory to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Date get date;
+  Mass get measurement;
+  bool? get isOedema;
 
   /// Create a copy of MassMeasurementHistory
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $MassMeasurementHistoryCopyWith<MassMeasurementHistory> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+      _$MassMeasurementHistoryCopyWithImpl<MassMeasurementHistory>(
+          this as MassMeasurementHistory, _$identity);
 
-/// @nodoc
-abstract class $MassMeasurementHistoryCopyWith<$Res> {
-  factory $MassMeasurementHistoryCopyWith(MassMeasurementHistory value,
-          $Res Function(MassMeasurementHistory) then) =
-      _$MassMeasurementHistoryCopyWithImpl<$Res, MassMeasurementHistory>;
-  @useResult
-  $Res call({Date date, Mass measurement, bool? isOedema});
-
-  $DateCopyWith<$Res> get date;
-}
-
-/// @nodoc
-class _$MassMeasurementHistoryCopyWithImpl<$Res,
-        $Val extends MassMeasurementHistory>
-    implements $MassMeasurementHistoryCopyWith<$Res> {
-  _$MassMeasurementHistoryCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of MassMeasurementHistory
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? date = null,
-    Object? measurement = null,
-    Object? isOedema = freezed,
-  }) {
-    return _then(_value.copyWith(
-      date: null == date
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
-              as Date,
-      measurement: null == measurement
-          ? _value.measurement
-          : measurement // ignore: cast_nullable_to_non_nullable
-              as Mass,
-      isOedema: freezed == isOedema
-          ? _value.isOedema
-          : isOedema // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ) as $Val);
-  }
-
-  /// Create a copy of MassMeasurementHistory
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $DateCopyWith<$Res> get date {
-    return $DateCopyWith<$Res>(_value.date, (value) {
-      return _then(_value.copyWith(date: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$MassMeasurementHistoryImplCopyWith<$Res>
-    implements $MassMeasurementHistoryCopyWith<$Res> {
-  factory _$$MassMeasurementHistoryImplCopyWith(
-          _$MassMeasurementHistoryImpl value,
-          $Res Function(_$MassMeasurementHistoryImpl) then) =
-      __$$MassMeasurementHistoryImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({Date date, Mass measurement, bool? isOedema});
-
-  @override
-  $DateCopyWith<$Res> get date;
-}
-
-/// @nodoc
-class __$$MassMeasurementHistoryImplCopyWithImpl<$Res>
-    extends _$MassMeasurementHistoryCopyWithImpl<$Res,
-        _$MassMeasurementHistoryImpl>
-    implements _$$MassMeasurementHistoryImplCopyWith<$Res> {
-  __$$MassMeasurementHistoryImplCopyWithImpl(
-      _$MassMeasurementHistoryImpl _value,
-      $Res Function(_$MassMeasurementHistoryImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of MassMeasurementHistory
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? date = null,
-    Object? measurement = null,
-    Object? isOedema = freezed,
-  }) {
-    return _then(_$MassMeasurementHistoryImpl(
-      null == date
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
-              as Date,
-      null == measurement
-          ? _value.measurement
-          : measurement // ignore: cast_nullable_to_non_nullable
-              as Mass,
-      isOedema: freezed == isOedema
-          ? _value.isOedema
-          : isOedema // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$MassMeasurementHistoryImpl implements _MassMeasurementHistory {
-  _$MassMeasurementHistoryImpl(this.date, this.measurement,
-      {this.isOedema = false});
-
-  factory _$MassMeasurementHistoryImpl.fromJson(Map<String, dynamic> json) =>
-      _$$MassMeasurementHistoryImplFromJson(json);
-
-  @override
-  final Date date;
-  @override
-  final Mass measurement;
-  @override
-  @JsonKey()
-  final bool? isOedema;
-
-  @override
-  String toString() {
-    return 'MassMeasurementHistory(date: $date, measurement: $measurement, isOedema: $isOedema)';
-  }
+  /// Serializes this MassMeasurementHistory to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MassMeasurementHistoryImpl &&
+            other is MassMeasurementHistory &&
             (identical(other.date, date) || other.date == date) &&
             (identical(other.measurement, measurement) ||
                 other.measurement == measurement) &&
@@ -182,209 +46,201 @@ class _$MassMeasurementHistoryImpl implements _MassMeasurementHistory {
   @override
   int get hashCode => Object.hash(runtimeType, date, measurement, isOedema);
 
-  /// Create a copy of MassMeasurementHistory
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$MassMeasurementHistoryImplCopyWith<_$MassMeasurementHistoryImpl>
-      get copyWith => __$$MassMeasurementHistoryImplCopyWithImpl<
-          _$MassMeasurementHistoryImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$MassMeasurementHistoryImplToJson(
-      this,
-    );
+  String toString() {
+    return 'MassMeasurementHistory(date: $date, measurement: $measurement, isOedema: $isOedema)';
   }
 }
 
-abstract class _MassMeasurementHistory implements MassMeasurementHistory {
-  factory _MassMeasurementHistory(final Date date, final Mass measurement,
-      {final bool? isOedema}) = _$MassMeasurementHistoryImpl;
-
-  factory _MassMeasurementHistory.fromJson(Map<String, dynamic> json) =
-      _$MassMeasurementHistoryImpl.fromJson;
-
-  @override
-  Date get date;
-  @override
-  Mass get measurement;
-  @override
-  bool? get isOedema;
-
-  /// Create a copy of MassMeasurementHistory
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$MassMeasurementHistoryImplCopyWith<_$MassMeasurementHistoryImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-LengthMeasurementHistory _$LengthMeasurementHistoryFromJson(
-    Map<String, dynamic> json) {
-  return _LengthMeasurementHistory.fromJson(json);
-}
-
 /// @nodoc
-mixin _$LengthMeasurementHistory {
-  Date get date => throw _privateConstructorUsedError;
-  Length get measurement => throw _privateConstructorUsedError;
-  LengthHeightMeasurementPosition? get measurementPosition =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this LengthMeasurementHistory to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of LengthMeasurementHistory
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $LengthMeasurementHistoryCopyWith<LengthMeasurementHistory> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $LengthMeasurementHistoryCopyWith<$Res> {
-  factory $LengthMeasurementHistoryCopyWith(LengthMeasurementHistory value,
-          $Res Function(LengthMeasurementHistory) then) =
-      _$LengthMeasurementHistoryCopyWithImpl<$Res, LengthMeasurementHistory>;
+abstract mixin class $MassMeasurementHistoryCopyWith<$Res> {
+  factory $MassMeasurementHistoryCopyWith(MassMeasurementHistory value,
+          $Res Function(MassMeasurementHistory) _then) =
+      _$MassMeasurementHistoryCopyWithImpl;
   @useResult
-  $Res call(
-      {Date date,
-      Length measurement,
-      LengthHeightMeasurementPosition? measurementPosition});
+  $Res call({Date date, Mass measurement, bool? isOedema});
 
   $DateCopyWith<$Res> get date;
 }
 
 /// @nodoc
-class _$LengthMeasurementHistoryCopyWithImpl<$Res,
-        $Val extends LengthMeasurementHistory>
-    implements $LengthMeasurementHistoryCopyWith<$Res> {
-  _$LengthMeasurementHistoryCopyWithImpl(this._value, this._then);
+class _$MassMeasurementHistoryCopyWithImpl<$Res>
+    implements $MassMeasurementHistoryCopyWith<$Res> {
+  _$MassMeasurementHistoryCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final MassMeasurementHistory _self;
+  final $Res Function(MassMeasurementHistory) _then;
 
-  /// Create a copy of LengthMeasurementHistory
+  /// Create a copy of MassMeasurementHistory
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? date = null,
     Object? measurement = null,
-    Object? measurementPosition = freezed,
+    Object? isOedema = freezed,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       date: null == date
-          ? _value.date
+          ? _self.date
           : date // ignore: cast_nullable_to_non_nullable
               as Date,
       measurement: null == measurement
-          ? _value.measurement
+          ? _self.measurement
           : measurement // ignore: cast_nullable_to_non_nullable
-              as Length,
-      measurementPosition: freezed == measurementPosition
-          ? _value.measurementPosition
-          : measurementPosition // ignore: cast_nullable_to_non_nullable
-              as LengthHeightMeasurementPosition?,
-    ) as $Val);
+              as Mass,
+      isOedema: freezed == isOedema
+          ? _self.isOedema
+          : isOedema // ignore: cast_nullable_to_non_nullable
+              as bool?,
+    ));
   }
 
-  /// Create a copy of LengthMeasurementHistory
+  /// Create a copy of MassMeasurementHistory
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DateCopyWith<$Res> get date {
-    return $DateCopyWith<$Res>(_value.date, (value) {
-      return _then(_value.copyWith(date: value) as $Val);
+    return $DateCopyWith<$Res>(_self.date, (value) {
+      return _then(_self.copyWith(date: value));
     });
   }
 }
 
 /// @nodoc
-abstract class _$$LengthMeasurementHistoryImplCopyWith<$Res>
-    implements $LengthMeasurementHistoryCopyWith<$Res> {
-  factory _$$LengthMeasurementHistoryImplCopyWith(
-          _$LengthMeasurementHistoryImpl value,
-          $Res Function(_$LengthMeasurementHistoryImpl) then) =
-      __$$LengthMeasurementHistoryImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {Date date,
-      Length measurement,
-      LengthHeightMeasurementPosition? measurementPosition});
-
-  @override
-  $DateCopyWith<$Res> get date;
-}
-
-/// @nodoc
-class __$$LengthMeasurementHistoryImplCopyWithImpl<$Res>
-    extends _$LengthMeasurementHistoryCopyWithImpl<$Res,
-        _$LengthMeasurementHistoryImpl>
-    implements _$$LengthMeasurementHistoryImplCopyWith<$Res> {
-  __$$LengthMeasurementHistoryImplCopyWithImpl(
-      _$LengthMeasurementHistoryImpl _value,
-      $Res Function(_$LengthMeasurementHistoryImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of LengthMeasurementHistory
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? date = null,
-    Object? measurement = null,
-    Object? measurementPosition = freezed,
-  }) {
-    return _then(_$LengthMeasurementHistoryImpl(
-      null == date
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
-              as Date,
-      null == measurement
-          ? _value.measurement
-          : measurement // ignore: cast_nullable_to_non_nullable
-              as Length,
-      measurementPosition: freezed == measurementPosition
-          ? _value.measurementPosition
-          : measurementPosition // ignore: cast_nullable_to_non_nullable
-              as LengthHeightMeasurementPosition?,
-    ));
-  }
-}
-
-/// @nodoc
 @JsonSerializable()
-class _$LengthMeasurementHistoryImpl implements _LengthMeasurementHistory {
-  _$LengthMeasurementHistoryImpl(this.date, this.measurement,
-      {this.measurementPosition = LengthHeightMeasurementPosition.recumbent});
-
-  factory _$LengthMeasurementHistoryImpl.fromJson(Map<String, dynamic> json) =>
-      _$$LengthMeasurementHistoryImplFromJson(json);
+class _MassMeasurementHistory extends MassMeasurementHistory {
+  _MassMeasurementHistory(this.date, this.measurement, {this.isOedema = false})
+      : super._();
+  factory _MassMeasurementHistory.fromJson(Map<String, dynamic> json) =>
+      _$MassMeasurementHistoryFromJson(json);
 
   @override
   final Date date;
   @override
-  final Length measurement;
+  final Mass measurement;
   @override
   @JsonKey()
-  final LengthHeightMeasurementPosition? measurementPosition;
+  final bool? isOedema;
+
+  /// Create a copy of MassMeasurementHistory
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$MassMeasurementHistoryCopyWith<_MassMeasurementHistory> get copyWith =>
+      __$MassMeasurementHistoryCopyWithImpl<_MassMeasurementHistory>(
+          this, _$identity);
 
   @override
-  String toString() {
-    return 'LengthMeasurementHistory(date: $date, measurement: $measurement, measurementPosition: $measurementPosition)';
+  Map<String, dynamic> toJson() {
+    return _$MassMeasurementHistoryToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LengthMeasurementHistoryImpl &&
+            other is _MassMeasurementHistory &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.measurement, measurement) ||
+                other.measurement == measurement) &&
+            (identical(other.isOedema, isOedema) ||
+                other.isOedema == isOedema));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, date, measurement, isOedema);
+
+  @override
+  String toString() {
+    return 'MassMeasurementHistory(date: $date, measurement: $measurement, isOedema: $isOedema)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$MassMeasurementHistoryCopyWith<$Res>
+    implements $MassMeasurementHistoryCopyWith<$Res> {
+  factory _$MassMeasurementHistoryCopyWith(_MassMeasurementHistory value,
+          $Res Function(_MassMeasurementHistory) _then) =
+      __$MassMeasurementHistoryCopyWithImpl;
+  @override
+  @useResult
+  $Res call({Date date, Mass measurement, bool? isOedema});
+
+  @override
+  $DateCopyWith<$Res> get date;
+}
+
+/// @nodoc
+class __$MassMeasurementHistoryCopyWithImpl<$Res>
+    implements _$MassMeasurementHistoryCopyWith<$Res> {
+  __$MassMeasurementHistoryCopyWithImpl(this._self, this._then);
+
+  final _MassMeasurementHistory _self;
+  final $Res Function(_MassMeasurementHistory) _then;
+
+  /// Create a copy of MassMeasurementHistory
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? date = null,
+    Object? measurement = null,
+    Object? isOedema = freezed,
+  }) {
+    return _then(_MassMeasurementHistory(
+      null == date
+          ? _self.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as Date,
+      null == measurement
+          ? _self.measurement
+          : measurement // ignore: cast_nullable_to_non_nullable
+              as Mass,
+      isOedema: freezed == isOedema
+          ? _self.isOedema
+          : isOedema // ignore: cast_nullable_to_non_nullable
+              as bool?,
+    ));
+  }
+
+  /// Create a copy of MassMeasurementHistory
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $DateCopyWith<$Res> get date {
+    return $DateCopyWith<$Res>(_self.date, (value) {
+      return _then(_self.copyWith(date: value));
+    });
+  }
+}
+
+/// @nodoc
+mixin _$LengthMeasurementHistory {
+  Date get date;
+  Length get measurement;
+  LengthHeightMeasurementPosition? get measurementPosition;
+
+  /// Create a copy of LengthMeasurementHistory
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $LengthMeasurementHistoryCopyWith<LengthMeasurementHistory> get copyWith =>
+      _$LengthMeasurementHistoryCopyWithImpl<LengthMeasurementHistory>(
+          this as LengthMeasurementHistory, _$identity);
+
+  /// Serializes this LengthMeasurementHistory to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is LengthMeasurementHistory &&
             (identical(other.date, date) || other.date == date) &&
             (identical(other.measurement, measurement) ||
                 other.measurement == measurement) &&
@@ -397,42 +253,185 @@ class _$LengthMeasurementHistoryImpl implements _LengthMeasurementHistory {
   int get hashCode =>
       Object.hash(runtimeType, date, measurement, measurementPosition);
 
-  /// Create a copy of LengthMeasurementHistory
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$LengthMeasurementHistoryImplCopyWith<_$LengthMeasurementHistoryImpl>
-      get copyWith => __$$LengthMeasurementHistoryImplCopyWithImpl<
-          _$LengthMeasurementHistoryImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$LengthMeasurementHistoryImplToJson(
-      this,
-    );
+  String toString() {
+    return 'LengthMeasurementHistory(date: $date, measurement: $measurement, measurementPosition: $measurementPosition)';
   }
 }
 
-abstract class _LengthMeasurementHistory implements LengthMeasurementHistory {
-  factory _LengthMeasurementHistory(final Date date, final Length measurement,
-          {final LengthHeightMeasurementPosition? measurementPosition}) =
-      _$LengthMeasurementHistoryImpl;
+/// @nodoc
+abstract mixin class $LengthMeasurementHistoryCopyWith<$Res> {
+  factory $LengthMeasurementHistoryCopyWith(LengthMeasurementHistory value,
+          $Res Function(LengthMeasurementHistory) _then) =
+      _$LengthMeasurementHistoryCopyWithImpl;
+  @useResult
+  $Res call(
+      {Date date,
+      Length measurement,
+      LengthHeightMeasurementPosition? measurementPosition});
 
-  factory _LengthMeasurementHistory.fromJson(Map<String, dynamic> json) =
-      _$LengthMeasurementHistoryImpl.fromJson;
+  $DateCopyWith<$Res> get date;
+}
+
+/// @nodoc
+class _$LengthMeasurementHistoryCopyWithImpl<$Res>
+    implements $LengthMeasurementHistoryCopyWith<$Res> {
+  _$LengthMeasurementHistoryCopyWithImpl(this._self, this._then);
+
+  final LengthMeasurementHistory _self;
+  final $Res Function(LengthMeasurementHistory) _then;
+
+  /// Create a copy of LengthMeasurementHistory
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? date = null,
+    Object? measurement = null,
+    Object? measurementPosition = freezed,
+  }) {
+    return _then(_self.copyWith(
+      date: null == date
+          ? _self.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as Date,
+      measurement: null == measurement
+          ? _self.measurement
+          : measurement // ignore: cast_nullable_to_non_nullable
+              as Length,
+      measurementPosition: freezed == measurementPosition
+          ? _self.measurementPosition
+          : measurementPosition // ignore: cast_nullable_to_non_nullable
+              as LengthHeightMeasurementPosition?,
+    ));
+  }
+
+  /// Create a copy of LengthMeasurementHistory
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $DateCopyWith<$Res> get date {
+    return $DateCopyWith<$Res>(_self.date, (value) {
+      return _then(_self.copyWith(date: value));
+    });
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _LengthMeasurementHistory extends LengthMeasurementHistory {
+  _LengthMeasurementHistory(this.date, this.measurement,
+      {this.measurementPosition = LengthHeightMeasurementPosition.recumbent})
+      : super._();
+  factory _LengthMeasurementHistory.fromJson(Map<String, dynamic> json) =>
+      _$LengthMeasurementHistoryFromJson(json);
 
   @override
-  Date get date;
+  final Date date;
   @override
-  Length get measurement;
+  final Length measurement;
   @override
-  LengthHeightMeasurementPosition? get measurementPosition;
+  @JsonKey()
+  final LengthHeightMeasurementPosition? measurementPosition;
 
   /// Create a copy of LengthMeasurementHistory
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$LengthMeasurementHistoryImplCopyWith<_$LengthMeasurementHistoryImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$LengthMeasurementHistoryCopyWith<_LengthMeasurementHistory> get copyWith =>
+      __$LengthMeasurementHistoryCopyWithImpl<_LengthMeasurementHistory>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$LengthMeasurementHistoryToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _LengthMeasurementHistory &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.measurement, measurement) ||
+                other.measurement == measurement) &&
+            (identical(other.measurementPosition, measurementPosition) ||
+                other.measurementPosition == measurementPosition));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, date, measurement, measurementPosition);
+
+  @override
+  String toString() {
+    return 'LengthMeasurementHistory(date: $date, measurement: $measurement, measurementPosition: $measurementPosition)';
+  }
 }
+
+/// @nodoc
+abstract mixin class _$LengthMeasurementHistoryCopyWith<$Res>
+    implements $LengthMeasurementHistoryCopyWith<$Res> {
+  factory _$LengthMeasurementHistoryCopyWith(_LengthMeasurementHistory value,
+          $Res Function(_LengthMeasurementHistory) _then) =
+      __$LengthMeasurementHistoryCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {Date date,
+      Length measurement,
+      LengthHeightMeasurementPosition? measurementPosition});
+
+  @override
+  $DateCopyWith<$Res> get date;
+}
+
+/// @nodoc
+class __$LengthMeasurementHistoryCopyWithImpl<$Res>
+    implements _$LengthMeasurementHistoryCopyWith<$Res> {
+  __$LengthMeasurementHistoryCopyWithImpl(this._self, this._then);
+
+  final _LengthMeasurementHistory _self;
+  final $Res Function(_LengthMeasurementHistory) _then;
+
+  /// Create a copy of LengthMeasurementHistory
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? date = null,
+    Object? measurement = null,
+    Object? measurementPosition = freezed,
+  }) {
+    return _then(_LengthMeasurementHistory(
+      null == date
+          ? _self.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as Date,
+      null == measurement
+          ? _self.measurement
+          : measurement // ignore: cast_nullable_to_non_nullable
+              as Length,
+      measurementPosition: freezed == measurementPosition
+          ? _self.measurementPosition
+          : measurementPosition // ignore: cast_nullable_to_non_nullable
+              as LengthHeightMeasurementPosition?,
+    ));
+  }
+
+  /// Create a copy of LengthMeasurementHistory
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $DateCopyWith<$Res> get date {
+    return $DateCopyWith<$Res>(_self.date, (value) {
+      return _then(_self.copyWith(date: value));
+    });
+  }
+}
+
+// dart format on

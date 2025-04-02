@@ -37,7 +37,7 @@ class WHOGrowthReferenceBodyMassIndexForAgeData {
 }
 
 @freezed
-class WHOGrowthReferenceBodyMassIndexMeasurement
+sealed class WHOGrowthReferenceBodyMassIndexMeasurement
     with _$WHOGrowthReferenceBodyMassIndexMeasurement {
   factory WHOGrowthReferenceBodyMassIndexMeasurement(num value) =
       _WHOGrowthReferenceBodyMassIndexMeasurement;
@@ -55,7 +55,7 @@ class WHOGrowthReferenceBodyMassIndexMeasurement
 }
 
 @freezed
-class WHOGrowthReferenceBodyMassIndexForAge
+sealed class WHOGrowthReferenceBodyMassIndexForAge
     with _$WHOGrowthReferenceBodyMassIndexForAge {
   @Assert(
     'age.ageInTotalMonthsByNow >= 61 && age.ageInTotalMonthsByNow <= 228',

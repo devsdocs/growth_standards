@@ -35,7 +35,7 @@ class CDCStatureForAgeData {
 }
 
 @freezed
-class CDCStatureForAge with _$CDCStatureForAge {
+sealed class CDCStatureForAge with _$CDCStatureForAge {
   @Assert(
     'age.ageInTotalMonthsByNow >= 24 && age.ageInTotalMonthsByNow <= 240',
     'Age must be in range of 24 - 240 months',

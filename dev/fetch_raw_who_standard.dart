@@ -10,7 +10,7 @@ const prefix =
 const suffix = '.txt';
 
 final dio = Dio();
-void main() async {
+void main() {
   dataMap.forEach((key, value) async {
     final fileName = key + suffix;
     final unencodedPath = prefix + fileName;

@@ -151,7 +151,7 @@ extension Measurement<T extends Unit<T>> on List<MeasurementHistory<T>> {
 }
 
 @freezed
-class MassMeasurementHistory extends MeasurementHistory<Mass>
+sealed class MassMeasurementHistory extends MeasurementHistory<Mass>
     with _$MassMeasurementHistory {
   factory MassMeasurementHistory(
     Date date,
@@ -161,10 +161,12 @@ class MassMeasurementHistory extends MeasurementHistory<Mass>
 
   factory MassMeasurementHistory.fromJson(Map<String, dynamic> json) =>
       _$MassMeasurementHistoryFromJson(json);
+
+  const MassMeasurementHistory._();
 }
 
 @freezed
-class LengthMeasurementHistory extends MeasurementHistory<Length>
+sealed class LengthMeasurementHistory extends MeasurementHistory<Length>
     with _$LengthMeasurementHistory {
   factory LengthMeasurementHistory(
     Date date,
@@ -175,6 +177,8 @@ class LengthMeasurementHistory extends MeasurementHistory<Length>
 
   factory LengthMeasurementHistory.fromJson(Map<String, dynamic> json) =>
       _$LengthMeasurementHistoryFromJson(json);
+
+  const LengthMeasurementHistory._();
 }
 
 sealed class MeasurementHistory<T extends Unit<T>> {

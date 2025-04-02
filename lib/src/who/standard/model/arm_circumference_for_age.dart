@@ -38,7 +38,7 @@ class WHOGrowthStandardsArmCircumferenceForAgeData {
 }
 
 @freezed
-class WHOGrowthStandardsArmCircumferenceForAge
+sealed class WHOGrowthStandardsArmCircumferenceForAge
     with _$WHOGrowthStandardsArmCircumferenceForAge {
   @Assert(
     'age.ageInTotalDaysByNow >= 91 && age.ageInTotalDaysByNow <= 1856',

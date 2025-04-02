@@ -38,7 +38,7 @@ class WHOGrowthStandardsWeightForLengthData {
 }
 
 @freezed
-class WHOGrowthStandardsWeightForLength
+sealed class WHOGrowthStandardsWeightForLength
     with _$WHOGrowthStandardsWeightForLength {
   //TODO(devsdocs): Test this!
   @Assert(

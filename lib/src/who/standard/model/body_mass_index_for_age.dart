@@ -40,7 +40,7 @@ class WHOGrowthStandardsBodyMassIndexForAgeData {
 }
 
 @freezed
-class WHOGrowthStandardsBodyMassIndexMeasurement
+sealed class WHOGrowthStandardsBodyMassIndexMeasurement
     with _$WHOGrowthStandardsBodyMassIndexMeasurement {
   factory WHOGrowthStandardsBodyMassIndexMeasurement(
     num value, {
@@ -76,7 +76,7 @@ class WHOGrowthStandardsBodyMassIndexMeasurement
 }
 
 @freezed
-class WHOGrowthStandardsBodyMassIndexForAge
+sealed class WHOGrowthStandardsBodyMassIndexForAge
     with _$WHOGrowthStandardsBodyMassIndexForAge {
   @Assert(
     'bodyMassIndexMeasurement.age.ageInTotalDaysByNow >= 0 && bodyMassIndexMeasurement.age.ageInTotalDaysByNow <= 1856',

@@ -35,7 +35,7 @@ class CDCInfantWeightForAgeData {
 }
 
 @freezed
-class CDCInfantWeightForAge with _$CDCInfantWeightForAge {
+sealed class CDCInfantWeightForAge with _$CDCInfantWeightForAge {
   @Assert(
     'age.ageInTotalDaysByNow >= 0 && age.ageInTotalMonthsByNow <= 36',
     'Age must be in range of 0 - 36 months',

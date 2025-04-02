@@ -37,7 +37,7 @@ class WHOGrowthStandardsSubscapularSkinfoldForAgeData {
 }
 
 @freezed
-class WHOGrowthStandardsSubscapularSkinfoldForAge
+sealed class WHOGrowthStandardsSubscapularSkinfoldForAge
     with _$WHOGrowthStandardsSubscapularSkinfoldForAge {
   @Assert(
     'age.ageInTotalDaysByNow >= 91 && age.ageInTotalDaysByNow <= 1856',

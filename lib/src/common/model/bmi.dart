@@ -8,7 +8,7 @@ part 'bmi.freezed.dart';
 part 'bmi.g.dart';
 
 @freezed
-class BodyMassIndex with _$BodyMassIndex {
+sealed class BodyMassIndex with _$BodyMassIndex {
   factory BodyMassIndex({
     required Length lengthHeight,
     required Mass weight,

@@ -1,3 +1,6 @@
+## 1.3.0
+- Bump `freezed`
+
 ## 1.2.2
 - Bump Dart SDK
 

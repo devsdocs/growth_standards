@@ -31,7 +31,7 @@ class FentonHeadCircumferenceForAgeData {
 }
 
 @freezed
-class FentonHeadCircumferenceForAge with _$FentonHeadCircumferenceForAge {
+sealed class FentonHeadCircumferenceForAge with _$FentonHeadCircumferenceForAge {
   @Assert(
     'age.ageInTotalWeeksByNow >= 22 && age.ageInTotalWeeksByNow <= 50',
     'Age must be in range of 22 - 50 weeks',
