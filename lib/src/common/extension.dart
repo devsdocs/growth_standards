@@ -5,9 +5,7 @@ import 'package:growth_standards/src/common/model/age.dart';
 import 'package:super_measurement/super_measurement.dart';
 
 extension NumPrecision on num {
-  num precision(Precision precision) => precision == Precision.none
-      ? this
-      : toDouble().toPrecision(precision.value);
+  num precision(Precision precision) => toDouble().toPrecision(precision.value);
 }
 
 extension DateTimeToDate on DateTime {
