@@ -1,3 +1,8 @@
+## 1.4.0
+
+- Bump `super_measurement`
+- Removed `Precision.none`
+
 ## 1.3.0
 - Bump `freezed`
 
