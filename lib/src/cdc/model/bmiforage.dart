@@ -125,6 +125,8 @@ sealed class CDCBodyMassIndexForAge with _$CDCBodyMassIndexForAge {
     Precision precision = Precision.ten,
   ]) =>
       _finalPercentile.precision(precision);
+
+  _CDCBodyMassIndexForAgeLMS get ageData => _ageData;
 }
 
 class _CDCBodyMassIndexForAgeGender {

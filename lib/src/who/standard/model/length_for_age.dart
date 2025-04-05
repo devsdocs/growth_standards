@@ -92,6 +92,8 @@ sealed class WHOGrowthStandardsLengthForAge
     Precision precision = Precision.ten,
   ]) =>
       (pnorm(_zScore) * 100).precision(precision);
+
+  _WHOGrowthStandardsLengthForAgeLMS get ageData => _ageData;
 }
 
 class _WHOGrowthStandardsLengthForAgeGender {

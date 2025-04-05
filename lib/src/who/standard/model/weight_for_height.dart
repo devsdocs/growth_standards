@@ -101,6 +101,8 @@ sealed class WHOGrowthStandardsWeightForHeight
     Precision precision = Precision.ten,
   ]) =>
       oedemaExist ? double.nan : (pnorm(_zScore) * 100).precision(precision);
+
+  _WHOGrowthStandardsWeightForHeightLMS get heightData => _ageData;
 }
 
 class _WHOGrowthStandardsWeightForHeightGender {

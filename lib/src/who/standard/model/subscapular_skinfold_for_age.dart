@@ -92,6 +92,8 @@ sealed class WHOGrowthStandardsSubscapularSkinfoldForAge
     Precision precision = Precision.ten,
   ]) =>
       (pnorm(_zScore) * 100).precision(precision);
+
+  _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS get ageData => _ageData;
 }
 
 class _SubscapularSkinfoldAgeGender {

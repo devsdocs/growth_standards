@@ -110,6 +110,8 @@ sealed class WHOGrowthReferenceBodyMassIndexForAge
     Precision precision = Precision.ten,
   ]) =>
       (pnorm(_zScore) * 100).precision(precision);
+
+  _WHOGrowthReferenceBodyMassIndexForAgeLMS get ageData => _ageData;
 }
 
 class _WHOGrowthReferenceBodyMassIndexForAgeGender {

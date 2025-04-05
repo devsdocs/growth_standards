@@ -73,6 +73,8 @@ sealed class FentonWeightForAge with _$FentonWeightForAge {
     Precision precision = Precision.ten,
   ]) =>
       (pnorm(_zScore) * 100).precision(precision);
+
+  _FentonWeightForAgeLMS get ageData => _ageData;
 }
 
 class _FentonWeightForAgeLMS {

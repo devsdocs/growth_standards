@@ -129,6 +129,8 @@ sealed class WHOGrowthStandardsBodyMassIndexForAge
     Precision precision = Precision.ten,
   ]) =>
       oedemaExist ? double.nan : (pnorm(_zScore) * 100).precision(precision);
+
+  _WHOGrowthStandardsBodyMassIndexForAgeLMS get ageData => _ageData;
 }
 
 class _WHOGrowthStandardsBodyMassIndexForAgeGender {

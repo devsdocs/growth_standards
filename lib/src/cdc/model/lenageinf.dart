@@ -90,6 +90,8 @@ sealed class CDCInfantLengthForAge with _$CDCInfantLengthForAge {
     Precision precision = Precision.ten,
   ]) =>
       (pnorm(_zScore) * 100).precision(precision);
+
+  _CDCInfantLengthForAgeLMS get ageData => _ageData;
 }
 
 class _CDCInfantLengthForAgeGender {

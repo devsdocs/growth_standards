@@ -87,6 +87,8 @@ sealed class WHOGrowthReferenceHeightForAge
     Precision precision = Precision.ten,
   ]) =>
       (pnorm(_zScore) * 100).precision(precision);
+
+  _WHOGrowthReferenceHeightForAgeLMS get ageData => _ageData;
 }
 
 class _WHOGrowthReferenceHeightForAgeGender {

@@ -91,6 +91,8 @@ sealed class CDCInfantHeadCircumferenceForAge
     Precision precision = Precision.ten,
   ]) =>
       (pnorm(_zScore) * 100).precision(precision);
+
+  _CDCInfantHeadCircumferenceForAgeLMS get ageData => _ageData;
 }
 
 class _CDCInfantHeadCircumferenceForAgeGender {
