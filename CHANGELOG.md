@@ -1,3 +1,8 @@
+## 1.5.1
+
+- Exposing `ageData` for more easy access
+- Use this version if your dependencies has supported `freezed` version 3
+
 ## 1.5.0
 
 - Exposing `ageData` for more easy access
