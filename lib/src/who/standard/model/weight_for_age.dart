@@ -35,7 +35,8 @@ class WHOGrowthStandardsWeightForAgeData {
 }
 
 @freezed
-sealed class WHOGrowthStandardsWeightForAge with _$WHOGrowthStandardsWeightForAge {
+sealed class WHOGrowthStandardsWeightForAge
+    with _$WHOGrowthStandardsWeightForAge {
   @Assert(
     'age.ageInTotalDaysByNow >= 0 && age.ageInTotalDaysByNow <= 1856',
     'Age must be in range of 0 - 1856 days',
