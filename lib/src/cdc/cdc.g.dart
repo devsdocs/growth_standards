@@ -6,23 +6,22 @@ part of 'cdc.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$GrowthReferenceBodyMassIndexMeasurementImpl
-    _$$GrowthReferenceBodyMassIndexMeasurementImplFromJson(
+_GrowthReferenceBodyMassIndexMeasurement
+    _$GrowthReferenceBodyMassIndexMeasurementFromJson(
             Map<String, dynamic> json) =>
-        _$GrowthReferenceBodyMassIndexMeasurementImpl(
+        _GrowthReferenceBodyMassIndexMeasurement(
           json['value'] as num,
         );
 
-Map<String, dynamic> _$$GrowthReferenceBodyMassIndexMeasurementImplToJson(
-        _$GrowthReferenceBodyMassIndexMeasurementImpl instance) =>
+Map<String, dynamic> _$GrowthReferenceBodyMassIndexMeasurementToJson(
+        _GrowthReferenceBodyMassIndexMeasurement instance) =>
     <String, dynamic>{
       'value': instance.value,
     };
 
-_$GrowthReferenceBodyMassIndexForAgeImpl
-    _$$GrowthReferenceBodyMassIndexForAgeImplFromJson(
-            Map<String, dynamic> json) =>
-        _$GrowthReferenceBodyMassIndexForAgeImpl(
+_GrowthReferenceBodyMassIndexForAge
+    _$GrowthReferenceBodyMassIndexForAgeFromJson(Map<String, dynamic> json) =>
+        _GrowthReferenceBodyMassIndexForAge(
           observationDate: json['observationDate'] == null
               ? null
               : Date.fromJson(json['observationDate'] as Map<String, dynamic>),
@@ -32,8 +31,8 @@ _$GrowthReferenceBodyMassIndexForAgeImpl
               json['bodyMassIndexMeasurement'] as Map<String, dynamic>),
         );
 
-Map<String, dynamic> _$$GrowthReferenceBodyMassIndexForAgeImplToJson(
-        _$GrowthReferenceBodyMassIndexForAgeImpl instance) =>
+Map<String, dynamic> _$GrowthReferenceBodyMassIndexForAgeToJson(
+        _GrowthReferenceBodyMassIndexForAge instance) =>
     <String, dynamic>{
       'observationDate': instance.observationDate?.toJson(),
       'sex': _$SexEnumMap[instance.sex]!,
@@ -46,9 +45,9 @@ const _$SexEnumMap = {
   Sex.female: 2,
 };
 
-_$HeadCircumferenceForAgeImpl _$$HeadCircumferenceForAgeImplFromJson(
+_HeadCircumferenceForAge _$HeadCircumferenceForAgeFromJson(
         Map<String, dynamic> json) =>
-    _$HeadCircumferenceForAgeImpl(
+    _HeadCircumferenceForAge(
       observationDate: json['observationDate'] == null
           ? null
           : Date.fromJson(json['observationDate'] as Map<String, dynamic>),
@@ -58,8 +57,8 @@ _$HeadCircumferenceForAgeImpl _$$HeadCircumferenceForAgeImplFromJson(
           Length.fromJson(json['measurementResult'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$HeadCircumferenceForAgeImplToJson(
-        _$HeadCircumferenceForAgeImpl instance) =>
+Map<String, dynamic> _$HeadCircumferenceForAgeToJson(
+        _HeadCircumferenceForAge instance) =>
     <String, dynamic>{
       'observationDate': instance.observationDate?.toJson(),
       'sex': _$SexEnumMap[instance.sex]!,
@@ -67,8 +66,8 @@ Map<String, dynamic> _$$HeadCircumferenceForAgeImplToJson(
       'measurementResult': instance.measurementResult.toJson(),
     };
 
-_$LengthForAgeImpl _$$LengthForAgeImplFromJson(Map<String, dynamic> json) =>
-    _$LengthForAgeImpl(
+_LengthForAge _$LengthForAgeFromJson(Map<String, dynamic> json) =>
+    _LengthForAge(
       observationDate: json['observationDate'] == null
           ? null
           : Date.fromJson(json['observationDate'] as Map<String, dynamic>),
@@ -80,7 +79,7 @@ _$LengthForAgeImpl _$$LengthForAgeImplFromJson(Map<String, dynamic> json) =>
           _$LengthHeightMeasurementPositionEnumMap, json['measure']),
     );
 
-Map<String, dynamic> _$$LengthForAgeImplToJson(_$LengthForAgeImpl instance) =>
+Map<String, dynamic> _$LengthForAgeToJson(_LengthForAge instance) =>
     <String, dynamic>{
       'observationDate': instance.observationDate?.toJson(),
       'sex': _$SexEnumMap[instance.sex]!,
@@ -94,9 +93,9 @@ const _$LengthHeightMeasurementPositionEnumMap = {
   LengthHeightMeasurementPosition.standing: 'standing',
 };
 
-_$GrowthReferenceHeightForAgeImpl _$$GrowthReferenceHeightForAgeImplFromJson(
+_GrowthReferenceHeightForAge _$GrowthReferenceHeightForAgeFromJson(
         Map<String, dynamic> json) =>
-    _$GrowthReferenceHeightForAgeImpl(
+    _GrowthReferenceHeightForAge(
       observationDate: json['observationDate'] == null
           ? null
           : Date.fromJson(json['observationDate'] as Map<String, dynamic>),
@@ -108,8 +107,8 @@ _$GrowthReferenceHeightForAgeImpl _$$GrowthReferenceHeightForAgeImplFromJson(
           _$LengthHeightMeasurementPositionEnumMap, json['measure']),
     );
 
-Map<String, dynamic> _$$GrowthReferenceHeightForAgeImplToJson(
-        _$GrowthReferenceHeightForAgeImpl instance) =>
+Map<String, dynamic> _$GrowthReferenceHeightForAgeToJson(
+        _GrowthReferenceHeightForAge instance) =>
     <String, dynamic>{
       'observationDate': instance.observationDate?.toJson(),
       'sex': _$SexEnumMap[instance.sex]!,
@@ -118,9 +117,8 @@ Map<String, dynamic> _$$GrowthReferenceHeightForAgeImplToJson(
       'measure': _$LengthHeightMeasurementPositionEnumMap[instance.measure]!,
     };
 
-_$CDCWeightForAgeImpl _$$CDCWeightForAgeImplFromJson(
-        Map<String, dynamic> json) =>
-    _$CDCWeightForAgeImpl(
+_CDCWeightForAge _$CDCWeightForAgeFromJson(Map<String, dynamic> json) =>
+    _CDCWeightForAge(
       observationDate: json['observationDate'] == null
           ? null
           : Date.fromJson(json['observationDate'] as Map<String, dynamic>),
@@ -129,8 +127,7 @@ _$CDCWeightForAgeImpl _$$CDCWeightForAgeImplFromJson(
       weight: Mass.fromJson(json['weight'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$CDCWeightForAgeImplToJson(
-        _$CDCWeightForAgeImpl instance) =>
+Map<String, dynamic> _$CDCWeightForAgeToJson(_CDCWeightForAge instance) =>
     <String, dynamic>{
       'observationDate': instance.observationDate?.toJson(),
       'sex': _$SexEnumMap[instance.sex]!,
@@ -138,9 +135,9 @@ Map<String, dynamic> _$$CDCWeightForAgeImplToJson(
       'weight': instance.weight.toJson(),
     };
 
-_$CDCInfantWeightForAgeImpl _$$CDCInfantWeightForAgeImplFromJson(
+_CDCInfantWeightForAge _$CDCInfantWeightForAgeFromJson(
         Map<String, dynamic> json) =>
-    _$CDCInfantWeightForAgeImpl(
+    _CDCInfantWeightForAge(
       observationDate: json['observationDate'] == null
           ? null
           : Date.fromJson(json['observationDate'] as Map<String, dynamic>),
@@ -149,8 +146,8 @@ _$CDCInfantWeightForAgeImpl _$$CDCInfantWeightForAgeImplFromJson(
       weight: Mass.fromJson(json['weight'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$CDCInfantWeightForAgeImplToJson(
-        _$CDCInfantWeightForAgeImpl instance) =>
+Map<String, dynamic> _$CDCInfantWeightForAgeToJson(
+        _CDCInfantWeightForAge instance) =>
     <String, dynamic>{
       'observationDate': instance.observationDate?.toJson(),
       'sex': _$SexEnumMap[instance.sex]!,
@@ -158,9 +155,9 @@ Map<String, dynamic> _$$CDCInfantWeightForAgeImplToJson(
       'weight': instance.weight.toJson(),
     };
 
-_$CDCInfantWeightForLengthImpl _$$CDCInfantWeightForLengthImplFromJson(
+_CDCInfantWeightForLength _$CDCInfantWeightForLengthFromJson(
         Map<String, dynamic> json) =>
-    _$CDCInfantWeightForLengthImpl(
+    _CDCInfantWeightForLength(
       observationDate: json['observationDate'] == null
           ? null
           : Date.fromJson(json['observationDate'] as Map<String, dynamic>),
@@ -172,8 +169,8 @@ _$CDCInfantWeightForLengthImpl _$$CDCInfantWeightForLengthImplFromJson(
           _$LengthHeightMeasurementPositionEnumMap, json['measure']),
     );
 
-Map<String, dynamic> _$$CDCInfantWeightForLengthImplToJson(
-        _$CDCInfantWeightForLengthImpl instance) =>
+Map<String, dynamic> _$CDCInfantWeightForLengthToJson(
+        _CDCInfantWeightForLength instance) =>
     <String, dynamic>{
       'observationDate': instance.observationDate?.toJson(),
       'sex': _$SexEnumMap[instance.sex]!,
@@ -183,9 +180,8 @@ Map<String, dynamic> _$$CDCInfantWeightForLengthImplToJson(
       'measure': _$LengthHeightMeasurementPositionEnumMap[instance.measure]!,
     };
 
-_$CDCWeightForStatureImpl _$$CDCWeightForStatureImplFromJson(
-        Map<String, dynamic> json) =>
-    _$CDCWeightForStatureImpl(
+_CDCWeightForStature _$CDCWeightForStatureFromJson(Map<String, dynamic> json) =>
+    _CDCWeightForStature(
       observationDate: json['observationDate'] == null
           ? null
           : Date.fromJson(json['observationDate'] as Map<String, dynamic>),
@@ -197,8 +193,8 @@ _$CDCWeightForStatureImpl _$$CDCWeightForStatureImplFromJson(
           _$LengthHeightMeasurementPositionEnumMap, json['measure']),
     );
 
-Map<String, dynamic> _$$CDCWeightForStatureImplToJson(
-        _$CDCWeightForStatureImpl instance) =>
+Map<String, dynamic> _$CDCWeightForStatureToJson(
+        _CDCWeightForStature instance) =>
     <String, dynamic>{
       'observationDate': instance.observationDate?.toJson(),
       'sex': _$SexEnumMap[instance.sex]!,

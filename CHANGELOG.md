@@ -1,3 +1,8 @@
+## 1.4.2
+
+- Bump `freezed` version.
+- Use this version if your dependencies has supported `freezed` version 3
+
 ## 1.4.1
 
 - Lowering `freezed` version.
