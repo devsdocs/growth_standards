@@ -1,3 +1,7 @@
+## 1.4.3
+ 
+- Fix pub static analysis issues
+
 ## 1.4.2
 
 - Bump `freezed` version.
