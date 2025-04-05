@@ -1,4 +1,3 @@
-// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -10,59 +9,42 @@ part of 'standard.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+
+WHOGrowthStandardsArmCircumferenceForAge
+    _$WHOGrowthStandardsArmCircumferenceForAgeFromJson(
+        Map<String, dynamic> json) {
+  return _WHOGrowthStandardsArmCircumferenceForAge.fromJson(json);
+}
 
 /// @nodoc
 mixin _$WHOGrowthStandardsArmCircumferenceForAge {
-  Date? get observationDate;
-  Sex get sex;
-  Age get age;
-  Length get measurementResult;
+  Date? get observationDate => throw _privateConstructorUsedError;
+  Sex get sex => throw _privateConstructorUsedError;
+  Age get age => throw _privateConstructorUsedError;
+  Length get measurementResult => throw _privateConstructorUsedError;
+
+  /// Serializes this WHOGrowthStandardsArmCircumferenceForAge to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
   /// Create a copy of WHOGrowthStandardsArmCircumferenceForAge
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
   $WHOGrowthStandardsArmCircumferenceForAgeCopyWith<
           WHOGrowthStandardsArmCircumferenceForAge>
-      get copyWith => _$WHOGrowthStandardsArmCircumferenceForAgeCopyWithImpl<
-              WHOGrowthStandardsArmCircumferenceForAge>(
-          this as WHOGrowthStandardsArmCircumferenceForAge, _$identity);
-
-  /// Serializes this WHOGrowthStandardsArmCircumferenceForAge to a JSON map.
-  Map<String, dynamic> toJson();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is WHOGrowthStandardsArmCircumferenceForAge &&
-            (identical(other.observationDate, observationDate) ||
-                other.observationDate == observationDate) &&
-            (identical(other.sex, sex) || other.sex == sex) &&
-            (identical(other.age, age) || other.age == age) &&
-            (identical(other.measurementResult, measurementResult) ||
-                other.measurementResult == measurementResult));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, observationDate, sex, age, measurementResult);
-
-  @override
-  String toString() {
-    return 'WHOGrowthStandardsArmCircumferenceForAge(observationDate: $observationDate, sex: $sex, age: $age, measurementResult: $measurementResult)';
-  }
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $WHOGrowthStandardsArmCircumferenceForAgeCopyWith<$Res> {
+abstract class $WHOGrowthStandardsArmCircumferenceForAgeCopyWith<$Res> {
   factory $WHOGrowthStandardsArmCircumferenceForAgeCopyWith(
           WHOGrowthStandardsArmCircumferenceForAge value,
-          $Res Function(WHOGrowthStandardsArmCircumferenceForAge) _then) =
-      _$WHOGrowthStandardsArmCircumferenceForAgeCopyWithImpl;
+          $Res Function(WHOGrowthStandardsArmCircumferenceForAge) then) =
+      _$WHOGrowthStandardsArmCircumferenceForAgeCopyWithImpl<$Res,
+          WHOGrowthStandardsArmCircumferenceForAge>;
   @useResult
   $Res call(
       {Date? observationDate, Sex sex, Age age, Length measurementResult});
@@ -72,13 +54,16 @@ abstract mixin class $WHOGrowthStandardsArmCircumferenceForAgeCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$WHOGrowthStandardsArmCircumferenceForAgeCopyWithImpl<$Res>
+class _$WHOGrowthStandardsArmCircumferenceForAgeCopyWithImpl<$Res,
+        $Val extends WHOGrowthStandardsArmCircumferenceForAge>
     implements $WHOGrowthStandardsArmCircumferenceForAgeCopyWith<$Res> {
   _$WHOGrowthStandardsArmCircumferenceForAgeCopyWithImpl(
-      this._self, this._then);
+      this._value, this._then);
 
-  final WHOGrowthStandardsArmCircumferenceForAge _self;
-  final $Res Function(WHOGrowthStandardsArmCircumferenceForAge) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
   /// Create a copy of WHOGrowthStandardsArmCircumferenceForAge
   /// with the given fields replaced by the non-null parameter values.
@@ -90,24 +75,24 @@ class _$WHOGrowthStandardsArmCircumferenceForAgeCopyWithImpl<$Res>
     Object? age = null,
     Object? measurementResult = null,
   }) {
-    return _then(_self.copyWith(
+    return _then(_value.copyWith(
       observationDate: freezed == observationDate
-          ? _self.observationDate
+          ? _value.observationDate
           : observationDate // ignore: cast_nullable_to_non_nullable
               as Date?,
       sex: null == sex
-          ? _self.sex
+          ? _value.sex
           : sex // ignore: cast_nullable_to_non_nullable
               as Sex,
       age: null == age
-          ? _self.age
+          ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
               as Age,
       measurementResult: null == measurementResult
-          ? _self.measurementResult
+          ? _value.measurementResult
           : measurementResult // ignore: cast_nullable_to_non_nullable
               as Length,
-    ));
+    ) as $Val);
   }
 
   /// Create a copy of WHOGrowthStandardsArmCircumferenceForAge
@@ -115,12 +100,12 @@ class _$WHOGrowthStandardsArmCircumferenceForAgeCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $DateCopyWith<$Res>? get observationDate {
-    if (_self.observationDate == null) {
+    if (_value.observationDate == null) {
       return null;
     }
 
-    return $DateCopyWith<$Res>(_self.observationDate!, (value) {
-      return _then(_self.copyWith(observationDate: value));
+    return $DateCopyWith<$Res>(_value.observationDate!, (value) {
+      return _then(_value.copyWith(observationDate: value) as $Val);
     });
   }
 
@@ -129,17 +114,76 @@ class _$WHOGrowthStandardsArmCircumferenceForAgeCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
+    return $AgeCopyWith<$Res>(_value.age, (value) {
+      return _then(_value.copyWith(age: value) as $Val);
     });
   }
 }
 
 /// @nodoc
+abstract class _$$WHOGrowthStandardsArmCircumferenceForAgeImplCopyWith<$Res>
+    implements $WHOGrowthStandardsArmCircumferenceForAgeCopyWith<$Res> {
+  factory _$$WHOGrowthStandardsArmCircumferenceForAgeImplCopyWith(
+          _$WHOGrowthStandardsArmCircumferenceForAgeImpl value,
+          $Res Function(_$WHOGrowthStandardsArmCircumferenceForAgeImpl) then) =
+      __$$WHOGrowthStandardsArmCircumferenceForAgeImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {Date? observationDate, Sex sex, Age age, Length measurementResult});
+
+  @override
+  $DateCopyWith<$Res>? get observationDate;
+  @override
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class __$$WHOGrowthStandardsArmCircumferenceForAgeImplCopyWithImpl<$Res>
+    extends _$WHOGrowthStandardsArmCircumferenceForAgeCopyWithImpl<$Res,
+        _$WHOGrowthStandardsArmCircumferenceForAgeImpl>
+    implements _$$WHOGrowthStandardsArmCircumferenceForAgeImplCopyWith<$Res> {
+  __$$WHOGrowthStandardsArmCircumferenceForAgeImplCopyWithImpl(
+      _$WHOGrowthStandardsArmCircumferenceForAgeImpl _value,
+      $Res Function(_$WHOGrowthStandardsArmCircumferenceForAgeImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of WHOGrowthStandardsArmCircumferenceForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? observationDate = freezed,
+    Object? sex = null,
+    Object? age = null,
+    Object? measurementResult = null,
+  }) {
+    return _then(_$WHOGrowthStandardsArmCircumferenceForAgeImpl(
+      observationDate: freezed == observationDate
+          ? _value.observationDate
+          : observationDate // ignore: cast_nullable_to_non_nullable
+              as Date?,
+      sex: null == sex
+          ? _value.sex
+          : sex // ignore: cast_nullable_to_non_nullable
+              as Sex,
+      age: null == age
+          ? _value.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+      measurementResult: null == measurementResult
+          ? _value.measurementResult
+          : measurementResult // ignore: cast_nullable_to_non_nullable
+              as Length,
+    ));
+  }
+}
+
+/// @nodoc
 @JsonSerializable()
-class _WHOGrowthStandardsArmCircumferenceForAge
-    extends WHOGrowthStandardsArmCircumferenceForAge {
-  _WHOGrowthStandardsArmCircumferenceForAge(
+class _$WHOGrowthStandardsArmCircumferenceForAgeImpl
+    extends _WHOGrowthStandardsArmCircumferenceForAge {
+  _$WHOGrowthStandardsArmCircumferenceForAgeImpl(
       {this.observationDate,
       required this.sex,
       required this.age,
@@ -156,9 +200,10 @@ class _WHOGrowthStandardsArmCircumferenceForAge
                 observationDate.isSameOrAfter(age.dateAtDaysAfterBirth(91)),
             'Observation date is impossible, because happen after today or before birth'),
         super._();
-  factory _WHOGrowthStandardsArmCircumferenceForAge.fromJson(
+
+  factory _$WHOGrowthStandardsArmCircumferenceForAgeImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$WHOGrowthStandardsArmCircumferenceForAgeFromJson(json);
+      _$$WHOGrowthStandardsArmCircumferenceForAgeImplFromJson(json);
 
   @override
   final Date? observationDate;
@@ -169,28 +214,16 @@ class _WHOGrowthStandardsArmCircumferenceForAge
   @override
   final Length measurementResult;
 
-  /// Create a copy of WHOGrowthStandardsArmCircumferenceForAge
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$WHOGrowthStandardsArmCircumferenceForAgeCopyWith<
-          _WHOGrowthStandardsArmCircumferenceForAge>
-      get copyWith => __$WHOGrowthStandardsArmCircumferenceForAgeCopyWithImpl<
-          _WHOGrowthStandardsArmCircumferenceForAge>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$WHOGrowthStandardsArmCircumferenceForAgeToJson(
-      this,
-    );
+  String toString() {
+    return 'WHOGrowthStandardsArmCircumferenceForAge(observationDate: $observationDate, sex: $sex, age: $age, measurementResult: $measurementResult)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _WHOGrowthStandardsArmCircumferenceForAge &&
+            other is _$WHOGrowthStandardsArmCircumferenceForAgeImpl &&
             (identical(other.observationDate, observationDate) ||
                 other.observationDate == observationDate) &&
             (identical(other.sex, sex) || other.sex == sex) &&
@@ -204,137 +237,86 @@ class _WHOGrowthStandardsArmCircumferenceForAge
   int get hashCode =>
       Object.hash(runtimeType, observationDate, sex, age, measurementResult);
 
+  /// Create a copy of WHOGrowthStandardsArmCircumferenceForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  String toString() {
-    return 'WHOGrowthStandardsArmCircumferenceForAge(observationDate: $observationDate, sex: $sex, age: $age, measurementResult: $measurementResult)';
+  @pragma('vm:prefer-inline')
+  _$$WHOGrowthStandardsArmCircumferenceForAgeImplCopyWith<
+          _$WHOGrowthStandardsArmCircumferenceForAgeImpl>
+      get copyWith =>
+          __$$WHOGrowthStandardsArmCircumferenceForAgeImplCopyWithImpl<
+              _$WHOGrowthStandardsArmCircumferenceForAgeImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$WHOGrowthStandardsArmCircumferenceForAgeImplToJson(
+      this,
+    );
   }
 }
 
-/// @nodoc
-abstract mixin class _$WHOGrowthStandardsArmCircumferenceForAgeCopyWith<$Res>
-    implements $WHOGrowthStandardsArmCircumferenceForAgeCopyWith<$Res> {
-  factory _$WHOGrowthStandardsArmCircumferenceForAgeCopyWith(
-          _WHOGrowthStandardsArmCircumferenceForAge value,
-          $Res Function(_WHOGrowthStandardsArmCircumferenceForAge) _then) =
-      __$WHOGrowthStandardsArmCircumferenceForAgeCopyWithImpl;
-  @override
-  @useResult
-  $Res call(
-      {Date? observationDate, Sex sex, Age age, Length measurementResult});
+abstract class _WHOGrowthStandardsArmCircumferenceForAge
+    extends WHOGrowthStandardsArmCircumferenceForAge {
+  factory _WHOGrowthStandardsArmCircumferenceForAge(
+          {final Date? observationDate,
+          required final Sex sex,
+          required final Age age,
+          required final Length measurementResult}) =
+      _$WHOGrowthStandardsArmCircumferenceForAgeImpl;
+  _WHOGrowthStandardsArmCircumferenceForAge._() : super._();
+
+  factory _WHOGrowthStandardsArmCircumferenceForAge.fromJson(
+          Map<String, dynamic> json) =
+      _$WHOGrowthStandardsArmCircumferenceForAgeImpl.fromJson;
 
   @override
-  $DateCopyWith<$Res>? get observationDate;
+  Date? get observationDate;
   @override
-  $AgeCopyWith<$Res> get age;
+  Sex get sex;
+  @override
+  Age get age;
+  @override
+  Length get measurementResult;
+
+  /// Create a copy of WHOGrowthStandardsArmCircumferenceForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$WHOGrowthStandardsArmCircumferenceForAgeImplCopyWith<
+          _$WHOGrowthStandardsArmCircumferenceForAgeImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
-/// @nodoc
-class __$WHOGrowthStandardsArmCircumferenceForAgeCopyWithImpl<$Res>
-    implements _$WHOGrowthStandardsArmCircumferenceForAgeCopyWith<$Res> {
-  __$WHOGrowthStandardsArmCircumferenceForAgeCopyWithImpl(
-      this._self, this._then);
-
-  final _WHOGrowthStandardsArmCircumferenceForAge _self;
-  final $Res Function(_WHOGrowthStandardsArmCircumferenceForAge) _then;
-
-  /// Create a copy of WHOGrowthStandardsArmCircumferenceForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? observationDate = freezed,
-    Object? sex = null,
-    Object? age = null,
-    Object? measurementResult = null,
-  }) {
-    return _then(_WHOGrowthStandardsArmCircumferenceForAge(
-      observationDate: freezed == observationDate
-          ? _self.observationDate
-          : observationDate // ignore: cast_nullable_to_non_nullable
-              as Date?,
-      sex: null == sex
-          ? _self.sex
-          : sex // ignore: cast_nullable_to_non_nullable
-              as Sex,
-      age: null == age
-          ? _self.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as Age,
-      measurementResult: null == measurementResult
-          ? _self.measurementResult
-          : measurementResult // ignore: cast_nullable_to_non_nullable
-              as Length,
-    ));
-  }
-
-  /// Create a copy of WHOGrowthStandardsArmCircumferenceForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $DateCopyWith<$Res>? get observationDate {
-    if (_self.observationDate == null) {
-      return null;
-    }
-
-    return $DateCopyWith<$Res>(_self.observationDate!, (value) {
-      return _then(_self.copyWith(observationDate: value));
-    });
-  }
-
-  /// Create a copy of WHOGrowthStandardsArmCircumferenceForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
-    });
-  }
+WHOGrowthStandardsBodyMassIndexMeasurement
+    _$WHOGrowthStandardsBodyMassIndexMeasurementFromJson(
+        Map<String, dynamic> json) {
+  return _WHOGrowthStandardsBodyMassIndexMeasurement.fromJson(json);
 }
 
 /// @nodoc
 mixin _$WHOGrowthStandardsBodyMassIndexMeasurement {
-  num get value;
-  Age get age;
+  num get value => throw _privateConstructorUsedError;
+  Age get age => throw _privateConstructorUsedError;
+
+  /// Serializes this WHOGrowthStandardsBodyMassIndexMeasurement to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
   /// Create a copy of WHOGrowthStandardsBodyMassIndexMeasurement
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
   $WHOGrowthStandardsBodyMassIndexMeasurementCopyWith<
           WHOGrowthStandardsBodyMassIndexMeasurement>
-      get copyWith => _$WHOGrowthStandardsBodyMassIndexMeasurementCopyWithImpl<
-              WHOGrowthStandardsBodyMassIndexMeasurement>(
-          this as WHOGrowthStandardsBodyMassIndexMeasurement, _$identity);
-
-  /// Serializes this WHOGrowthStandardsBodyMassIndexMeasurement to a JSON map.
-  Map<String, dynamic> toJson();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is WHOGrowthStandardsBodyMassIndexMeasurement &&
-            (identical(other.value, value) || other.value == value) &&
-            (identical(other.age, age) || other.age == age));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, value, age);
-
-  @override
-  String toString() {
-    return 'WHOGrowthStandardsBodyMassIndexMeasurement(value: $value, age: $age)';
-  }
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $WHOGrowthStandardsBodyMassIndexMeasurementCopyWith<$Res> {
+abstract class $WHOGrowthStandardsBodyMassIndexMeasurementCopyWith<$Res> {
   factory $WHOGrowthStandardsBodyMassIndexMeasurementCopyWith(
           WHOGrowthStandardsBodyMassIndexMeasurement value,
-          $Res Function(WHOGrowthStandardsBodyMassIndexMeasurement) _then) =
-      _$WHOGrowthStandardsBodyMassIndexMeasurementCopyWithImpl;
+          $Res Function(WHOGrowthStandardsBodyMassIndexMeasurement) then) =
+      _$WHOGrowthStandardsBodyMassIndexMeasurementCopyWithImpl<$Res,
+          WHOGrowthStandardsBodyMassIndexMeasurement>;
   @useResult
   $Res call({num value, Age age});
 
@@ -342,13 +324,16 @@ abstract mixin class $WHOGrowthStandardsBodyMassIndexMeasurementCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$WHOGrowthStandardsBodyMassIndexMeasurementCopyWithImpl<$Res>
+class _$WHOGrowthStandardsBodyMassIndexMeasurementCopyWithImpl<$Res,
+        $Val extends WHOGrowthStandardsBodyMassIndexMeasurement>
     implements $WHOGrowthStandardsBodyMassIndexMeasurementCopyWith<$Res> {
   _$WHOGrowthStandardsBodyMassIndexMeasurementCopyWithImpl(
-      this._self, this._then);
+      this._value, this._then);
 
-  final WHOGrowthStandardsBodyMassIndexMeasurement _self;
-  final $Res Function(WHOGrowthStandardsBodyMassIndexMeasurement) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
   /// Create a copy of WHOGrowthStandardsBodyMassIndexMeasurement
   /// with the given fields replaced by the non-null parameter values.
@@ -358,16 +343,16 @@ class _$WHOGrowthStandardsBodyMassIndexMeasurementCopyWithImpl<$Res>
     Object? value = null,
     Object? age = null,
   }) {
-    return _then(_self.copyWith(
+    return _then(_value.copyWith(
       value: null == value
-          ? _self.value
+          ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as num,
       age: null == age
-          ? _self.age
+          ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
               as Age,
-    ));
+    ) as $Val);
   }
 
   /// Create a copy of WHOGrowthStandardsBodyMassIndexMeasurement
@@ -375,49 +360,86 @@ class _$WHOGrowthStandardsBodyMassIndexMeasurementCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
+    return $AgeCopyWith<$Res>(_value.age, (value) {
+      return _then(_value.copyWith(age: value) as $Val);
     });
   }
 }
 
 /// @nodoc
+abstract class _$$WHOGrowthStandardsBodyMassIndexMeasurementImplCopyWith<$Res>
+    implements $WHOGrowthStandardsBodyMassIndexMeasurementCopyWith<$Res> {
+  factory _$$WHOGrowthStandardsBodyMassIndexMeasurementImplCopyWith(
+          _$WHOGrowthStandardsBodyMassIndexMeasurementImpl value,
+          $Res Function(_$WHOGrowthStandardsBodyMassIndexMeasurementImpl)
+              then) =
+      __$$WHOGrowthStandardsBodyMassIndexMeasurementImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({num value, Age age});
+
+  @override
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class __$$WHOGrowthStandardsBodyMassIndexMeasurementImplCopyWithImpl<$Res>
+    extends _$WHOGrowthStandardsBodyMassIndexMeasurementCopyWithImpl<$Res,
+        _$WHOGrowthStandardsBodyMassIndexMeasurementImpl>
+    implements _$$WHOGrowthStandardsBodyMassIndexMeasurementImplCopyWith<$Res> {
+  __$$WHOGrowthStandardsBodyMassIndexMeasurementImplCopyWithImpl(
+      _$WHOGrowthStandardsBodyMassIndexMeasurementImpl _value,
+      $Res Function(_$WHOGrowthStandardsBodyMassIndexMeasurementImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of WHOGrowthStandardsBodyMassIndexMeasurement
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? value = null,
+    Object? age = null,
+  }) {
+    return _then(_$WHOGrowthStandardsBodyMassIndexMeasurementImpl(
+      null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as num,
+      age: null == age
+          ? _value.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+    ));
+  }
+}
+
+/// @nodoc
 @JsonSerializable()
-class _WHOGrowthStandardsBodyMassIndexMeasurement
-    extends WHOGrowthStandardsBodyMassIndexMeasurement {
-  _WHOGrowthStandardsBodyMassIndexMeasurement(this.value, {required this.age})
+class _$WHOGrowthStandardsBodyMassIndexMeasurementImpl
+    extends _WHOGrowthStandardsBodyMassIndexMeasurement {
+  _$WHOGrowthStandardsBodyMassIndexMeasurementImpl(this.value,
+      {required this.age})
       : super._();
-  factory _WHOGrowthStandardsBodyMassIndexMeasurement.fromJson(
+
+  factory _$WHOGrowthStandardsBodyMassIndexMeasurementImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$WHOGrowthStandardsBodyMassIndexMeasurementFromJson(json);
+      _$$WHOGrowthStandardsBodyMassIndexMeasurementImplFromJson(json);
 
   @override
   final num value;
   @override
   final Age age;
 
-  /// Create a copy of WHOGrowthStandardsBodyMassIndexMeasurement
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$WHOGrowthStandardsBodyMassIndexMeasurementCopyWith<
-          _WHOGrowthStandardsBodyMassIndexMeasurement>
-      get copyWith => __$WHOGrowthStandardsBodyMassIndexMeasurementCopyWithImpl<
-          _WHOGrowthStandardsBodyMassIndexMeasurement>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$WHOGrowthStandardsBodyMassIndexMeasurementToJson(
-      this,
-    );
+  String toString() {
+    return 'WHOGrowthStandardsBodyMassIndexMeasurement(value: $value, age: $age)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _WHOGrowthStandardsBodyMassIndexMeasurement &&
+            other is _$WHOGrowthStandardsBodyMassIndexMeasurementImpl &&
             (identical(other.value, value) || other.value == value) &&
             (identical(other.age, age) || other.age == age));
   }
@@ -426,120 +448,83 @@ class _WHOGrowthStandardsBodyMassIndexMeasurement
   @override
   int get hashCode => Object.hash(runtimeType, value, age);
 
+  /// Create a copy of WHOGrowthStandardsBodyMassIndexMeasurement
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  String toString() {
-    return 'WHOGrowthStandardsBodyMassIndexMeasurement(value: $value, age: $age)';
+  @pragma('vm:prefer-inline')
+  _$$WHOGrowthStandardsBodyMassIndexMeasurementImplCopyWith<
+          _$WHOGrowthStandardsBodyMassIndexMeasurementImpl>
+      get copyWith =>
+          __$$WHOGrowthStandardsBodyMassIndexMeasurementImplCopyWithImpl<
+                  _$WHOGrowthStandardsBodyMassIndexMeasurementImpl>(
+              this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$WHOGrowthStandardsBodyMassIndexMeasurementImplToJson(
+      this,
+    );
   }
 }
 
-/// @nodoc
-abstract mixin class _$WHOGrowthStandardsBodyMassIndexMeasurementCopyWith<$Res>
-    implements $WHOGrowthStandardsBodyMassIndexMeasurementCopyWith<$Res> {
-  factory _$WHOGrowthStandardsBodyMassIndexMeasurementCopyWith(
-          _WHOGrowthStandardsBodyMassIndexMeasurement value,
-          $Res Function(_WHOGrowthStandardsBodyMassIndexMeasurement) _then) =
-      __$WHOGrowthStandardsBodyMassIndexMeasurementCopyWithImpl;
-  @override
-  @useResult
-  $Res call({num value, Age age});
+abstract class _WHOGrowthStandardsBodyMassIndexMeasurement
+    extends WHOGrowthStandardsBodyMassIndexMeasurement {
+  factory _WHOGrowthStandardsBodyMassIndexMeasurement(final num value,
+          {required final Age age}) =
+      _$WHOGrowthStandardsBodyMassIndexMeasurementImpl;
+  _WHOGrowthStandardsBodyMassIndexMeasurement._() : super._();
+
+  factory _WHOGrowthStandardsBodyMassIndexMeasurement.fromJson(
+          Map<String, dynamic> json) =
+      _$WHOGrowthStandardsBodyMassIndexMeasurementImpl.fromJson;
 
   @override
-  $AgeCopyWith<$Res> get age;
-}
-
-/// @nodoc
-class __$WHOGrowthStandardsBodyMassIndexMeasurementCopyWithImpl<$Res>
-    implements _$WHOGrowthStandardsBodyMassIndexMeasurementCopyWith<$Res> {
-  __$WHOGrowthStandardsBodyMassIndexMeasurementCopyWithImpl(
-      this._self, this._then);
-
-  final _WHOGrowthStandardsBodyMassIndexMeasurement _self;
-  final $Res Function(_WHOGrowthStandardsBodyMassIndexMeasurement) _then;
+  num get value;
+  @override
+  Age get age;
 
   /// Create a copy of WHOGrowthStandardsBodyMassIndexMeasurement
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? value = null,
-    Object? age = null,
-  }) {
-    return _then(_WHOGrowthStandardsBodyMassIndexMeasurement(
-      null == value
-          ? _self.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as num,
-      age: null == age
-          ? _self.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as Age,
-    ));
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$WHOGrowthStandardsBodyMassIndexMeasurementImplCopyWith<
+          _$WHOGrowthStandardsBodyMassIndexMeasurementImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
 
-  /// Create a copy of WHOGrowthStandardsBodyMassIndexMeasurement
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
-    });
-  }
+WHOGrowthStandardsBodyMassIndexForAge
+    _$WHOGrowthStandardsBodyMassIndexForAgeFromJson(Map<String, dynamic> json) {
+  return _WHOGrowthStandardsBodyMassIndexForAge.fromJson(json);
 }
 
 /// @nodoc
 mixin _$WHOGrowthStandardsBodyMassIndexForAge {
-  Date? get observationDate;
-  Sex get sex;
-  bool get oedemaExist;
+  Date? get observationDate => throw _privateConstructorUsedError;
+  Sex get sex => throw _privateConstructorUsedError;
+  bool get oedemaExist => throw _privateConstructorUsedError;
   @WHOGrowthStandardsBodyMassIndexMeasurementConverter()
-  WHOGrowthStandardsBodyMassIndexMeasurement get bodyMassIndexMeasurement;
+  WHOGrowthStandardsBodyMassIndexMeasurement get bodyMassIndexMeasurement =>
+      throw _privateConstructorUsedError;
+
+  /// Serializes this WHOGrowthStandardsBodyMassIndexForAge to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
   /// Create a copy of WHOGrowthStandardsBodyMassIndexForAge
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
   $WHOGrowthStandardsBodyMassIndexForAgeCopyWith<
           WHOGrowthStandardsBodyMassIndexForAge>
-      get copyWith => _$WHOGrowthStandardsBodyMassIndexForAgeCopyWithImpl<
-              WHOGrowthStandardsBodyMassIndexForAge>(
-          this as WHOGrowthStandardsBodyMassIndexForAge, _$identity);
-
-  /// Serializes this WHOGrowthStandardsBodyMassIndexForAge to a JSON map.
-  Map<String, dynamic> toJson();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is WHOGrowthStandardsBodyMassIndexForAge &&
-            (identical(other.observationDate, observationDate) ||
-                other.observationDate == observationDate) &&
-            (identical(other.sex, sex) || other.sex == sex) &&
-            (identical(other.oedemaExist, oedemaExist) ||
-                other.oedemaExist == oedemaExist) &&
-            (identical(
-                    other.bodyMassIndexMeasurement, bodyMassIndexMeasurement) ||
-                other.bodyMassIndexMeasurement == bodyMassIndexMeasurement));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, observationDate, sex, oedemaExist, bodyMassIndexMeasurement);
-
-  @override
-  String toString() {
-    return 'WHOGrowthStandardsBodyMassIndexForAge(observationDate: $observationDate, sex: $sex, oedemaExist: $oedemaExist, bodyMassIndexMeasurement: $bodyMassIndexMeasurement)';
-  }
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $WHOGrowthStandardsBodyMassIndexForAgeCopyWith<$Res> {
+abstract class $WHOGrowthStandardsBodyMassIndexForAgeCopyWith<$Res> {
   factory $WHOGrowthStandardsBodyMassIndexForAgeCopyWith(
           WHOGrowthStandardsBodyMassIndexForAge value,
-          $Res Function(WHOGrowthStandardsBodyMassIndexForAge) _then) =
-      _$WHOGrowthStandardsBodyMassIndexForAgeCopyWithImpl;
+          $Res Function(WHOGrowthStandardsBodyMassIndexForAge) then) =
+      _$WHOGrowthStandardsBodyMassIndexForAgeCopyWithImpl<$Res,
+          WHOGrowthStandardsBodyMassIndexForAge>;
   @useResult
   $Res call(
       {Date? observationDate,
@@ -554,12 +539,15 @@ abstract mixin class $WHOGrowthStandardsBodyMassIndexForAgeCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$WHOGrowthStandardsBodyMassIndexForAgeCopyWithImpl<$Res>
+class _$WHOGrowthStandardsBodyMassIndexForAgeCopyWithImpl<$Res,
+        $Val extends WHOGrowthStandardsBodyMassIndexForAge>
     implements $WHOGrowthStandardsBodyMassIndexForAgeCopyWith<$Res> {
-  _$WHOGrowthStandardsBodyMassIndexForAgeCopyWithImpl(this._self, this._then);
+  _$WHOGrowthStandardsBodyMassIndexForAgeCopyWithImpl(this._value, this._then);
 
-  final WHOGrowthStandardsBodyMassIndexForAge _self;
-  final $Res Function(WHOGrowthStandardsBodyMassIndexForAge) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
   /// Create a copy of WHOGrowthStandardsBodyMassIndexForAge
   /// with the given fields replaced by the non-null parameter values.
@@ -571,24 +559,24 @@ class _$WHOGrowthStandardsBodyMassIndexForAgeCopyWithImpl<$Res>
     Object? oedemaExist = null,
     Object? bodyMassIndexMeasurement = null,
   }) {
-    return _then(_self.copyWith(
+    return _then(_value.copyWith(
       observationDate: freezed == observationDate
-          ? _self.observationDate
+          ? _value.observationDate
           : observationDate // ignore: cast_nullable_to_non_nullable
               as Date?,
       sex: null == sex
-          ? _self.sex
+          ? _value.sex
           : sex // ignore: cast_nullable_to_non_nullable
               as Sex,
       oedemaExist: null == oedemaExist
-          ? _self.oedemaExist
+          ? _value.oedemaExist
           : oedemaExist // ignore: cast_nullable_to_non_nullable
               as bool,
       bodyMassIndexMeasurement: null == bodyMassIndexMeasurement
-          ? _self.bodyMassIndexMeasurement
+          ? _value.bodyMassIndexMeasurement
           : bodyMassIndexMeasurement // ignore: cast_nullable_to_non_nullable
               as WHOGrowthStandardsBodyMassIndexMeasurement,
-    ));
+    ) as $Val);
   }
 
   /// Create a copy of WHOGrowthStandardsBodyMassIndexForAge
@@ -596,12 +584,12 @@ class _$WHOGrowthStandardsBodyMassIndexForAgeCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $DateCopyWith<$Res>? get observationDate {
-    if (_self.observationDate == null) {
+    if (_value.observationDate == null) {
       return null;
     }
 
-    return $DateCopyWith<$Res>(_self.observationDate!, (value) {
-      return _then(_self.copyWith(observationDate: value));
+    return $DateCopyWith<$Res>(_value.observationDate!, (value) {
+      return _then(_value.copyWith(observationDate: value) as $Val);
     });
   }
 
@@ -612,17 +600,81 @@ class _$WHOGrowthStandardsBodyMassIndexForAgeCopyWithImpl<$Res>
   $WHOGrowthStandardsBodyMassIndexMeasurementCopyWith<$Res>
       get bodyMassIndexMeasurement {
     return $WHOGrowthStandardsBodyMassIndexMeasurementCopyWith<$Res>(
-        _self.bodyMassIndexMeasurement, (value) {
-      return _then(_self.copyWith(bodyMassIndexMeasurement: value));
+        _value.bodyMassIndexMeasurement, (value) {
+      return _then(_value.copyWith(bodyMassIndexMeasurement: value) as $Val);
     });
   }
 }
 
 /// @nodoc
+abstract class _$$WHOGrowthStandardsBodyMassIndexForAgeImplCopyWith<$Res>
+    implements $WHOGrowthStandardsBodyMassIndexForAgeCopyWith<$Res> {
+  factory _$$WHOGrowthStandardsBodyMassIndexForAgeImplCopyWith(
+          _$WHOGrowthStandardsBodyMassIndexForAgeImpl value,
+          $Res Function(_$WHOGrowthStandardsBodyMassIndexForAgeImpl) then) =
+      __$$WHOGrowthStandardsBodyMassIndexForAgeImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {Date? observationDate,
+      Sex sex,
+      bool oedemaExist,
+      @WHOGrowthStandardsBodyMassIndexMeasurementConverter()
+      WHOGrowthStandardsBodyMassIndexMeasurement bodyMassIndexMeasurement});
+
+  @override
+  $DateCopyWith<$Res>? get observationDate;
+  @override
+  $WHOGrowthStandardsBodyMassIndexMeasurementCopyWith<$Res>
+      get bodyMassIndexMeasurement;
+}
+
+/// @nodoc
+class __$$WHOGrowthStandardsBodyMassIndexForAgeImplCopyWithImpl<$Res>
+    extends _$WHOGrowthStandardsBodyMassIndexForAgeCopyWithImpl<$Res,
+        _$WHOGrowthStandardsBodyMassIndexForAgeImpl>
+    implements _$$WHOGrowthStandardsBodyMassIndexForAgeImplCopyWith<$Res> {
+  __$$WHOGrowthStandardsBodyMassIndexForAgeImplCopyWithImpl(
+      _$WHOGrowthStandardsBodyMassIndexForAgeImpl _value,
+      $Res Function(_$WHOGrowthStandardsBodyMassIndexForAgeImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of WHOGrowthStandardsBodyMassIndexForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? observationDate = freezed,
+    Object? sex = null,
+    Object? oedemaExist = null,
+    Object? bodyMassIndexMeasurement = null,
+  }) {
+    return _then(_$WHOGrowthStandardsBodyMassIndexForAgeImpl(
+      observationDate: freezed == observationDate
+          ? _value.observationDate
+          : observationDate // ignore: cast_nullable_to_non_nullable
+              as Date?,
+      sex: null == sex
+          ? _value.sex
+          : sex // ignore: cast_nullable_to_non_nullable
+              as Sex,
+      oedemaExist: null == oedemaExist
+          ? _value.oedemaExist
+          : oedemaExist // ignore: cast_nullable_to_non_nullable
+              as bool,
+      bodyMassIndexMeasurement: null == bodyMassIndexMeasurement
+          ? _value.bodyMassIndexMeasurement
+          : bodyMassIndexMeasurement // ignore: cast_nullable_to_non_nullable
+              as WHOGrowthStandardsBodyMassIndexMeasurement,
+    ));
+  }
+}
+
+/// @nodoc
 @JsonSerializable()
-class _WHOGrowthStandardsBodyMassIndexForAge
-    extends WHOGrowthStandardsBodyMassIndexForAge {
-  _WHOGrowthStandardsBodyMassIndexForAge(
+class _$WHOGrowthStandardsBodyMassIndexForAgeImpl
+    extends _WHOGrowthStandardsBodyMassIndexForAge {
+  _$WHOGrowthStandardsBodyMassIndexForAgeImpl(
       {this.observationDate,
       required this.sex,
       this.oedemaExist = false,
@@ -639,9 +691,10 @@ class _WHOGrowthStandardsBodyMassIndexForAge
                     .isSameOrAfter(bodyMassIndexMeasurement.age.dateOfBirth),
             'Observation date is impossible, because happen after today or before birth'),
         super._();
-  factory _WHOGrowthStandardsBodyMassIndexForAge.fromJson(
+
+  factory _$WHOGrowthStandardsBodyMassIndexForAgeImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$WHOGrowthStandardsBodyMassIndexForAgeFromJson(json);
+      _$$WHOGrowthStandardsBodyMassIndexForAgeImplFromJson(json);
 
   @override
   final Date? observationDate;
@@ -654,28 +707,16 @@ class _WHOGrowthStandardsBodyMassIndexForAge
   @WHOGrowthStandardsBodyMassIndexMeasurementConverter()
   final WHOGrowthStandardsBodyMassIndexMeasurement bodyMassIndexMeasurement;
 
-  /// Create a copy of WHOGrowthStandardsBodyMassIndexForAge
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$WHOGrowthStandardsBodyMassIndexForAgeCopyWith<
-          _WHOGrowthStandardsBodyMassIndexForAge>
-      get copyWith => __$WHOGrowthStandardsBodyMassIndexForAgeCopyWithImpl<
-          _WHOGrowthStandardsBodyMassIndexForAge>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$WHOGrowthStandardsBodyMassIndexForAgeToJson(
-      this,
-    );
+  String toString() {
+    return 'WHOGrowthStandardsBodyMassIndexForAge(observationDate: $observationDate, sex: $sex, oedemaExist: $oedemaExist, bodyMassIndexMeasurement: $bodyMassIndexMeasurement)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _WHOGrowthStandardsBodyMassIndexForAge &&
+            other is _$WHOGrowthStandardsBodyMassIndexForAgeImpl &&
             (identical(other.observationDate, observationDate) ||
                 other.observationDate == observationDate) &&
             (identical(other.sex, sex) || other.sex == sex) &&
@@ -691,150 +732,90 @@ class _WHOGrowthStandardsBodyMassIndexForAge
   int get hashCode => Object.hash(
       runtimeType, observationDate, sex, oedemaExist, bodyMassIndexMeasurement);
 
+  /// Create a copy of WHOGrowthStandardsBodyMassIndexForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  String toString() {
-    return 'WHOGrowthStandardsBodyMassIndexForAge(observationDate: $observationDate, sex: $sex, oedemaExist: $oedemaExist, bodyMassIndexMeasurement: $bodyMassIndexMeasurement)';
+  @pragma('vm:prefer-inline')
+  _$$WHOGrowthStandardsBodyMassIndexForAgeImplCopyWith<
+          _$WHOGrowthStandardsBodyMassIndexForAgeImpl>
+      get copyWith => __$$WHOGrowthStandardsBodyMassIndexForAgeImplCopyWithImpl<
+          _$WHOGrowthStandardsBodyMassIndexForAgeImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$WHOGrowthStandardsBodyMassIndexForAgeImplToJson(
+      this,
+    );
   }
 }
 
-/// @nodoc
-abstract mixin class _$WHOGrowthStandardsBodyMassIndexForAgeCopyWith<$Res>
-    implements $WHOGrowthStandardsBodyMassIndexForAgeCopyWith<$Res> {
-  factory _$WHOGrowthStandardsBodyMassIndexForAgeCopyWith(
-          _WHOGrowthStandardsBodyMassIndexForAge value,
-          $Res Function(_WHOGrowthStandardsBodyMassIndexForAge) _then) =
-      __$WHOGrowthStandardsBodyMassIndexForAgeCopyWithImpl;
-  @override
-  @useResult
-  $Res call(
-      {Date? observationDate,
-      Sex sex,
-      bool oedemaExist,
-      @WHOGrowthStandardsBodyMassIndexMeasurementConverter()
-      WHOGrowthStandardsBodyMassIndexMeasurement bodyMassIndexMeasurement});
+abstract class _WHOGrowthStandardsBodyMassIndexForAge
+    extends WHOGrowthStandardsBodyMassIndexForAge {
+  factory _WHOGrowthStandardsBodyMassIndexForAge(
+          {final Date? observationDate,
+          required final Sex sex,
+          final bool oedemaExist,
+          @WHOGrowthStandardsBodyMassIndexMeasurementConverter()
+          required final WHOGrowthStandardsBodyMassIndexMeasurement
+              bodyMassIndexMeasurement}) =
+      _$WHOGrowthStandardsBodyMassIndexForAgeImpl;
+  _WHOGrowthStandardsBodyMassIndexForAge._() : super._();
+
+  factory _WHOGrowthStandardsBodyMassIndexForAge.fromJson(
+          Map<String, dynamic> json) =
+      _$WHOGrowthStandardsBodyMassIndexForAgeImpl.fromJson;
 
   @override
-  $DateCopyWith<$Res>? get observationDate;
+  Date? get observationDate;
   @override
-  $WHOGrowthStandardsBodyMassIndexMeasurementCopyWith<$Res>
-      get bodyMassIndexMeasurement;
+  Sex get sex;
+  @override
+  bool get oedemaExist;
+  @override
+  @WHOGrowthStandardsBodyMassIndexMeasurementConverter()
+  WHOGrowthStandardsBodyMassIndexMeasurement get bodyMassIndexMeasurement;
+
+  /// Create a copy of WHOGrowthStandardsBodyMassIndexForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$WHOGrowthStandardsBodyMassIndexForAgeImplCopyWith<
+          _$WHOGrowthStandardsBodyMassIndexForAgeImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
-/// @nodoc
-class __$WHOGrowthStandardsBodyMassIndexForAgeCopyWithImpl<$Res>
-    implements _$WHOGrowthStandardsBodyMassIndexForAgeCopyWith<$Res> {
-  __$WHOGrowthStandardsBodyMassIndexForAgeCopyWithImpl(this._self, this._then);
-
-  final _WHOGrowthStandardsBodyMassIndexForAge _self;
-  final $Res Function(_WHOGrowthStandardsBodyMassIndexForAge) _then;
-
-  /// Create a copy of WHOGrowthStandardsBodyMassIndexForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? observationDate = freezed,
-    Object? sex = null,
-    Object? oedemaExist = null,
-    Object? bodyMassIndexMeasurement = null,
-  }) {
-    return _then(_WHOGrowthStandardsBodyMassIndexForAge(
-      observationDate: freezed == observationDate
-          ? _self.observationDate
-          : observationDate // ignore: cast_nullable_to_non_nullable
-              as Date?,
-      sex: null == sex
-          ? _self.sex
-          : sex // ignore: cast_nullable_to_non_nullable
-              as Sex,
-      oedemaExist: null == oedemaExist
-          ? _self.oedemaExist
-          : oedemaExist // ignore: cast_nullable_to_non_nullable
-              as bool,
-      bodyMassIndexMeasurement: null == bodyMassIndexMeasurement
-          ? _self.bodyMassIndexMeasurement
-          : bodyMassIndexMeasurement // ignore: cast_nullable_to_non_nullable
-              as WHOGrowthStandardsBodyMassIndexMeasurement,
-    ));
-  }
-
-  /// Create a copy of WHOGrowthStandardsBodyMassIndexForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $DateCopyWith<$Res>? get observationDate {
-    if (_self.observationDate == null) {
-      return null;
-    }
-
-    return $DateCopyWith<$Res>(_self.observationDate!, (value) {
-      return _then(_self.copyWith(observationDate: value));
-    });
-  }
-
-  /// Create a copy of WHOGrowthStandardsBodyMassIndexForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $WHOGrowthStandardsBodyMassIndexMeasurementCopyWith<$Res>
-      get bodyMassIndexMeasurement {
-    return $WHOGrowthStandardsBodyMassIndexMeasurementCopyWith<$Res>(
-        _self.bodyMassIndexMeasurement, (value) {
-      return _then(_self.copyWith(bodyMassIndexMeasurement: value));
-    });
-  }
+WHOGrowthStandardsHeadCircumferenceForAge
+    _$WHOGrowthStandardsHeadCircumferenceForAgeFromJson(
+        Map<String, dynamic> json) {
+  return _WHOGrowthStandardsHeadCircumferenceForAge.fromJson(json);
 }
 
 /// @nodoc
 mixin _$WHOGrowthStandardsHeadCircumferenceForAge {
-  Date? get observationDate;
-  Sex get sex;
-  Age get age;
-  Length get measurementResult;
+  Date? get observationDate => throw _privateConstructorUsedError;
+  Sex get sex => throw _privateConstructorUsedError;
+  Age get age => throw _privateConstructorUsedError;
+  Length get measurementResult => throw _privateConstructorUsedError;
+
+  /// Serializes this WHOGrowthStandardsHeadCircumferenceForAge to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
   /// Create a copy of WHOGrowthStandardsHeadCircumferenceForAge
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
   $WHOGrowthStandardsHeadCircumferenceForAgeCopyWith<
           WHOGrowthStandardsHeadCircumferenceForAge>
-      get copyWith => _$WHOGrowthStandardsHeadCircumferenceForAgeCopyWithImpl<
-              WHOGrowthStandardsHeadCircumferenceForAge>(
-          this as WHOGrowthStandardsHeadCircumferenceForAge, _$identity);
-
-  /// Serializes this WHOGrowthStandardsHeadCircumferenceForAge to a JSON map.
-  Map<String, dynamic> toJson();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is WHOGrowthStandardsHeadCircumferenceForAge &&
-            (identical(other.observationDate, observationDate) ||
-                other.observationDate == observationDate) &&
-            (identical(other.sex, sex) || other.sex == sex) &&
-            (identical(other.age, age) || other.age == age) &&
-            (identical(other.measurementResult, measurementResult) ||
-                other.measurementResult == measurementResult));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, observationDate, sex, age, measurementResult);
-
-  @override
-  String toString() {
-    return 'WHOGrowthStandardsHeadCircumferenceForAge(observationDate: $observationDate, sex: $sex, age: $age, measurementResult: $measurementResult)';
-  }
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $WHOGrowthStandardsHeadCircumferenceForAgeCopyWith<$Res> {
+abstract class $WHOGrowthStandardsHeadCircumferenceForAgeCopyWith<$Res> {
   factory $WHOGrowthStandardsHeadCircumferenceForAgeCopyWith(
           WHOGrowthStandardsHeadCircumferenceForAge value,
-          $Res Function(WHOGrowthStandardsHeadCircumferenceForAge) _then) =
-      _$WHOGrowthStandardsHeadCircumferenceForAgeCopyWithImpl;
+          $Res Function(WHOGrowthStandardsHeadCircumferenceForAge) then) =
+      _$WHOGrowthStandardsHeadCircumferenceForAgeCopyWithImpl<$Res,
+          WHOGrowthStandardsHeadCircumferenceForAge>;
   @useResult
   $Res call(
       {Date? observationDate, Sex sex, Age age, Length measurementResult});
@@ -844,13 +825,16 @@ abstract mixin class $WHOGrowthStandardsHeadCircumferenceForAgeCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$WHOGrowthStandardsHeadCircumferenceForAgeCopyWithImpl<$Res>
+class _$WHOGrowthStandardsHeadCircumferenceForAgeCopyWithImpl<$Res,
+        $Val extends WHOGrowthStandardsHeadCircumferenceForAge>
     implements $WHOGrowthStandardsHeadCircumferenceForAgeCopyWith<$Res> {
   _$WHOGrowthStandardsHeadCircumferenceForAgeCopyWithImpl(
-      this._self, this._then);
+      this._value, this._then);
 
-  final WHOGrowthStandardsHeadCircumferenceForAge _self;
-  final $Res Function(WHOGrowthStandardsHeadCircumferenceForAge) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
   /// Create a copy of WHOGrowthStandardsHeadCircumferenceForAge
   /// with the given fields replaced by the non-null parameter values.
@@ -862,24 +846,24 @@ class _$WHOGrowthStandardsHeadCircumferenceForAgeCopyWithImpl<$Res>
     Object? age = null,
     Object? measurementResult = null,
   }) {
-    return _then(_self.copyWith(
+    return _then(_value.copyWith(
       observationDate: freezed == observationDate
-          ? _self.observationDate
+          ? _value.observationDate
           : observationDate // ignore: cast_nullable_to_non_nullable
               as Date?,
       sex: null == sex
-          ? _self.sex
+          ? _value.sex
           : sex // ignore: cast_nullable_to_non_nullable
               as Sex,
       age: null == age
-          ? _self.age
+          ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
               as Age,
       measurementResult: null == measurementResult
-          ? _self.measurementResult
+          ? _value.measurementResult
           : measurementResult // ignore: cast_nullable_to_non_nullable
               as Length,
-    ));
+    ) as $Val);
   }
 
   /// Create a copy of WHOGrowthStandardsHeadCircumferenceForAge
@@ -887,12 +871,12 @@ class _$WHOGrowthStandardsHeadCircumferenceForAgeCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $DateCopyWith<$Res>? get observationDate {
-    if (_self.observationDate == null) {
+    if (_value.observationDate == null) {
       return null;
     }
 
-    return $DateCopyWith<$Res>(_self.observationDate!, (value) {
-      return _then(_self.copyWith(observationDate: value));
+    return $DateCopyWith<$Res>(_value.observationDate!, (value) {
+      return _then(_value.copyWith(observationDate: value) as $Val);
     });
   }
 
@@ -901,17 +885,76 @@ class _$WHOGrowthStandardsHeadCircumferenceForAgeCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
+    return $AgeCopyWith<$Res>(_value.age, (value) {
+      return _then(_value.copyWith(age: value) as $Val);
     });
   }
 }
 
 /// @nodoc
+abstract class _$$WHOGrowthStandardsHeadCircumferenceForAgeImplCopyWith<$Res>
+    implements $WHOGrowthStandardsHeadCircumferenceForAgeCopyWith<$Res> {
+  factory _$$WHOGrowthStandardsHeadCircumferenceForAgeImplCopyWith(
+          _$WHOGrowthStandardsHeadCircumferenceForAgeImpl value,
+          $Res Function(_$WHOGrowthStandardsHeadCircumferenceForAgeImpl) then) =
+      __$$WHOGrowthStandardsHeadCircumferenceForAgeImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {Date? observationDate, Sex sex, Age age, Length measurementResult});
+
+  @override
+  $DateCopyWith<$Res>? get observationDate;
+  @override
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class __$$WHOGrowthStandardsHeadCircumferenceForAgeImplCopyWithImpl<$Res>
+    extends _$WHOGrowthStandardsHeadCircumferenceForAgeCopyWithImpl<$Res,
+        _$WHOGrowthStandardsHeadCircumferenceForAgeImpl>
+    implements _$$WHOGrowthStandardsHeadCircumferenceForAgeImplCopyWith<$Res> {
+  __$$WHOGrowthStandardsHeadCircumferenceForAgeImplCopyWithImpl(
+      _$WHOGrowthStandardsHeadCircumferenceForAgeImpl _value,
+      $Res Function(_$WHOGrowthStandardsHeadCircumferenceForAgeImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of WHOGrowthStandardsHeadCircumferenceForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? observationDate = freezed,
+    Object? sex = null,
+    Object? age = null,
+    Object? measurementResult = null,
+  }) {
+    return _then(_$WHOGrowthStandardsHeadCircumferenceForAgeImpl(
+      observationDate: freezed == observationDate
+          ? _value.observationDate
+          : observationDate // ignore: cast_nullable_to_non_nullable
+              as Date?,
+      sex: null == sex
+          ? _value.sex
+          : sex // ignore: cast_nullable_to_non_nullable
+              as Sex,
+      age: null == age
+          ? _value.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+      measurementResult: null == measurementResult
+          ? _value.measurementResult
+          : measurementResult // ignore: cast_nullable_to_non_nullable
+              as Length,
+    ));
+  }
+}
+
+/// @nodoc
 @JsonSerializable()
-class _WHOGrowthStandardsHeadCircumferenceForAge
-    extends WHOGrowthStandardsHeadCircumferenceForAge {
-  _WHOGrowthStandardsHeadCircumferenceForAge(
+class _$WHOGrowthStandardsHeadCircumferenceForAgeImpl
+    extends _WHOGrowthStandardsHeadCircumferenceForAge {
+  _$WHOGrowthStandardsHeadCircumferenceForAgeImpl(
       {this.observationDate,
       required this.sex,
       required this.age,
@@ -924,9 +967,10 @@ class _WHOGrowthStandardsHeadCircumferenceForAge
                 observationDate.isSameOrAfter(age.dateOfBirth),
             'Observation date is impossible, because happen after today or before birth'),
         super._();
-  factory _WHOGrowthStandardsHeadCircumferenceForAge.fromJson(
+
+  factory _$WHOGrowthStandardsHeadCircumferenceForAgeImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$WHOGrowthStandardsHeadCircumferenceForAgeFromJson(json);
+      _$$WHOGrowthStandardsHeadCircumferenceForAgeImplFromJson(json);
 
   @override
   final Date? observationDate;
@@ -937,28 +981,16 @@ class _WHOGrowthStandardsHeadCircumferenceForAge
   @override
   final Length measurementResult;
 
-  /// Create a copy of WHOGrowthStandardsHeadCircumferenceForAge
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$WHOGrowthStandardsHeadCircumferenceForAgeCopyWith<
-          _WHOGrowthStandardsHeadCircumferenceForAge>
-      get copyWith => __$WHOGrowthStandardsHeadCircumferenceForAgeCopyWithImpl<
-          _WHOGrowthStandardsHeadCircumferenceForAge>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$WHOGrowthStandardsHeadCircumferenceForAgeToJson(
-      this,
-    );
+  String toString() {
+    return 'WHOGrowthStandardsHeadCircumferenceForAge(observationDate: $observationDate, sex: $sex, age: $age, measurementResult: $measurementResult)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _WHOGrowthStandardsHeadCircumferenceForAge &&
+            other is _$WHOGrowthStandardsHeadCircumferenceForAgeImpl &&
             (identical(other.observationDate, observationDate) ||
                 other.observationDate == observationDate) &&
             (identical(other.sex, sex) || other.sex == sex) &&
@@ -972,145 +1004,91 @@ class _WHOGrowthStandardsHeadCircumferenceForAge
   int get hashCode =>
       Object.hash(runtimeType, observationDate, sex, age, measurementResult);
 
+  /// Create a copy of WHOGrowthStandardsHeadCircumferenceForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  String toString() {
-    return 'WHOGrowthStandardsHeadCircumferenceForAge(observationDate: $observationDate, sex: $sex, age: $age, measurementResult: $measurementResult)';
+  @pragma('vm:prefer-inline')
+  _$$WHOGrowthStandardsHeadCircumferenceForAgeImplCopyWith<
+          _$WHOGrowthStandardsHeadCircumferenceForAgeImpl>
+      get copyWith =>
+          __$$WHOGrowthStandardsHeadCircumferenceForAgeImplCopyWithImpl<
+                  _$WHOGrowthStandardsHeadCircumferenceForAgeImpl>(
+              this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$WHOGrowthStandardsHeadCircumferenceForAgeImplToJson(
+      this,
+    );
   }
 }
 
-/// @nodoc
-abstract mixin class _$WHOGrowthStandardsHeadCircumferenceForAgeCopyWith<$Res>
-    implements $WHOGrowthStandardsHeadCircumferenceForAgeCopyWith<$Res> {
-  factory _$WHOGrowthStandardsHeadCircumferenceForAgeCopyWith(
-          _WHOGrowthStandardsHeadCircumferenceForAge value,
-          $Res Function(_WHOGrowthStandardsHeadCircumferenceForAge) _then) =
-      __$WHOGrowthStandardsHeadCircumferenceForAgeCopyWithImpl;
-  @override
-  @useResult
-  $Res call(
-      {Date? observationDate, Sex sex, Age age, Length measurementResult});
+abstract class _WHOGrowthStandardsHeadCircumferenceForAge
+    extends WHOGrowthStandardsHeadCircumferenceForAge {
+  factory _WHOGrowthStandardsHeadCircumferenceForAge(
+          {final Date? observationDate,
+          required final Sex sex,
+          required final Age age,
+          required final Length measurementResult}) =
+      _$WHOGrowthStandardsHeadCircumferenceForAgeImpl;
+  _WHOGrowthStandardsHeadCircumferenceForAge._() : super._();
+
+  factory _WHOGrowthStandardsHeadCircumferenceForAge.fromJson(
+          Map<String, dynamic> json) =
+      _$WHOGrowthStandardsHeadCircumferenceForAgeImpl.fromJson;
 
   @override
-  $DateCopyWith<$Res>? get observationDate;
+  Date? get observationDate;
   @override
-  $AgeCopyWith<$Res> get age;
+  Sex get sex;
+  @override
+  Age get age;
+  @override
+  Length get measurementResult;
+
+  /// Create a copy of WHOGrowthStandardsHeadCircumferenceForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$WHOGrowthStandardsHeadCircumferenceForAgeImplCopyWith<
+          _$WHOGrowthStandardsHeadCircumferenceForAgeImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
-/// @nodoc
-class __$WHOGrowthStandardsHeadCircumferenceForAgeCopyWithImpl<$Res>
-    implements _$WHOGrowthStandardsHeadCircumferenceForAgeCopyWith<$Res> {
-  __$WHOGrowthStandardsHeadCircumferenceForAgeCopyWithImpl(
-      this._self, this._then);
-
-  final _WHOGrowthStandardsHeadCircumferenceForAge _self;
-  final $Res Function(_WHOGrowthStandardsHeadCircumferenceForAge) _then;
-
-  /// Create a copy of WHOGrowthStandardsHeadCircumferenceForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? observationDate = freezed,
-    Object? sex = null,
-    Object? age = null,
-    Object? measurementResult = null,
-  }) {
-    return _then(_WHOGrowthStandardsHeadCircumferenceForAge(
-      observationDate: freezed == observationDate
-          ? _self.observationDate
-          : observationDate // ignore: cast_nullable_to_non_nullable
-              as Date?,
-      sex: null == sex
-          ? _self.sex
-          : sex // ignore: cast_nullable_to_non_nullable
-              as Sex,
-      age: null == age
-          ? _self.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as Age,
-      measurementResult: null == measurementResult
-          ? _self.measurementResult
-          : measurementResult // ignore: cast_nullable_to_non_nullable
-              as Length,
-    ));
-  }
-
-  /// Create a copy of WHOGrowthStandardsHeadCircumferenceForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $DateCopyWith<$Res>? get observationDate {
-    if (_self.observationDate == null) {
-      return null;
-    }
-
-    return $DateCopyWith<$Res>(_self.observationDate!, (value) {
-      return _then(_self.copyWith(observationDate: value));
-    });
-  }
-
-  /// Create a copy of WHOGrowthStandardsHeadCircumferenceForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
-    });
-  }
+WHOGrowthStandardsHeadCircumferenceVelocityForAge
+    _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeFromJson(
+        Map<String, dynamic> json) {
+  return _WHOGrowthStandardsHeadCircumferenceVelocityForAge.fromJson(json);
 }
 
 /// @nodoc
 mixin _$WHOGrowthStandardsHeadCircumferenceVelocityForAge {
-  Sex get sex;
-  Age get age;
-  List<LengthMeasurementHistory> get pastMeasurement;
+  Sex get sex => throw _privateConstructorUsedError;
+  Age get age => throw _privateConstructorUsedError;
+  List<LengthMeasurementHistory> get pastMeasurement =>
+      throw _privateConstructorUsedError;
+
+  /// Serializes this WHOGrowthStandardsHeadCircumferenceVelocityForAge to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
   /// Create a copy of WHOGrowthStandardsHeadCircumferenceVelocityForAge
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
   $WHOGrowthStandardsHeadCircumferenceVelocityForAgeCopyWith<
           WHOGrowthStandardsHeadCircumferenceVelocityForAge>
-      get copyWith =>
-          _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeCopyWithImpl<
-                  WHOGrowthStandardsHeadCircumferenceVelocityForAge>(
-              this as WHOGrowthStandardsHeadCircumferenceVelocityForAge,
-              _$identity);
-
-  /// Serializes this WHOGrowthStandardsHeadCircumferenceVelocityForAge to a JSON map.
-  Map<String, dynamic> toJson();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is WHOGrowthStandardsHeadCircumferenceVelocityForAge &&
-            (identical(other.sex, sex) || other.sex == sex) &&
-            (identical(other.age, age) || other.age == age) &&
-            const DeepCollectionEquality()
-                .equals(other.pastMeasurement, pastMeasurement));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, sex, age,
-      const DeepCollectionEquality().hash(pastMeasurement));
-
-  @override
-  String toString() {
-    return 'WHOGrowthStandardsHeadCircumferenceVelocityForAge(sex: $sex, age: $age, pastMeasurement: $pastMeasurement)';
-  }
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $WHOGrowthStandardsHeadCircumferenceVelocityForAgeCopyWith<
+abstract class $WHOGrowthStandardsHeadCircumferenceVelocityForAgeCopyWith<
     $Res> {
   factory $WHOGrowthStandardsHeadCircumferenceVelocityForAgeCopyWith(
           WHOGrowthStandardsHeadCircumferenceVelocityForAge value,
           $Res Function(WHOGrowthStandardsHeadCircumferenceVelocityForAge)
-              _then) =
-      _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeCopyWithImpl;
+              then) =
+      _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeCopyWithImpl<$Res,
+          WHOGrowthStandardsHeadCircumferenceVelocityForAge>;
   @useResult
   $Res call({Sex sex, Age age, List<LengthMeasurementHistory> pastMeasurement});
 
@@ -1118,14 +1096,17 @@ abstract mixin class $WHOGrowthStandardsHeadCircumferenceVelocityForAgeCopyWith<
 }
 
 /// @nodoc
-class _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeCopyWithImpl<$Res>
+class _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeCopyWithImpl<$Res,
+        $Val extends WHOGrowthStandardsHeadCircumferenceVelocityForAge>
     implements
         $WHOGrowthStandardsHeadCircumferenceVelocityForAgeCopyWith<$Res> {
   _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeCopyWithImpl(
-      this._self, this._then);
+      this._value, this._then);
 
-  final WHOGrowthStandardsHeadCircumferenceVelocityForAge _self;
-  final $Res Function(WHOGrowthStandardsHeadCircumferenceVelocityForAge) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
   /// Create a copy of WHOGrowthStandardsHeadCircumferenceVelocityForAge
   /// with the given fields replaced by the non-null parameter values.
@@ -1136,20 +1117,20 @@ class _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeCopyWithImpl<$Res>
     Object? age = null,
     Object? pastMeasurement = null,
   }) {
-    return _then(_self.copyWith(
+    return _then(_value.copyWith(
       sex: null == sex
-          ? _self.sex
+          ? _value.sex
           : sex // ignore: cast_nullable_to_non_nullable
               as Sex,
       age: null == age
-          ? _self.age
+          ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
               as Age,
       pastMeasurement: null == pastMeasurement
-          ? _self.pastMeasurement
+          ? _value.pastMeasurement
           : pastMeasurement // ignore: cast_nullable_to_non_nullable
               as List<LengthMeasurementHistory>,
-    ));
+    ) as $Val);
   }
 
   /// Create a copy of WHOGrowthStandardsHeadCircumferenceVelocityForAge
@@ -1157,17 +1138,75 @@ class _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
+    return $AgeCopyWith<$Res>(_value.age, (value) {
+      return _then(_value.copyWith(age: value) as $Val);
     });
   }
 }
 
 /// @nodoc
+abstract class _$$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImplCopyWith<
+        $Res>
+    implements
+        $WHOGrowthStandardsHeadCircumferenceVelocityForAgeCopyWith<$Res> {
+  factory _$$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImplCopyWith(
+          _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl value,
+          $Res Function(_$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl)
+              then) =
+      __$$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImplCopyWithImpl<
+          $Res>;
+  @override
+  @useResult
+  $Res call({Sex sex, Age age, List<LengthMeasurementHistory> pastMeasurement});
+
+  @override
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class __$$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImplCopyWithImpl<
+        $Res>
+    extends _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeCopyWithImpl<
+        $Res, _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl>
+    implements
+        _$$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImplCopyWith<$Res> {
+  __$$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImplCopyWithImpl(
+      _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl _value,
+      $Res Function(_$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl)
+          _then)
+      : super(_value, _then);
+
+  /// Create a copy of WHOGrowthStandardsHeadCircumferenceVelocityForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? sex = null,
+    Object? age = null,
+    Object? pastMeasurement = null,
+  }) {
+    return _then(_$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl(
+      sex: null == sex
+          ? _value.sex
+          : sex // ignore: cast_nullable_to_non_nullable
+              as Sex,
+      age: null == age
+          ? _value.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+      pastMeasurement: null == pastMeasurement
+          ? _value._pastMeasurement
+          : pastMeasurement // ignore: cast_nullable_to_non_nullable
+              as List<LengthMeasurementHistory>,
+    ));
+  }
+}
+
+/// @nodoc
 @JsonSerializable()
-class _WHOGrowthStandardsHeadCircumferenceVelocityForAge
-    extends WHOGrowthStandardsHeadCircumferenceVelocityForAge {
-  _WHOGrowthStandardsHeadCircumferenceVelocityForAge(
+class _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl
+    extends _WHOGrowthStandardsHeadCircumferenceVelocityForAge {
+  _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl(
       {required this.sex,
       required this.age,
       required final List<LengthMeasurementHistory> pastMeasurement})
@@ -1187,9 +1226,10 @@ class _WHOGrowthStandardsHeadCircumferenceVelocityForAge
             'Calculation can not be done as there is date less than Date of Birth in past measurement, if you find this exception is a mistake, try to provide exact $Age'),
         _pastMeasurement = pastMeasurement,
         super._();
-  factory _WHOGrowthStandardsHeadCircumferenceVelocityForAge.fromJson(
+
+  factory _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeFromJson(json);
+      _$$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImplFromJson(json);
 
   @override
   final Sex sex;
@@ -1203,30 +1243,16 @@ class _WHOGrowthStandardsHeadCircumferenceVelocityForAge
     return EqualUnmodifiableListView(_pastMeasurement);
   }
 
-  /// Create a copy of WHOGrowthStandardsHeadCircumferenceVelocityForAge
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeCopyWith<
-          _WHOGrowthStandardsHeadCircumferenceVelocityForAge>
-      get copyWith =>
-          __$WHOGrowthStandardsHeadCircumferenceVelocityForAgeCopyWithImpl<
-                  _WHOGrowthStandardsHeadCircumferenceVelocityForAge>(
-              this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeToJson(
-      this,
-    );
+  String toString() {
+    return 'WHOGrowthStandardsHeadCircumferenceVelocityForAge(sex: $sex, age: $age, pastMeasurement: $pastMeasurement)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _WHOGrowthStandardsHeadCircumferenceVelocityForAge &&
+            other is _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             const DeepCollectionEquality()
@@ -1238,127 +1264,86 @@ class _WHOGrowthStandardsHeadCircumferenceVelocityForAge
   int get hashCode => Object.hash(runtimeType, sex, age,
       const DeepCollectionEquality().hash(_pastMeasurement));
 
+  /// Create a copy of WHOGrowthStandardsHeadCircumferenceVelocityForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  String toString() {
-    return 'WHOGrowthStandardsHeadCircumferenceVelocityForAge(sex: $sex, age: $age, pastMeasurement: $pastMeasurement)';
+  @pragma('vm:prefer-inline')
+  _$$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImplCopyWith<
+          _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl>
+      get copyWith =>
+          __$$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImplCopyWithImpl<
+                  _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl>(
+              this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImplToJson(
+      this,
+    );
   }
 }
 
-/// @nodoc
-abstract mixin class _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeCopyWith<
-        $Res>
-    implements
-        $WHOGrowthStandardsHeadCircumferenceVelocityForAgeCopyWith<$Res> {
-  factory _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeCopyWith(
-          _WHOGrowthStandardsHeadCircumferenceVelocityForAge value,
-          $Res Function(_WHOGrowthStandardsHeadCircumferenceVelocityForAge)
-              _then) =
-      __$WHOGrowthStandardsHeadCircumferenceVelocityForAgeCopyWithImpl;
-  @override
-  @useResult
-  $Res call({Sex sex, Age age, List<LengthMeasurementHistory> pastMeasurement});
+abstract class _WHOGrowthStandardsHeadCircumferenceVelocityForAge
+    extends WHOGrowthStandardsHeadCircumferenceVelocityForAge {
+  factory _WHOGrowthStandardsHeadCircumferenceVelocityForAge(
+          {required final Sex sex,
+          required final Age age,
+          required final List<LengthMeasurementHistory> pastMeasurement}) =
+      _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl;
+  _WHOGrowthStandardsHeadCircumferenceVelocityForAge._() : super._();
+
+  factory _WHOGrowthStandardsHeadCircumferenceVelocityForAge.fromJson(
+          Map<String, dynamic> json) =
+      _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl.fromJson;
 
   @override
-  $AgeCopyWith<$Res> get age;
-}
-
-/// @nodoc
-class __$WHOGrowthStandardsHeadCircumferenceVelocityForAgeCopyWithImpl<$Res>
-    implements
-        _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeCopyWith<$Res> {
-  __$WHOGrowthStandardsHeadCircumferenceVelocityForAgeCopyWithImpl(
-      this._self, this._then);
-
-  final _WHOGrowthStandardsHeadCircumferenceVelocityForAge _self;
-  final $Res Function(_WHOGrowthStandardsHeadCircumferenceVelocityForAge) _then;
+  Sex get sex;
+  @override
+  Age get age;
+  @override
+  List<LengthMeasurementHistory> get pastMeasurement;
 
   /// Create a copy of WHOGrowthStandardsHeadCircumferenceVelocityForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? sex = null,
-    Object? age = null,
-    Object? pastMeasurement = null,
-  }) {
-    return _then(_WHOGrowthStandardsHeadCircumferenceVelocityForAge(
-      sex: null == sex
-          ? _self.sex
-          : sex // ignore: cast_nullable_to_non_nullable
-              as Sex,
-      age: null == age
-          ? _self.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as Age,
-      pastMeasurement: null == pastMeasurement
-          ? _self._pastMeasurement
-          : pastMeasurement // ignore: cast_nullable_to_non_nullable
-              as List<LengthMeasurementHistory>,
-    ));
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImplCopyWith<
+          _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
 
-  /// Create a copy of WHOGrowthStandardsHeadCircumferenceVelocityForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
-    });
-  }
+WHOGrowthStandardsLengthForAge _$WHOGrowthStandardsLengthForAgeFromJson(
+    Map<String, dynamic> json) {
+  return _WHOGrowthStandardsLengthForAge.fromJson(json);
 }
 
 /// @nodoc
 mixin _$WHOGrowthStandardsLengthForAge {
-  Date? get observationDate;
-  Sex get sex;
-  Age get age;
-  Length get lengthHeight;
-  LengthHeightMeasurementPosition get measure;
+  Date? get observationDate => throw _privateConstructorUsedError;
+  Sex get sex => throw _privateConstructorUsedError;
+  Age get age => throw _privateConstructorUsedError;
+  Length get lengthHeight => throw _privateConstructorUsedError;
+  LengthHeightMeasurementPosition get measure =>
+      throw _privateConstructorUsedError;
+
+  /// Serializes this WHOGrowthStandardsLengthForAge to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
   /// Create a copy of WHOGrowthStandardsLengthForAge
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
   $WHOGrowthStandardsLengthForAgeCopyWith<WHOGrowthStandardsLengthForAge>
-      get copyWith => _$WHOGrowthStandardsLengthForAgeCopyWithImpl<
-              WHOGrowthStandardsLengthForAge>(
-          this as WHOGrowthStandardsLengthForAge, _$identity);
-
-  /// Serializes this WHOGrowthStandardsLengthForAge to a JSON map.
-  Map<String, dynamic> toJson();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is WHOGrowthStandardsLengthForAge &&
-            (identical(other.observationDate, observationDate) ||
-                other.observationDate == observationDate) &&
-            (identical(other.sex, sex) || other.sex == sex) &&
-            (identical(other.age, age) || other.age == age) &&
-            (identical(other.lengthHeight, lengthHeight) ||
-                other.lengthHeight == lengthHeight) &&
-            (identical(other.measure, measure) || other.measure == measure));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, observationDate, sex, age, lengthHeight, measure);
-
-  @override
-  String toString() {
-    return 'WHOGrowthStandardsLengthForAge(observationDate: $observationDate, sex: $sex, age: $age, lengthHeight: $lengthHeight, measure: $measure)';
-  }
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $WHOGrowthStandardsLengthForAgeCopyWith<$Res> {
+abstract class $WHOGrowthStandardsLengthForAgeCopyWith<$Res> {
   factory $WHOGrowthStandardsLengthForAgeCopyWith(
           WHOGrowthStandardsLengthForAge value,
-          $Res Function(WHOGrowthStandardsLengthForAge) _then) =
-      _$WHOGrowthStandardsLengthForAgeCopyWithImpl;
+          $Res Function(WHOGrowthStandardsLengthForAge) then) =
+      _$WHOGrowthStandardsLengthForAgeCopyWithImpl<$Res,
+          WHOGrowthStandardsLengthForAge>;
   @useResult
   $Res call(
       {Date? observationDate,
@@ -1372,12 +1357,15 @@ abstract mixin class $WHOGrowthStandardsLengthForAgeCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$WHOGrowthStandardsLengthForAgeCopyWithImpl<$Res>
+class _$WHOGrowthStandardsLengthForAgeCopyWithImpl<$Res,
+        $Val extends WHOGrowthStandardsLengthForAge>
     implements $WHOGrowthStandardsLengthForAgeCopyWith<$Res> {
-  _$WHOGrowthStandardsLengthForAgeCopyWithImpl(this._self, this._then);
+  _$WHOGrowthStandardsLengthForAgeCopyWithImpl(this._value, this._then);
 
-  final WHOGrowthStandardsLengthForAge _self;
-  final $Res Function(WHOGrowthStandardsLengthForAge) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
   /// Create a copy of WHOGrowthStandardsLengthForAge
   /// with the given fields replaced by the non-null parameter values.
@@ -1390,28 +1378,28 @@ class _$WHOGrowthStandardsLengthForAgeCopyWithImpl<$Res>
     Object? lengthHeight = null,
     Object? measure = null,
   }) {
-    return _then(_self.copyWith(
+    return _then(_value.copyWith(
       observationDate: freezed == observationDate
-          ? _self.observationDate
+          ? _value.observationDate
           : observationDate // ignore: cast_nullable_to_non_nullable
               as Date?,
       sex: null == sex
-          ? _self.sex
+          ? _value.sex
           : sex // ignore: cast_nullable_to_non_nullable
               as Sex,
       age: null == age
-          ? _self.age
+          ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
               as Age,
       lengthHeight: null == lengthHeight
-          ? _self.lengthHeight
+          ? _value.lengthHeight
           : lengthHeight // ignore: cast_nullable_to_non_nullable
               as Length,
       measure: null == measure
-          ? _self.measure
+          ? _value.measure
           : measure // ignore: cast_nullable_to_non_nullable
               as LengthHeightMeasurementPosition,
-    ));
+    ) as $Val);
   }
 
   /// Create a copy of WHOGrowthStandardsLengthForAge
@@ -1419,12 +1407,12 @@ class _$WHOGrowthStandardsLengthForAgeCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $DateCopyWith<$Res>? get observationDate {
-    if (_self.observationDate == null) {
+    if (_value.observationDate == null) {
       return null;
     }
 
-    return $DateCopyWith<$Res>(_self.observationDate!, (value) {
-      return _then(_self.copyWith(observationDate: value));
+    return $DateCopyWith<$Res>(_value.observationDate!, (value) {
+      return _then(_value.copyWith(observationDate: value) as $Val);
     });
   }
 
@@ -1433,16 +1421,85 @@ class _$WHOGrowthStandardsLengthForAgeCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
+    return $AgeCopyWith<$Res>(_value.age, (value) {
+      return _then(_value.copyWith(age: value) as $Val);
     });
   }
 }
 
 /// @nodoc
+abstract class _$$WHOGrowthStandardsLengthForAgeImplCopyWith<$Res>
+    implements $WHOGrowthStandardsLengthForAgeCopyWith<$Res> {
+  factory _$$WHOGrowthStandardsLengthForAgeImplCopyWith(
+          _$WHOGrowthStandardsLengthForAgeImpl value,
+          $Res Function(_$WHOGrowthStandardsLengthForAgeImpl) then) =
+      __$$WHOGrowthStandardsLengthForAgeImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {Date? observationDate,
+      Sex sex,
+      Age age,
+      Length lengthHeight,
+      LengthHeightMeasurementPosition measure});
+
+  @override
+  $DateCopyWith<$Res>? get observationDate;
+  @override
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class __$$WHOGrowthStandardsLengthForAgeImplCopyWithImpl<$Res>
+    extends _$WHOGrowthStandardsLengthForAgeCopyWithImpl<$Res,
+        _$WHOGrowthStandardsLengthForAgeImpl>
+    implements _$$WHOGrowthStandardsLengthForAgeImplCopyWith<$Res> {
+  __$$WHOGrowthStandardsLengthForAgeImplCopyWithImpl(
+      _$WHOGrowthStandardsLengthForAgeImpl _value,
+      $Res Function(_$WHOGrowthStandardsLengthForAgeImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of WHOGrowthStandardsLengthForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? observationDate = freezed,
+    Object? sex = null,
+    Object? age = null,
+    Object? lengthHeight = null,
+    Object? measure = null,
+  }) {
+    return _then(_$WHOGrowthStandardsLengthForAgeImpl(
+      observationDate: freezed == observationDate
+          ? _value.observationDate
+          : observationDate // ignore: cast_nullable_to_non_nullable
+              as Date?,
+      sex: null == sex
+          ? _value.sex
+          : sex // ignore: cast_nullable_to_non_nullable
+              as Sex,
+      age: null == age
+          ? _value.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+      lengthHeight: null == lengthHeight
+          ? _value.lengthHeight
+          : lengthHeight // ignore: cast_nullable_to_non_nullable
+              as Length,
+      measure: null == measure
+          ? _value.measure
+          : measure // ignore: cast_nullable_to_non_nullable
+              as LengthHeightMeasurementPosition,
+    ));
+  }
+}
+
+/// @nodoc
 @JsonSerializable()
-class _WHOGrowthStandardsLengthForAge extends WHOGrowthStandardsLengthForAge {
-  _WHOGrowthStandardsLengthForAge(
+class _$WHOGrowthStandardsLengthForAgeImpl
+    extends _WHOGrowthStandardsLengthForAge {
+  _$WHOGrowthStandardsLengthForAgeImpl(
       {this.observationDate,
       required this.sex,
       required this.age,
@@ -1456,8 +1513,10 @@ class _WHOGrowthStandardsLengthForAge extends WHOGrowthStandardsLengthForAge {
                 observationDate.isSameOrAfter(age.dateOfBirth),
             'Observation date is impossible, because happen after today or before birth'),
         super._();
-  factory _WHOGrowthStandardsLengthForAge.fromJson(Map<String, dynamic> json) =>
-      _$WHOGrowthStandardsLengthForAgeFromJson(json);
+
+  factory _$WHOGrowthStandardsLengthForAgeImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$WHOGrowthStandardsLengthForAgeImplFromJson(json);
 
   @override
   final Date? observationDate;
@@ -1470,27 +1529,16 @@ class _WHOGrowthStandardsLengthForAge extends WHOGrowthStandardsLengthForAge {
   @override
   final LengthHeightMeasurementPosition measure;
 
-  /// Create a copy of WHOGrowthStandardsLengthForAge
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$WHOGrowthStandardsLengthForAgeCopyWith<_WHOGrowthStandardsLengthForAge>
-      get copyWith => __$WHOGrowthStandardsLengthForAgeCopyWithImpl<
-          _WHOGrowthStandardsLengthForAge>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$WHOGrowthStandardsLengthForAgeToJson(
-      this,
-    );
+  String toString() {
+    return 'WHOGrowthStandardsLengthForAge(observationDate: $observationDate, sex: $sex, age: $age, lengthHeight: $lengthHeight, measure: $measure)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _WHOGrowthStandardsLengthForAge &&
+            other is _$WHOGrowthStandardsLengthForAgeImpl &&
             (identical(other.observationDate, observationDate) ||
                 other.observationDate == observationDate) &&
             (identical(other.sex, sex) || other.sex == sex) &&
@@ -1505,149 +1553,89 @@ class _WHOGrowthStandardsLengthForAge extends WHOGrowthStandardsLengthForAge {
   int get hashCode => Object.hash(
       runtimeType, observationDate, sex, age, lengthHeight, measure);
 
+  /// Create a copy of WHOGrowthStandardsLengthForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  String toString() {
-    return 'WHOGrowthStandardsLengthForAge(observationDate: $observationDate, sex: $sex, age: $age, lengthHeight: $lengthHeight, measure: $measure)';
+  @pragma('vm:prefer-inline')
+  _$$WHOGrowthStandardsLengthForAgeImplCopyWith<
+          _$WHOGrowthStandardsLengthForAgeImpl>
+      get copyWith => __$$WHOGrowthStandardsLengthForAgeImplCopyWithImpl<
+          _$WHOGrowthStandardsLengthForAgeImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$WHOGrowthStandardsLengthForAgeImplToJson(
+      this,
+    );
   }
 }
 
-/// @nodoc
-abstract mixin class _$WHOGrowthStandardsLengthForAgeCopyWith<$Res>
-    implements $WHOGrowthStandardsLengthForAgeCopyWith<$Res> {
-  factory _$WHOGrowthStandardsLengthForAgeCopyWith(
-          _WHOGrowthStandardsLengthForAge value,
-          $Res Function(_WHOGrowthStandardsLengthForAge) _then) =
-      __$WHOGrowthStandardsLengthForAgeCopyWithImpl;
-  @override
-  @useResult
-  $Res call(
-      {Date? observationDate,
-      Sex sex,
-      Age age,
-      Length lengthHeight,
-      LengthHeightMeasurementPosition measure});
+abstract class _WHOGrowthStandardsLengthForAge
+    extends WHOGrowthStandardsLengthForAge {
+  factory _WHOGrowthStandardsLengthForAge(
+          {final Date? observationDate,
+          required final Sex sex,
+          required final Age age,
+          required final Length lengthHeight,
+          required final LengthHeightMeasurementPosition measure}) =
+      _$WHOGrowthStandardsLengthForAgeImpl;
+  _WHOGrowthStandardsLengthForAge._() : super._();
+
+  factory _WHOGrowthStandardsLengthForAge.fromJson(Map<String, dynamic> json) =
+      _$WHOGrowthStandardsLengthForAgeImpl.fromJson;
 
   @override
-  $DateCopyWith<$Res>? get observationDate;
+  Date? get observationDate;
   @override
-  $AgeCopyWith<$Res> get age;
+  Sex get sex;
+  @override
+  Age get age;
+  @override
+  Length get lengthHeight;
+  @override
+  LengthHeightMeasurementPosition get measure;
+
+  /// Create a copy of WHOGrowthStandardsLengthForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$WHOGrowthStandardsLengthForAgeImplCopyWith<
+          _$WHOGrowthStandardsLengthForAgeImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
-/// @nodoc
-class __$WHOGrowthStandardsLengthForAgeCopyWithImpl<$Res>
-    implements _$WHOGrowthStandardsLengthForAgeCopyWith<$Res> {
-  __$WHOGrowthStandardsLengthForAgeCopyWithImpl(this._self, this._then);
-
-  final _WHOGrowthStandardsLengthForAge _self;
-  final $Res Function(_WHOGrowthStandardsLengthForAge) _then;
-
-  /// Create a copy of WHOGrowthStandardsLengthForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? observationDate = freezed,
-    Object? sex = null,
-    Object? age = null,
-    Object? lengthHeight = null,
-    Object? measure = null,
-  }) {
-    return _then(_WHOGrowthStandardsLengthForAge(
-      observationDate: freezed == observationDate
-          ? _self.observationDate
-          : observationDate // ignore: cast_nullable_to_non_nullable
-              as Date?,
-      sex: null == sex
-          ? _self.sex
-          : sex // ignore: cast_nullable_to_non_nullable
-              as Sex,
-      age: null == age
-          ? _self.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as Age,
-      lengthHeight: null == lengthHeight
-          ? _self.lengthHeight
-          : lengthHeight // ignore: cast_nullable_to_non_nullable
-              as Length,
-      measure: null == measure
-          ? _self.measure
-          : measure // ignore: cast_nullable_to_non_nullable
-              as LengthHeightMeasurementPosition,
-    ));
-  }
-
-  /// Create a copy of WHOGrowthStandardsLengthForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $DateCopyWith<$Res>? get observationDate {
-    if (_self.observationDate == null) {
-      return null;
-    }
-
-    return $DateCopyWith<$Res>(_self.observationDate!, (value) {
-      return _then(_self.copyWith(observationDate: value));
-    });
-  }
-
-  /// Create a copy of WHOGrowthStandardsLengthForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
-    });
-  }
+WHOGrowthStandardsLengthVelocityForAge
+    _$WHOGrowthStandardsLengthVelocityForAgeFromJson(
+        Map<String, dynamic> json) {
+  return _WHOGrowthStandardsLengthVelocityForAge.fromJson(json);
 }
 
 /// @nodoc
 mixin _$WHOGrowthStandardsLengthVelocityForAge {
-  Sex get sex;
-  Age get age;
-  List<LengthMeasurementHistory> get pastMeasurement;
+  Sex get sex => throw _privateConstructorUsedError;
+  Age get age => throw _privateConstructorUsedError;
+  List<LengthMeasurementHistory> get pastMeasurement =>
+      throw _privateConstructorUsedError;
+
+  /// Serializes this WHOGrowthStandardsLengthVelocityForAge to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
   /// Create a copy of WHOGrowthStandardsLengthVelocityForAge
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
   $WHOGrowthStandardsLengthVelocityForAgeCopyWith<
           WHOGrowthStandardsLengthVelocityForAge>
-      get copyWith => _$WHOGrowthStandardsLengthVelocityForAgeCopyWithImpl<
-              WHOGrowthStandardsLengthVelocityForAge>(
-          this as WHOGrowthStandardsLengthVelocityForAge, _$identity);
-
-  /// Serializes this WHOGrowthStandardsLengthVelocityForAge to a JSON map.
-  Map<String, dynamic> toJson();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is WHOGrowthStandardsLengthVelocityForAge &&
-            (identical(other.sex, sex) || other.sex == sex) &&
-            (identical(other.age, age) || other.age == age) &&
-            const DeepCollectionEquality()
-                .equals(other.pastMeasurement, pastMeasurement));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, sex, age,
-      const DeepCollectionEquality().hash(pastMeasurement));
-
-  @override
-  String toString() {
-    return 'WHOGrowthStandardsLengthVelocityForAge(sex: $sex, age: $age, pastMeasurement: $pastMeasurement)';
-  }
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $WHOGrowthStandardsLengthVelocityForAgeCopyWith<$Res> {
+abstract class $WHOGrowthStandardsLengthVelocityForAgeCopyWith<$Res> {
   factory $WHOGrowthStandardsLengthVelocityForAgeCopyWith(
           WHOGrowthStandardsLengthVelocityForAge value,
-          $Res Function(WHOGrowthStandardsLengthVelocityForAge) _then) =
-      _$WHOGrowthStandardsLengthVelocityForAgeCopyWithImpl;
+          $Res Function(WHOGrowthStandardsLengthVelocityForAge) then) =
+      _$WHOGrowthStandardsLengthVelocityForAgeCopyWithImpl<$Res,
+          WHOGrowthStandardsLengthVelocityForAge>;
   @useResult
   $Res call({Sex sex, Age age, List<LengthMeasurementHistory> pastMeasurement});
 
@@ -1655,12 +1643,15 @@ abstract mixin class $WHOGrowthStandardsLengthVelocityForAgeCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$WHOGrowthStandardsLengthVelocityForAgeCopyWithImpl<$Res>
+class _$WHOGrowthStandardsLengthVelocityForAgeCopyWithImpl<$Res,
+        $Val extends WHOGrowthStandardsLengthVelocityForAge>
     implements $WHOGrowthStandardsLengthVelocityForAgeCopyWith<$Res> {
-  _$WHOGrowthStandardsLengthVelocityForAgeCopyWithImpl(this._self, this._then);
+  _$WHOGrowthStandardsLengthVelocityForAgeCopyWithImpl(this._value, this._then);
 
-  final WHOGrowthStandardsLengthVelocityForAge _self;
-  final $Res Function(WHOGrowthStandardsLengthVelocityForAge) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
   /// Create a copy of WHOGrowthStandardsLengthVelocityForAge
   /// with the given fields replaced by the non-null parameter values.
@@ -1671,20 +1662,20 @@ class _$WHOGrowthStandardsLengthVelocityForAgeCopyWithImpl<$Res>
     Object? age = null,
     Object? pastMeasurement = null,
   }) {
-    return _then(_self.copyWith(
+    return _then(_value.copyWith(
       sex: null == sex
-          ? _self.sex
+          ? _value.sex
           : sex // ignore: cast_nullable_to_non_nullable
               as Sex,
       age: null == age
-          ? _self.age
+          ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
               as Age,
       pastMeasurement: null == pastMeasurement
-          ? _self.pastMeasurement
+          ? _value.pastMeasurement
           : pastMeasurement // ignore: cast_nullable_to_non_nullable
               as List<LengthMeasurementHistory>,
-    ));
+    ) as $Val);
   }
 
   /// Create a copy of WHOGrowthStandardsLengthVelocityForAge
@@ -1692,17 +1683,68 @@ class _$WHOGrowthStandardsLengthVelocityForAgeCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
+    return $AgeCopyWith<$Res>(_value.age, (value) {
+      return _then(_value.copyWith(age: value) as $Val);
     });
   }
 }
 
 /// @nodoc
+abstract class _$$WHOGrowthStandardsLengthVelocityForAgeImplCopyWith<$Res>
+    implements $WHOGrowthStandardsLengthVelocityForAgeCopyWith<$Res> {
+  factory _$$WHOGrowthStandardsLengthVelocityForAgeImplCopyWith(
+          _$WHOGrowthStandardsLengthVelocityForAgeImpl value,
+          $Res Function(_$WHOGrowthStandardsLengthVelocityForAgeImpl) then) =
+      __$$WHOGrowthStandardsLengthVelocityForAgeImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Sex sex, Age age, List<LengthMeasurementHistory> pastMeasurement});
+
+  @override
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class __$$WHOGrowthStandardsLengthVelocityForAgeImplCopyWithImpl<$Res>
+    extends _$WHOGrowthStandardsLengthVelocityForAgeCopyWithImpl<$Res,
+        _$WHOGrowthStandardsLengthVelocityForAgeImpl>
+    implements _$$WHOGrowthStandardsLengthVelocityForAgeImplCopyWith<$Res> {
+  __$$WHOGrowthStandardsLengthVelocityForAgeImplCopyWithImpl(
+      _$WHOGrowthStandardsLengthVelocityForAgeImpl _value,
+      $Res Function(_$WHOGrowthStandardsLengthVelocityForAgeImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of WHOGrowthStandardsLengthVelocityForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? sex = null,
+    Object? age = null,
+    Object? pastMeasurement = null,
+  }) {
+    return _then(_$WHOGrowthStandardsLengthVelocityForAgeImpl(
+      sex: null == sex
+          ? _value.sex
+          : sex // ignore: cast_nullable_to_non_nullable
+              as Sex,
+      age: null == age
+          ? _value.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+      pastMeasurement: null == pastMeasurement
+          ? _value._pastMeasurement
+          : pastMeasurement // ignore: cast_nullable_to_non_nullable
+              as List<LengthMeasurementHistory>,
+    ));
+  }
+}
+
+/// @nodoc
 @JsonSerializable()
-class _WHOGrowthStandardsLengthVelocityForAge
-    extends WHOGrowthStandardsLengthVelocityForAge {
-  _WHOGrowthStandardsLengthVelocityForAge(
+class _$WHOGrowthStandardsLengthVelocityForAgeImpl
+    extends _WHOGrowthStandardsLengthVelocityForAge {
+  _$WHOGrowthStandardsLengthVelocityForAgeImpl(
       {required this.sex,
       required this.age,
       required final List<LengthMeasurementHistory> pastMeasurement})
@@ -1722,9 +1764,10 @@ class _WHOGrowthStandardsLengthVelocityForAge
             'Calculation can not be done as there is date less than Date of Birth in past measurement, if you find this exception is a mistake, try to provide exact $Age'),
         _pastMeasurement = pastMeasurement,
         super._();
-  factory _WHOGrowthStandardsLengthVelocityForAge.fromJson(
+
+  factory _$WHOGrowthStandardsLengthVelocityForAgeImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$WHOGrowthStandardsLengthVelocityForAgeFromJson(json);
+      _$$WHOGrowthStandardsLengthVelocityForAgeImplFromJson(json);
 
   @override
   final Sex sex;
@@ -1738,28 +1781,16 @@ class _WHOGrowthStandardsLengthVelocityForAge
     return EqualUnmodifiableListView(_pastMeasurement);
   }
 
-  /// Create a copy of WHOGrowthStandardsLengthVelocityForAge
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$WHOGrowthStandardsLengthVelocityForAgeCopyWith<
-          _WHOGrowthStandardsLengthVelocityForAge>
-      get copyWith => __$WHOGrowthStandardsLengthVelocityForAgeCopyWithImpl<
-          _WHOGrowthStandardsLengthVelocityForAge>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$WHOGrowthStandardsLengthVelocityForAgeToJson(
-      this,
-    );
+  String toString() {
+    return 'WHOGrowthStandardsLengthVelocityForAge(sex: $sex, age: $age, pastMeasurement: $pastMeasurement)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _WHOGrowthStandardsLengthVelocityForAge &&
+            other is _$WHOGrowthStandardsLengthVelocityForAgeImpl &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             const DeepCollectionEquality()
@@ -1771,122 +1802,85 @@ class _WHOGrowthStandardsLengthVelocityForAge
   int get hashCode => Object.hash(runtimeType, sex, age,
       const DeepCollectionEquality().hash(_pastMeasurement));
 
+  /// Create a copy of WHOGrowthStandardsLengthVelocityForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  String toString() {
-    return 'WHOGrowthStandardsLengthVelocityForAge(sex: $sex, age: $age, pastMeasurement: $pastMeasurement)';
+  @pragma('vm:prefer-inline')
+  _$$WHOGrowthStandardsLengthVelocityForAgeImplCopyWith<
+          _$WHOGrowthStandardsLengthVelocityForAgeImpl>
+      get copyWith =>
+          __$$WHOGrowthStandardsLengthVelocityForAgeImplCopyWithImpl<
+              _$WHOGrowthStandardsLengthVelocityForAgeImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$WHOGrowthStandardsLengthVelocityForAgeImplToJson(
+      this,
+    );
   }
 }
 
-/// @nodoc
-abstract mixin class _$WHOGrowthStandardsLengthVelocityForAgeCopyWith<$Res>
-    implements $WHOGrowthStandardsLengthVelocityForAgeCopyWith<$Res> {
-  factory _$WHOGrowthStandardsLengthVelocityForAgeCopyWith(
-          _WHOGrowthStandardsLengthVelocityForAge value,
-          $Res Function(_WHOGrowthStandardsLengthVelocityForAge) _then) =
-      __$WHOGrowthStandardsLengthVelocityForAgeCopyWithImpl;
-  @override
-  @useResult
-  $Res call({Sex sex, Age age, List<LengthMeasurementHistory> pastMeasurement});
+abstract class _WHOGrowthStandardsLengthVelocityForAge
+    extends WHOGrowthStandardsLengthVelocityForAge {
+  factory _WHOGrowthStandardsLengthVelocityForAge(
+          {required final Sex sex,
+          required final Age age,
+          required final List<LengthMeasurementHistory> pastMeasurement}) =
+      _$WHOGrowthStandardsLengthVelocityForAgeImpl;
+  _WHOGrowthStandardsLengthVelocityForAge._() : super._();
+
+  factory _WHOGrowthStandardsLengthVelocityForAge.fromJson(
+          Map<String, dynamic> json) =
+      _$WHOGrowthStandardsLengthVelocityForAgeImpl.fromJson;
 
   @override
-  $AgeCopyWith<$Res> get age;
-}
-
-/// @nodoc
-class __$WHOGrowthStandardsLengthVelocityForAgeCopyWithImpl<$Res>
-    implements _$WHOGrowthStandardsLengthVelocityForAgeCopyWith<$Res> {
-  __$WHOGrowthStandardsLengthVelocityForAgeCopyWithImpl(this._self, this._then);
-
-  final _WHOGrowthStandardsLengthVelocityForAge _self;
-  final $Res Function(_WHOGrowthStandardsLengthVelocityForAge) _then;
+  Sex get sex;
+  @override
+  Age get age;
+  @override
+  List<LengthMeasurementHistory> get pastMeasurement;
 
   /// Create a copy of WHOGrowthStandardsLengthVelocityForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? sex = null,
-    Object? age = null,
-    Object? pastMeasurement = null,
-  }) {
-    return _then(_WHOGrowthStandardsLengthVelocityForAge(
-      sex: null == sex
-          ? _self.sex
-          : sex // ignore: cast_nullable_to_non_nullable
-              as Sex,
-      age: null == age
-          ? _self.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as Age,
-      pastMeasurement: null == pastMeasurement
-          ? _self._pastMeasurement
-          : pastMeasurement // ignore: cast_nullable_to_non_nullable
-              as List<LengthMeasurementHistory>,
-    ));
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$WHOGrowthStandardsLengthVelocityForAgeImplCopyWith<
+          _$WHOGrowthStandardsLengthVelocityForAgeImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
 
-  /// Create a copy of WHOGrowthStandardsLengthVelocityForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
-    });
-  }
+WHOGrowthStandardsSubscapularSkinfoldForAge
+    _$WHOGrowthStandardsSubscapularSkinfoldForAgeFromJson(
+        Map<String, dynamic> json) {
+  return _WHOGrowthStandardsSubscapularSkinfoldForAge.fromJson(json);
 }
 
 /// @nodoc
 mixin _$WHOGrowthStandardsSubscapularSkinfoldForAge {
-  Date? get observationDate;
-  Sex get sex;
-  Age get age;
-  Length get measurementResult;
+  Date? get observationDate => throw _privateConstructorUsedError;
+  Sex get sex => throw _privateConstructorUsedError;
+  Age get age => throw _privateConstructorUsedError;
+  Length get measurementResult => throw _privateConstructorUsedError;
+
+  /// Serializes this WHOGrowthStandardsSubscapularSkinfoldForAge to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
   /// Create a copy of WHOGrowthStandardsSubscapularSkinfoldForAge
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
   $WHOGrowthStandardsSubscapularSkinfoldForAgeCopyWith<
           WHOGrowthStandardsSubscapularSkinfoldForAge>
-      get copyWith => _$WHOGrowthStandardsSubscapularSkinfoldForAgeCopyWithImpl<
-              WHOGrowthStandardsSubscapularSkinfoldForAge>(
-          this as WHOGrowthStandardsSubscapularSkinfoldForAge, _$identity);
-
-  /// Serializes this WHOGrowthStandardsSubscapularSkinfoldForAge to a JSON map.
-  Map<String, dynamic> toJson();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is WHOGrowthStandardsSubscapularSkinfoldForAge &&
-            (identical(other.observationDate, observationDate) ||
-                other.observationDate == observationDate) &&
-            (identical(other.sex, sex) || other.sex == sex) &&
-            (identical(other.age, age) || other.age == age) &&
-            (identical(other.measurementResult, measurementResult) ||
-                other.measurementResult == measurementResult));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, observationDate, sex, age, measurementResult);
-
-  @override
-  String toString() {
-    return 'WHOGrowthStandardsSubscapularSkinfoldForAge(observationDate: $observationDate, sex: $sex, age: $age, measurementResult: $measurementResult)';
-  }
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $WHOGrowthStandardsSubscapularSkinfoldForAgeCopyWith<
-    $Res> {
+abstract class $WHOGrowthStandardsSubscapularSkinfoldForAgeCopyWith<$Res> {
   factory $WHOGrowthStandardsSubscapularSkinfoldForAgeCopyWith(
           WHOGrowthStandardsSubscapularSkinfoldForAge value,
-          $Res Function(WHOGrowthStandardsSubscapularSkinfoldForAge) _then) =
-      _$WHOGrowthStandardsSubscapularSkinfoldForAgeCopyWithImpl;
+          $Res Function(WHOGrowthStandardsSubscapularSkinfoldForAge) then) =
+      _$WHOGrowthStandardsSubscapularSkinfoldForAgeCopyWithImpl<$Res,
+          WHOGrowthStandardsSubscapularSkinfoldForAge>;
   @useResult
   $Res call(
       {Date? observationDate, Sex sex, Age age, Length measurementResult});
@@ -1896,13 +1890,16 @@ abstract mixin class $WHOGrowthStandardsSubscapularSkinfoldForAgeCopyWith<
 }
 
 /// @nodoc
-class _$WHOGrowthStandardsSubscapularSkinfoldForAgeCopyWithImpl<$Res>
+class _$WHOGrowthStandardsSubscapularSkinfoldForAgeCopyWithImpl<$Res,
+        $Val extends WHOGrowthStandardsSubscapularSkinfoldForAge>
     implements $WHOGrowthStandardsSubscapularSkinfoldForAgeCopyWith<$Res> {
   _$WHOGrowthStandardsSubscapularSkinfoldForAgeCopyWithImpl(
-      this._self, this._then);
+      this._value, this._then);
 
-  final WHOGrowthStandardsSubscapularSkinfoldForAge _self;
-  final $Res Function(WHOGrowthStandardsSubscapularSkinfoldForAge) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
   /// Create a copy of WHOGrowthStandardsSubscapularSkinfoldForAge
   /// with the given fields replaced by the non-null parameter values.
@@ -1914,24 +1911,24 @@ class _$WHOGrowthStandardsSubscapularSkinfoldForAgeCopyWithImpl<$Res>
     Object? age = null,
     Object? measurementResult = null,
   }) {
-    return _then(_self.copyWith(
+    return _then(_value.copyWith(
       observationDate: freezed == observationDate
-          ? _self.observationDate
+          ? _value.observationDate
           : observationDate // ignore: cast_nullable_to_non_nullable
               as Date?,
       sex: null == sex
-          ? _self.sex
+          ? _value.sex
           : sex // ignore: cast_nullable_to_non_nullable
               as Sex,
       age: null == age
-          ? _self.age
+          ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
               as Age,
       measurementResult: null == measurementResult
-          ? _self.measurementResult
+          ? _value.measurementResult
           : measurementResult // ignore: cast_nullable_to_non_nullable
               as Length,
-    ));
+    ) as $Val);
   }
 
   /// Create a copy of WHOGrowthStandardsSubscapularSkinfoldForAge
@@ -1939,12 +1936,12 @@ class _$WHOGrowthStandardsSubscapularSkinfoldForAgeCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $DateCopyWith<$Res>? get observationDate {
-    if (_self.observationDate == null) {
+    if (_value.observationDate == null) {
       return null;
     }
 
-    return $DateCopyWith<$Res>(_self.observationDate!, (value) {
-      return _then(_self.copyWith(observationDate: value));
+    return $DateCopyWith<$Res>(_value.observationDate!, (value) {
+      return _then(_value.copyWith(observationDate: value) as $Val);
     });
   }
 
@@ -1953,17 +1950,78 @@ class _$WHOGrowthStandardsSubscapularSkinfoldForAgeCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
+    return $AgeCopyWith<$Res>(_value.age, (value) {
+      return _then(_value.copyWith(age: value) as $Val);
     });
   }
 }
 
 /// @nodoc
+abstract class _$$WHOGrowthStandardsSubscapularSkinfoldForAgeImplCopyWith<$Res>
+    implements $WHOGrowthStandardsSubscapularSkinfoldForAgeCopyWith<$Res> {
+  factory _$$WHOGrowthStandardsSubscapularSkinfoldForAgeImplCopyWith(
+          _$WHOGrowthStandardsSubscapularSkinfoldForAgeImpl value,
+          $Res Function(_$WHOGrowthStandardsSubscapularSkinfoldForAgeImpl)
+              then) =
+      __$$WHOGrowthStandardsSubscapularSkinfoldForAgeImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {Date? observationDate, Sex sex, Age age, Length measurementResult});
+
+  @override
+  $DateCopyWith<$Res>? get observationDate;
+  @override
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class __$$WHOGrowthStandardsSubscapularSkinfoldForAgeImplCopyWithImpl<$Res>
+    extends _$WHOGrowthStandardsSubscapularSkinfoldForAgeCopyWithImpl<$Res,
+        _$WHOGrowthStandardsSubscapularSkinfoldForAgeImpl>
+    implements
+        _$$WHOGrowthStandardsSubscapularSkinfoldForAgeImplCopyWith<$Res> {
+  __$$WHOGrowthStandardsSubscapularSkinfoldForAgeImplCopyWithImpl(
+      _$WHOGrowthStandardsSubscapularSkinfoldForAgeImpl _value,
+      $Res Function(_$WHOGrowthStandardsSubscapularSkinfoldForAgeImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of WHOGrowthStandardsSubscapularSkinfoldForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? observationDate = freezed,
+    Object? sex = null,
+    Object? age = null,
+    Object? measurementResult = null,
+  }) {
+    return _then(_$WHOGrowthStandardsSubscapularSkinfoldForAgeImpl(
+      observationDate: freezed == observationDate
+          ? _value.observationDate
+          : observationDate // ignore: cast_nullable_to_non_nullable
+              as Date?,
+      sex: null == sex
+          ? _value.sex
+          : sex // ignore: cast_nullable_to_non_nullable
+              as Sex,
+      age: null == age
+          ? _value.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+      measurementResult: null == measurementResult
+          ? _value.measurementResult
+          : measurementResult // ignore: cast_nullable_to_non_nullable
+              as Length,
+    ));
+  }
+}
+
+/// @nodoc
 @JsonSerializable()
-class _WHOGrowthStandardsSubscapularSkinfoldForAge
-    extends WHOGrowthStandardsSubscapularSkinfoldForAge {
-  _WHOGrowthStandardsSubscapularSkinfoldForAge(
+class _$WHOGrowthStandardsSubscapularSkinfoldForAgeImpl
+    extends _WHOGrowthStandardsSubscapularSkinfoldForAge {
+  _$WHOGrowthStandardsSubscapularSkinfoldForAgeImpl(
       {this.observationDate,
       required this.sex,
       required this.age,
@@ -1980,9 +2038,10 @@ class _WHOGrowthStandardsSubscapularSkinfoldForAge
                 observationDate.isSameOrAfter(age.dateAtDaysAfterBirth(91)),
             'Observation date is impossible, because happen after today or before birth'),
         super._();
-  factory _WHOGrowthStandardsSubscapularSkinfoldForAge.fromJson(
+
+  factory _$WHOGrowthStandardsSubscapularSkinfoldForAgeImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$WHOGrowthStandardsSubscapularSkinfoldForAgeFromJson(json);
+      _$$WHOGrowthStandardsSubscapularSkinfoldForAgeImplFromJson(json);
 
   @override
   final Date? observationDate;
@@ -1993,29 +2052,16 @@ class _WHOGrowthStandardsSubscapularSkinfoldForAge
   @override
   final Length measurementResult;
 
-  /// Create a copy of WHOGrowthStandardsSubscapularSkinfoldForAge
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$WHOGrowthStandardsSubscapularSkinfoldForAgeCopyWith<
-          _WHOGrowthStandardsSubscapularSkinfoldForAge>
-      get copyWith =>
-          __$WHOGrowthStandardsSubscapularSkinfoldForAgeCopyWithImpl<
-              _WHOGrowthStandardsSubscapularSkinfoldForAge>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$WHOGrowthStandardsSubscapularSkinfoldForAgeToJson(
-      this,
-    );
+  String toString() {
+    return 'WHOGrowthStandardsSubscapularSkinfoldForAge(observationDate: $observationDate, sex: $sex, age: $age, measurementResult: $measurementResult)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _WHOGrowthStandardsSubscapularSkinfoldForAge &&
+            other is _$WHOGrowthStandardsSubscapularSkinfoldForAgeImpl &&
             (identical(other.observationDate, observationDate) ||
                 other.observationDate == observationDate) &&
             (identical(other.sex, sex) || other.sex == sex) &&
@@ -2029,144 +2075,89 @@ class _WHOGrowthStandardsSubscapularSkinfoldForAge
   int get hashCode =>
       Object.hash(runtimeType, observationDate, sex, age, measurementResult);
 
+  /// Create a copy of WHOGrowthStandardsSubscapularSkinfoldForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  String toString() {
-    return 'WHOGrowthStandardsSubscapularSkinfoldForAge(observationDate: $observationDate, sex: $sex, age: $age, measurementResult: $measurementResult)';
+  @pragma('vm:prefer-inline')
+  _$$WHOGrowthStandardsSubscapularSkinfoldForAgeImplCopyWith<
+          _$WHOGrowthStandardsSubscapularSkinfoldForAgeImpl>
+      get copyWith =>
+          __$$WHOGrowthStandardsSubscapularSkinfoldForAgeImplCopyWithImpl<
+                  _$WHOGrowthStandardsSubscapularSkinfoldForAgeImpl>(
+              this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$WHOGrowthStandardsSubscapularSkinfoldForAgeImplToJson(
+      this,
+    );
   }
 }
 
-/// @nodoc
-abstract mixin class _$WHOGrowthStandardsSubscapularSkinfoldForAgeCopyWith<$Res>
-    implements $WHOGrowthStandardsSubscapularSkinfoldForAgeCopyWith<$Res> {
-  factory _$WHOGrowthStandardsSubscapularSkinfoldForAgeCopyWith(
-          _WHOGrowthStandardsSubscapularSkinfoldForAge value,
-          $Res Function(_WHOGrowthStandardsSubscapularSkinfoldForAge) _then) =
-      __$WHOGrowthStandardsSubscapularSkinfoldForAgeCopyWithImpl;
-  @override
-  @useResult
-  $Res call(
-      {Date? observationDate, Sex sex, Age age, Length measurementResult});
+abstract class _WHOGrowthStandardsSubscapularSkinfoldForAge
+    extends WHOGrowthStandardsSubscapularSkinfoldForAge {
+  factory _WHOGrowthStandardsSubscapularSkinfoldForAge(
+          {final Date? observationDate,
+          required final Sex sex,
+          required final Age age,
+          required final Length measurementResult}) =
+      _$WHOGrowthStandardsSubscapularSkinfoldForAgeImpl;
+  _WHOGrowthStandardsSubscapularSkinfoldForAge._() : super._();
+
+  factory _WHOGrowthStandardsSubscapularSkinfoldForAge.fromJson(
+          Map<String, dynamic> json) =
+      _$WHOGrowthStandardsSubscapularSkinfoldForAgeImpl.fromJson;
 
   @override
-  $DateCopyWith<$Res>? get observationDate;
+  Date? get observationDate;
   @override
-  $AgeCopyWith<$Res> get age;
+  Sex get sex;
+  @override
+  Age get age;
+  @override
+  Length get measurementResult;
+
+  /// Create a copy of WHOGrowthStandardsSubscapularSkinfoldForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$WHOGrowthStandardsSubscapularSkinfoldForAgeImplCopyWith<
+          _$WHOGrowthStandardsSubscapularSkinfoldForAgeImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
-/// @nodoc
-class __$WHOGrowthStandardsSubscapularSkinfoldForAgeCopyWithImpl<$Res>
-    implements _$WHOGrowthStandardsSubscapularSkinfoldForAgeCopyWith<$Res> {
-  __$WHOGrowthStandardsSubscapularSkinfoldForAgeCopyWithImpl(
-      this._self, this._then);
-
-  final _WHOGrowthStandardsSubscapularSkinfoldForAge _self;
-  final $Res Function(_WHOGrowthStandardsSubscapularSkinfoldForAge) _then;
-
-  /// Create a copy of WHOGrowthStandardsSubscapularSkinfoldForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? observationDate = freezed,
-    Object? sex = null,
-    Object? age = null,
-    Object? measurementResult = null,
-  }) {
-    return _then(_WHOGrowthStandardsSubscapularSkinfoldForAge(
-      observationDate: freezed == observationDate
-          ? _self.observationDate
-          : observationDate // ignore: cast_nullable_to_non_nullable
-              as Date?,
-      sex: null == sex
-          ? _self.sex
-          : sex // ignore: cast_nullable_to_non_nullable
-              as Sex,
-      age: null == age
-          ? _self.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as Age,
-      measurementResult: null == measurementResult
-          ? _self.measurementResult
-          : measurementResult // ignore: cast_nullable_to_non_nullable
-              as Length,
-    ));
-  }
-
-  /// Create a copy of WHOGrowthStandardsSubscapularSkinfoldForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $DateCopyWith<$Res>? get observationDate {
-    if (_self.observationDate == null) {
-      return null;
-    }
-
-    return $DateCopyWith<$Res>(_self.observationDate!, (value) {
-      return _then(_self.copyWith(observationDate: value));
-    });
-  }
-
-  /// Create a copy of WHOGrowthStandardsSubscapularSkinfoldForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
-    });
-  }
+WHOGrowthStandardsTricepsSkinfoldForAge
+    _$WHOGrowthStandardsTricepsSkinfoldForAgeFromJson(
+        Map<String, dynamic> json) {
+  return _WHOGrowthStandardsTricepsSkinfoldForAge.fromJson(json);
 }
 
 /// @nodoc
 mixin _$WHOGrowthStandardsTricepsSkinfoldForAge {
-  Date? get observationDate;
-  Sex get sex;
-  Age get age;
-  Length get measurementResult;
+  Date? get observationDate => throw _privateConstructorUsedError;
+  Sex get sex => throw _privateConstructorUsedError;
+  Age get age => throw _privateConstructorUsedError;
+  Length get measurementResult => throw _privateConstructorUsedError;
+
+  /// Serializes this WHOGrowthStandardsTricepsSkinfoldForAge to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
   /// Create a copy of WHOGrowthStandardsTricepsSkinfoldForAge
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
   $WHOGrowthStandardsTricepsSkinfoldForAgeCopyWith<
           WHOGrowthStandardsTricepsSkinfoldForAge>
-      get copyWith => _$WHOGrowthStandardsTricepsSkinfoldForAgeCopyWithImpl<
-              WHOGrowthStandardsTricepsSkinfoldForAge>(
-          this as WHOGrowthStandardsTricepsSkinfoldForAge, _$identity);
-
-  /// Serializes this WHOGrowthStandardsTricepsSkinfoldForAge to a JSON map.
-  Map<String, dynamic> toJson();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is WHOGrowthStandardsTricepsSkinfoldForAge &&
-            (identical(other.observationDate, observationDate) ||
-                other.observationDate == observationDate) &&
-            (identical(other.sex, sex) || other.sex == sex) &&
-            (identical(other.age, age) || other.age == age) &&
-            (identical(other.measurementResult, measurementResult) ||
-                other.measurementResult == measurementResult));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, observationDate, sex, age, measurementResult);
-
-  @override
-  String toString() {
-    return 'WHOGrowthStandardsTricepsSkinfoldForAge(observationDate: $observationDate, sex: $sex, age: $age, measurementResult: $measurementResult)';
-  }
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $WHOGrowthStandardsTricepsSkinfoldForAgeCopyWith<$Res> {
+abstract class $WHOGrowthStandardsTricepsSkinfoldForAgeCopyWith<$Res> {
   factory $WHOGrowthStandardsTricepsSkinfoldForAgeCopyWith(
           WHOGrowthStandardsTricepsSkinfoldForAge value,
-          $Res Function(WHOGrowthStandardsTricepsSkinfoldForAge) _then) =
-      _$WHOGrowthStandardsTricepsSkinfoldForAgeCopyWithImpl;
+          $Res Function(WHOGrowthStandardsTricepsSkinfoldForAge) then) =
+      _$WHOGrowthStandardsTricepsSkinfoldForAgeCopyWithImpl<$Res,
+          WHOGrowthStandardsTricepsSkinfoldForAge>;
   @useResult
   $Res call(
       {Date? observationDate, Sex sex, Age age, Length measurementResult});
@@ -2176,12 +2167,16 @@ abstract mixin class $WHOGrowthStandardsTricepsSkinfoldForAgeCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$WHOGrowthStandardsTricepsSkinfoldForAgeCopyWithImpl<$Res>
+class _$WHOGrowthStandardsTricepsSkinfoldForAgeCopyWithImpl<$Res,
+        $Val extends WHOGrowthStandardsTricepsSkinfoldForAge>
     implements $WHOGrowthStandardsTricepsSkinfoldForAgeCopyWith<$Res> {
-  _$WHOGrowthStandardsTricepsSkinfoldForAgeCopyWithImpl(this._self, this._then);
+  _$WHOGrowthStandardsTricepsSkinfoldForAgeCopyWithImpl(
+      this._value, this._then);
 
-  final WHOGrowthStandardsTricepsSkinfoldForAge _self;
-  final $Res Function(WHOGrowthStandardsTricepsSkinfoldForAge) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
   /// Create a copy of WHOGrowthStandardsTricepsSkinfoldForAge
   /// with the given fields replaced by the non-null parameter values.
@@ -2193,24 +2188,24 @@ class _$WHOGrowthStandardsTricepsSkinfoldForAgeCopyWithImpl<$Res>
     Object? age = null,
     Object? measurementResult = null,
   }) {
-    return _then(_self.copyWith(
+    return _then(_value.copyWith(
       observationDate: freezed == observationDate
-          ? _self.observationDate
+          ? _value.observationDate
           : observationDate // ignore: cast_nullable_to_non_nullable
               as Date?,
       sex: null == sex
-          ? _self.sex
+          ? _value.sex
           : sex // ignore: cast_nullable_to_non_nullable
               as Sex,
       age: null == age
-          ? _self.age
+          ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
               as Age,
       measurementResult: null == measurementResult
-          ? _self.measurementResult
+          ? _value.measurementResult
           : measurementResult // ignore: cast_nullable_to_non_nullable
               as Length,
-    ));
+    ) as $Val);
   }
 
   /// Create a copy of WHOGrowthStandardsTricepsSkinfoldForAge
@@ -2218,12 +2213,12 @@ class _$WHOGrowthStandardsTricepsSkinfoldForAgeCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $DateCopyWith<$Res>? get observationDate {
-    if (_self.observationDate == null) {
+    if (_value.observationDate == null) {
       return null;
     }
 
-    return $DateCopyWith<$Res>(_self.observationDate!, (value) {
-      return _then(_self.copyWith(observationDate: value));
+    return $DateCopyWith<$Res>(_value.observationDate!, (value) {
+      return _then(_value.copyWith(observationDate: value) as $Val);
     });
   }
 
@@ -2232,17 +2227,76 @@ class _$WHOGrowthStandardsTricepsSkinfoldForAgeCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
+    return $AgeCopyWith<$Res>(_value.age, (value) {
+      return _then(_value.copyWith(age: value) as $Val);
     });
   }
 }
 
 /// @nodoc
+abstract class _$$WHOGrowthStandardsTricepsSkinfoldForAgeImplCopyWith<$Res>
+    implements $WHOGrowthStandardsTricepsSkinfoldForAgeCopyWith<$Res> {
+  factory _$$WHOGrowthStandardsTricepsSkinfoldForAgeImplCopyWith(
+          _$WHOGrowthStandardsTricepsSkinfoldForAgeImpl value,
+          $Res Function(_$WHOGrowthStandardsTricepsSkinfoldForAgeImpl) then) =
+      __$$WHOGrowthStandardsTricepsSkinfoldForAgeImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {Date? observationDate, Sex sex, Age age, Length measurementResult});
+
+  @override
+  $DateCopyWith<$Res>? get observationDate;
+  @override
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class __$$WHOGrowthStandardsTricepsSkinfoldForAgeImplCopyWithImpl<$Res>
+    extends _$WHOGrowthStandardsTricepsSkinfoldForAgeCopyWithImpl<$Res,
+        _$WHOGrowthStandardsTricepsSkinfoldForAgeImpl>
+    implements _$$WHOGrowthStandardsTricepsSkinfoldForAgeImplCopyWith<$Res> {
+  __$$WHOGrowthStandardsTricepsSkinfoldForAgeImplCopyWithImpl(
+      _$WHOGrowthStandardsTricepsSkinfoldForAgeImpl _value,
+      $Res Function(_$WHOGrowthStandardsTricepsSkinfoldForAgeImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of WHOGrowthStandardsTricepsSkinfoldForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? observationDate = freezed,
+    Object? sex = null,
+    Object? age = null,
+    Object? measurementResult = null,
+  }) {
+    return _then(_$WHOGrowthStandardsTricepsSkinfoldForAgeImpl(
+      observationDate: freezed == observationDate
+          ? _value.observationDate
+          : observationDate // ignore: cast_nullable_to_non_nullable
+              as Date?,
+      sex: null == sex
+          ? _value.sex
+          : sex // ignore: cast_nullable_to_non_nullable
+              as Sex,
+      age: null == age
+          ? _value.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+      measurementResult: null == measurementResult
+          ? _value.measurementResult
+          : measurementResult // ignore: cast_nullable_to_non_nullable
+              as Length,
+    ));
+  }
+}
+
+/// @nodoc
 @JsonSerializable()
-class _WHOGrowthStandardsTricepsSkinfoldForAge
-    extends WHOGrowthStandardsTricepsSkinfoldForAge {
-  _WHOGrowthStandardsTricepsSkinfoldForAge(
+class _$WHOGrowthStandardsTricepsSkinfoldForAgeImpl
+    extends _WHOGrowthStandardsTricepsSkinfoldForAge {
+  _$WHOGrowthStandardsTricepsSkinfoldForAgeImpl(
       {this.observationDate,
       required this.sex,
       required this.age,
@@ -2259,9 +2313,10 @@ class _WHOGrowthStandardsTricepsSkinfoldForAge
                 observationDate.isSameOrAfter(age.dateAtDaysAfterBirth(91)),
             'Observation date is impossible, because happen after today or before birth'),
         super._();
-  factory _WHOGrowthStandardsTricepsSkinfoldForAge.fromJson(
+
+  factory _$WHOGrowthStandardsTricepsSkinfoldForAgeImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$WHOGrowthStandardsTricepsSkinfoldForAgeFromJson(json);
+      _$$WHOGrowthStandardsTricepsSkinfoldForAgeImplFromJson(json);
 
   @override
   final Date? observationDate;
@@ -2272,28 +2327,16 @@ class _WHOGrowthStandardsTricepsSkinfoldForAge
   @override
   final Length measurementResult;
 
-  /// Create a copy of WHOGrowthStandardsTricepsSkinfoldForAge
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$WHOGrowthStandardsTricepsSkinfoldForAgeCopyWith<
-          _WHOGrowthStandardsTricepsSkinfoldForAge>
-      get copyWith => __$WHOGrowthStandardsTricepsSkinfoldForAgeCopyWithImpl<
-          _WHOGrowthStandardsTricepsSkinfoldForAge>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$WHOGrowthStandardsTricepsSkinfoldForAgeToJson(
-      this,
-    );
+  String toString() {
+    return 'WHOGrowthStandardsTricepsSkinfoldForAge(observationDate: $observationDate, sex: $sex, age: $age, measurementResult: $measurementResult)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _WHOGrowthStandardsTricepsSkinfoldForAge &&
+            other is _$WHOGrowthStandardsTricepsSkinfoldForAgeImpl &&
             (identical(other.observationDate, observationDate) ||
                 other.observationDate == observationDate) &&
             (identical(other.sex, sex) || other.sex == sex) &&
@@ -2307,141 +2350,88 @@ class _WHOGrowthStandardsTricepsSkinfoldForAge
   int get hashCode =>
       Object.hash(runtimeType, observationDate, sex, age, measurementResult);
 
+  /// Create a copy of WHOGrowthStandardsTricepsSkinfoldForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  String toString() {
-    return 'WHOGrowthStandardsTricepsSkinfoldForAge(observationDate: $observationDate, sex: $sex, age: $age, measurementResult: $measurementResult)';
+  @pragma('vm:prefer-inline')
+  _$$WHOGrowthStandardsTricepsSkinfoldForAgeImplCopyWith<
+          _$WHOGrowthStandardsTricepsSkinfoldForAgeImpl>
+      get copyWith =>
+          __$$WHOGrowthStandardsTricepsSkinfoldForAgeImplCopyWithImpl<
+              _$WHOGrowthStandardsTricepsSkinfoldForAgeImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$WHOGrowthStandardsTricepsSkinfoldForAgeImplToJson(
+      this,
+    );
   }
 }
 
-/// @nodoc
-abstract mixin class _$WHOGrowthStandardsTricepsSkinfoldForAgeCopyWith<$Res>
-    implements $WHOGrowthStandardsTricepsSkinfoldForAgeCopyWith<$Res> {
-  factory _$WHOGrowthStandardsTricepsSkinfoldForAgeCopyWith(
-          _WHOGrowthStandardsTricepsSkinfoldForAge value,
-          $Res Function(_WHOGrowthStandardsTricepsSkinfoldForAge) _then) =
-      __$WHOGrowthStandardsTricepsSkinfoldForAgeCopyWithImpl;
-  @override
-  @useResult
-  $Res call(
-      {Date? observationDate, Sex sex, Age age, Length measurementResult});
+abstract class _WHOGrowthStandardsTricepsSkinfoldForAge
+    extends WHOGrowthStandardsTricepsSkinfoldForAge {
+  factory _WHOGrowthStandardsTricepsSkinfoldForAge(
+          {final Date? observationDate,
+          required final Sex sex,
+          required final Age age,
+          required final Length measurementResult}) =
+      _$WHOGrowthStandardsTricepsSkinfoldForAgeImpl;
+  _WHOGrowthStandardsTricepsSkinfoldForAge._() : super._();
+
+  factory _WHOGrowthStandardsTricepsSkinfoldForAge.fromJson(
+          Map<String, dynamic> json) =
+      _$WHOGrowthStandardsTricepsSkinfoldForAgeImpl.fromJson;
 
   @override
-  $DateCopyWith<$Res>? get observationDate;
+  Date? get observationDate;
   @override
-  $AgeCopyWith<$Res> get age;
+  Sex get sex;
+  @override
+  Age get age;
+  @override
+  Length get measurementResult;
+
+  /// Create a copy of WHOGrowthStandardsTricepsSkinfoldForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$WHOGrowthStandardsTricepsSkinfoldForAgeImplCopyWith<
+          _$WHOGrowthStandardsTricepsSkinfoldForAgeImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
-/// @nodoc
-class __$WHOGrowthStandardsTricepsSkinfoldForAgeCopyWithImpl<$Res>
-    implements _$WHOGrowthStandardsTricepsSkinfoldForAgeCopyWith<$Res> {
-  __$WHOGrowthStandardsTricepsSkinfoldForAgeCopyWithImpl(
-      this._self, this._then);
-
-  final _WHOGrowthStandardsTricepsSkinfoldForAge _self;
-  final $Res Function(_WHOGrowthStandardsTricepsSkinfoldForAge) _then;
-
-  /// Create a copy of WHOGrowthStandardsTricepsSkinfoldForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? observationDate = freezed,
-    Object? sex = null,
-    Object? age = null,
-    Object? measurementResult = null,
-  }) {
-    return _then(_WHOGrowthStandardsTricepsSkinfoldForAge(
-      observationDate: freezed == observationDate
-          ? _self.observationDate
-          : observationDate // ignore: cast_nullable_to_non_nullable
-              as Date?,
-      sex: null == sex
-          ? _self.sex
-          : sex // ignore: cast_nullable_to_non_nullable
-              as Sex,
-      age: null == age
-          ? _self.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as Age,
-      measurementResult: null == measurementResult
-          ? _self.measurementResult
-          : measurementResult // ignore: cast_nullable_to_non_nullable
-              as Length,
-    ));
-  }
-
-  /// Create a copy of WHOGrowthStandardsTricepsSkinfoldForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $DateCopyWith<$Res>? get observationDate {
-    if (_self.observationDate == null) {
-      return null;
-    }
-
-    return $DateCopyWith<$Res>(_self.observationDate!, (value) {
-      return _then(_self.copyWith(observationDate: value));
-    });
-  }
-
-  /// Create a copy of WHOGrowthStandardsTricepsSkinfoldForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
-    });
-  }
+WHOGrowthStandardsWeightVelocityForAge
+    _$WHOGrowthStandardsWeightVelocityForAgeFromJson(
+        Map<String, dynamic> json) {
+  return _WHOGrowthStandardsWeightVelocityForAge.fromJson(json);
 }
 
 /// @nodoc
 mixin _$WHOGrowthStandardsWeightVelocityForAge {
-  Sex get sex;
-  Age get age;
-  List<MassMeasurementHistory> get pastMeasurement;
+  Sex get sex => throw _privateConstructorUsedError;
+  Age get age => throw _privateConstructorUsedError;
+  List<MassMeasurementHistory> get pastMeasurement =>
+      throw _privateConstructorUsedError;
+
+  /// Serializes this WHOGrowthStandardsWeightVelocityForAge to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
   /// Create a copy of WHOGrowthStandardsWeightVelocityForAge
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
   $WHOGrowthStandardsWeightVelocityForAgeCopyWith<
           WHOGrowthStandardsWeightVelocityForAge>
-      get copyWith => _$WHOGrowthStandardsWeightVelocityForAgeCopyWithImpl<
-              WHOGrowthStandardsWeightVelocityForAge>(
-          this as WHOGrowthStandardsWeightVelocityForAge, _$identity);
-
-  /// Serializes this WHOGrowthStandardsWeightVelocityForAge to a JSON map.
-  Map<String, dynamic> toJson();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is WHOGrowthStandardsWeightVelocityForAge &&
-            (identical(other.sex, sex) || other.sex == sex) &&
-            (identical(other.age, age) || other.age == age) &&
-            const DeepCollectionEquality()
-                .equals(other.pastMeasurement, pastMeasurement));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, sex, age,
-      const DeepCollectionEquality().hash(pastMeasurement));
-
-  @override
-  String toString() {
-    return 'WHOGrowthStandardsWeightVelocityForAge(sex: $sex, age: $age, pastMeasurement: $pastMeasurement)';
-  }
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $WHOGrowthStandardsWeightVelocityForAgeCopyWith<$Res> {
+abstract class $WHOGrowthStandardsWeightVelocityForAgeCopyWith<$Res> {
   factory $WHOGrowthStandardsWeightVelocityForAgeCopyWith(
           WHOGrowthStandardsWeightVelocityForAge value,
-          $Res Function(WHOGrowthStandardsWeightVelocityForAge) _then) =
-      _$WHOGrowthStandardsWeightVelocityForAgeCopyWithImpl;
+          $Res Function(WHOGrowthStandardsWeightVelocityForAge) then) =
+      _$WHOGrowthStandardsWeightVelocityForAgeCopyWithImpl<$Res,
+          WHOGrowthStandardsWeightVelocityForAge>;
   @useResult
   $Res call({Sex sex, Age age, List<MassMeasurementHistory> pastMeasurement});
 
@@ -2449,12 +2439,15 @@ abstract mixin class $WHOGrowthStandardsWeightVelocityForAgeCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$WHOGrowthStandardsWeightVelocityForAgeCopyWithImpl<$Res>
+class _$WHOGrowthStandardsWeightVelocityForAgeCopyWithImpl<$Res,
+        $Val extends WHOGrowthStandardsWeightVelocityForAge>
     implements $WHOGrowthStandardsWeightVelocityForAgeCopyWith<$Res> {
-  _$WHOGrowthStandardsWeightVelocityForAgeCopyWithImpl(this._self, this._then);
+  _$WHOGrowthStandardsWeightVelocityForAgeCopyWithImpl(this._value, this._then);
 
-  final WHOGrowthStandardsWeightVelocityForAge _self;
-  final $Res Function(WHOGrowthStandardsWeightVelocityForAge) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
   /// Create a copy of WHOGrowthStandardsWeightVelocityForAge
   /// with the given fields replaced by the non-null parameter values.
@@ -2465,20 +2458,20 @@ class _$WHOGrowthStandardsWeightVelocityForAgeCopyWithImpl<$Res>
     Object? age = null,
     Object? pastMeasurement = null,
   }) {
-    return _then(_self.copyWith(
+    return _then(_value.copyWith(
       sex: null == sex
-          ? _self.sex
+          ? _value.sex
           : sex // ignore: cast_nullable_to_non_nullable
               as Sex,
       age: null == age
-          ? _self.age
+          ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
               as Age,
       pastMeasurement: null == pastMeasurement
-          ? _self.pastMeasurement
+          ? _value.pastMeasurement
           : pastMeasurement // ignore: cast_nullable_to_non_nullable
               as List<MassMeasurementHistory>,
-    ));
+    ) as $Val);
   }
 
   /// Create a copy of WHOGrowthStandardsWeightVelocityForAge
@@ -2486,17 +2479,68 @@ class _$WHOGrowthStandardsWeightVelocityForAgeCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
+    return $AgeCopyWith<$Res>(_value.age, (value) {
+      return _then(_value.copyWith(age: value) as $Val);
     });
   }
 }
 
 /// @nodoc
+abstract class _$$WHOGrowthStandardsWeightVelocityForAgeImplCopyWith<$Res>
+    implements $WHOGrowthStandardsWeightVelocityForAgeCopyWith<$Res> {
+  factory _$$WHOGrowthStandardsWeightVelocityForAgeImplCopyWith(
+          _$WHOGrowthStandardsWeightVelocityForAgeImpl value,
+          $Res Function(_$WHOGrowthStandardsWeightVelocityForAgeImpl) then) =
+      __$$WHOGrowthStandardsWeightVelocityForAgeImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Sex sex, Age age, List<MassMeasurementHistory> pastMeasurement});
+
+  @override
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class __$$WHOGrowthStandardsWeightVelocityForAgeImplCopyWithImpl<$Res>
+    extends _$WHOGrowthStandardsWeightVelocityForAgeCopyWithImpl<$Res,
+        _$WHOGrowthStandardsWeightVelocityForAgeImpl>
+    implements _$$WHOGrowthStandardsWeightVelocityForAgeImplCopyWith<$Res> {
+  __$$WHOGrowthStandardsWeightVelocityForAgeImplCopyWithImpl(
+      _$WHOGrowthStandardsWeightVelocityForAgeImpl _value,
+      $Res Function(_$WHOGrowthStandardsWeightVelocityForAgeImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of WHOGrowthStandardsWeightVelocityForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? sex = null,
+    Object? age = null,
+    Object? pastMeasurement = null,
+  }) {
+    return _then(_$WHOGrowthStandardsWeightVelocityForAgeImpl(
+      sex: null == sex
+          ? _value.sex
+          : sex // ignore: cast_nullable_to_non_nullable
+              as Sex,
+      age: null == age
+          ? _value.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+      pastMeasurement: null == pastMeasurement
+          ? _value._pastMeasurement
+          : pastMeasurement // ignore: cast_nullable_to_non_nullable
+              as List<MassMeasurementHistory>,
+    ));
+  }
+}
+
+/// @nodoc
 @JsonSerializable()
-class _WHOGrowthStandardsWeightVelocityForAge
-    extends WHOGrowthStandardsWeightVelocityForAge {
-  _WHOGrowthStandardsWeightVelocityForAge(
+class _$WHOGrowthStandardsWeightVelocityForAgeImpl
+    extends _WHOGrowthStandardsWeightVelocityForAge {
+  _$WHOGrowthStandardsWeightVelocityForAgeImpl(
       {required this.sex,
       required this.age,
       required final List<MassMeasurementHistory> pastMeasurement})
@@ -2516,9 +2560,10 @@ class _WHOGrowthStandardsWeightVelocityForAge
             'Calculation can not be done as there is date less than Date of Birth in past measurement, if you find this exception is a mistake, try to provide exact $Age'),
         _pastMeasurement = pastMeasurement,
         super._();
-  factory _WHOGrowthStandardsWeightVelocityForAge.fromJson(
+
+  factory _$WHOGrowthStandardsWeightVelocityForAgeImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$WHOGrowthStandardsWeightVelocityForAgeFromJson(json);
+      _$$WHOGrowthStandardsWeightVelocityForAgeImplFromJson(json);
 
   @override
   final Sex sex;
@@ -2532,28 +2577,16 @@ class _WHOGrowthStandardsWeightVelocityForAge
     return EqualUnmodifiableListView(_pastMeasurement);
   }
 
-  /// Create a copy of WHOGrowthStandardsWeightVelocityForAge
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$WHOGrowthStandardsWeightVelocityForAgeCopyWith<
-          _WHOGrowthStandardsWeightVelocityForAge>
-      get copyWith => __$WHOGrowthStandardsWeightVelocityForAgeCopyWithImpl<
-          _WHOGrowthStandardsWeightVelocityForAge>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$WHOGrowthStandardsWeightVelocityForAgeToJson(
-      this,
-    );
+  String toString() {
+    return 'WHOGrowthStandardsWeightVelocityForAge(sex: $sex, age: $age, pastMeasurement: $pastMeasurement)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _WHOGrowthStandardsWeightVelocityForAge &&
+            other is _$WHOGrowthStandardsWeightVelocityForAgeImpl &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             const DeepCollectionEquality()
@@ -2565,122 +2598,84 @@ class _WHOGrowthStandardsWeightVelocityForAge
   int get hashCode => Object.hash(runtimeType, sex, age,
       const DeepCollectionEquality().hash(_pastMeasurement));
 
+  /// Create a copy of WHOGrowthStandardsWeightVelocityForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  String toString() {
-    return 'WHOGrowthStandardsWeightVelocityForAge(sex: $sex, age: $age, pastMeasurement: $pastMeasurement)';
+  @pragma('vm:prefer-inline')
+  _$$WHOGrowthStandardsWeightVelocityForAgeImplCopyWith<
+          _$WHOGrowthStandardsWeightVelocityForAgeImpl>
+      get copyWith =>
+          __$$WHOGrowthStandardsWeightVelocityForAgeImplCopyWithImpl<
+              _$WHOGrowthStandardsWeightVelocityForAgeImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$WHOGrowthStandardsWeightVelocityForAgeImplToJson(
+      this,
+    );
   }
 }
 
-/// @nodoc
-abstract mixin class _$WHOGrowthStandardsWeightVelocityForAgeCopyWith<$Res>
-    implements $WHOGrowthStandardsWeightVelocityForAgeCopyWith<$Res> {
-  factory _$WHOGrowthStandardsWeightVelocityForAgeCopyWith(
-          _WHOGrowthStandardsWeightVelocityForAge value,
-          $Res Function(_WHOGrowthStandardsWeightVelocityForAge) _then) =
-      __$WHOGrowthStandardsWeightVelocityForAgeCopyWithImpl;
-  @override
-  @useResult
-  $Res call({Sex sex, Age age, List<MassMeasurementHistory> pastMeasurement});
+abstract class _WHOGrowthStandardsWeightVelocityForAge
+    extends WHOGrowthStandardsWeightVelocityForAge {
+  factory _WHOGrowthStandardsWeightVelocityForAge(
+          {required final Sex sex,
+          required final Age age,
+          required final List<MassMeasurementHistory> pastMeasurement}) =
+      _$WHOGrowthStandardsWeightVelocityForAgeImpl;
+  _WHOGrowthStandardsWeightVelocityForAge._() : super._();
+
+  factory _WHOGrowthStandardsWeightVelocityForAge.fromJson(
+          Map<String, dynamic> json) =
+      _$WHOGrowthStandardsWeightVelocityForAgeImpl.fromJson;
 
   @override
-  $AgeCopyWith<$Res> get age;
-}
-
-/// @nodoc
-class __$WHOGrowthStandardsWeightVelocityForAgeCopyWithImpl<$Res>
-    implements _$WHOGrowthStandardsWeightVelocityForAgeCopyWith<$Res> {
-  __$WHOGrowthStandardsWeightVelocityForAgeCopyWithImpl(this._self, this._then);
-
-  final _WHOGrowthStandardsWeightVelocityForAge _self;
-  final $Res Function(_WHOGrowthStandardsWeightVelocityForAge) _then;
+  Sex get sex;
+  @override
+  Age get age;
+  @override
+  List<MassMeasurementHistory> get pastMeasurement;
 
   /// Create a copy of WHOGrowthStandardsWeightVelocityForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? sex = null,
-    Object? age = null,
-    Object? pastMeasurement = null,
-  }) {
-    return _then(_WHOGrowthStandardsWeightVelocityForAge(
-      sex: null == sex
-          ? _self.sex
-          : sex // ignore: cast_nullable_to_non_nullable
-              as Sex,
-      age: null == age
-          ? _self.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as Age,
-      pastMeasurement: null == pastMeasurement
-          ? _self._pastMeasurement
-          : pastMeasurement // ignore: cast_nullable_to_non_nullable
-              as List<MassMeasurementHistory>,
-    ));
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$WHOGrowthStandardsWeightVelocityForAgeImplCopyWith<
+          _$WHOGrowthStandardsWeightVelocityForAgeImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
 
-  /// Create a copy of WHOGrowthStandardsWeightVelocityForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
-    });
-  }
+WHOGrowthStandardsWeightForAge _$WHOGrowthStandardsWeightForAgeFromJson(
+    Map<String, dynamic> json) {
+  return _WHOGrowthStandardsWeightForAge.fromJson(json);
 }
 
 /// @nodoc
 mixin _$WHOGrowthStandardsWeightForAge {
-  Date? get observationDate;
-  Sex get sex;
-  bool get oedemaExist;
-  Age get age;
-  Mass get weight;
+  Date? get observationDate => throw _privateConstructorUsedError;
+  Sex get sex => throw _privateConstructorUsedError;
+  bool get oedemaExist => throw _privateConstructorUsedError;
+  Age get age => throw _privateConstructorUsedError;
+  Mass get weight => throw _privateConstructorUsedError;
+
+  /// Serializes this WHOGrowthStandardsWeightForAge to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
   /// Create a copy of WHOGrowthStandardsWeightForAge
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
   $WHOGrowthStandardsWeightForAgeCopyWith<WHOGrowthStandardsWeightForAge>
-      get copyWith => _$WHOGrowthStandardsWeightForAgeCopyWithImpl<
-              WHOGrowthStandardsWeightForAge>(
-          this as WHOGrowthStandardsWeightForAge, _$identity);
-
-  /// Serializes this WHOGrowthStandardsWeightForAge to a JSON map.
-  Map<String, dynamic> toJson();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is WHOGrowthStandardsWeightForAge &&
-            (identical(other.observationDate, observationDate) ||
-                other.observationDate == observationDate) &&
-            (identical(other.sex, sex) || other.sex == sex) &&
-            (identical(other.oedemaExist, oedemaExist) ||
-                other.oedemaExist == oedemaExist) &&
-            (identical(other.age, age) || other.age == age) &&
-            (identical(other.weight, weight) || other.weight == weight));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, observationDate, sex, oedemaExist, age, weight);
-
-  @override
-  String toString() {
-    return 'WHOGrowthStandardsWeightForAge(observationDate: $observationDate, sex: $sex, oedemaExist: $oedemaExist, age: $age, weight: $weight)';
-  }
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $WHOGrowthStandardsWeightForAgeCopyWith<$Res> {
+abstract class $WHOGrowthStandardsWeightForAgeCopyWith<$Res> {
   factory $WHOGrowthStandardsWeightForAgeCopyWith(
           WHOGrowthStandardsWeightForAge value,
-          $Res Function(WHOGrowthStandardsWeightForAge) _then) =
-      _$WHOGrowthStandardsWeightForAgeCopyWithImpl;
+          $Res Function(WHOGrowthStandardsWeightForAge) then) =
+      _$WHOGrowthStandardsWeightForAgeCopyWithImpl<$Res,
+          WHOGrowthStandardsWeightForAge>;
   @useResult
   $Res call(
       {Date? observationDate, Sex sex, bool oedemaExist, Age age, Mass weight});
@@ -2690,12 +2685,15 @@ abstract mixin class $WHOGrowthStandardsWeightForAgeCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$WHOGrowthStandardsWeightForAgeCopyWithImpl<$Res>
+class _$WHOGrowthStandardsWeightForAgeCopyWithImpl<$Res,
+        $Val extends WHOGrowthStandardsWeightForAge>
     implements $WHOGrowthStandardsWeightForAgeCopyWith<$Res> {
-  _$WHOGrowthStandardsWeightForAgeCopyWithImpl(this._self, this._then);
+  _$WHOGrowthStandardsWeightForAgeCopyWithImpl(this._value, this._then);
 
-  final WHOGrowthStandardsWeightForAge _self;
-  final $Res Function(WHOGrowthStandardsWeightForAge) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
   /// Create a copy of WHOGrowthStandardsWeightForAge
   /// with the given fields replaced by the non-null parameter values.
@@ -2708,28 +2706,28 @@ class _$WHOGrowthStandardsWeightForAgeCopyWithImpl<$Res>
     Object? age = null,
     Object? weight = null,
   }) {
-    return _then(_self.copyWith(
+    return _then(_value.copyWith(
       observationDate: freezed == observationDate
-          ? _self.observationDate
+          ? _value.observationDate
           : observationDate // ignore: cast_nullable_to_non_nullable
               as Date?,
       sex: null == sex
-          ? _self.sex
+          ? _value.sex
           : sex // ignore: cast_nullable_to_non_nullable
               as Sex,
       oedemaExist: null == oedemaExist
-          ? _self.oedemaExist
+          ? _value.oedemaExist
           : oedemaExist // ignore: cast_nullable_to_non_nullable
               as bool,
       age: null == age
-          ? _self.age
+          ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
               as Age,
       weight: null == weight
-          ? _self.weight
+          ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
               as Mass,
-    ));
+    ) as $Val);
   }
 
   /// Create a copy of WHOGrowthStandardsWeightForAge
@@ -2737,12 +2735,12 @@ class _$WHOGrowthStandardsWeightForAgeCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $DateCopyWith<$Res>? get observationDate {
-    if (_self.observationDate == null) {
+    if (_value.observationDate == null) {
       return null;
     }
 
-    return $DateCopyWith<$Res>(_self.observationDate!, (value) {
-      return _then(_self.copyWith(observationDate: value));
+    return $DateCopyWith<$Res>(_value.observationDate!, (value) {
+      return _then(_value.copyWith(observationDate: value) as $Val);
     });
   }
 
@@ -2751,16 +2749,81 @@ class _$WHOGrowthStandardsWeightForAgeCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
+    return $AgeCopyWith<$Res>(_value.age, (value) {
+      return _then(_value.copyWith(age: value) as $Val);
     });
   }
 }
 
 /// @nodoc
+abstract class _$$WHOGrowthStandardsWeightForAgeImplCopyWith<$Res>
+    implements $WHOGrowthStandardsWeightForAgeCopyWith<$Res> {
+  factory _$$WHOGrowthStandardsWeightForAgeImplCopyWith(
+          _$WHOGrowthStandardsWeightForAgeImpl value,
+          $Res Function(_$WHOGrowthStandardsWeightForAgeImpl) then) =
+      __$$WHOGrowthStandardsWeightForAgeImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {Date? observationDate, Sex sex, bool oedemaExist, Age age, Mass weight});
+
+  @override
+  $DateCopyWith<$Res>? get observationDate;
+  @override
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class __$$WHOGrowthStandardsWeightForAgeImplCopyWithImpl<$Res>
+    extends _$WHOGrowthStandardsWeightForAgeCopyWithImpl<$Res,
+        _$WHOGrowthStandardsWeightForAgeImpl>
+    implements _$$WHOGrowthStandardsWeightForAgeImplCopyWith<$Res> {
+  __$$WHOGrowthStandardsWeightForAgeImplCopyWithImpl(
+      _$WHOGrowthStandardsWeightForAgeImpl _value,
+      $Res Function(_$WHOGrowthStandardsWeightForAgeImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of WHOGrowthStandardsWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? observationDate = freezed,
+    Object? sex = null,
+    Object? oedemaExist = null,
+    Object? age = null,
+    Object? weight = null,
+  }) {
+    return _then(_$WHOGrowthStandardsWeightForAgeImpl(
+      observationDate: freezed == observationDate
+          ? _value.observationDate
+          : observationDate // ignore: cast_nullable_to_non_nullable
+              as Date?,
+      sex: null == sex
+          ? _value.sex
+          : sex // ignore: cast_nullable_to_non_nullable
+              as Sex,
+      oedemaExist: null == oedemaExist
+          ? _value.oedemaExist
+          : oedemaExist // ignore: cast_nullable_to_non_nullable
+              as bool,
+      age: null == age
+          ? _value.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+      weight: null == weight
+          ? _value.weight
+          : weight // ignore: cast_nullable_to_non_nullable
+              as Mass,
+    ));
+  }
+}
+
+/// @nodoc
 @JsonSerializable()
-class _WHOGrowthStandardsWeightForAge extends WHOGrowthStandardsWeightForAge {
-  _WHOGrowthStandardsWeightForAge(
+class _$WHOGrowthStandardsWeightForAgeImpl
+    extends _WHOGrowthStandardsWeightForAge {
+  _$WHOGrowthStandardsWeightForAgeImpl(
       {this.observationDate,
       required this.sex,
       this.oedemaExist = false,
@@ -2774,8 +2837,10 @@ class _WHOGrowthStandardsWeightForAge extends WHOGrowthStandardsWeightForAge {
                 observationDate.isSameOrAfter(age.dateOfBirth),
             'Observation date is impossible, because happen after today or before birth'),
         super._();
-  factory _WHOGrowthStandardsWeightForAge.fromJson(Map<String, dynamic> json) =>
-      _$WHOGrowthStandardsWeightForAgeFromJson(json);
+
+  factory _$WHOGrowthStandardsWeightForAgeImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$WHOGrowthStandardsWeightForAgeImplFromJson(json);
 
   @override
   final Date? observationDate;
@@ -2789,27 +2854,16 @@ class _WHOGrowthStandardsWeightForAge extends WHOGrowthStandardsWeightForAge {
   @override
   final Mass weight;
 
-  /// Create a copy of WHOGrowthStandardsWeightForAge
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$WHOGrowthStandardsWeightForAgeCopyWith<_WHOGrowthStandardsWeightForAge>
-      get copyWith => __$WHOGrowthStandardsWeightForAgeCopyWithImpl<
-          _WHOGrowthStandardsWeightForAge>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$WHOGrowthStandardsWeightForAgeToJson(
-      this,
-    );
+  String toString() {
+    return 'WHOGrowthStandardsWeightForAge(observationDate: $observationDate, sex: $sex, oedemaExist: $oedemaExist, age: $age, weight: $weight)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _WHOGrowthStandardsWeightForAge &&
+            other is _$WHOGrowthStandardsWeightForAgeImpl &&
             (identical(other.observationDate, observationDate) ||
                 other.observationDate == observationDate) &&
             (identical(other.sex, sex) || other.sex == sex) &&
@@ -2824,153 +2878,90 @@ class _WHOGrowthStandardsWeightForAge extends WHOGrowthStandardsWeightForAge {
   int get hashCode =>
       Object.hash(runtimeType, observationDate, sex, oedemaExist, age, weight);
 
+  /// Create a copy of WHOGrowthStandardsWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  String toString() {
-    return 'WHOGrowthStandardsWeightForAge(observationDate: $observationDate, sex: $sex, oedemaExist: $oedemaExist, age: $age, weight: $weight)';
+  @pragma('vm:prefer-inline')
+  _$$WHOGrowthStandardsWeightForAgeImplCopyWith<
+          _$WHOGrowthStandardsWeightForAgeImpl>
+      get copyWith => __$$WHOGrowthStandardsWeightForAgeImplCopyWithImpl<
+          _$WHOGrowthStandardsWeightForAgeImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$WHOGrowthStandardsWeightForAgeImplToJson(
+      this,
+    );
   }
 }
 
-/// @nodoc
-abstract mixin class _$WHOGrowthStandardsWeightForAgeCopyWith<$Res>
-    implements $WHOGrowthStandardsWeightForAgeCopyWith<$Res> {
-  factory _$WHOGrowthStandardsWeightForAgeCopyWith(
-          _WHOGrowthStandardsWeightForAge value,
-          $Res Function(_WHOGrowthStandardsWeightForAge) _then) =
-      __$WHOGrowthStandardsWeightForAgeCopyWithImpl;
-  @override
-  @useResult
-  $Res call(
-      {Date? observationDate, Sex sex, bool oedemaExist, Age age, Mass weight});
+abstract class _WHOGrowthStandardsWeightForAge
+    extends WHOGrowthStandardsWeightForAge {
+  factory _WHOGrowthStandardsWeightForAge(
+      {final Date? observationDate,
+      required final Sex sex,
+      final bool oedemaExist,
+      required final Age age,
+      required final Mass weight}) = _$WHOGrowthStandardsWeightForAgeImpl;
+  _WHOGrowthStandardsWeightForAge._() : super._();
+
+  factory _WHOGrowthStandardsWeightForAge.fromJson(Map<String, dynamic> json) =
+      _$WHOGrowthStandardsWeightForAgeImpl.fromJson;
 
   @override
-  $DateCopyWith<$Res>? get observationDate;
+  Date? get observationDate;
   @override
-  $AgeCopyWith<$Res> get age;
+  Sex get sex;
+  @override
+  bool get oedemaExist;
+  @override
+  Age get age;
+  @override
+  Mass get weight;
+
+  /// Create a copy of WHOGrowthStandardsWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$WHOGrowthStandardsWeightForAgeImplCopyWith<
+          _$WHOGrowthStandardsWeightForAgeImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
-/// @nodoc
-class __$WHOGrowthStandardsWeightForAgeCopyWithImpl<$Res>
-    implements _$WHOGrowthStandardsWeightForAgeCopyWith<$Res> {
-  __$WHOGrowthStandardsWeightForAgeCopyWithImpl(this._self, this._then);
-
-  final _WHOGrowthStandardsWeightForAge _self;
-  final $Res Function(_WHOGrowthStandardsWeightForAge) _then;
-
-  /// Create a copy of WHOGrowthStandardsWeightForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? observationDate = freezed,
-    Object? sex = null,
-    Object? oedemaExist = null,
-    Object? age = null,
-    Object? weight = null,
-  }) {
-    return _then(_WHOGrowthStandardsWeightForAge(
-      observationDate: freezed == observationDate
-          ? _self.observationDate
-          : observationDate // ignore: cast_nullable_to_non_nullable
-              as Date?,
-      sex: null == sex
-          ? _self.sex
-          : sex // ignore: cast_nullable_to_non_nullable
-              as Sex,
-      oedemaExist: null == oedemaExist
-          ? _self.oedemaExist
-          : oedemaExist // ignore: cast_nullable_to_non_nullable
-              as bool,
-      age: null == age
-          ? _self.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as Age,
-      weight: null == weight
-          ? _self.weight
-          : weight // ignore: cast_nullable_to_non_nullable
-              as Mass,
-    ));
-  }
-
-  /// Create a copy of WHOGrowthStandardsWeightForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $DateCopyWith<$Res>? get observationDate {
-    if (_self.observationDate == null) {
-      return null;
-    }
-
-    return $DateCopyWith<$Res>(_self.observationDate!, (value) {
-      return _then(_self.copyWith(observationDate: value));
-    });
-  }
-
-  /// Create a copy of WHOGrowthStandardsWeightForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
-    });
-  }
+WHOGrowthStandardsWeightForHeight _$WHOGrowthStandardsWeightForHeightFromJson(
+    Map<String, dynamic> json) {
+  return _WHOGrowthStandardsWeightForHeight.fromJson(json);
 }
 
 /// @nodoc
 mixin _$WHOGrowthStandardsWeightForHeight {
-  Date? get observationDate;
-  Sex get sex;
-  Age get age;
-  bool get oedemaExist;
-  Length get height;
-  Mass get weight;
-  LengthHeightMeasurementPosition get measure;
+  Date? get observationDate => throw _privateConstructorUsedError;
+  Sex get sex => throw _privateConstructorUsedError;
+  Age get age => throw _privateConstructorUsedError;
+  bool get oedemaExist => throw _privateConstructorUsedError;
+  Length get height => throw _privateConstructorUsedError;
+  Mass get weight => throw _privateConstructorUsedError;
+  LengthHeightMeasurementPosition get measure =>
+      throw _privateConstructorUsedError;
+
+  /// Serializes this WHOGrowthStandardsWeightForHeight to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
   /// Create a copy of WHOGrowthStandardsWeightForHeight
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
   $WHOGrowthStandardsWeightForHeightCopyWith<WHOGrowthStandardsWeightForHeight>
-      get copyWith => _$WHOGrowthStandardsWeightForHeightCopyWithImpl<
-              WHOGrowthStandardsWeightForHeight>(
-          this as WHOGrowthStandardsWeightForHeight, _$identity);
-
-  /// Serializes this WHOGrowthStandardsWeightForHeight to a JSON map.
-  Map<String, dynamic> toJson();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is WHOGrowthStandardsWeightForHeight &&
-            (identical(other.observationDate, observationDate) ||
-                other.observationDate == observationDate) &&
-            (identical(other.sex, sex) || other.sex == sex) &&
-            (identical(other.age, age) || other.age == age) &&
-            (identical(other.oedemaExist, oedemaExist) ||
-                other.oedemaExist == oedemaExist) &&
-            (identical(other.height, height) || other.height == height) &&
-            (identical(other.weight, weight) || other.weight == weight) &&
-            (identical(other.measure, measure) || other.measure == measure));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, observationDate, sex, age,
-      oedemaExist, height, weight, measure);
-
-  @override
-  String toString() {
-    return 'WHOGrowthStandardsWeightForHeight(observationDate: $observationDate, sex: $sex, age: $age, oedemaExist: $oedemaExist, height: $height, weight: $weight, measure: $measure)';
-  }
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $WHOGrowthStandardsWeightForHeightCopyWith<$Res> {
+abstract class $WHOGrowthStandardsWeightForHeightCopyWith<$Res> {
   factory $WHOGrowthStandardsWeightForHeightCopyWith(
           WHOGrowthStandardsWeightForHeight value,
-          $Res Function(WHOGrowthStandardsWeightForHeight) _then) =
-      _$WHOGrowthStandardsWeightForHeightCopyWithImpl;
+          $Res Function(WHOGrowthStandardsWeightForHeight) then) =
+      _$WHOGrowthStandardsWeightForHeightCopyWithImpl<$Res,
+          WHOGrowthStandardsWeightForHeight>;
   @useResult
   $Res call(
       {Date? observationDate,
@@ -2986,12 +2977,15 @@ abstract mixin class $WHOGrowthStandardsWeightForHeightCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$WHOGrowthStandardsWeightForHeightCopyWithImpl<$Res>
+class _$WHOGrowthStandardsWeightForHeightCopyWithImpl<$Res,
+        $Val extends WHOGrowthStandardsWeightForHeight>
     implements $WHOGrowthStandardsWeightForHeightCopyWith<$Res> {
-  _$WHOGrowthStandardsWeightForHeightCopyWithImpl(this._self, this._then);
+  _$WHOGrowthStandardsWeightForHeightCopyWithImpl(this._value, this._then);
 
-  final WHOGrowthStandardsWeightForHeight _self;
-  final $Res Function(WHOGrowthStandardsWeightForHeight) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
   /// Create a copy of WHOGrowthStandardsWeightForHeight
   /// with the given fields replaced by the non-null parameter values.
@@ -3006,36 +3000,36 @@ class _$WHOGrowthStandardsWeightForHeightCopyWithImpl<$Res>
     Object? weight = null,
     Object? measure = null,
   }) {
-    return _then(_self.copyWith(
+    return _then(_value.copyWith(
       observationDate: freezed == observationDate
-          ? _self.observationDate
+          ? _value.observationDate
           : observationDate // ignore: cast_nullable_to_non_nullable
               as Date?,
       sex: null == sex
-          ? _self.sex
+          ? _value.sex
           : sex // ignore: cast_nullable_to_non_nullable
               as Sex,
       age: null == age
-          ? _self.age
+          ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
               as Age,
       oedemaExist: null == oedemaExist
-          ? _self.oedemaExist
+          ? _value.oedemaExist
           : oedemaExist // ignore: cast_nullable_to_non_nullable
               as bool,
       height: null == height
-          ? _self.height
+          ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
               as Length,
       weight: null == weight
-          ? _self.weight
+          ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
               as Mass,
       measure: null == measure
-          ? _self.measure
+          ? _value.measure
           : measure // ignore: cast_nullable_to_non_nullable
               as LengthHeightMeasurementPosition,
-    ));
+    ) as $Val);
   }
 
   /// Create a copy of WHOGrowthStandardsWeightForHeight
@@ -3043,12 +3037,12 @@ class _$WHOGrowthStandardsWeightForHeightCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $DateCopyWith<$Res>? get observationDate {
-    if (_self.observationDate == null) {
+    if (_value.observationDate == null) {
       return null;
     }
 
-    return $DateCopyWith<$Res>(_self.observationDate!, (value) {
-      return _then(_self.copyWith(observationDate: value));
+    return $DateCopyWith<$Res>(_value.observationDate!, (value) {
+      return _then(_value.copyWith(observationDate: value) as $Val);
     });
   }
 
@@ -3057,17 +3051,97 @@ class _$WHOGrowthStandardsWeightForHeightCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
+    return $AgeCopyWith<$Res>(_value.age, (value) {
+      return _then(_value.copyWith(age: value) as $Val);
     });
   }
 }
 
 /// @nodoc
+abstract class _$$WHOGrowthStandardsWeightForHeightImplCopyWith<$Res>
+    implements $WHOGrowthStandardsWeightForHeightCopyWith<$Res> {
+  factory _$$WHOGrowthStandardsWeightForHeightImplCopyWith(
+          _$WHOGrowthStandardsWeightForHeightImpl value,
+          $Res Function(_$WHOGrowthStandardsWeightForHeightImpl) then) =
+      __$$WHOGrowthStandardsWeightForHeightImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {Date? observationDate,
+      Sex sex,
+      Age age,
+      bool oedemaExist,
+      Length height,
+      Mass weight,
+      LengthHeightMeasurementPosition measure});
+
+  @override
+  $DateCopyWith<$Res>? get observationDate;
+  @override
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class __$$WHOGrowthStandardsWeightForHeightImplCopyWithImpl<$Res>
+    extends _$WHOGrowthStandardsWeightForHeightCopyWithImpl<$Res,
+        _$WHOGrowthStandardsWeightForHeightImpl>
+    implements _$$WHOGrowthStandardsWeightForHeightImplCopyWith<$Res> {
+  __$$WHOGrowthStandardsWeightForHeightImplCopyWithImpl(
+      _$WHOGrowthStandardsWeightForHeightImpl _value,
+      $Res Function(_$WHOGrowthStandardsWeightForHeightImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of WHOGrowthStandardsWeightForHeight
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? observationDate = freezed,
+    Object? sex = null,
+    Object? age = null,
+    Object? oedemaExist = null,
+    Object? height = null,
+    Object? weight = null,
+    Object? measure = null,
+  }) {
+    return _then(_$WHOGrowthStandardsWeightForHeightImpl(
+      observationDate: freezed == observationDate
+          ? _value.observationDate
+          : observationDate // ignore: cast_nullable_to_non_nullable
+              as Date?,
+      sex: null == sex
+          ? _value.sex
+          : sex // ignore: cast_nullable_to_non_nullable
+              as Sex,
+      age: null == age
+          ? _value.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+      oedemaExist: null == oedemaExist
+          ? _value.oedemaExist
+          : oedemaExist // ignore: cast_nullable_to_non_nullable
+              as bool,
+      height: null == height
+          ? _value.height
+          : height // ignore: cast_nullable_to_non_nullable
+              as Length,
+      weight: null == weight
+          ? _value.weight
+          : weight // ignore: cast_nullable_to_non_nullable
+              as Mass,
+      measure: null == measure
+          ? _value.measure
+          : measure // ignore: cast_nullable_to_non_nullable
+              as LengthHeightMeasurementPosition,
+    ));
+  }
+}
+
+/// @nodoc
 @JsonSerializable()
-class _WHOGrowthStandardsWeightForHeight
-    extends WHOGrowthStandardsWeightForHeight {
-  _WHOGrowthStandardsWeightForHeight(
+class _$WHOGrowthStandardsWeightForHeightImpl
+    extends _WHOGrowthStandardsWeightForHeight {
+  _$WHOGrowthStandardsWeightForHeightImpl(
       {this.observationDate,
       required this.sex,
       required this.age,
@@ -3115,9 +3189,10 @@ class _WHOGrowthStandardsWeightForHeight
                 observationDate.isSameOrAfter(age.dateOfBirth),
             'Observation date is impossible, because happen after today or before birth'),
         super._();
-  factory _WHOGrowthStandardsWeightForHeight.fromJson(
+
+  factory _$WHOGrowthStandardsWeightForHeightImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$WHOGrowthStandardsWeightForHeightFromJson(json);
+      _$$WHOGrowthStandardsWeightForHeightImplFromJson(json);
 
   @override
   final Date? observationDate;
@@ -3135,28 +3210,16 @@ class _WHOGrowthStandardsWeightForHeight
   @override
   final LengthHeightMeasurementPosition measure;
 
-  /// Create a copy of WHOGrowthStandardsWeightForHeight
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$WHOGrowthStandardsWeightForHeightCopyWith<
-          _WHOGrowthStandardsWeightForHeight>
-      get copyWith => __$WHOGrowthStandardsWeightForHeightCopyWithImpl<
-          _WHOGrowthStandardsWeightForHeight>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$WHOGrowthStandardsWeightForHeightToJson(
-      this,
-    );
+  String toString() {
+    return 'WHOGrowthStandardsWeightForHeight(observationDate: $observationDate, sex: $sex, age: $age, oedemaExist: $oedemaExist, height: $height, weight: $weight, measure: $measure)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _WHOGrowthStandardsWeightForHeight &&
+            other is _$WHOGrowthStandardsWeightForHeightImpl &&
             (identical(other.observationDate, observationDate) ||
                 other.observationDate == observationDate) &&
             (identical(other.sex, sex) || other.sex == sex) &&
@@ -3173,169 +3236,98 @@ class _WHOGrowthStandardsWeightForHeight
   int get hashCode => Object.hash(runtimeType, observationDate, sex, age,
       oedemaExist, height, weight, measure);
 
+  /// Create a copy of WHOGrowthStandardsWeightForHeight
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  String toString() {
-    return 'WHOGrowthStandardsWeightForHeight(observationDate: $observationDate, sex: $sex, age: $age, oedemaExist: $oedemaExist, height: $height, weight: $weight, measure: $measure)';
+  @pragma('vm:prefer-inline')
+  _$$WHOGrowthStandardsWeightForHeightImplCopyWith<
+          _$WHOGrowthStandardsWeightForHeightImpl>
+      get copyWith => __$$WHOGrowthStandardsWeightForHeightImplCopyWithImpl<
+          _$WHOGrowthStandardsWeightForHeightImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$WHOGrowthStandardsWeightForHeightImplToJson(
+      this,
+    );
   }
 }
 
-/// @nodoc
-abstract mixin class _$WHOGrowthStandardsWeightForHeightCopyWith<$Res>
-    implements $WHOGrowthStandardsWeightForHeightCopyWith<$Res> {
-  factory _$WHOGrowthStandardsWeightForHeightCopyWith(
-          _WHOGrowthStandardsWeightForHeight value,
-          $Res Function(_WHOGrowthStandardsWeightForHeight) _then) =
-      __$WHOGrowthStandardsWeightForHeightCopyWithImpl;
-  @override
-  @useResult
-  $Res call(
-      {Date? observationDate,
-      Sex sex,
-      Age age,
-      bool oedemaExist,
-      Length height,
-      Mass weight,
-      LengthHeightMeasurementPosition measure});
+abstract class _WHOGrowthStandardsWeightForHeight
+    extends WHOGrowthStandardsWeightForHeight {
+  factory _WHOGrowthStandardsWeightForHeight(
+          {final Date? observationDate,
+          required final Sex sex,
+          required final Age age,
+          final bool oedemaExist,
+          required final Length height,
+          required final Mass weight,
+          required final LengthHeightMeasurementPosition measure}) =
+      _$WHOGrowthStandardsWeightForHeightImpl;
+  _WHOGrowthStandardsWeightForHeight._() : super._();
+
+  factory _WHOGrowthStandardsWeightForHeight.fromJson(
+          Map<String, dynamic> json) =
+      _$WHOGrowthStandardsWeightForHeightImpl.fromJson;
 
   @override
-  $DateCopyWith<$Res>? get observationDate;
+  Date? get observationDate;
   @override
-  $AgeCopyWith<$Res> get age;
+  Sex get sex;
+  @override
+  Age get age;
+  @override
+  bool get oedemaExist;
+  @override
+  Length get height;
+  @override
+  Mass get weight;
+  @override
+  LengthHeightMeasurementPosition get measure;
+
+  /// Create a copy of WHOGrowthStandardsWeightForHeight
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$WHOGrowthStandardsWeightForHeightImplCopyWith<
+          _$WHOGrowthStandardsWeightForHeightImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
-/// @nodoc
-class __$WHOGrowthStandardsWeightForHeightCopyWithImpl<$Res>
-    implements _$WHOGrowthStandardsWeightForHeightCopyWith<$Res> {
-  __$WHOGrowthStandardsWeightForHeightCopyWithImpl(this._self, this._then);
-
-  final _WHOGrowthStandardsWeightForHeight _self;
-  final $Res Function(_WHOGrowthStandardsWeightForHeight) _then;
-
-  /// Create a copy of WHOGrowthStandardsWeightForHeight
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? observationDate = freezed,
-    Object? sex = null,
-    Object? age = null,
-    Object? oedemaExist = null,
-    Object? height = null,
-    Object? weight = null,
-    Object? measure = null,
-  }) {
-    return _then(_WHOGrowthStandardsWeightForHeight(
-      observationDate: freezed == observationDate
-          ? _self.observationDate
-          : observationDate // ignore: cast_nullable_to_non_nullable
-              as Date?,
-      sex: null == sex
-          ? _self.sex
-          : sex // ignore: cast_nullable_to_non_nullable
-              as Sex,
-      age: null == age
-          ? _self.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as Age,
-      oedemaExist: null == oedemaExist
-          ? _self.oedemaExist
-          : oedemaExist // ignore: cast_nullable_to_non_nullable
-              as bool,
-      height: null == height
-          ? _self.height
-          : height // ignore: cast_nullable_to_non_nullable
-              as Length,
-      weight: null == weight
-          ? _self.weight
-          : weight // ignore: cast_nullable_to_non_nullable
-              as Mass,
-      measure: null == measure
-          ? _self.measure
-          : measure // ignore: cast_nullable_to_non_nullable
-              as LengthHeightMeasurementPosition,
-    ));
-  }
-
-  /// Create a copy of WHOGrowthStandardsWeightForHeight
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $DateCopyWith<$Res>? get observationDate {
-    if (_self.observationDate == null) {
-      return null;
-    }
-
-    return $DateCopyWith<$Res>(_self.observationDate!, (value) {
-      return _then(_self.copyWith(observationDate: value));
-    });
-  }
-
-  /// Create a copy of WHOGrowthStandardsWeightForHeight
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
-    });
-  }
+WHOGrowthStandardsWeightForLength _$WHOGrowthStandardsWeightForLengthFromJson(
+    Map<String, dynamic> json) {
+  return _WHOGrowthStandardsWeightForLength.fromJson(json);
 }
 
 /// @nodoc
 mixin _$WHOGrowthStandardsWeightForLength {
-  Date? get observationDate;
-  Sex get sex;
-  Age get age;
-  bool get oedemaExist;
-  Length get length;
-  Mass get weight;
-  LengthHeightMeasurementPosition get measure;
+  Date? get observationDate => throw _privateConstructorUsedError;
+  Sex get sex => throw _privateConstructorUsedError;
+  Age get age => throw _privateConstructorUsedError;
+  bool get oedemaExist => throw _privateConstructorUsedError;
+  Length get length => throw _privateConstructorUsedError;
+  Mass get weight => throw _privateConstructorUsedError;
+  LengthHeightMeasurementPosition get measure =>
+      throw _privateConstructorUsedError;
+
+  /// Serializes this WHOGrowthStandardsWeightForLength to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
   /// Create a copy of WHOGrowthStandardsWeightForLength
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
   $WHOGrowthStandardsWeightForLengthCopyWith<WHOGrowthStandardsWeightForLength>
-      get copyWith => _$WHOGrowthStandardsWeightForLengthCopyWithImpl<
-              WHOGrowthStandardsWeightForLength>(
-          this as WHOGrowthStandardsWeightForLength, _$identity);
-
-  /// Serializes this WHOGrowthStandardsWeightForLength to a JSON map.
-  Map<String, dynamic> toJson();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is WHOGrowthStandardsWeightForLength &&
-            (identical(other.observationDate, observationDate) ||
-                other.observationDate == observationDate) &&
-            (identical(other.sex, sex) || other.sex == sex) &&
-            (identical(other.age, age) || other.age == age) &&
-            (identical(other.oedemaExist, oedemaExist) ||
-                other.oedemaExist == oedemaExist) &&
-            (identical(other.length, length) || other.length == length) &&
-            (identical(other.weight, weight) || other.weight == weight) &&
-            (identical(other.measure, measure) || other.measure == measure));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, observationDate, sex, age,
-      oedemaExist, length, weight, measure);
-
-  @override
-  String toString() {
-    return 'WHOGrowthStandardsWeightForLength(observationDate: $observationDate, sex: $sex, age: $age, oedemaExist: $oedemaExist, length: $length, weight: $weight, measure: $measure)';
-  }
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $WHOGrowthStandardsWeightForLengthCopyWith<$Res> {
+abstract class $WHOGrowthStandardsWeightForLengthCopyWith<$Res> {
   factory $WHOGrowthStandardsWeightForLengthCopyWith(
           WHOGrowthStandardsWeightForLength value,
-          $Res Function(WHOGrowthStandardsWeightForLength) _then) =
-      _$WHOGrowthStandardsWeightForLengthCopyWithImpl;
+          $Res Function(WHOGrowthStandardsWeightForLength) then) =
+      _$WHOGrowthStandardsWeightForLengthCopyWithImpl<$Res,
+          WHOGrowthStandardsWeightForLength>;
   @useResult
   $Res call(
       {Date? observationDate,
@@ -3351,12 +3343,15 @@ abstract mixin class $WHOGrowthStandardsWeightForLengthCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$WHOGrowthStandardsWeightForLengthCopyWithImpl<$Res>
+class _$WHOGrowthStandardsWeightForLengthCopyWithImpl<$Res,
+        $Val extends WHOGrowthStandardsWeightForLength>
     implements $WHOGrowthStandardsWeightForLengthCopyWith<$Res> {
-  _$WHOGrowthStandardsWeightForLengthCopyWithImpl(this._self, this._then);
+  _$WHOGrowthStandardsWeightForLengthCopyWithImpl(this._value, this._then);
 
-  final WHOGrowthStandardsWeightForLength _self;
-  final $Res Function(WHOGrowthStandardsWeightForLength) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
   /// Create a copy of WHOGrowthStandardsWeightForLength
   /// with the given fields replaced by the non-null parameter values.
@@ -3371,36 +3366,36 @@ class _$WHOGrowthStandardsWeightForLengthCopyWithImpl<$Res>
     Object? weight = null,
     Object? measure = null,
   }) {
-    return _then(_self.copyWith(
+    return _then(_value.copyWith(
       observationDate: freezed == observationDate
-          ? _self.observationDate
+          ? _value.observationDate
           : observationDate // ignore: cast_nullable_to_non_nullable
               as Date?,
       sex: null == sex
-          ? _self.sex
+          ? _value.sex
           : sex // ignore: cast_nullable_to_non_nullable
               as Sex,
       age: null == age
-          ? _self.age
+          ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
               as Age,
       oedemaExist: null == oedemaExist
-          ? _self.oedemaExist
+          ? _value.oedemaExist
           : oedemaExist // ignore: cast_nullable_to_non_nullable
               as bool,
       length: null == length
-          ? _self.length
+          ? _value.length
           : length // ignore: cast_nullable_to_non_nullable
               as Length,
       weight: null == weight
-          ? _self.weight
+          ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
               as Mass,
       measure: null == measure
-          ? _self.measure
+          ? _value.measure
           : measure // ignore: cast_nullable_to_non_nullable
               as LengthHeightMeasurementPosition,
-    ));
+    ) as $Val);
   }
 
   /// Create a copy of WHOGrowthStandardsWeightForLength
@@ -3408,12 +3403,12 @@ class _$WHOGrowthStandardsWeightForLengthCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $DateCopyWith<$Res>? get observationDate {
-    if (_self.observationDate == null) {
+    if (_value.observationDate == null) {
       return null;
     }
 
-    return $DateCopyWith<$Res>(_self.observationDate!, (value) {
-      return _then(_self.copyWith(observationDate: value));
+    return $DateCopyWith<$Res>(_value.observationDate!, (value) {
+      return _then(_value.copyWith(observationDate: value) as $Val);
     });
   }
 
@@ -3422,17 +3417,97 @@ class _$WHOGrowthStandardsWeightForLengthCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
+    return $AgeCopyWith<$Res>(_value.age, (value) {
+      return _then(_value.copyWith(age: value) as $Val);
     });
   }
 }
 
 /// @nodoc
+abstract class _$$WHOGrowthStandardsWeightForLengthImplCopyWith<$Res>
+    implements $WHOGrowthStandardsWeightForLengthCopyWith<$Res> {
+  factory _$$WHOGrowthStandardsWeightForLengthImplCopyWith(
+          _$WHOGrowthStandardsWeightForLengthImpl value,
+          $Res Function(_$WHOGrowthStandardsWeightForLengthImpl) then) =
+      __$$WHOGrowthStandardsWeightForLengthImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {Date? observationDate,
+      Sex sex,
+      Age age,
+      bool oedemaExist,
+      Length length,
+      Mass weight,
+      LengthHeightMeasurementPosition measure});
+
+  @override
+  $DateCopyWith<$Res>? get observationDate;
+  @override
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class __$$WHOGrowthStandardsWeightForLengthImplCopyWithImpl<$Res>
+    extends _$WHOGrowthStandardsWeightForLengthCopyWithImpl<$Res,
+        _$WHOGrowthStandardsWeightForLengthImpl>
+    implements _$$WHOGrowthStandardsWeightForLengthImplCopyWith<$Res> {
+  __$$WHOGrowthStandardsWeightForLengthImplCopyWithImpl(
+      _$WHOGrowthStandardsWeightForLengthImpl _value,
+      $Res Function(_$WHOGrowthStandardsWeightForLengthImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of WHOGrowthStandardsWeightForLength
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? observationDate = freezed,
+    Object? sex = null,
+    Object? age = null,
+    Object? oedemaExist = null,
+    Object? length = null,
+    Object? weight = null,
+    Object? measure = null,
+  }) {
+    return _then(_$WHOGrowthStandardsWeightForLengthImpl(
+      observationDate: freezed == observationDate
+          ? _value.observationDate
+          : observationDate // ignore: cast_nullable_to_non_nullable
+              as Date?,
+      sex: null == sex
+          ? _value.sex
+          : sex // ignore: cast_nullable_to_non_nullable
+              as Sex,
+      age: null == age
+          ? _value.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+      oedemaExist: null == oedemaExist
+          ? _value.oedemaExist
+          : oedemaExist // ignore: cast_nullable_to_non_nullable
+              as bool,
+      length: null == length
+          ? _value.length
+          : length // ignore: cast_nullable_to_non_nullable
+              as Length,
+      weight: null == weight
+          ? _value.weight
+          : weight // ignore: cast_nullable_to_non_nullable
+              as Mass,
+      measure: null == measure
+          ? _value.measure
+          : measure // ignore: cast_nullable_to_non_nullable
+              as LengthHeightMeasurementPosition,
+    ));
+  }
+}
+
+/// @nodoc
 @JsonSerializable()
-class _WHOGrowthStandardsWeightForLength
-    extends WHOGrowthStandardsWeightForLength {
-  _WHOGrowthStandardsWeightForLength(
+class _$WHOGrowthStandardsWeightForLengthImpl
+    extends _WHOGrowthStandardsWeightForLength {
+  _$WHOGrowthStandardsWeightForLengthImpl(
       {this.observationDate,
       required this.sex,
       required this.age,
@@ -3480,9 +3555,10 @@ class _WHOGrowthStandardsWeightForLength
                 observationDate.isSameOrAfter(age.dateOfBirth),
             'Observation date is impossible, because happen after today or before birth'),
         super._();
-  factory _WHOGrowthStandardsWeightForLength.fromJson(
+
+  factory _$WHOGrowthStandardsWeightForLengthImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$WHOGrowthStandardsWeightForLengthFromJson(json);
+      _$$WHOGrowthStandardsWeightForLengthImplFromJson(json);
 
   @override
   final Date? observationDate;
@@ -3500,28 +3576,16 @@ class _WHOGrowthStandardsWeightForLength
   @override
   final LengthHeightMeasurementPosition measure;
 
-  /// Create a copy of WHOGrowthStandardsWeightForLength
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$WHOGrowthStandardsWeightForLengthCopyWith<
-          _WHOGrowthStandardsWeightForLength>
-      get copyWith => __$WHOGrowthStandardsWeightForLengthCopyWithImpl<
-          _WHOGrowthStandardsWeightForLength>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$WHOGrowthStandardsWeightForLengthToJson(
-      this,
-    );
+  String toString() {
+    return 'WHOGrowthStandardsWeightForLength(observationDate: $observationDate, sex: $sex, age: $age, oedemaExist: $oedemaExist, length: $length, weight: $weight, measure: $measure)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _WHOGrowthStandardsWeightForLength &&
+            other is _$WHOGrowthStandardsWeightForLengthImpl &&
             (identical(other.observationDate, observationDate) ||
                 other.observationDate == observationDate) &&
             (identical(other.sex, sex) || other.sex == sex) &&
@@ -3538,112 +3602,61 @@ class _WHOGrowthStandardsWeightForLength
   int get hashCode => Object.hash(runtimeType, observationDate, sex, age,
       oedemaExist, length, weight, measure);
 
+  /// Create a copy of WHOGrowthStandardsWeightForLength
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  String toString() {
-    return 'WHOGrowthStandardsWeightForLength(observationDate: $observationDate, sex: $sex, age: $age, oedemaExist: $oedemaExist, length: $length, weight: $weight, measure: $measure)';
+  @pragma('vm:prefer-inline')
+  _$$WHOGrowthStandardsWeightForLengthImplCopyWith<
+          _$WHOGrowthStandardsWeightForLengthImpl>
+      get copyWith => __$$WHOGrowthStandardsWeightForLengthImplCopyWithImpl<
+          _$WHOGrowthStandardsWeightForLengthImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$WHOGrowthStandardsWeightForLengthImplToJson(
+      this,
+    );
   }
 }
 
-/// @nodoc
-abstract mixin class _$WHOGrowthStandardsWeightForLengthCopyWith<$Res>
-    implements $WHOGrowthStandardsWeightForLengthCopyWith<$Res> {
-  factory _$WHOGrowthStandardsWeightForLengthCopyWith(
-          _WHOGrowthStandardsWeightForLength value,
-          $Res Function(_WHOGrowthStandardsWeightForLength) _then) =
-      __$WHOGrowthStandardsWeightForLengthCopyWithImpl;
-  @override
-  @useResult
-  $Res call(
-      {Date? observationDate,
-      Sex sex,
-      Age age,
-      bool oedemaExist,
-      Length length,
-      Mass weight,
-      LengthHeightMeasurementPosition measure});
+abstract class _WHOGrowthStandardsWeightForLength
+    extends WHOGrowthStandardsWeightForLength {
+  factory _WHOGrowthStandardsWeightForLength(
+          {final Date? observationDate,
+          required final Sex sex,
+          required final Age age,
+          final bool oedemaExist,
+          required final Length length,
+          required final Mass weight,
+          required final LengthHeightMeasurementPosition measure}) =
+      _$WHOGrowthStandardsWeightForLengthImpl;
+  _WHOGrowthStandardsWeightForLength._() : super._();
+
+  factory _WHOGrowthStandardsWeightForLength.fromJson(
+          Map<String, dynamic> json) =
+      _$WHOGrowthStandardsWeightForLengthImpl.fromJson;
 
   @override
-  $DateCopyWith<$Res>? get observationDate;
+  Date? get observationDate;
   @override
-  $AgeCopyWith<$Res> get age;
-}
-
-/// @nodoc
-class __$WHOGrowthStandardsWeightForLengthCopyWithImpl<$Res>
-    implements _$WHOGrowthStandardsWeightForLengthCopyWith<$Res> {
-  __$WHOGrowthStandardsWeightForLengthCopyWithImpl(this._self, this._then);
-
-  final _WHOGrowthStandardsWeightForLength _self;
-  final $Res Function(_WHOGrowthStandardsWeightForLength) _then;
+  Sex get sex;
+  @override
+  Age get age;
+  @override
+  bool get oedemaExist;
+  @override
+  Length get length;
+  @override
+  Mass get weight;
+  @override
+  LengthHeightMeasurementPosition get measure;
 
   /// Create a copy of WHOGrowthStandardsWeightForLength
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? observationDate = freezed,
-    Object? sex = null,
-    Object? age = null,
-    Object? oedemaExist = null,
-    Object? length = null,
-    Object? weight = null,
-    Object? measure = null,
-  }) {
-    return _then(_WHOGrowthStandardsWeightForLength(
-      observationDate: freezed == observationDate
-          ? _self.observationDate
-          : observationDate // ignore: cast_nullable_to_non_nullable
-              as Date?,
-      sex: null == sex
-          ? _self.sex
-          : sex // ignore: cast_nullable_to_non_nullable
-              as Sex,
-      age: null == age
-          ? _self.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as Age,
-      oedemaExist: null == oedemaExist
-          ? _self.oedemaExist
-          : oedemaExist // ignore: cast_nullable_to_non_nullable
-              as bool,
-      length: null == length
-          ? _self.length
-          : length // ignore: cast_nullable_to_non_nullable
-              as Length,
-      weight: null == weight
-          ? _self.weight
-          : weight // ignore: cast_nullable_to_non_nullable
-              as Mass,
-      measure: null == measure
-          ? _self.measure
-          : measure // ignore: cast_nullable_to_non_nullable
-              as LengthHeightMeasurementPosition,
-    ));
-  }
-
-  /// Create a copy of WHOGrowthStandardsWeightForLength
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $DateCopyWith<$Res>? get observationDate {
-    if (_self.observationDate == null) {
-      return null;
-    }
-
-    return $DateCopyWith<$Res>(_self.observationDate!, (value) {
-      return _then(_self.copyWith(observationDate: value));
-    });
-  }
-
-  /// Create a copy of WHOGrowthStandardsWeightForLength
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
-    });
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$WHOGrowthStandardsWeightForLengthImplCopyWith<
+          _$WHOGrowthStandardsWeightForLengthImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
-
-// dart format on
