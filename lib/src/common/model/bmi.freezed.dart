@@ -1,4 +1,3 @@
-// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -10,61 +9,48 @@ part of 'bmi.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+
+BodyMassIndex _$BodyMassIndexFromJson(Map<String, dynamic> json) {
+  return _BodyMassIndex.fromJson(json);
+}
 
 /// @nodoc
 mixin _$BodyMassIndex {
-  Length get lengthHeight;
-  Mass get weight;
+  Length get lengthHeight => throw _privateConstructorUsedError;
+  Mass get weight => throw _privateConstructorUsedError;
+
+  /// Serializes this BodyMassIndex to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
   /// Create a copy of BodyMassIndex
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
   $BodyMassIndexCopyWith<BodyMassIndex> get copyWith =>
-      _$BodyMassIndexCopyWithImpl<BodyMassIndex>(
-          this as BodyMassIndex, _$identity);
-
-  /// Serializes this BodyMassIndex to a JSON map.
-  Map<String, dynamic> toJson();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is BodyMassIndex &&
-            (identical(other.lengthHeight, lengthHeight) ||
-                other.lengthHeight == lengthHeight) &&
-            (identical(other.weight, weight) || other.weight == weight));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, lengthHeight, weight);
-
-  @override
-  String toString() {
-    return 'BodyMassIndex(lengthHeight: $lengthHeight, weight: $weight)';
-  }
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $BodyMassIndexCopyWith<$Res> {
+abstract class $BodyMassIndexCopyWith<$Res> {
   factory $BodyMassIndexCopyWith(
-          BodyMassIndex value, $Res Function(BodyMassIndex) _then) =
-      _$BodyMassIndexCopyWithImpl;
+          BodyMassIndex value, $Res Function(BodyMassIndex) then) =
+      _$BodyMassIndexCopyWithImpl<$Res, BodyMassIndex>;
   @useResult
   $Res call({Length lengthHeight, Mass weight});
 }
 
 /// @nodoc
-class _$BodyMassIndexCopyWithImpl<$Res>
+class _$BodyMassIndexCopyWithImpl<$Res, $Val extends BodyMassIndex>
     implements $BodyMassIndexCopyWith<$Res> {
-  _$BodyMassIndexCopyWithImpl(this._self, this._then);
+  _$BodyMassIndexCopyWithImpl(this._value, this._then);
 
-  final BodyMassIndex _self;
-  final $Res Function(BodyMassIndex) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
   /// Create a copy of BodyMassIndex
   /// with the given fields replaced by the non-null parameter values.
@@ -74,13 +60,53 @@ class _$BodyMassIndexCopyWithImpl<$Res>
     Object? lengthHeight = null,
     Object? weight = null,
   }) {
-    return _then(_self.copyWith(
+    return _then(_value.copyWith(
       lengthHeight: null == lengthHeight
-          ? _self.lengthHeight
+          ? _value.lengthHeight
           : lengthHeight // ignore: cast_nullable_to_non_nullable
               as Length,
       weight: null == weight
-          ? _self.weight
+          ? _value.weight
+          : weight // ignore: cast_nullable_to_non_nullable
+              as Mass,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$BodyMassIndexImplCopyWith<$Res>
+    implements $BodyMassIndexCopyWith<$Res> {
+  factory _$$BodyMassIndexImplCopyWith(
+          _$BodyMassIndexImpl value, $Res Function(_$BodyMassIndexImpl) then) =
+      __$$BodyMassIndexImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Length lengthHeight, Mass weight});
+}
+
+/// @nodoc
+class __$$BodyMassIndexImplCopyWithImpl<$Res>
+    extends _$BodyMassIndexCopyWithImpl<$Res, _$BodyMassIndexImpl>
+    implements _$$BodyMassIndexImplCopyWith<$Res> {
+  __$$BodyMassIndexImplCopyWithImpl(
+      _$BodyMassIndexImpl _value, $Res Function(_$BodyMassIndexImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of BodyMassIndex
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? lengthHeight = null,
+    Object? weight = null,
+  }) {
+    return _then(_$BodyMassIndexImpl(
+      lengthHeight: null == lengthHeight
+          ? _value.lengthHeight
+          : lengthHeight // ignore: cast_nullable_to_non_nullable
+              as Length,
+      weight: null == weight
+          ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
               as Mass,
     ));
@@ -89,37 +115,28 @@ class _$BodyMassIndexCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _BodyMassIndex extends BodyMassIndex {
-  _BodyMassIndex({required this.lengthHeight, required this.weight})
+class _$BodyMassIndexImpl extends _BodyMassIndex {
+  _$BodyMassIndexImpl({required this.lengthHeight, required this.weight})
       : super._();
-  factory _BodyMassIndex.fromJson(Map<String, dynamic> json) =>
-      _$BodyMassIndexFromJson(json);
+
+  factory _$BodyMassIndexImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BodyMassIndexImplFromJson(json);
 
   @override
   final Length lengthHeight;
   @override
   final Mass weight;
 
-  /// Create a copy of BodyMassIndex
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$BodyMassIndexCopyWith<_BodyMassIndex> get copyWith =>
-      __$BodyMassIndexCopyWithImpl<_BodyMassIndex>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$BodyMassIndexToJson(
-      this,
-    );
+  String toString() {
+    return 'BodyMassIndex(lengthHeight: $lengthHeight, weight: $weight)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _BodyMassIndex &&
+            other is _$BodyMassIndexImpl &&
             (identical(other.lengthHeight, lengthHeight) ||
                 other.lengthHeight == lengthHeight) &&
             (identical(other.weight, weight) || other.weight == weight));
@@ -129,50 +146,40 @@ class _BodyMassIndex extends BodyMassIndex {
   @override
   int get hashCode => Object.hash(runtimeType, lengthHeight, weight);
 
+  /// Create a copy of BodyMassIndex
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  String toString() {
-    return 'BodyMassIndex(lengthHeight: $lengthHeight, weight: $weight)';
+  @pragma('vm:prefer-inline')
+  _$$BodyMassIndexImplCopyWith<_$BodyMassIndexImpl> get copyWith =>
+      __$$BodyMassIndexImplCopyWithImpl<_$BodyMassIndexImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$BodyMassIndexImplToJson(
+      this,
+    );
   }
 }
 
-/// @nodoc
-abstract mixin class _$BodyMassIndexCopyWith<$Res>
-    implements $BodyMassIndexCopyWith<$Res> {
-  factory _$BodyMassIndexCopyWith(
-          _BodyMassIndex value, $Res Function(_BodyMassIndex) _then) =
-      __$BodyMassIndexCopyWithImpl;
+abstract class _BodyMassIndex extends BodyMassIndex {
+  factory _BodyMassIndex(
+      {required final Length lengthHeight,
+      required final Mass weight}) = _$BodyMassIndexImpl;
+  _BodyMassIndex._() : super._();
+
+  factory _BodyMassIndex.fromJson(Map<String, dynamic> json) =
+      _$BodyMassIndexImpl.fromJson;
+
   @override
-  @useResult
-  $Res call({Length lengthHeight, Mass weight});
-}
-
-/// @nodoc
-class __$BodyMassIndexCopyWithImpl<$Res>
-    implements _$BodyMassIndexCopyWith<$Res> {
-  __$BodyMassIndexCopyWithImpl(this._self, this._then);
-
-  final _BodyMassIndex _self;
-  final $Res Function(_BodyMassIndex) _then;
+  Length get lengthHeight;
+  @override
+  Mass get weight;
 
   /// Create a copy of BodyMassIndex
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? lengthHeight = null,
-    Object? weight = null,
-  }) {
-    return _then(_BodyMassIndex(
-      lengthHeight: null == lengthHeight
-          ? _self.lengthHeight
-          : lengthHeight // ignore: cast_nullable_to_non_nullable
-              as Length,
-      weight: null == weight
-          ? _self.weight
-          : weight // ignore: cast_nullable_to_non_nullable
-              as Mass,
-    ));
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$BodyMassIndexImplCopyWith<_$BodyMassIndexImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
-
-// dart format on

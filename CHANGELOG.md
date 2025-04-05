@@ -1,3 +1,8 @@
+## 1.4.1
+
+- Lowering `freezed` version.
+- Use this version if your dependencies has not supported `freezed` version 3
+
 ## 1.4.0
 
 - Bump `super_measurement`
