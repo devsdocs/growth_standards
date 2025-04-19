@@ -94,12 +94,12 @@ sealed class WHOGrowthReferenceBodyMassIndexForAge
 
   _WHOGrowthReferenceBodyMassIndexForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)
-          .ageData[_ageAtObservationDate.ageInTotalMonthsByNow]!;
+          .ageData[ageAtObservationDate.ageInTotalMonthsByNow]!;
 
   num get _zScore =>
       _ageData.lms.adjustedZScore(bodyMassIndexMeasurement.value);
 
-  Age get _ageAtObservationDate => checkObservationDate(age, observationDate);
+  Age get ageAtObservationDate => checkObservationDate(age, observationDate);
 
   num zScore([
     Precision precision = Precision.ten,

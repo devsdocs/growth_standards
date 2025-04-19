@@ -71,11 +71,11 @@ sealed class WHOGrowthStandardsHeadCircumferenceForAge
 
   _WHOGrowthStandardsHeadCircumferenceForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)
-          .ageData[_ageAtObservationDate.ageInTotalDaysByNow]!;
+          .ageData[ageAtObservationDate.ageInTotalDaysByNow]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResult.toCentimeter.value);
 
-  Age get _ageAtObservationDate => checkObservationDate(age, observationDate);
+  Age get ageAtObservationDate => checkObservationDate(age, observationDate);
 
   num zScore([
     Precision precision = Precision.ten,

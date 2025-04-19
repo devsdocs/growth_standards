@@ -68,11 +68,11 @@ sealed class WHOGrowthStandardsWeightForAge
 
   _WHOGrowthStandardsWeightForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)
-          .ageData[_ageAtObservationDate.ageInTotalDaysByNow]!;
+          .ageData[ageAtObservationDate.ageInTotalDaysByNow]!;
 
   num get _zScore => _ageData.lms.adjustedZScore(weight.toKilogram.value);
 
-  Age get _ageAtObservationDate => checkObservationDate(age, observationDate);
+  Age get ageAtObservationDate => checkObservationDate(age, observationDate);
 
   num zScore([
     Precision precision = Precision.ten,

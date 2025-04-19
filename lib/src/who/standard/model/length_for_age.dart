@@ -70,7 +70,7 @@ sealed class WHOGrowthStandardsLengthForAge
 
   _WHOGrowthStandardsLengthForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)
-          .ageData[_ageAtObservationDate.ageInTotalDaysByNow]!;
+          .ageData[ageAtObservationDate.ageInTotalDaysByNow]!;
 
   num get _adjustedLength => adjustedLengthHeight(
         measure: measure,
@@ -81,7 +81,7 @@ sealed class WHOGrowthStandardsLengthForAge
 
   num get _zScore => _ageData.lms.zScore(_adjustedLength);
 
-  Age get _ageAtObservationDate => checkObservationDate(age, observationDate);
+  Age get ageAtObservationDate => checkObservationDate(age, observationDate);
 
   num zScore([
     Precision precision = Precision.ten,

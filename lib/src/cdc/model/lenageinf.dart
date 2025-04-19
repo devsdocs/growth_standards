@@ -66,9 +66,9 @@ sealed class CDCInfantLengthForAge with _$CDCInfantLengthForAge {
 //TODO(devsdocs): Fix CDC age calculation
   _CDCInfantLengthForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData).ageData[
-          _ageAtObservationDate.ageInTotalDaysByNow == 0
+          ageAtObservationDate.ageInTotalDaysByNow == 0
               ? 0
-              : _ageAtObservationDate.ageInTotalMonthsByNow + 0.5]!;
+              : ageAtObservationDate.ageInTotalMonthsByNow + 0.5]!;
 
   num get _adjustedLength => adjustedLengthHeight(
         measure: measure,
@@ -79,7 +79,7 @@ sealed class CDCInfantLengthForAge with _$CDCInfantLengthForAge {
 
   num get _zScore => _ageData.lms.zScore(_adjustedLength);
 
-  Age get _ageAtObservationDate => checkObservationDate(age, observationDate);
+  Age get ageAtObservationDate => checkObservationDate(age, observationDate);
 
   num zScore([
     Precision precision = Precision.ten,

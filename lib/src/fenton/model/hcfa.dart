@@ -63,11 +63,11 @@ sealed class FentonHeadCircumferenceForAge
       FentonHeadCircumferenceForAgeData();
 
   _FentonHeadCircumferenceForAgeLMS get _ageData =>
-      _headCircumferenceData._data[_ageAtObservationDate.ageInTotalWeeksByNow]!;
+      _headCircumferenceData._data[ageAtObservationDate.ageInTotalWeeksByNow]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResult.toCentimeter.value);
 
-  Age get _ageAtObservationDate => checkObservationDate(age, observationDate);
+  Age get ageAtObservationDate => checkObservationDate(age, observationDate);
 
   num zScore([
     Precision precision = Precision.ten,

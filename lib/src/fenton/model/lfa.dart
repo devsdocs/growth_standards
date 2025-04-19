@@ -56,11 +56,11 @@ sealed class FentonLengthForAge with _$FentonLengthForAge {
   FentonLengthForAgeData get _lengthForAgeData => FentonLengthForAgeData();
 
   _FentonLengthForAgeLMS get _ageData =>
-      _lengthForAgeData._data[_ageAtObservationDate.ageInTotalWeeksByNow]!;
+      _lengthForAgeData._data[ageAtObservationDate.ageInTotalWeeksByNow]!;
 
   num get _zScore => _ageData.lms.zScore(lengthHeight.toCentimeter.value);
 
-  Age get _ageAtObservationDate => checkObservationDate(age, observationDate);
+  Age get ageAtObservationDate => checkObservationDate(age, observationDate);
 
   num zScore([
     Precision precision = Precision.ten,

@@ -58,11 +58,11 @@ sealed class FentonWeightForAge with _$FentonWeightForAge {
   FentonWeightForAgeData get _weightForAgeData => FentonWeightForAgeData();
 
   _FentonWeightForAgeLMS get _ageData =>
-      _weightForAgeData._data[_ageAtObservationDate.ageInTotalWeeksByNow]!;
+      _weightForAgeData._data[ageAtObservationDate.ageInTotalWeeksByNow]!;
 
   num get _zScore => _ageData.lms.zScore(weight.toKilogram.value);
 
-  Age get _ageAtObservationDate => checkObservationDate(age, observationDate);
+  Age get ageAtObservationDate => checkObservationDate(age, observationDate);
 
   num zScore([
     Precision precision = Precision.ten,

@@ -112,12 +112,12 @@ sealed class WHOGrowthStandardsBodyMassIndexForAge
 
   _WHOGrowthStandardsBodyMassIndexForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)
-          .ageData[_ageAtObservationDate.ageInTotalDaysByNow]!;
+          .ageData[ageAtObservationDate.ageInTotalDaysByNow]!;
 
   num get _zScore =>
       _ageData.lms.adjustedZScore(bodyMassIndexMeasurement.value);
 
-  Age get _ageAtObservationDate =>
+  Age get ageAtObservationDate =>
       checkObservationDate(bodyMassIndexMeasurement.age, observationDate);
 
   num zScore([

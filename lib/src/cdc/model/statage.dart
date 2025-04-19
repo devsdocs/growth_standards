@@ -70,11 +70,11 @@ sealed class CDCStatureForAge with _$CDCStatureForAge {
 //TODO(devsdocs): Fix CDC age calculation
   _CDCStatureForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData).ageData[
-          _ageAtObservationDate.ageInTotalMonthsByNow == 24
+          ageAtObservationDate.ageInTotalMonthsByNow == 24
               ? 24
-              : _ageAtObservationDate.ageInTotalMonthsByNow == 240
+              : ageAtObservationDate.ageInTotalMonthsByNow == 240
                   ? 240
-                  : _ageAtObservationDate.ageInTotalMonthsByNow + 0.5]!;
+                  : ageAtObservationDate.ageInTotalMonthsByNow + 0.5]!;
 
   num get _adjustedLength => adjustedLengthHeight(
         measure: measure,
@@ -85,7 +85,7 @@ sealed class CDCStatureForAge with _$CDCStatureForAge {
 
   num get _zScore => _ageData.lms.zScore(_adjustedLength);
 
-  Age get _ageAtObservationDate => checkObservationDate(age, observationDate);
+  Age get ageAtObservationDate => checkObservationDate(age, observationDate);
 
   num zScore([
     Precision precision = Precision.ten,

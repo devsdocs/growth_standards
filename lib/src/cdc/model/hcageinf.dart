@@ -69,18 +69,18 @@ sealed class CDCInfantHeadCircumferenceForAge
       _headCircumferenceData._data[Sex.female]!;
 //TODO(devsdocs): Fix CDC age calculation
   _CDCInfantHeadCircumferenceForAgeLMS get _ageData {
-    final finalAge = _ageAtObservationDate.ageInTotalDaysByNow == 0
+    final finalAge = ageAtObservationDate.ageInTotalDaysByNow == 0
         ? 0
-        : _ageAtObservationDate.ageInTotalMonthsByNow == 36
+        : ageAtObservationDate.ageInTotalMonthsByNow == 36
             ? 36
-            : _ageAtObservationDate.ageInTotalMonthsByNow + 0.5;
+            : ageAtObservationDate.ageInTotalMonthsByNow + 0.5;
 
     return (sex == Sex.male ? _maleData : _femaleData).ageData[finalAge]!;
   }
 
   num get _zScore => _ageData.lms.zScore(measurementResult.toCentimeter.value);
 
-  Age get _ageAtObservationDate => checkObservationDate(age, observationDate);
+  Age get ageAtObservationDate => checkObservationDate(age, observationDate);
 
   num zScore([
     Precision precision = Precision.ten,
