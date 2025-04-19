@@ -71,6 +71,7 @@ export 'category/who/standard/standard.dart'
         WHOGrowthStandardsWeightVelocityForAgeData;
 export 'category/who/tools.dart'
     show LengthMeasurementHistory, MassMeasurementHistory, VelocityIncrement;
+export 'category/who/typedef.dart';
 export 'common/base.dart';
 export 'common/extension.dart' show DateTimeToDate;
 export 'common/model/age.dart' show Age, Date;
