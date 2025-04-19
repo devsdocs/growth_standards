@@ -1,3 +1,7 @@
+## 2.1.5
+
+- Export additional typedef
+
 ## 2.1.4
 
 - Fix measurement conversion in `WHOGrowthStandardsTricepsSkinfoldForAge` and `WHOGrowthStandardsSubscapularSkinfoldForAge`
