@@ -1,6 +1,6 @@
 name: growth_standards
 description: A Dart implementation of various growth standards, WHO, CDC, Fenton, Intergrowth, etc.
-version: 2.1.3
+version: 2.1.4
 repository: https://github.com/devsdocs/growth_standards
 
 environment:

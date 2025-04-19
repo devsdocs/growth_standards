@@ -1,3 +1,7 @@
+## 2.1.4
+
+- Fix measurement conversion in `WHOGrowthStandardsTricepsSkinfoldForAge` and `WHOGrowthStandardsSubscapularSkinfoldForAge`
+
 ## 2.1.3
 
 - Expose `lengthAtObservationDate` for length based measurement
