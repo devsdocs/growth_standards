@@ -1,3 +1,13 @@
+## 2.1.3
+
+- Expose `lengthAtObservationDate` for length based measurement
+- Use this version if your dependencies has supported `freezed` version 3
+
+## 2.1.2
+
+- Expose `lengthAtObservationDate` for length based measurement
+- Use this version if your dependencies has not supported `freezed` version 3
+
 ## 2.1.1
 
 - Simplify `LMS` 
