@@ -1,12 +1,12 @@
-import 'package:growth_standards/src/cdc/cdc.dart';
-import 'package:growth_standards/src/fenton/fenton.dart';
-import 'package:growth_standards/src/who/who.dart';
+import 'package:growth_standards/src/category/cdc/cdc.dart';
+import 'package:growth_standards/src/category/fenton/fenton.dart';
+import 'package:growth_standards/src/category/who/who.dart';
 
 /// Directly exporting all required model for direct access
 ///
 /// All the source data are singleton, so it is safe to be called repeatedly
 /// in single code execution
-export 'cdc/cdc.dart'
+export 'category/cdc/cdc.dart'
     show
         CDCBodyMassIndexForAge,
         CDCBodyMassIndexForAgeData,
@@ -25,18 +25,7 @@ export 'cdc/cdc.dart'
         CDCWeightForAgeData,
         CDCWeightForStature,
         CDCWeightForStatureData;
-export 'common/base.dart';
-export 'common/extension.dart' show DateTimeToDate;
-export 'common/model/age.dart' show Age, Date;
-export 'common/model/bmi.dart' show BodyMassIndex;
-export 'common/types.dart'
-    show
-        LengthHeightMeasurementPosition,
-        Months,
-        PercentileValue,
-        Sex,
-        ZScoreValue;
-export 'fenton/fenton.dart'
+export 'category/fenton/fenton.dart'
     show
         FentonHeadCircumferenceForAge,
         FentonHeadCircumferenceForAgeData,
@@ -44,7 +33,7 @@ export 'fenton/fenton.dart'
         FentonLengthForAgeData,
         FentonWeightForAge,
         FentonWeightForAgeData;
-export 'who/reference/reference.dart'
+export 'category/who/reference/reference.dart'
     show
         WHOGrowthReferenceBodyMassIndexForAge,
         WHOGrowthReferenceBodyMassIndexForAgeData,
@@ -53,7 +42,7 @@ export 'who/reference/reference.dart'
         WHOGrowthReferenceHeightForAgeData,
         WHOGrowthReferenceWeightForAge,
         WHOGrowthReferenceWeightForAgeData;
-export 'who/standard/standard.dart'
+export 'category/who/standard/standard.dart'
     show
         WHOGrowthStandardsArmCircumferenceForAge,
         WHOGrowthStandardsArmCircumferenceForAgeData,
@@ -80,7 +69,18 @@ export 'who/standard/standard.dart'
         WHOGrowthStandardsWeightForLengthData,
         WHOGrowthStandardsWeightVelocityForAge,
         WHOGrowthStandardsWeightVelocityForAgeData;
-export 'who/tools.dart'
+export 'category/who/tools.dart'
     show LengthMeasurementHistory, MassMeasurementHistory, VelocityIncrement;
+export 'common/base.dart';
+export 'common/extension.dart' show DateTimeToDate;
+export 'common/model/age.dart' show Age, Date;
+export 'common/model/bmi.dart' show BodyMassIndex;
+export 'common/types.dart'
+    show
+        LengthHeightMeasurementPosition,
+        Months,
+        PercentileValue,
+        Sex,
+        ZScoreValue;
 
 part 'growth_standards.part.dart';

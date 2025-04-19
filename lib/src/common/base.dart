@@ -1,6 +1,6 @@
 import 'package:growth_standards/growth_standards.dart';
+import 'package:growth_standards/src/category/who/typedef.dart';
 import 'package:growth_standards/src/common/model/lms.dart';
-import 'package:growth_standards/src/who/typedef.dart';
 
 abstract class VelocityBasedResult {
   const VelocityBasedResult();
@@ -17,6 +17,8 @@ abstract class Result {
   num percentile([
     Precision precision = Precision.ten,
   ]);
+
+  num get measurementResultInDefaultUnit;
 }
 
 abstract class AgeBasedResult extends Result {

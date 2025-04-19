@@ -1,3 +1,9 @@
+## 2.1.0
+
+- Simplify `LMS` 
+- Fix bug at measurement of `WHOGrowthStandardsArmCircumferenceForAge`
+- Update dependencies
+
 ## 2.0.1
 
 - Exposing ageAtObservationDate field for age based measurement

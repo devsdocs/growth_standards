@@ -1,0 +1,131 @@
+part of '../reference.dart';
+
+class WHOGrowthReferenceBodyMassIndexForAgeData extends BaseData {
+  factory WHOGrowthReferenceBodyMassIndexForAgeData() => _singleton;
+  const WHOGrowthReferenceBodyMassIndexForAgeData._(this._data);
+
+  static final _singleton =
+      WHOGrowthReferenceBodyMassIndexForAgeData._(_parse());
+
+  static Map<Sex, Map<int, _WHOGrowthReferenceBodyMassIndexForAgeLMS>>
+      _parse() => _bmi5yo.toJsonObjectAsMap.map(
+            (k1, v1) => MapEntry(
+              k1 == '1' ? Sex.male : Sex.female,
+              (v1 as Map<String, dynamic>).map((k2, v2) {
+                v2 as Map<String, dynamic>;
+                final lms = LMS(
+                    l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
+                return MapEntry(
+                  int.parse(k2),
+                  _WHOGrowthReferenceBodyMassIndexForAgeLMS(
+                    lms: lms,
+                  ),
+                );
+              }),
+            ),
+          );
+
+  final Map<Sex, Map<int, _WHOGrowthReferenceBodyMassIndexForAgeLMS>> _data;
+  @override
+  Map<Sex, Map<int, _WHOGrowthReferenceBodyMassIndexForAgeLMS>> get data =>
+      _data;
+
+  @override
+  String toString() => 'Body Mass Index For Age Data($_data)';
+}
+
+@freezed
+sealed class WHOGrowthReferenceBodyMassIndexMeasurement
+    with _$WHOGrowthReferenceBodyMassIndexMeasurement {
+  factory WHOGrowthReferenceBodyMassIndexMeasurement(num value) =
+      _WHOGrowthReferenceBodyMassIndexMeasurement;
+  const WHOGrowthReferenceBodyMassIndexMeasurement._();
+
+  factory WHOGrowthReferenceBodyMassIndexMeasurement.fromMeasurement(
+    BodyMassIndex bodyMassIndex,
+  ) =>
+      WHOGrowthReferenceBodyMassIndexMeasurement(bodyMassIndex.value);
+
+  factory WHOGrowthReferenceBodyMassIndexMeasurement.fromJson(
+    Map<String, dynamic> json,
+  ) =>
+      _$WHOGrowthReferenceBodyMassIndexMeasurementFromJson(json);
+}
+
+@freezed
+sealed class WHOGrowthReferenceBodyMassIndexForAge extends AgeBasedResult
+    with _$WHOGrowthReferenceBodyMassIndexForAge {
+  @Assert(
+    'age.ageInTotalMonthsByNow >= 61 && age.ageInTotalMonthsByNow <= 228',
+    'Age must be in range of 61 - 228 months',
+  )
+  @Assert(
+    'observationDate == null || observationDate.isSameOrBefore(Date.today()) || observationDate.isSameOrAfter(age.dateOfBirth)',
+    'Observation date is impossible, because happen after today or before birth',
+  )
+  @Assert(
+    'observationDate == null || observationDate.isSameOrAfter(age.dateAtMonthsAfterBirth(61)) ',
+    'Observation date is impossible, because happen after today or before birth',
+  )
+  factory WHOGrowthReferenceBodyMassIndexForAge({
+    Date? observationDate,
+    required Sex sex,
+    required Age age,
+    required WHOGrowthReferenceBodyMassIndexMeasurement
+        bodyMassIndexMeasurement,
+  }) = _WHOGrowthReferenceBodyMassIndexForAge;
+
+  const WHOGrowthReferenceBodyMassIndexForAge._();
+
+  factory WHOGrowthReferenceBodyMassIndexForAge.fromJson(
+    Map<String, dynamic> json,
+  ) =>
+      _$WHOGrowthReferenceBodyMassIndexForAgeFromJson(json);
+
+  WHOGrowthReferenceBodyMassIndexForAgeData get _bodyMassIndexData =>
+      WHOGrowthReferenceBodyMassIndexForAgeData();
+
+  Map<int, _WHOGrowthReferenceBodyMassIndexForAgeLMS> get _maleData =>
+      _bodyMassIndexData._data[Sex.male]!;
+  Map<int, _WHOGrowthReferenceBodyMassIndexForAgeLMS> get _femaleData =>
+      _bodyMassIndexData._data[Sex.female]!;
+
+  _WHOGrowthReferenceBodyMassIndexForAgeLMS get _ageData => (sex == Sex.male
+      ? _maleData
+      : _femaleData)[ageAtObservationDate.ageInTotalMonthsByNow]!;
+
+  num get _zScore =>
+      _ageData.lms.adjustedZScore(measurementResultInDefaultUnit);
+
+  @override
+  Age get ageAtObservationDate => checkObservationDate(age, observationDate);
+
+  @override
+  num zScore([
+    Precision precision = Precision.ten,
+  ]) =>
+      _zScore.precision(precision);
+
+  @override
+  num percentile([
+    Precision precision = Precision.ten,
+  ]) =>
+      (pnorm(_zScore) * 100).precision(precision);
+
+  @override
+  _WHOGrowthReferenceBodyMassIndexForAgeLMS get ageData => _ageData;
+
+  @override
+  num get measurementResultInDefaultUnit => bodyMassIndexMeasurement.value;
+}
+
+class _WHOGrowthReferenceBodyMassIndexForAgeLMS extends LMSBasedResult {
+  _WHOGrowthReferenceBodyMassIndexForAgeLMS({
+    required this.lms,
+  });
+  @override
+  final LMS lms;
+
+  @override
+  String toString() => 'Body Mass Index For Age LMS($lms)';
+}

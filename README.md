@@ -1,6 +1,8 @@
 
 # Various Growth Standards implementation in Dart
 
+[![pub package](https://img.shields.io/pub/v/growth_standards)](https://pub.dev/packages/growth_standards)
+
 ## Example below
 
 ``` dart
