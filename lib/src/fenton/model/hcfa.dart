@@ -82,16 +82,19 @@ sealed class FentonHeadCircumferenceForAge
   _FentonHeadCircumferenceForAgeLMS get ageData => _ageData;
 }
 
-class _FentonHeadCircumferenceForAgeLMS {
+class _FentonHeadCircumferenceForAgeLMS extends LMSBasedResult {
   _FentonHeadCircumferenceForAgeLMS({
     required this.lms,
     required this.percentileCutOff,
     required this.standardDeviationCutOff,
   });
+  @override
   final LMS lms;
 
+  @override
   final ZScoreCutOff standardDeviationCutOff;
 
+  @override
   final PercentileCutOff percentileCutOff;
 
   @override

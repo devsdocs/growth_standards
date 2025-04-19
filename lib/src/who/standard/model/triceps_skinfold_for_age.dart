@@ -101,15 +101,19 @@ class _TricepsSkinfoldAgeGender {
   String toString() => 'Gender Data($ageData)';
 }
 
-class _WHOGrowthStandardsTricepsSkinfoldForAgeLMS {
+class _WHOGrowthStandardsTricepsSkinfoldForAgeLMS extends LMSBasedResult {
   _WHOGrowthStandardsTricepsSkinfoldForAgeLMS({
     required this.lms,
     required this.standardDeviationCutOff,
     required this.percentileCutOff,
   });
+  @override
   final LMS lms;
+
+  @override
   final ZScoreCutOff standardDeviationCutOff;
 
+  @override
   final PercentileCutOff percentileCutOff;
 
   @override

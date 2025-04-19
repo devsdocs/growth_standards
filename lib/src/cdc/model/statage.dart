@@ -108,16 +108,19 @@ class _CDCStatureForAgeGender {
   String toString() => 'Gender Data($ageData)';
 }
 
-class _CDCStatureForAgeLMS {
+class _CDCStatureForAgeLMS extends LMSBasedResult {
   _CDCStatureForAgeLMS({
     required this.lms,
     required this.percentileCutOff,
     required this.standardDeviationCutOff,
   });
+  @override
   final LMS lms;
 
+  @override
   final ZScoreCutOff standardDeviationCutOff;
 
+  @override
   final PercentileCutOff percentileCutOff;
 
   @override

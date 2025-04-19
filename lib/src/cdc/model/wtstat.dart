@@ -105,16 +105,19 @@ class _CDCWeightForStatureGender {
   String toString() => 'Gender Data($lengthData)';
 }
 
-class _CDCWeightForStatureLMS {
+class _CDCWeightForStatureLMS extends LMSBasedResult {
   _CDCWeightForStatureLMS({
     required this.lms,
     required this.standardDeviationCutOff,
     required this.percentileCutOff,
   });
+  @override
   final LMS lms;
 
+  @override
   final ZScoreCutOff standardDeviationCutOff;
 
+  @override
   final PercentileCutOff percentileCutOff;
 
   @override

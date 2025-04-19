@@ -77,16 +77,19 @@ sealed class FentonWeightForAge with _$FentonWeightForAge {
   _FentonWeightForAgeLMS get ageData => _ageData;
 }
 
-class _FentonWeightForAgeLMS {
+class _FentonWeightForAgeLMS extends LMSBasedResult {
   _FentonWeightForAgeLMS({
     required this.lms,
     required this.percentileCutOff,
     required this.standardDeviationCutOff,
   });
+  @override
   final LMS lms;
 
+  @override
   final ZScoreCutOff standardDeviationCutOff;
 
+  @override
   final PercentileCutOff percentileCutOff;
 
   @override

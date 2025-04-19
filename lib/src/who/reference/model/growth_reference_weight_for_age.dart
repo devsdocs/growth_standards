@@ -100,16 +100,19 @@ class _WHOGrowthReferenceWeightForAgeGender {
   String toString() => 'Gender Data($ageData)';
 }
 
-class _WHOGrowthReferenceWeightForAgeLMS {
+class _WHOGrowthReferenceWeightForAgeLMS extends LMSBasedResult {
   _WHOGrowthReferenceWeightForAgeLMS({
     required this.lms,
     required this.percentileCutOff,
     required this.standardDeviationCutOff,
   });
+  @override
   final LMS lms;
 
+  @override
   final ZScoreCutOff standardDeviationCutOff;
 
+  @override
   final PercentileCutOff percentileCutOff;
 
   @override

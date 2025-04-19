@@ -104,18 +104,22 @@ class _WHOGrowthStandardsLengthForAgeGender {
   String toString() => 'Gender Data($ageData)';
 }
 
-class _WHOGrowthStandardsLengthForAgeLMS {
+class _WHOGrowthStandardsLengthForAgeLMS extends LMSBasedResult {
   _WHOGrowthStandardsLengthForAgeLMS({
     required this.lms,
     required this.loh,
     required this.percentileCutOff,
     required this.standardDeviationCutOff,
   });
+  @override
   final LMS lms;
+
   final LengthHeightMeasurementPosition loh;
 
+  @override
   final ZScoreCutOff standardDeviationCutOff;
 
+  @override
   final PercentileCutOff percentileCutOff;
 
   @override

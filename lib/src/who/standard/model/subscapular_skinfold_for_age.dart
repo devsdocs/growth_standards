@@ -103,16 +103,19 @@ class _SubscapularSkinfoldAgeGender {
   String toString() => 'Gender Data($ageData)';
 }
 
-class _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS {
+class _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS extends LMSBasedResult {
   _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS({
     required this.lms,
     required this.percentileCutOff,
     required this.standardDeviationCutOff,
   });
+  @override
   final LMS lms;
 
+  @override
   final ZScoreCutOff standardDeviationCutOff;
 
+  @override
   final PercentileCutOff percentileCutOff;
 
   @override

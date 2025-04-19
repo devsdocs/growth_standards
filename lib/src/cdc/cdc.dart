@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:growth_standards/src/common/base.dart';
 import 'package:growth_standards/src/common/extension.dart';
 import 'package:growth_standards/src/common/math.dart';
 import 'package:growth_standards/src/common/model/age.dart';

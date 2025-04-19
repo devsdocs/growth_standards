@@ -104,16 +104,19 @@ class _CDCInfantHeadCircumferenceForAgeGender {
   String toString() => 'Gender Data($ageData)';
 }
 
-class _CDCInfantHeadCircumferenceForAgeLMS {
+class _CDCInfantHeadCircumferenceForAgeLMS extends LMSBasedResult {
   _CDCInfantHeadCircumferenceForAgeLMS({
     required this.lms,
     required this.percentileCutOff,
     required this.standardDeviationCutOff,
   });
+  @override
   final LMS lms;
 
+  @override
   final ZScoreCutOff standardDeviationCutOff;
 
+  @override
   final PercentileCutOff percentileCutOff;
 
   @override

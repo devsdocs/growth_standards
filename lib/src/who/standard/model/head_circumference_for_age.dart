@@ -99,16 +99,19 @@ class _WHOGrowthStandardsHeadCircumferenceForAgeGender {
   String toString() => 'Gender Data($ageData)';
 }
 
-class _WHOGrowthStandardsHeadCircumferenceForAgeLMS {
+class _WHOGrowthStandardsHeadCircumferenceForAgeLMS extends LMSBasedResult {
   _WHOGrowthStandardsHeadCircumferenceForAgeLMS({
     required this.lms,
     required this.percentileCutOff,
     required this.standardDeviationCutOff,
   });
+  @override
   final LMS lms;
 
+  @override
   final ZScoreCutOff standardDeviationCutOff;
 
+  @override
   final PercentileCutOff percentileCutOff;
 
   @override

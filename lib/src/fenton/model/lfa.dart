@@ -75,16 +75,19 @@ sealed class FentonLengthForAge with _$FentonLengthForAge {
   _FentonLengthForAgeLMS get ageData => _ageData;
 }
 
-class _FentonLengthForAgeLMS {
+class _FentonLengthForAgeLMS extends LMSBasedResult {
   _FentonLengthForAgeLMS({
     required this.lms,
     required this.percentileCutOff,
     required this.standardDeviationCutOff,
   });
+  @override
   final LMS lms;
 
+  @override
   final ZScoreCutOff standardDeviationCutOff;
 
+  @override
   final PercentileCutOff percentileCutOff;
 
   @override

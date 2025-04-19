@@ -137,19 +137,22 @@ class _CDCBodyMassIndexForAgeGender {
   String toString() => 'Gender Data($ageData)';
 }
 
-class _CDCBodyMassIndexForAgeLMS {
+class _CDCBodyMassIndexForAgeLMS extends LMSBasedResult {
   _CDCBodyMassIndexForAgeLMS({
     required this.lms,
     required this.percentileCutOff,
     required this.standardDeviationCutOff,
     required this.sigma,
   });
+  @override
   final LMS lms;
 
   final double sigma;
 
+  @override
   final ZScoreCutOff standardDeviationCutOff;
 
+  @override
   final PercentileCutOff percentileCutOff;
 
   @override

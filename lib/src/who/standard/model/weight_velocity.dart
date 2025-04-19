@@ -191,18 +191,22 @@ class WHOGrowthStandardsWeightVelocityForAgeIncrement {
   String toString() => 'Increment Data($lmsData)';
 }
 
-class WHOGrowthStandardsWeightVelocityForAgeLMS {
+class WHOGrowthStandardsWeightVelocityForAgeLMS extends LMSBasedResult {
   WHOGrowthStandardsWeightVelocityForAgeLMS({
     required this.lms,
     required this.delta,
     required this.percentileCutOff,
     required this.standardDeviationCutOff,
   });
+  @override
   final LMS lms;
+
   final num delta;
 
+  @override
   final ZScoreCutOff standardDeviationCutOff;
 
+  @override
   final PercentileCutOff percentileCutOff;
 
   @override
