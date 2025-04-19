@@ -76,7 +76,8 @@ sealed class WHOGrowthStandardsArmCircumferenceForAge extends AgeBasedResult
       ? _maleData
       : _femaleData)[ageAtObservationDate.ageInTotalDaysByNow]!;
 
-  num get _zScore => _ageData.lms.adjustedZScore(measurementResult.value);
+  num get _zScore =>
+      _ageData.lms.adjustedZScore(measurementResult.toCentimeter.value);
 
   @override
   Age get ageAtObservationDate => checkObservationDate(age, observationDate);
