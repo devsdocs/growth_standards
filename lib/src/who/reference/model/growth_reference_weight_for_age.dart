@@ -1,17 +1,16 @@
 part of '../reference.dart';
 
-class WHOGrowthReferenceWeightForAgeData {
+class WHOGrowthReferenceWeightForAgeData extends BaseData {
   factory WHOGrowthReferenceWeightForAgeData() => _singleton;
   const WHOGrowthReferenceWeightForAgeData._(this._data);
 
   static final _singleton = WHOGrowthReferenceWeightForAgeData._(_parse());
 
-  static Map<Sex, _WHOGrowthReferenceWeightForAgeGender> _parse() =>
+  static Map<Sex, Map<int, _WHOGrowthReferenceWeightForAgeLMS>> _parse() =>
       _wfa5yo.toJsonObjectAsMap.map(
         (k1, v1) => MapEntry(
-          k1 == '1' ? Sex.male : Sex.female,
-          _WHOGrowthReferenceWeightForAgeGender(
-            ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
+            k1 == '1' ? Sex.male : Sex.female,
+            (v1 as Map<String, dynamic>).map((k2, v2) {
               v2 as Map<String, dynamic>;
               final lms =
                   LMS(l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
@@ -23,12 +22,11 @@ class WHOGrowthReferenceWeightForAgeData {
                   standardDeviationCutOff: lms.stDevCutOff,
                 ),
               );
-            }),
-          ),
-        ),
+            })),
       );
-  final Map<Sex, _WHOGrowthReferenceWeightForAgeGender> _data;
-  Map<Sex, _WHOGrowthReferenceWeightForAgeGender> get data => _data;
+  final Map<Sex, Map<int, _WHOGrowthReferenceWeightForAgeLMS>> _data;
+  @override
+  Map<Sex, Map<int, _WHOGrowthReferenceWeightForAgeLMS>> get data => _data;
 
   @override
   String toString() => 'Weight For Age Data($_data)';
@@ -66,14 +64,14 @@ sealed class WHOGrowthReferenceWeightForAge extends AgeBasedResult
   WHOGrowthReferenceWeightForAgeData get _weightForAgeData =>
       WHOGrowthReferenceWeightForAgeData();
 
-  _WHOGrowthReferenceWeightForAgeGender get _maleData =>
+  Map<int, _WHOGrowthReferenceWeightForAgeLMS> get _maleData =>
       _weightForAgeData._data[Sex.male]!;
-  _WHOGrowthReferenceWeightForAgeGender get _femaleData =>
+  Map<int, _WHOGrowthReferenceWeightForAgeLMS> get _femaleData =>
       _weightForAgeData._data[Sex.female]!;
 
-  _WHOGrowthReferenceWeightForAgeLMS get _ageData =>
-      (sex == Sex.male ? _maleData : _femaleData)
-          .ageData[ageAtObservationDate.ageInTotalMonthsByNow]!;
+  _WHOGrowthReferenceWeightForAgeLMS get _ageData => (sex == Sex.male
+      ? _maleData
+      : _femaleData)[ageAtObservationDate.ageInTotalMonthsByNow]!;
 
   num get _zScore => _ageData.lms.adjustedZScore(weight.toKilogram.value);
 
@@ -94,14 +92,6 @@ sealed class WHOGrowthReferenceWeightForAge extends AgeBasedResult
 
   @override
   _WHOGrowthReferenceWeightForAgeLMS get ageData => _ageData;
-}
-
-class _WHOGrowthReferenceWeightForAgeGender {
-  _WHOGrowthReferenceWeightForAgeGender({required this.ageData});
-
-  final Map<int, _WHOGrowthReferenceWeightForAgeLMS> ageData;
-  @override
-  String toString() => 'Gender Data($ageData)';
 }
 
 class _WHOGrowthReferenceWeightForAgeLMS extends LMSBasedResult {

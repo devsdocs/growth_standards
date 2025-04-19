@@ -1,39 +1,39 @@
 part of '../standard.dart';
 
-class WHOGrowthStandardsBodyMassIndexForAgeData {
+class WHOGrowthStandardsBodyMassIndexForAgeData extends BaseData {
   factory WHOGrowthStandardsBodyMassIndexForAgeData() => _singleton;
   const WHOGrowthStandardsBodyMassIndexForAgeData._(this._data);
 
   static final _singleton =
       WHOGrowthStandardsBodyMassIndexForAgeData._(_parse());
 
-  static Map<Sex, _WHOGrowthStandardsBodyMassIndexForAgeGender> _parse() =>
-      _bmianthro.toJsonObjectAsMap.map(
-        (k1, v1) => MapEntry(
-          k1 == '1' ? Sex.male : Sex.female,
-          _WHOGrowthStandardsBodyMassIndexForAgeGender(
-            ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
-              v2 as Map<String, dynamic>;
-              final lms =
-                  LMS(l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
-              return MapEntry(
-                int.parse(k2),
-                _WHOGrowthStandardsBodyMassIndexForAgeLMS(
-                  lms: lms,
-                  percentileCutOff: lms.percentileCutOff,
-                  standardDeviationCutOff: lms.stDevCutOff,
-                  loh: v2['loh'].toString().toLowerCase() == 'l'
-                      ? LengthHeightMeasurementPosition.recumbent
-                      : LengthHeightMeasurementPosition.standing,
-                ),
-              );
-            }),
-          ),
-        ),
-      );
+  static Map<Sex, Map<int, _WHOGrowthStandardsBodyMassIndexForAgeLMS>>
+      _parse() => _bmianthro.toJsonObjectAsMap.map(
+            (k1, v1) => MapEntry(
+              k1 == '1' ? Sex.male : Sex.female,
+              (v1 as Map<String, dynamic>).map((k2, v2) {
+                v2 as Map<String, dynamic>;
+                final lms = LMS(
+                    l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
+                return MapEntry(
+                  int.parse(k2),
+                  _WHOGrowthStandardsBodyMassIndexForAgeLMS(
+                    lms: lms,
+                    percentileCutOff: lms.percentileCutOff,
+                    standardDeviationCutOff: lms.stDevCutOff,
+                    loh: v2['loh'].toString().toLowerCase() == 'l'
+                        ? LengthHeightMeasurementPosition.recumbent
+                        : LengthHeightMeasurementPosition.standing,
+                  ),
+                );
+              }),
+            ),
+          );
 
-  final Map<Sex, _WHOGrowthStandardsBodyMassIndexForAgeGender> _data;
-  Map<Sex, _WHOGrowthStandardsBodyMassIndexForAgeGender> get data => _data;
+  final Map<Sex, Map<int, _WHOGrowthStandardsBodyMassIndexForAgeLMS>> _data;
+  @override
+  Map<Sex, Map<int, _WHOGrowthStandardsBodyMassIndexForAgeLMS>> get data =>
+      _data;
 
   @override
   String toString() => 'Body Mass Index For Age Data($_data)';
@@ -105,14 +105,14 @@ sealed class WHOGrowthStandardsBodyMassIndexForAge extends AgeBasedResult
   WHOGrowthStandardsBodyMassIndexForAgeData get _bodyMassIndexData =>
       WHOGrowthStandardsBodyMassIndexForAgeData();
 
-  _WHOGrowthStandardsBodyMassIndexForAgeGender get _maleData =>
+  Map<int, _WHOGrowthStandardsBodyMassIndexForAgeLMS> get _maleData =>
       _bodyMassIndexData._data[Sex.male]!;
-  _WHOGrowthStandardsBodyMassIndexForAgeGender get _femaleData =>
+  Map<int, _WHOGrowthStandardsBodyMassIndexForAgeLMS> get _femaleData =>
       _bodyMassIndexData._data[Sex.female]!;
 
-  _WHOGrowthStandardsBodyMassIndexForAgeLMS get _ageData =>
-      (sex == Sex.male ? _maleData : _femaleData)
-          .ageData[ageAtObservationDate.ageInTotalDaysByNow]!;
+  _WHOGrowthStandardsBodyMassIndexForAgeLMS get _ageData => (sex == Sex.male
+      ? _maleData
+      : _femaleData)[ageAtObservationDate.ageInTotalDaysByNow]!;
 
   num get _zScore =>
       _ageData.lms.adjustedZScore(bodyMassIndexMeasurement.value);
@@ -135,15 +135,6 @@ sealed class WHOGrowthStandardsBodyMassIndexForAge extends AgeBasedResult
 
   @override
   _WHOGrowthStandardsBodyMassIndexForAgeLMS get ageData => _ageData;
-}
-
-class _WHOGrowthStandardsBodyMassIndexForAgeGender {
-  _WHOGrowthStandardsBodyMassIndexForAgeGender({required this.ageData});
-
-  final Map<int, _WHOGrowthStandardsBodyMassIndexForAgeLMS> ageData;
-
-  @override
-  String toString() => 'Gender Data($ageData)';
 }
 
 class _WHOGrowthStandardsBodyMassIndexForAgeLMS extends LMSBasedResult {

@@ -1,36 +1,35 @@
 part of '../cdc.dart';
 
-class CDCBodyMassIndexForAgeData {
+class CDCBodyMassIndexForAgeData extends BaseData {
   factory CDCBodyMassIndexForAgeData() => _singleton;
   const CDCBodyMassIndexForAgeData._(this._data);
 
   static final _singleton = CDCBodyMassIndexForAgeData._(_parse());
 
-  static Map<Sex, _CDCBodyMassIndexForAgeGender> _parse() =>
+  static Map<Sex, Map<double, _CDCBodyMassIndexForAgeLMS>> _parse() =>
       cdcbmiage2022.toJsonObjectAsMap.map(
         (k1, v1) => MapEntry(
           k1 == '1' ? Sex.male : Sex.female,
-          _CDCBodyMassIndexForAgeGender(
-            ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
-              v2 as Map<String, dynamic>;
-              final lms =
-                  LMS(l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
-              return MapEntry(
-                double.parse(k2),
-                _CDCBodyMassIndexForAgeLMS(
-                  sigma: v2['sigma'] as double,
-                  lms: lms,
-                  percentileCutOff: lms.percentileCutOff,
-                  standardDeviationCutOff: lms.stDevCutOff,
-                ),
-              );
-            }),
-          ),
+          (v1 as Map<String, dynamic>).map((k2, v2) {
+            v2 as Map<String, dynamic>;
+            final lms =
+                LMS(l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
+            return MapEntry(
+              double.parse(k2),
+              _CDCBodyMassIndexForAgeLMS(
+                sigma: v2['sigma'] as double,
+                lms: lms,
+                percentileCutOff: lms.percentileCutOff,
+                standardDeviationCutOff: lms.stDevCutOff,
+              ),
+            );
+          }),
         ),
       );
 
-  final Map<Sex, _CDCBodyMassIndexForAgeGender> _data;
-  Map<Sex, _CDCBodyMassIndexForAgeGender> get data => _data;
+  final Map<Sex, Map<double, _CDCBodyMassIndexForAgeLMS>> _data;
+  @override
+  Map<Sex, Map<double, _CDCBodyMassIndexForAgeLMS>> get data => _data;
 
   @override
   String toString() => 'Body Mass Index For Age Data($_data)';
@@ -85,13 +84,13 @@ sealed class CDCBodyMassIndexForAge extends AgeBasedResult
   CDCBodyMassIndexForAgeData get _bodyMassIndexData =>
       CDCBodyMassIndexForAgeData();
 
-  _CDCBodyMassIndexForAgeGender get _maleData =>
+  Map<double, _CDCBodyMassIndexForAgeLMS> get _maleData =>
       _bodyMassIndexData._data[Sex.male]!;
-  _CDCBodyMassIndexForAgeGender get _femaleData =>
+  Map<double, _CDCBodyMassIndexForAgeLMS> get _femaleData =>
       _bodyMassIndexData._data[Sex.female]!;
 //TODO(devsdocs): Fix CDC age calculation
   _CDCBodyMassIndexForAgeLMS get _ageData =>
-      (sex == Sex.male ? _maleData : _femaleData).ageData[
+      (sex == Sex.male ? _maleData : _femaleData)[
           ageAtObservationDate.ageInTotalMonthsByNow == 24
               ? 24
               : ageAtObservationDate.ageInTotalMonthsByNow + 0.5]!;
@@ -132,14 +131,6 @@ sealed class CDCBodyMassIndexForAge extends AgeBasedResult
 
   @override
   _CDCBodyMassIndexForAgeLMS get ageData => _ageData;
-}
-
-class _CDCBodyMassIndexForAgeGender {
-  _CDCBodyMassIndexForAgeGender({required this.ageData});
-  final Map<double, _CDCBodyMassIndexForAgeLMS> ageData;
-
-  @override
-  String toString() => 'Gender Data($ageData)';
 }
 
 class _CDCBodyMassIndexForAgeLMS extends LMSBasedResult {

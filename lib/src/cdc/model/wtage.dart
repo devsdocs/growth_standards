@@ -1,34 +1,33 @@
 part of '../cdc.dart';
 
-class CDCWeightForAgeData {
+class CDCWeightForAgeData extends BaseData {
   factory CDCWeightForAgeData() => _singleton;
   const CDCWeightForAgeData._(this._data);
 
   static final _singleton = CDCWeightForAgeData._(_parse());
 
-  static Map<Sex, _CDCWeightForAgeGender> _parse() =>
+  static Map<Sex, Map<double, _CDCWeightForAgeLMS>> _parse() =>
       cdcwtage.toJsonObjectAsMap.map(
         (k1, v1) => MapEntry(
           k1 == '1' ? Sex.male : Sex.female,
-          _CDCWeightForAgeGender(
-            ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
-              v2 as Map<String, dynamic>;
-              final lms =
-                  LMS(l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
-              return MapEntry(
-                double.parse(k2),
-                _CDCWeightForAgeLMS(
-                  lms: lms,
-                  percentileCutOff: lms.percentileCutOff,
-                  standardDeviationCutOff: lms.stDevCutOff,
-                ),
-              );
-            }),
-          ),
+          (v1 as Map<String, dynamic>).map((k2, v2) {
+            v2 as Map<String, dynamic>;
+            final lms =
+                LMS(l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
+            return MapEntry(
+              double.parse(k2),
+              _CDCWeightForAgeLMS(
+                lms: lms,
+                percentileCutOff: lms.percentileCutOff,
+                standardDeviationCutOff: lms.stDevCutOff,
+              ),
+            );
+          }),
         ),
       );
-  final Map<Sex, _CDCWeightForAgeGender> _data;
-  Map<Sex, _CDCWeightForAgeGender> get data => _data;
+  final Map<Sex, Map<double, _CDCWeightForAgeLMS>> _data;
+  @override
+  Map<Sex, Map<double, _CDCWeightForAgeLMS>> get data => _data;
 
   @override
   String toString() => 'Weight For Age Data($_data)';
@@ -64,12 +63,13 @@ sealed class CDCWeightForAge extends AgeBasedResult with _$CDCWeightForAge {
 
   CDCWeightForAgeData get _weightForAgeData => CDCWeightForAgeData();
 
-  _CDCWeightForAgeGender get _maleData => _weightForAgeData._data[Sex.male]!;
-  _CDCWeightForAgeGender get _femaleData =>
+  Map<double, _CDCWeightForAgeLMS> get _maleData =>
+      _weightForAgeData._data[Sex.male]!;
+  Map<double, _CDCWeightForAgeLMS> get _femaleData =>
       _weightForAgeData._data[Sex.female]!;
 //TODO(devsdocs): Fix CDC age calculation
   _CDCWeightForAgeLMS get _ageData =>
-      (sex == Sex.male ? _maleData : _femaleData).ageData[
+      (sex == Sex.male ? _maleData : _femaleData)[
           ageAtObservationDate.ageInTotalMonthsByNow == 24
               ? 24
               : ageAtObservationDate.ageInTotalMonthsByNow == 240
@@ -95,14 +95,6 @@ sealed class CDCWeightForAge extends AgeBasedResult with _$CDCWeightForAge {
 
   @override
   _CDCWeightForAgeLMS get ageData => _ageData;
-}
-
-class _CDCWeightForAgeGender {
-  _CDCWeightForAgeGender({required this.ageData});
-
-  final Map<double, _CDCWeightForAgeLMS> ageData;
-  @override
-  String toString() => 'Gender Data($ageData)';
 }
 
 class _CDCWeightForAgeLMS extends LMSBasedResult {

@@ -1,6 +1,6 @@
 part of '../fenton.dart';
 
-class FentonLengthForAgeData {
+class FentonLengthForAgeData extends SexAgnosticData {
   factory FentonLengthForAgeData() => _singleton;
   FentonLengthForAgeData._(this._data);
   static final _singleton = FentonLengthForAgeData._(_parse());
@@ -20,6 +20,7 @@ class FentonLengthForAgeData {
         );
       });
   final Map<int, _FentonLengthForAgeLMS> _data;
+  @override
   Map<int, _FentonLengthForAgeLMS> get data => _data;
 
   @override

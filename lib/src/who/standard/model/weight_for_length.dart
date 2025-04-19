@@ -1,17 +1,16 @@
 part of '../standard.dart';
 
-class WHOGrowthStandardsWeightForLengthData {
+class WHOGrowthStandardsWeightForLengthData extends BaseData {
   factory WHOGrowthStandardsWeightForLengthData() => _singleton;
   WHOGrowthStandardsWeightForLengthData._(this._data);
 
   static final _singleton = WHOGrowthStandardsWeightForLengthData._(_parse());
 
-  static Map<Sex, _WHOGrowthStandardsWeightForLengthGender> _parse() =>
+  static Map<Sex, Map<num, _WHOGrowthStandardsWeightForLengthLMS>> _parse() =>
       _wflanthro.toJsonObjectAsMap.map(
         (k1, v1) => MapEntry(
-          k1 == '1' ? Sex.male : Sex.female,
-          _WHOGrowthStandardsWeightForLengthGender(
-            lengthData: (v1 as Map<String, dynamic>).map((k2, v2) {
+            k1 == '1' ? Sex.male : Sex.female,
+            (v1 as Map<String, dynamic>).map((k2, v2) {
               v2 as Map<String, dynamic>;
               final lms =
                   LMS(l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
@@ -26,12 +25,11 @@ class WHOGrowthStandardsWeightForLengthData {
                       : LengthHeightMeasurementPosition.standing,
                 ),
               );
-            }),
-          ),
-        ),
+            })),
       );
-  final Map<Sex, _WHOGrowthStandardsWeightForLengthGender> _data;
-  Map<Sex, _WHOGrowthStandardsWeightForLengthGender> get data => _data;
+  final Map<Sex, Map<num, _WHOGrowthStandardsWeightForLengthLMS>> _data;
+  @override
+  Map<Sex, Map<num, _WHOGrowthStandardsWeightForLengthLMS>> get data => _data;
 
   @override
   String toString() => 'Weight For Length Data($_data)';
@@ -81,14 +79,14 @@ sealed class WHOGrowthStandardsWeightForLength extends LengthBasedResult
   WHOGrowthStandardsWeightForLengthData get _weightForLengthData =>
       WHOGrowthStandardsWeightForLengthData();
 
-  _WHOGrowthStandardsWeightForLengthGender get _maleData =>
+  Map<num, _WHOGrowthStandardsWeightForLengthLMS> get _maleData =>
       _weightForLengthData._data[Sex.male]!;
-  _WHOGrowthStandardsWeightForLengthGender get _femaleData =>
+  Map<num, _WHOGrowthStandardsWeightForLengthLMS> get _femaleData =>
       _weightForLengthData._data[Sex.female]!;
 
-  _WHOGrowthStandardsWeightForLengthLMS get _ageData =>
-      (sex == Sex.male ? _maleData : _femaleData)
-          .lengthData[_adjustedLength.toDouble().toPrecision(1)]!;
+  _WHOGrowthStandardsWeightForLengthLMS get _ageData => (sex == Sex.male
+      ? _maleData
+      : _femaleData)[_adjustedLength.toDouble().toPrecision(1)]!;
 
   num get _zScore => _ageData.lms.adjustedZScore(weight.toKilogram.value);
 
@@ -106,14 +104,6 @@ sealed class WHOGrowthStandardsWeightForLength extends LengthBasedResult
 
   @override
   _WHOGrowthStandardsWeightForLengthLMS get lengthData => _ageData;
-}
-
-class _WHOGrowthStandardsWeightForLengthGender {
-  _WHOGrowthStandardsWeightForLengthGender({required this.lengthData});
-
-  final Map<num, _WHOGrowthStandardsWeightForLengthLMS> lengthData;
-  @override
-  String toString() => 'Gender Data($lengthData)';
 }
 
 class _WHOGrowthStandardsWeightForLengthLMS extends LMSBasedResult {

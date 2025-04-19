@@ -1,36 +1,36 @@
 part of '../standard.dart';
 
-class WHOGrowthStandardsHeadCircumferenceForAgeData {
+class WHOGrowthStandardsHeadCircumferenceForAgeData extends BaseData {
   factory WHOGrowthStandardsHeadCircumferenceForAgeData() => _singleton;
   WHOGrowthStandardsHeadCircumferenceForAgeData._(this._data);
 
   static final _singleton =
       WHOGrowthStandardsHeadCircumferenceForAgeData._(_parse());
 
-  static Map<Sex, _WHOGrowthStandardsHeadCircumferenceForAgeGender> _parse() =>
-      _hcanthro.toJsonObjectAsMap.map(
-        (k1, v1) => MapEntry(
-          k1 == '1' ? Sex.male : Sex.female,
-          _WHOGrowthStandardsHeadCircumferenceForAgeGender(
-            ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
-              v2 as Map<String, dynamic>;
-              final lms =
-                  LMS(l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
-              return MapEntry(
-                int.parse(k2),
-                _WHOGrowthStandardsHeadCircumferenceForAgeLMS(
-                  lms: lms,
-                  percentileCutOff: lms.percentileCutOff,
-                  standardDeviationCutOff: lms.stDevCutOff,
-                ),
-              );
-            }),
-          ),
-        ),
-      );
+  static Map<Sex, Map<int, _WHOGrowthStandardsHeadCircumferenceForAgeLMS>>
+      _parse() => _hcanthro.toJsonObjectAsMap.map(
+            (k1, v1) => MapEntry(
+              k1 == '1' ? Sex.male : Sex.female,
+              (v1 as Map<String, dynamic>).map((k2, v2) {
+                v2 as Map<String, dynamic>;
+                final lms = LMS(
+                    l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
+                return MapEntry(
+                  int.parse(k2),
+                  _WHOGrowthStandardsHeadCircumferenceForAgeLMS(
+                    lms: lms,
+                    percentileCutOff: lms.percentileCutOff,
+                    standardDeviationCutOff: lms.stDevCutOff,
+                  ),
+                );
+              }),
+            ),
+          );
 
-  final Map<Sex, _WHOGrowthStandardsHeadCircumferenceForAgeGender> _data;
-  Map<Sex, _WHOGrowthStandardsHeadCircumferenceForAgeGender> get data => _data;
+  final Map<Sex, Map<int, _WHOGrowthStandardsHeadCircumferenceForAgeLMS>> _data;
+  @override
+  Map<Sex, Map<int, _WHOGrowthStandardsHeadCircumferenceForAgeLMS>> get data =>
+      _data;
 
   @override
   String toString() => 'Head Circumference For Age Data($_data)';
@@ -64,14 +64,14 @@ sealed class WHOGrowthStandardsHeadCircumferenceForAge extends AgeBasedResult
   WHOGrowthStandardsHeadCircumferenceForAgeData get _headCircumferenceData =>
       WHOGrowthStandardsHeadCircumferenceForAgeData();
 
-  _WHOGrowthStandardsHeadCircumferenceForAgeGender get _maleData =>
+  Map<int, _WHOGrowthStandardsHeadCircumferenceForAgeLMS> get _maleData =>
       _headCircumferenceData._data[Sex.male]!;
-  _WHOGrowthStandardsHeadCircumferenceForAgeGender get _femaleData =>
+  Map<int, _WHOGrowthStandardsHeadCircumferenceForAgeLMS> get _femaleData =>
       _headCircumferenceData._data[Sex.female]!;
 
-  _WHOGrowthStandardsHeadCircumferenceForAgeLMS get _ageData =>
-      (sex == Sex.male ? _maleData : _femaleData)
-          .ageData[ageAtObservationDate.ageInTotalDaysByNow]!;
+  _WHOGrowthStandardsHeadCircumferenceForAgeLMS get _ageData => (sex == Sex.male
+      ? _maleData
+      : _femaleData)[ageAtObservationDate.ageInTotalDaysByNow]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResult.toCentimeter.value);
 
@@ -92,15 +92,6 @@ sealed class WHOGrowthStandardsHeadCircumferenceForAge extends AgeBasedResult
 
   @override
   _WHOGrowthStandardsHeadCircumferenceForAgeLMS get ageData => _ageData;
-}
-
-class _WHOGrowthStandardsHeadCircumferenceForAgeGender {
-  _WHOGrowthStandardsHeadCircumferenceForAgeGender({required this.ageData});
-
-  final Map<int, _WHOGrowthStandardsHeadCircumferenceForAgeLMS> ageData;
-
-  @override
-  String toString() => 'Gender Data($ageData)';
 }
 
 class _WHOGrowthStandardsHeadCircumferenceForAgeLMS extends LMSBasedResult {

@@ -1,33 +1,32 @@
 part of '../cdc.dart';
 
-class CDCInfantLengthForAgeData {
+class CDCInfantLengthForAgeData extends BaseData {
   factory CDCInfantLengthForAgeData() => _singleton;
   CDCInfantLengthForAgeData._(this._data);
   static final _singleton = CDCInfantLengthForAgeData._(_parse());
 
-  static Map<Sex, _CDCInfantLengthForAgeGender> _parse() =>
+  static Map<Sex, Map<double, _CDCInfantLengthForAgeLMS>> _parse() =>
       cdclenageinf.toJsonObjectAsMap.map(
         (k1, v1) => MapEntry(
           k1 == '1' ? Sex.male : Sex.female,
-          _CDCInfantLengthForAgeGender(
-            ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
-              v2 as Map<String, dynamic>;
-              final lms =
-                  LMS(l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
-              return MapEntry(
-                double.parse(k2),
-                _CDCInfantLengthForAgeLMS(
-                  lms: lms,
-                  percentileCutOff: lms.percentileCutOff,
-                  standardDeviationCutOff: lms.stDevCutOff,
-                ),
-              );
-            }),
-          ),
+          (v1 as Map<String, dynamic>).map((k2, v2) {
+            v2 as Map<String, dynamic>;
+            final lms =
+                LMS(l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
+            return MapEntry(
+              double.parse(k2),
+              _CDCInfantLengthForAgeLMS(
+                lms: lms,
+                percentileCutOff: lms.percentileCutOff,
+                standardDeviationCutOff: lms.stDevCutOff,
+              ),
+            );
+          }),
         ),
       );
-  final Map<Sex, _CDCInfantLengthForAgeGender> _data;
-  Map<Sex, _CDCInfantLengthForAgeGender> get data => _data;
+  final Map<Sex, Map<double, _CDCInfantLengthForAgeLMS>> _data;
+  @override
+  Map<Sex, Map<double, _CDCInfantLengthForAgeLMS>> get data => _data;
 
   @override
   String toString() => 'Infant Length For Age Data($_data)';
@@ -60,13 +59,13 @@ sealed class CDCInfantLengthForAge extends AgeBasedResult
   CDCInfantLengthForAgeData get _lengthForAgeData =>
       CDCInfantLengthForAgeData();
 
-  _CDCInfantLengthForAgeGender get _maleData =>
+  Map<double, _CDCInfantLengthForAgeLMS> get _maleData =>
       _lengthForAgeData._data[Sex.male]!;
-  _CDCInfantLengthForAgeGender get _femaleData =>
+  Map<double, _CDCInfantLengthForAgeLMS> get _femaleData =>
       _lengthForAgeData._data[Sex.female]!;
 //TODO(devsdocs): Fix CDC age calculation
   _CDCInfantLengthForAgeLMS get _ageData =>
-      (sex == Sex.male ? _maleData : _femaleData).ageData[
+      (sex == Sex.male ? _maleData : _femaleData)[
           ageAtObservationDate.ageInTotalDaysByNow == 0
               ? 0
               : ageAtObservationDate.ageInTotalMonthsByNow + 0.5]!;
@@ -97,14 +96,6 @@ sealed class CDCInfantLengthForAge extends AgeBasedResult
 
   @override
   _CDCInfantLengthForAgeLMS get ageData => _ageData;
-}
-
-class _CDCInfantLengthForAgeGender {
-  _CDCInfantLengthForAgeGender({required this.ageData});
-  final Map<double, _CDCInfantLengthForAgeLMS> ageData;
-
-  @override
-  String toString() => 'Gender Data($ageData)';
 }
 
 class _CDCInfantLengthForAgeLMS extends LMSBasedResult {

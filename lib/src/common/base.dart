@@ -30,8 +30,6 @@ abstract class AgeBasedResult extends Result {
 abstract class LengthBasedResult extends Result {
   const LengthBasedResult();
 
-  Length get lengthAtObservationDate;
-
   LMSBasedResult get lengthData;
 }
 
@@ -40,4 +38,20 @@ abstract class LMSBasedResult {
   LMS get lms;
   ZScoreCutOff get standardDeviationCutOff;
   PercentileCutOff get percentileCutOff;
+}
+
+abstract class BaseData {
+  const BaseData();
+  Map<Sex, Map<num, LMSBasedResult>> get data;
+}
+
+abstract class SexAgnosticData {
+  const SexAgnosticData();
+  Map<num, LMSBasedResult> get data;
+}
+
+abstract class VelocityBaseData {
+  const VelocityBaseData();
+  Map<Sex, Map<VelocityIncrement, Map<VelocityMonths, LMSBasedResult>>>
+      get data;
 }

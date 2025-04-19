@@ -1,6 +1,6 @@
 part of '../fenton.dart';
 
-class FentonHeadCircumferenceForAgeData {
+class FentonHeadCircumferenceForAgeData extends SexAgnosticData {
   factory FentonHeadCircumferenceForAgeData() => _singleton;
   FentonHeadCircumferenceForAgeData._(this._data);
 
@@ -24,6 +24,7 @@ class FentonHeadCircumferenceForAgeData {
       );
 
   final Map<int, _FentonHeadCircumferenceForAgeLMS> _data;
+  @override
   Map<int, _FentonHeadCircumferenceForAgeLMS> get data => _data;
 
   @override

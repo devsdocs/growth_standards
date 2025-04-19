@@ -1,47 +1,60 @@
 part of '../standard.dart';
 
-class WHOGrowthStandardsHeadCircumferenceVelocityForAgeData {
+class WHOGrowthStandardsHeadCircumferenceVelocityForAgeData
+    extends VelocityBaseData {
   factory WHOGrowthStandardsHeadCircumferenceVelocityForAgeData() => _singleton;
   WHOGrowthStandardsHeadCircumferenceVelocityForAgeData._(this._data);
 
   static final _singleton =
       WHOGrowthStandardsHeadCircumferenceVelocityForAgeData._(_parse());
 
-  static Map<Sex, WHOGrowthStandardsHeadCircumferenceVelocityForAgeGender>
+  static Map<
+          Sex,
+          Map<
+              VelocityIncrement,
+              Map<VelocityMonths,
+                  WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS>>>
       _parse() => _hv.toJsonObjectAsMap.map(
             (k1, v1) => MapEntry(
               k1 == '1' ? Sex.male : Sex.female,
-              WHOGrowthStandardsHeadCircumferenceVelocityForAgeGender(
-                incrementData: (v1 as Map<String, dynamic>).map(
-                  (k2, v2) => MapEntry(
-                    parseIncrement(k2),
-                    WHOGrowthStandardsHeadCircumferenceVelocityForAgeIncrement(
-                      lmsData: (v2 as Map<String, dynamic>).map((k3, v3) {
-                        v3 as Map<String, dynamic>;
-                        final lms = LMS(
-                          l: v3['l'] as num,
-                          m: v3['m'] as num,
-                          s: v3['s'] as num,
-                        );
-                        return MapEntry(
-                          parseVelocityIncrement(k3),
-                          WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS(
-                            lms: lms,
-                            percentileCutOff: lms.percentileCutOff,
-                            standardDeviationCutOff: lms.stDevCutOff,
-                          ),
-                        );
-                      }),
-                    ),
-                  ),
+              (v1 as Map<String, dynamic>).map(
+                (k2, v2) => MapEntry(
+                  parseIncrement(k2),
+                  (v2 as Map<String, dynamic>).map((k3, v3) {
+                    v3 as Map<String, dynamic>;
+                    final lms = LMS(
+                      l: v3['l'] as num,
+                      m: v3['m'] as num,
+                      s: v3['s'] as num,
+                    );
+                    return MapEntry(
+                      parseVelocityIncrement(k3),
+                      WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS(
+                        lms: lms,
+                        percentileCutOff: lms.percentileCutOff,
+                        standardDeviationCutOff: lms.stDevCutOff,
+                      ),
+                    );
+                  }),
                 ),
               ),
             ),
           );
 
-  final Map<Sex, WHOGrowthStandardsHeadCircumferenceVelocityForAgeGender> _data;
-  Map<Sex, WHOGrowthStandardsHeadCircumferenceVelocityForAgeGender> get data =>
-      _data;
+  final Map<
+      Sex,
+      Map<
+          VelocityIncrement,
+          Map<VelocityMonths,
+              WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS>>> _data;
+  @override
+  Map<
+          Sex,
+          Map<
+              VelocityIncrement,
+              Map<VelocityMonths,
+                  WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS>>>
+      get data => _data;
 
   @override
   String toString() => 'Head Circumference Velocity For Age Data($_data)';
@@ -92,15 +105,22 @@ sealed class WHOGrowthStandardsHeadCircumferenceVelocityForAge
       get _headCircumferenceData =>
           WHOGrowthStandardsHeadCircumferenceVelocityForAgeData();
 
-  WHOGrowthStandardsHeadCircumferenceVelocityForAgeGender get _maleData =>
-      _headCircumferenceData._data[Sex.male]!;
-  WHOGrowthStandardsHeadCircumferenceVelocityForAgeGender get _femaleData =>
-      _headCircumferenceData._data[Sex.female]!;
+  Map<
+          VelocityIncrement,
+          Map<VelocityMonths,
+              WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS>>
+      get _maleData => _headCircumferenceData._data[Sex.male]!;
+  Map<
+          VelocityIncrement,
+          Map<VelocityMonths,
+              WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS>>
+      get _femaleData => _headCircumferenceData._data[Sex.female]!;
 
-  Map<VelocityIncrement,
-          WHOGrowthStandardsHeadCircumferenceVelocityForAgeIncrement>
-      get _incrementData =>
-          (sex == Sex.male ? _maleData : _femaleData).incrementData;
+  Map<
+          VelocityIncrement,
+          Map<VelocityMonths,
+              WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS>>
+      get _incrementData => (sex == Sex.male ? _maleData : _femaleData);
 
   Map<VelocityIncrement, Map<({Date dateBefore, Date dateAfter}), num>>
       get _incrementalData =>
@@ -122,8 +142,7 @@ sealed class WHOGrowthStandardsHeadCircumferenceVelocityForAge
           high: age.ageInTotalMonthsAtDate(k2.dateAfter),
         );
 
-        final whoGrowthStandardsHeadCircumferenceVelocityForAgeLMS =
-            v1.lmsData[vm];
+        final whoGrowthStandardsHeadCircumferenceVelocityForAgeLMS = v1[vm];
 
         if (whoGrowthStandardsHeadCircumferenceVelocityForAgeLMS != null) {
           final adjustedZScore =
@@ -147,29 +166,6 @@ sealed class WHOGrowthStandardsHeadCircumferenceVelocityForAge
     });
     return joinMap.removeAllNull;
   }
-}
-
-class WHOGrowthStandardsHeadCircumferenceVelocityForAgeGender {
-  WHOGrowthStandardsHeadCircumferenceVelocityForAgeGender({
-    required this.incrementData,
-  });
-
-  final Map<VelocityIncrement,
-      WHOGrowthStandardsHeadCircumferenceVelocityForAgeIncrement> incrementData;
-
-  @override
-  String toString() => 'Gender Data($incrementData)';
-}
-
-class WHOGrowthStandardsHeadCircumferenceVelocityForAgeIncrement {
-  WHOGrowthStandardsHeadCircumferenceVelocityForAgeIncrement({
-    required this.lmsData,
-  });
-  final Map<VelocityMonths,
-      WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS> lmsData;
-
-  @override
-  String toString() => 'Increment Data($lmsData)';
 }
 
 class WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS

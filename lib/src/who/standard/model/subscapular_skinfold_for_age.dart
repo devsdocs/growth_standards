@@ -1,36 +1,36 @@
 part of '../standard.dart';
 
-class WHOGrowthStandardsSubscapularSkinfoldForAgeData {
+class WHOGrowthStandardsSubscapularSkinfoldForAgeData extends BaseData {
   factory WHOGrowthStandardsSubscapularSkinfoldForAgeData() => _singleton;
   WHOGrowthStandardsSubscapularSkinfoldForAgeData._(this._data);
 
   static final _singleton =
       WHOGrowthStandardsSubscapularSkinfoldForAgeData._(_parse());
 
-  static Map<Sex, _SubscapularSkinfoldAgeGender> _parse() =>
-      _ssanthro.toJsonObjectAsMap.map(
-        (k1, v1) => MapEntry(
-          k1 == '1' ? Sex.male : Sex.female,
-          _SubscapularSkinfoldAgeGender(
-            ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
-              v2 as Map<String, dynamic>;
-              final lms =
-                  LMS(l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
-              return MapEntry(
-                int.parse(k2),
-                _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS(
-                  lms: lms,
-                  percentileCutOff: lms.percentileCutOff,
-                  standardDeviationCutOff: lms.stDevCutOff,
-                ),
-              );
-            }),
-          ),
-        ),
-      );
+  static Map<Sex, Map<int, _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS>>
+      _parse() => _ssanthro.toJsonObjectAsMap.map(
+            (k1, v1) => MapEntry(
+                k1 == '1' ? Sex.male : Sex.female,
+                (v1 as Map<String, dynamic>).map((k2, v2) {
+                  v2 as Map<String, dynamic>;
+                  final lms = LMS(
+                      l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
+                  return MapEntry(
+                    int.parse(k2),
+                    _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS(
+                      lms: lms,
+                      percentileCutOff: lms.percentileCutOff,
+                      standardDeviationCutOff: lms.stDevCutOff,
+                    ),
+                  );
+                })),
+          );
 
-  final Map<Sex, _SubscapularSkinfoldAgeGender> _data;
-  Map<Sex, _SubscapularSkinfoldAgeGender> get data => _data;
+  final Map<Sex, Map<int, _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS>>
+      _data;
+  @override
+  Map<Sex, Map<int, _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS>>
+      get data => _data;
 
   @override
   String toString() => 'Subscapular Skinfold For Age Data($_data)';
@@ -69,14 +69,15 @@ sealed class WHOGrowthStandardsSubscapularSkinfoldForAge extends AgeBasedResult
       get _subscapularSkinfoldData =>
           WHOGrowthStandardsSubscapularSkinfoldForAgeData();
 
-  _SubscapularSkinfoldAgeGender get _maleData =>
+  Map<int, _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS> get _maleData =>
       _subscapularSkinfoldData._data[Sex.male]!;
-  _SubscapularSkinfoldAgeGender get _femaleData =>
+  Map<int, _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS> get _femaleData =>
       _subscapularSkinfoldData._data[Sex.female]!;
 
   _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS get _ageData =>
-      (sex == Sex.male ? _maleData : _femaleData)
-          .ageData[ageAtObservationDate.ageInTotalDaysByNow]!;
+      (sex == Sex.male
+          ? _maleData
+          : _femaleData)[ageAtObservationDate.ageInTotalDaysByNow]!;
 
   num get _zScore =>
       _ageData.lms.adjustedZScore(measurementResult.toCentimeter.value);
@@ -98,13 +99,6 @@ sealed class WHOGrowthStandardsSubscapularSkinfoldForAge extends AgeBasedResult
 
   @override
   _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS get ageData => _ageData;
-}
-
-class _SubscapularSkinfoldAgeGender {
-  _SubscapularSkinfoldAgeGender({required this.ageData});
-  final Map<int, _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS> ageData;
-  @override
-  String toString() => 'Gender Data($ageData)';
 }
 
 class _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS extends LMSBasedResult {

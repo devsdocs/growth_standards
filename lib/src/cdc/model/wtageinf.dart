@@ -1,34 +1,33 @@
 part of '../cdc.dart';
 
-class CDCInfantWeightForAgeData {
+class CDCInfantWeightForAgeData extends BaseData {
   factory CDCInfantWeightForAgeData() => _singleton;
   const CDCInfantWeightForAgeData._(this._data);
 
   static final _singleton = CDCInfantWeightForAgeData._(_parse());
 
-  static Map<Sex, _CDCInfantWeightForAgeGender> _parse() =>
+  static Map<Sex, Map<double, _CDCInfantWeightForAgeLMS>> _parse() =>
       cdcwtageinf.toJsonObjectAsMap.map(
         (k1, v1) => MapEntry(
           k1 == '1' ? Sex.male : Sex.female,
-          _CDCInfantWeightForAgeGender(
-            ageData: (v1 as Map<String, dynamic>).map((k2, v2) {
-              v2 as Map<String, dynamic>;
-              final lms =
-                  LMS(l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
-              return MapEntry(
-                double.parse(k2),
-                _CDCInfantWeightForAgeLMS(
-                  lms: lms,
-                  percentileCutOff: lms.percentileCutOff,
-                  standardDeviationCutOff: lms.stDevCutOff,
-                ),
-              );
-            }),
-          ),
+          (v1 as Map<String, dynamic>).map((k2, v2) {
+            v2 as Map<String, dynamic>;
+            final lms =
+                LMS(l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
+            return MapEntry(
+              double.parse(k2),
+              _CDCInfantWeightForAgeLMS(
+                lms: lms,
+                percentileCutOff: lms.percentileCutOff,
+                standardDeviationCutOff: lms.stDevCutOff,
+              ),
+            );
+          }),
         ),
       );
-  final Map<Sex, _CDCInfantWeightForAgeGender> _data;
-  Map<Sex, _CDCInfantWeightForAgeGender> get data => _data;
+  final Map<Sex, Map<double, _CDCInfantWeightForAgeLMS>> _data;
+  @override
+  Map<Sex, Map<double, _CDCInfantWeightForAgeLMS>> get data => _data;
 
   @override
   String toString() => 'Infant Weight For Age Data($_data)';
@@ -62,9 +61,9 @@ sealed class CDCInfantWeightForAge extends AgeBasedResult
   CDCInfantWeightForAgeData get _weightForAgeData =>
       CDCInfantWeightForAgeData();
 
-  _CDCInfantWeightForAgeGender get _maleData =>
+  Map<double, _CDCInfantWeightForAgeLMS> get _maleData =>
       _weightForAgeData._data[Sex.male]!;
-  _CDCInfantWeightForAgeGender get _femaleData =>
+  Map<double, _CDCInfantWeightForAgeLMS> get _femaleData =>
       _weightForAgeData._data[Sex.female]!;
 //TODO(devsdocs): Fix CDC age calculation
   _CDCInfantWeightForAgeLMS get _ageData {
@@ -74,7 +73,7 @@ sealed class CDCInfantWeightForAge extends AgeBasedResult
             ? 36
             : ageAtObservationDate.ageInTotalMonthsByNow + 0.5;
 
-    return (sex == Sex.male ? _maleData : _femaleData).ageData[finalAge]!;
+    return (sex == Sex.male ? _maleData : _femaleData)[finalAge]!;
   }
 
   num get _zScore => _ageData.lms.zScore(weight.toKilogram.value);
@@ -96,14 +95,6 @@ sealed class CDCInfantWeightForAge extends AgeBasedResult
 
   @override
   _CDCInfantWeightForAgeLMS get ageData => _ageData;
-}
-
-class _CDCInfantWeightForAgeGender {
-  _CDCInfantWeightForAgeGender({required this.ageData});
-
-  final Map<double, _CDCInfantWeightForAgeLMS> ageData;
-  @override
-  String toString() => 'Gender Data($ageData)';
 }
 
 class _CDCInfantWeightForAgeLMS extends LMSBasedResult {

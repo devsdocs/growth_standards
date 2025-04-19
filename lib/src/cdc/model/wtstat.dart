@@ -1,34 +1,33 @@
 part of '../cdc.dart';
 
-class CDCWeightForStatureData {
+class CDCWeightForStatureData extends BaseData {
   factory CDCWeightForStatureData() => _singleton;
   CDCWeightForStatureData._(this._data);
 
   static final _singleton = CDCWeightForStatureData._(_parse());
 
-  static Map<Sex, _CDCWeightForStatureGender> _parse() =>
+  static Map<Sex, Map<num, _CDCWeightForStatureLMS>> _parse() =>
       cdcwtstat.toJsonObjectAsMap.map(
         (k1, v1) => MapEntry(
           k1 == '1' ? Sex.male : Sex.female,
-          _CDCWeightForStatureGender(
-            lengthData: (v1 as Map<String, dynamic>).map((k2, v2) {
-              v2 as Map<String, dynamic>;
-              final lms =
-                  LMS(l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
-              return MapEntry(
-                num.parse(k2),
-                _CDCWeightForStatureLMS(
-                  lms: lms,
-                  percentileCutOff: lms.percentileCutOff,
-                  standardDeviationCutOff: lms.stDevCutOff,
-                ),
-              );
-            }),
-          ),
+          (v1 as Map<String, dynamic>).map((k2, v2) {
+            v2 as Map<String, dynamic>;
+            final lms =
+                LMS(l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
+            return MapEntry(
+              num.parse(k2),
+              _CDCWeightForStatureLMS(
+                lms: lms,
+                percentileCutOff: lms.percentileCutOff,
+                standardDeviationCutOff: lms.stDevCutOff,
+              ),
+            );
+          }),
         ),
       );
-  final Map<Sex, _CDCWeightForStatureGender> _data;
-  Map<Sex, _CDCWeightForStatureGender> get data => _data;
+  final Map<Sex, Map<num, _CDCWeightForStatureLMS>> _data;
+  @override
+  Map<Sex, Map<num, _CDCWeightForStatureLMS>> get data => _data;
 
   @override
   String toString() => 'Weight For Length Data($_data)';
@@ -74,13 +73,13 @@ sealed class CDCWeightForStature extends LengthBasedResult
 
   CDCWeightForStatureData get _weightForLengthData => CDCWeightForStatureData();
 
-  _CDCWeightForStatureGender get _maleData =>
+  Map<num, _CDCWeightForStatureLMS> get _maleData =>
       _weightForLengthData._data[Sex.male]!;
-  _CDCWeightForStatureGender get _femaleData =>
+  Map<num, _CDCWeightForStatureLMS> get _femaleData =>
       _weightForLengthData._data[Sex.female]!;
 //TODO(devsdocs): Fix CDC length calculation
   _CDCWeightForStatureLMS get _ageData =>
-      (sex == Sex.male ? _maleData : _femaleData).lengthData[
+      (sex == Sex.male ? _maleData : _femaleData)[
           _adjustedLength == 77 ? 77 : _adjustedLength.truncate() + 0.5]!;
 
   num get _zScore => _ageData.lms.zScore(weight.toKilogram.value);
@@ -99,14 +98,6 @@ sealed class CDCWeightForStature extends LengthBasedResult
 
   @override
   _CDCWeightForStatureLMS get lengthData => _ageData;
-}
-
-class _CDCWeightForStatureGender {
-  _CDCWeightForStatureGender({required this.lengthData});
-
-  final Map<num, _CDCWeightForStatureLMS> lengthData;
-  @override
-  String toString() => 'Gender Data($lengthData)';
 }
 
 class _CDCWeightForStatureLMS extends LMSBasedResult {
