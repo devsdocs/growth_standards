@@ -96,7 +96,7 @@ sealed class WHOGrowthStandardsTricepsSkinfoldForAge extends AgeBasedResult
 
   @override
   num get measurementResultInDefaultUnit =>
-      measurementResult.toCentimeter.value;
+      measurementResult.toMillimeter.value;
 }
 
 class _WHOGrowthStandardsTricepsSkinfoldForAgeLMS extends LMSBasedResult {
