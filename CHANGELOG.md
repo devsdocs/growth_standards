@@ -1,10 +1,10 @@
-## 1.6.1
+## 2.0.1
 
 - Exposing ageAtObservationDate field for age based measurement
 - Add various base class 
 - Use this version if your dependencies has supported `freezed` version 3
 
-## 1.6.0
+## 2.0.0
 
 - Exposing ageAtObservationDate field for age based measurement
 - Add various base class 
