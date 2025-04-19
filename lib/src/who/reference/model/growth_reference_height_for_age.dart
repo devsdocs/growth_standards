@@ -35,7 +35,7 @@ class WHOGrowthReferenceHeightForAgeData {
 }
 
 @freezed
-sealed class WHOGrowthReferenceHeightForAge
+sealed class WHOGrowthReferenceHeightForAge extends AgeBasedResult
     with _$WHOGrowthReferenceHeightForAge {
   @Assert(
     'age.ageInTotalMonthsByNow >= 61 && age.ageInTotalMonthsByNow <= 228',
@@ -76,18 +76,22 @@ sealed class WHOGrowthReferenceHeightForAge
 
   num get _zScore => _ageData.lms.zScore(lengthHeight.toCentimeter.value);
 
+  @override
   Age get ageAtObservationDate => checkObservationDate(age, observationDate);
 
+  @override
   num zScore([
     Precision precision = Precision.ten,
   ]) =>
       _zScore.precision(precision);
 
+  @override
   num percentile([
     Precision precision = Precision.ten,
   ]) =>
       (pnorm(_zScore) * 100).precision(precision);
 
+  @override
   _WHOGrowthReferenceHeightForAgeLMS get ageData => _ageData;
 }
 

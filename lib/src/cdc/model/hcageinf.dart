@@ -36,7 +36,7 @@ class CDCInfantHeadCircumferenceForAgeData {
 }
 
 @freezed
-sealed class CDCInfantHeadCircumferenceForAge
+sealed class CDCInfantHeadCircumferenceForAge extends AgeBasedResult
     with _$CDCInfantHeadCircumferenceForAge {
   @Assert(
     'age.ageInTotalDaysByNow >= 0 && age.ageInTotalMonthsByNow <= 36',
@@ -80,18 +80,22 @@ sealed class CDCInfantHeadCircumferenceForAge
 
   num get _zScore => _ageData.lms.zScore(measurementResult.toCentimeter.value);
 
+  @override
   Age get ageAtObservationDate => checkObservationDate(age, observationDate);
 
+  @override
   num zScore([
     Precision precision = Precision.ten,
   ]) =>
       _zScore.precision(precision);
 
+  @override
   num percentile([
     Precision precision = Precision.ten,
   ]) =>
       (pnorm(_zScore) * 100).precision(precision);
 
+  @override
   _CDCInfantHeadCircumferenceForAgeLMS get ageData => _ageData;
 }
 

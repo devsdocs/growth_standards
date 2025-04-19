@@ -37,7 +37,7 @@ class WHOGrowthStandardsSubscapularSkinfoldForAgeData {
 }
 
 @freezed
-sealed class WHOGrowthStandardsSubscapularSkinfoldForAge
+sealed class WHOGrowthStandardsSubscapularSkinfoldForAge extends AgeBasedResult
     with _$WHOGrowthStandardsSubscapularSkinfoldForAge {
   @Assert(
     'age.ageInTotalDaysByNow >= 91 && age.ageInTotalDaysByNow <= 1856',
@@ -81,18 +81,22 @@ sealed class WHOGrowthStandardsSubscapularSkinfoldForAge
   num get _zScore =>
       _ageData.lms.adjustedZScore(measurementResult.toCentimeter.value);
 
+  @override
   Age get ageAtObservationDate => checkObservationDate(age, observationDate);
 
+  @override
   num zScore([
     Precision precision = Precision.ten,
   ]) =>
       _zScore.precision(precision);
 
+  @override
   num percentile([
     Precision precision = Precision.ten,
   ]) =>
       (pnorm(_zScore) * 100).precision(precision);
 
+  @override
   _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS get ageData => _ageData;
 }
 

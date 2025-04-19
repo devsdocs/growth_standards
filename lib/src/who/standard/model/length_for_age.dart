@@ -37,7 +37,7 @@ class WHOGrowthStandardsLengthForAgeData {
 }
 
 @freezed
-sealed class WHOGrowthStandardsLengthForAge
+sealed class WHOGrowthStandardsLengthForAge extends AgeBasedResult
     with _$WHOGrowthStandardsLengthForAge {
   @Assert(
     'age.ageInTotalDaysByNow >= 0 && age.ageInTotalDaysByNow <= 1856',
@@ -81,18 +81,22 @@ sealed class WHOGrowthStandardsLengthForAge
 
   num get _zScore => _ageData.lms.zScore(_adjustedLength);
 
+  @override
   Age get ageAtObservationDate => checkObservationDate(age, observationDate);
 
+  @override
   num zScore([
     Precision precision = Precision.ten,
   ]) =>
       _zScore.precision(precision);
 
+  @override
   num percentile([
     Precision precision = Precision.ten,
   ]) =>
       (pnorm(_zScore) * 100).precision(precision);
 
+  @override
   _WHOGrowthStandardsLengthForAgeLMS get ageData => _ageData;
 }
 

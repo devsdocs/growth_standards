@@ -31,7 +31,7 @@ class FentonHeadCircumferenceForAgeData {
 }
 
 @freezed
-sealed class FentonHeadCircumferenceForAge
+sealed class FentonHeadCircumferenceForAge extends AgeBasedResult
     with _$FentonHeadCircumferenceForAge {
   @Assert(
     'age.ageInTotalWeeksByNow >= 22 && age.ageInTotalWeeksByNow <= 50',
@@ -67,18 +67,22 @@ sealed class FentonHeadCircumferenceForAge
 
   num get _zScore => _ageData.lms.zScore(measurementResult.toCentimeter.value);
 
+  @override
   Age get ageAtObservationDate => checkObservationDate(age, observationDate);
 
+  @override
   num zScore([
     Precision precision = Precision.ten,
   ]) =>
       _zScore.precision(precision);
 
+  @override
   num percentile([
     Precision precision = Precision.ten,
   ]) =>
       (pnorm(_zScore) * 100).precision(precision);
 
+  @override
   _FentonHeadCircumferenceForAgeLMS get ageData => _ageData;
 }
 

@@ -54,7 +54,8 @@ sealed class CDCBodyMassIndexMeasurement with _$CDCBodyMassIndexMeasurement {
 }
 
 @freezed
-sealed class CDCBodyMassIndexForAge with _$CDCBodyMassIndexForAge {
+sealed class CDCBodyMassIndexForAge extends AgeBasedResult
+    with _$CDCBodyMassIndexForAge {
   @Assert(
     'age.ageInTotalMonthsByNow >= 24 && age.ageInTotalMonthsByNow < 241',
     'Age must be in range of 24 - 240 months',
@@ -114,18 +115,22 @@ sealed class CDCBodyMassIndexForAge with _$CDCBodyMassIndexForAge {
               ))
       : (pnorm(_zScore) * 100);
 
+  @override
   Age get ageAtObservationDate => checkObservationDate(age, observationDate);
 
+  @override
   num zScore([
     Precision precision = Precision.ten,
   ]) =>
       _finalZScore.precision(precision);
 
+  @override
   num percentile([
     Precision precision = Precision.ten,
   ]) =>
       _finalPercentile.precision(precision);
 
+  @override
   _CDCBodyMassIndexForAgeLMS get ageData => _ageData;
 }
 

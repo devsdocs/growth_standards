@@ -34,7 +34,8 @@ class CDCInfantLengthForAgeData {
 }
 
 @freezed
-sealed class CDCInfantLengthForAge with _$CDCInfantLengthForAge {
+sealed class CDCInfantLengthForAge extends AgeBasedResult
+    with _$CDCInfantLengthForAge {
   @Assert(
     'age.ageInTotalDaysByNow >= 0 && age.ageInTotalMonthsByNow < 36',
     'Age must be in range of 0 - 35 months',
@@ -79,18 +80,22 @@ sealed class CDCInfantLengthForAge with _$CDCInfantLengthForAge {
 
   num get _zScore => _ageData.lms.zScore(_adjustedLength);
 
+  @override
   Age get ageAtObservationDate => checkObservationDate(age, observationDate);
 
+  @override
   num zScore([
     Precision precision = Precision.ten,
   ]) =>
       _zScore.precision(precision);
 
+  @override
   num percentile([
     Precision precision = Precision.ten,
   ]) =>
       (pnorm(_zScore) * 100).precision(precision);
 
+  @override
   _CDCInfantLengthForAgeLMS get ageData => _ageData;
 }
 

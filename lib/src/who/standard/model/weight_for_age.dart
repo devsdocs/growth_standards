@@ -35,7 +35,7 @@ class WHOGrowthStandardsWeightForAgeData {
 }
 
 @freezed
-sealed class WHOGrowthStandardsWeightForAge
+sealed class WHOGrowthStandardsWeightForAge extends AgeBasedResult
     with _$WHOGrowthStandardsWeightForAge {
   @Assert(
     'age.ageInTotalDaysByNow >= 0 && age.ageInTotalDaysByNow <= 1856',
@@ -72,18 +72,22 @@ sealed class WHOGrowthStandardsWeightForAge
 
   num get _zScore => _ageData.lms.adjustedZScore(weight.toKilogram.value);
 
+  @override
   Age get ageAtObservationDate => checkObservationDate(age, observationDate);
 
+  @override
   num zScore([
     Precision precision = Precision.ten,
   ]) =>
       oedemaExist ? double.nan : _zScore.precision(precision);
 
+  @override
   num percentile([
     Precision precision = Precision.ten,
   ]) =>
       oedemaExist ? double.nan : (pnorm(_zScore) * 100).precision(precision);
 
+  @override
   _WHOGrowthStandardsWeightForAgeLMS get ageData => _ageData;
 }
 

@@ -35,7 +35,8 @@ class CDCInfantWeightForLengthData {
 }
 
 @freezed
-sealed class CDCInfantWeightForLength with _$CDCInfantWeightForLength {
+sealed class CDCInfantWeightForLength extends LengthBasedResult
+    with _$CDCInfantWeightForLength {
   //TODO(devsdocs): Test this!
   @Assert(
     'adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.cdc,).value >= 45 && adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.cdc,).value < 104 && length.toCentimeter.value >= 45 && length.toCentimeter.value < 104',
@@ -85,16 +86,19 @@ sealed class CDCInfantWeightForLength with _$CDCInfantWeightForLength {
 
   num get _zScore => _ageData.lms.zScore(weight.toKilogram.value);
 
+  @override
   num zScore([
     Precision precision = Precision.ten,
   ]) =>
       _zScore.precision(precision);
 
+  @override
   num percentile([
     Precision precision = Precision.ten,
   ]) =>
       (pnorm(_zScore) * 100).precision(precision);
 
+  @override
   _CDCInfantWeightForLengthLMS get lengthData => _ageData;
 }
 

@@ -55,7 +55,7 @@ sealed class WHOGrowthReferenceBodyMassIndexMeasurement
 }
 
 @freezed
-sealed class WHOGrowthReferenceBodyMassIndexForAge
+sealed class WHOGrowthReferenceBodyMassIndexForAge extends AgeBasedResult
     with _$WHOGrowthReferenceBodyMassIndexForAge {
   @Assert(
     'age.ageInTotalMonthsByNow >= 61 && age.ageInTotalMonthsByNow <= 228',
@@ -99,18 +99,22 @@ sealed class WHOGrowthReferenceBodyMassIndexForAge
   num get _zScore =>
       _ageData.lms.adjustedZScore(bodyMassIndexMeasurement.value);
 
+  @override
   Age get ageAtObservationDate => checkObservationDate(age, observationDate);
 
+  @override
   num zScore([
     Precision precision = Precision.ten,
   ]) =>
       _zScore.precision(precision);
 
+  @override
   num percentile([
     Precision precision = Precision.ten,
   ]) =>
       (pnorm(_zScore) * 100).precision(precision);
 
+  @override
   _WHOGrowthReferenceBodyMassIndexForAgeLMS get ageData => _ageData;
 }
 

@@ -38,7 +38,7 @@ class WHOGrowthStandardsWeightForHeightData {
 }
 
 @freezed
-sealed class WHOGrowthStandardsWeightForHeight
+sealed class WHOGrowthStandardsWeightForHeight extends LengthBasedResult
     with _$WHOGrowthStandardsWeightForHeight {
   //TODO(devsdocs): Test this!
   @Assert(
@@ -92,11 +92,13 @@ sealed class WHOGrowthStandardsWeightForHeight
 
   num get _zScore => _ageData.lms.adjustedZScore(weight.toKilogram.value);
 
+  @override
   num zScore([
     Precision precision = Precision.ten,
   ]) =>
       oedemaExist ? double.nan : _zScore.precision(precision);
 
+  @override
   num percentile([
     Precision precision = Precision.ten,
   ]) =>

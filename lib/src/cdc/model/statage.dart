@@ -35,7 +35,7 @@ class CDCStatureForAgeData {
 }
 
 @freezed
-sealed class CDCStatureForAge with _$CDCStatureForAge {
+sealed class CDCStatureForAge extends AgeBasedResult with _$CDCStatureForAge {
   @Assert(
     'age.ageInTotalMonthsByNow >= 24 && age.ageInTotalMonthsByNow <= 240',
     'Age must be in range of 24 - 240 months',
@@ -85,18 +85,22 @@ sealed class CDCStatureForAge with _$CDCStatureForAge {
 
   num get _zScore => _ageData.lms.zScore(_adjustedLength);
 
+  @override
   Age get ageAtObservationDate => checkObservationDate(age, observationDate);
 
+  @override
   num zScore([
     Precision precision = Precision.ten,
   ]) =>
       _zScore.precision(precision);
 
+  @override
   num percentile([
     Precision precision = Precision.ten,
   ]) =>
       (pnorm(_zScore) * 100).precision(precision);
 
+  @override
   _CDCStatureForAgeLMS get ageData => _ageData;
 }
 

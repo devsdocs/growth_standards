@@ -38,7 +38,7 @@ class WHOGrowthStandardsArmCircumferenceForAgeData {
 }
 
 @freezed
-sealed class WHOGrowthStandardsArmCircumferenceForAge
+sealed class WHOGrowthStandardsArmCircumferenceForAge extends AgeBasedResult
     with _$WHOGrowthStandardsArmCircumferenceForAge {
   @Assert(
     'age.ageInTotalDaysByNow >= 91 && age.ageInTotalDaysByNow <= 1856',
@@ -80,18 +80,22 @@ sealed class WHOGrowthStandardsArmCircumferenceForAge
 
   num get _zScore => _ageData.lms.adjustedZScore(measurementResult.value);
 
+  @override
   Age get ageAtObservationDate => checkObservationDate(age, observationDate);
 
+  @override
   num zScore([
     Precision precision = Precision.ten,
   ]) =>
       _zScore.precision(precision);
 
+  @override
   num percentile([
     Precision precision = Precision.ten,
   ]) =>
       (pnorm(_zScore) * 100).precision(precision);
 
+  @override
   _WHOGrowthStandardsArmCircumferenceForAgeLMS get ageData => _ageData;
 }
 

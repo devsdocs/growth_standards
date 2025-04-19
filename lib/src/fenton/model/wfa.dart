@@ -28,7 +28,8 @@ class FentonWeightForAgeData {
 }
 
 @freezed
-sealed class FentonWeightForAge with _$FentonWeightForAge {
+sealed class FentonWeightForAge extends AgeBasedResult
+    with _$FentonWeightForAge {
   @Assert(
     'age.ageInTotalWeeksByNow >= 22 && age.ageInTotalWeeksByNow <= 50',
     'Age must be in range of 22 - 50 weeks',
@@ -62,18 +63,22 @@ sealed class FentonWeightForAge with _$FentonWeightForAge {
 
   num get _zScore => _ageData.lms.zScore(weight.toKilogram.value);
 
+  @override
   Age get ageAtObservationDate => checkObservationDate(age, observationDate);
 
+  @override
   num zScore([
     Precision precision = Precision.ten,
   ]) =>
       _zScore.precision(precision);
 
+  @override
   num percentile([
     Precision precision = Precision.ten,
   ]) =>
       (pnorm(_zScore) * 100).precision(precision);
 
+  @override
   _FentonWeightForAgeLMS get ageData => _ageData;
 }
 

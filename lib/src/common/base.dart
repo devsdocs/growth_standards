@@ -9,15 +9,30 @@ abstract class VelocityBasedResult {
       zScorePercentileMap([Precision precision = Precision.ten]);
 }
 
-abstract class AgeBasedResult {
-  const AgeBasedResult();
-  Age get ageAtObservationDate;
+abstract class Result {
+  const Result();
+
   num zScore([
     Precision precision = Precision.ten,
   ]);
   num percentile([
     Precision precision = Precision.ten,
   ]);
+}
+
+abstract class AgeBasedResult extends Result {
+  const AgeBasedResult();
+  Age get ageAtObservationDate;
+
+  LMSBasedResult get ageData;
+}
+
+abstract class LengthBasedResult extends Result {
+  const LengthBasedResult();
+
+  Length get lengthAtObservationDate;
+
+  LMSBasedResult get lengthData;
 }
 
 abstract class LMSBasedResult {
