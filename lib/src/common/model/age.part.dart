@@ -1,4 +1,4 @@
-import 'package:clock/clock.dart';
+part of 'age.dart';
 
 class TimeIntervalCount {
   TimeIntervalCount(
@@ -833,5 +833,224 @@ extension DateTimeSmartCopyWith on DateTime {
         ].reversed,
       ],
     ) as DateTime;
+  }
+}
+
+extension TimeDifferenceExtension on TimeDifferenceInYearMonthsWeeksDays {
+  /// Convert to total days
+  int get totalDays {
+    return (years * 365) + (months * 30) + (weeks * 7) + days;
+  }
+
+  /// Convert to total weeks (approximately)
+  double get totalWeeks {
+    return (years * 52) + (months * 4.33) + weeks + (days / 7);
+  }
+
+  /// Convert to total months (approximately)
+  double get totalMonths {
+    return (years * 12) + months + (weeks / 4.33) + (days / 30);
+  }
+
+  /// Add another time difference
+  TimeDifferenceInYearMonthsWeeksDays add(
+      TimeDifferenceInYearMonthsWeeksDays other) {
+    // This is a simplistic implementation that doesn't handle overflow
+    // A more complex implementation would normalize the results
+    return TimeDifferenceInYearMonthsWeeksDays._(
+      years + other.years,
+      months + other.months,
+      weeks + other.weeks,
+      days + other.days,
+    );
+  }
+
+  /// Format to a human-readable string showing only relevant units
+  String toShortString() {
+    final parts = <String>[];
+
+    if (years > 0) parts.add('${years}y');
+    if (months > 0) parts.add('${months}m');
+    if (weeks > 0) parts.add('${weeks}w');
+    if (days > 0) parts.add('${days}d');
+
+    return parts.isEmpty ? '0d' : parts.join(' ');
+  }
+}
+
+/// Utility class for handling date ranges
+class DateRange {
+  DateRange(this.start, this.end) {
+    if (end.isBefore(start)) {
+      throw ArgumentError('End date must be after start date');
+    }
+  }
+
+  /// Create a range for a specific month
+  factory DateRange.forMonth(int year, int month) {
+    final firstDay = Date(year: year, month: _monthFromNumber(month), date: 1);
+
+    final nextMonth = month == 12 ? 1 : month + 1;
+    final nextMonthYear = month == 12 ? year + 1 : year;
+    final nextMonthFirstDay =
+        Date(year: nextMonthYear, month: _monthFromNumber(nextMonth), date: 1);
+
+    return DateRange(firstDay, nextMonthFirstDay.subtractDays(1));
+  }
+  final Date start;
+  final Date end;
+
+  /// Check if a date is within this range (inclusive)
+  bool includes(Date date) {
+    return date.isSameOrAfter(start) && date.isSameOrBefore(end);
+  }
+
+  /// Get the number of days in this range
+  int get daysCount {
+    return DateTimeUtils.getDaysDifference(
+            end.toDateTime(), start.toDateTime()) +
+        1;
+  }
+
+  /// Generate all dates in this range
+  List<Date> getAllDates() {
+    final List<Date> dates = [];
+    var currentDate = start;
+
+    while (currentDate.isSameOrBefore(end)) {
+      dates.add(currentDate);
+      currentDate = currentDate.addDays(1);
+    }
+
+    return dates;
+  }
+}
+
+/// Additional date utilities
+class ExtendedDateUtils {
+  ExtendedDateUtils._();
+
+  /// Parse a date string to Date object
+  /// Supports formats: yyyy-MM-dd, dd/MM/yyyy, MM/dd/yyyy
+  static Date? tryParse(String dateString) {
+    // Try ISO format yyyy-MM-dd
+    final isoRegex = RegExp(r'^(\d{4})-(\d{1,2})-(\d{1,2})$');
+    var match = isoRegex.firstMatch(dateString);
+    if (match != null) {
+      final year = int.parse(match.group(1)!);
+      final month = int.parse(match.group(2)!);
+      final day = int.parse(match.group(3)!);
+
+      try {
+        return Date.fromDateTime(DateTime(year, month, day));
+      } catch (e) {
+        return null;
+      }
+    }
+
+    // Try dd/MM/yyyy format
+    final dmyRegex = RegExp(r'^(\d{1,2})/(\d{1,2})/(\d{4})$');
+    match = dmyRegex.firstMatch(dateString);
+    if (match != null) {
+      final day = int.parse(match.group(1)!);
+      final month = int.parse(match.group(2)!);
+      final year = int.parse(match.group(3)!);
+
+      try {
+        return Date.fromDateTime(DateTime(year, month, day));
+      } catch (e) {
+        return null;
+      }
+    }
+
+    // Try MM/dd/yyyy format
+    final mdyRegex = RegExp(r'^(\d{1,2})/(\d{1,2})/(\d{4})$');
+    match = mdyRegex.firstMatch(dateString);
+    if (match != null) {
+      final month = int.parse(match.group(1)!);
+      final day = int.parse(match.group(2)!);
+      final year = int.parse(match.group(3)!);
+
+      try {
+        return Date.fromDateTime(DateTime(year, month, day));
+      } catch (e) {
+        return null;
+      }
+    }
+
+    return null;
+  }
+
+  /// Calculate a person's age at a specific future date
+  static Age calculateAgeAt(Date birthDate, Date futureDate) {
+    if (futureDate.isBefore(birthDate)) {
+      throw ArgumentError('Future date must be after birth date');
+    }
+
+    final now = Date.today();
+    if (futureDate.isAfter(now)) {
+      // Calculate the difference between now and future date
+      final daysDifference = DateTimeUtils.getDaysDifference(
+          futureDate.toDateTime(), now.toDateTime());
+
+      // Create an Age object using birth date
+      final currentAge = Age(birthDate);
+
+      // Add the difference to this person's current age
+      return Age(currentAge.dateOfBirth.subtractDays(daysDifference));
+    } else {
+      // For past or current dates, just calculate normally
+      return Age(birthDate);
+    }
+  }
+
+  /// Get a list of holidays for a given year (example implementation)
+  static List<Date> getCommonHolidays(int year) {
+    // This is just an example - you'd implement specific logic for your needs
+    final holidays = <Date>[];
+
+    // New Year's Day
+    holidays.add(Date.fromDateTime(DateTime(year)));
+
+    // Christmas
+    holidays.add(Date.fromDateTime(DateTime(year, 12, 25)));
+
+    // Add more holidays as needed
+
+    return holidays;
+  }
+
+  /// Check if two date ranges overlap
+  static bool doRangesOverlap(DateRange range1, DateRange range2) {
+    return range1.start.isBefore(range2.end) &&
+        range2.start.isBefore(range1.end);
+  }
+}
+
+/// Extension to add age comparison functionality
+extension AgeComparisonExtension on Age {
+  /// Check if this age is older than another age
+  bool isOlderThan(Age other) {
+    return dateOfBirth.isBefore(other.dateOfBirth);
+  }
+
+  /// Check if this age is younger than another age
+  bool isYoungerThan(Age other) {
+    return dateOfBirth.isAfter(other.dateOfBirth);
+  }
+
+  /// Calculate the age difference between two people
+  TimeDifferenceInYearMonthsWeeksDays differenceFrom(Age other) {
+    final olderBirthDate = dateOfBirth.isBefore(other.dateOfBirth)
+        ? dateOfBirth
+        : other.dateOfBirth;
+    final youngerBirthDate = dateOfBirth.isAfter(other.dateOfBirth)
+        ? dateOfBirth
+        : other.dateOfBirth;
+
+    return DateTimeUtils.timeDifference(
+      fromDate: olderBirthDate.toDateTime(),
+      toDate: youngerBirthDate.toDateTime(),
+    );
   }
 }

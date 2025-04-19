@@ -1,9 +1,10 @@
+import 'package:clock/clock.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:growth_standards/src/common/model/age.part.dart';
 import 'package:growth_standards/src/common/types.dart';
 
 part 'age.freezed.dart';
 part 'age.g.dart';
+part 'age.part.dart';
 
 Months _monthFromNumber(int number) => _reverseMonthsEnum[number]!;
 
@@ -246,5 +247,93 @@ sealed class Date with _$Date implements Comparable<Date> {
   int compareTo(Date other) {
     if (this == other) return 0;
     return this > other ? 1 : -1;
+  }
+}
+
+extension AgeRangeExtension on Age {
+  /// Checks if the age falls within a specified range
+  bool isInRange({int? minMonths, int? maxMonths}) {
+    final ageInMonths = ageInTotalMonthsByNow;
+    if (minMonths != null && ageInMonths < minMonths) return false;
+    if (maxMonths != null && ageInMonths > maxMonths) return false;
+    return true;
+  }
+
+  /// Returns a string representation of the age in the most appropriate unit
+  String toHumanReadableString() {
+    final years = ageInTotalYearsByNow;
+    final months = ageInTotalMonthsByNow % 12;
+    final weeks = ageInTotalWeeksByNow % 4;
+    final days = ageInTotalDaysByNow % 7;
+
+    if (years > 0) {
+      if (months > 0) {
+        return '$years year${years == 1 ? '' : 's'}, $months month${months == 1 ? '' : 's'}';
+      }
+      return '$years year${years == 1 ? '' : 's'}';
+    } else if (months > 0) {
+      if (weeks > 0) {
+        return '$months month${months == 1 ? '' : 's'}, $weeks week${weeks == 1 ? '' : 's'}';
+      }
+      return '$months month${months == 1 ? '' : 's'}';
+    } else if (weeks > 0) {
+      if (days > 0) {
+        return '$weeks week${weeks == 1 ? '' : 's'}, $days day${days == 1 ? '' : 's'}';
+      }
+      return '$weeks week${weeks == 1 ? '' : 's'}';
+    } else {
+      return '$days day${days == 1 ? '' : 's'}';
+    }
+  }
+}
+
+extension DateFormatExtension on Date {
+  /// Returns a formatted string representation of the date
+  /// Format: 'yyyy-MM-dd' by default
+  String format([String format = 'yyyy-MM-dd']) {
+    final Map<String, String> formatParams = {
+      'yyyy': year.toString(),
+      'MM': month.number.toString().padLeft(2, '0'),
+      'M': month.number.toString(),
+      'dd': date.toString().padLeft(2, '0'),
+      'd': date.toString(),
+      'MMM': month.text,
+    };
+
+    String result = format;
+    formatParams.forEach((key, value) {
+      result = result.replaceAll(key, value);
+    });
+
+    return result;
+  }
+
+  /// Check if this date is a weekend
+  bool get isWeekend {
+    final weekday = toDateTime().weekday;
+    return weekday == DateTime.saturday || weekday == DateTime.sunday;
+  }
+
+  /// Calculate the quarter of the year (1-4)
+  int get quarter => ((month.number - 1) / 3).floor() + 1;
+
+  /// Return the first day of the quarter
+  Date firstDayOfQuarter() {
+    final quarterMonth = (quarter - 1) * 3 + 1;
+    return Date(year: year, month: _monthFromNumber(quarterMonth), date: 1);
+  }
+
+  /// Return the last day of the quarter
+  Date lastDayOfQuarter() {
+    final nextQuarter = quarter % 4 + 1;
+    final nextQuarterYear = quarter == 4 ? year + 1 : year;
+    final nextQuarterFirstMonth = (nextQuarter - 1) * 3 + 1;
+
+    final nextQuarterFirstDay = Date(
+        year: nextQuarterYear,
+        month: _monthFromNumber(nextQuarterFirstMonth),
+        date: 1);
+
+    return nextQuarterFirstDay.subtractDays(1);
   }
 }

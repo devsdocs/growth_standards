@@ -3,7 +3,6 @@ import 'dart:collection';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:growth_standards/src/common/extension.dart';
 import 'package:growth_standards/src/common/model/age.dart';
-import 'package:growth_standards/src/common/model/age.part.dart';
 import 'package:growth_standards/src/common/types.dart';
 import 'package:growth_standards/src/who/standard/standard.dart';
 import 'package:growth_standards/src/who/typedef.dart';
