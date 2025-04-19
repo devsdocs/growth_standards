@@ -47,7 +47,7 @@ class WHOGrowthStandardsLengthVelocityForAgeData {
 }
 
 @freezed
-sealed class WHOGrowthStandardsLengthVelocityForAge
+sealed class WHOGrowthStandardsLengthVelocityForAge extends VelocityBasedResult
     with _$WHOGrowthStandardsLengthVelocityForAge {
   @Assert(
     'age.ageInTotalDaysByNow >= 0 && age.ageInTotalMonthsByNow <= 24',
@@ -115,6 +115,7 @@ sealed class WHOGrowthStandardsLengthVelocityForAge
             const Length$Centimeter(),
           ).incrementalData;
 
+  @override
   Map<VelocityIncrement, Map<VelocityMonths, ZScorePercentile>>
       zScorePercentileMap([Precision precision = Precision.ten]) {
     final joinMap = _incrementData.map((k1, v1) {

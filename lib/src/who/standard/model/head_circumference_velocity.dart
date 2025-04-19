@@ -49,6 +49,7 @@ class WHOGrowthStandardsHeadCircumferenceVelocityForAgeData {
 
 @freezed
 sealed class WHOGrowthStandardsHeadCircumferenceVelocityForAge
+    extends VelocityBasedResult
     with _$WHOGrowthStandardsHeadCircumferenceVelocityForAge {
   @Assert(
     'age.ageInTotalDaysByNow >= 0 && age.ageInTotalMonthsByNow <= 24',
@@ -106,6 +107,7 @@ sealed class WHOGrowthStandardsHeadCircumferenceVelocityForAge
           VelocityPastMeasurement(pastMeasurement, const Length$Centimeter())
               .incrementalData;
 
+  @override
   Map<VelocityIncrement, Map<VelocityMonths, ZScorePercentile>>
       zScorePercentileMap([Precision precision = Precision.ten]) {
     final joinMap = _incrementData.map((k1, v1) {
