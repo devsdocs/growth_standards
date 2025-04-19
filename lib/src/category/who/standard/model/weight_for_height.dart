@@ -82,9 +82,13 @@ sealed class WHOGrowthStandardsWeightForHeight extends LengthBasedResult
   Map<num, _WHOGrowthStandardsWeightForHeightLMS> get _femaleData =>
       _weightForHeightData._data[Sex.female]!;
 
-  _WHOGrowthStandardsWeightForHeightLMS get _ageData => (sex == Sex.male
-      ? _maleData
-      : _femaleData)[_adjustedHeight.toDouble().toPrecision(1)]!;
+  _WHOGrowthStandardsWeightForHeightLMS get _ageData =>
+      (sex == Sex.male ? _maleData : _femaleData)[_length]!;
+
+  @override
+  Length get lengthAtObservationDate => Length$Centimeter(_length);
+
+  num get _length => _adjustedHeight.toDouble().toPrecision(1);
 
   num get _zScore =>
       _ageData.lms.adjustedZScore(measurementResultInDefaultUnit);

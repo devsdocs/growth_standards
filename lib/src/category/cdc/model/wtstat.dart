@@ -77,8 +77,13 @@ sealed class CDCWeightForStature extends LengthBasedResult
       _weightForLengthData._data[Sex.female]!;
 //TODO(devsdocs): Fix CDC length calculation
   _CDCWeightForStatureLMS get _ageData =>
-      (sex == Sex.male ? _maleData : _femaleData)[
-          _adjustedLength == 77 ? 77 : _adjustedLength.truncate() + 0.5]!;
+      (sex == Sex.male ? _maleData : _femaleData)[_length]!;
+
+  @override
+  Length get lengthAtObservationDate => Length$Centimeter(_length);
+
+  num get _length =>
+      _adjustedLength == 77 ? 77 : _adjustedLength.truncate() + 0.5;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 

@@ -30,6 +30,7 @@ abstract class AgeBasedResult extends Result {
 
 abstract class LengthBasedResult extends Result {
   const LengthBasedResult();
+  Length get lengthAtObservationDate;
 
   LMSBasedResult get lengthData;
 }
