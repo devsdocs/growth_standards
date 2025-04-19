@@ -18,8 +18,6 @@ class CDCInfantWeightForLengthData extends BaseData {
               num.parse(k2),
               _CDCInfantWeightForLengthLMS(
                 lms: lms,
-                percentileCutOff: lms.percentileCutOff,
-                standardDeviationCutOff: lms.stDevCutOff,
               ),
             );
           }),
@@ -104,19 +102,10 @@ sealed class CDCInfantWeightForLength extends LengthBasedResult
 class _CDCInfantWeightForLengthLMS extends LMSBasedResult {
   _CDCInfantWeightForLengthLMS({
     required this.lms,
-    required this.standardDeviationCutOff,
-    required this.percentileCutOff,
   });
   @override
   final LMS lms;
 
   @override
-  final ZScoreCutOff standardDeviationCutOff;
-
-  @override
-  final PercentileCutOff percentileCutOff;
-
-  @override
-  String toString() =>
-      'Length Data(LMS: $lms, Standard Deviation CutOff: $standardDeviationCutOff, Percentile CutOff: $percentileCutOff)';
+  String toString() => 'Weight For Length LMS($lms)';
 }

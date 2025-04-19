@@ -18,8 +18,6 @@ class WHOGrowthStandardsWeightForLengthData extends BaseData {
                 num.parse(k2),
                 _WHOGrowthStandardsWeightForLengthLMS(
                   lms: lms,
-                  percentileCutOff: lms.percentileCutOff,
-                  standardDeviationCutOff: lms.stDevCutOff,
                   lengthOrHeight: v2['lorh'].toString().toLowerCase() == 'l'
                       ? LengthHeightMeasurementPosition.recumbent
                       : LengthHeightMeasurementPosition.standing,
@@ -110,8 +108,6 @@ class _WHOGrowthStandardsWeightForLengthLMS extends LMSBasedResult {
   _WHOGrowthStandardsWeightForLengthLMS({
     required this.lms,
     required this.lengthOrHeight,
-    required this.standardDeviationCutOff,
-    required this.percentileCutOff,
   });
   @override
   final LMS lms;
@@ -119,12 +115,5 @@ class _WHOGrowthStandardsWeightForLengthLMS extends LMSBasedResult {
   final LengthHeightMeasurementPosition lengthOrHeight;
 
   @override
-  final ZScoreCutOff standardDeviationCutOff;
-
-  @override
-  final PercentileCutOff percentileCutOff;
-
-  @override
-  String toString() =>
-      'Length Data(LMS: $lms, Length/Height Measurement Position: $lengthOrHeight, Standard Deviation CutOff: $standardDeviationCutOff, Percentile CutOff: $percentileCutOff)';
+  String toString() => 'Weight For Length LMS($lms)';
 }

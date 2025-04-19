@@ -15,8 +15,6 @@ class FentonWeightForAgeData extends SexAgnosticData {
           int.parse(k1),
           _FentonWeightForAgeLMS(
             lms: lms,
-            percentileCutOff: lms.percentileCutOff,
-            standardDeviationCutOff: lms.stDevCutOff,
           ),
         );
       });
@@ -86,19 +84,10 @@ sealed class FentonWeightForAge extends AgeBasedResult
 class _FentonWeightForAgeLMS extends LMSBasedResult {
   _FentonWeightForAgeLMS({
     required this.lms,
-    required this.percentileCutOff,
-    required this.standardDeviationCutOff,
   });
   @override
   final LMS lms;
 
   @override
-  final ZScoreCutOff standardDeviationCutOff;
-
-  @override
-  final PercentileCutOff percentileCutOff;
-
-  @override
-  String toString() =>
-      'Age Data(LMS: $lms, Standard Deviation CutOff: $standardDeviationCutOff, Percentile CutOff: $percentileCutOff)';
+  String toString() => 'Fenton Weight For Age LMS($lms)';
 }

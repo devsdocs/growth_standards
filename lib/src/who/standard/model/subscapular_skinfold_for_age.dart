@@ -19,8 +19,6 @@ class WHOGrowthStandardsSubscapularSkinfoldForAgeData extends BaseData {
                     int.parse(k2),
                     _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS(
                       lms: lms,
-                      percentileCutOff: lms.percentileCutOff,
-                      standardDeviationCutOff: lms.stDevCutOff,
                     ),
                   );
                 })),
@@ -104,19 +102,10 @@ sealed class WHOGrowthStandardsSubscapularSkinfoldForAge extends AgeBasedResult
 class _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS extends LMSBasedResult {
   _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS({
     required this.lms,
-    required this.percentileCutOff,
-    required this.standardDeviationCutOff,
   });
   @override
   final LMS lms;
 
   @override
-  final ZScoreCutOff standardDeviationCutOff;
-
-  @override
-  final PercentileCutOff percentileCutOff;
-
-  @override
-  String toString() =>
-      'Age Data(LMS: $lms, Standard Deviation CutOff: $standardDeviationCutOff, Percentile CutOff: $percentileCutOff)';
+  String toString() => 'Subscapular Skinfold For Age LMS($lms)';
 }

@@ -1,6 +1,5 @@
 import 'package:growth_standards/growth_standards.dart';
 import 'package:growth_standards/src/common/model/lms.dart';
-import 'package:growth_standards/src/common/typedef.dart';
 import 'package:growth_standards/src/who/typedef.dart';
 
 abstract class VelocityBasedResult {
@@ -36,8 +35,6 @@ abstract class LengthBasedResult extends Result {
 abstract class LMSBasedResult {
   const LMSBasedResult();
   LMS get lms;
-  ZScoreCutOff get standardDeviationCutOff;
-  PercentileCutOff get percentileCutOff;
 }
 
 abstract class BaseData {

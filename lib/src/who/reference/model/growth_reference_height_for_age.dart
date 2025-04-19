@@ -18,8 +18,6 @@ class WHOGrowthReferenceHeightForAgeData extends BaseData {
               int.parse(k2),
               _WHOGrowthReferenceHeightForAgeLMS(
                 lms: lms,
-                percentileCutOff: lms.percentileCutOff,
-                standardDeviationCutOff: lms.stDevCutOff,
               ),
             );
           }),
@@ -97,19 +95,10 @@ sealed class WHOGrowthReferenceHeightForAge extends AgeBasedResult
 class _WHOGrowthReferenceHeightForAgeLMS extends LMSBasedResult {
   _WHOGrowthReferenceHeightForAgeLMS({
     required this.lms,
-    required this.percentileCutOff,
-    required this.standardDeviationCutOff,
   });
   @override
   final LMS lms;
 
   @override
-  final ZScoreCutOff standardDeviationCutOff;
-
-  @override
-  final PercentileCutOff percentileCutOff;
-
-  @override
-  String toString() =>
-      'Age Data(LMS: $lms, Standard Deviation CutOff: $standardDeviationCutOff, Percentile CutOff: $percentileCutOff)';
+  String toString() => 'Height For Age LMS($lms)';
 }

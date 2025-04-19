@@ -19,21 +19,21 @@ class WHOGrowthStandardsWeightVelocityForAgeData extends VelocityBaseData {
                   parseIncrement(k2),
                   (v2 as Map<String, dynamic>).map((k3, v3) {
                     v3 as Map<String, dynamic>;
+                    final delta = v3['delta'] as num;
                     final lms = LMS(
                       l: v3['l'] as num,
                       m: v3['m'] as num,
                       s: v3['s'] as num,
+                      percentileOverride: (percentile) =>
+                          percentile.map((k, v) => MapEntry(k, v - delta)),
+                      zScoreOverride: (zScore) =>
+                          zScore.map((k, v) => MapEntry(k, v - delta)),
                     );
-                    final delta = v3['delta'] as num;
                     return MapEntry(
                       parseVelocityIncrement(k3),
                       WHOGrowthStandardsWeightVelocityForAgeLMS(
                         lms: lms,
                         delta: delta,
-                        percentileCutOff: lms.percentileCutOff
-                            .map((k, v) => MapEntry(k, v - delta)),
-                        standardDeviationCutOff: lms.stDevCutOff
-                            .map((k, v) => MapEntry(k, v - delta)),
                       ),
                     );
                   }),
@@ -183,21 +183,9 @@ class WHOGrowthStandardsWeightVelocityForAgeLMS extends LMSBasedResult {
   WHOGrowthStandardsWeightVelocityForAgeLMS({
     required this.lms,
     required this.delta,
-    required this.percentileCutOff,
-    required this.standardDeviationCutOff,
   });
   @override
   final LMS lms;
 
   final num delta;
-
-  @override
-  final ZScoreCutOff standardDeviationCutOff;
-
-  @override
-  final PercentileCutOff percentileCutOff;
-
-  @override
-  String toString() =>
-      'Age Data(LMS: $lms, Delta: $delta, Standard Deviation CutOff: $standardDeviationCutOff, Percentile CutOff: $percentileCutOff)';
 }

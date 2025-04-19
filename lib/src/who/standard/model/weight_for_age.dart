@@ -18,8 +18,6 @@ class WHOGrowthStandardsWeightForAgeData extends BaseData {
                 int.parse(k2),
                 _WHOGrowthStandardsWeightForAgeLMS(
                   lms: lms,
-                  percentileCutOff: lms.percentileCutOff,
-                  standardDeviationCutOff: lms.stDevCutOff,
                 ),
               );
             })),
@@ -92,19 +90,10 @@ sealed class WHOGrowthStandardsWeightForAge extends AgeBasedResult
 class _WHOGrowthStandardsWeightForAgeLMS extends LMSBasedResult {
   _WHOGrowthStandardsWeightForAgeLMS({
     required this.lms,
-    required this.percentileCutOff,
-    required this.standardDeviationCutOff,
   });
   @override
   final LMS lms;
 
   @override
-  final ZScoreCutOff standardDeviationCutOff;
-
-  @override
-  final PercentileCutOff percentileCutOff;
-
-  @override
-  String toString() =>
-      'Age Data(LMS: $lms, Standard Deviation CutOff: $standardDeviationCutOff, Percentile CutOff: $percentileCutOff)';
+  String toString() => 'Weight For Age LMS($lms)';
 }

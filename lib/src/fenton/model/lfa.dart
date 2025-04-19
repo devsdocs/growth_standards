@@ -14,8 +14,6 @@ class FentonLengthForAgeData extends SexAgnosticData {
           int.parse(k1),
           _FentonLengthForAgeLMS(
             lms: lms,
-            percentileCutOff: lms.percentileCutOff,
-            standardDeviationCutOff: lms.stDevCutOff,
           ),
         );
       });
@@ -84,19 +82,10 @@ sealed class FentonLengthForAge extends AgeBasedResult
 class _FentonLengthForAgeLMS extends LMSBasedResult {
   _FentonLengthForAgeLMS({
     required this.lms,
-    required this.percentileCutOff,
-    required this.standardDeviationCutOff,
   });
   @override
   final LMS lms;
 
   @override
-  final ZScoreCutOff standardDeviationCutOff;
-
-  @override
-  final PercentileCutOff percentileCutOff;
-
-  @override
-  String toString() =>
-      'Age Data(LMS: $lms, Standard Deviation CutOff: $standardDeviationCutOff, Percentile CutOff: $percentileCutOff)';
+  String toString() => 'Fenton Length For Age LMS($lms)';
 }

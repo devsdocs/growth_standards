@@ -6,7 +6,6 @@ import 'package:growth_standards/src/common/model/age.dart';
 import 'package:growth_standards/src/common/model/bmi.dart';
 import 'package:growth_standards/src/common/model/lms.dart';
 import 'package:growth_standards/src/common/tools.dart';
-import 'package:growth_standards/src/common/typedef.dart';
 import 'package:growth_standards/src/common/types.dart';
 import 'package:super_measurement/super_measurement.dart';
 

@@ -19,8 +19,6 @@ class WHOGrowthStandardsArmCircumferenceForAgeData extends BaseData {
                   int.parse(k2),
                   _WHOGrowthStandardsArmCircumferenceForAgeLMS(
                     lms: lms,
-                    percentileCutOff: lms.percentileCutOff,
-                    standardDeviationCutOff: lms.stDevCutOff,
                   ),
                 );
               }),
@@ -102,19 +100,10 @@ sealed class WHOGrowthStandardsArmCircumferenceForAge extends AgeBasedResult
 class _WHOGrowthStandardsArmCircumferenceForAgeLMS extends LMSBasedResult {
   _WHOGrowthStandardsArmCircumferenceForAgeLMS({
     required this.lms,
-    required this.standardDeviationCutOff,
-    required this.percentileCutOff,
   });
   @override
   final LMS lms;
 
   @override
-  final ZScoreCutOff standardDeviationCutOff;
-
-  @override
-  final PercentileCutOff percentileCutOff;
-
-  @override
-  String toString() =>
-      'Age Data(LMS: $lms, Standard Deviation CutOff: $standardDeviationCutOff, Percentile CutOff: $percentileCutOff)';
+  String toString() => 'Arm Circumference For Age LMS($lms)';
 }

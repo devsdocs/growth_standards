@@ -28,8 +28,6 @@ class WHOGrowthStandardsLengthVelocityForAgeData extends VelocityBaseData {
                           parseVelocityIncrement(k3),
                           WHOGrowthStandardsLengthVelocityForAgeLMS(
                             lms: lms,
-                            percentileCutOff: lms.percentileCutOff,
-                            standardDeviationCutOff: lms.stDevCutOff,
                           ),
                         );
                       })),
@@ -166,19 +164,10 @@ sealed class WHOGrowthStandardsLengthVelocityForAge extends VelocityBasedResult
 class WHOGrowthStandardsLengthVelocityForAgeLMS extends LMSBasedResult {
   WHOGrowthStandardsLengthVelocityForAgeLMS({
     required this.lms,
-    required this.percentileCutOff,
-    required this.standardDeviationCutOff,
   });
   @override
   final LMS lms;
 
   @override
-  final ZScoreCutOff standardDeviationCutOff;
-
-  @override
-  final PercentileCutOff percentileCutOff;
-
-  @override
-  String toString() =>
-      'Age Data(LMS: $lms, Standard Deviation CutOff: $standardDeviationCutOff, Percentile CutOff: $percentileCutOff)';
+  String toString() => 'Length Velocity For Age LMS($lms)';
 }

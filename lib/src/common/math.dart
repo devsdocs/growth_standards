@@ -50,15 +50,15 @@ num adjustedZScoreCalculation(
   final num zScore = lms.zScore(y);
 
   if (zScore > 3) {
-    final sD3pos = lms.stDev(3);
-    final sD2pos = lms.stDev(2);
+    final sD3pos = lms.standardDeviation(3);
+    final sD2pos = lms.standardDeviation(2);
     final sD23pos = sD3pos - sD2pos;
 
     return 3 + ((y - sD3pos) / sD23pos);
   }
   if (zScore < -3) {
-    final sD3neg = lms.stDev(-3);
-    final sD2neg = lms.stDev(-2);
+    final sD3neg = lms.standardDeviation(-3);
+    final sD2neg = lms.standardDeviation(-2);
     final sD23neg = sD2neg - sD3neg;
 
     return -3 + ((y - sD3neg) / sD23neg);

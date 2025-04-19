@@ -18,8 +18,6 @@ class CDCInfantHeadCircumferenceForAgeData extends BaseData {
               double.parse(k2),
               _CDCInfantHeadCircumferenceForAgeLMS(
                 lms: lms,
-                percentileCutOff: lms.percentileCutOff,
-                standardDeviationCutOff: lms.stDevCutOff,
               ),
             );
           }),
@@ -101,19 +99,10 @@ sealed class CDCInfantHeadCircumferenceForAge extends AgeBasedResult
 class _CDCInfantHeadCircumferenceForAgeLMS extends LMSBasedResult {
   _CDCInfantHeadCircumferenceForAgeLMS({
     required this.lms,
-    required this.percentileCutOff,
-    required this.standardDeviationCutOff,
   });
   @override
   final LMS lms;
 
   @override
-  final ZScoreCutOff standardDeviationCutOff;
-
-  @override
-  final PercentileCutOff percentileCutOff;
-
-  @override
-  String toString() =>
-      'Age Data(LMS: $lms, Standard Deviation CutOff: $standardDeviationCutOff, Percentile CutOff: $percentileCutOff)';
+  String toString() => 'Infant Head Circumference For Age LMS($lms)';
 }

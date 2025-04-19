@@ -19,8 +19,6 @@ class WHOGrowthStandardsTricepsSkinfoldForAgeData extends BaseData {
                     int.parse(k2),
                     _WHOGrowthStandardsTricepsSkinfoldForAgeLMS(
                       lms: lms,
-                      percentileCutOff: lms.percentileCutOff,
-                      standardDeviationCutOff: lms.stDevCutOff,
                     ),
                   );
                 })),
@@ -100,19 +98,10 @@ sealed class WHOGrowthStandardsTricepsSkinfoldForAge extends AgeBasedResult
 class _WHOGrowthStandardsTricepsSkinfoldForAgeLMS extends LMSBasedResult {
   _WHOGrowthStandardsTricepsSkinfoldForAgeLMS({
     required this.lms,
-    required this.standardDeviationCutOff,
-    required this.percentileCutOff,
   });
   @override
   final LMS lms;
 
   @override
-  final ZScoreCutOff standardDeviationCutOff;
-
-  @override
-  final PercentileCutOff percentileCutOff;
-
-  @override
-  String toString() =>
-      'Age Data(LMS: $lms, Standard Deviation CutOff: $standardDeviationCutOff, Percentile CutOff: $percentileCutOff)';
+  String toString() => 'Triceps Skinfold For Age LMS($lms)';
 }

@@ -18,8 +18,6 @@ class CDCWeightForAgeData extends BaseData {
               double.parse(k2),
               _CDCWeightForAgeLMS(
                 lms: lms,
-                percentileCutOff: lms.percentileCutOff,
-                standardDeviationCutOff: lms.stDevCutOff,
               ),
             );
           }),
@@ -100,19 +98,7 @@ sealed class CDCWeightForAge extends AgeBasedResult with _$CDCWeightForAge {
 class _CDCWeightForAgeLMS extends LMSBasedResult {
   _CDCWeightForAgeLMS({
     required this.lms,
-    required this.percentileCutOff,
-    required this.standardDeviationCutOff,
   });
   @override
   final LMS lms;
-
-  @override
-  final ZScoreCutOff standardDeviationCutOff;
-
-  @override
-  final PercentileCutOff percentileCutOff;
-
-  @override
-  String toString() =>
-      'Age Data(LMS: $lms, Standard Deviation CutOff: $standardDeviationCutOff, Percentile CutOff: $percentileCutOff)';
 }

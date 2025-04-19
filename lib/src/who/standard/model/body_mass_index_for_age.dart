@@ -19,8 +19,6 @@ class WHOGrowthStandardsBodyMassIndexForAgeData extends BaseData {
                   int.parse(k2),
                   _WHOGrowthStandardsBodyMassIndexForAgeLMS(
                     lms: lms,
-                    percentileCutOff: lms.percentileCutOff,
-                    standardDeviationCutOff: lms.stDevCutOff,
                     loh: v2['loh'].toString().toLowerCase() == 'l'
                         ? LengthHeightMeasurementPosition.recumbent
                         : LengthHeightMeasurementPosition.standing,
@@ -141,20 +139,11 @@ class _WHOGrowthStandardsBodyMassIndexForAgeLMS extends LMSBasedResult {
   _WHOGrowthStandardsBodyMassIndexForAgeLMS({
     required this.lms,
     required this.loh,
-    required this.percentileCutOff,
-    required this.standardDeviationCutOff,
   });
   @override
   final LMS lms;
   final LengthHeightMeasurementPosition loh;
 
   @override
-  final ZScoreCutOff standardDeviationCutOff;
-
-  @override
-  final PercentileCutOff percentileCutOff;
-
-  @override
-  String toString() =>
-      'Age Data(LMS: $lms, Length/Height Measurement Position: $loh, Standard Deviation CutOff: $standardDeviationCutOff, Percentile CutOff: $percentileCutOff)';
+  String toString() => 'Body Mass Index For Age LMS($lms)';
 }
