@@ -3,6 +3,8 @@
 - Simplify `LMS` 
 - Fix bug at measurement of `WHOGrowthStandardsArmCircumferenceForAge`
 - Update dependencies
+- Expose `measurementResultInDefaultUnit`
+- Use this version if your dependencies has not supported `freezed` version 3
 
 ## 2.0.1
 
