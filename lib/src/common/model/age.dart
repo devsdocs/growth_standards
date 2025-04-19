@@ -129,7 +129,7 @@ sealed class Age with _$Age {
 @freezed
 sealed class Date with _$Date implements Comparable<Date> {
   @Assert(
-    'year > 0 || date > 0 || date < 32',
+    'year > 0 && date > 0 && date < 32',
     'Date impossible, use \${Date.fromDateTime} for safety, in cost of increased risk of wrong growth calculation',
   )
   @Assert(

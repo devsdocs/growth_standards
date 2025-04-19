@@ -50,7 +50,13 @@ class TimeIntervalCount {
   }) {
     int years = date.year + duration.years;
     years += (date.month + duration.months) ~/ DateTime.monthsPerYear;
-    final int months = (date.month + duration.months) % DateTime.monthsPerYear;
+    int months = (date.month + duration.months) % DateTime.monthsPerYear;
+
+    // Fix the edge case where month becomes 0 - convert to December of previous year
+    if (months == 0) {
+      months = 12;
+      years -= 1;
+    }
 
     final int days = date.day + duration.days - 1;
 

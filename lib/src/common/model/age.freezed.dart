@@ -270,7 +270,7 @@ class _$DateCopyWithImpl<$Res> implements $DateCopyWith<$Res> {
 @JsonSerializable()
 class _Date extends Date {
   _Date({required this.year, required this.month, required this.date})
-      : assert(year > 0 || date > 0 || date < 32,
+      : assert(year > 0 && date > 0 && date < 32,
             'Date impossible, use ${Date.fromDateTime} for safety, in cost of increased risk of wrong growth calculation'),
         assert(date <= DateTimeUtils.getDaysInMonth(year, month.number),
             'Date exceeded, max date is at ${DateTimeUtils.getDaysInMonth(year, month.number)} in ${month.text} $year'),
