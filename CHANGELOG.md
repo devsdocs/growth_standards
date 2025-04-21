@@ -1,3 +1,8 @@
+## 3.0.4
+
+- Same as previous version
+- Use this version if your dependencies has not supported `freezed` version 3
+
 ## 3.0.2
 
 - Exporting `TimeUnit`
