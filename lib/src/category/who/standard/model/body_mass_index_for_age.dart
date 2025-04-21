@@ -80,7 +80,6 @@ sealed class WHOGrowthStandardsBodyMassIndexMeasurement
 sealed class WHOGrowthStandardsBodyMassIndexForAge extends AgeBasedResult
     with _$WHOGrowthStandardsBodyMassIndexForAge {
   factory WHOGrowthStandardsBodyMassIndexForAge({
-    Date? observationDate,
     required Sex sex,
     @Default(false) bool oedemaExist,
     @WHOGrowthStandardsBodyMassIndexMeasurementConverter()
@@ -114,7 +113,6 @@ sealed class WHOGrowthStandardsBodyMassIndexForAge extends AgeBasedResult
   @override
   Age get ageAtObservationDate => checkAge(
         bodyMassIndexMeasurement.age,
-        observationDate: observationDate,
         contextData: contextData,
       );
 

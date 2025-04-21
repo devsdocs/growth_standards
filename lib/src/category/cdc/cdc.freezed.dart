@@ -176,7 +176,6 @@ CDCBodyMassIndexForAge _$CDCBodyMassIndexForAgeFromJson(
 
 /// @nodoc
 mixin _$CDCBodyMassIndexForAge {
-  Date? get observationDate;
   Sex get sex;
   Age get age;
   CDCBodyMassIndexMeasurement get bodyMassIndexMeasurement;
@@ -197,8 +196,6 @@ mixin _$CDCBodyMassIndexForAge {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is CDCBodyMassIndexForAge &&
-            (identical(other.observationDate, observationDate) ||
-                other.observationDate == observationDate) &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(
@@ -208,12 +205,12 @@ mixin _$CDCBodyMassIndexForAge {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, observationDate, sex, age, bodyMassIndexMeasurement);
+  int get hashCode =>
+      Object.hash(runtimeType, sex, age, bodyMassIndexMeasurement);
 
   @override
   String toString() {
-    return 'CDCBodyMassIndexForAge(observationDate: $observationDate, sex: $sex, age: $age, bodyMassIndexMeasurement: $bodyMassIndexMeasurement)';
+    return 'CDCBodyMassIndexForAge(sex: $sex, age: $age, bodyMassIndexMeasurement: $bodyMassIndexMeasurement)';
   }
 }
 
@@ -224,12 +221,8 @@ abstract mixin class $CDCBodyMassIndexForAgeCopyWith<$Res> {
       _$CDCBodyMassIndexForAgeCopyWithImpl;
   @useResult
   $Res call(
-      {Date? observationDate,
-      Sex sex,
-      Age age,
-      CDCBodyMassIndexMeasurement bodyMassIndexMeasurement});
+      {Sex sex, Age age, CDCBodyMassIndexMeasurement bodyMassIndexMeasurement});
 
-  $DateCopyWith<$Res>? get observationDate;
   $AgeCopyWith<$Res> get age;
   $CDCBodyMassIndexMeasurementCopyWith<$Res> get bodyMassIndexMeasurement;
 }
@@ -247,16 +240,11 @@ class _$CDCBodyMassIndexForAgeCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? observationDate = freezed,
     Object? sex = null,
     Object? age = null,
     Object? bodyMassIndexMeasurement = null,
   }) {
     return _then(_self.copyWith(
-      observationDate: freezed == observationDate
-          ? _self.observationDate
-          : observationDate // ignore: cast_nullable_to_non_nullable
-              as Date?,
       sex: null == sex
           ? _self.sex
           : sex // ignore: cast_nullable_to_non_nullable
@@ -270,20 +258,6 @@ class _$CDCBodyMassIndexForAgeCopyWithImpl<$Res>
           : bodyMassIndexMeasurement // ignore: cast_nullable_to_non_nullable
               as CDCBodyMassIndexMeasurement,
     ));
-  }
-
-  /// Create a copy of CDCBodyMassIndexForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $DateCopyWith<$Res>? get observationDate {
-    if (_self.observationDate == null) {
-      return null;
-    }
-
-    return $DateCopyWith<$Res>(_self.observationDate!, (value) {
-      return _then(_self.copyWith(observationDate: value));
-    });
   }
 
   /// Create a copy of CDCBodyMassIndexForAge
@@ -312,8 +286,7 @@ class _$CDCBodyMassIndexForAgeCopyWithImpl<$Res>
 @JsonSerializable()
 class _GrowthReferenceBodyMassIndexForAge extends CDCBodyMassIndexForAge {
   _GrowthReferenceBodyMassIndexForAge(
-      {this.observationDate,
-      required this.sex,
+      {required this.sex,
       required this.age,
       required this.bodyMassIndexMeasurement})
       : super._();
@@ -321,8 +294,6 @@ class _GrowthReferenceBodyMassIndexForAge extends CDCBodyMassIndexForAge {
           Map<String, dynamic> json) =>
       _$GrowthReferenceBodyMassIndexForAgeFromJson(json);
 
-  @override
-  final Date? observationDate;
   @override
   final Sex sex;
   @override
@@ -352,8 +323,6 @@ class _GrowthReferenceBodyMassIndexForAge extends CDCBodyMassIndexForAge {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _GrowthReferenceBodyMassIndexForAge &&
-            (identical(other.observationDate, observationDate) ||
-                other.observationDate == observationDate) &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(
@@ -363,12 +332,12 @@ class _GrowthReferenceBodyMassIndexForAge extends CDCBodyMassIndexForAge {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, observationDate, sex, age, bodyMassIndexMeasurement);
+  int get hashCode =>
+      Object.hash(runtimeType, sex, age, bodyMassIndexMeasurement);
 
   @override
   String toString() {
-    return 'CDCBodyMassIndexForAge(observationDate: $observationDate, sex: $sex, age: $age, bodyMassIndexMeasurement: $bodyMassIndexMeasurement)';
+    return 'CDCBodyMassIndexForAge(sex: $sex, age: $age, bodyMassIndexMeasurement: $bodyMassIndexMeasurement)';
   }
 }
 
@@ -382,13 +351,8 @@ abstract mixin class _$GrowthReferenceBodyMassIndexForAgeCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Date? observationDate,
-      Sex sex,
-      Age age,
-      CDCBodyMassIndexMeasurement bodyMassIndexMeasurement});
+      {Sex sex, Age age, CDCBodyMassIndexMeasurement bodyMassIndexMeasurement});
 
-  @override
-  $DateCopyWith<$Res>? get observationDate;
   @override
   $AgeCopyWith<$Res> get age;
   @override
@@ -408,16 +372,11 @@ class __$GrowthReferenceBodyMassIndexForAgeCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? observationDate = freezed,
     Object? sex = null,
     Object? age = null,
     Object? bodyMassIndexMeasurement = null,
   }) {
     return _then(_GrowthReferenceBodyMassIndexForAge(
-      observationDate: freezed == observationDate
-          ? _self.observationDate
-          : observationDate // ignore: cast_nullable_to_non_nullable
-              as Date?,
       sex: null == sex
           ? _self.sex
           : sex // ignore: cast_nullable_to_non_nullable
@@ -431,20 +390,6 @@ class __$GrowthReferenceBodyMassIndexForAgeCopyWithImpl<$Res>
           : bodyMassIndexMeasurement // ignore: cast_nullable_to_non_nullable
               as CDCBodyMassIndexMeasurement,
     ));
-  }
-
-  /// Create a copy of CDCBodyMassIndexForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $DateCopyWith<$Res>? get observationDate {
-    if (_self.observationDate == null) {
-      return null;
-    }
-
-    return $DateCopyWith<$Res>(_self.observationDate!, (value) {
-      return _then(_self.copyWith(observationDate: value));
-    });
   }
 
   /// Create a copy of CDCBodyMassIndexForAge
@@ -476,7 +421,6 @@ CDCInfantHeadCircumferenceForAge _$CDCInfantHeadCircumferenceForAgeFromJson(
 
 /// @nodoc
 mixin _$CDCInfantHeadCircumferenceForAge {
-  Date? get observationDate;
   Sex get sex;
   Age get age;
   Length get measurementResult;
@@ -498,8 +442,6 @@ mixin _$CDCInfantHeadCircumferenceForAge {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is CDCInfantHeadCircumferenceForAge &&
-            (identical(other.observationDate, observationDate) ||
-                other.observationDate == observationDate) &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.measurementResult, measurementResult) ||
@@ -508,12 +450,11 @@ mixin _$CDCInfantHeadCircumferenceForAge {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, observationDate, sex, age, measurementResult);
+  int get hashCode => Object.hash(runtimeType, sex, age, measurementResult);
 
   @override
   String toString() {
-    return 'CDCInfantHeadCircumferenceForAge(observationDate: $observationDate, sex: $sex, age: $age, measurementResult: $measurementResult)';
+    return 'CDCInfantHeadCircumferenceForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
   }
 }
 
@@ -524,10 +465,8 @@ abstract mixin class $CDCInfantHeadCircumferenceForAgeCopyWith<$Res> {
           $Res Function(CDCInfantHeadCircumferenceForAge) _then) =
       _$CDCInfantHeadCircumferenceForAgeCopyWithImpl;
   @useResult
-  $Res call(
-      {Date? observationDate, Sex sex, Age age, Length measurementResult});
+  $Res call({Sex sex, Age age, Length measurementResult});
 
-  $DateCopyWith<$Res>? get observationDate;
   $AgeCopyWith<$Res> get age;
 }
 
@@ -544,16 +483,11 @@ class _$CDCInfantHeadCircumferenceForAgeCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? observationDate = freezed,
     Object? sex = null,
     Object? age = null,
     Object? measurementResult = null,
   }) {
     return _then(_self.copyWith(
-      observationDate: freezed == observationDate
-          ? _self.observationDate
-          : observationDate // ignore: cast_nullable_to_non_nullable
-              as Date?,
       sex: null == sex
           ? _self.sex
           : sex // ignore: cast_nullable_to_non_nullable
@@ -573,20 +507,6 @@ class _$CDCInfantHeadCircumferenceForAgeCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $DateCopyWith<$Res>? get observationDate {
-    if (_self.observationDate == null) {
-      return null;
-    }
-
-    return $DateCopyWith<$Res>(_self.observationDate!, (value) {
-      return _then(_self.copyWith(observationDate: value));
-    });
-  }
-
-  /// Create a copy of CDCInfantHeadCircumferenceForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
     return $AgeCopyWith<$Res>(_self.age, (value) {
       return _then(_self.copyWith(age: value));
@@ -598,16 +518,11 @@ class _$CDCInfantHeadCircumferenceForAgeCopyWithImpl<$Res>
 @JsonSerializable()
 class _HeadCircumferenceForAge extends CDCInfantHeadCircumferenceForAge {
   _HeadCircumferenceForAge(
-      {this.observationDate,
-      required this.sex,
-      required this.age,
-      required this.measurementResult})
+      {required this.sex, required this.age, required this.measurementResult})
       : super._();
   factory _HeadCircumferenceForAge.fromJson(Map<String, dynamic> json) =>
       _$HeadCircumferenceForAgeFromJson(json);
 
-  @override
-  final Date? observationDate;
   @override
   final Sex sex;
   @override
@@ -636,8 +551,6 @@ class _HeadCircumferenceForAge extends CDCInfantHeadCircumferenceForAge {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _HeadCircumferenceForAge &&
-            (identical(other.observationDate, observationDate) ||
-                other.observationDate == observationDate) &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.measurementResult, measurementResult) ||
@@ -646,12 +559,11 @@ class _HeadCircumferenceForAge extends CDCInfantHeadCircumferenceForAge {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, observationDate, sex, age, measurementResult);
+  int get hashCode => Object.hash(runtimeType, sex, age, measurementResult);
 
   @override
   String toString() {
-    return 'CDCInfantHeadCircumferenceForAge(observationDate: $observationDate, sex: $sex, age: $age, measurementResult: $measurementResult)';
+    return 'CDCInfantHeadCircumferenceForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
   }
 }
 
@@ -663,11 +575,8 @@ abstract mixin class _$HeadCircumferenceForAgeCopyWith<$Res>
       __$HeadCircumferenceForAgeCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {Date? observationDate, Sex sex, Age age, Length measurementResult});
+  $Res call({Sex sex, Age age, Length measurementResult});
 
-  @override
-  $DateCopyWith<$Res>? get observationDate;
   @override
   $AgeCopyWith<$Res> get age;
 }
@@ -685,16 +594,11 @@ class __$HeadCircumferenceForAgeCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? observationDate = freezed,
     Object? sex = null,
     Object? age = null,
     Object? measurementResult = null,
   }) {
     return _then(_HeadCircumferenceForAge(
-      observationDate: freezed == observationDate
-          ? _self.observationDate
-          : observationDate // ignore: cast_nullable_to_non_nullable
-              as Date?,
       sex: null == sex
           ? _self.sex
           : sex // ignore: cast_nullable_to_non_nullable
@@ -708,20 +612,6 @@ class __$HeadCircumferenceForAgeCopyWithImpl<$Res>
           : measurementResult // ignore: cast_nullable_to_non_nullable
               as Length,
     ));
-  }
-
-  /// Create a copy of CDCInfantHeadCircumferenceForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $DateCopyWith<$Res>? get observationDate {
-    if (_self.observationDate == null) {
-      return null;
-    }
-
-    return $DateCopyWith<$Res>(_self.observationDate!, (value) {
-      return _then(_self.copyWith(observationDate: value));
-    });
   }
 
   /// Create a copy of CDCInfantHeadCircumferenceForAge
@@ -742,7 +632,6 @@ CDCInfantLengthForAge _$CDCInfantLengthForAgeFromJson(
 
 /// @nodoc
 mixin _$CDCInfantLengthForAge {
-  Date? get observationDate;
   Sex get sex;
   Age get age;
   Length get lengthHeight;
@@ -764,8 +653,6 @@ mixin _$CDCInfantLengthForAge {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is CDCInfantLengthForAge &&
-            (identical(other.observationDate, observationDate) ||
-                other.observationDate == observationDate) &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.lengthHeight, lengthHeight) ||
@@ -775,12 +662,11 @@ mixin _$CDCInfantLengthForAge {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, observationDate, sex, age, lengthHeight, measure);
+  int get hashCode => Object.hash(runtimeType, sex, age, lengthHeight, measure);
 
   @override
   String toString() {
-    return 'CDCInfantLengthForAge(observationDate: $observationDate, sex: $sex, age: $age, lengthHeight: $lengthHeight, measure: $measure)';
+    return 'CDCInfantLengthForAge(sex: $sex, age: $age, lengthHeight: $lengthHeight, measure: $measure)';
   }
 }
 
@@ -791,13 +677,11 @@ abstract mixin class $CDCInfantLengthForAgeCopyWith<$Res> {
       _$CDCInfantLengthForAgeCopyWithImpl;
   @useResult
   $Res call(
-      {Date? observationDate,
-      Sex sex,
+      {Sex sex,
       Age age,
       Length lengthHeight,
       LengthHeightMeasurementPosition measure});
 
-  $DateCopyWith<$Res>? get observationDate;
   $AgeCopyWith<$Res> get age;
 }
 
@@ -814,17 +698,12 @@ class _$CDCInfantLengthForAgeCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? observationDate = freezed,
     Object? sex = null,
     Object? age = null,
     Object? lengthHeight = null,
     Object? measure = null,
   }) {
     return _then(_self.copyWith(
-      observationDate: freezed == observationDate
-          ? _self.observationDate
-          : observationDate // ignore: cast_nullable_to_non_nullable
-              as Date?,
       sex: null == sex
           ? _self.sex
           : sex // ignore: cast_nullable_to_non_nullable
@@ -848,20 +727,6 @@ class _$CDCInfantLengthForAgeCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $DateCopyWith<$Res>? get observationDate {
-    if (_self.observationDate == null) {
-      return null;
-    }
-
-    return $DateCopyWith<$Res>(_self.observationDate!, (value) {
-      return _then(_self.copyWith(observationDate: value));
-    });
-  }
-
-  /// Create a copy of CDCInfantLengthForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
     return $AgeCopyWith<$Res>(_self.age, (value) {
       return _then(_self.copyWith(age: value));
@@ -873,8 +738,7 @@ class _$CDCInfantLengthForAgeCopyWithImpl<$Res>
 @JsonSerializable()
 class _LengthForAge extends CDCInfantLengthForAge {
   _LengthForAge(
-      {this.observationDate,
-      required this.sex,
+      {required this.sex,
       required this.age,
       required this.lengthHeight,
       required this.measure})
@@ -882,8 +746,6 @@ class _LengthForAge extends CDCInfantLengthForAge {
   factory _LengthForAge.fromJson(Map<String, dynamic> json) =>
       _$LengthForAgeFromJson(json);
 
-  @override
-  final Date? observationDate;
   @override
   final Sex sex;
   @override
@@ -913,8 +775,6 @@ class _LengthForAge extends CDCInfantLengthForAge {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _LengthForAge &&
-            (identical(other.observationDate, observationDate) ||
-                other.observationDate == observationDate) &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.lengthHeight, lengthHeight) ||
@@ -924,12 +784,11 @@ class _LengthForAge extends CDCInfantLengthForAge {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, observationDate, sex, age, lengthHeight, measure);
+  int get hashCode => Object.hash(runtimeType, sex, age, lengthHeight, measure);
 
   @override
   String toString() {
-    return 'CDCInfantLengthForAge(observationDate: $observationDate, sex: $sex, age: $age, lengthHeight: $lengthHeight, measure: $measure)';
+    return 'CDCInfantLengthForAge(sex: $sex, age: $age, lengthHeight: $lengthHeight, measure: $measure)';
   }
 }
 
@@ -942,14 +801,11 @@ abstract mixin class _$LengthForAgeCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Date? observationDate,
-      Sex sex,
+      {Sex sex,
       Age age,
       Length lengthHeight,
       LengthHeightMeasurementPosition measure});
 
-  @override
-  $DateCopyWith<$Res>? get observationDate;
   @override
   $AgeCopyWith<$Res> get age;
 }
@@ -967,17 +823,12 @@ class __$LengthForAgeCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? observationDate = freezed,
     Object? sex = null,
     Object? age = null,
     Object? lengthHeight = null,
     Object? measure = null,
   }) {
     return _then(_LengthForAge(
-      observationDate: freezed == observationDate
-          ? _self.observationDate
-          : observationDate // ignore: cast_nullable_to_non_nullable
-              as Date?,
       sex: null == sex
           ? _self.sex
           : sex // ignore: cast_nullable_to_non_nullable
@@ -1001,20 +852,6 @@ class __$LengthForAgeCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $DateCopyWith<$Res>? get observationDate {
-    if (_self.observationDate == null) {
-      return null;
-    }
-
-    return $DateCopyWith<$Res>(_self.observationDate!, (value) {
-      return _then(_self.copyWith(observationDate: value));
-    });
-  }
-
-  /// Create a copy of CDCInfantLengthForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
     return $AgeCopyWith<$Res>(_self.age, (value) {
       return _then(_self.copyWith(age: value));
@@ -1028,7 +865,6 @@ CDCStatureForAge _$CDCStatureForAgeFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CDCStatureForAge {
-  Date? get observationDate;
   Sex get sex;
   Age get age;
   Length get lengthHeight;
@@ -1050,8 +886,6 @@ mixin _$CDCStatureForAge {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is CDCStatureForAge &&
-            (identical(other.observationDate, observationDate) ||
-                other.observationDate == observationDate) &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.lengthHeight, lengthHeight) ||
@@ -1061,12 +895,11 @@ mixin _$CDCStatureForAge {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, observationDate, sex, age, lengthHeight, measure);
+  int get hashCode => Object.hash(runtimeType, sex, age, lengthHeight, measure);
 
   @override
   String toString() {
-    return 'CDCStatureForAge(observationDate: $observationDate, sex: $sex, age: $age, lengthHeight: $lengthHeight, measure: $measure)';
+    return 'CDCStatureForAge(sex: $sex, age: $age, lengthHeight: $lengthHeight, measure: $measure)';
   }
 }
 
@@ -1077,13 +910,11 @@ abstract mixin class $CDCStatureForAgeCopyWith<$Res> {
       _$CDCStatureForAgeCopyWithImpl;
   @useResult
   $Res call(
-      {Date? observationDate,
-      Sex sex,
+      {Sex sex,
       Age age,
       Length lengthHeight,
       LengthHeightMeasurementPosition measure});
 
-  $DateCopyWith<$Res>? get observationDate;
   $AgeCopyWith<$Res> get age;
 }
 
@@ -1100,17 +931,12 @@ class _$CDCStatureForAgeCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? observationDate = freezed,
     Object? sex = null,
     Object? age = null,
     Object? lengthHeight = null,
     Object? measure = null,
   }) {
     return _then(_self.copyWith(
-      observationDate: freezed == observationDate
-          ? _self.observationDate
-          : observationDate // ignore: cast_nullable_to_non_nullable
-              as Date?,
       sex: null == sex
           ? _self.sex
           : sex // ignore: cast_nullable_to_non_nullable
@@ -1134,20 +960,6 @@ class _$CDCStatureForAgeCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $DateCopyWith<$Res>? get observationDate {
-    if (_self.observationDate == null) {
-      return null;
-    }
-
-    return $DateCopyWith<$Res>(_self.observationDate!, (value) {
-      return _then(_self.copyWith(observationDate: value));
-    });
-  }
-
-  /// Create a copy of CDCStatureForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
     return $AgeCopyWith<$Res>(_self.age, (value) {
       return _then(_self.copyWith(age: value));
@@ -1159,8 +971,7 @@ class _$CDCStatureForAgeCopyWithImpl<$Res>
 @JsonSerializable()
 class _GrowthReferenceHeightForAge extends CDCStatureForAge {
   _GrowthReferenceHeightForAge(
-      {this.observationDate,
-      required this.sex,
+      {required this.sex,
       required this.age,
       required this.lengthHeight,
       required this.measure})
@@ -1168,8 +979,6 @@ class _GrowthReferenceHeightForAge extends CDCStatureForAge {
   factory _GrowthReferenceHeightForAge.fromJson(Map<String, dynamic> json) =>
       _$GrowthReferenceHeightForAgeFromJson(json);
 
-  @override
-  final Date? observationDate;
   @override
   final Sex sex;
   @override
@@ -1200,8 +1009,6 @@ class _GrowthReferenceHeightForAge extends CDCStatureForAge {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _GrowthReferenceHeightForAge &&
-            (identical(other.observationDate, observationDate) ||
-                other.observationDate == observationDate) &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.lengthHeight, lengthHeight) ||
@@ -1211,12 +1018,11 @@ class _GrowthReferenceHeightForAge extends CDCStatureForAge {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, observationDate, sex, age, lengthHeight, measure);
+  int get hashCode => Object.hash(runtimeType, sex, age, lengthHeight, measure);
 
   @override
   String toString() {
-    return 'CDCStatureForAge(observationDate: $observationDate, sex: $sex, age: $age, lengthHeight: $lengthHeight, measure: $measure)';
+    return 'CDCStatureForAge(sex: $sex, age: $age, lengthHeight: $lengthHeight, measure: $measure)';
   }
 }
 
@@ -1230,14 +1036,11 @@ abstract mixin class _$GrowthReferenceHeightForAgeCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Date? observationDate,
-      Sex sex,
+      {Sex sex,
       Age age,
       Length lengthHeight,
       LengthHeightMeasurementPosition measure});
 
-  @override
-  $DateCopyWith<$Res>? get observationDate;
   @override
   $AgeCopyWith<$Res> get age;
 }
@@ -1255,17 +1058,12 @@ class __$GrowthReferenceHeightForAgeCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? observationDate = freezed,
     Object? sex = null,
     Object? age = null,
     Object? lengthHeight = null,
     Object? measure = null,
   }) {
     return _then(_GrowthReferenceHeightForAge(
-      observationDate: freezed == observationDate
-          ? _self.observationDate
-          : observationDate // ignore: cast_nullable_to_non_nullable
-              as Date?,
       sex: null == sex
           ? _self.sex
           : sex // ignore: cast_nullable_to_non_nullable
@@ -1289,20 +1087,6 @@ class __$GrowthReferenceHeightForAgeCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $DateCopyWith<$Res>? get observationDate {
-    if (_self.observationDate == null) {
-      return null;
-    }
-
-    return $DateCopyWith<$Res>(_self.observationDate!, (value) {
-      return _then(_self.copyWith(observationDate: value));
-    });
-  }
-
-  /// Create a copy of CDCStatureForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
     return $AgeCopyWith<$Res>(_self.age, (value) {
       return _then(_self.copyWith(age: value));
@@ -1312,7 +1096,6 @@ class __$GrowthReferenceHeightForAgeCopyWithImpl<$Res>
 
 /// @nodoc
 mixin _$CDCWeightForAge {
-  Date? get observationDate;
   Sex get sex;
   Age get age;
   Mass get weight;
@@ -1333,8 +1116,6 @@ mixin _$CDCWeightForAge {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is CDCWeightForAge &&
-            (identical(other.observationDate, observationDate) ||
-                other.observationDate == observationDate) &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.weight, weight) || other.weight == weight));
@@ -1342,12 +1123,11 @@ mixin _$CDCWeightForAge {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, observationDate, sex, age, weight);
+  int get hashCode => Object.hash(runtimeType, sex, age, weight);
 
   @override
   String toString() {
-    return 'CDCWeightForAge(observationDate: $observationDate, sex: $sex, age: $age, weight: $weight)';
+    return 'CDCWeightForAge(sex: $sex, age: $age, weight: $weight)';
   }
 }
 
@@ -1357,9 +1137,8 @@ abstract mixin class $CDCWeightForAgeCopyWith<$Res> {
           CDCWeightForAge value, $Res Function(CDCWeightForAge) _then) =
       _$CDCWeightForAgeCopyWithImpl;
   @useResult
-  $Res call({Date? observationDate, Sex sex, Age age, Mass weight});
+  $Res call({Sex sex, Age age, Mass weight});
 
-  $DateCopyWith<$Res>? get observationDate;
   $AgeCopyWith<$Res> get age;
 }
 
@@ -1376,16 +1155,11 @@ class _$CDCWeightForAgeCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? observationDate = freezed,
     Object? sex = null,
     Object? age = null,
     Object? weight = null,
   }) {
     return _then(_self.copyWith(
-      observationDate: freezed == observationDate
-          ? _self.observationDate
-          : observationDate // ignore: cast_nullable_to_non_nullable
-              as Date?,
       sex: null == sex
           ? _self.sex
           : sex // ignore: cast_nullable_to_non_nullable
@@ -1405,20 +1179,6 @@ class _$CDCWeightForAgeCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $DateCopyWith<$Res>? get observationDate {
-    if (_self.observationDate == null) {
-      return null;
-    }
-
-    return $DateCopyWith<$Res>(_self.observationDate!, (value) {
-      return _then(_self.copyWith(observationDate: value));
-    });
-  }
-
-  /// Create a copy of CDCWeightForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
     return $AgeCopyWith<$Res>(_self.age, (value) {
       return _then(_self.copyWith(age: value));
@@ -1429,17 +1189,11 @@ class _$CDCWeightForAgeCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _CDCWeightForAge extends CDCWeightForAge {
-  _CDCWeightForAge(
-      {this.observationDate,
-      required this.sex,
-      required this.age,
-      required this.weight})
+  _CDCWeightForAge({required this.sex, required this.age, required this.weight})
       : super._();
   factory _CDCWeightForAge.fromJson(Map<String, dynamic> json) =>
       _$CDCWeightForAgeFromJson(json);
 
-  @override
-  final Date? observationDate;
   @override
   final Sex sex;
   @override
@@ -1467,8 +1221,6 @@ class _CDCWeightForAge extends CDCWeightForAge {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _CDCWeightForAge &&
-            (identical(other.observationDate, observationDate) ||
-                other.observationDate == observationDate) &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.weight, weight) || other.weight == weight));
@@ -1476,12 +1228,11 @@ class _CDCWeightForAge extends CDCWeightForAge {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, observationDate, sex, age, weight);
+  int get hashCode => Object.hash(runtimeType, sex, age, weight);
 
   @override
   String toString() {
-    return 'CDCWeightForAge(observationDate: $observationDate, sex: $sex, age: $age, weight: $weight)';
+    return 'CDCWeightForAge(sex: $sex, age: $age, weight: $weight)';
   }
 }
 
@@ -1493,10 +1244,8 @@ abstract mixin class _$CDCWeightForAgeCopyWith<$Res>
       __$CDCWeightForAgeCopyWithImpl;
   @override
   @useResult
-  $Res call({Date? observationDate, Sex sex, Age age, Mass weight});
+  $Res call({Sex sex, Age age, Mass weight});
 
-  @override
-  $DateCopyWith<$Res>? get observationDate;
   @override
   $AgeCopyWith<$Res> get age;
 }
@@ -1514,16 +1263,11 @@ class __$CDCWeightForAgeCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? observationDate = freezed,
     Object? sex = null,
     Object? age = null,
     Object? weight = null,
   }) {
     return _then(_CDCWeightForAge(
-      observationDate: freezed == observationDate
-          ? _self.observationDate
-          : observationDate // ignore: cast_nullable_to_non_nullable
-              as Date?,
       sex: null == sex
           ? _self.sex
           : sex // ignore: cast_nullable_to_non_nullable
@@ -1543,20 +1287,6 @@ class __$CDCWeightForAgeCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $DateCopyWith<$Res>? get observationDate {
-    if (_self.observationDate == null) {
-      return null;
-    }
-
-    return $DateCopyWith<$Res>(_self.observationDate!, (value) {
-      return _then(_self.copyWith(observationDate: value));
-    });
-  }
-
-  /// Create a copy of CDCWeightForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
     return $AgeCopyWith<$Res>(_self.age, (value) {
       return _then(_self.copyWith(age: value));
@@ -1566,7 +1296,6 @@ class __$CDCWeightForAgeCopyWithImpl<$Res>
 
 /// @nodoc
 mixin _$CDCInfantWeightForAge {
-  Date? get observationDate;
   Sex get sex;
   Age get age;
   Mass get weight;
@@ -1587,8 +1316,6 @@ mixin _$CDCInfantWeightForAge {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is CDCInfantWeightForAge &&
-            (identical(other.observationDate, observationDate) ||
-                other.observationDate == observationDate) &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.weight, weight) || other.weight == weight));
@@ -1596,12 +1323,11 @@ mixin _$CDCInfantWeightForAge {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, observationDate, sex, age, weight);
+  int get hashCode => Object.hash(runtimeType, sex, age, weight);
 
   @override
   String toString() {
-    return 'CDCInfantWeightForAge(observationDate: $observationDate, sex: $sex, age: $age, weight: $weight)';
+    return 'CDCInfantWeightForAge(sex: $sex, age: $age, weight: $weight)';
   }
 }
 
@@ -1611,9 +1337,8 @@ abstract mixin class $CDCInfantWeightForAgeCopyWith<$Res> {
           $Res Function(CDCInfantWeightForAge) _then) =
       _$CDCInfantWeightForAgeCopyWithImpl;
   @useResult
-  $Res call({Date? observationDate, Sex sex, Age age, Mass weight});
+  $Res call({Sex sex, Age age, Mass weight});
 
-  $DateCopyWith<$Res>? get observationDate;
   $AgeCopyWith<$Res> get age;
 }
 
@@ -1630,16 +1355,11 @@ class _$CDCInfantWeightForAgeCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? observationDate = freezed,
     Object? sex = null,
     Object? age = null,
     Object? weight = null,
   }) {
     return _then(_self.copyWith(
-      observationDate: freezed == observationDate
-          ? _self.observationDate
-          : observationDate // ignore: cast_nullable_to_non_nullable
-              as Date?,
       sex: null == sex
           ? _self.sex
           : sex // ignore: cast_nullable_to_non_nullable
@@ -1659,20 +1379,6 @@ class _$CDCInfantWeightForAgeCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $DateCopyWith<$Res>? get observationDate {
-    if (_self.observationDate == null) {
-      return null;
-    }
-
-    return $DateCopyWith<$Res>(_self.observationDate!, (value) {
-      return _then(_self.copyWith(observationDate: value));
-    });
-  }
-
-  /// Create a copy of CDCInfantWeightForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
     return $AgeCopyWith<$Res>(_self.age, (value) {
       return _then(_self.copyWith(age: value));
@@ -1684,16 +1390,11 @@ class _$CDCInfantWeightForAgeCopyWithImpl<$Res>
 @JsonSerializable()
 class _CDCInfantWeightForAge extends CDCInfantWeightForAge {
   _CDCInfantWeightForAge(
-      {this.observationDate,
-      required this.sex,
-      required this.age,
-      required this.weight})
+      {required this.sex, required this.age, required this.weight})
       : super._();
   factory _CDCInfantWeightForAge.fromJson(Map<String, dynamic> json) =>
       _$CDCInfantWeightForAgeFromJson(json);
 
-  @override
-  final Date? observationDate;
   @override
   final Sex sex;
   @override
@@ -1722,8 +1423,6 @@ class _CDCInfantWeightForAge extends CDCInfantWeightForAge {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _CDCInfantWeightForAge &&
-            (identical(other.observationDate, observationDate) ||
-                other.observationDate == observationDate) &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.weight, weight) || other.weight == weight));
@@ -1731,12 +1430,11 @@ class _CDCInfantWeightForAge extends CDCInfantWeightForAge {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, observationDate, sex, age, weight);
+  int get hashCode => Object.hash(runtimeType, sex, age, weight);
 
   @override
   String toString() {
-    return 'CDCInfantWeightForAge(observationDate: $observationDate, sex: $sex, age: $age, weight: $weight)';
+    return 'CDCInfantWeightForAge(sex: $sex, age: $age, weight: $weight)';
   }
 }
 
@@ -1748,10 +1446,8 @@ abstract mixin class _$CDCInfantWeightForAgeCopyWith<$Res>
       __$CDCInfantWeightForAgeCopyWithImpl;
   @override
   @useResult
-  $Res call({Date? observationDate, Sex sex, Age age, Mass weight});
+  $Res call({Sex sex, Age age, Mass weight});
 
-  @override
-  $DateCopyWith<$Res>? get observationDate;
   @override
   $AgeCopyWith<$Res> get age;
 }
@@ -1769,16 +1465,11 @@ class __$CDCInfantWeightForAgeCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? observationDate = freezed,
     Object? sex = null,
     Object? age = null,
     Object? weight = null,
   }) {
     return _then(_CDCInfantWeightForAge(
-      observationDate: freezed == observationDate
-          ? _self.observationDate
-          : observationDate // ignore: cast_nullable_to_non_nullable
-              as Date?,
       sex: null == sex
           ? _self.sex
           : sex // ignore: cast_nullable_to_non_nullable
@@ -1792,20 +1483,6 @@ class __$CDCInfantWeightForAgeCopyWithImpl<$Res>
           : weight // ignore: cast_nullable_to_non_nullable
               as Mass,
     ));
-  }
-
-  /// Create a copy of CDCInfantWeightForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $DateCopyWith<$Res>? get observationDate {
-    if (_self.observationDate == null) {
-      return null;
-    }
-
-    return $DateCopyWith<$Res>(_self.observationDate!, (value) {
-      return _then(_self.copyWith(observationDate: value));
-    });
   }
 
   /// Create a copy of CDCInfantWeightForAge

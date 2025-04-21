@@ -72,40 +72,34 @@ class CDCGrowthStandardFromTwoYearsOldAndAbove {
       CDCGrowthStandardFromTwoYearsOldAndAboveFromJson();
 
   CDCBodyMassIndexForAge bodyMassIndexForAge({
-    Date? observationDate,
     required Sex sex,
     required CDCBodyMassIndexMeasurement bodyMassIndexMeasurement,
     required Age age,
   }) =>
       CDCBodyMassIndexForAge(
-        observationDate: observationDate,
         age: age,
         sex: sex,
         bodyMassIndexMeasurement: bodyMassIndexMeasurement,
       );
 
   CDCWeightForAge weightForAge({
-    Date? observationDate,
     required Sex sex,
     required Age age,
     required Mass weight,
   }) =>
       CDCWeightForAge(
-        observationDate: observationDate,
         sex: sex,
         age: age,
         weight: weight,
       );
 
   CDCStatureForAge statureForAge({
-    Date? observationDate,
     required Sex sex,
     required Age age,
     required Length lengthHeight,
     required LengthHeightMeasurementPosition measure,
   }) =>
       CDCStatureForAge(
-        observationDate: observationDate,
         sex: sex,
         age: age,
         lengthHeight: lengthHeight,
@@ -113,7 +107,6 @@ class CDCGrowthStandardFromTwoYearsOldAndAbove {
       );
 
   CDCWeightForStature weightForStature({
-    Date? observationDate,
     required Sex sex,
     required Age age,
     required Length height,
@@ -173,27 +166,23 @@ class CDCGrowthStandardFromBirthTo36Months {
       CDCGrowthStandardFromBirthTo36MonthsFomJson();
 
   CDCInfantHeadCircumferenceForAge headCircumferenceForAge({
-    Date? observationDate,
     required Sex sex,
     required Age age,
     required Length measurementResult,
   }) =>
       CDCInfantHeadCircumferenceForAge(
-        observationDate: observationDate,
         sex: sex,
         age: age,
         measurementResult: measurementResult,
       );
 
   CDCInfantLengthForAge lengthForAge({
-    Date? observationDate,
     required Sex sex,
     required Age age,
     required Length lengthHeight,
     required LengthHeightMeasurementPosition measure,
   }) =>
       CDCInfantLengthForAge(
-        observationDate: observationDate,
         sex: sex,
         age: age,
         lengthHeight: lengthHeight,
@@ -201,20 +190,17 @@ class CDCGrowthStandardFromBirthTo36Months {
       );
 
   CDCInfantWeightForAge weightForAge({
-    Date? observationDate,
     required Sex sex,
     required Age age,
     required Mass weight,
   }) =>
       CDCInfantWeightForAge(
-        observationDate: observationDate,
         sex: sex,
         age: age,
         weight: weight,
       );
 
   CDCInfantWeightForLength weightForLength({
-    Date? observationDate,
     required Sex sex,
     required Age age,
     required Length length,

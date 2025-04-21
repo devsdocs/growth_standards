@@ -10,28 +10,16 @@ import 'package:growth_standards/growth_standards.dart';
 /// @return The validated Age object
 Age checkAge(
   Age age, {
-  Date? observationDate,
   required AgeBasedData contextData,
 }) {
-  // Validate observation date if provided
-  if (observationDate != null) {
-    if (observationDate.isAfter(Date.today())) {
-      throw ArgumentError('Observation date cannot be in the future.');
-    }
-
-    if (observationDate.isBefore(age.dateOfBirth)) {
-      throw ArgumentError('Observation date cannot be before date of birth.');
-    }
-  }
-
   // Validate all assertions
-  _validateAssertion(age, contextData, observationDate);
+  _validateAssertion(age, contextData);
 
-  return observationDate != null ? age.ageAtPastDate(observationDate) : age;
+  return age;
 }
 
 /// Helper method to validate a single assertion against an age
-void _validateAssertion(Age age, AgeBasedData context, Date? observationDate) {
+void _validateAssertion(Age age, AgeBasedData context) {
   final lowerBound = context.lowerBound;
   final upperBound = context.upperBound;
 
@@ -40,21 +28,13 @@ void _validateAssertion(Age age, AgeBasedData context, Date? observationDate) {
   // Calculate the actual age value based on assertion type and observation date
   switch (context.unit) {
     case TimeUnit.days:
-      actualValue = observationDate != null
-          ? age.ageInTotalDaysAtDate(observationDate)
-          : age.ageInTotalDaysByNow;
+      actualValue = age.ageInTotalDaysByNow;
     case TimeUnit.weeks:
-      actualValue = observationDate != null
-          ? age.ageInTotalWeeksAtDate(observationDate)
-          : age.ageInTotalWeeksByNow;
+      actualValue = age.ageInTotalWeeksByNow;
     case TimeUnit.months:
-      actualValue = observationDate != null
-          ? age.ageInTotalMonthsAtDate(observationDate)
-          : age.ageInTotalMonthsByNow;
+      actualValue = age.ageInTotalMonthsByNow;
     case TimeUnit.years:
-      actualValue = observationDate != null
-          ? age.ageInTotalYearsAtDate(observationDate)
-          : age.ageInTotalYearsByNow;
+      actualValue = age.ageInTotalYearsByNow;
   }
 
   // Check if the value is within bounds

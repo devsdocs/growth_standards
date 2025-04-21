@@ -41,7 +41,6 @@ class WHOGrowthStandardsHeadCircumferenceForAgeData extends AgeBasedData {
 sealed class WHOGrowthStandardsHeadCircumferenceForAge extends AgeBasedResult
     with _$WHOGrowthStandardsHeadCircumferenceForAge {
   factory WHOGrowthStandardsHeadCircumferenceForAge({
-    Date? observationDate,
     required Sex sex,
     required Age age,
     required Length measurementResult,
@@ -72,7 +71,6 @@ sealed class WHOGrowthStandardsHeadCircumferenceForAge extends AgeBasedResult
   @override
   Age get ageAtObservationDate => checkAge(
         age,
-        observationDate: observationDate,
         contextData: contextData,
       );
 

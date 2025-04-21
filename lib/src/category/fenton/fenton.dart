@@ -49,40 +49,34 @@ class Fenton {
   FentonFromJson get fromJson => FentonFromJson();
 
   FentonHeadCircumferenceForAge headCircumferenceForAge({
-    Date? observationDate,
     required Sex sex,
     required Age age,
     required Length measurementResult,
   }) =>
       FentonHeadCircumferenceForAge(
-        observationDate: observationDate,
         sex: sex,
         age: age,
         measurementResult: measurementResult,
       );
 
   FentonWeightForAge weightForAge({
-    Date? observationDate,
     required Sex sex,
     required Age age,
     required Mass weight,
   }) =>
       FentonWeightForAge(
-        observationDate: observationDate,
         sex: sex,
         age: age,
         weight: weight,
       );
 
   FentonLengthForAge lengthForAge({
-    Date? observationDate,
     required Sex sex,
     required Age age,
     required Length lengthHeight,
     required LengthHeightMeasurementPosition measure,
   }) =>
       FentonLengthForAge(
-        observationDate: observationDate,
         sex: sex,
         age: age,
         lengthHeight: lengthHeight,

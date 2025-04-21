@@ -57,7 +57,6 @@ sealed class CDCBodyMassIndexMeasurement with _$CDCBodyMassIndexMeasurement {
 sealed class CDCBodyMassIndexForAge extends AgeBasedResult
     with _$CDCBodyMassIndexForAge {
   factory CDCBodyMassIndexForAge({
-    Date? observationDate,
     required Sex sex,
     required Age age,
     required CDCBodyMassIndexMeasurement bodyMassIndexMeasurement,
@@ -106,7 +105,6 @@ sealed class CDCBodyMassIndexForAge extends AgeBasedResult
   @override
   Age get ageAtObservationDate => checkAge(
         age,
-        observationDate: observationDate,
         contextData: contextData,
       );
 

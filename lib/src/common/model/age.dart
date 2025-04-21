@@ -13,27 +13,42 @@ final _reverseMonthsEnum = _$MonthsEnumMap.map((k, v) => MapEntry(v, k));
 @freezed
 sealed class Age with _$Age {
   @Assert(
-    '!(DateTime(DateTimeUtils.now().year, DateTimeUtils.now().month, DateTimeUtils.now().day).difference(DateTime(dateOfBirth.year,dateOfBirth.month.number,dateOfBirth.date,),).isNegative)',
-    'Age is impossible because it is in the future',
+    'observedDate == null || (observedDate.isSameOrAfter(dateOfBirth) && observedDate.isSameOrBefore(Date.today()))',
+    'Age is impossible because observed date is before date of birth or observed date is in the future',
   )
-  factory Age(Date dateOfBirth) = _Age;
+  @Assert(
+    'dateOfBirth.isSameOrBefore(Date.today())',
+    'Date of birth cannot be in the future',
+  )
+  factory Age(Date dateOfBirth, {Date? observedDate}) = _Age;
 
   const Age._();
 
-  factory Age.byYearsAgo(int years) => Age(Date.yearsAgoByNow(years));
-
-  factory Age.byMonthsAgo(int months) => Age(
-        Date.monthsAgoByNow(months),
-      );
-  factory Age.byWeeksAgo(int weeks) => Age(
-        Date.weeksAgoByNow(weeks),
+  factory Age.byYearsAgo(int years, {Date? observedDate}) => Age(
+        Date.fromYearsAgo(years),
+        observedDate: observedDate,
       );
 
-  factory Age.byDaysAgo(int days) => Age(Date.daysAgoByNow(days));
+  factory Age.byMonthsAgo(int months, {Date? observedDate}) => Age(
+        Date.fromMonthsAgo(months),
+        observedDate: observedDate,
+      );
+  factory Age.byWeeksAgo(int weeks, {Date? observedDate}) => Age(
+        Date.fromWeeksAgo(weeks),
+        observedDate: observedDate,
+      );
+
+  factory Age.byDaysAgo(int days, {Date? observedDate}) => Age(
+        Date.fromDaysAgo(days),
+        observedDate: observedDate,
+      );
 
   factory Age.fromJson(Map<String, dynamic> json) => _$AgeFromJson(json);
 
-  bool get isValid => dateOfBirth.isSameOrBefore(Date.today());
+  /// Returns the observed date if provided, otherwise returns today's date
+  Date getObservedDate() => observedDate ?? Date.today();
+
+  bool get isValid => dateOfBirth.isSameOrBefore(getObservedDate());
 
   TimeIntervalCount get _dobCount => TimeIntervalCount(
         dateOfBirth.year,
@@ -92,18 +107,18 @@ sealed class Age with _$Age {
   }
 
   TimeDifferenceInYearMonthsWeeksDays get timeUntilNextBirthdayByNow =>
-      timeUntilNextBirthdayFromDate(Date.today());
+      timeUntilNextBirthdayFromDate(getObservedDate());
 
   TimeDifferenceInYearMonthsWeeksDays get yearsMonthsWeeksDaysOfAgeByNow =>
-      yearsMonthsWeeksDaysOfAgeAtDate(Date.today());
+      yearsMonthsWeeksDaysOfAgeAtDate(getObservedDate());
 
-  int get ageInTotalYearsByNow => ageInTotalYearsAtDate(Date.today());
+  int get ageInTotalYearsByNow => ageInTotalYearsAtDate(getObservedDate());
 
-  int get ageInTotalMonthsByNow => ageInTotalMonthsAtDate(Date.today());
+  int get ageInTotalMonthsByNow => ageInTotalMonthsAtDate(getObservedDate());
 
-  int get ageInTotalWeeksByNow => ageInTotalWeeksAtDate(Date.today());
+  int get ageInTotalWeeksByNow => ageInTotalWeeksAtDate(getObservedDate());
 
-  int get ageInTotalDaysByNow => ageInTotalDaysAtDate(Date.today());
+  int get ageInTotalDaysByNow => ageInTotalDaysAtDate(getObservedDate());
 
   Date dateAtDaysAfterBirth(int daysAfterBirth) =>
       dateOfBirth.addDays(daysAfterBirth);
@@ -118,14 +133,16 @@ sealed class Age with _$Age {
       dateOfBirth.addYears(yearsAfterBirth);
 
   Age ageAtPastDate(Date date) {
-    if (date.isSameOrAfter(Date.today()) || date.isSameOrBefore(dateOfBirth)) {
+    final referenceDate = getObservedDate();
+
+    // Handle invalid cases: if date is after reference date or before birth date
+    if (date.isSameOrAfter(referenceDate) || date.isSameOrBefore(dateOfBirth)) {
       return this;
     }
-    return Age(
-      dateAtDaysAfterBirth(
-        ageInTotalDaysByNow - Age(date).ageInTotalDaysByNow,
-      ),
-    );
+
+    // Simply return a new Age with the same birth date but using the provided date
+    // as the observation point
+    return Age(dateOfBirth, observedDate: date);
   }
 }
 
@@ -147,16 +164,16 @@ sealed class Date with _$Date implements Comparable<Date> {
 
   const Date._();
 
-  factory Date.daysAgoByNow(int days) =>
+  factory Date.fromDaysAgo(int days) =>
       Date.fromDateTime(DateTimeUtils.addDays(DateTimeUtils.now(), -days));
 
-  factory Date.weeksAgoByNow(int weeks) =>
+  factory Date.fromWeeksAgo(int weeks) =>
       Date.fromDateTime(DateTimeUtils.addWeeks(DateTimeUtils.now(), -weeks));
 
-  factory Date.monthsAgoByNow(int months) =>
+  factory Date.fromMonthsAgo(int months) =>
       Date.fromDateTime(DateTimeUtils.addMonths(DateTimeUtils.now(), -months));
 
-  factory Date.yearsAgoByNow(int years) =>
+  factory Date.fromYearsAgo(int years) =>
       Date.fromDateTime(DateTimeUtils.addYears(DateTimeUtils.now(), -years));
 
   factory Date.today() => Date.fromDateTime(DateTimeUtils.now());

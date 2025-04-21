@@ -39,7 +39,6 @@ class WHOGrowthStandardsTricepsSkinfoldForAgeData extends AgeBasedData {
 sealed class WHOGrowthStandardsTricepsSkinfoldForAge extends AgeBasedResult
     with _$WHOGrowthStandardsTricepsSkinfoldForAge {
   factory WHOGrowthStandardsTricepsSkinfoldForAge({
-    Date? observationDate,
     required Sex sex,
     required Age age,
     required Length measurementResult,
@@ -71,7 +70,6 @@ sealed class WHOGrowthStandardsTricepsSkinfoldForAge extends AgeBasedResult
   @override
   Age get ageAtObservationDate => checkAge(
         age,
-        observationDate: observationDate,
         contextData: contextData,
       );
 

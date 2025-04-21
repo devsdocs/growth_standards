@@ -37,7 +37,6 @@ class FentonHeadCircumferenceForAgeData extends AgeBasedData {
 sealed class FentonHeadCircumferenceForAge extends AgeBasedResult
     with _$FentonHeadCircumferenceForAge {
   factory FentonHeadCircumferenceForAge({
-    Date? observationDate,
     required Sex sex,
     required Age age,
     required Length measurementResult,
@@ -62,7 +61,6 @@ sealed class FentonHeadCircumferenceForAge extends AgeBasedResult
   @override
   Age get ageAtObservationDate => checkAge(
         age,
-        observationDate: observationDate,
         contextData: contextData,
       );
 

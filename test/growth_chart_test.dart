@@ -384,12 +384,11 @@ void main() {
   group('WHO Test', () {
     test('Arm Circ', () {
       final age = Age.byMonthsAgo(24);
-      final observationDate = Date.monthsAgoByNow(18);
+      final observationDate = Date.fromMonthsAgo(18);
       final male = whoGS.armCircumferenceForAge(
         sex: Sex.male,
         age: age,
         measurementResult: const Length$Centimeter(20.3),
-        observationDate: observationDate,
       );
 
       //! Test observation date
@@ -397,9 +396,7 @@ void main() {
       expect(
         male.zScore(Precision.two),
         equals(
-          male
-              .copyWith(age: Age(observationDate), observationDate: null)
-              .zScore(Precision.two),
+          male.copyWith(age: Age(observationDate)).zScore(Precision.two),
         ),
       );
 
@@ -431,7 +428,7 @@ void main() {
       );
     });
     test('BMI', () {
-      final observationDate = Date.monthsAgoByNow(40);
+      final observationDate = Date.fromMonthsAgo(40);
       final age = Age.byMonthsAgo(44);
       final bmi = WHOGrowthStandardsBodyMassIndexMeasurement(
         20.5,
@@ -440,17 +437,15 @@ void main() {
       final male = whoGS.bodyMassIndexForAge(
         bodyMassIndexMeasurement: bmi,
         sex: Sex.male,
-        observationDate: observationDate,
       );
       expect(
         male.zScore(Precision.two),
-        3.39,
+        3.4,
       );
 
       expect(
         male
             .copyWith(
-              observationDate: null,
               bodyMassIndexMeasurement:
                   WHOGrowthStandardsBodyMassIndexMeasurement(
                 20.5,
@@ -466,7 +461,6 @@ void main() {
       expect(
         male
             .copyWith(
-              observationDate: null,
               bodyMassIndexMeasurement:
                   WHOGrowthStandardsBodyMassIndexMeasurement(
                 20.5,

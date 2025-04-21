@@ -39,7 +39,6 @@ class CDCInfantHeadCircumferenceForAgeData extends AgeBasedData {
 sealed class CDCInfantHeadCircumferenceForAge extends AgeBasedResult
     with _$CDCInfantHeadCircumferenceForAge {
   factory CDCInfantHeadCircumferenceForAge({
-    Date? observationDate,
     required Sex sex,
     required Age age,
     required Length measurementResult,
@@ -76,7 +75,6 @@ sealed class CDCInfantHeadCircumferenceForAge extends AgeBasedResult
   @override
   Age get ageAtObservationDate => checkAge(
         age,
-        observationDate: observationDate,
         contextData: contextData,
       );
 

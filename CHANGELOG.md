@@ -4,6 +4,7 @@
 - Exposing `contextData` for directly accessing statistical data
 - Unified assertion for non velocity measurement
 - Removing `observationDate` on Length-based measurement
+- Move `observationDate` into `Age` `observedDate` field
 
 ## 2.2.1
 

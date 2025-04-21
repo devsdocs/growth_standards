@@ -16,6 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Age {
   Date get dateOfBirth;
+  Date? get observedDate;
 
   /// Create a copy of Age
   /// with the given fields replaced by the non-null parameter values.
@@ -33,16 +34,18 @@ mixin _$Age {
         (other.runtimeType == runtimeType &&
             other is Age &&
             (identical(other.dateOfBirth, dateOfBirth) ||
-                other.dateOfBirth == dateOfBirth));
+                other.dateOfBirth == dateOfBirth) &&
+            (identical(other.observedDate, observedDate) ||
+                other.observedDate == observedDate));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, dateOfBirth);
+  int get hashCode => Object.hash(runtimeType, dateOfBirth, observedDate);
 
   @override
   String toString() {
-    return 'Age(dateOfBirth: $dateOfBirth)';
+    return 'Age(dateOfBirth: $dateOfBirth, observedDate: $observedDate)';
   }
 }
 
@@ -50,9 +53,10 @@ mixin _$Age {
 abstract mixin class $AgeCopyWith<$Res> {
   factory $AgeCopyWith(Age value, $Res Function(Age) _then) = _$AgeCopyWithImpl;
   @useResult
-  $Res call({Date dateOfBirth});
+  $Res call({Date dateOfBirth, Date? observedDate});
 
   $DateCopyWith<$Res> get dateOfBirth;
+  $DateCopyWith<$Res>? get observedDate;
 }
 
 /// @nodoc
@@ -68,12 +72,17 @@ class _$AgeCopyWithImpl<$Res> implements $AgeCopyWith<$Res> {
   @override
   $Res call({
     Object? dateOfBirth = null,
+    Object? observedDate = freezed,
   }) {
     return _then(_self.copyWith(
       dateOfBirth: null == dateOfBirth
           ? _self.dateOfBirth
           : dateOfBirth // ignore: cast_nullable_to_non_nullable
               as Date,
+      observedDate: freezed == observedDate
+          ? _self.observedDate
+          : observedDate // ignore: cast_nullable_to_non_nullable
+              as Date?,
     ));
   }
 
@@ -86,29 +95,41 @@ class _$AgeCopyWithImpl<$Res> implements $AgeCopyWith<$Res> {
       return _then(_self.copyWith(dateOfBirth: value));
     });
   }
+
+  /// Create a copy of Age
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $DateCopyWith<$Res>? get observedDate {
+    if (_self.observedDate == null) {
+      return null;
+    }
+
+    return $DateCopyWith<$Res>(_self.observedDate!, (value) {
+      return _then(_self.copyWith(observedDate: value));
+    });
+  }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _Age extends Age {
-  _Age(this.dateOfBirth)
-      : assert(
-            !(DateTime(DateTimeUtils.now().year, DateTimeUtils.now().month,
-                    DateTimeUtils.now().day)
-                .difference(
-                  DateTime(
-                    dateOfBirth.year,
-                    dateOfBirth.month.number,
-                    dateOfBirth.date,
-                  ),
-                )
-                .isNegative),
-            'Age is impossible because it is in the future'),
+  _Age(this.dateOfBirth, {this.observedDate})
+      : assert(observedDate == null || observedDate.isSameOrAfter(dateOfBirth),
+            'Age is impossible because observed date is before date of birth'),
+        assert(
+            observedDate == null || observedDate.isSameOrBefore(Date.today()),
+            'Observed date cannot be in the future'),
+        assert(dateOfBirth.isSameOrBefore(Date.today()),
+            'Date of birth cannot be in the future'),
+        assert(dateOfBirth.year >= 1900, 'Date of birth must be after 1900'),
         super._();
   factory _Age.fromJson(Map<String, dynamic> json) => _$AgeFromJson(json);
 
   @override
   final Date dateOfBirth;
+  @override
+  final Date? observedDate;
 
   /// Create a copy of Age
   /// with the given fields replaced by the non-null parameter values.
@@ -131,16 +152,18 @@ class _Age extends Age {
         (other.runtimeType == runtimeType &&
             other is _Age &&
             (identical(other.dateOfBirth, dateOfBirth) ||
-                other.dateOfBirth == dateOfBirth));
+                other.dateOfBirth == dateOfBirth) &&
+            (identical(other.observedDate, observedDate) ||
+                other.observedDate == observedDate));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, dateOfBirth);
+  int get hashCode => Object.hash(runtimeType, dateOfBirth, observedDate);
 
   @override
   String toString() {
-    return 'Age(dateOfBirth: $dateOfBirth)';
+    return 'Age(dateOfBirth: $dateOfBirth, observedDate: $observedDate)';
   }
 }
 
@@ -150,10 +173,12 @@ abstract mixin class _$AgeCopyWith<$Res> implements $AgeCopyWith<$Res> {
       __$AgeCopyWithImpl;
   @override
   @useResult
-  $Res call({Date dateOfBirth});
+  $Res call({Date dateOfBirth, Date? observedDate});
 
   @override
   $DateCopyWith<$Res> get dateOfBirth;
+  @override
+  $DateCopyWith<$Res>? get observedDate;
 }
 
 /// @nodoc
@@ -169,12 +194,17 @@ class __$AgeCopyWithImpl<$Res> implements _$AgeCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   $Res call({
     Object? dateOfBirth = null,
+    Object? observedDate = freezed,
   }) {
     return _then(_Age(
       null == dateOfBirth
           ? _self.dateOfBirth
           : dateOfBirth // ignore: cast_nullable_to_non_nullable
               as Date,
+      observedDate: freezed == observedDate
+          ? _self.observedDate
+          : observedDate // ignore: cast_nullable_to_non_nullable
+              as Date?,
     ));
   }
 
@@ -185,6 +215,20 @@ class __$AgeCopyWithImpl<$Res> implements _$AgeCopyWith<$Res> {
   $DateCopyWith<$Res> get dateOfBirth {
     return $DateCopyWith<$Res>(_self.dateOfBirth, (value) {
       return _then(_self.copyWith(dateOfBirth: value));
+    });
+  }
+
+  /// Create a copy of Age
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $DateCopyWith<$Res>? get observedDate {
+    if (_self.observedDate == null) {
+      return null;
+    }
+
+    return $DateCopyWith<$Res>(_self.observedDate!, (value) {
+      return _then(_self.copyWith(observedDate: value));
     });
   }
 }
@@ -274,6 +318,10 @@ class _Date extends Date {
             'Date impossible, use ${Date.fromDateTime} for safety, in cost of increased risk of wrong growth calculation'),
         assert(date <= DateTimeUtils.getDaysInMonth(year, month.number),
             'Date exceeded, max date is at ${DateTimeUtils.getDaysInMonth(year, month.number)} in ${month.text} $year'),
+        assert(year >= 1900 && year <= 2100,
+            'Year should be between 1900 and 2100 for reasonable date ranges'),
+        assert(month.number >= 1 && month.number <= 12,
+            'Month number must be between 1 and 12'),
         super._();
   factory _Date.fromJson(Map<String, dynamic> json) => _$DateFromJson(json);
 

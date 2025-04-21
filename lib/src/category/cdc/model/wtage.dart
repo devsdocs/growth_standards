@@ -37,7 +37,6 @@ class CDCWeightForAgeData extends AgeBasedData {
 @freezed
 sealed class CDCWeightForAge extends AgeBasedResult with _$CDCWeightForAge {
   factory CDCWeightForAge({
-    Date? observationDate,
     required Sex sex,
     required Age age,
     required Mass weight,
@@ -71,7 +70,6 @@ sealed class CDCWeightForAge extends AgeBasedResult with _$CDCWeightForAge {
   @override
   Age get ageAtObservationDate => checkAge(
         age,
-        observationDate: observationDate,
         contextData: contextData,
       );
 

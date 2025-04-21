@@ -111,29 +111,24 @@ final class WHOGrowthStandard {
     required Sex sex,
     required Age age,
     required Length measurementResult,
-    Date? observationDate,
   }) =>
       WHOGrowthStandardsArmCircumferenceForAge(
         sex: sex,
         age: age,
         measurementResult: measurementResult,
-        observationDate: observationDate,
       );
 
   WHOGrowthStandardsBodyMassIndexForAge bodyMassIndexForAge({
     required Sex sex,
     required WHOGrowthStandardsBodyMassIndexMeasurement
         bodyMassIndexMeasurement,
-    Date? observationDate,
   }) =>
       WHOGrowthStandardsBodyMassIndexForAge(
         sex: sex,
         bodyMassIndexMeasurement: bodyMassIndexMeasurement,
-        observationDate: observationDate,
       );
 
   WHOGrowthStandardsHeadCircumferenceForAge headCircumferenceForAge({
-    Date? observationDate,
     required Sex sex,
     required Age age,
     required Length measurementResult,
@@ -145,14 +140,12 @@ final class WHOGrowthStandard {
       );
 
   WHOGrowthStandardsLengthForAge lengthForAge({
-    Date? observationDate,
     required Sex sex,
     required Age age,
     required Length lengthHeight,
     required LengthHeightMeasurementPosition measure,
   }) =>
       WHOGrowthStandardsLengthForAge(
-        observationDate: observationDate,
         sex: sex,
         age: age,
         lengthHeight: lengthHeight,
@@ -160,38 +153,32 @@ final class WHOGrowthStandard {
       );
 
   WHOGrowthStandardsSubscapularSkinfoldForAge subscapularSkinfoldForAge({
-    Date? observationDate,
     required Sex sex,
     required Age age,
     required Length measurementResult,
   }) =>
       WHOGrowthStandardsSubscapularSkinfoldForAge(
-        observationDate: observationDate,
         sex: sex,
         age: age,
         measurementResult: measurementResult,
       );
 
   WHOGrowthStandardsTricepsSkinfoldForAge tricepsSkinfoldForAge({
-    Date? observationDate,
     required Sex sex,
     required Age age,
     required Length measurementResult,
   }) =>
       WHOGrowthStandardsTricepsSkinfoldForAge(
-        observationDate: observationDate,
         sex: sex,
         age: age,
         measurementResult: measurementResult,
       );
   WHOGrowthStandardsWeightForAge weightForAge({
-    Date? observationDate,
     required Sex sex,
     required Age age,
     required Mass weight,
   }) =>
       WHOGrowthStandardsWeightForAge(
-        observationDate: observationDate,
         sex: sex,
         age: age,
         weight: weight,
@@ -229,7 +216,6 @@ final class WHOGrowthStandard {
 
   WHOGrowthStandardsHeadCircumferenceVelocityForAge
       headCircumferenceVelocityForAge({
-    Date? observationDate,
     required Sex sex,
     required Age age,
     required List<LengthMeasurementHistory> pastMeasurement,
@@ -241,7 +227,6 @@ final class WHOGrowthStandard {
           );
 
   WHOGrowthStandardsLengthVelocityForAge lengthVelocityForAge({
-    Date? observationDate,
     required Sex sex,
     required Age age,
     required List<LengthMeasurementHistory> pastMeasurement,
@@ -253,7 +238,6 @@ final class WHOGrowthStandard {
       );
 
   WHOGrowthStandardsWeightVelocityForAge weightVelocityForAge({
-    Date? observationDate,
     required Sex sex,
     required Age age,
     required List<MassMeasurementHistory> pastMeasurement,
@@ -296,41 +280,35 @@ final class WHOGrowthReference {
   WHOGrowthReferenceFromJson get fromJson => WHOGrowthReferenceFromJson();
 
   WHOGrowthReferenceBodyMassIndexForAge bodyMassIndexForAge({
-    Date? observationDate,
     required Sex sex,
     required WHOGrowthReferenceBodyMassIndexMeasurement
         bodyMassIndexMeasurement,
     required Age age,
   }) =>
       WHOGrowthReferenceBodyMassIndexForAge(
-        observationDate: observationDate,
         age: age,
         sex: sex,
         bodyMassIndexMeasurement: bodyMassIndexMeasurement,
       );
 
   WHOGrowthReferenceHeightForAge heightForAge({
-    Date? observationDate,
     required Sex sex,
     required Age age,
     required Length lengthHeight,
     required LengthHeightMeasurementPosition measure,
   }) =>
       WHOGrowthReferenceHeightForAge(
-        observationDate: observationDate,
         sex: sex,
         age: age,
         lengthHeight: lengthHeight,
       );
 
   WHOGrowthReferenceWeightForAge weightForAge({
-    Date? observationDate,
     required Sex sex,
     required Age age,
     required Mass weight,
   }) =>
       WHOGrowthReferenceWeightForAge(
-        observationDate: observationDate,
         sex: sex,
         age: age,
         weight: weight,

@@ -37,7 +37,6 @@ class WHOGrowthReferenceWeightForAgeData extends AgeBasedData {
 sealed class WHOGrowthReferenceWeightForAge extends AgeBasedResult
     with _$WHOGrowthReferenceWeightForAge {
   factory WHOGrowthReferenceWeightForAge({
-    Date? observationDate,
     required Sex sex,
     required Age age,
     required Mass weight,
@@ -69,7 +68,6 @@ sealed class WHOGrowthReferenceWeightForAge extends AgeBasedResult
   @override
   Age get ageAtObservationDate => checkAge(
         age,
-        observationDate: observationDate,
         contextData: contextData,
       );
 

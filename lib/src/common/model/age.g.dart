@@ -8,10 +8,14 @@ part of 'age.dart';
 
 _Age _$AgeFromJson(Map<String, dynamic> json) => _Age(
       Date.fromJson(json['dateOfBirth'] as Map<String, dynamic>),
+      observedDate: json['observedDate'] == null
+          ? null
+          : Date.fromJson(json['observedDate'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$AgeToJson(_Age instance) => <String, dynamic>{
       'dateOfBirth': instance.dateOfBirth.toJson(),
+      'observedDate': instance.observedDate?.toJson(),
     };
 
 _Date _$DateFromJson(Map<String, dynamic> json) => _Date(

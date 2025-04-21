@@ -39,7 +39,6 @@ class WHOGrowthStandardsLengthForAgeData extends AgeBasedData {
 sealed class WHOGrowthStandardsLengthForAge extends AgeBasedResult
     with _$WHOGrowthStandardsLengthForAge {
   factory WHOGrowthStandardsLengthForAge({
-    Date? observationDate,
     required Sex sex,
     required Age age,
     required Length lengthHeight,
@@ -76,7 +75,6 @@ sealed class WHOGrowthStandardsLengthForAge extends AgeBasedResult
   @override
   Age get ageAtObservationDate => checkAge(
         age,
-        observationDate: observationDate,
         contextData: contextData,
       );
 

@@ -34,7 +34,6 @@ class FentonLengthForAgeData extends AgeBasedData {
 sealed class FentonLengthForAge extends AgeBasedResult
     with _$FentonLengthForAge {
   factory FentonLengthForAge({
-    Date? observationDate,
     required Sex sex,
     required Age age,
     required Length lengthHeight,
@@ -57,7 +56,6 @@ sealed class FentonLengthForAge extends AgeBasedResult
   @override
   Age get ageAtObservationDate => checkAge(
         age,
-        observationDate: observationDate,
         contextData: contextData,
       );
 
