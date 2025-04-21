@@ -6,17 +6,17 @@ part of 'fenton.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_FentonHeadCircumferenceForAge _$FentonHeadCircumferenceForAgeFromJson(
-        Map<String, dynamic> json) =>
-    _FentonHeadCircumferenceForAge(
-      sex: $enumDecode(_$SexEnumMap, json['sex']),
-      age: Age.fromJson(json['age'] as Map<String, dynamic>),
-      measurementResult:
-          Length.fromJson(json['measurementResult'] as Map<String, dynamic>),
-    );
+_$FentonHeadCircumferenceForAgeImpl
+    _$$FentonHeadCircumferenceForAgeImplFromJson(Map<String, dynamic> json) =>
+        _$FentonHeadCircumferenceForAgeImpl(
+          sex: $enumDecode(_$SexEnumMap, json['sex']),
+          age: Age.fromJson(json['age'] as Map<String, dynamic>),
+          measurementResult: Length.fromJson(
+              json['measurementResult'] as Map<String, dynamic>),
+        );
 
-Map<String, dynamic> _$FentonHeadCircumferenceForAgeToJson(
-        _FentonHeadCircumferenceForAge instance) =>
+Map<String, dynamic> _$$FentonHeadCircumferenceForAgeImplToJson(
+        _$FentonHeadCircumferenceForAgeImpl instance) =>
     <String, dynamic>{
       'sex': _$SexEnumMap[instance.sex]!,
       'age': instance.age.toJson(),
@@ -29,8 +29,9 @@ const _$SexEnumMap = {
   Sex.both: 3,
 };
 
-_FentonLengthForAge _$FentonLengthForAgeFromJson(Map<String, dynamic> json) =>
-    _FentonLengthForAge(
+_$FentonLengthForAgeImpl _$$FentonLengthForAgeImplFromJson(
+        Map<String, dynamic> json) =>
+    _$FentonLengthForAgeImpl(
       sex: $enumDecode(_$SexEnumMap, json['sex']),
       age: Age.fromJson(json['age'] as Map<String, dynamic>),
       lengthHeight:
@@ -39,7 +40,8 @@ _FentonLengthForAge _$FentonLengthForAgeFromJson(Map<String, dynamic> json) =>
           _$LengthHeightMeasurementPositionEnumMap, json['measure']),
     );
 
-Map<String, dynamic> _$FentonLengthForAgeToJson(_FentonLengthForAge instance) =>
+Map<String, dynamic> _$$FentonLengthForAgeImplToJson(
+        _$FentonLengthForAgeImpl instance) =>
     <String, dynamic>{
       'sex': _$SexEnumMap[instance.sex]!,
       'age': instance.age.toJson(),
@@ -52,14 +54,16 @@ const _$LengthHeightMeasurementPositionEnumMap = {
   LengthHeightMeasurementPosition.standing: 'standing',
 };
 
-_FentonWeightForAge _$FentonWeightForAgeFromJson(Map<String, dynamic> json) =>
-    _FentonWeightForAge(
+_$FentonWeightForAgeImpl _$$FentonWeightForAgeImplFromJson(
+        Map<String, dynamic> json) =>
+    _$FentonWeightForAgeImpl(
       sex: $enumDecode(_$SexEnumMap, json['sex']),
       age: Age.fromJson(json['age'] as Map<String, dynamic>),
       weight: Mass.fromJson(json['weight'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$FentonWeightForAgeToJson(_FentonWeightForAge instance) =>
+Map<String, dynamic> _$$FentonWeightForAgeImplToJson(
+        _$FentonWeightForAgeImpl instance) =>
     <String, dynamic>{
       'sex': _$SexEnumMap[instance.sex]!,
       'age': instance.age.toJson(),

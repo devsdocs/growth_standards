@@ -1,3 +1,8 @@
+## 3.0.1
+
+- Same as previous version
+- Use this version if your dependencies has not supported `freezed` version 3
+
 ## 3.0.0
 
 - Add `Sex.both` to replace for sex-agnostic data
