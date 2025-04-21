@@ -96,7 +96,7 @@ sealed class WHOGrowthStandardsSubscapularSkinfoldForAge extends AgeBasedResult
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
-  _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS get ageData => _ageData;
+  _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS get lmsData => _ageData;
 
   @override
   num get measurementResultInDefaultUnit =>

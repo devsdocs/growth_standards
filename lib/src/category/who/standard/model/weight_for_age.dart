@@ -85,7 +85,7 @@ sealed class WHOGrowthStandardsWeightForAge extends AgeBasedResult
       oedemaExist ? double.nan : (pnorm(_zScore) * 100).precision(precision);
 
   @override
-  _WHOGrowthStandardsWeightForAgeLMS get ageData => _ageData;
+  _WHOGrowthStandardsWeightForAgeLMS get lmsData => _ageData;
 
   @override
   num get measurementResultInDefaultUnit => weight.toKilogram.value;

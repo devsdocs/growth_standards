@@ -101,7 +101,7 @@ sealed class CDCInfantWeightForLength extends LengthBasedResult
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
-  _CDCInfantWeightForLengthLMS get lengthData => _ageData;
+  _CDCInfantWeightForLengthLMS get lmsData => _ageData;
 
   @override
   num get measurementResultInDefaultUnit => weight.toKilogram.value;

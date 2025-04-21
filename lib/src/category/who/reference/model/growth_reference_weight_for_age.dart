@@ -90,7 +90,7 @@ sealed class WHOGrowthReferenceWeightForAge extends AgeBasedResult
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
-  _WHOGrowthReferenceWeightForAgeLMS get ageData => _ageData;
+  _WHOGrowthReferenceWeightForAgeLMS get lmsData => _ageData;
 
   @override
   num get measurementResultInDefaultUnit => weight.toKilogram.value;

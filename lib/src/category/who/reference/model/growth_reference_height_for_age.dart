@@ -89,7 +89,7 @@ sealed class WHOGrowthReferenceHeightForAge extends AgeBasedResult
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
-  _WHOGrowthReferenceHeightForAgeLMS get ageData => _ageData;
+  _WHOGrowthReferenceHeightForAgeLMS get lmsData => _ageData;
 
   @override
   num get measurementResultInDefaultUnit => lengthHeight.toCentimeter.value;

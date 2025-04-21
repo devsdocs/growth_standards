@@ -100,7 +100,7 @@ sealed class CDCWeightForStature extends LengthBasedResult
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
-  _CDCWeightForStatureLMS get lengthData => _ageData;
+  _CDCWeightForStatureLMS get lmsData => _ageData;
 
   @override
   num get measurementResultInDefaultUnit => weight.toKilogram.value;

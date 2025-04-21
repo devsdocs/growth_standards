@@ -1,5 +1,4 @@
 import 'package:growth_standards/growth_standards.dart';
-import 'package:growth_standards/src/category/who/typedef.dart';
 import 'package:growth_standards/src/common/model/lms.dart';
 
 abstract class VelocityBasedResult {
@@ -19,20 +18,18 @@ abstract class Result {
   ]);
 
   num get measurementResultInDefaultUnit;
+
+  LMSBasedResult get lmsData;
 }
 
 abstract class AgeBasedResult extends Result {
   const AgeBasedResult();
   Age get ageAtObservationDate;
-
-  LMSBasedResult get ageData;
 }
 
 abstract class LengthBasedResult extends Result {
   const LengthBasedResult();
   Length get lengthAtObservationDate;
-
-  LMSBasedResult get lengthData;
 }
 
 abstract class LMSBasedResult {

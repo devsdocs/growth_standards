@@ -93,7 +93,7 @@ sealed class CDCInfantLengthForAge extends AgeBasedResult
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
-  _CDCInfantLengthForAgeLMS get ageData => _ageData;
+  _CDCInfantLengthForAgeLMS get lmsData => _ageData;
 
   @override
   num get measurementResultInDefaultUnit => _adjustedLength;

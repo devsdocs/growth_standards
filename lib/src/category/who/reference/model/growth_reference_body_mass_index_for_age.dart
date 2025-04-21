@@ -113,7 +113,7 @@ sealed class WHOGrowthReferenceBodyMassIndexForAge extends AgeBasedResult
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
-  _WHOGrowthReferenceBodyMassIndexForAgeLMS get ageData => _ageData;
+  _WHOGrowthReferenceBodyMassIndexForAgeLMS get lmsData => _ageData;
 
   @override
   num get measurementResultInDefaultUnit => bodyMassIndexMeasurement.value;

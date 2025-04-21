@@ -1,3 +1,7 @@
+## 2.2.0
+
+- Unified `ageData` and `lengthData` into `lmsData`
+
 ## 2.1.5
 
 - Export additional typedef

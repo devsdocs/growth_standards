@@ -82,7 +82,7 @@ sealed class FentonHeadCircumferenceForAge extends AgeBasedResult
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
-  _FentonHeadCircumferenceForAgeLMS get ageData => _ageData;
+  _FentonHeadCircumferenceForAgeLMS get lmsData => _ageData;
 
   @override
   num get measurementResultInDefaultUnit =>

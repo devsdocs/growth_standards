@@ -93,7 +93,7 @@ sealed class WHOGrowthStandardsLengthForAge extends AgeBasedResult
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
-  _WHOGrowthStandardsLengthForAgeLMS get ageData => _ageData;
+  _WHOGrowthStandardsLengthForAgeLMS get lmsData => _ageData;
 
   @override
   num get measurementResultInDefaultUnit => _adjustedLength;

@@ -132,7 +132,7 @@ sealed class WHOGrowthStandardsBodyMassIndexForAge extends AgeBasedResult
       oedemaExist ? double.nan : (pnorm(_zScore) * 100).precision(precision);
 
   @override
-  _WHOGrowthStandardsBodyMassIndexForAgeLMS get ageData => _ageData;
+  _WHOGrowthStandardsBodyMassIndexForAgeLMS get lmsData => _ageData;
 
   @override
   num get measurementResultInDefaultUnit => bodyMassIndexMeasurement.value;

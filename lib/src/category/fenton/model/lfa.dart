@@ -76,7 +76,7 @@ sealed class FentonLengthForAge extends AgeBasedResult
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
-  _FentonLengthForAgeLMS get ageData => _ageData;
+  _FentonLengthForAgeLMS get lmsData => _ageData;
 
   @override
   num get measurementResultInDefaultUnit => lengthHeight.toCentimeter.value;

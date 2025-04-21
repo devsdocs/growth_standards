@@ -92,7 +92,7 @@ sealed class CDCWeightForAge extends AgeBasedResult with _$CDCWeightForAge {
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
-  _CDCWeightForAgeLMS get ageData => _ageData;
+  _CDCWeightForAgeLMS get lmsData => _ageData;
 
   @override
   num get measurementResultInDefaultUnit => weight.toKilogram.value;

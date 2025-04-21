@@ -93,7 +93,7 @@ sealed class CDCInfantHeadCircumferenceForAge extends AgeBasedResult
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
-  _CDCInfantHeadCircumferenceForAgeLMS get ageData => _ageData;
+  _CDCInfantHeadCircumferenceForAgeLMS get lmsData => _ageData;
 
   @override
   num get measurementResultInDefaultUnit =>

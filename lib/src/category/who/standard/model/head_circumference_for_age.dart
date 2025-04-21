@@ -89,7 +89,7 @@ sealed class WHOGrowthStandardsHeadCircumferenceForAge extends AgeBasedResult
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
-  _WHOGrowthStandardsHeadCircumferenceForAgeLMS get ageData => _ageData;
+  _WHOGrowthStandardsHeadCircumferenceForAgeLMS get lmsData => _ageData;
 
   @override
   num get measurementResultInDefaultUnit =>

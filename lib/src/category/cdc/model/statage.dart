@@ -99,7 +99,7 @@ sealed class CDCStatureForAge extends AgeBasedResult with _$CDCStatureForAge {
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
-  _CDCStatureForAgeLMS get ageData => _ageData;
+  _CDCStatureForAgeLMS get lmsData => _ageData;
 
   @override
   num get measurementResultInDefaultUnit => _adjustedLength;

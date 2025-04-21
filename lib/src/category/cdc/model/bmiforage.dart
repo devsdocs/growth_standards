@@ -128,7 +128,7 @@ sealed class CDCBodyMassIndexForAge extends AgeBasedResult
       _finalPercentile.precision(precision);
 
   @override
-  _CDCBodyMassIndexForAgeLMS get ageData => _ageData;
+  _CDCBodyMassIndexForAgeLMS get lmsData => _ageData;
 
   @override
   num get measurementResultInDefaultUnit => bodyMassIndexMeasurement.value;

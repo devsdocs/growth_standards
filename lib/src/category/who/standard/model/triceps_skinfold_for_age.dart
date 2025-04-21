@@ -92,7 +92,7 @@ sealed class WHOGrowthStandardsTricepsSkinfoldForAge extends AgeBasedResult
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
-  _WHOGrowthStandardsTricepsSkinfoldForAgeLMS get ageData => _ageData;
+  _WHOGrowthStandardsTricepsSkinfoldForAgeLMS get lmsData => _ageData;
 
   @override
   num get measurementResultInDefaultUnit =>
