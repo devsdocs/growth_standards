@@ -1,3 +1,8 @@
+## 2.2.1
+
+- Same as previous version
+- Use this version if your dependencies has not supported `freezed` version 3
+
 ## 2.2.0
 
 - Unified `ageData` and `lengthData` into `lmsData`
