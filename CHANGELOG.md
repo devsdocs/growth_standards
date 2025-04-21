@@ -1,3 +1,7 @@
+## 3.0.2
+
+- Exporting `TimeUnit`
+
 ## 3.0.1
 
 - Same as previous version
