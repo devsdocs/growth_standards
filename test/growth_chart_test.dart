@@ -384,7 +384,7 @@ void main() {
   group('WHO Test', () {
     test('Arm Circ', () {
       final age = Age.byMonthsAgo(24);
-      final observationDate = Date.fromMonthsAgo(18);
+      final observationDate = Date.fromMonthsAgo(24);
       final male = whoGS.armCircumferenceForAge(
         sex: Sex.male,
         age: age,
