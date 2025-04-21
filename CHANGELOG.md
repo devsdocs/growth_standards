@@ -3,6 +3,7 @@
 - Add `Sex.both` to replace for sex-agnostic data
 - Exposing `contextData` for directly accessing statistical data
 - Unified assertion for non velocity measurement
+- Removing `observationDate` on Length-based measurement
 
 ## 2.2.1
 
