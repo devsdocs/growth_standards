@@ -115,14 +115,13 @@ class _$AgeCopyWithImpl<$Res> implements $AgeCopyWith<$Res> {
 @JsonSerializable()
 class _Age extends Age {
   _Age(this.dateOfBirth, {this.observedDate})
-      : assert(observedDate == null || observedDate.isSameOrAfter(dateOfBirth),
-            'Age is impossible because observed date is before date of birth'),
-        assert(
-            observedDate == null || observedDate.isSameOrBefore(Date.today()),
-            'Observed date cannot be in the future'),
+      : assert(
+            observedDate == null ||
+                (observedDate.isSameOrAfter(dateOfBirth) &&
+                    observedDate.isSameOrBefore(Date.today())),
+            'Age is impossible because observed date is before date of birth or observed date is in the future'),
         assert(dateOfBirth.isSameOrBefore(Date.today()),
             'Date of birth cannot be in the future'),
-        assert(dateOfBirth.year >= 1900, 'Date of birth must be after 1900'),
         super._();
   factory _Age.fromJson(Map<String, dynamic> json) => _$AgeFromJson(json);
 
@@ -318,10 +317,6 @@ class _Date extends Date {
             'Date impossible, use ${Date.fromDateTime} for safety, in cost of increased risk of wrong growth calculation'),
         assert(date <= DateTimeUtils.getDaysInMonth(year, month.number),
             'Date exceeded, max date is at ${DateTimeUtils.getDaysInMonth(year, month.number)} in ${month.text} $year'),
-        assert(year >= 1900 && year <= 2100,
-            'Year should be between 1900 and 2100 for reasonable date ranges'),
-        assert(month.number >= 1 && month.number <= 12,
-            'Month number must be between 1 and 12'),
         super._();
   factory _Date.fromJson(Map<String, dynamic> json) => _$DateFromJson(json);
 

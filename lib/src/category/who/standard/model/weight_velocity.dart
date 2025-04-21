@@ -77,7 +77,7 @@ sealed class WHOGrowthStandardsWeightVelocityForAge extends VelocityBasedResult
     'pastMeasurement.every((element) => element.date.isSameOrBefore(Date.today()))',
     'Calculation can not be done as there is future date in past measurement',
   )
-  // @Assert(]
+  // @Assert(
   //   'observationDate == null || pastMeasurement.every((element) => element.date.isSameOrBefore(observationDate))',
   //   'Calculation can not be done as there is future date in past measurement',
   // )
@@ -141,7 +141,7 @@ sealed class WHOGrowthStandardsWeightVelocityForAge extends VelocityBasedResult
           );
 
           final pastMeasurementWithOedema =
-              pastMeasurement.where((e) => e.isOedema!);
+              pastMeasurement.where((e) => e.isOedema == true);
 
           final isValid = pastMeasurementWithOedema.isEmpty ||
               (pastMeasurementWithOedema.isNotEmpty &&
