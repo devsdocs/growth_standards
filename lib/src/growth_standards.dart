@@ -76,6 +76,7 @@ export 'common/base.dart';
 export 'common/extension.dart' show DateTimeToDate;
 export 'common/model/age.dart' show Age, Date;
 export 'common/model/bmi.dart' show BodyMassIndex;
+export 'common/tools.dart' show TimeUnit;
 export 'common/types.dart'
     show
         LengthHeightMeasurementPosition,
