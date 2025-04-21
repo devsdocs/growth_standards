@@ -1,3 +1,9 @@
+## 3.0.0
+
+- Add `Sex.both` to replace for sex-agnostic data
+- Exposing `contextData` for directly accessing statistical data
+- Unified assertion for non velocity measurement
+
 ## 2.2.1
 
 - Same as previous version

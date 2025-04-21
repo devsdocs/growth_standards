@@ -1,5 +1,6 @@
 import 'package:growth_standards/growth_standards.dart';
 import 'package:growth_standards/src/common/model/lms.dart';
+import 'package:growth_standards/src/common/tools.dart';
 
 abstract class VelocityBasedResult {
   const VelocityBasedResult();
@@ -7,7 +8,7 @@ abstract class VelocityBasedResult {
       zScorePercentileMap([Precision precision = Precision.ten]);
 }
 
-abstract class Result {
+sealed class Result {
   const Result();
 
   num zScore([
@@ -19,7 +20,9 @@ abstract class Result {
 
   num get measurementResultInDefaultUnit;
 
-  LMSBasedResult get lmsData;
+  LMSContext get lmsData;
+
+  BaseData get contextData;
 }
 
 abstract class AgeBasedResult extends Result {
@@ -32,23 +35,34 @@ abstract class LengthBasedResult extends Result {
   Length get lengthAtObservationDate;
 }
 
-abstract class LMSBasedResult {
-  const LMSBasedResult();
+abstract class LMSContext {
+  const LMSContext();
   LMS get lms;
 }
 
-abstract class BaseData {
+sealed class BaseData {
   const BaseData();
-  Map<Sex, Map<num, LMSBasedResult>> get data;
+  Map<Sex, Map<num, LMSContext>> get data;
+
+  List<num> get _contextData => data.values.first.keys.toList()..sort();
+
+  num get upperBound => _contextData.last;
+  num get lowerBound => _contextData.first;
 }
 
-abstract class SexAgnosticData {
-  const SexAgnosticData();
-  Map<num, LMSBasedResult> get data;
+abstract class AgeBasedData extends BaseData {
+  const AgeBasedData();
+
+  TimeUnit get unit;
+}
+
+abstract class LengthBasedData extends BaseData {
+  const LengthBasedData();
+
+  Length get unit;
 }
 
 abstract class VelocityBaseData {
   const VelocityBaseData();
-  Map<Sex, Map<VelocityIncrement, Map<VelocityMonths, LMSBasedResult>>>
-      get data;
+  Map<Sex, Map<VelocityIncrement, Map<VelocityMonths, LMSContext>>> get data;
 }

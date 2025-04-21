@@ -1,6 +1,6 @@
 part of '../standard.dart';
 
-class WHOGrowthStandardsBodyMassIndexForAgeData extends BaseData {
+class WHOGrowthStandardsBodyMassIndexForAgeData extends AgeBasedData {
   factory WHOGrowthStandardsBodyMassIndexForAgeData() => _singleton;
   const WHOGrowthStandardsBodyMassIndexForAgeData._(this._data);
 
@@ -35,6 +35,9 @@ class WHOGrowthStandardsBodyMassIndexForAgeData extends BaseData {
 
   @override
   String toString() => 'Body Mass Index For Age Data($_data)';
+
+  @override
+  TimeUnit get unit => TimeUnit.days;
 }
 
 @freezed
@@ -76,14 +79,6 @@ sealed class WHOGrowthStandardsBodyMassIndexMeasurement
 @freezed
 sealed class WHOGrowthStandardsBodyMassIndexForAge extends AgeBasedResult
     with _$WHOGrowthStandardsBodyMassIndexForAge {
-  @Assert(
-    'bodyMassIndexMeasurement.age.ageInTotalDaysByNow >= 0 && bodyMassIndexMeasurement.age.ageInTotalDaysByNow <= 1856',
-    'Age must be in range of 0 - 1856 days',
-  )
-  @Assert(
-    'observationDate == null || observationDate.isSameOrBefore(Date.today()) || observationDate.isSameOrAfter(bodyMassIndexMeasurement.age.dateOfBirth)',
-    'Observation date is impossible, because happen after today or before birth',
-  )
   factory WHOGrowthStandardsBodyMassIndexForAge({
     Date? observationDate,
     required Sex sex,
@@ -100,13 +95,14 @@ sealed class WHOGrowthStandardsBodyMassIndexForAge extends AgeBasedResult
   ) =>
       _$WHOGrowthStandardsBodyMassIndexForAgeFromJson(json);
 
-  WHOGrowthStandardsBodyMassIndexForAgeData get _bodyMassIndexData =>
+  @override
+  WHOGrowthStandardsBodyMassIndexForAgeData get contextData =>
       WHOGrowthStandardsBodyMassIndexForAgeData();
 
   Map<int, _WHOGrowthStandardsBodyMassIndexForAgeLMS> get _maleData =>
-      _bodyMassIndexData._data[Sex.male]!;
+      contextData._data[Sex.male]!;
   Map<int, _WHOGrowthStandardsBodyMassIndexForAgeLMS> get _femaleData =>
-      _bodyMassIndexData._data[Sex.female]!;
+      contextData._data[Sex.female]!;
 
   _WHOGrowthStandardsBodyMassIndexForAgeLMS get _ageData => (sex == Sex.male
       ? _maleData
@@ -116,8 +112,11 @@ sealed class WHOGrowthStandardsBodyMassIndexForAge extends AgeBasedResult
       _ageData.lms.adjustedZScore(measurementResultInDefaultUnit);
 
   @override
-  Age get ageAtObservationDate =>
-      checkObservationDate(bodyMassIndexMeasurement.age, observationDate);
+  Age get ageAtObservationDate => checkAge(
+        bodyMassIndexMeasurement.age,
+        observationDate: observationDate,
+        contextData: contextData,
+      );
 
   @override
   num zScore([
@@ -138,7 +137,7 @@ sealed class WHOGrowthStandardsBodyMassIndexForAge extends AgeBasedResult
   num get measurementResultInDefaultUnit => bodyMassIndexMeasurement.value;
 }
 
-class _WHOGrowthStandardsBodyMassIndexForAgeLMS extends LMSBasedResult {
+class _WHOGrowthStandardsBodyMassIndexForAgeLMS extends LMSContext {
   _WHOGrowthStandardsBodyMassIndexForAgeLMS({
     required this.lms,
     required this.loh,

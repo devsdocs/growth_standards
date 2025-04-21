@@ -166,8 +166,7 @@ sealed class WHOGrowthStandardsHeadCircumferenceVelocityForAge
   }
 }
 
-class WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS
-    extends LMSBasedResult {
+class WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS extends LMSContext {
   WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS({
     required this.lms,
   });

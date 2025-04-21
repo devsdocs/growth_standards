@@ -1,6 +1,6 @@
 part of '../cdc.dart';
 
-class CDCBodyMassIndexForAgeData extends BaseData {
+class CDCBodyMassIndexForAgeData extends AgeBasedData {
   factory CDCBodyMassIndexForAgeData() => _singleton;
   const CDCBodyMassIndexForAgeData._(this._data);
 
@@ -31,6 +31,9 @@ class CDCBodyMassIndexForAgeData extends BaseData {
 
   @override
   String toString() => 'Body Mass Index For Age Data($_data)';
+
+  @override
+  TimeUnit get unit => TimeUnit.months;
 }
 
 @freezed
@@ -53,18 +56,6 @@ sealed class CDCBodyMassIndexMeasurement with _$CDCBodyMassIndexMeasurement {
 @freezed
 sealed class CDCBodyMassIndexForAge extends AgeBasedResult
     with _$CDCBodyMassIndexForAge {
-  @Assert(
-    'age.ageInTotalMonthsByNow >= 24 && age.ageInTotalMonthsByNow < 241',
-    'Age must be in range of 24 - 240 months',
-  )
-  @Assert(
-    'observationDate == null || observationDate.isSameOrBefore(Date.today()) || observationDate.isSameOrAfter(age.dateOfBirth)',
-    'Observation date is impossible, because happen after today or before birth',
-  )
-  @Assert(
-    'observationDate == null || observationDate.isSameOrAfter(age.dateAtMonthsAfterBirth(24)) ',
-    'Observation date is impossible, because happen after today or before birth',
-  )
   factory CDCBodyMassIndexForAge({
     Date? observationDate,
     required Sex sex,
@@ -79,13 +70,13 @@ sealed class CDCBodyMassIndexForAge extends AgeBasedResult
   ) =>
       _$CDCBodyMassIndexForAgeFromJson(json);
 
-  CDCBodyMassIndexForAgeData get _bodyMassIndexData =>
-      CDCBodyMassIndexForAgeData();
+  @override
+  CDCBodyMassIndexForAgeData get contextData => CDCBodyMassIndexForAgeData();
 
   Map<double, _CDCBodyMassIndexForAgeLMS> get _maleData =>
-      _bodyMassIndexData._data[Sex.male]!;
+      contextData._data[Sex.male]!;
   Map<double, _CDCBodyMassIndexForAgeLMS> get _femaleData =>
-      _bodyMassIndexData._data[Sex.female]!;
+      contextData._data[Sex.female]!;
 //TODO(devsdocs): Fix CDC age calculation
   _CDCBodyMassIndexForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)[
@@ -113,7 +104,11 @@ sealed class CDCBodyMassIndexForAge extends AgeBasedResult
       : (pnorm(_zScore) * 100);
 
   @override
-  Age get ageAtObservationDate => checkObservationDate(age, observationDate);
+  Age get ageAtObservationDate => checkAge(
+        age,
+        observationDate: observationDate,
+        contextData: contextData,
+      );
 
   @override
   num zScore([
@@ -134,7 +129,7 @@ sealed class CDCBodyMassIndexForAge extends AgeBasedResult
   num get measurementResultInDefaultUnit => bodyMassIndexMeasurement.value;
 }
 
-class _CDCBodyMassIndexForAgeLMS extends LMSBasedResult {
+class _CDCBodyMassIndexForAgeLMS extends LMSContext {
   _CDCBodyMassIndexForAgeLMS({
     required this.lms,
     required this.sigma,

@@ -1,6 +1,6 @@
 part of '../standard.dart';
 
-class WHOGrowthStandardsWeightForHeightData extends BaseData {
+class WHOGrowthStandardsWeightForHeightData extends LengthBasedData {
   factory WHOGrowthStandardsWeightForHeightData() => _singleton;
   WHOGrowthStandardsWeightForHeightData._(this._data);
 
@@ -31,27 +31,15 @@ class WHOGrowthStandardsWeightForHeightData extends BaseData {
 
   @override
   String toString() => 'Weight For Height Data($_data)';
+
+  @override
+  Length get unit => Length.centimeter;
 }
 
 @freezed
 sealed class WHOGrowthStandardsWeightForHeight extends LengthBasedResult
     with _$WHOGrowthStandardsWeightForHeight {
-  //TODO(devsdocs): Test this!
-  @Assert(
-    'adjustedLengthHeight(measure: measure,age: age,lengthHeight: height, type: AdjustedLengthType.who,).value >= 65 && adjustedLengthHeight(measure: measure,age: age,lengthHeight: height, type: AdjustedLengthType.who,).value <= 120 && height.toCentimeter.value >= 65 && height.toCentimeter.value <= 120',
-    'Please correcting measurement position based on age',
-  )
-  //TODO(devsdocs): Test this!
-  @Assert(
-    'adjustedLengthHeight(measure: measure,age: age,lengthHeight: height, type: AdjustedLengthType.who,).value >= 65 && adjustedLengthHeight(measure: measure,age: age,lengthHeight: height, type: AdjustedLengthType.who,).value <= 120',
-    'Height must be in range of 65 - 120 cm',
-  )
-  @Assert(
-    'observationDate == null || observationDate.isSameOrBefore(Date.today()) || observationDate.isSameOrAfter(age.dateOfBirth)',
-    'Observation date is impossible, because happen after today or before birth',
-  )
   factory WHOGrowthStandardsWeightForHeight({
-    Date? observationDate,
     required Sex sex,
     required Age age,
     @Default(false) bool oedemaExist,
@@ -67,28 +55,30 @@ sealed class WHOGrowthStandardsWeightForHeight extends LengthBasedResult
   ) =>
       _$WHOGrowthStandardsWeightForHeightFromJson(json);
 
-  num get _adjustedHeight => adjustedLengthHeight(
+  Length$Centimeter get _adjustedHeight => adjustedLengthHeight(
         measure: measure,
         age: age,
         lengthHeight: height,
         type: AdjustedLengthType.who,
-      ).value;
+      );
 
-  WHOGrowthStandardsWeightForHeightData get _weightForHeightData =>
+  @override
+  WHOGrowthStandardsWeightForHeightData get contextData =>
       WHOGrowthStandardsWeightForHeightData();
 
   Map<num, _WHOGrowthStandardsWeightForHeightLMS> get _maleData =>
-      _weightForHeightData._data[Sex.male]!;
+      contextData._data[Sex.male]!;
   Map<num, _WHOGrowthStandardsWeightForHeightLMS> get _femaleData =>
-      _weightForHeightData._data[Sex.female]!;
+      contextData._data[Sex.female]!;
 
   _WHOGrowthStandardsWeightForHeightLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)[_length]!;
 
   @override
-  Length get lengthAtObservationDate => Length$Centimeter(_length);
+  Length get lengthAtObservationDate =>
+      checkLength(_adjustedHeight, contextData: contextData);
 
-  num get _length => _adjustedHeight.toDouble().toPrecision(1);
+  num get _length => lengthAtObservationDate.value.toDouble().toPrecision(1);
 
   num get _zScore =>
       _ageData.lms.adjustedZScore(measurementResultInDefaultUnit);
@@ -112,7 +102,7 @@ sealed class WHOGrowthStandardsWeightForHeight extends LengthBasedResult
   num get measurementResultInDefaultUnit => weight.toKilogram.value;
 }
 
-class _WHOGrowthStandardsWeightForHeightLMS extends LMSBasedResult {
+class _WHOGrowthStandardsWeightForHeightLMS extends LMSContext {
   _WHOGrowthStandardsWeightForHeightLMS({
     required this.lms,
     required this.lengthOrHeight,

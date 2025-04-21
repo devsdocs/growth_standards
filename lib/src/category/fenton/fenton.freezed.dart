@@ -141,18 +141,7 @@ class _FentonHeadCircumferenceForAge extends FentonHeadCircumferenceForAge {
       required this.sex,
       required this.age,
       required this.measurementResult})
-      : assert(age.ageInTotalWeeksByNow >= 22 && age.ageInTotalWeeksByNow <= 50,
-            'Age must be in range of 22 - 50 weeks'),
-        assert(
-            observationDate == null ||
-                observationDate.isSameOrBefore(Date.today()) ||
-                observationDate.isSameOrAfter(age.dateOfBirth),
-            'Observation date is impossible, because happen after today or before birth'),
-        assert(
-            observationDate == null ||
-                observationDate.isSameOrAfter(age.dateAtWeeksAfterBirth(22)),
-            'Observation date is impossible, because happen after today or before birth'),
-        super._();
+      : super._();
   factory _FentonHeadCircumferenceForAge.fromJson(Map<String, dynamic> json) =>
       _$FentonHeadCircumferenceForAgeFromJson(json);
 
@@ -424,18 +413,7 @@ class _FentonLengthForAge extends FentonLengthForAge {
       required this.age,
       required this.lengthHeight,
       required this.measure})
-      : assert(age.ageInTotalWeeksByNow >= 22 && age.ageInTotalWeeksByNow <= 50,
-            'Age must be in range of 22 - 50 weeks'),
-        assert(
-            observationDate == null ||
-                observationDate.isSameOrBefore(Date.today()) ||
-                observationDate.isSameOrAfter(age.dateOfBirth),
-            'Observation date is impossible, because happen after today or before birth'),
-        assert(
-            observationDate == null ||
-                observationDate.isSameOrAfter(age.dateAtWeeksAfterBirth(22)),
-            'Observation date is impossible, because happen after today or before birth'),
-        super._();
+      : super._();
   factory _FentonLengthForAge.fromJson(Map<String, dynamic> json) =>
       _$FentonLengthForAgeFromJson(json);
 
@@ -703,18 +681,7 @@ class _FentonWeightForAge extends FentonWeightForAge {
       required this.sex,
       required this.age,
       required this.weight})
-      : assert(age.ageInTotalWeeksByNow >= 22 && age.ageInTotalWeeksByNow <= 50,
-            'Age must be in range of 22 - 50 weeks'),
-        assert(
-            observationDate == null ||
-                observationDate.isSameOrBefore(Date.today()) ||
-                observationDate.isSameOrAfter(age.dateOfBirth),
-            'Observation date is impossible, because happen after today or before birth'),
-        assert(
-            observationDate == null ||
-                observationDate.isSameOrAfter(age.dateAtWeeksAfterBirth(22)),
-            'Observation date is impossible, because happen after today or before birth'),
-        super._();
+      : super._();
   factory _FentonWeightForAge.fromJson(Map<String, dynamic> json) =>
       _$FentonWeightForAgeFromJson(json);
 

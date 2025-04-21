@@ -1,6 +1,6 @@
 part of '../standard.dart';
 
-class WHOGrowthStandardsTricepsSkinfoldForAgeData extends BaseData {
+class WHOGrowthStandardsTricepsSkinfoldForAgeData extends AgeBasedData {
   factory WHOGrowthStandardsTricepsSkinfoldForAgeData() => _singleton;
   WHOGrowthStandardsTricepsSkinfoldForAgeData._(this._data);
 
@@ -30,23 +30,14 @@ class WHOGrowthStandardsTricepsSkinfoldForAgeData extends BaseData {
 
   @override
   String toString() => 'Triceps Skinfold For Age Data($_data)';
+
+  @override
+  TimeUnit get unit => TimeUnit.days;
 }
 
 @freezed
 sealed class WHOGrowthStandardsTricepsSkinfoldForAge extends AgeBasedResult
     with _$WHOGrowthStandardsTricepsSkinfoldForAge {
-  @Assert(
-    'age.ageInTotalDaysByNow >= 91 && age.ageInTotalDaysByNow <= 1856',
-    'Age must be in range of 91 - 1856 days',
-  )
-  @Assert(
-    'observationDate == null || observationDate.isSameOrBefore(Date.today()) || observationDate.isSameOrAfter(age.dateOfBirth)',
-    'Observation date is impossible, because happen after today or before birth',
-  )
-  @Assert(
-    'observationDate == null || observationDate.isSameOrAfter(age.dateAtDaysAfterBirth(91)) ',
-    'Observation date is impossible, because happen after today or before birth',
-  )
   factory WHOGrowthStandardsTricepsSkinfoldForAge({
     Date? observationDate,
     required Sex sex,
@@ -61,13 +52,14 @@ sealed class WHOGrowthStandardsTricepsSkinfoldForAge extends AgeBasedResult
   ) =>
       _$WHOGrowthStandardsTricepsSkinfoldForAgeFromJson(json);
 
-  WHOGrowthStandardsTricepsSkinfoldForAgeData get _tricepsSkinfoldData =>
+  @override
+  WHOGrowthStandardsTricepsSkinfoldForAgeData get contextData =>
       WHOGrowthStandardsTricepsSkinfoldForAgeData();
 
   Map<int, _WHOGrowthStandardsTricepsSkinfoldForAgeLMS> get _maleData =>
-      _tricepsSkinfoldData._data[Sex.male]!;
+      contextData._data[Sex.male]!;
   Map<int, _WHOGrowthStandardsTricepsSkinfoldForAgeLMS> get _femaleData =>
-      _tricepsSkinfoldData._data[Sex.female]!;
+      contextData._data[Sex.female]!;
 
   _WHOGrowthStandardsTricepsSkinfoldForAgeLMS get _ageData => (sex == Sex.male
       ? _maleData
@@ -77,7 +69,11 @@ sealed class WHOGrowthStandardsTricepsSkinfoldForAge extends AgeBasedResult
       _ageData.lms.adjustedZScore(measurementResultInDefaultUnit);
 
   @override
-  Age get ageAtObservationDate => checkObservationDate(age, observationDate);
+  Age get ageAtObservationDate => checkAge(
+        age,
+        observationDate: observationDate,
+        contextData: contextData,
+      );
 
   @override
   num zScore([
@@ -99,7 +95,7 @@ sealed class WHOGrowthStandardsTricepsSkinfoldForAge extends AgeBasedResult
       measurementResult.toMillimeter.value;
 }
 
-class _WHOGrowthStandardsTricepsSkinfoldForAgeLMS extends LMSBasedResult {
+class _WHOGrowthStandardsTricepsSkinfoldForAgeLMS extends LMSContext {
   _WHOGrowthStandardsTricepsSkinfoldForAgeLMS({
     required this.lms,
   });

@@ -31,6 +31,7 @@ Map<String, dynamic> _$WHOGrowthStandardsArmCircumferenceForAgeToJson(
 const _$SexEnumMap = {
   Sex.male: 1,
   Sex.female: 2,
+  Sex.both: 3,
 };
 
 _WHOGrowthStandardsBodyMassIndexMeasurement
@@ -236,9 +237,6 @@ Map<String, dynamic> _$WHOGrowthStandardsWeightForAgeToJson(
 _WHOGrowthStandardsWeightForHeight _$WHOGrowthStandardsWeightForHeightFromJson(
         Map<String, dynamic> json) =>
     _WHOGrowthStandardsWeightForHeight(
-      observationDate: json['observationDate'] == null
-          ? null
-          : Date.fromJson(json['observationDate'] as Map<String, dynamic>),
       sex: $enumDecode(_$SexEnumMap, json['sex']),
       age: Age.fromJson(json['age'] as Map<String, dynamic>),
       oedemaExist: json['oedemaExist'] as bool? ?? false,
@@ -251,7 +249,6 @@ _WHOGrowthStandardsWeightForHeight _$WHOGrowthStandardsWeightForHeightFromJson(
 Map<String, dynamic> _$WHOGrowthStandardsWeightForHeightToJson(
         _WHOGrowthStandardsWeightForHeight instance) =>
     <String, dynamic>{
-      'observationDate': instance.observationDate?.toJson(),
       'sex': _$SexEnumMap[instance.sex]!,
       'age': instance.age.toJson(),
       'oedemaExist': instance.oedemaExist,
@@ -263,9 +260,6 @@ Map<String, dynamic> _$WHOGrowthStandardsWeightForHeightToJson(
 _WHOGrowthStandardsWeightForLength _$WHOGrowthStandardsWeightForLengthFromJson(
         Map<String, dynamic> json) =>
     _WHOGrowthStandardsWeightForLength(
-      observationDate: json['observationDate'] == null
-          ? null
-          : Date.fromJson(json['observationDate'] as Map<String, dynamic>),
       sex: $enumDecode(_$SexEnumMap, json['sex']),
       age: Age.fromJson(json['age'] as Map<String, dynamic>),
       oedemaExist: json['oedemaExist'] as bool? ?? false,
@@ -278,7 +272,6 @@ _WHOGrowthStandardsWeightForLength _$WHOGrowthStandardsWeightForLengthFromJson(
 Map<String, dynamic> _$WHOGrowthStandardsWeightForLengthToJson(
         _WHOGrowthStandardsWeightForLength instance) =>
     <String, dynamic>{
-      'observationDate': instance.observationDate?.toJson(),
       'sex': _$SexEnumMap[instance.sex]!,
       'age': instance.age.toJson(),
       'oedemaExist': instance.oedemaExist,

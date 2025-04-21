@@ -45,6 +45,7 @@ Map<String, dynamic> _$WHOGrowthReferenceBodyMassIndexForAgeToJson(
 const _$SexEnumMap = {
   Sex.male: 1,
   Sex.female: 2,
+  Sex.both: 3,
 };
 
 _WHOGrowthReferenceHeightForAge _$WHOGrowthReferenceHeightForAgeFromJson(

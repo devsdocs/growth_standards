@@ -315,19 +315,7 @@ class _WHOGrowthReferenceBodyMassIndexForAge
       required this.sex,
       required this.age,
       required this.bodyMassIndexMeasurement})
-      : assert(
-            age.ageInTotalMonthsByNow >= 61 && age.ageInTotalMonthsByNow <= 228,
-            'Age must be in range of 61 - 228 months'),
-        assert(
-            observationDate == null ||
-                observationDate.isSameOrBefore(Date.today()) ||
-                observationDate.isSameOrAfter(age.dateOfBirth),
-            'Observation date is impossible, because happen after today or before birth'),
-        assert(
-            observationDate == null ||
-                observationDate.isSameOrAfter(age.dateAtMonthsAfterBirth(61)),
-            'Observation date is impossible, because happen after today or before birth'),
-        super._();
+      : super._();
   factory _WHOGrowthReferenceBodyMassIndexForAge.fromJson(
           Map<String, dynamic> json) =>
       _$WHOGrowthReferenceBodyMassIndexForAgeFromJson(json);
@@ -609,19 +597,7 @@ class _WHOGrowthReferenceHeightForAge extends WHOGrowthReferenceHeightForAge {
       required this.sex,
       required this.age,
       required this.lengthHeight})
-      : assert(
-            age.ageInTotalMonthsByNow >= 61 && age.ageInTotalMonthsByNow <= 228,
-            'Age must be in range of 61 - 228 months'),
-        assert(
-            observationDate == null ||
-                observationDate.isSameOrBefore(Date.today()) ||
-                observationDate.isSameOrAfter(age.dateOfBirth),
-            'Observation date is impossible, because happen after today or before birth'),
-        assert(
-            observationDate == null ||
-                observationDate.isSameOrAfter(age.dateAtMonthsAfterBirth(61)),
-            'Observation date is impossible, because happen after today or before birth'),
-        super._();
+      : super._();
   factory _WHOGrowthReferenceHeightForAge.fromJson(Map<String, dynamic> json) =>
       _$WHOGrowthReferenceHeightForAgeFromJson(json);
 
@@ -880,19 +856,7 @@ class _WHOGrowthReferenceWeightForAge extends WHOGrowthReferenceWeightForAge {
       required this.sex,
       required this.age,
       required this.weight})
-      : assert(
-            age.ageInTotalMonthsByNow >= 61 && age.ageInTotalMonthsByNow <= 120,
-            'Age must be in range of 61 - 120 months'),
-        assert(
-            observationDate == null ||
-                observationDate.isSameOrBefore(Date.today()) ||
-                observationDate.isSameOrAfter(age.dateOfBirth),
-            'Observation date is impossible, because happen after today or before birth'),
-        assert(
-            observationDate == null ||
-                observationDate.isSameOrAfter(age.dateAtMonthsAfterBirth(61)),
-            'Observation date is impossible, because happen after today or before birth'),
-        super._();
+      : super._();
   factory _WHOGrowthReferenceWeightForAge.fromJson(Map<String, dynamic> json) =>
       _$WHOGrowthReferenceWeightForAgeFromJson(json);
 

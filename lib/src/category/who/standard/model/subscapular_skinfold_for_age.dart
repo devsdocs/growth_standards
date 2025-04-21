@@ -1,6 +1,6 @@
 part of '../standard.dart';
 
-class WHOGrowthStandardsSubscapularSkinfoldForAgeData extends BaseData {
+class WHOGrowthStandardsSubscapularSkinfoldForAgeData extends AgeBasedData {
   factory WHOGrowthStandardsSubscapularSkinfoldForAgeData() => _singleton;
   WHOGrowthStandardsSubscapularSkinfoldForAgeData._(this._data);
 
@@ -32,23 +32,14 @@ class WHOGrowthStandardsSubscapularSkinfoldForAgeData extends BaseData {
 
   @override
   String toString() => 'Subscapular Skinfold For Age Data($_data)';
+
+  @override
+  TimeUnit get unit => TimeUnit.days;
 }
 
 @freezed
 sealed class WHOGrowthStandardsSubscapularSkinfoldForAge extends AgeBasedResult
     with _$WHOGrowthStandardsSubscapularSkinfoldForAge {
-  @Assert(
-    'age.ageInTotalDaysByNow >= 91 && age.ageInTotalDaysByNow <= 1856',
-    'Age must be in range of 91 - 1856 days',
-  )
-  @Assert(
-    'observationDate == null || observationDate.isSameOrBefore(Date.today()) || observationDate.isSameOrAfter(age.dateOfBirth)',
-    'Observation date is impossible, because happen after today or before birth',
-  )
-  @Assert(
-    'observationDate == null || observationDate.isSameOrAfter(age.dateAtDaysAfterBirth(91)) ',
-    'Observation date is impossible, because happen after today or before birth',
-  )
   factory WHOGrowthStandardsSubscapularSkinfoldForAge({
     Date? observationDate,
     required Sex sex,
@@ -63,14 +54,14 @@ sealed class WHOGrowthStandardsSubscapularSkinfoldForAge extends AgeBasedResult
   ) =>
       _$WHOGrowthStandardsSubscapularSkinfoldForAgeFromJson(json);
 
-  WHOGrowthStandardsSubscapularSkinfoldForAgeData
-      get _subscapularSkinfoldData =>
-          WHOGrowthStandardsSubscapularSkinfoldForAgeData();
+  @override
+  WHOGrowthStandardsSubscapularSkinfoldForAgeData get contextData =>
+      WHOGrowthStandardsSubscapularSkinfoldForAgeData();
 
   Map<int, _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS> get _maleData =>
-      _subscapularSkinfoldData._data[Sex.male]!;
+      contextData._data[Sex.male]!;
   Map<int, _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS> get _femaleData =>
-      _subscapularSkinfoldData._data[Sex.female]!;
+      contextData._data[Sex.female]!;
 
   _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS get _ageData =>
       (sex == Sex.male
@@ -81,7 +72,11 @@ sealed class WHOGrowthStandardsSubscapularSkinfoldForAge extends AgeBasedResult
       _ageData.lms.adjustedZScore(measurementResultInDefaultUnit);
 
   @override
-  Age get ageAtObservationDate => checkObservationDate(age, observationDate);
+  Age get ageAtObservationDate => checkAge(
+        age,
+        observationDate: observationDate,
+        contextData: contextData,
+      );
 
   @override
   num zScore([
@@ -103,7 +98,7 @@ sealed class WHOGrowthStandardsSubscapularSkinfoldForAge extends AgeBasedResult
       measurementResult.toMillimeter.value;
 }
 
-class _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS extends LMSBasedResult {
+class _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS extends LMSContext {
   _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS({
     required this.lms,
   });

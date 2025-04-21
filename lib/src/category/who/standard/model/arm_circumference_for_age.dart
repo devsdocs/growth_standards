@@ -1,6 +1,6 @@
 part of '../standard.dart';
 
-class WHOGrowthStandardsArmCircumferenceForAgeData extends BaseData {
+class WHOGrowthStandardsArmCircumferenceForAgeData extends AgeBasedData {
   factory WHOGrowthStandardsArmCircumferenceForAgeData() => _singleton;
   const WHOGrowthStandardsArmCircumferenceForAgeData._(this._data);
 
@@ -33,23 +33,14 @@ class WHOGrowthStandardsArmCircumferenceForAgeData extends BaseData {
 
   @override
   String toString() => 'Arm Circumference For Age Data($_data)';
+
+  @override
+  TimeUnit get unit => TimeUnit.days;
 }
 
 @freezed
 sealed class WHOGrowthStandardsArmCircumferenceForAge extends AgeBasedResult
     with _$WHOGrowthStandardsArmCircumferenceForAge {
-  @Assert(
-    'age.ageInTotalDaysByNow >= 91 && age.ageInTotalDaysByNow <= 1856',
-    'Age must be in range of 91 - 1856 days',
-  )
-  @Assert(
-    'observationDate == null || observationDate.isSameOrBefore(Date.today()) || observationDate.isSameOrAfter(age.dateOfBirth)',
-    'Observation date is impossible, because happen after today or before birth',
-  )
-  @Assert(
-    'observationDate == null || observationDate.isSameOrAfter(age.dateAtDaysAfterBirth(91)) ',
-    'Observation date is impossible, because happen after today or before birth',
-  )
   factory WHOGrowthStandardsArmCircumferenceForAge({
     Date? observationDate,
     required Sex sex,
@@ -64,13 +55,14 @@ sealed class WHOGrowthStandardsArmCircumferenceForAge extends AgeBasedResult
   ) =>
       _$WHOGrowthStandardsArmCircumferenceForAgeFromJson(json);
 
-  WHOGrowthStandardsArmCircumferenceForAgeData get _armCircumferenceData =>
+  @override
+  WHOGrowthStandardsArmCircumferenceForAgeData get contextData =>
       WHOGrowthStandardsArmCircumferenceForAgeData();
 
   Map<num, _WHOGrowthStandardsArmCircumferenceForAgeLMS> get _maleData =>
-      _armCircumferenceData._data[Sex.male]!;
+      contextData._data[Sex.male]!;
   Map<num, _WHOGrowthStandardsArmCircumferenceForAgeLMS> get _femaleData =>
-      _armCircumferenceData._data[Sex.female]!;
+      contextData._data[Sex.female]!;
 
   _WHOGrowthStandardsArmCircumferenceForAgeLMS get _ageData => (sex == Sex.male
       ? _maleData
@@ -80,7 +72,11 @@ sealed class WHOGrowthStandardsArmCircumferenceForAge extends AgeBasedResult
       _ageData.lms.adjustedZScore(measurementResultInDefaultUnit);
 
   @override
-  Age get ageAtObservationDate => checkObservationDate(age, observationDate);
+  Age get ageAtObservationDate => checkAge(
+        age,
+        observationDate: observationDate,
+        contextData: contextData,
+      );
 
   @override
   num zScore([
@@ -102,7 +98,7 @@ sealed class WHOGrowthStandardsArmCircumferenceForAge extends AgeBasedResult
       measurementResult.toCentimeter.value;
 }
 
-class _WHOGrowthStandardsArmCircumferenceForAgeLMS extends LMSBasedResult {
+class _WHOGrowthStandardsArmCircumferenceForAgeLMS extends LMSContext {
   _WHOGrowthStandardsArmCircumferenceForAgeLMS({
     required this.lms,
   });

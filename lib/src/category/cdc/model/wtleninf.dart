@@ -1,6 +1,6 @@
 part of '../cdc.dart';
 
-class CDCInfantWeightForLengthData extends BaseData {
+class CDCInfantWeightForLengthData extends LengthBasedData {
   factory CDCInfantWeightForLengthData() => _singleton;
   CDCInfantWeightForLengthData._(this._data);
 
@@ -29,27 +29,16 @@ class CDCInfantWeightForLengthData extends BaseData {
 
   @override
   String toString() => 'Weight For Length Data($_data)';
+
+  @override
+  Length get unit => Length.centimeter;
 }
 
 @freezed
 sealed class CDCInfantWeightForLength extends LengthBasedResult
     with _$CDCInfantWeightForLength {
   //TODO(devsdocs): Test this!
-  @Assert(
-    'adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.cdc,).value >= 45 && adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.cdc,).value < 104 && length.toCentimeter.value >= 45 && length.toCentimeter.value < 104',
-    'Please correcting measurement position based on age',
-  )
-  //TODO(devsdocs): Test this!
-  @Assert(
-    'adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.cdc,).value >= 45 && adjustedLengthHeight(measure: measure,age: age,lengthHeight: length, type: AdjustedLengthType.cdc,).value < 104',
-    'Length must be in range of 45.0 - 103.9 cm',
-  )
-  @Assert(
-    'observationDate == null || observationDate.isSameOrBefore(Date.today()) || observationDate.isSameOrAfter(age.dateOfBirth)',
-    'Observation date is impossible, because happen after today or before birth',
-  )
   factory CDCInfantWeightForLength({
-    Date? observationDate,
     required Sex sex,
     required Age age,
     required Length length,
@@ -62,29 +51,32 @@ sealed class CDCInfantWeightForLength extends LengthBasedResult
   factory CDCInfantWeightForLength.fromJson(Map<String, dynamic> json) =>
       _$CDCInfantWeightForLengthFromJson(json);
 
-  num get _adjustedLength => adjustedLengthHeight(
+  Length$Centimeter get _adjustedLength => adjustedLengthHeight(
         measure: measure,
         age: age,
         lengthHeight: length,
         type: AdjustedLengthType.cdc,
-      ).value;
+      );
 
-  CDCInfantWeightForLengthData get _weightForLengthData =>
+  @override
+  CDCInfantWeightForLengthData get contextData =>
       CDCInfantWeightForLengthData();
 
   Map<num, _CDCInfantWeightForLengthLMS> get _maleData =>
-      _weightForLengthData._data[Sex.male]!;
+      contextData._data[Sex.male]!;
   Map<num, _CDCInfantWeightForLengthLMS> get _femaleData =>
-      _weightForLengthData._data[Sex.female]!;
+      contextData._data[Sex.female]!;
 //TODO(devsdocs): Fix CDC length calculation
   _CDCInfantWeightForLengthLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)[_length]!;
 
   @override
-  Length get lengthAtObservationDate => Length$Centimeter(_length);
+  Length get lengthAtObservationDate =>
+      checkLength(_adjustedLength, contextData: contextData);
 
-  num get _length =>
-      _adjustedLength == 45 ? 45 : _adjustedLength.truncate() + 0.5;
+  num get _length => lengthAtObservationDate.value == 45
+      ? 45
+      : lengthAtObservationDate.value.truncate() + 0.5;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 
@@ -107,7 +99,7 @@ sealed class CDCInfantWeightForLength extends LengthBasedResult
   num get measurementResultInDefaultUnit => weight.toKilogram.value;
 }
 
-class _CDCInfantWeightForLengthLMS extends LMSBasedResult {
+class _CDCInfantWeightForLengthLMS extends LMSContext {
   _CDCInfantWeightForLengthLMS({
     required this.lms,
   });

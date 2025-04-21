@@ -198,7 +198,6 @@ final class WHOGrowthStandard {
       );
 
   WHOGrowthStandardsWeightForHeight weightForHeight({
-    Date? observationDate,
     required Sex sex,
     required Age age,
     required Length height,
@@ -206,7 +205,6 @@ final class WHOGrowthStandard {
     required LengthHeightMeasurementPosition measure,
   }) =>
       WHOGrowthStandardsWeightForHeight(
-        observationDate: observationDate,
         sex: sex,
         age: age,
         height: height,
@@ -215,7 +213,6 @@ final class WHOGrowthStandard {
       );
 
   WHOGrowthStandardsWeightForLength weightForLength({
-    Date? observationDate,
     required Sex sex,
     required Length lengthMeasurementResult,
     required Mass massMeasurementResult,
@@ -223,7 +220,6 @@ final class WHOGrowthStandard {
     required LengthHeightMeasurementPosition measure,
   }) =>
       WHOGrowthStandardsWeightForLength(
-        observationDate: observationDate,
         sex: sex,
         length: lengthMeasurementResult,
         weight: massMeasurementResult,

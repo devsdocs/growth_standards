@@ -1,6 +1,6 @@
 part of '../cdc.dart';
 
-class CDCInfantHeadCircumferenceForAgeData extends BaseData {
+class CDCInfantHeadCircumferenceForAgeData extends AgeBasedData {
   factory CDCInfantHeadCircumferenceForAgeData() => _singleton;
   CDCInfantHeadCircumferenceForAgeData._(this._data);
 
@@ -30,19 +30,14 @@ class CDCInfantHeadCircumferenceForAgeData extends BaseData {
 
   @override
   String toString() => 'Infant Head Circumference For Age Data($_data)';
+
+  @override
+  TimeUnit get unit => TimeUnit.months;
 }
 
 @freezed
 sealed class CDCInfantHeadCircumferenceForAge extends AgeBasedResult
     with _$CDCInfantHeadCircumferenceForAge {
-  @Assert(
-    'age.ageInTotalDaysByNow >= 0 && age.ageInTotalMonthsByNow <= 36',
-    'Age must be in range of 0 - 36 months',
-  )
-  @Assert(
-    'observationDate == null || observationDate.isSameOrBefore(Date.today()) || observationDate.isSameOrAfter(age.dateOfBirth)',
-    'Observation date is impossible, because happen after today or before birth',
-  )
   factory CDCInfantHeadCircumferenceForAge({
     Date? observationDate,
     required Sex sex,
@@ -57,13 +52,14 @@ sealed class CDCInfantHeadCircumferenceForAge extends AgeBasedResult
   ) =>
       _$CDCInfantHeadCircumferenceForAgeFromJson(json);
 
-  CDCInfantHeadCircumferenceForAgeData get _headCircumferenceData =>
+  @override
+  CDCInfantHeadCircumferenceForAgeData get contextData =>
       CDCInfantHeadCircumferenceForAgeData();
 
   Map<double, _CDCInfantHeadCircumferenceForAgeLMS> get _maleData =>
-      _headCircumferenceData._data[Sex.male]!;
+      contextData._data[Sex.male]!;
   Map<double, _CDCInfantHeadCircumferenceForAgeLMS> get _femaleData =>
-      _headCircumferenceData._data[Sex.female]!;
+      contextData._data[Sex.female]!;
 //TODO(devsdocs): Fix CDC age calculation
   _CDCInfantHeadCircumferenceForAgeLMS get _ageData {
     final finalAge = ageAtObservationDate.ageInTotalDaysByNow == 0
@@ -78,7 +74,11 @@ sealed class CDCInfantHeadCircumferenceForAge extends AgeBasedResult
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 
   @override
-  Age get ageAtObservationDate => checkObservationDate(age, observationDate);
+  Age get ageAtObservationDate => checkAge(
+        age,
+        observationDate: observationDate,
+        contextData: contextData,
+      );
 
   @override
   num zScore([
@@ -100,7 +100,7 @@ sealed class CDCInfantHeadCircumferenceForAge extends AgeBasedResult
       measurementResult.toCentimeter.value;
 }
 
-class _CDCInfantHeadCircumferenceForAgeLMS extends LMSBasedResult {
+class _CDCInfantHeadCircumferenceForAgeLMS extends LMSContext {
   _CDCInfantHeadCircumferenceForAgeLMS({
     required this.lms,
   });

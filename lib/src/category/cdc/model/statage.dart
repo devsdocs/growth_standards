@@ -1,6 +1,6 @@
 part of '../cdc.dart';
 
-class CDCStatureForAgeData extends BaseData {
+class CDCStatureForAgeData extends AgeBasedData {
   factory CDCStatureForAgeData() => _singleton;
   const CDCStatureForAgeData._(this._data);
 
@@ -29,22 +29,13 @@ class CDCStatureForAgeData extends BaseData {
 
   @override
   String toString() => 'Height For Age Data($_data)';
+
+  @override
+  TimeUnit get unit => TimeUnit.months;
 }
 
 @freezed
 sealed class CDCStatureForAge extends AgeBasedResult with _$CDCStatureForAge {
-  @Assert(
-    'age.ageInTotalMonthsByNow >= 24 && age.ageInTotalMonthsByNow <= 240',
-    'Age must be in range of 24 - 240 months',
-  )
-  @Assert(
-    'observationDate == null || observationDate.isSameOrBefore(Date.today()) || observationDate.isSameOrAfter(age.dateOfBirth)',
-    'Observation date is impossible, because happen after today or before birth',
-  )
-  @Assert(
-    'observationDate == null || observationDate.isSameOrAfter(age.dateAtMonthsAfterBirth(24)) ',
-    'Observation date is impossible, because happen after today or before birth',
-  )
   factory CDCStatureForAge({
     Date? observationDate,
     required Sex sex,
@@ -59,12 +50,13 @@ sealed class CDCStatureForAge extends AgeBasedResult with _$CDCStatureForAge {
   ) =>
       _$CDCStatureForAgeFromJson(json);
 
-  CDCStatureForAgeData get _lengthForAgeData => CDCStatureForAgeData();
+  @override
+  CDCStatureForAgeData get contextData => CDCStatureForAgeData();
 
   Map<double, _CDCStatureForAgeLMS> get _maleData =>
-      _lengthForAgeData._data[Sex.male]!;
+      contextData._data[Sex.male]!;
   Map<double, _CDCStatureForAgeLMS> get _femaleData =>
-      _lengthForAgeData._data[Sex.female]!;
+      contextData._data[Sex.female]!;
 //TODO(devsdocs): Fix CDC age calculation
   _CDCStatureForAgeLMS get _ageData =>
       (sex == Sex.male ? _maleData : _femaleData)[
@@ -74,17 +66,21 @@ sealed class CDCStatureForAge extends AgeBasedResult with _$CDCStatureForAge {
                   ? 240
                   : ageAtObservationDate.ageInTotalMonthsByNow + 0.5]!;
 
-  num get _adjustedLength => adjustedLengthHeight(
+  Length$Centimeter get _adjustedLength => adjustedLengthHeight(
         measure: measure,
         age: age,
         lengthHeight: lengthHeight,
         type: AdjustedLengthType.cdc,
-      ).value;
+      );
 
-  num get _zScore => _ageData.lms.zScore(_adjustedLength);
+  num get _zScore => _ageData.lms.zScore(_adjustedLength.value);
 
   @override
-  Age get ageAtObservationDate => checkObservationDate(age, observationDate);
+  Age get ageAtObservationDate => checkAge(
+        age,
+        observationDate: observationDate,
+        contextData: contextData,
+      );
 
   @override
   num zScore([
@@ -102,10 +98,10 @@ sealed class CDCStatureForAge extends AgeBasedResult with _$CDCStatureForAge {
   _CDCStatureForAgeLMS get lmsData => _ageData;
 
   @override
-  num get measurementResultInDefaultUnit => _adjustedLength;
+  num get measurementResultInDefaultUnit => _adjustedLength.value;
 }
 
-class _CDCStatureForAgeLMS extends LMSBasedResult {
+class _CDCStatureForAgeLMS extends LMSContext {
   _CDCStatureForAgeLMS({
     required this.lms,
   });

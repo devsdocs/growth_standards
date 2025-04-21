@@ -1,6 +1,6 @@
 part of '../standard.dart';
 
-class WHOGrowthStandardsLengthForAgeData extends BaseData {
+class WHOGrowthStandardsLengthForAgeData extends AgeBasedData {
   factory WHOGrowthStandardsLengthForAgeData() => _singleton;
   WHOGrowthStandardsLengthForAgeData._(this._data);
   static final _singleton = WHOGrowthStandardsLengthForAgeData._(_parse());
@@ -30,19 +30,14 @@ class WHOGrowthStandardsLengthForAgeData extends BaseData {
 
   @override
   String toString() => 'Length For Age Data($_data)';
+
+  @override
+  TimeUnit get unit => TimeUnit.days;
 }
 
 @freezed
 sealed class WHOGrowthStandardsLengthForAge extends AgeBasedResult
     with _$WHOGrowthStandardsLengthForAge {
-  @Assert(
-    'age.ageInTotalDaysByNow >= 0 && age.ageInTotalDaysByNow <= 1856',
-    'Age must be in range of 0 - 1856 days',
-  )
-  @Assert(
-    'observationDate == null || observationDate.isSameOrBefore(Date.today()) || observationDate.isSameOrAfter(age.dateOfBirth)',
-    'Observation date is impossible, because happen after today or before birth',
-  )
   factory WHOGrowthStandardsLengthForAge({
     Date? observationDate,
     required Sex sex,
@@ -56,29 +51,34 @@ sealed class WHOGrowthStandardsLengthForAge extends AgeBasedResult
   factory WHOGrowthStandardsLengthForAge.fromJson(Map<String, dynamic> json) =>
       _$WHOGrowthStandardsLengthForAgeFromJson(json);
 
-  WHOGrowthStandardsLengthForAgeData get _lengthForAgeData =>
+  @override
+  WHOGrowthStandardsLengthForAgeData get contextData =>
       WHOGrowthStandardsLengthForAgeData();
 
   Map<int, _WHOGrowthStandardsLengthForAgeLMS> get _maleData =>
-      _lengthForAgeData._data[Sex.male]!;
+      contextData._data[Sex.male]!;
   Map<int, _WHOGrowthStandardsLengthForAgeLMS> get _femaleData =>
-      _lengthForAgeData._data[Sex.female]!;
+      contextData._data[Sex.female]!;
 
   _WHOGrowthStandardsLengthForAgeLMS get _ageData => (sex == Sex.male
       ? _maleData
       : _femaleData)[ageAtObservationDate.ageInTotalDaysByNow]!;
 
-  num get _adjustedLength => adjustedLengthHeight(
+  Length$Centimeter get _adjustedLength => adjustedLengthHeight(
         measure: measure,
         age: age,
         lengthHeight: lengthHeight,
         type: AdjustedLengthType.who,
-      ).value;
+      );
 
-  num get _zScore => _ageData.lms.zScore(_adjustedLength);
+  num get _zScore => _ageData.lms.zScore(_adjustedLength.value);
 
   @override
-  Age get ageAtObservationDate => checkObservationDate(age, observationDate);
+  Age get ageAtObservationDate => checkAge(
+        age,
+        observationDate: observationDate,
+        contextData: contextData,
+      );
 
   @override
   num zScore([
@@ -96,10 +96,10 @@ sealed class WHOGrowthStandardsLengthForAge extends AgeBasedResult
   _WHOGrowthStandardsLengthForAgeLMS get lmsData => _ageData;
 
   @override
-  num get measurementResultInDefaultUnit => _adjustedLength;
+  num get measurementResultInDefaultUnit => _adjustedLength.value;
 }
 
-class _WHOGrowthStandardsLengthForAgeLMS extends LMSBasedResult {
+class _WHOGrowthStandardsLengthForAgeLMS extends LMSContext {
   _WHOGrowthStandardsLengthForAgeLMS({
     required this.lms,
     required this.loh,

@@ -1,6 +1,6 @@
 part of '../cdc.dart';
 
-class CDCInfantWeightForAgeData extends BaseData {
+class CDCInfantWeightForAgeData extends AgeBasedData {
   factory CDCInfantWeightForAgeData() => _singleton;
   const CDCInfantWeightForAgeData._(this._data);
 
@@ -29,19 +29,14 @@ class CDCInfantWeightForAgeData extends BaseData {
 
   @override
   String toString() => 'Infant Weight For Age Data($_data)';
+
+  @override
+  TimeUnit get unit => TimeUnit.months;
 }
 
 @freezed
 sealed class CDCInfantWeightForAge extends AgeBasedResult
     with _$CDCInfantWeightForAge {
-  @Assert(
-    'age.ageInTotalDaysByNow >= 0 && age.ageInTotalMonthsByNow <= 36',
-    'Age must be in range of 0 - 36 months',
-  )
-  @Assert(
-    'observationDate == null || observationDate.isSameOrBefore(Date.today()) || observationDate.isSameOrAfter(age.dateOfBirth)',
-    'Observation date is impossible, because happen after today or before birth',
-  )
   factory CDCInfantWeightForAge({
     Date? observationDate,
     required Sex sex,
@@ -56,13 +51,13 @@ sealed class CDCInfantWeightForAge extends AgeBasedResult
   ) =>
       _$CDCInfantWeightForAgeFromJson(json);
 
-  CDCInfantWeightForAgeData get _weightForAgeData =>
-      CDCInfantWeightForAgeData();
+  @override
+  CDCInfantWeightForAgeData get contextData => CDCInfantWeightForAgeData();
 
   Map<double, _CDCInfantWeightForAgeLMS> get _maleData =>
-      _weightForAgeData._data[Sex.male]!;
+      contextData._data[Sex.male]!;
   Map<double, _CDCInfantWeightForAgeLMS> get _femaleData =>
-      _weightForAgeData._data[Sex.female]!;
+      contextData._data[Sex.female]!;
 //TODO(devsdocs): Fix CDC age calculation
   _CDCInfantWeightForAgeLMS get _ageData {
     final finalAge = ageAtObservationDate.ageInTotalDaysByNow == 0
@@ -77,7 +72,11 @@ sealed class CDCInfantWeightForAge extends AgeBasedResult
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 
   @override
-  Age get ageAtObservationDate => checkObservationDate(age, observationDate);
+  Age get ageAtObservationDate => checkAge(
+        age,
+        observationDate: observationDate,
+        contextData: contextData,
+      );
 
   @override
   num zScore([
@@ -98,7 +97,7 @@ sealed class CDCInfantWeightForAge extends AgeBasedResult
   num get measurementResultInDefaultUnit => weight.toKilogram.value;
 }
 
-class _CDCInfantWeightForAgeLMS extends LMSBasedResult {
+class _CDCInfantWeightForAgeLMS extends LMSContext {
   _CDCInfantWeightForAgeLMS({
     required this.lms,
   });

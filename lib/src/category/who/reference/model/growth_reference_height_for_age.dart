@@ -1,6 +1,6 @@
 part of '../reference.dart';
 
-class WHOGrowthReferenceHeightForAgeData extends BaseData {
+class WHOGrowthReferenceHeightForAgeData extends AgeBasedData {
   factory WHOGrowthReferenceHeightForAgeData() => _singleton;
   const WHOGrowthReferenceHeightForAgeData._(this._data);
 
@@ -29,23 +29,14 @@ class WHOGrowthReferenceHeightForAgeData extends BaseData {
 
   @override
   String toString() => 'Height For Age Data($_data)';
+
+  @override
+  TimeUnit get unit => TimeUnit.months;
 }
 
 @freezed
 sealed class WHOGrowthReferenceHeightForAge extends AgeBasedResult
     with _$WHOGrowthReferenceHeightForAge {
-  @Assert(
-    'age.ageInTotalMonthsByNow >= 61 && age.ageInTotalMonthsByNow <= 228',
-    'Age must be in range of 61 - 228 months',
-  )
-  @Assert(
-    'observationDate == null || observationDate.isSameOrBefore(Date.today()) || observationDate.isSameOrAfter(age.dateOfBirth)',
-    'Observation date is impossible, because happen after today or before birth',
-  )
-  @Assert(
-    'observationDate == null || observationDate.isSameOrAfter(age.dateAtMonthsAfterBirth(61)) ',
-    'Observation date is impossible, because happen after today or before birth',
-  )
   factory WHOGrowthReferenceHeightForAge({
     Date? observationDate,
     required Sex sex,
@@ -59,13 +50,14 @@ sealed class WHOGrowthReferenceHeightForAge extends AgeBasedResult
   ) =>
       _$WHOGrowthReferenceHeightForAgeFromJson(json);
 
-  WHOGrowthReferenceHeightForAgeData get _lengthForAgeData =>
+  @override
+  WHOGrowthReferenceHeightForAgeData get contextData =>
       WHOGrowthReferenceHeightForAgeData();
 
   Map<int, _WHOGrowthReferenceHeightForAgeLMS> get _maleData =>
-      _lengthForAgeData._data[Sex.male]!;
+      contextData._data[Sex.male]!;
   Map<int, _WHOGrowthReferenceHeightForAgeLMS> get _femaleData =>
-      _lengthForAgeData._data[Sex.female]!;
+      contextData._data[Sex.female]!;
 
   _WHOGrowthReferenceHeightForAgeLMS get _ageData => (sex == Sex.male
       ? _maleData
@@ -74,7 +66,11 @@ sealed class WHOGrowthReferenceHeightForAge extends AgeBasedResult
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 
   @override
-  Age get ageAtObservationDate => checkObservationDate(age, observationDate);
+  Age get ageAtObservationDate => checkAge(
+        age,
+        observationDate: observationDate,
+        contextData: contextData,
+      );
 
   @override
   num zScore([
@@ -95,7 +91,7 @@ sealed class WHOGrowthReferenceHeightForAge extends AgeBasedResult
   num get measurementResultInDefaultUnit => lengthHeight.toCentimeter.value;
 }
 
-class _WHOGrowthReferenceHeightForAgeLMS extends LMSBasedResult {
+class _WHOGrowthReferenceHeightForAgeLMS extends LMSContext {
   _WHOGrowthReferenceHeightForAgeLMS({
     required this.lms,
   });

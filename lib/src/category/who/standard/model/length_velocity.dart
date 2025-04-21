@@ -90,15 +90,15 @@ sealed class WHOGrowthStandardsLengthVelocityForAge extends VelocityBasedResult
   ) =>
       _$WHOGrowthStandardsLengthVelocityForAgeFromJson(json);
 
-  WHOGrowthStandardsLengthVelocityForAgeData get _headCircumferenceData =>
+  WHOGrowthStandardsLengthVelocityForAgeData get contextData =>
       WHOGrowthStandardsLengthVelocityForAgeData();
 
   Map<VelocityIncrement,
           Map<VelocityMonths, WHOGrowthStandardsLengthVelocityForAgeLMS>>
-      get _maleData => _headCircumferenceData._data[Sex.male]!;
+      get _maleData => contextData._data[Sex.male]!;
   Map<VelocityIncrement,
           Map<VelocityMonths, WHOGrowthStandardsLengthVelocityForAgeLMS>>
-      get _femaleData => _headCircumferenceData._data[Sex.female]!;
+      get _femaleData => contextData._data[Sex.female]!;
 
   Map<VelocityIncrement,
           Map<VelocityMonths, WHOGrowthStandardsLengthVelocityForAgeLMS>>
@@ -161,7 +161,7 @@ sealed class WHOGrowthStandardsLengthVelocityForAge extends VelocityBasedResult
   }
 }
 
-class WHOGrowthStandardsLengthVelocityForAgeLMS extends LMSBasedResult {
+class WHOGrowthStandardsLengthVelocityForAgeLMS extends LMSContext {
   WHOGrowthStandardsLengthVelocityForAgeLMS({
     required this.lms,
   });

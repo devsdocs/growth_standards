@@ -43,6 +43,7 @@ Map<String, dynamic> _$GrowthReferenceBodyMassIndexForAgeToJson(
 const _$SexEnumMap = {
   Sex.male: 1,
   Sex.female: 2,
+  Sex.both: 3,
 };
 
 _HeadCircumferenceForAge _$HeadCircumferenceForAgeFromJson(
@@ -158,9 +159,6 @@ Map<String, dynamic> _$CDCInfantWeightForAgeToJson(
 _CDCInfantWeightForLength _$CDCInfantWeightForLengthFromJson(
         Map<String, dynamic> json) =>
     _CDCInfantWeightForLength(
-      observationDate: json['observationDate'] == null
-          ? null
-          : Date.fromJson(json['observationDate'] as Map<String, dynamic>),
       sex: $enumDecode(_$SexEnumMap, json['sex']),
       age: Age.fromJson(json['age'] as Map<String, dynamic>),
       length: Length.fromJson(json['length'] as Map<String, dynamic>),
@@ -172,7 +170,6 @@ _CDCInfantWeightForLength _$CDCInfantWeightForLengthFromJson(
 Map<String, dynamic> _$CDCInfantWeightForLengthToJson(
         _CDCInfantWeightForLength instance) =>
     <String, dynamic>{
-      'observationDate': instance.observationDate?.toJson(),
       'sex': _$SexEnumMap[instance.sex]!,
       'age': instance.age.toJson(),
       'length': instance.length.toJson(),
@@ -182,9 +179,6 @@ Map<String, dynamic> _$CDCInfantWeightForLengthToJson(
 
 _CDCWeightForStature _$CDCWeightForStatureFromJson(Map<String, dynamic> json) =>
     _CDCWeightForStature(
-      observationDate: json['observationDate'] == null
-          ? null
-          : Date.fromJson(json['observationDate'] as Map<String, dynamic>),
       sex: $enumDecode(_$SexEnumMap, json['sex']),
       age: Age.fromJson(json['age'] as Map<String, dynamic>),
       height: Length.fromJson(json['height'] as Map<String, dynamic>),
@@ -196,7 +190,6 @@ _CDCWeightForStature _$CDCWeightForStatureFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$CDCWeightForStatureToJson(
         _CDCWeightForStature instance) =>
     <String, dynamic>{
-      'observationDate': instance.observationDate?.toJson(),
       'sex': _$SexEnumMap[instance.sex]!,
       'age': instance.age.toJson(),
       'height': instance.height.toJson(),

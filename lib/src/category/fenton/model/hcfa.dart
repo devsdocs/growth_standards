@@ -1,49 +1,41 @@
 part of '../fenton.dart';
 
-class FentonHeadCircumferenceForAgeData extends SexAgnosticData {
+class FentonHeadCircumferenceForAgeData extends AgeBasedData {
   factory FentonHeadCircumferenceForAgeData() => _singleton;
   FentonHeadCircumferenceForAgeData._(this._data);
 
   static final _singleton = FentonHeadCircumferenceForAgeData._(_parse());
 
-  static Map<int, _FentonHeadCircumferenceForAgeLMS> _parse() =>
-      fentonHCfA.toJsonObjectAsMap.map(
-        (k1, v1) {
-          v1 as Map<String, dynamic>;
-          final lms =
-              LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
-          return MapEntry(
-            int.parse(k1),
-            _FentonHeadCircumferenceForAgeLMS(
-              lms: lms,
-            ),
-          );
-        },
-      );
+  static Map<Sex, Map<int, _FentonHeadCircumferenceForAgeLMS>> _parse() => {
+        Sex.both: fentonHCfA.toJsonObjectAsMap.map(
+          (k1, v1) {
+            v1 as Map<String, dynamic>;
+            final lms =
+                LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
+            return MapEntry(
+              int.parse(k1),
+              _FentonHeadCircumferenceForAgeLMS(
+                lms: lms,
+              ),
+            );
+          },
+        )
+      };
 
-  final Map<int, _FentonHeadCircumferenceForAgeLMS> _data;
+  final Map<Sex, Map<int, _FentonHeadCircumferenceForAgeLMS>> _data;
   @override
-  Map<int, _FentonHeadCircumferenceForAgeLMS> get data => _data;
+  Map<Sex, Map<int, _FentonHeadCircumferenceForAgeLMS>> get data => _data;
 
   @override
   String toString() => 'Infant Head Circumference For Age Data($_data)';
+
+  @override
+  TimeUnit get unit => TimeUnit.weeks;
 }
 
 @freezed
 sealed class FentonHeadCircumferenceForAge extends AgeBasedResult
     with _$FentonHeadCircumferenceForAge {
-  @Assert(
-    'age.ageInTotalWeeksByNow >= 22 && age.ageInTotalWeeksByNow <= 50',
-    'Age must be in range of 22 - 50 weeks',
-  )
-  @Assert(
-    'observationDate == null || observationDate.isSameOrBefore(Date.today()) || observationDate.isSameOrAfter(age.dateOfBirth)',
-    'Observation date is impossible, because happen after today or before birth',
-  )
-  @Assert(
-    'observationDate == null || observationDate.isSameOrAfter(age.dateAtWeeksAfterBirth(22)) ',
-    'Observation date is impossible, because happen after today or before birth',
-  )
   factory FentonHeadCircumferenceForAge({
     Date? observationDate,
     required Sex sex,
@@ -58,16 +50,21 @@ sealed class FentonHeadCircumferenceForAge extends AgeBasedResult
   ) =>
       _$FentonHeadCircumferenceForAgeFromJson(json);
 
-  FentonHeadCircumferenceForAgeData get _headCircumferenceData =>
+  @override
+  FentonHeadCircumferenceForAgeData get contextData =>
       FentonHeadCircumferenceForAgeData();
 
-  _FentonHeadCircumferenceForAgeLMS get _ageData =>
-      _headCircumferenceData._data[ageAtObservationDate.ageInTotalWeeksByNow]!;
+  _FentonHeadCircumferenceForAgeLMS get _ageData => contextData
+      ._data.values.first[ageAtObservationDate.ageInTotalWeeksByNow]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 
   @override
-  Age get ageAtObservationDate => checkObservationDate(age, observationDate);
+  Age get ageAtObservationDate => checkAge(
+        age,
+        observationDate: observationDate,
+        contextData: contextData,
+      );
 
   @override
   num zScore([
@@ -89,7 +86,7 @@ sealed class FentonHeadCircumferenceForAge extends AgeBasedResult
       measurementResult.toCentimeter.value;
 }
 
-class _FentonHeadCircumferenceForAgeLMS extends LMSBasedResult {
+class _FentonHeadCircumferenceForAgeLMS extends LMSContext {
   _FentonHeadCircumferenceForAgeLMS({
     required this.lms,
   });

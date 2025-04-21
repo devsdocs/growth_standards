@@ -144,18 +144,7 @@ class _WHOGrowthStandardsArmCircumferenceForAge
       required this.sex,
       required this.age,
       required this.measurementResult})
-      : assert(age.ageInTotalDaysByNow >= 91 && age.ageInTotalDaysByNow <= 1856,
-            'Age must be in range of 91 - 1856 days'),
-        assert(
-            observationDate == null ||
-                observationDate.isSameOrBefore(Date.today()) ||
-                observationDate.isSameOrAfter(age.dateOfBirth),
-            'Observation date is impossible, because happen after today or before birth'),
-        assert(
-            observationDate == null ||
-                observationDate.isSameOrAfter(age.dateAtDaysAfterBirth(91)),
-            'Observation date is impossible, because happen after today or before birth'),
-        super._();
+      : super._();
   factory _WHOGrowthStandardsArmCircumferenceForAge.fromJson(
           Map<String, dynamic> json) =>
       _$WHOGrowthStandardsArmCircumferenceForAgeFromJson(json);
@@ -628,17 +617,7 @@ class _WHOGrowthStandardsBodyMassIndexForAge
       this.oedemaExist = false,
       @WHOGrowthStandardsBodyMassIndexMeasurementConverter()
       required this.bodyMassIndexMeasurement})
-      : assert(
-            bodyMassIndexMeasurement.age.ageInTotalDaysByNow >= 0 &&
-                bodyMassIndexMeasurement.age.ageInTotalDaysByNow <= 1856,
-            'Age must be in range of 0 - 1856 days'),
-        assert(
-            observationDate == null ||
-                observationDate.isSameOrBefore(Date.today()) ||
-                observationDate
-                    .isSameOrAfter(bodyMassIndexMeasurement.age.dateOfBirth),
-            'Observation date is impossible, because happen after today or before birth'),
-        super._();
+      : super._();
   factory _WHOGrowthStandardsBodyMassIndexForAge.fromJson(
           Map<String, dynamic> json) =>
       _$WHOGrowthStandardsBodyMassIndexForAgeFromJson(json);
@@ -916,14 +895,7 @@ class _WHOGrowthStandardsHeadCircumferenceForAge
       required this.sex,
       required this.age,
       required this.measurementResult})
-      : assert(age.ageInTotalDaysByNow >= 0 && age.ageInTotalDaysByNow <= 1856,
-            'Age must be in range of 0 - 1856 days'),
-        assert(
-            observationDate == null ||
-                observationDate.isSameOrBefore(Date.today()) ||
-                observationDate.isSameOrAfter(age.dateOfBirth),
-            'Observation date is impossible, because happen after today or before birth'),
-        super._();
+      : super._();
   factory _WHOGrowthStandardsHeadCircumferenceForAge.fromJson(
           Map<String, dynamic> json) =>
       _$WHOGrowthStandardsHeadCircumferenceForAgeFromJson(json);
@@ -1448,14 +1420,7 @@ class _WHOGrowthStandardsLengthForAge extends WHOGrowthStandardsLengthForAge {
       required this.age,
       required this.lengthHeight,
       required this.measure})
-      : assert(age.ageInTotalDaysByNow >= 0 && age.ageInTotalDaysByNow <= 1856,
-            'Age must be in range of 0 - 1856 days'),
-        assert(
-            observationDate == null ||
-                observationDate.isSameOrBefore(Date.today()) ||
-                observationDate.isSameOrAfter(age.dateOfBirth),
-            'Observation date is impossible, because happen after today or before birth'),
-        super._();
+      : super._();
   factory _WHOGrowthStandardsLengthForAge.fromJson(Map<String, dynamic> json) =>
       _$WHOGrowthStandardsLengthForAgeFromJson(json);
 
@@ -1968,18 +1933,7 @@ class _WHOGrowthStandardsSubscapularSkinfoldForAge
       required this.sex,
       required this.age,
       required this.measurementResult})
-      : assert(age.ageInTotalDaysByNow >= 91 && age.ageInTotalDaysByNow <= 1856,
-            'Age must be in range of 91 - 1856 days'),
-        assert(
-            observationDate == null ||
-                observationDate.isSameOrBefore(Date.today()) ||
-                observationDate.isSameOrAfter(age.dateOfBirth),
-            'Observation date is impossible, because happen after today or before birth'),
-        assert(
-            observationDate == null ||
-                observationDate.isSameOrAfter(age.dateAtDaysAfterBirth(91)),
-            'Observation date is impossible, because happen after today or before birth'),
-        super._();
+      : super._();
   factory _WHOGrowthStandardsSubscapularSkinfoldForAge.fromJson(
           Map<String, dynamic> json) =>
       _$WHOGrowthStandardsSubscapularSkinfoldForAgeFromJson(json);
@@ -2247,18 +2201,7 @@ class _WHOGrowthStandardsTricepsSkinfoldForAge
       required this.sex,
       required this.age,
       required this.measurementResult})
-      : assert(age.ageInTotalDaysByNow >= 91 && age.ageInTotalDaysByNow <= 1856,
-            'Age must be in range of 91 - 1856 days'),
-        assert(
-            observationDate == null ||
-                observationDate.isSameOrBefore(Date.today()) ||
-                observationDate.isSameOrAfter(age.dateOfBirth),
-            'Observation date is impossible, because happen after today or before birth'),
-        assert(
-            observationDate == null ||
-                observationDate.isSameOrAfter(age.dateAtDaysAfterBirth(91)),
-            'Observation date is impossible, because happen after today or before birth'),
-        super._();
+      : super._();
   factory _WHOGrowthStandardsTricepsSkinfoldForAge.fromJson(
           Map<String, dynamic> json) =>
       _$WHOGrowthStandardsTricepsSkinfoldForAgeFromJson(json);
@@ -2531,14 +2474,7 @@ class _WHOGrowthStandardsWeightForAge extends WHOGrowthStandardsWeightForAge {
       this.oedemaExist = false,
       required this.age,
       required this.weight})
-      : assert(age.ageInTotalDaysByNow >= 0 && age.ageInTotalDaysByNow <= 1856,
-            'Age must be in range of 0 - 1856 days'),
-        assert(
-            observationDate == null ||
-                observationDate.isSameOrBefore(Date.today()) ||
-                observationDate.isSameOrAfter(age.dateOfBirth),
-            'Observation date is impossible, because happen after today or before birth'),
-        super._();
+      : super._();
   factory _WHOGrowthStandardsWeightForAge.fromJson(Map<String, dynamic> json) =>
       _$WHOGrowthStandardsWeightForAgeFromJson(json);
 
@@ -2683,7 +2619,6 @@ class __$WHOGrowthStandardsWeightForAgeCopyWithImpl<$Res>
 
 /// @nodoc
 mixin _$WHOGrowthStandardsWeightForHeight {
-  Date? get observationDate;
   Sex get sex;
   Age get age;
   bool get oedemaExist;
@@ -2708,8 +2643,6 @@ mixin _$WHOGrowthStandardsWeightForHeight {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is WHOGrowthStandardsWeightForHeight &&
-            (identical(other.observationDate, observationDate) ||
-                other.observationDate == observationDate) &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.oedemaExist, oedemaExist) ||
@@ -2721,12 +2654,12 @@ mixin _$WHOGrowthStandardsWeightForHeight {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, observationDate, sex, age,
-      oedemaExist, height, weight, measure);
+  int get hashCode =>
+      Object.hash(runtimeType, sex, age, oedemaExist, height, weight, measure);
 
   @override
   String toString() {
-    return 'WHOGrowthStandardsWeightForHeight(observationDate: $observationDate, sex: $sex, age: $age, oedemaExist: $oedemaExist, height: $height, weight: $weight, measure: $measure)';
+    return 'WHOGrowthStandardsWeightForHeight(sex: $sex, age: $age, oedemaExist: $oedemaExist, height: $height, weight: $weight, measure: $measure)';
   }
 }
 
@@ -2738,15 +2671,13 @@ abstract mixin class $WHOGrowthStandardsWeightForHeightCopyWith<$Res> {
       _$WHOGrowthStandardsWeightForHeightCopyWithImpl;
   @useResult
   $Res call(
-      {Date? observationDate,
-      Sex sex,
+      {Sex sex,
       Age age,
       bool oedemaExist,
       Length height,
       Mass weight,
       LengthHeightMeasurementPosition measure});
 
-  $DateCopyWith<$Res>? get observationDate;
   $AgeCopyWith<$Res> get age;
 }
 
@@ -2763,7 +2694,6 @@ class _$WHOGrowthStandardsWeightForHeightCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? observationDate = freezed,
     Object? sex = null,
     Object? age = null,
     Object? oedemaExist = null,
@@ -2772,10 +2702,6 @@ class _$WHOGrowthStandardsWeightForHeightCopyWithImpl<$Res>
     Object? measure = null,
   }) {
     return _then(_self.copyWith(
-      observationDate: freezed == observationDate
-          ? _self.observationDate
-          : observationDate // ignore: cast_nullable_to_non_nullable
-              as Date?,
       sex: null == sex
           ? _self.sex
           : sex // ignore: cast_nullable_to_non_nullable
@@ -2807,20 +2733,6 @@ class _$WHOGrowthStandardsWeightForHeightCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $DateCopyWith<$Res>? get observationDate {
-    if (_self.observationDate == null) {
-      return null;
-    }
-
-    return $DateCopyWith<$Res>(_self.observationDate!, (value) {
-      return _then(_self.copyWith(observationDate: value));
-    });
-  }
-
-  /// Create a copy of WHOGrowthStandardsWeightForHeight
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
     return $AgeCopyWith<$Res>(_self.age, (value) {
       return _then(_self.copyWith(age: value));
@@ -2833,59 +2745,17 @@ class _$WHOGrowthStandardsWeightForHeightCopyWithImpl<$Res>
 class _WHOGrowthStandardsWeightForHeight
     extends WHOGrowthStandardsWeightForHeight {
   _WHOGrowthStandardsWeightForHeight(
-      {this.observationDate,
-      required this.sex,
+      {required this.sex,
       required this.age,
       this.oedemaExist = false,
       required this.height,
       required this.weight,
       required this.measure})
-      : assert(
-            adjustedLengthHeight(
-                      measure: measure,
-                      age: age,
-                      lengthHeight: height,
-                      type: AdjustedLengthType.who,
-                    ).value >=
-                    65 &&
-                adjustedLengthHeight(
-                      measure: measure,
-                      age: age,
-                      lengthHeight: height,
-                      type: AdjustedLengthType.who,
-                    ).value <=
-                    120 &&
-                height.toCentimeter.value >= 65 &&
-                height.toCentimeter.value <= 120,
-            'Please correcting measurement position based on age'),
-        assert(
-            adjustedLengthHeight(
-                      measure: measure,
-                      age: age,
-                      lengthHeight: height,
-                      type: AdjustedLengthType.who,
-                    ).value >=
-                    65 &&
-                adjustedLengthHeight(
-                      measure: measure,
-                      age: age,
-                      lengthHeight: height,
-                      type: AdjustedLengthType.who,
-                    ).value <=
-                    120,
-            'Height must be in range of 65 - 120 cm'),
-        assert(
-            observationDate == null ||
-                observationDate.isSameOrBefore(Date.today()) ||
-                observationDate.isSameOrAfter(age.dateOfBirth),
-            'Observation date is impossible, because happen after today or before birth'),
-        super._();
+      : super._();
   factory _WHOGrowthStandardsWeightForHeight.fromJson(
           Map<String, dynamic> json) =>
       _$WHOGrowthStandardsWeightForHeightFromJson(json);
 
-  @override
-  final Date? observationDate;
   @override
   final Sex sex;
   @override
@@ -2922,8 +2792,6 @@ class _WHOGrowthStandardsWeightForHeight
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _WHOGrowthStandardsWeightForHeight &&
-            (identical(other.observationDate, observationDate) ||
-                other.observationDate == observationDate) &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.oedemaExist, oedemaExist) ||
@@ -2935,12 +2803,12 @@ class _WHOGrowthStandardsWeightForHeight
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, observationDate, sex, age,
-      oedemaExist, height, weight, measure);
+  int get hashCode =>
+      Object.hash(runtimeType, sex, age, oedemaExist, height, weight, measure);
 
   @override
   String toString() {
-    return 'WHOGrowthStandardsWeightForHeight(observationDate: $observationDate, sex: $sex, age: $age, oedemaExist: $oedemaExist, height: $height, weight: $weight, measure: $measure)';
+    return 'WHOGrowthStandardsWeightForHeight(sex: $sex, age: $age, oedemaExist: $oedemaExist, height: $height, weight: $weight, measure: $measure)';
   }
 }
 
@@ -2954,16 +2822,13 @@ abstract mixin class _$WHOGrowthStandardsWeightForHeightCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Date? observationDate,
-      Sex sex,
+      {Sex sex,
       Age age,
       bool oedemaExist,
       Length height,
       Mass weight,
       LengthHeightMeasurementPosition measure});
 
-  @override
-  $DateCopyWith<$Res>? get observationDate;
   @override
   $AgeCopyWith<$Res> get age;
 }
@@ -2981,7 +2846,6 @@ class __$WHOGrowthStandardsWeightForHeightCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? observationDate = freezed,
     Object? sex = null,
     Object? age = null,
     Object? oedemaExist = null,
@@ -2990,10 +2854,6 @@ class __$WHOGrowthStandardsWeightForHeightCopyWithImpl<$Res>
     Object? measure = null,
   }) {
     return _then(_WHOGrowthStandardsWeightForHeight(
-      observationDate: freezed == observationDate
-          ? _self.observationDate
-          : observationDate // ignore: cast_nullable_to_non_nullable
-              as Date?,
       sex: null == sex
           ? _self.sex
           : sex // ignore: cast_nullable_to_non_nullable
@@ -3025,20 +2885,6 @@ class __$WHOGrowthStandardsWeightForHeightCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $DateCopyWith<$Res>? get observationDate {
-    if (_self.observationDate == null) {
-      return null;
-    }
-
-    return $DateCopyWith<$Res>(_self.observationDate!, (value) {
-      return _then(_self.copyWith(observationDate: value));
-    });
-  }
-
-  /// Create a copy of WHOGrowthStandardsWeightForHeight
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
     return $AgeCopyWith<$Res>(_self.age, (value) {
       return _then(_self.copyWith(age: value));
@@ -3048,7 +2894,6 @@ class __$WHOGrowthStandardsWeightForHeightCopyWithImpl<$Res>
 
 /// @nodoc
 mixin _$WHOGrowthStandardsWeightForLength {
-  Date? get observationDate;
   Sex get sex;
   Age get age;
   bool get oedemaExist;
@@ -3073,8 +2918,6 @@ mixin _$WHOGrowthStandardsWeightForLength {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is WHOGrowthStandardsWeightForLength &&
-            (identical(other.observationDate, observationDate) ||
-                other.observationDate == observationDate) &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.oedemaExist, oedemaExist) ||
@@ -3086,12 +2929,12 @@ mixin _$WHOGrowthStandardsWeightForLength {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, observationDate, sex, age,
-      oedemaExist, length, weight, measure);
+  int get hashCode =>
+      Object.hash(runtimeType, sex, age, oedemaExist, length, weight, measure);
 
   @override
   String toString() {
-    return 'WHOGrowthStandardsWeightForLength(observationDate: $observationDate, sex: $sex, age: $age, oedemaExist: $oedemaExist, length: $length, weight: $weight, measure: $measure)';
+    return 'WHOGrowthStandardsWeightForLength(sex: $sex, age: $age, oedemaExist: $oedemaExist, length: $length, weight: $weight, measure: $measure)';
   }
 }
 
@@ -3103,15 +2946,13 @@ abstract mixin class $WHOGrowthStandardsWeightForLengthCopyWith<$Res> {
       _$WHOGrowthStandardsWeightForLengthCopyWithImpl;
   @useResult
   $Res call(
-      {Date? observationDate,
-      Sex sex,
+      {Sex sex,
       Age age,
       bool oedemaExist,
       Length length,
       Mass weight,
       LengthHeightMeasurementPosition measure});
 
-  $DateCopyWith<$Res>? get observationDate;
   $AgeCopyWith<$Res> get age;
 }
 
@@ -3128,7 +2969,6 @@ class _$WHOGrowthStandardsWeightForLengthCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? observationDate = freezed,
     Object? sex = null,
     Object? age = null,
     Object? oedemaExist = null,
@@ -3137,10 +2977,6 @@ class _$WHOGrowthStandardsWeightForLengthCopyWithImpl<$Res>
     Object? measure = null,
   }) {
     return _then(_self.copyWith(
-      observationDate: freezed == observationDate
-          ? _self.observationDate
-          : observationDate // ignore: cast_nullable_to_non_nullable
-              as Date?,
       sex: null == sex
           ? _self.sex
           : sex // ignore: cast_nullable_to_non_nullable
@@ -3172,20 +3008,6 @@ class _$WHOGrowthStandardsWeightForLengthCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $DateCopyWith<$Res>? get observationDate {
-    if (_self.observationDate == null) {
-      return null;
-    }
-
-    return $DateCopyWith<$Res>(_self.observationDate!, (value) {
-      return _then(_self.copyWith(observationDate: value));
-    });
-  }
-
-  /// Create a copy of WHOGrowthStandardsWeightForLength
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
     return $AgeCopyWith<$Res>(_self.age, (value) {
       return _then(_self.copyWith(age: value));
@@ -3198,59 +3020,17 @@ class _$WHOGrowthStandardsWeightForLengthCopyWithImpl<$Res>
 class _WHOGrowthStandardsWeightForLength
     extends WHOGrowthStandardsWeightForLength {
   _WHOGrowthStandardsWeightForLength(
-      {this.observationDate,
-      required this.sex,
+      {required this.sex,
       required this.age,
       this.oedemaExist = false,
       required this.length,
       required this.weight,
       required this.measure})
-      : assert(
-            adjustedLengthHeight(
-                            measure: measure,
-                            age: age,
-                            lengthHeight: length,
-                            type: AdjustedLengthType.who)
-                        .value >=
-                    45 &&
-                adjustedLengthHeight(
-                            measure: measure,
-                            age: age,
-                            lengthHeight: length,
-                            type: AdjustedLengthType.who)
-                        .value <=
-                    110 &&
-                length.toCentimeter.value >= 45 &&
-                length.toCentimeter.value <= 110,
-            'Please correcting measurement position based on age'),
-        assert(
-            adjustedLengthHeight(
-                            measure: measure,
-                            age: age,
-                            lengthHeight: length,
-                            type: AdjustedLengthType.who)
-                        .value >=
-                    45 &&
-                adjustedLengthHeight(
-                            measure: measure,
-                            age: age,
-                            lengthHeight: length,
-                            type: AdjustedLengthType.who)
-                        .value <=
-                    110,
-            'Length must be in range of 45 - 110 cm'),
-        assert(
-            observationDate == null ||
-                observationDate.isSameOrBefore(Date.today()) ||
-                observationDate.isSameOrAfter(age.dateOfBirth),
-            'Observation date is impossible, because happen after today or before birth'),
-        super._();
+      : super._();
   factory _WHOGrowthStandardsWeightForLength.fromJson(
           Map<String, dynamic> json) =>
       _$WHOGrowthStandardsWeightForLengthFromJson(json);
 
-  @override
-  final Date? observationDate;
   @override
   final Sex sex;
   @override
@@ -3287,8 +3067,6 @@ class _WHOGrowthStandardsWeightForLength
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _WHOGrowthStandardsWeightForLength &&
-            (identical(other.observationDate, observationDate) ||
-                other.observationDate == observationDate) &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.oedemaExist, oedemaExist) ||
@@ -3300,12 +3078,12 @@ class _WHOGrowthStandardsWeightForLength
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, observationDate, sex, age,
-      oedemaExist, length, weight, measure);
+  int get hashCode =>
+      Object.hash(runtimeType, sex, age, oedemaExist, length, weight, measure);
 
   @override
   String toString() {
-    return 'WHOGrowthStandardsWeightForLength(observationDate: $observationDate, sex: $sex, age: $age, oedemaExist: $oedemaExist, length: $length, weight: $weight, measure: $measure)';
+    return 'WHOGrowthStandardsWeightForLength(sex: $sex, age: $age, oedemaExist: $oedemaExist, length: $length, weight: $weight, measure: $measure)';
   }
 }
 
@@ -3319,16 +3097,13 @@ abstract mixin class _$WHOGrowthStandardsWeightForLengthCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Date? observationDate,
-      Sex sex,
+      {Sex sex,
       Age age,
       bool oedemaExist,
       Length length,
       Mass weight,
       LengthHeightMeasurementPosition measure});
 
-  @override
-  $DateCopyWith<$Res>? get observationDate;
   @override
   $AgeCopyWith<$Res> get age;
 }
@@ -3346,7 +3121,6 @@ class __$WHOGrowthStandardsWeightForLengthCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? observationDate = freezed,
     Object? sex = null,
     Object? age = null,
     Object? oedemaExist = null,
@@ -3355,10 +3129,6 @@ class __$WHOGrowthStandardsWeightForLengthCopyWithImpl<$Res>
     Object? measure = null,
   }) {
     return _then(_WHOGrowthStandardsWeightForLength(
-      observationDate: freezed == observationDate
-          ? _self.observationDate
-          : observationDate // ignore: cast_nullable_to_non_nullable
-              as Date?,
       sex: null == sex
           ? _self.sex
           : sex // ignore: cast_nullable_to_non_nullable
@@ -3384,20 +3154,6 @@ class __$WHOGrowthStandardsWeightForLengthCopyWithImpl<$Res>
           : measure // ignore: cast_nullable_to_non_nullable
               as LengthHeightMeasurementPosition,
     ));
-  }
-
-  /// Create a copy of WHOGrowthStandardsWeightForLength
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $DateCopyWith<$Res>? get observationDate {
-    if (_self.observationDate == null) {
-      return null;
-    }
-
-    return $DateCopyWith<$Res>(_self.observationDate!, (value) {
-      return _then(_self.copyWith(observationDate: value));
-    });
   }
 
   /// Create a copy of WHOGrowthStandardsWeightForLength

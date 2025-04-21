@@ -1,6 +1,6 @@
 part of '../reference.dart';
 
-class WHOGrowthReferenceBodyMassIndexForAgeData extends BaseData {
+class WHOGrowthReferenceBodyMassIndexForAgeData extends AgeBasedData {
   factory WHOGrowthReferenceBodyMassIndexForAgeData() => _singleton;
   const WHOGrowthReferenceBodyMassIndexForAgeData._(this._data);
 
@@ -32,6 +32,9 @@ class WHOGrowthReferenceBodyMassIndexForAgeData extends BaseData {
 
   @override
   String toString() => 'Body Mass Index For Age Data($_data)';
+
+  @override
+  TimeUnit get unit => TimeUnit.months;
 }
 
 @freezed
@@ -55,18 +58,6 @@ sealed class WHOGrowthReferenceBodyMassIndexMeasurement
 @freezed
 sealed class WHOGrowthReferenceBodyMassIndexForAge extends AgeBasedResult
     with _$WHOGrowthReferenceBodyMassIndexForAge {
-  @Assert(
-    'age.ageInTotalMonthsByNow >= 61 && age.ageInTotalMonthsByNow <= 228',
-    'Age must be in range of 61 - 228 months',
-  )
-  @Assert(
-    'observationDate == null || observationDate.isSameOrBefore(Date.today()) || observationDate.isSameOrAfter(age.dateOfBirth)',
-    'Observation date is impossible, because happen after today or before birth',
-  )
-  @Assert(
-    'observationDate == null || observationDate.isSameOrAfter(age.dateAtMonthsAfterBirth(61)) ',
-    'Observation date is impossible, because happen after today or before birth',
-  )
   factory WHOGrowthReferenceBodyMassIndexForAge({
     Date? observationDate,
     required Sex sex,
@@ -82,13 +73,14 @@ sealed class WHOGrowthReferenceBodyMassIndexForAge extends AgeBasedResult
   ) =>
       _$WHOGrowthReferenceBodyMassIndexForAgeFromJson(json);
 
-  WHOGrowthReferenceBodyMassIndexForAgeData get _bodyMassIndexData =>
+  @override
+  WHOGrowthReferenceBodyMassIndexForAgeData get contextData =>
       WHOGrowthReferenceBodyMassIndexForAgeData();
 
   Map<int, _WHOGrowthReferenceBodyMassIndexForAgeLMS> get _maleData =>
-      _bodyMassIndexData._data[Sex.male]!;
+      contextData._data[Sex.male]!;
   Map<int, _WHOGrowthReferenceBodyMassIndexForAgeLMS> get _femaleData =>
-      _bodyMassIndexData._data[Sex.female]!;
+      contextData._data[Sex.female]!;
 
   _WHOGrowthReferenceBodyMassIndexForAgeLMS get _ageData => (sex == Sex.male
       ? _maleData
@@ -98,7 +90,11 @@ sealed class WHOGrowthReferenceBodyMassIndexForAge extends AgeBasedResult
       _ageData.lms.adjustedZScore(measurementResultInDefaultUnit);
 
   @override
-  Age get ageAtObservationDate => checkObservationDate(age, observationDate);
+  Age get ageAtObservationDate => checkAge(
+        age,
+        observationDate: observationDate,
+        contextData: contextData,
+      );
 
   @override
   num zScore([
@@ -119,7 +115,7 @@ sealed class WHOGrowthReferenceBodyMassIndexForAge extends AgeBasedResult
   num get measurementResultInDefaultUnit => bodyMassIndexMeasurement.value;
 }
 
-class _WHOGrowthReferenceBodyMassIndexForAgeLMS extends LMSBasedResult {
+class _WHOGrowthReferenceBodyMassIndexForAgeLMS extends LMSContext {
   _WHOGrowthReferenceBodyMassIndexForAgeLMS({
     required this.lms,
   });

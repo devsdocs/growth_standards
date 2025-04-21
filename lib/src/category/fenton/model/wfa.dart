@@ -1,46 +1,38 @@
 part of '../fenton.dart';
 
-class FentonWeightForAgeData extends SexAgnosticData {
+class FentonWeightForAgeData extends AgeBasedData {
   factory FentonWeightForAgeData() => _singleton;
   const FentonWeightForAgeData._(this._data);
 
   static final _singleton = FentonWeightForAgeData._(_parse());
 
-  static Map<int, _FentonWeightForAgeLMS> _parse() =>
-      fentonWfA.toJsonObjectAsMap.map((k1, v1) {
-        v1 as Map<String, dynamic>;
-        final lms =
-            LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
-        return MapEntry(
-          int.parse(k1),
-          _FentonWeightForAgeLMS(
-            lms: lms,
-          ),
-        );
-      });
-  final Map<int, _FentonWeightForAgeLMS> _data;
+  static Map<Sex, Map<int, _FentonWeightForAgeLMS>> _parse() => {
+        Sex.both: fentonWfA.toJsonObjectAsMap.map((k1, v1) {
+          v1 as Map<String, dynamic>;
+          final lms =
+              LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
+          return MapEntry(
+            int.parse(k1),
+            _FentonWeightForAgeLMS(
+              lms: lms,
+            ),
+          );
+        })
+      };
+  final Map<Sex, Map<int, _FentonWeightForAgeLMS>> _data;
   @override
-  Map<int, _FentonWeightForAgeLMS> get data => _data;
+  Map<Sex, Map<int, _FentonWeightForAgeLMS>> get data => _data;
 
   @override
   String toString() => 'Infant Weight For Age Data($_data)';
+
+  @override
+  TimeUnit get unit => TimeUnit.weeks;
 }
 
 @freezed
 sealed class FentonWeightForAge extends AgeBasedResult
     with _$FentonWeightForAge {
-  @Assert(
-    'age.ageInTotalWeeksByNow >= 22 && age.ageInTotalWeeksByNow <= 50',
-    'Age must be in range of 22 - 50 weeks',
-  )
-  @Assert(
-    'observationDate == null || observationDate.isSameOrBefore(Date.today()) || observationDate.isSameOrAfter(age.dateOfBirth)',
-    'Observation date is impossible, because happen after today or before birth',
-  )
-  @Assert(
-    'observationDate == null || observationDate.isSameOrAfter(age.dateAtWeeksAfterBirth(22)) ',
-    'Observation date is impossible, because happen after today or before birth',
-  )
   factory FentonWeightForAge({
     Date? observationDate,
     required Sex sex,
@@ -55,15 +47,20 @@ sealed class FentonWeightForAge extends AgeBasedResult
   ) =>
       _$FentonWeightForAgeFromJson(json);
 
-  FentonWeightForAgeData get _weightForAgeData => FentonWeightForAgeData();
+  @override
+  FentonWeightForAgeData get contextData => FentonWeightForAgeData();
 
-  _FentonWeightForAgeLMS get _ageData =>
-      _weightForAgeData._data[ageAtObservationDate.ageInTotalWeeksByNow]!;
+  _FentonWeightForAgeLMS get _ageData => contextData
+      ._data.values.first[ageAtObservationDate.ageInTotalWeeksByNow]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 
   @override
-  Age get ageAtObservationDate => checkObservationDate(age, observationDate);
+  Age get ageAtObservationDate => checkAge(
+        age,
+        observationDate: observationDate,
+        contextData: contextData,
+      );
 
   @override
   num zScore([
@@ -84,7 +81,7 @@ sealed class FentonWeightForAge extends AgeBasedResult
   num get measurementResultInDefaultUnit => weight.toKilogram.value;
 }
 
-class _FentonWeightForAgeLMS extends LMSBasedResult {
+class _FentonWeightForAgeLMS extends LMSContext {
   _FentonWeightForAgeLMS({
     required this.lms,
   });

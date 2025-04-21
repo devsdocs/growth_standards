@@ -103,7 +103,7 @@ class _Age extends Age {
                   ),
                 )
                 .isNegative),
-            'Age is impossible'),
+            'Age is impossible because it is in the future'),
         super._();
   factory _Age.fromJson(Map<String, dynamic> json) => _$AgeFromJson(json);
 

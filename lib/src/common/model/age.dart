@@ -14,7 +14,7 @@ final _reverseMonthsEnum = _$MonthsEnumMap.map((k, v) => MapEntry(v, k));
 sealed class Age with _$Age {
   @Assert(
     '!(DateTime(DateTimeUtils.now().year, DateTimeUtils.now().month, DateTimeUtils.now().day).difference(DateTime(dateOfBirth.year,dateOfBirth.month.number,dateOfBirth.date,),).isNegative)',
-    'Age is impossible',
+    'Age is impossible because it is in the future',
   )
   factory Age(Date dateOfBirth) = _Age;
 
@@ -32,6 +32,8 @@ sealed class Age with _$Age {
   factory Age.byDaysAgo(int days) => Age(Date.daysAgoByNow(days));
 
   factory Age.fromJson(Map<String, dynamic> json) => _$AgeFromJson(json);
+
+  bool get isValid => dateOfBirth.isSameOrBefore(Date.today());
 
   TimeIntervalCount get _dobCount => TimeIntervalCount(
         dateOfBirth.year,
@@ -166,6 +168,8 @@ sealed class Date with _$Date implements Comparable<Date> {
       );
 
   factory Date.fromJson(Map<String, dynamic> json) => _$DateFromJson(json);
+
+  bool get isFuture => this > Date.today();
 
   bool isBefore(Date other) => this < other;
   bool isSameOrBefore(Date other) => this <= other;

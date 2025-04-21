@@ -121,7 +121,6 @@ class CDCGrowthStandardFromTwoYearsOldAndAbove {
     required LengthHeightMeasurementPosition measure,
   }) =>
       CDCWeightForStature(
-        observationDate: observationDate,
         sex: sex,
         age: age,
         height: height,
@@ -223,7 +222,6 @@ class CDCGrowthStandardFromBirthTo36Months {
     required LengthHeightMeasurementPosition measure,
   }) =>
       CDCInfantWeightForLength(
-        observationDate: observationDate,
         sex: sex,
         age: age,
         length: length,
