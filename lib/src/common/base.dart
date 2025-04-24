@@ -43,7 +43,8 @@ sealed class BaseData {
   const BaseData();
   Map<Sex, Map<num, LMSContext>> get data;
 
-  List<num> get _contextData => data.values.first.keys.toList()..sort();
+  /// No need for sorting as the data is already sorted by default.
+  Iterable<num> get _contextData => data.values.first.keys;
 
   num get upperBound => _contextData.last;
   num get lowerBound => _contextData.first;
