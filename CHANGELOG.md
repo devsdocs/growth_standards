@@ -1,3 +1,7 @@
+## 3.0.6
+- Same as previous version
+- Use this version if your dependencies has not supported `freezed` version 3
+
 ## 3.0.5
 
 - Remove data sorting as the data is sorted by default
