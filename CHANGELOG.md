@@ -1,3 +1,7 @@
+## 3.0.5
+
+- Remove data sorting as the data is sorted by default
+
 ## 3.0.4
 
 - Same as previous version
