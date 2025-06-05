@@ -1,863 +1,1165 @@
-{
-  "During Pregnancy": {
-    "Early Pregnancy Dating": {
-      "description": "Purpose: Accurate gestational-age estimation in early pregnancy\nAge range: Gestational weeks 8 to 14",
-      "image": "https://intergrowth21.com/sites/default/files/styles/square_large/public/2023-05/pregnancy_dating.png?itok=gplnQ1U3",
-      "link": "https://intergrowth21.com/tools-resources/pregnancy-dating",
-      "downloads": {
-        "Publications": [],
-        "Tables & Graphs": [
+[
+  {
+    "key": "during_pregnancy",
+    "title": "During Pregnancy",
+    "items": [
+      {
+        "key": "early_pregnancy_dating",
+        "title": "Early Pregnancy Dating",
+        "description": "Purpose: Accurate gestational-age estimation in early pregnancy\nAge range: Gestational weeks 8 to 14",
+        "image_url": "https://intergrowth21.com/sites/default/files/styles/square_large/public/2023-05/pregnancy_dating.png?itok=gplnQ1U3",
+        "page_url": "https://intergrowth21.com/tools-resources/pregnancy-dating",
+        "resources": [
           {
-            "text": "Gestational Age Estimation by CRL",
-            "link": "https://intergrowth21.com/sites/default/files/2022-12/grow_early_preg_charts_crl_dating_ct_table.pdf"
-          }
-        ],
-        "Calculators & Apps": [
-          {
-            "text": "Excel-based Gestational Age Assessment Calculator",
-            "link": "https://intergrowth21.com/sites/default/files/2022-12/intergrowth_ga_calculator_1.1.xlsx"
-          }
-        ],
-        "Training & Resources": [
-          {
-            "text": "Study Protocol",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/intergrowth_protocol_sept_2009.pdf"
+            "key": "tables_graphs",
+            "title": "Tables & Graphs",
+            "files": [
+              {
+                "title": "Gestational Age Estimation by CRL",
+                "url": "https://intergrowth21.com/sites/default/files/2022-12/grow_early_preg_charts_crl_dating_ct_table.pdf",
+                "file_type": "pdf"
+              }
+            ]
           },
           {
-            "text": "CRL Measurement and Standardisation Manual",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/crlstandardisation_manual.pdf"
+            "key": "calculators_apps",
+            "title": "Calculators & Apps",
+            "files": [
+              {
+                "title": "Excel-based Gestational Age Assessment Calculator",
+                "url": "https://intergrowth21.com/sites/default/files/2022-12/intergrowth_ga_calculator_1.1.xlsx",
+                "file_type": "xlsx"
+              }
+            ]
+          },
+          {
+            "key": "training_resources",
+            "title": "Training & Resources",
+            "files": [
+              {
+                "title": "Study Protocol",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/intergrowth_protocol_sept_2009.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "CRL Measurement and Standardisation Manual",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/crlstandardisation_manual.pdf",
+                "file_type": "pdf"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "fetal_size_in_early_pregnancy",
+        "title": "Fetal Size in Early Pregnancy",
+        "description": "Purpose: Assess early pregnancy fetal size (crown-rump length)\nAge range: Gestational weeks 8 to 14",
+        "image_url": "https://intergrowth21.com/sites/default/files/styles/square_large/public/2023-05/early_dating.png?itok=YWnsrmTn",
+        "page_url": "https://intergrowth21.com/tools-resources/fetal-size-early-pregnancy",
+        "resources": [
+          {
+            "key": "tables_graphs",
+            "title": "Tables & Graphs",
+            "files": [
+              {
+                "title": "CRL Centiles Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_early_preg_charts_size_ct_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "CRL Z-Scores Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_early_preg_charts_size_zs_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Download CRL Package",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/03_fetal_size_zn9jyim.pdf",
+                "file_type": "pdf"
+              }
+            ]
+          },
+          {
+            "key": "calculators_apps",
+            "title": "Calculators & Apps",
+            "files": [
+              {
+                "title": "Excel-based Gestational Age Assessment Calculator",
+                "url": "https://intergrowth21.com/sites/default/files/2022-12/intergrowth_ga_calculator_1.1.xlsx",
+                "file_type": "xlsx"
+              }
+            ]
+          },
+          {
+            "key": "training_resources",
+            "title": "Training & Resources",
+            "files": [
+              {
+                "title": "Study Protocol",
+                "url": "https://intergrowth21.com/sites/default/files/2022-12/intergrowth_protocol_sept_2009.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "CRL Measurement and Standardisation Manual",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/crlstandardisation_manual.pdf",
+                "file_type": "pdf"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "symphysisfundal_height",
+        "title": "Symphysis-Fundal Height",
+        "description": "Purpose: Assess symphysis-fundal height Age range: Gestational week 15 until term",
+        "image_url": "https://intergrowth21.com/sites/default/files/styles/square_large/public/2023-05/symphysis_fundal_height.png?itok=pa1q93Wo",
+        "page_url": "https://intergrowth21.com/tools-resources/symphysis-fundal-height",
+        "resources": [
+          {
+            "key": "tables_graphs",
+            "title": "Tables & Graphs",
+            "files": [
+              {
+                "title": "SFH Centiles Table",
+                "url": "https://intergrowth21.com/sites/default/files/2025-01/grow_sfh_ext_package_-_new_1_2.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "SFH Centiles Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_sfh_ext_ct_en_-_new.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "SFH Z-Scores Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_sfh_zs_table_-_new.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "SFH Z-Scores Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_sfh_ext_zs_en_-_new.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Download the Symphysis-Fundal Height Package",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_sfh_ext_package_-_new.pdf",
+                "file_type": "pdf"
+              }
+            ]
+          },
+          {
+            "key": "calculators_apps",
+            "title": "Calculators & Apps",
+            "files": [
+              {
+                "title": "Excel-based Symphysis-Fundal Height Calculator",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/intergrowth_sfh_calculator_1.1_ext_2019_03_18_-_new_1.xlsx",
+                "file_type": "xlsx"
+              }
+            ]
+          },
+          {
+            "key": "training_resources",
+            "title": "Training & Resources",
+            "files": [
+              {
+                "title": "Study Protocol",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/intergrowth_protocol_sept_2009.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Symphysis-Fundal Height Measurement",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/measurement_of_symphysis_fundus_height.pdf",
+                "file_type": "pdf"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "fetal_growth",
+        "title": "Fetal Growth",
+        "description": "Purpose: Assess fetal anthropometric growth measurementsAge range: Gestational week 14 until term",
+        "image_url": "https://intergrowth21.com/sites/default/files/styles/square_large/public/2023-05/fetal_growth.png?itok=cvM4Xjl-",
+        "page_url": "https://intergrowth21.com/tools-resources/fetal-growth",
+        "resources": [
+          {
+            "key": "tables_graphs",
+            "title": "Tables & Graphs",
+            "files": [
+              {
+                "title": "HC Centiles Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_hc_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "HC Centiles Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_hc_en_0.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "HC Z-scores Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-zs_hc_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "HC Z-scores Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-zs_hc_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "BPD Centiles Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_bpd_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "BPD Centiles Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_bpd_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "BPD Z-Scores Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-zs_bpd_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "BPD Z-Scores Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-zs_bpd_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "AC Centiles Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_ac_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "AC Centiles Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_ac_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "AC Z-scores Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-zs_ac_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "AC Z-scores Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-zs_ac_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "FL Centiles Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_fl_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "FL Centiles Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_fl_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "FL Z-Scores Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-zs_fl_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "FL Z-Scores Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-zs_fl_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "OFD Centiles Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_ofd_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "OFD Centiles Graphs",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_ofd_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "OFD Z-Scores Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-zs_ofd_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "OFD Z-Scores Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-zs_ofd_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "EFW Centiles Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2025-05/efwhadlock-centiles-41ga.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "EFW Z Scores Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2025-05/efwhadlock-zscores-41ga.pdf",
+                "file_type": "pdf"
+              }
+            ]
+          },
+          {
+            "key": "calculators_apps",
+            "title": "Calculators & Apps",
+            "files": [
+              {
+                "title": "Excel-based Fetal Biometry and Estimated Fetal Weight Calculator",
+                "url": "https://intergrowth21.com/sites/default/files/2025-05/intergrowth_hadlock_efw_calculator_1.xlsx",
+                "file_type": "xlsx"
+              },
+              {
+                "title": "EFW R script",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/estimated_fetal_weight_r_script_code.docx",
+                "file_type": "docx"
+              },
+              {
+                "title": "Equations for parameters and computation of Z-scores and centiles for EFW according to GA",
+                "url": "https://intergrowth21.com/sites/default/files/2024-09/uog22000-sup-0001-tables1_1.docx",
+                "file_type": "docx"
+              },
+              {
+                "title": "User Guide",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/fetal_app_-_instructions_faq_2017_04_13_1.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Troubleshooting guide",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/fetal_growth_troubleshooting_-_new_1.pdf",
+                "file_type": "pdf"
+              }
+            ]
+          },
+          {
+            "key": "training_resources",
+            "title": "Training & Resources",
+            "files": [
+              {
+                "title": "Study Protocol",
+                "url": "https://intergrowth21.com/sites/default/files/2022-12/intergrowth_protocol_sept_2009.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Ultrasound Operations Manual",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/ultrasound_manual_24.07.14.pdf",
+                "file_type": "pdf"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "fetal_doppler",
+        "title": "Fetal Doppler",
+        "description": "Purpose: Provide gestational age-specific normative centiles for umbilical artery Doppler indices\nAge range: Gestational week 24 until term",
+        "image_url": "https://intergrowth21.com/sites/default/files/styles/square_large/public/2023-05/fetal_doppler_0.png?itok=aoTSoiTS",
+        "page_url": "https://intergrowth21.com/tools-resources/fetal-doppler",
+        "resources": [
+          {
+            "key": "tables_graphs",
+            "title": "Tables & Graphs",
+            "files": [
+              {
+                "title": "Umbilical Artery Pulsatility Index (PI)",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_doppler_pi_ct_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Umbilical Artery Systolic/Diastolic Ratio (S/D Ratio)",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_doppler_sd_ct_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Umbilical Artery Resistance Index (RI)",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_doppler_ri_ct_en.pdf",
+                "file_type": "pdf"
+              }
+            ]
+          },
+          {
+            "key": "calculators_apps",
+            "title": "Calculators & Apps",
+            "files": [
+              {
+                "title": "Doppler Z-Score and Centile Calculator",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/doppler_percentile_and_z-score.xlsx",
+                "file_type": "xlsx"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "gestational_weight_gain",
+        "title": "Gestational Weight Gain",
+        "description": "Purpose: Assess maternal weight gain during pregnancy\nAge range: gestational week 15 until term",
+        "image_url": "https://intergrowth21.com/sites/default/files/styles/square_large/public/2023-05/gestational_weight_gain.png?itok=vcvLZ2gB",
+        "page_url": "https://intergrowth21.com/tools-resources/gestational-weight-gain",
+        "resources": [
+          {
+            "key": "tables_graphs",
+            "title": "Tables & Graphs",
+            "files": [
+              {
+                "title": "Weight Gain Centiles Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_gwg-nw-ct_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Weight Gain Centiles Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_gwg-nw-ct_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Weight Gain Z-Scores Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_gwg-nw-zs_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Weight Gain Z-Scores Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_gwg-nw-zs_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Download entire \"Normal\" Weight Gain Package",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/06_gwg.pdf",
+                "file_type": "pdf"
+              }
+            ]
+          },
+          {
+            "key": "calculators_apps",
+            "title": "Calculators & Apps",
+            "files": [
+              {
+                "title": "Gestational Weight Gain Calculator",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/intergrowth_gwg_calculator_1.0_2017_04_13.xlsx",
+                "file_type": "xlsx"
+              }
+            ]
+          },
+          {
+            "key": "training_resources",
+            "title": "Training & Resources",
+            "files": [
+              {
+                "title": "Study Protocol",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/intergrowth_protocol_sept_2009.pdf",
+                "file_type": "pdf"
+              }
+            ]
           }
         ]
       }
-    },
-    "Fetal Size in Early Pregnancy": {
-      "description": "Purpose: Assess early pregnancy fetal size (crown-rump length)\nAge range: Gestational weeks 8 to 14",
-      "image": "https://intergrowth21.com/sites/default/files/styles/square_large/public/2023-05/early_dating.png?itok=YWnsrmTn",
-      "link": "https://intergrowth21.com/tools-resources/fetal-size-early-pregnancy",
-      "downloads": {
-        "Publications": [],
-        "Tables & Graphs": [
-          {
-            "text": "CRL Centiles Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_early_preg_charts_size_ct_table.pdf"
-          },
-          {
-            "text": "CRL Z-Scores Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_early_preg_charts_size_zs_table.pdf"
-          },
-          {
-            "text": "Download CRL Package",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/03_fetal_size_zn9jyim.pdf"
-          }
-        ],
-        "Calculators & Apps": [
-          {
-            "text": "Excel-based Gestational Age Assessment Calculator",
-            "link": "https://intergrowth21.com/sites/default/files/2022-12/intergrowth_ga_calculator_1.1.xlsx"
-          }
-        ],
-        "Training & Resources": [
-          {
-            "text": "Study Protocol",
-            "link": "https://intergrowth21.com/sites/default/files/2022-12/intergrowth_protocol_sept_2009.pdf"
-          },
-          {
-            "text": "CRL Measurement and Standardisation Manual",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/crlstandardisation_manual.pdf"
-          }
-        ]
-      }
-    },
-    "Symphysis-Fundal Height": {
-      "description": "Purpose: Assess symphysis-fundal height Age range: Gestational week 15 until term",
-      "image": "https://intergrowth21.com/sites/default/files/styles/square_large/public/2023-05/symphysis_fundal_height.png?itok=pa1q93Wo",
-      "link": "https://intergrowth21.com/tools-resources/symphysis-fundal-height",
-      "downloads": {
-        "Publications": [],
-        "Tables & Graphs": [
-          {
-            "text": "SFH Centiles Table",
-            "link": "https://intergrowth21.com/sites/default/files/2025-01/grow_sfh_ext_package_-_new_1_2.pdf"
-          },
-          {
-            "text": "SFH Centiles Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_sfh_ext_ct_en_-_new.pdf"
-          },
-          {
-            "text": "SFH Z-Scores Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_sfh_zs_table_-_new.pdf"
-          },
-          {
-            "text": "SFH Z-Scores Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_sfh_ext_zs_en_-_new.pdf"
-          },
-          {
-            "text": "Download the Symphysis-Fundal Height Package",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_sfh_ext_package_-_new.pdf"
-          }
-        ],
-        "Calculators & Apps": [
-          {
-            "text": "Excel-based Symphysis-Fundal Height Calculator",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/intergrowth_sfh_calculator_1.1_ext_2019_03_18_-_new_1.xlsx"
-          }
-        ],
-        "Training & Resources": [
-          {
-            "text": "Study Protocol",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/intergrowth_protocol_sept_2009.pdf"
-          },
-          {
-            "text": "Symphysis-Fundal Height Measurement",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/measurement_of_symphysis_fundus_height.pdf"
-          }
-        ]
-      }
-    },
-    "Fetal Growth": {
-      "description": "Purpose: Assess fetal anthropometric growth measurementsAge range: Gestational week 14 until term",
-      "image": "https://intergrowth21.com/sites/default/files/styles/square_large/public/2023-05/fetal_growth.png?itok=cvM4Xjl-",
-      "link": "https://intergrowth21.com/tools-resources/fetal-growth",
-      "downloads": {
-        "Publications": [],
-        "Tables & Graphs": [
-          {
-            "text": "HC Centiles Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_hc_table.pdf"
-          },
-          {
-            "text": "HC Centiles Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_hc_en_0.pdf"
-          },
-          {
-            "text": "HC Z-scores Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-zs_hc_table.pdf"
-          },
-          {
-            "text": "HC Z-scores Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-zs_hc_en.pdf"
-          },
-          {
-            "text": "BPD Centiles Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_bpd_table.pdf"
-          },
-          {
-            "text": "BPD Centiles Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_bpd_en.pdf"
-          },
-          {
-            "text": "BPD Z-Scores Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-zs_bpd_table.pdf"
-          },
-          {
-            "text": "BPD Z-Scores Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-zs_bpd_en.pdf"
-          },
-          {
-            "text": "AC Centiles Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_ac_table.pdf"
-          },
-          {
-            "text": "AC Centiles Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_ac_en.pdf"
-          },
-          {
-            "text": "AC Z-scores Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-zs_ac_table.pdf"
-          },
-          {
-            "text": "AC Z-scores Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-zs_ac_en.pdf"
-          },
-          {
-            "text": "FL Centiles Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_fl_table.pdf"
-          },
-          {
-            "text": "FL Centiles Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_fl_en.pdf"
-          },
-          {
-            "text": "FL Z-Scores Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-zs_fl_table.pdf"
-          },
-          {
-            "text": "FL Z-Scores Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-zs_fl_en.pdf"
-          },
-          {
-            "text": "OFD Centiles Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_ofd_table.pdf"
-          },
-          {
-            "text": "OFD Centiles Graphs",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_ofd_en.pdf"
-          },
-          {
-            "text": "OFD Z-Scores Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-zs_ofd_table.pdf"
-          },
-          {
-            "text": "OFD Z-Scores Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-zs_ofd_en.pdf"
-          },
-          {
-            "text": "EFW Centiles Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2025-05/efwhadlock-centiles-41ga.pdf"
-          },
-          {
-            "text": "EFW Z Scores Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2025-05/efwhadlock-zscores-41ga.pdf"
-          }
-        ],
-        "Calculators & Apps": [
-          {
-            "text": "Excel-based Fetal Biometry and Estimated Fetal Weight Calculator",
-            "link": "https://intergrowth21.com/sites/default/files/2025-05/intergrowth_hadlock_efw_calculator_1.xlsx"
-          },
-          {
-            "text": "EFW R script",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/estimated_fetal_weight_r_script_code.docx"
-          },
-          {
-            "text": "Equations for parameters and computation of Z-scores and centiles for EFW according to GA",
-            "link": "https://intergrowth21.com/sites/default/files/2024-09/uog22000-sup-0001-tables1_1.docx"
-          },
-          {
-            "text": "User Guide",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/fetal_app_-_instructions_faq_2017_04_13_1.pdf"
-          },
-          {
-            "text": "Troubleshooting guide",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/fetal_growth_troubleshooting_-_new_1.pdf"
-          }
-        ],
-        "Training & Resources": [
-          {
-            "text": "Study Protocol",
-            "link": "https://intergrowth21.com/sites/default/files/2022-12/intergrowth_protocol_sept_2009.pdf"
-          },
-          {
-            "text": "Ultrasound Operations Manual",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/ultrasound_manual_24.07.14.pdf"
-          }
-        ]
-      }
-    },
-    "Fetal Doppler": {
-      "description": "Purpose: Provide gestational age-specific normative centiles for umbilical artery Doppler indices\nAge range: Gestational week 24 until term",
-      "image": "https://intergrowth21.com/sites/default/files/styles/square_large/public/2023-05/fetal_doppler_0.png?itok=aoTSoiTS",
-      "link": "https://intergrowth21.com/tools-resources/fetal-doppler",
-      "downloads": {
-        "Publications": [],
-        "Tables & Graphs": [
-          {
-            "text": "Umbilical Artery Pulsatility Index (PI)",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_doppler_pi_ct_en.pdf"
-          },
-          {
-            "text": "Umbilical Artery Systolic/Diastolic Ratio (S/D Ratio)",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_doppler_sd_ct_en.pdf"
-          },
-          {
-            "text": "Umbilical Artery Resistance Index (RI)",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_doppler_ri_ct_en.pdf"
-          }
-        ],
-        "Calculators & Apps": [
-          {
-            "text": "Doppler Z-Score and Centile Calculator",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/doppler_percentile_and_z-score.xlsx"
-          }
-        ]
-      }
-    },
-    "Gestational Weight Gain": {
-      "description": "Purpose: Assess maternal weight gain during pregnancy\nAge range: gestational week 15 until term",
-      "image": "https://intergrowth21.com/sites/default/files/styles/square_large/public/2023-05/gestational_weight_gain.png?itok=vcvLZ2gB",
-      "link": "https://intergrowth21.com/tools-resources/gestational-weight-gain",
-      "downloads": {
-        "Publications": [],
-        "Tables & Graphs": [
-          {
-            "text": "Weight Gain Centiles Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_gwg-nw-ct_table.pdf"
-          },
-          {
-            "text": "Weight Gain Centiles Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_gwg-nw-ct_en.pdf"
-          },
-          {
-            "text": "Weight Gain Z-Scores Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_gwg-nw-zs_table.pdf"
-          },
-          {
-            "text": "Weight Gain Z-Scores Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_gwg-nw-zs_en.pdf"
-          },
-          {
-            "text": "Download entire \"Normal\" Weight Gain Package",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/06_gwg.pdf"
-          }
-        ],
-        "Calculators & Apps": [
-          {
-            "text": "Gestational Weight Gain Calculator",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/intergrowth_gwg_calculator_1.0_2017_04_13.xlsx"
-          }
-        ],
-        "Training & Resources": [
-          {
-            "text": "Study Protocol",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/intergrowth_protocol_sept_2009.pdf"
-          }
-        ]
-      }
-    }
+    ]
   },
-  "At Birth": {
-    "Newborn Size for Very Preterm Infants": {
-      "description": "Purpose: Assess size at birth (within 24 hours) for very preterm newborns\nAge range: At birth, born between gestational weeks 24 and 33",
-      "image": "https://intergrowth21.com/sites/default/files/styles/square_large/public/2023-05/newborn_size_for_very_preterm_infants.png?itok=J7mpRlMy",
-      "link": "https://intergrowth21.com/tools-resources/newborn-size-very-preterm-infants",
-      "downloads": {
-        "Publications": [],
-        "Tables & Graphs": [
+  {
+    "key": "at_birth",
+    "title": "At Birth",
+    "items": [
+      {
+        "key": "newborn_size_for_very_preterm_infants",
+        "title": "Newborn Size for Very Preterm Infants",
+        "description": "Purpose: Assess size at birth (within 24 hours) for very preterm newborns\nAge range: At birth, born between gestational weeks 24 and 33",
+        "image_url": "https://intergrowth21.com/sites/default/files/styles/square_large/public/2023-05/newborn_size_for_very_preterm_infants.png?itok=J7mpRlMy",
+        "page_url": "https://intergrowth21.com/tools-resources/newborn-size-very-preterm-infants",
+        "resources": [
           {
-            "text": "Boys Weight Centiles Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-boys_bw_table.pdf"
+            "key": "tables_graphs",
+            "title": "Tables & Graphs",
+            "files": [
+              {
+                "title": "Boys Weight Centiles Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-boys_bw_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys Weight Centiles Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-boys_bw_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys Weight Z-Scores Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-zs-boys_bw_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys Weight Z-Scores Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-zs-boys_bw_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Weight Centiles Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-girls_bw_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Weight Centiles Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-girls_bw_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Weight Z-Scores Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-zs-girls_bw_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Weight Z-Scores Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-zs-girls_bw_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys Length Centiles Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-boys_lt_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys Length Centiles Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-boys_lt_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys Length Z-Scores Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-zs-boys_lt_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys Length Z-Scores Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-zs-boys_lt_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Length Centiles Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-girls_lt_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Length Centiles Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-girls_lt_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Length Z-Scores Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-zs-girls_lt_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Length Z-Scores Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-zs-girls_lt_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys HC Centiles Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-boys_hc_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys HC Centiles Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-boys_hc_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys HC Z-Scores Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-zs-boys_hc_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys HC Z-Scores Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-zs-boys_hc_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls HC Centiles Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-girls_hc_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls HC Centiles Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-girls_hc_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls HC Z-Scores Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-zs-girls_hc_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls HC Z-Scores Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-zs-girls_hc_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys Weight:Length Centiles Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-wlr-ct-boys_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys Weight:Length Centiles Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-wlr-ct-boys_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys Weight:Length Z-Scores Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-wlr-zs-boys_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys Weight:Length Z-Scores Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-wlr-zs-boys_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Weight:Length Centiles Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-wlr-ct-girls_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Weight:Length Centiles Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-wlr-ct-girls_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Weight:Length Z-Scores Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-wlr-zs-girls_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Weight:Length Z-Scores Graphs",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-wlr-zs-girls_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys WLHC Centiles",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-boys_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys WLHC Z-Scores",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-zs-boys_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls WLHC Centiles",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-girls_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls WLHC Z-scores",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-zs-girls_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys Charts Centiles",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_vp-nb-combined-ct-boys_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys Charts Z-Scores",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_vp-nb-combined-zs-boys_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Charts Centiles",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_vp-nb-combined-ct-girls_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Charts Z-Scores",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_vp-nb-combined-zs-girls_en.pdf",
+                "file_type": "pdf"
+              }
+            ]
           },
           {
-            "text": "Boys Weight Centiles Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-boys_bw_en.pdf"
+            "key": "calculators_apps",
+            "title": "Calculators & Apps",
+            "files": [
+              {
+                "title": "User guide",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/newborn_and_vp_app_-_instructions_faq_2017_04_13.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Troubleshooting guide",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/newborn_size_troubleshooting_-_new.pdf",
+                "file_type": "pdf"
+              }
+            ]
           },
           {
-            "text": "Boys Weight Z-Scores Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-zs-boys_bw_table.pdf"
-          },
-          {
-            "text": "Boys Weight Z-Scores Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-zs-boys_bw_en.pdf"
-          },
-          {
-            "text": "Girls Weight Centiles Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-girls_bw_table.pdf"
-          },
-          {
-            "text": "Girls Weight Centiles Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-girls_bw_en.pdf"
-          },
-          {
-            "text": "Girls Weight Z-Scores Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-zs-girls_bw_table.pdf"
-          },
-          {
-            "text": "Girls Weight Z-Scores Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-zs-girls_bw_en.pdf"
-          },
-          {
-            "text": "Boys Length Centiles Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-boys_lt_table.pdf"
-          },
-          {
-            "text": "Boys Length Centiles Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-boys_lt_en.pdf"
-          },
-          {
-            "text": "Boys Length Z-Scores Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-zs-boys_lt_table.pdf"
-          },
-          {
-            "text": "Boys Length Z-Scores Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-zs-boys_lt_en.pdf"
-          },
-          {
-            "text": "Girls Length Centiles Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-girls_lt_table.pdf"
-          },
-          {
-            "text": "Girls Length Centiles Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-girls_lt_en.pdf"
-          },
-          {
-            "text": "Girls Length Z-Scores Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-zs-girls_lt_table.pdf"
-          },
-          {
-            "text": "Girls Length Z-Scores Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-zs-girls_lt_en.pdf"
-          },
-          {
-            "text": "Boys HC Centiles Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-boys_hc_table.pdf"
-          },
-          {
-            "text": "Boys HC Centiles Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-boys_hc_en.pdf"
-          },
-          {
-            "text": "Boys HC Z-Scores Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-zs-boys_hc_table.pdf"
-          },
-          {
-            "text": "Boys HC Z-Scores Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-zs-boys_hc_en.pdf"
-          },
-          {
-            "text": "Girls HC Centiles Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-girls_hc_table.pdf"
-          },
-          {
-            "text": "Girls HC Centiles Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-girls_hc_en.pdf"
-          },
-          {
-            "text": "Girls HC Z-Scores Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-zs-girls_hc_table.pdf"
-          },
-          {
-            "text": "Girls HC Z-Scores Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-zs-girls_hc_en.pdf"
-          },
-          {
-            "text": "Boys Weight:Length Centiles Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-wlr-ct-boys_table.pdf"
-          },
-          {
-            "text": "Boys Weight:Length Centiles Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-wlr-ct-boys_en.pdf"
-          },
-          {
-            "text": "Boys Weight:Length Z-Scores Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-wlr-zs-boys_table.pdf"
-          },
-          {
-            "text": "Boys Weight:Length Z-Scores Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-wlr-zs-boys_en.pdf"
-          },
-          {
-            "text": "Girls Weight:Length Centiles Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-wlr-ct-girls_table.pdf"
-          },
-          {
-            "text": "Girls Weight:Length Centiles Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-wlr-ct-girls_en.pdf"
-          },
-          {
-            "text": "Girls Weight:Length Z-Scores Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-wlr-zs-girls_table.pdf"
-          },
-          {
-            "text": "Girls Weight:Length Z-Scores Graphs",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-wlr-zs-girls_en.pdf"
-          },
-          {
-            "text": "Boys WLHC Centiles",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-boys_en.pdf"
-          },
-          {
-            "text": "Boys WLHC Z-Scores",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-zs-boys_en.pdf"
-          },
-          {
-            "text": "Girls WLHC Centiles",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-girls_en.pdf"
-          },
-          {
-            "text": "Girls WLHC Z-scores",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-zs-girls_en.pdf"
-          },
-          {
-            "text": "Boys Charts Centiles",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_vp-nb-combined-ct-boys_en.pdf"
-          },
-          {
-            "text": "Boys Charts Z-Scores",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/grow_vp-nb-combined-zs-boys_en.pdf"
-          },
-          {
-            "text": "Girls Charts Centiles",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_vp-nb-combined-ct-girls_en.pdf"
-          },
-          {
-            "text": "Girls Charts Z-Scores",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_vp-nb-combined-zs-girls_en.pdf"
+            "key": "training_resources",
+            "title": "Training & Resources",
+            "files": [
+              {
+                "title": "Study Protocol",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/intergrowth_protocol_sept_2009.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Anthropometry manual",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/anthropometry_handbook.pdf",
+                "file_type": "pdf"
+              }
+            ]
           }
-        ],
-        "Calculators & Apps": [
+        ]
+      },
+      {
+        "key": "newborn_size",
+        "title": "Newborn Size",
+        "description": "Purpose: Assess size at birth (within 24 hours) for newbornsAge range: At birth, born between gestational weeks 33 and 43",
+        "image_url": "https://intergrowth21.com/sites/default/files/styles/square_large/public/2023-05/newborn_size.png?itok=-mD0GPnu",
+        "page_url": "https://intergrowth21.com/tools-resources/newborn-size",
+        "resources": [
           {
-            "text": "User guide",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/newborn_and_vp_app_-_instructions_faq_2017_04_13.pdf"
+            "key": "tables_and_graphs",
+            "title": "Tables and Graphs",
+            "files": [
+              {
+                "title": "Boys Weight Centiles Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-ct-boys_bw_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys Weight Z-Scores Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-zs-boys_bw_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys Weight Centiles Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-ct-boys_bw_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys Weight Z-Scores Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-zs-boys_bw_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Weight Centiles Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-ct-girls_bw_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Weight Z-Scores Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-zs-girls_bw_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Weight Centiles Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-ct-girls_bw_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Weight Z-Scores Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-zs-girls_bw_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys Length Centiles Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-ct-boys_lt_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys Length Z-Scores Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-zs-boys_lt_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys Length Centiles Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-ct-boys_lt_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys Length Z-Scores Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-zs-boys_lt_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Length Centiles Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-ct-girls_lt_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Length Z-Scores Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-zs-girls_lt_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Length Centiles Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-ct-girls_lt_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Length Z-Scores Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-zs-girls_lt_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys HC Centiles Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-ct-boys_hc_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys HC Z-Scores Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-zs-boys_hc_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys HC Centiles Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-ct-boys_hc_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys HC Z-Scores Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-zs-boys_hc_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls HC Centiles Table",
+                "url": "https://intergrowth21.com/sites/default/files/2024-10/intergrowth-21st_head_circumference_standards_girls.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls HC Z-Scores Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-zs-girls_hc_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls HC Centiles Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-ct-girls_hc_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls HC Z-Scores Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-zs-girls_hc_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys Weight:Length Centiles Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-wlr-ct-boys_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys Weight:Length Z-Scores Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-wlr-zs-boys_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys Weight:Length Centiles Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-wlr-ct-boys_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys Weight:Length Z-Scores Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-wlr-zs-boys_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Weight:Length Centiles Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-wlr-ct-girls_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Weight:Length Z-Scores Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-wlr-zs-girls_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Weight:Length Centiles Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-wlr-ct-girls_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Weight:Length Z-Scores Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-wlr-zs-girls_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys WLHC Centiles Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-ct-boys_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys WLHC Z-Scores Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-zs-boys_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls WLHC Centiles Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-ct-girls_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls WLHC Z-Scores Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-wlr-zs-girls_en_0.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys Combined Centiles",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_vp-nb-combined-ct-boys_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys Combined Z-Scores",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_vp-nb-combined-zs-boys_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Combined Centiles",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_vp-nb-combined-ct-girls_en_0.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Combined Z-Scores",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_vp-nb-combined-zs-girls_en_0.pdf",
+                "file_type": "pdf"
+              }
+            ]
           },
           {
-            "text": "Troubleshooting guide",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/newborn_size_troubleshooting_-_new.pdf"
-          }
-        ],
-        "Training & Resources": [
-          {
-            "text": "Study Protocol",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/intergrowth_protocol_sept_2009.pdf"
+            "key": "calculators_apps",
+            "title": "Calculators & Apps",
+            "files": [
+              {
+                "title": "Excel-based calculator for weight/length ratio at birth",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/intergrowth_wlr_at_birth_calculator_-_new.xlsx",
+                "file_type": "xlsx"
+              },
+              {
+                "title": "Instructions for app",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/newborn_and_vp_app_-_instructions_faq_2017_04_13_0.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Troubleshooting",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/newborn_size_troubleshooting_-_new_0.pdf",
+                "file_type": "pdf"
+              }
+            ]
           },
           {
-            "text": "Anthropometry manual",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/anthropometry_handbook.pdf"
+            "key": "training_and_resources",
+            "title": "Training and Resources",
+            "files": [
+              {
+                "title": "Study protocol",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/intergrowth_protocol_sept_2009.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Anthropometry manual",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/anthropometry_handbook.pdf",
+                "file_type": "pdf"
+              }
+            ]
           }
         ]
       }
-    },
-    "Newborn Size": {
-      "description": "Purpose: Assess size at birth (within 24 hours) for newbornsAge range: At birth, born between gestational weeks 33 and 43",
-      "image": "https://intergrowth21.com/sites/default/files/styles/square_large/public/2023-05/newborn_size.png?itok=-mD0GPnu",
-      "link": "https://intergrowth21.com/tools-resources/newborn-size",
-      "downloads": {
-        "Publications": [],
-        "Tables and Graphs": [
-          {
-            "text": "Boys Weight Centiles Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-ct-boys_bw_table.pdf"
-          },
-          {
-            "text": "Boys Weight Z-Scores Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-zs-boys_bw_table.pdf"
-          },
-          {
-            "text": "Boys Weight Centiles Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-ct-boys_bw_en.pdf"
-          },
-          {
-            "text": "Boys Weight Z-Scores Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-zs-boys_bw_en.pdf"
-          },
-          {
-            "text": "Girls Weight Centiles Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-ct-girls_bw_table.pdf"
-          },
-          {
-            "text": "Girls Weight Z-Scores Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-zs-girls_bw_table.pdf"
-          },
-          {
-            "text": "Girls Weight Centiles Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-ct-girls_bw_en.pdf"
-          },
-          {
-            "text": "Girls Weight Z-Scores Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-zs-girls_bw_en.pdf"
-          },
-          {
-            "text": "Boys Length Centiles Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-ct-boys_lt_table.pdf"
-          },
-          {
-            "text": "Boys Length Z-Scores Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-zs-boys_lt_table.pdf"
-          },
-          {
-            "text": "Boys Length Centiles Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-ct-boys_lt_en.pdf"
-          },
-          {
-            "text": "Boys Length Z-Scores Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-zs-boys_lt_en.pdf"
-          },
-          {
-            "text": "Girls Length Centiles Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-ct-girls_lt_table.pdf"
-          },
-          {
-            "text": "Girls Length Z-Scores Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-zs-girls_lt_table.pdf"
-          },
-          {
-            "text": "Girls Length Centiles Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-ct-girls_lt_en.pdf"
-          },
-          {
-            "text": "Girls Length Z-Scores Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-zs-girls_lt_en.pdf"
-          },
-          {
-            "text": "Boys HC Centiles Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-ct-boys_hc_table.pdf"
-          },
-          {
-            "text": "Boys HC Z-Scores Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-zs-boys_hc_table.pdf"
-          },
-          {
-            "text": "Boys HC Centiles Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-ct-boys_hc_en.pdf"
-          },
-          {
-            "text": "Boys HC Z-Scores Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-zs-boys_hc_en.pdf"
-          },
-          {
-            "text": "Girls HC Centiles Table",
-            "link": "https://intergrowth21.com/sites/default/files/2024-10/intergrowth-21st_head_circumference_standards_girls.pdf"
-          },
-          {
-            "text": "Girls HC Z-Scores Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-zs-girls_hc_table.pdf"
-          },
-          {
-            "text": "Girls HC Centiles Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-ct-girls_hc_en.pdf"
-          },
-          {
-            "text": "Girls HC Z-Scores Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-zs-girls_hc_en.pdf"
-          },
-          {
-            "text": "Boys Weight:Length Centiles Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-wlr-ct-boys_table.pdf"
-          },
-          {
-            "text": "Boys Weight:Length Z-Scores Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-wlr-zs-boys_table.pdf"
-          },
-          {
-            "text": "Boys Weight:Length Centiles Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-wlr-ct-boys_en.pdf"
-          },
-          {
-            "text": "Boys Weight:Length Z-Scores Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-wlr-zs-boys_en.pdf"
-          },
-          {
-            "text": "Girls Weight:Length Centiles Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-wlr-ct-girls_table.pdf"
-          },
-          {
-            "text": "Girls Weight:Length Z-Scores Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-wlr-zs-girls_table.pdf"
-          },
-          {
-            "text": "Girls Weight:Length Centiles Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-wlr-ct-girls_en.pdf"
-          },
-          {
-            "text": "Girls Weight:Length Z-Scores Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-wlr-zs-girls_en.pdf"
-          },
-          {
-            "text": "Boys WLHC Centiles Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-ct-boys_en.pdf"
-          },
-          {
-            "text": "Boys WLHC Z-Scores Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-zs-boys_en.pdf"
-          },
-          {
-            "text": "Girls WLHC Centiles Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-ct-girls_en.pdf"
-          },
-          {
-            "text": "Girls WLHC Z-Scores Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_newborn-wlr-zs-girls_en_0.pdf"
-          },
-          {
-            "text": "Boys Combined Centiles",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_vp-nb-combined-ct-boys_en.pdf"
-          },
-          {
-            "text": "Boys Combined Z-Scores",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_vp-nb-combined-zs-boys_en.pdf"
-          },
-          {
-            "text": "Girls Combined Centiles",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_vp-nb-combined-ct-girls_en_0.pdf"
-          },
-          {
-            "text": "Girls Combined Z-Scores",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_vp-nb-combined-zs-girls_en_0.pdf"
-          }
-        ],
-        "Calculators & Apps": [
-          {
-            "text": "Excel-based calculator for weight/length ratio at birth",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/intergrowth_wlr_at_birth_calculator_-_new.xlsx"
-          },
-          {
-            "text": "Instructions for app",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/newborn_and_vp_app_-_instructions_faq_2017_04_13_0.pdf"
-          },
-          {
-            "text": "Troubleshooting",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/newborn_size_troubleshooting_-_new_0.pdf"
-          }
-        ],
-        "Training and Resources": [
-          {
-            "text": "Study protocol",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/intergrowth_protocol_sept_2009.pdf"
-          },
-          {
-            "text": "Anthropometry manual",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/anthropometry_handbook.pdf"
-          }
-        ]
-      }
-    }
+    ]
   },
-  "Postnatal": {
-    "INTER-NDA": {
-      "description": "Purpose: Neurodevelopment assessment\nAge range: 22 to 30 months",
-      "image": "https://intergrowth21.com/sites/default/files/styles/square_large/public/2023-06/inter-nda2.png?itok=qTvT8bL_",
-      "link": "https://intergrowth21.com/tools-resources/inter-nda",
-      "downloads": {
-        "Publications": [],
-        "INTER-NDA Toolkit": [],
-        "Training": [],
-        "Translations": []
-      }
-    },
-    "Postnatal Growth of Preterm Infants": {
-      "description": "Purpose: Assess the postnatal growth of preterm infants (born between gestational weeks 26 and 37)\nAge range: From birth until 64 weeks postmenstrual age",
-      "image": "https://intergrowth21.com/sites/default/files/styles/square_large/public/2023-05/postnatal_growth_of_preterm_infants.png?itok=iNogwCst",
-      "link": "https://intergrowth21.com/tools-resources/postnatal-growth-preterm-infants",
-      "downloads": {
-        "Publications": [],
-        "Tables & Graphs": [
+  {
+    "key": "postnatal",
+    "title": "Postnatal",
+    "items": [
+      {
+        "key": "internda",
+        "title": "INTER-NDA",
+        "description": "Purpose: Neurodevelopment assessment\nAge range: 22 to 30 months",
+        "image_url": "https://intergrowth21.com/sites/default/files/styles/square_large/public/2023-06/inter-nda2.png?itok=qTvT8bL_",
+        "page_url": "https://intergrowth21.com/tools-resources/inter-nda",
+        "resources": []
+      },
+      {
+        "key": "postnatal_growth_of_preterm_infants",
+        "title": "Postnatal Growth of Preterm Infants",
+        "description": "Purpose: Assess the postnatal growth of preterm infants (born between gestational weeks 26 and 37)\nAge range: From birth until 64 weeks postmenstrual age",
+        "image_url": "https://intergrowth21.com/sites/default/files/styles/square_large/public/2023-05/postnatal_growth_of_preterm_infants.png?itok=iNogwCst",
+        "page_url": "https://intergrowth21.com/tools-resources/postnatal-growth-preterm-infants",
+        "resources": [
           {
-            "text": "Boys Weight Centiles Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-ct-boys_bw_table.pdf"
+            "key": "tables_graphs",
+            "title": "Tables & Graphs",
+            "files": [
+              {
+                "title": "Boys Weight Centiles Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-ct-boys_bw_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys Weight Z-Scores Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-zs-boys_bw_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys Weight Centiles Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/new_grow_preterm-ct-boys_bw_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys Weight Z-Scores Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/new_grow_preterm-zs-boys_bw_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Weight Centiles Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-ct-girls_bw_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Weight Z-Scores Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-zs-girls_bw_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Weight Centiles Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/new_grow_preterm-ct-girls_bw_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Weight Z-Scores Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/new_grow_preterm-zs-girls_bw_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys Length Centiles Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-ct-boys_lt_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys Length Z-Scores Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-zs-boys_lt_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys Length Centiles Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-ct-boys_lt_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys Length Z-Scores Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-zs-boys_lt_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Length Centiles Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-ct-girls_lt_table_0.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Length Z-Scores Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-zs-girls_lt_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Length Centiles Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-ct-girls_lt_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls Length Z-Scores Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-zs-girls_lt_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys HC Centiles Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-ct-boys_hc_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys HC Z-Scores Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-zs-boys_hc_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys HC Centiles Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-ct-boys_hc_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys HC Z-Scores Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-zs-boys_hc_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls HC Centiles Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-ct-girls_hc_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls HC Z-Score Table",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-zs-girls_hc_table.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls HC Centiles Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-ct-girls_hc_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls HC Z-Scores Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-zs-girls_hc_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys WLHC Centiles Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-ct-boys_2p_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Boys WLHC Z-Scores Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-zs-boys_2p_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls WLHC Centiles Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2024-02/grow_preterm-ct-girls_2p_en.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Girls WLHC Z-Scores Graph",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-zs-girls_2p_en.pdf",
+                "file_type": "pdf"
+              }
+            ]
           },
           {
-            "text": "Boys Weight Z-Scores Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-zs-boys_bw_table.pdf"
+            "key": "calculators_apps",
+            "title": "Calculators & Apps",
+            "files": [
+              {
+                "title": "User guide",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/preterm_app_-_instructions_faq_2017_04_13.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Troubleshooting guide",
+                "url": "https://intergrowth21.com/sites/default/files/2023-02/preterm_postnatal_troubleshooting_-_new.pdf",
+                "file_type": "pdf"
+              }
+            ]
           },
           {
-            "text": "Boys Weight Centiles Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/new_grow_preterm-ct-boys_bw_en.pdf"
-          },
-          {
-            "text": "Boys Weight Z-Scores Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/new_grow_preterm-zs-boys_bw_en.pdf"
-          },
-          {
-            "text": "Girls Weight Centiles Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-ct-girls_bw_table.pdf"
-          },
-          {
-            "text": "Girls Weight Z-Scores Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-zs-girls_bw_table.pdf"
-          },
-          {
-            "text": "Girls Weight Centiles Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/new_grow_preterm-ct-girls_bw_en.pdf"
-          },
-          {
-            "text": "Girls Weight Z-Scores Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/new_grow_preterm-zs-girls_bw_en.pdf"
-          },
-          {
-            "text": "Boys Length Centiles Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-ct-boys_lt_table.pdf"
-          },
-          {
-            "text": "Boys Length Z-Scores Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-zs-boys_lt_table.pdf"
-          },
-          {
-            "text": "Boys Length Centiles Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-ct-boys_lt_en.pdf"
-          },
-          {
-            "text": "Boys Length Z-Scores Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-zs-boys_lt_en.pdf"
-          },
-          {
-            "text": "Girls Length Centiles Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-ct-girls_lt_table_0.pdf"
-          },
-          {
-            "text": "Girls Length Z-Scores Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-zs-girls_lt_table.pdf"
-          },
-          {
-            "text": "Girls Length Centiles Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-ct-girls_lt_en.pdf"
-          },
-          {
-            "text": "Girls Length Z-Scores Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-zs-girls_lt_en.pdf"
-          },
-          {
-            "text": "Boys HC Centiles Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-ct-boys_hc_table.pdf"
-          },
-          {
-            "text": "Boys HC Z-Scores Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-zs-boys_hc_table.pdf"
-          },
-          {
-            "text": "Boys HC Centiles Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-ct-boys_hc_en.pdf"
-          },
-          {
-            "text": "Boys HC Z-Scores Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-zs-boys_hc_en.pdf"
-          },
-          {
-            "text": "Girls HC Centiles Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-ct-girls_hc_table.pdf"
-          },
-          {
-            "text": "Girls HC Z-Score Table",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-zs-girls_hc_table.pdf"
-          },
-          {
-            "text": "Girls HC Centiles Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-ct-girls_hc_en.pdf"
-          },
-          {
-            "text": "Girls HC Z-Scores Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-zs-girls_hc_en.pdf"
-          },
-          {
-            "text": "Boys WLHC Centiles Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-ct-boys_2p_en.pdf"
-          },
-          {
-            "text": "Boys WLHC Z-Scores Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-zs-boys_2p_en.pdf"
-          },
-          {
-            "text": "Girls WLHC Centiles Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2024-02/grow_preterm-ct-girls_2p_en.pdf"
-          },
-          {
-            "text": "Girls WLHC Z-Scores Graph",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/grow_preterm-zs-girls_2p_en.pdf"
-          }
-        ],
-        "Calculators & Apps": [
-          {
-            "text": "User guide",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/preterm_app_-_instructions_faq_2017_04_13.pdf"
-          },
-          {
-            "text": "Troubleshooting guide",
-            "link": "https://intergrowth21.com/sites/default/files/2023-02/preterm_postnatal_troubleshooting_-_new.pdf"
-          }
-        ],
-        "Training & Resources": [
-          {
-            "text": "Study protocol",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/intergrowth_protocol_sept_2009.pdf"
-          },
-          {
-            "text": "Anthropometry manual",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/anthropometry_handbook.pdf"
-          },
-          {
-            "text": "Neonatal manual",
-            "link": "https://intergrowth21.com/sites/default/files/2023-01/neonatal_manual_.pdf"
+            "key": "training_resources",
+            "title": "Training & Resources",
+            "files": [
+              {
+                "title": "Study protocol",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/intergrowth_protocol_sept_2009.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Anthropometry manual",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/anthropometry_handbook.pdf",
+                "file_type": "pdf"
+              },
+              {
+                "title": "Neonatal manual",
+                "url": "https://intergrowth21.com/sites/default/files/2023-01/neonatal_manual_.pdf",
+                "file_type": "pdf"
+              }
+            ]
           }
         ]
       }
-    }
+    ]
   }
-}
+]
