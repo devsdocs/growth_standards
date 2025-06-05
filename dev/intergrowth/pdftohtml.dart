@@ -5,6 +5,9 @@ void main() {
       .list(recursive: true)
       .listen((FileSystemEntity entity) {
     if (entity.path.endsWith('.pdf')) {
+      if (!entity.uri.pathSegments.last.contains('table')) {
+        return;
+      }
       final pdfFile = File(entity.path);
       final pdfName = pdfFile.uri.pathSegments.last;
       final htmlName = pdfName.replaceAll('.pdf', '.html');
