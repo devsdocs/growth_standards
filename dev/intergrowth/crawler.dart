@@ -109,6 +109,14 @@ void main() async {
       for (final item in entry.value.entries) {
         for (final download in item.value['downloads'].entries) {
           for (final link in download.value) {
+            if (!link['link'].toString().toLowerCase().contains('table') &&
+                !link['text'].toString().toLowerCase().contains('table')) {
+              continue; // Skip links that are not direct downloads
+            }
+            if (!link['link'].toString().toLowerCase().contains('.pdf')) {
+              continue; // Skip links that are not direct downloads
+            }
+
             await dio.download(
               link['link'],
               'intergrowth/downloads/${entry.key}/${item.key}/${download.key}/${link['link'].split('/').last}',
