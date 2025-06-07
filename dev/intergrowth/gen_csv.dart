@@ -24,6 +24,7 @@ void main() {
               continue; // Skip non-HTML files
             }
           }
+
           final fileNameWithExtension = Uri.parse(file.url!).pathSegments.last;
           final fileName = fileNameWithExtension.split('.').first;
           final htmlFile = File(
@@ -53,17 +54,85 @@ void main() {
 
           final allTr = parseHtml.querySelectorAll('tr');
 
-          final data = allTr.where((tr) {
+          final data = <List<String>>[];
+
+          int dataIx = 0;
+
+          for (final tr in allTr) {
             final allTd = tr.querySelectorAll('td');
-            return allTd.isNotEmpty &&
-                allTd.where((s) => s.text.trim().isNotEmpty).length ==
-                    totalElementNumber;
-          }).map((tr) {
-            final allTd = tr.querySelectorAll('td');
-            return allTd.map((td) {
-              return td.text.trim();
-            }).toList();
-          }).toList();
+            if (allTd.isEmpty) {
+              continue; // Skip empty rows
+            }
+
+            if (allTd.where((s) => s.text.trim().isNotEmpty).length <
+                totalElementNumber) {
+              continue; // Skip rows with fewer elements than expected
+            }
+
+            // Check if any cell has multiple rows
+            bool hasMultipleRows = false;
+            int maxRows = 1;
+            for (final td in allTd) {
+              // Count paragraph elements which represent rows in a cell
+              final paragraphs = td.querySelectorAll('p');
+              if (paragraphs.length > 1) {
+                hasMultipleRows = true;
+                maxRows =
+                    paragraphs.length > maxRows ? paragraphs.length : maxRows;
+              }
+            }
+
+            if (hasMultipleRows) {
+              // Handle multi-row cells
+              List<List<String>> multiRowData =
+                  List.generate(maxRows, (_) => <String>[]);
+
+              for (final td in allTd) {
+                final paragraphs = td.querySelectorAll('p');
+
+                if (paragraphs.length > 1) {
+                  // This cell has multiple rows
+                  for (int i = 0; i < paragraphs.length; i++) {
+                    final text = paragraphs[i].text.trim();
+                    if (text.isNotEmpty) {
+                      multiRowData[i].add(text);
+                    }
+                  }
+                } else {
+                  // This cell has a single value that applies to all rows
+                  final text = td.text.trim();
+                  if (text.isNotEmpty) {
+                    // Repeat this value for all rows
+                    for (int i = 0; i < maxRows; i++) {
+                      multiRowData[i].add(text);
+                    }
+                  }
+                }
+              }
+
+              // Add all generated rows to the data
+              data.addAll(multiRowData);
+              dataIx += maxRows;
+            } else {
+              // Regular row processing (existing logic)
+              final rowData = <String>[];
+              int tdIx = 0;
+              for (final td in allTd) {
+                final text = td.text.trim();
+                if (text.isEmpty) {
+                  continue; // Skip empty cells
+                }
+                rowData.add(text);
+                tdIx++;
+              }
+
+              if (rowData.isEmpty) {
+                continue; // Skip rows with no data
+              }
+              data.add(rowData);
+              dataIx++;
+            }
+          }
 
           final cleanedData = <List<String>>[];
 
