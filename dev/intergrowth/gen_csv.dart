@@ -3,6 +3,7 @@
 import 'dart:io';
 
 import 'package:csv/csv.dart';
+import 'package:growth_standards/growth_standards.dart';
 import 'package:html/parser.dart';
 
 import 'model.dart';
@@ -30,7 +31,7 @@ void main() {
           final htmlFile = File(
               'intergrowth/downloads/${model.key}/${item.key}/${keyValues.reverse[resource.key]}/$fileName.htm');
 
-          // print('Processing file: ${htmlFile.path}');
+          print('Processing file: ${htmlFile.path}');
 
           final parseHtml = parse(htmlFile.readAsStringSync());
 
@@ -132,39 +133,45 @@ void main() {
           final cleanedData = <List<String>>[];
 
           for (final d in data) {
-            final firsLabel = d.first;
+            if (d.first.contains('(')) {
+              continue;
+            }
+            final cleanedDataInt = <String>[];
 
-            final tryParse = int.tryParse(firsLabel);
-            if (tryParse == null) {
-              if (firsLabel.contains('+')) {
-                final split = firsLabel.split('+');
-                final weeks = split.first.trim();
-                final days = split.last.trim();
-                final parsedWeeks = int.tryParse(weeks);
-                final parsedDays = int.tryParse(days);
-                if (parsedWeeks != null && parsedDays != null) {
-                  cleanedData.add([
-                    '${parsedWeeks * 7 + parsedDays}',
-                    ...d.sublist(1),
-                  ]);
-                  continue; // Skip rows with valid week/day format
-                } else {
-                  print(
-                      'Invalid week/day format in file: ${htmlFile.path}, value: $firsLabel');
-
-                  continue; // Skip rows with invalid week/day format
-                }
-              } else {
-                continue; // Skip rows that do not start with a number
+            for (final firsLabel in d) {
+              if (firsLabel.isEmpty) {
+                continue; // Skip empty cells
               }
+
+              final tryParse = num.tryParse(firsLabel);
+              if (tryParse == null) {
+                if (firsLabel.contains('+')) {
+                  final split = firsLabel.split('+');
+                  final weeks = split.first.trim();
+                  final days = split.last.trim();
+                  final parsedWeeks = int.tryParse(weeks);
+                  final parsedDays = int.tryParse(days);
+                  if (parsedWeeks != null && parsedDays != null) {
+                    cleanedDataInt.add('${parsedWeeks * 7 + parsedDays}');
+                    continue; // Skip rows with valid week/day format
+                  } else {
+                    print(
+                        'Invalid week/day format in file: ${htmlFile.path}, value: $firsLabel');
+
+                    continue; // Skip rows with invalid week/day format
+                  }
+                } else {
+                  cleanedDataInt.add(tryParse.toString());
+                  continue;
+                }
+              }
+
+              // final days = tryParse * 7;
+
+              cleanedDataInt.add(tryParse.toString());
             }
 
-            final days = tryParse * 7;
-
-            cleanedData.add([
-              days.toString(),
-              ...d.sublist(1),
-            ]);
+            cleanedData.add(cleanedDataInt);
           }
 
           final elementLabels = allTr.firstWhere(
@@ -188,30 +195,60 @@ void main() {
 
           final cleanedLabels = <String>[];
 
+          bool isCentile = false;
+
           for (final label in labels) {
             final tryParse = int.tryParse(label);
             if (tryParse == null) {
               final tryParseOrdinal = OrdinalParser.parse(label);
               if (tryParseOrdinal != null) {
                 cleanedLabels.add(label);
+                isCentile = true; // Mark as centile if ordinal is found
               }
             } else {
               cleanedLabels.add(label);
             }
           }
 
-          final list = ['csv', ...cleanedLabels];
+          final labelList = ['csv', ...cleanedLabels];
 
           final isValidLengthCsv =
-              cleanedData.every((ls) => ls.length == list.length);
+              cleanedData.every((ls) => ls.length == labelList.length);
           if (!isValidLengthCsv) {
             print(
-                'Invalid CSV format in file: ${htmlFile.path}, expected ${list.length} columns, found ${cleanedData.map((e) => e.length).toList()}');
+                'Invalid CSV format in file: ${htmlFile.path}, expected ${labelList.length} columns, found ${cleanedData.map((e) => e.length).toList()}');
             // continue; // Skip invalid CSV files
           }
 
-          final rows = [list, ...cleanedData];
-          final csv = const ListToCsvConverter().convert(rows);
+          final rows = [labelList, ...cleanedData];
+
+          final finalData = <List<String>>[];
+
+          finalData.add(['csv', 'l', 'm', 's', ...cleanedLabels]);
+
+          for (int rowIndex = 1; rowIndex < rows.length; rowIndex++) {
+            LMS lms;
+
+            final currentData = rows[rowIndex];
+
+            if (isCentile) {
+              lms = LMSEstimation.estimateFromCentiles(
+                  LMSEstimation.parseCentilesFromCsv(rows, rowIndex));
+            } else {
+              lms = LMSEstimation.estimateFromSD(
+                  LMSEstimation.parseSDFromCsv(rows, rowIndex));
+            }
+
+            finalData.add([
+              currentData.first, // Keep the first column (days)
+              lms.l.toString(),
+              lms.m.toString(),
+              lms.s.toString(),
+              ...currentData.sublist(1),
+            ]);
+          }
+
+          final csv = const ListToCsvConverter().convert(finalData);
 
           final csvFile = File(
               'intergrowth/downloads/${model.key}/${item.key}/${keyValues.reverse[resource.key]}/$fileName.csv');
