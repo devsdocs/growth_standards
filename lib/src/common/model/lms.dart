@@ -66,18 +66,12 @@ class LMSEstimation {
   ///
   /// Returns an estimated LMS object
   static LMS estimateFromSD(Map<int, double> sdValues) {
-    // M is the median (0 SD value)
-    final m = sdValues[0]!;
+    // Convert map to lists for optimization
+    final sds = sdValues.keys.toList();
+    final values = sds.map((sd) => sdValues[sd]!).toList();
 
-    // Use SD -2 and SD +2 to estimate L and S
-    final sd2Neg = sdValues[-2]!;
-    final sd2Pos = sdValues[2]!;
-
-    // Calculate L and S using numerical approximation
-    final s = estimateS(m, sd2Neg, sd2Pos);
-    final l = estimateL(m, s, sdValues);
-
-    return LMS(l: l, m: m, s: s);
+    // Use optimization to find LMS parameters
+    return optimizeLMSParameters(sds, values);
   }
 
   /// Estimates LMS parameters from centile values.
@@ -91,7 +85,7 @@ class LMSEstimation {
     final sdValues = <int, double>{};
 
     for (final entry in centileValues.entries) {
-      // Convert percentile to z-score and round to nearest integer if close
+      // Convert percentile to z-score
       final zScore = qnorm(entry.key / 100);
       final nearestInt = zScore.round();
 
@@ -111,96 +105,170 @@ class LMSEstimation {
       return estimateFromSD(sdValues);
     }
 
-    // Fallback: direct estimation using 3rd, 50th, and 97th centiles if available
-    if (centileValues.containsKey(3) &&
-        centileValues.containsKey(50) &&
-        centileValues.containsKey(97)) {
-      final m = centileValues[50]!;
-      final sd2Neg = centileValues[3]!; // Approximately -2 SD
-      final sd2Pos = centileValues[97]!; // Approximately +2 SD
+    // Fallback: direct estimation using available centiles
+    final sds = <int>[];
+    final values = <double>[];
 
-      final s = estimateS(m, sd2Neg, sd2Pos);
-      final l = estimateLFromCentiles(centileValues, m, s);
-
-      return LMS(l: l, m: m, s: s);
+    for (final entry in centileValues.entries) {
+      final zScore = qnorm(entry.key / 100);
+      sds.add(zScore.round());
+      values.add(entry.value);
     }
 
-    throw ArgumentError('Insufficient centile data to estimate LMS parameters');
+    return optimizeLMSParameters(sds, values);
   }
 
-  /// Estimates the S parameter using the median and ±2 SD values
-  static double estimateS(double m, double sd2Neg, double sd2Pos) {
-    // For normal distribution, S can be estimated from the ratio of SD to M
-    return ((sd2Pos - sd2Neg) / (4 * m)).abs();
+  /// Calculate predicted values using LMS parameters for given SD values
+  static List<double> predictValues(
+      List<int> sds, double l, double m, double s) {
+    return sds.map((sd) {
+      if (l.abs() < 1e-6) {
+        // When L is close to 0
+        return m * exp(s * sd);
+      } else {
+        return m * pow(1 + l * s * sd, 1 / l);
+      }
+    }).toList();
   }
 
-  /// Estimates the L parameter by minimizing error between actual and estimated SD values
-  static double estimateL(double m, double s, Map<int, double> sdValues) {
-    // Try various L values and find the one with minimal error
-    double bestL = 1.0; // Default to 1 (normal distribution)
-    double minError = double.infinity;
+  /// Calculate the sum of squared errors between actual and predicted values
+  static double calculateError(
+      List<int> sds, List<double> actualValues, double l, double m, double s) {
+    if (m <= 0 || s <= 0) return double.infinity;
 
-    // Test L values in a reasonable range
-    for (double l = -2.0; l <= 2.0; l += 0.1) {
-      if (l.abs() < 0.05) continue; // Skip values too close to 0
+    final predictedValues = predictValues(sds, l, m, s);
+    double sumSquaredErrors = 0;
 
-      double totalError = 0;
-      int count = 0;
-
-      // Calculate error for each SD value
-      for (final entry in sdValues.entries) {
-        if (entry.key == 0) continue; // Skip median
-
-        final sd = entry.key;
-        final actualValue = entry.value;
-        final estimatedValue = m * pow(1 + l * s * sd, 1 / l);
-        final error = pow(actualValue - estimatedValue, 2).toDouble();
-        totalError += error;
-        count++;
-      }
-
-      final meanError = count > 0 ? totalError / count : double.infinity;
-      if (meanError < minError) {
-        minError = meanError;
-        bestL = l;
-      }
+    for (int i = 0; i < sds.length; i++) {
+      sumSquaredErrors += pow(predictedValues[i] - actualValues[i], 2);
     }
 
-    return bestL;
+    return sumSquaredErrors;
   }
 
-  /// Estimates L parameter from centile values
-  static double estimateLFromCentiles(
-      Map<int, double> centileValues, double m, double s) {
+  /// Optimize LMS parameters using a numerical approach
+  static LMS optimizeLMSParameters(List<int> sds, List<double> values) {
+    // Initial guesses
+    final m0 = values[sds.indexOf(0)] ?? // Median (SD0)
+        values[values.length ~/ 2]; // Or middle value if SD0 not available
+
+    // Find SD-1 and SD+1 values if available, or closest values
+    int sd1Index = sds.indexOf(1);
+    int sdNeg1Index = sds.indexOf(-1);
+
+    if (sd1Index == -1) {
+      // Find closest positive SD
+      sd1Index = sds.indexWhere((sd) => sd > 0);
+    }
+
+    if (sdNeg1Index == -1) {
+      // Find closest negative SD
+      sdNeg1Index = sds.lastIndexWhere((sd) => sd < 0);
+    }
+
+    final s0 = sd1Index != -1 && sdNeg1Index != -1
+        ? (values[sd1Index] - values[sdNeg1Index]) /
+            (2 * m0 * (sds[sd1Index] - sds[sdNeg1Index]))
+        : 0.1; // Default if we can't estimate
+
+    // Initialize best parameters
+    double bestError = double.infinity;
     double bestL = 1.0;
-    double minError = double.infinity;
+    double bestM = m0;
+    double bestS = s0.abs();
 
-    for (double l = -2.0; l <= 2.0; l += 0.1) {
-      if (l.abs() < 0.05) continue; // Skip values too close to 0
+    // Grid search for L with finer granularity
+    for (double l = -2.0; l <= 2.0; l += 0.025) {
+      // Skip values too close to 0 to avoid numerical issues
+      if (l.abs() < 0.025) continue;
 
-      double totalError = 0;
-      int count = 0;
+      // For each L, optimize M and S
+      double optM = m0;
+      double optS = s0.abs();
 
-      for (final entry in centileValues.entries) {
-        if (entry.key == 50) continue; // Skip median
+      // Local optimization for M and S (simplified gradient descent)
+      for (int iter = 0; iter < 50; iter++) {
+        // Try variations of M and S
+        final variations = [
+          [optM * 0.99, optS],
+          [optM * 1.01, optS],
+          [optM, optS * 0.99],
+          [optM, optS * 1.01],
+        ];
 
-        final percentile = entry.key / 100;
-        final zScore = qnorm(percentile);
-        final actualValue = entry.value;
-        final estimatedValue = m * pow(1 + l * s * zScore, 1 / l);
-        final error = pow(actualValue - estimatedValue, 2).toDouble();
-        totalError += error;
-        count++;
+        double currentError = calculateError(sds, values, l, optM, optS);
+        bool improved = false;
+
+        for (final variation in variations) {
+          final m = variation[0];
+          final s = variation[1];
+
+          final error = calculateError(sds, values, l, m, s);
+          if (error < currentError) {
+            optM = m;
+            optS = s;
+            currentError = error;
+            improved = true;
+          }
+        }
+
+        if (!improved) break;
       }
 
-      final meanError = count > 0 ? totalError / count : double.infinity;
-      if (meanError < minError) {
-        minError = meanError;
+      // Check if this is the best combination so far
+      final error = calculateError(sds, values, l, optM, optS);
+      if (error < bestError) {
+        bestError = error;
         bestL = l;
+        bestM = optM;
+        bestS = optS;
       }
     }
 
-    return bestL;
+    // Special case for L close to 0 (log-normal distribution)
+    {
+      const l = 0.0;
+      double optM = m0;
+      double optS = s0.abs();
+
+      // Local optimization for M and S with L=0
+      for (int iter = 0; iter < 50; iter++) {
+        final variations = [
+          [optM * 0.99, optS],
+          [optM * 1.01, optS],
+          [optM, optS * 0.99],
+          [optM, optS * 1.01],
+        ];
+
+        double currentError = calculateError(sds, values, l, optM, optS);
+        bool improved = false;
+
+        for (final variation in variations) {
+          final m = variation[0];
+          final s = variation[1];
+
+          final error = calculateError(sds, values, l, m, s);
+          if (error < currentError) {
+            optM = m;
+            optS = s;
+            currentError = error;
+            improved = true;
+          }
+        }
+
+        if (!improved) break;
+      }
+
+      final error = calculateError(sds, values, l, optM, optS);
+      if (error < bestError) {
+        bestError = error;
+        bestL = l;
+        bestM = optM;
+        bestS = optS;
+      }
+    }
+
+    return LMS(l: bestL, m: bestM, s: bestS);
   }
 
   /// Helper method to parse SD values from CSV format often used in growth charts
