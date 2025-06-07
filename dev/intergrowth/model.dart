@@ -19,6 +19,10 @@ class Intergrowth {
             ? []
             : List<Item>.from(json['items']!.map((x) => Item.fromMap(x))),
       );
+
+  static List<Intergrowth> fromJsonList(String str) => List<Intergrowth>.from(
+      json.decode(str).map((x) => Intergrowth.fromMap(x)));
+
   final String? key;
   final String? title;
   final List<Item>? items;
