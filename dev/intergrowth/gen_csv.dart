@@ -56,8 +56,6 @@ void main() {
 
           final data = <List<String>>[];
 
-          int dataIx = 0;
-
           for (final tr in allTr) {
             final allTd = tr.querySelectorAll('td');
             if (allTd.isEmpty) {
@@ -84,7 +82,7 @@ void main() {
 
             if (hasMultipleRows) {
               // Handle multi-row cells
-              List<List<String>> multiRowData =
+              final List<List<String>> multiRowData =
                   List.generate(maxRows, (_) => <String>[]);
 
               for (final td in allTd) {
@@ -112,25 +110,22 @@ void main() {
 
               // Add all generated rows to the data
               data.addAll(multiRowData);
-              dataIx += maxRows;
             } else {
               // Regular row processing (existing logic)
               final rowData = <String>[];
-              int tdIx = 0;
+
               for (final td in allTd) {
                 final text = td.text.trim();
                 if (text.isEmpty) {
                   continue; // Skip empty cells
                 }
                 rowData.add(text);
-                tdIx++;
               }
 
               if (rowData.isEmpty) {
                 continue; // Skip rows with no data
               }
               data.add(rowData);
-              dataIx++;
             }
           }
 
