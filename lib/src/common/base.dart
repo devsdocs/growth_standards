@@ -1,5 +1,4 @@
 import 'package:growth_standards/growth_standards.dart';
-import 'package:growth_standards/src/common/model/lms.dart';
 
 abstract class VelocityBasedResult {
   const VelocityBasedResult();
