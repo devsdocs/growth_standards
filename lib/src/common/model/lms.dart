@@ -149,8 +149,7 @@ class LMSEstimation {
   /// Optimize LMS parameters using a numerical approach
   static LMS optimizeLMSParameters(List<int> sds, List<double> values) {
     // Initial guesses
-    final m0 = values[sds.indexOf(0)] ?? // Median (SD0)
-        values[values.length ~/ 2]; // Or middle value if SD0 not available
+    final m0 = values[sds.indexOf(0)]; // Or middle value if SD0 not available
 
     // Find SD-1 and SD+1 values if available, or closest values
     int sd1Index = sds.indexOf(1);
