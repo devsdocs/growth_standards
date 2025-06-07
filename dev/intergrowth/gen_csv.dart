@@ -6,6 +6,7 @@ import 'package:csv/csv.dart';
 import 'package:html/parser.dart';
 
 import 'model.dart';
+import 'ordinal_parser.dart';
 
 void main() {
   final models = Intergrowth.fromJsonList(
@@ -64,6 +65,44 @@ void main() {
             }).toList();
           }).toList();
 
+          final cleanedData = <List<String>>[];
+
+          for (final d in data) {
+            final firsLabel = d.first;
+
+            final tryParse = int.tryParse(firsLabel);
+            if (tryParse == null) {
+              if (firsLabel.contains('+')) {
+                final split = firsLabel.split('+');
+                final weeks = split.first.trim();
+                final days = split.last.trim();
+                final parsedWeeks = int.tryParse(weeks);
+                final parsedDays = int.tryParse(days);
+                if (parsedWeeks != null && parsedDays != null) {
+                  cleanedData.add([
+                    '${parsedWeeks * 7 + parsedDays}',
+                    ...d.sublist(1),
+                  ]);
+                  continue; // Skip rows with valid week/day format
+                } else {
+                  print(
+                      'Invalid week/day format in file: ${htmlFile.path}, value: $firsLabel');
+
+                  continue; // Skip rows with invalid week/day format
+                }
+              } else {
+                continue; // Skip rows that do not start with a number
+              }
+            }
+
+            final days = tryParse * 7;
+
+            cleanedData.add([
+              days.toString(),
+              ...d.sublist(1),
+            ]);
+          }
+
           final elementLabels = allTr.firstWhere(
             (tr) {
               final allTd = tr.querySelectorAll('td');
@@ -83,24 +122,39 @@ void main() {
               .where((s) => s.isNotEmpty)
               .toList();
 
-          final list = ['csv', ...labels];
+          final cleanedLabels = <String>[];
 
-          final isValidCsv = data.every((ls) => ls.length == list.length);
-          if (!isValidCsv) {
-            print(
-                'Invalid CSV format in file: ${htmlFile.path}, expected ${list.length} columns, found ${data.map((e) => e.length).toList()}');
-            continue; // Skip invalid CSV files
-          } else {
-            final rows = [list, ...data];
-            final csv = const ListToCsvConverter().convert(rows);
-
-            final csvFile = File(
-                'intergrowth/downloads/${model.key}/${item.key}/${keyValues.reverse[resource.key]}/$fileName.csv');
-
-            csvFile.createSync(recursive: true);
-
-            csvFile.writeAsStringSync(csv);
+          for (final label in labels) {
+            final tryParse = int.tryParse(label);
+            if (tryParse == null) {
+              final tryParseOrdinal = OrdinalParser.parse(label);
+              if (tryParseOrdinal != null) {
+                cleanedLabels.add(label);
+              }
+            } else {
+              cleanedLabels.add(label);
+            }
           }
+
+          final list = ['csv', ...cleanedLabels];
+
+          final isValidLengthCsv =
+              cleanedData.every((ls) => ls.length == list.length);
+          if (!isValidLengthCsv) {
+            print(
+                'Invalid CSV format in file: ${htmlFile.path}, expected ${list.length} columns, found ${cleanedData.map((e) => e.length).toList()}');
+            // continue; // Skip invalid CSV files
+          }
+
+          final rows = [list, ...cleanedData];
+          final csv = const ListToCsvConverter().convert(rows);
+
+          final csvFile = File(
+              'intergrowth/downloads/${model.key}/${item.key}/${keyValues.reverse[resource.key]}/$fileName.csv');
+
+          csvFile.createSync(recursive: true);
+
+          csvFile.writeAsStringSync(csv);
         }
       }
     }
