@@ -19,14 +19,16 @@ void main() {
             continue; // Skip non-HTML files
           }
           if (!file.title!.toLowerCase().contains('table')) {
-            continue; // Skip non-HTML files
+            if (!file.url!.toLowerCase().contains('table')) {
+              continue; // Skip non-HTML files
+            }
           }
           final fileNameWithExtension = Uri.parse(file.url!).pathSegments.last;
           final fileName = fileNameWithExtension.split('.').first;
           final htmlFile = File(
               'intergrowth/downloads/${model.key}/${item.key}/${keyValues.reverse[resource.key]}/$fileName.htm');
 
-          print('Processing file: ${htmlFile.path}');
+          // print('Processing file: ${htmlFile.path}');
 
           final parseHtml = parse(htmlFile.readAsStringSync());
 
@@ -46,16 +48,16 @@ void main() {
               }
             }
           }
-          print('Element number: $totalElementNumber');
+          // print('Element number: $totalElementNumber');
 
           final allTr = parseHtml.querySelectorAll('tr');
 
-          final includedTr = allTr.where((tr) {
+          final data = allTr.where((tr) {
             final allTd = tr.querySelectorAll('td');
-            return allTd.isNotEmpty && allTd.length == totalElementNumber;
-          }).toList();
-
-          final data = includedTr.map((tr) {
+            return allTd.isNotEmpty &&
+                allTd.where((s) => s.text.trim().isNotEmpty).length ==
+                    totalElementNumber;
+          }).map((tr) {
             final allTd = tr.querySelectorAll('td');
             return allTd.map((td) {
               return td.text.trim();
@@ -81,17 +83,24 @@ void main() {
               .where((s) => s.isNotEmpty)
               .toList();
 
-          final csv = const ListToCsvConverter().convert([
-            ['csv', ...labels],
-            ...data
-          ]);
+          final list = ['csv', ...labels];
 
-          final csvFile = File(
-              'intergrowth/downloads/${model.key}/${item.key}/${keyValues.reverse[resource.key]}/$fileName.csv');
+          final isValidCsv = data.every((ls) => ls.length == list.length);
+          if (!isValidCsv) {
+            print(
+                'Invalid CSV format in file: ${htmlFile.path}, expected ${list.length} columns, found ${data.map((e) => e.length).toList()}');
+            continue; // Skip invalid CSV files
+          } else {
+            final rows = [list, ...data];
+            final csv = const ListToCsvConverter().convert(rows);
 
-          csvFile.createSync(recursive: true);
+            final csvFile = File(
+                'intergrowth/downloads/${model.key}/${item.key}/${keyValues.reverse[resource.key]}/$fileName.csv');
 
-          csvFile.writeAsStringSync(csv);
+            csvFile.createSync(recursive: true);
+
+            csvFile.writeAsStringSync(csv);
+          }
         }
       }
     }
