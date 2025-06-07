@@ -31,7 +31,7 @@ void main() {
           final htmlFile = File(
               'intergrowth/downloads/${model.key}/${item.key}/${keyValues.reverse[resource.key]}/$fileName.htm');
 
-          print('Processing file: ${htmlFile.path}');
+          // print('Processing file: ${htmlFile.path}');
 
           final parseHtml = parse(htmlFile.readAsStringSync());
 
