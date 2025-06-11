@@ -148,126 +148,176 @@ class LMSEstimation {
 
   /// Optimize LMS parameters using a numerical approach
   static LMS optimizeLMSParameters(List<int> sds, List<double> values) {
-    // Initial guesses
-    final m0 = values[sds.indexOf(0)]; // Or middle value if SD0 not available
+    // Initial guesses matching Python exactly
+    final m0 = values[3]; // SD0 (index 3 in [-3,-2,-1,0,1,2,3])
+    final s0 = (values[4] - values[2]) / (2 * m0); // (SD+1 - SD-1) / (2 * M0)
+    const l0 = 0.1; // Small value for L
 
-    // Find SD-1 and SD+1 values if available, or closest values
-    int sd1Index = sds.indexOf(1);
-    int sdNeg1Index = sds.indexOf(-1);
+    // Use a more sophisticated optimization approach
+    return _minimizeWithBounds(sds, values, l0, m0, s0);
+  }
 
-    if (sd1Index == -1) {
-      // Find closest positive SD
-      sd1Index = sds.indexWhere((sd) => sd > 0);
-    }
+  /// Simplified implementation of scipy's minimize with L-BFGS-B
+  static LMS _minimizeWithBounds(
+      List<int> sds, List<double> values, double l0, double m0, double s0) {
+    final params = [l0, m0, s0.abs()];
 
-    if (sdNeg1Index == -1) {
-      // Find closest negative SD
-      sdNeg1Index = sds.lastIndexWhere((sd) => sd < 0);
-    }
+    // Bounds: L in [-2, 2], M > 1e-3, S > 1e-6
+    final bounds = [
+      [-2.0, 2.0],
+      [1e-3, double.infinity],
+      [1e-6, double.infinity]
+    ];
 
-    final s0 = sd1Index != -1 && sdNeg1Index != -1
-        ? (values[sd1Index] - values[sdNeg1Index]) /
-            (2 * m0 * (sds[sd1Index] - sds[sdNeg1Index]))
-        : 0.1; // Default if we can't estimate
+    double bestError =
+        calculateError(sds, values, params[0], params[1], params[2]);
+    var bestParams = List<double>.from(params);
 
-    // Initialize best parameters
-    double bestError = double.infinity;
-    double bestL = 1.0;
-    double bestM = m0;
-    double bestS = s0.abs();
+    // Multi-start optimization with different L values to find global minimum
+    final lStartValues = [-1.5, -1.0, -0.5, -0.1, 0.0, 0.1, 0.5, 1.0, 1.5];
 
-    // Grid search for L with finer granularity
-    for (double l = -2.0; l <= 2.0; l += 0.025) {
-      // Skip values too close to 0 to avoid numerical issues
-      if (l.abs() < 0.025) continue;
+    for (final lStart in lStartValues) {
+      var currentParams = [lStart, m0, s0.abs()];
 
-      // For each L, optimize M and S
-      double optM = m0;
-      double optS = s0.abs();
-
-      // Local optimization for M and S (simplified gradient descent)
-      for (int iter = 0; iter < 50; iter++) {
-        // Try variations of M and S
-        final variations = [
-          [optM * 0.99, optS],
-          [optM * 1.01, optS],
-          [optM, optS * 0.99],
-          [optM, optS * 1.01],
-        ];
-
-        double currentError = calculateError(sds, values, l, optM, optS);
-        bool improved = false;
-
-        for (final variation in variations) {
-          final m = variation[0];
-          final s = variation[1];
-
-          final error = calculateError(sds, values, l, m, s);
-          if (error < currentError) {
-            optM = m;
-            optS = s;
-            currentError = error;
-            improved = true;
-          }
-        }
-
-        if (!improved) break;
+      // Apply bounds
+      for (int i = 0; i < currentParams.length; i++) {
+        currentParams[i] = currentParams[i].clamp(bounds[i][0], bounds[i][1]);
       }
 
-      // Check if this is the best combination so far
-      final error = calculateError(sds, values, l, optM, optS);
+      // Nelder-Mead style optimization
+      currentParams = _nelderMeadOptimize(sds, values, currentParams, bounds);
+
+      final error = calculateError(
+          sds, values, currentParams[0], currentParams[1], currentParams[2]);
       if (error < bestError) {
         bestError = error;
-        bestL = l;
-        bestM = optM;
-        bestS = optS;
+        bestParams = currentParams;
       }
     }
 
-    // Special case for L close to 0 (log-normal distribution)
-    {
-      const l = 0.0;
-      double optM = m0;
-      double optS = s0.abs();
+    return LMS(l: bestParams[0], m: bestParams[1], s: bestParams[2]);
+  }
 
-      // Local optimization for M and S with L=0
-      for (int iter = 0; iter < 50; iter++) {
-        final variations = [
-          [optM * 0.99, optS],
-          [optM * 1.01, optS],
-          [optM, optS * 0.99],
-          [optM, optS * 1.01],
-        ];
+  /// Simplified Nelder-Mead optimization with bounds
+  static List<double> _nelderMeadOptimize(List<int> sds, List<double> values,
+      List<double> initialParams, List<List<double>> bounds) {
+    const maxIterations = 1000;
+    const tolerance = 1e-8;
 
-        double currentError = calculateError(sds, values, l, optM, optS);
-        bool improved = false;
+    final params = List<double>.from(initialParams);
+    var bestParams = List<double>.from(params);
+    var bestError =
+        calculateError(sds, values, params[0], params[1], params[2]);
 
-        for (final variation in variations) {
-          final m = variation[0];
-          final s = variation[1];
+    // Create initial simplex (4 points for 3 parameters)
+    final simplex = <List<double>>[];
+    simplex.add(List<double>.from(params));
 
-          final error = calculateError(sds, values, l, m, s);
-          if (error < currentError) {
-            optM = m;
-            optS = s;
-            currentError = error;
-            improved = true;
+    // Add 3 more points with small perturbations
+    for (int i = 0; i < 3; i++) {
+      final point = List<double>.from(params);
+      point[i] += params[i] * 0.05; // 5% perturbation
+      // Apply bounds
+      for (int j = 0; j < point.length; j++) {
+        point[j] = point[j].clamp(bounds[j][0], bounds[j][1]);
+      }
+      simplex.add(point);
+    }
+
+    for (int iter = 0; iter < maxIterations; iter++) {
+      // Calculate errors for all simplex points
+      final errors = simplex
+          .map((point) =>
+              calculateError(sds, values, point[0], point[1], point[2]))
+          .toList();
+
+      // Find best, worst, and second worst
+      int bestIdx = 0;
+      int worstIdx = 0;
+      for (int i = 1; i < errors.length; i++) {
+        if (errors[i] < errors[bestIdx]) bestIdx = i;
+        if (errors[i] > errors[worstIdx]) worstIdx = i;
+      }
+
+      final currentBest = simplex[bestIdx];
+      final currentError = errors[bestIdx];
+
+      if (currentError < bestError) {
+        bestError = currentError;
+        bestParams = List<double>.from(currentBest);
+      }
+
+      // Check convergence
+      final errorRange = errors.reduce((a, b) => a > b ? a : b) -
+          errors.reduce((a, b) => a < b ? a : b);
+      if (errorRange < tolerance) break;
+
+      // Calculate centroid (excluding worst point)
+      final centroid = List<double>.filled(3, 0.0);
+      for (int i = 0; i < simplex.length; i++) {
+        if (i != worstIdx) {
+          for (int j = 0; j < 3; j++) {
+            centroid[j] += simplex[i][j];
           }
         }
-
-        if (!improved) break;
+      }
+      for (int j = 0; j < 3; j++) {
+        centroid[j] /= simplex.length - 1;
       }
 
-      final error = calculateError(sds, values, l, optM, optS);
-      if (error < bestError) {
-        bestError = error;
-        bestL = l;
-        bestM = optM;
-        bestS = optS;
+      // Reflection
+      final reflected = <double>[];
+      for (int j = 0; j < 3; j++) {
+        reflected.add(centroid[j] + 1.0 * (centroid[j] - simplex[worstIdx][j]));
+        reflected[j] = reflected[j].clamp(bounds[j][0], bounds[j][1]);
+      }
+
+      final reflectedError =
+          calculateError(sds, values, reflected[0], reflected[1], reflected[2]);
+
+      if (reflectedError < errors[bestIdx]) {
+        // Expansion
+        final expanded = <double>[];
+        for (int j = 0; j < 3; j++) {
+          expanded.add(centroid[j] + 2.0 * (reflected[j] - centroid[j]));
+          expanded[j] = expanded[j].clamp(bounds[j][0], bounds[j][1]);
+        }
+
+        final expandedError =
+            calculateError(sds, values, expanded[0], expanded[1], expanded[2]);
+        simplex[worstIdx] =
+            expandedError < reflectedError ? expanded : reflected;
+      } else if (reflectedError < errors[worstIdx]) {
+        simplex[worstIdx] = reflected;
+      } else {
+        // Contraction
+        final contracted = <double>[];
+        for (int j = 0; j < 3; j++) {
+          contracted
+              .add(centroid[j] + 0.5 * (simplex[worstIdx][j] - centroid[j]));
+          contracted[j] = contracted[j].clamp(bounds[j][0], bounds[j][1]);
+        }
+
+        final contractedError = calculateError(
+            sds, values, contracted[0], contracted[1], contracted[2]);
+        if (contractedError < errors[worstIdx]) {
+          simplex[worstIdx] = contracted;
+        } else {
+          // Shrinkage
+          for (int i = 0; i < simplex.length; i++) {
+            if (i != bestIdx) {
+              for (int j = 0; j < 3; j++) {
+                simplex[i][j] = simplex[bestIdx][j] +
+                    0.5 * (simplex[i][j] - simplex[bestIdx][j]);
+                simplex[i][j] = simplex[i][j].clamp(bounds[j][0], bounds[j][1]);
+              }
+            }
+          }
+        }
       }
     }
 
-    return LMS(l: bestL, m: bestM, s: bestS);
+    return bestParams;
   }
 
   /// Helper method to parse SD values from CSV format often used in growth charts
