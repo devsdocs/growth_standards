@@ -87,9 +87,10 @@ void processHtmlFile(Intergrowth model, Item item, Resource resource,
 
   saveCSVFile(fileNameInfo.baseName, basePath, result.finalData);
 
+  final usedCsvPath =
+      'intergrowth/csv/${model.key}/${item.key}/${fileNameInfo.baseName}.csv';
   final isZScore = !result.isCentile;
   if (isZScore) {
-    final usedCsvPath = 'intergrowth/csv/${fileNameInfo.baseName}.csv';
     saveCSVFile(fileNameInfo.baseName, 'intergrowth/csv', result.finalData,
         fullPath: usedCsvPath);
   } else {
@@ -105,7 +106,6 @@ void processHtmlFile(Intergrowth model, Item item, Resource resource,
         return;
       } else {
         print('Warning: No Z-Score file found for ${htmlFile.path}');
-        final usedCsvPath = 'intergrowth/csv/${fileNameInfo.baseName}.csv';
         saveCSVFile(fileNameInfo.baseName, 'intergrowth/csv', result.finalData,
             fullPath: usedCsvPath);
       }
