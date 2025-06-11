@@ -127,12 +127,18 @@ void writeDart(Intergrowth model, Item item, FileNameInfo fileNameInfo,
   final workingDartDirectory = Directory('../lib/src/category/intergrowth');
   final dataPath = '${workingDartDirectory.path}/data';
   // final modelPath = '${workingDartDirectory.path}/model';
-  final dartDataFilePath =
-      '$dataPath/${model.key}/${fileNameInfo.baseName}.dart';
+  final name = fileNameInfo.baseName
+      .replaceAll('-', '_')
+      .replaceAll('_table', '')
+      .replaceAll('_zs', '')
+      .replaceAll('_ct', '')
+      .replaceAll('___', '_')
+      .replaceAll('__', '_');
+  final dartDataFilePath = '$dataPath/${model.key}/$name.dart';
+
   // final dartModelFilePath =
   //     '$modelPath/${model.key}/${fileNameInfo.baseName}.dart';
-  final dartDataFile =
-      File(dartDataFilePath.replaceAll('-', '_').replaceAll('_table', ''));
+  final dartDataFile = File(dartDataFilePath);
   // final dartModelFile = File(dartModelFilePath.replaceAll('-', '_'));
   if (!dartDataFile.existsSync()) {
     dartDataFile.createSync(recursive: true);
@@ -159,7 +165,7 @@ void writeDart(Intergrowth model, Item item, FileNameInfo fileNameInfo,
   part of '../intergrowth.dart';
   
   // ignore: constant_identifier_names
-  const _${model.key}_${fileNameInfo.baseName.replaceAll('-', '_').replaceAll('_table', '')} = '''\n$encode''';\n""");
+  const _${model.key}_$name = '''\n$encode''';\n""");
 }
 
 int findMaxColumnCount(List<Element> tables) {
