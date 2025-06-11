@@ -110,10 +110,11 @@ void processHtmlFile(Intergrowth model, Item item, Resource resource,
             fullPath: usedCsvPath);
       }
     } else {
-      print('Warning: File name does not contain "-ct-": ${htmlFile.path}');
-      final usedCsvPath = 'intergrowth/csv/${fileNameInfo.baseName}.csv';
-      saveCSVFile(fileNameInfo.baseName, 'intergrowth/csv', result.finalData,
-          fullPath: usedCsvPath);
+      /// Commented after manual check, as the zs file is existing
+      // print('Warning: File name does not contain "-ct-": ${htmlFile.path}');
+      // final usedCsvPath = 'intergrowth/csv/${fileNameInfo.baseName}.csv';
+      // saveCSVFile(fileNameInfo.baseName, 'intergrowth/csv', result.finalData,
+      //     fullPath: usedCsvPath);
     }
   }
 }
