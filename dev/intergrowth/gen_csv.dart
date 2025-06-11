@@ -164,10 +164,12 @@ void writeDart(Intergrowth model, Item item, FileNameInfo fileNameInfo,
   final encode = json.encode(expMap);
 
   dartDataFile.writeAsStringSync("""
-  part of '../intergrowth.dart';
+  part of '../../intergrowth.dart';
   
   // ignore: constant_identifier_names
   const _${model.key}_$name = '''\n$encode''';\n""");
+
+  print("part 'data/${model.key}/$name.dart';");
 }
 
 int findMaxColumnCount(List<Element> tables) {

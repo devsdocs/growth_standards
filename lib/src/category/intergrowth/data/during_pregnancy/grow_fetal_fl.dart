@@ -1,4 +1,4 @@
-part of '../intergrowth.dart';
+part of '../../intergrowth.dart';
 
 // ignore: constant_identifier_names
 const _during_pregnancy_grow_fetal_fl = '''

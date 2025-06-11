@@ -1,4 +1,4 @@
-part of '../intergrowth.dart';
+part of '../../intergrowth.dart';
 
 // ignore: constant_identifier_names
 const _at_birth_grow_newborn_girls_bw = '''

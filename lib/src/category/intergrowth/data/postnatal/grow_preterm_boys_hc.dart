@@ -1,4 +1,4 @@
-part of '../intergrowth.dart';
+part of '../../intergrowth.dart';
 
 // ignore: constant_identifier_names
 const _postnatal_grow_preterm_boys_hc = '''
