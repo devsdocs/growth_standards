@@ -6,7 +6,6 @@ import 'dart:math';
 
 import 'package:csv/csv.dart';
 import 'package:dart_numerics/dart_numerics.dart';
-import 'package:growth_standards/growth_standards.dart';
 import 'package:html/dom.dart';
 import 'package:html/parser.dart';
 
