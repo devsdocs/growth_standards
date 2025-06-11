@@ -561,7 +561,7 @@ class LMSEstimation {
       }
     }
 
-    return LMS(l: bestParams[0], m: bestParams[1], s: bestParams[2]);
+    return (l: bestParams[0], m: bestParams[1], s: bestParams[2]);
   }
 
   /// Simplified Nelder-Mead optimization with bounds
@@ -748,3 +748,5 @@ class LMSEstimation {
 
 /// Normal distribution equation, the name [qnorm] inspired from R language
 num qnorm(num percentile) => sqrt(2) * erfInv(2 * percentile - 1);
+
+typedef LMS = ({num l, num m, num s});

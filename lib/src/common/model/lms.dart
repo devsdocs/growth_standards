@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:growth_standards/src/common/math.dart';
 import 'package:growth_standards/src/common/typedef.dart';
 import 'package:growth_standards/src/common/types.dart';
