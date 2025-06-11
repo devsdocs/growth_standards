@@ -172,7 +172,10 @@ void main() async {
               continue;
             }
 
-            final fileName = downloadUrl.split('/').last;
+            String fileName = downloadUrl.split('/').last.toString();
+            if (fileName.contains('table_0.pdf')) {
+              fileName = fileName.replaceAll('table_0.pdf', 'table.pdf');
+            }
             final downloadPath =
                 'intergrowth/downloads/$categoryKey/$itemKey/$resourceKey/$fileName';
 

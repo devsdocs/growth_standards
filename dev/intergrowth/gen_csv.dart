@@ -60,7 +60,10 @@ class FileNameInfo {
 
 FileNameInfo extractFileNameInfo(String url) {
   final fileNameWithExtension = Uri.parse(url).pathSegments.last;
-  final baseName = fileNameWithExtension.split('.').first;
+  String baseName = fileNameWithExtension.split('.').first;
+  if (baseName.contains('table_0')) {
+    baseName = baseName.replaceAll('table_0', 'table');
+  }
   return FileNameInfo(baseName, fileNameWithExtension);
 }
 
@@ -84,10 +87,34 @@ void processHtmlFile(Intergrowth model, Item item, Resource resource,
 
   saveCSVFile(fileNameInfo.baseName, basePath, result.finalData);
 
-  if (!result.isCentile) {
+  final isZScore = !result.isCentile;
+  if (isZScore) {
     final usedCsvPath = 'intergrowth/csv/${fileNameInfo.baseName}.csv';
     saveCSVFile(fileNameInfo.baseName, 'intergrowth/csv', result.finalData,
         fullPath: usedCsvPath);
+  } else {
+    final last2 = htmlFile.uri.pathSegments.last;
+    final isHaveComparableFileName = last2.contains('-ct-') ||
+        last2.contains('_ct_') ||
+        last2.contains('-ct_');
+    if (isHaveComparableFileName) {
+      final isHaveZScore =
+          File(htmlFile.path.replaceAll('ct', 'zs')).existsSync();
+
+      if (isHaveZScore) {
+        return;
+      } else {
+        print('Warning: No Z-Score file found for ${htmlFile.path}');
+        final usedCsvPath = 'intergrowth/csv/${fileNameInfo.baseName}.csv';
+        saveCSVFile(fileNameInfo.baseName, 'intergrowth/csv', result.finalData,
+            fullPath: usedCsvPath);
+      }
+    } else {
+      print('Warning: File name does not contain "-ct-": ${htmlFile.path}');
+      final usedCsvPath = 'intergrowth/csv/${fileNameInfo.baseName}.csv';
+      saveCSVFile(fileNameInfo.baseName, 'intergrowth/csv', result.finalData,
+          fullPath: usedCsvPath);
+    }
   }
 }
 
