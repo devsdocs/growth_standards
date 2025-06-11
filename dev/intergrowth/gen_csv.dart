@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print
 
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:csv/csv.dart';
@@ -7,6 +8,7 @@ import 'package:growth_standards/growth_standards.dart';
 import 'package:html/dom.dart';
 import 'package:html/parser.dart';
 
+import '../common.dart';
 import 'model.dart';
 import 'ordinal_parser.dart';
 
@@ -87,12 +89,12 @@ void processHtmlFile(Intergrowth model, Item item, Resource resource,
 
   saveCSVFile(fileNameInfo.baseName, basePath, result.finalData);
 
-  final usedCsvPath =
-      'intergrowth/csv/${model.key}/${item.key}/${fileNameInfo.baseName}.csv';
   final isZScore = !result.isCentile;
   if (isZScore) {
-    saveCSVFile(fileNameInfo.baseName, 'intergrowth/csv', result.finalData,
-        fullPath: usedCsvPath);
+    // saveCSVFile(fileNameInfo.baseName, 'intergrowth/csv', result.finalData,
+    //     fullPath: usedCsvPath);
+
+    writeDart(model, item, fileNameInfo, result.finalData);
   } else {
     final last2 = htmlFile.uri.pathSegments.last;
     final isHaveComparableFileName = last2.contains('-ct-') ||
@@ -106,8 +108,9 @@ void processHtmlFile(Intergrowth model, Item item, Resource resource,
         return;
       } else {
         print('Warning: No Z-Score file found for ${htmlFile.path}');
-        saveCSVFile(fileNameInfo.baseName, 'intergrowth/csv', result.finalData,
-            fullPath: usedCsvPath);
+        // saveCSVFile(fileNameInfo.baseName, 'intergrowth/csv', result.finalData,
+        //     fullPath: usedCsvPath);
+        writeDart(model, item, fileNameInfo, result.finalData);
       }
     } else {
       /// Commented after manual check, as the zs file is existing
@@ -117,6 +120,45 @@ void processHtmlFile(Intergrowth model, Item item, Resource resource,
       //     fullPath: usedCsvPath);
     }
   }
+}
+
+void writeDart(Intergrowth model, Item item, FileNameInfo fileNameInfo,
+    List<List<String>> data) {
+  final workingDartDirectory = Directory('../lib/src/category/intergrowth');
+  final dataPath = '${workingDartDirectory.path}/data';
+  // final modelPath = '${workingDartDirectory.path}/model';
+  final dartDataFilePath =
+      '$dataPath/${model.key}/${fileNameInfo.baseName}.dart';
+  // final dartModelFilePath =
+  //     '$modelPath/${model.key}/${fileNameInfo.baseName}.dart';
+  final dartDataFile = File(dartDataFilePath.replaceAll('-', '_'));
+  // final dartModelFile = File(dartModelFilePath.replaceAll('-', '_'));
+  if (!dartDataFile.existsSync()) {
+    dartDataFile.createSync(recursive: true);
+  }
+  // if (!dartModelFile.existsSync()) {
+  //   dartModelFile.createSync(recursive: true);
+  // }
+  final expMap = <String, dynamic>{};
+
+  sanitize(data)
+      .map(
+    (c) => ['csv', 'l', 'm', 's']
+        .asMap()
+        .map((_, value) => getVal(c, value).entries.first)
+        .map((key, value) => MapEntry(key.toLowerCase(), value)),
+  )
+      .forEach((element) {
+    expMap[element['csv'].toString()] = element..remove('csv');
+  });
+
+  final encode = json.encode(expMap);
+
+  dartDataFile.writeAsStringSync("""
+  part of '../intergrowth.dart';
+  
+  // ignore: constant_identifier_names
+  const _${model.key}_${fileNameInfo.baseName.replaceAll('-', '_')} = '''\n$encode''';\n""");
 }
 
 int findMaxColumnCount(List<Element> tables) {
