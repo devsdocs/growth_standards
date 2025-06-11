@@ -256,6 +256,12 @@ void main() {
           csvFile.createSync(recursive: true);
 
           csvFile.writeAsStringSync(csv);
+
+          if (!isCentile) {
+            final usedCsvFile = File('intergrowth/csv/$fileName.csv');
+            usedCsvFile.createSync(recursive: true);
+            usedCsvFile.writeAsStringSync(csv);
+          }
         }
       }
     }

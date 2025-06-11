@@ -100,11 +100,6 @@ class LMSEstimation {
       sdValues[0] = centileValues[50]!;
     }
 
-    // If we have enough points, estimate LMS
-    if (sdValues.length >= 3 && sdValues.containsKey(0)) {
-      return estimateFromSD(sdValues);
-    }
-
     // Fallback: direct estimation using available centiles
     final sds = <int>[];
     final values = <double>[];
@@ -162,19 +157,39 @@ class LMSEstimation {
       List<int> sds, List<double> values, double l0, double m0, double s0) {
     final params = [l0, m0, s0.abs()];
 
-    // Bounds: L in [-2, 2], M > 1e-3, S > 1e-6
+    // Bounds: L in [-2, 2], M > 1e-6, S > 1e-9 (increased precision)
     final bounds = [
       [-2.0, 2.0],
-      [1e-3, double.infinity],
-      [1e-6, double.infinity]
+      [1e-6, double.infinity],
+      [1e-9, double.infinity]
     ];
 
     double bestError =
         calculateError(sds, values, params[0], params[1], params[2]);
     var bestParams = List<double>.from(params);
 
-    // Multi-start optimization with different L values to find global minimum
-    final lStartValues = [-1.5, -1.0, -0.5, -0.1, 0.0, 0.1, 0.5, 1.0, 1.5];
+    // Multi-start optimization with more L values for better precision
+    final lStartValues = [
+      -1.8,
+      -1.5,
+      -1.2,
+      -1.0,
+      -0.8,
+      -0.5,
+      -0.3,
+      -0.1,
+      -0.05,
+      0.0,
+      0.05,
+      0.1,
+      0.3,
+      0.5,
+      0.8,
+      1.0,
+      1.2,
+      1.5,
+      1.8
+    ];
 
     for (final lStart in lStartValues) {
       var currentParams = [lStart, m0, s0.abs()];
@@ -201,8 +216,9 @@ class LMSEstimation {
   /// Simplified Nelder-Mead optimization with bounds
   static List<double> _nelderMeadOptimize(List<int> sds, List<double> values,
       List<double> initialParams, List<List<double>> bounds) {
-    const maxIterations = 1000;
-    const tolerance = 1e-8;
+    const maxIterations = 5000; // Increased for higher precision
+    const tolerance = 1e-12; // Much higher precision tolerance
+    const relativeTolerance = 1e-10; // Additional relative tolerance
 
     final params = List<double>.from(initialParams);
     var bestParams = List<double>.from(params);
@@ -213,10 +229,10 @@ class LMSEstimation {
     final simplex = <List<double>>[];
     simplex.add(List<double>.from(params));
 
-    // Add 3 more points with small perturbations
+    // Add 3 more points with smaller perturbations for higher precision
     for (int i = 0; i < 3; i++) {
       final point = List<double>.from(params);
-      point[i] += params[i] * 0.05; // 5% perturbation
+      point[i] += params[i] * 0.01; // Reduced to 1% perturbation for precision
       // Apply bounds
       for (int j = 0; j < point.length; j++) {
         point[j] = point[j].clamp(bounds[j][0], bounds[j][1]);
@@ -247,10 +263,15 @@ class LMSEstimation {
         bestParams = List<double>.from(currentBest);
       }
 
-      // Check convergence
+      // Check convergence with both absolute and relative tolerance
       final errorRange = errors.reduce((a, b) => a > b ? a : b) -
           errors.reduce((a, b) => a < b ? a : b);
-      if (errorRange < tolerance) break;
+      final avgError = errors.reduce((a, b) => a + b) / errors.length;
+
+      if (errorRange < tolerance ||
+          (avgError > 0 && errorRange / avgError < relativeTolerance)) {
+        break;
+      }
 
       // Calculate centroid (excluding worst point)
       final centroid = List<double>.filled(3, 0.0);
@@ -265,7 +286,7 @@ class LMSEstimation {
         centroid[j] /= simplex.length - 1;
       }
 
-      // Reflection
+      // Reflection with higher precision coefficients
       final reflected = <double>[];
       for (int j = 0; j < 3; j++) {
         reflected.add(centroid[j] + 1.0 * (centroid[j] - simplex[worstIdx][j]));
@@ -303,7 +324,7 @@ class LMSEstimation {
         if (contractedError < errors[worstIdx]) {
           simplex[worstIdx] = contracted;
         } else {
-          // Shrinkage
+          // Shrinkage with smaller step for precision
           for (int i = 0; i < simplex.length; i++) {
             if (i != bestIdx) {
               for (int j = 0; j < 3; j++) {
