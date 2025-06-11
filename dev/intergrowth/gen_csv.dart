@@ -136,7 +136,7 @@ void writeDart(Intergrowth model, Item item, FileNameInfo fileNameInfo,
       .replaceAll('_ct', '')
       .replaceAll('___', '_')
       .replaceAll('__', '_');
-  final dartDataFilePath = '$dataPath/${model.key}/$name.dart';
+  final dartDataFilePath = '$dataPath/${model.key}/${item.key}/$name.dart';
 
   // final dartModelFilePath =
   //     '$modelPath/${model.key}/${fileNameInfo.baseName}.dart';
@@ -164,12 +164,12 @@ void writeDart(Intergrowth model, Item item, FileNameInfo fileNameInfo,
   final encode = json.encode(expMap);
 
   dartDataFile.writeAsStringSync("""
-  part of '../../intergrowth.dart';
+  part of '../../../intergrowth.dart';
   
   // ignore: constant_identifier_names
-  const _${model.key}_$name = '''\n$encode''';\n""");
+  const _$name = '''\n$encode''';\n""");
 
-  print("part 'data/${model.key}/$name.dart';");
+  print("part 'data/${model.key}/${item.key}/$name.dart';");
 }
 
 int findMaxColumnCount(List<Element> tables) {
