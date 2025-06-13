@@ -1,12 +1,14 @@
 part of '../../../intergrowth.dart';
 
-class EarlyPregnancyDatingForCRLData extends LengthBasedData {
-  factory EarlyPregnancyDatingForCRLData() => _singleton;
-  EarlyPregnancyDatingForCRLData._(this._data);
+class IntergrowthEarlyPregnancyDatingForCRLData extends LengthBasedData {
+  factory IntergrowthEarlyPregnancyDatingForCRLData() => _singleton;
+  IntergrowthEarlyPregnancyDatingForCRLData._(this._data);
 
-  static final _singleton = EarlyPregnancyDatingForCRLData._(_parse());
+  static final _singleton =
+      IntergrowthEarlyPregnancyDatingForCRLData._(_parse());
 
-  static Map<Sex, Map<num, _EarlyPregnancyDatingForCRLLMS>> _parse() {
+  static Map<Sex, Map<num, _IntergrowthEarlyPregnancyDatingForCRLLMS>>
+      _parse() {
     final map = _grow_early_preg_charts_crl_dating.toJsonObjectAsMap.map(
       (k1, v1) {
         v1 as Map<String, dynamic>;
@@ -14,7 +16,7 @@ class EarlyPregnancyDatingForCRLData extends LengthBasedData {
             LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
         return MapEntry(
           int.parse(k1),
-          _EarlyPregnancyDatingForCRLLMS(
+          _IntergrowthEarlyPregnancyDatingForCRLLMS(
             lms: lms,
           ),
         );
@@ -26,9 +28,10 @@ class EarlyPregnancyDatingForCRLData extends LengthBasedData {
     };
   }
 
-  final Map<Sex, Map<num, _EarlyPregnancyDatingForCRLLMS>> _data;
+  final Map<Sex, Map<num, _IntergrowthEarlyPregnancyDatingForCRLLMS>> _data;
   @override
-  Map<Sex, Map<num, _EarlyPregnancyDatingForCRLLMS>> get data => _data;
+  Map<Sex, Map<num, _IntergrowthEarlyPregnancyDatingForCRLLMS>> get data =>
+      _data;
 
   @override
   String toString() => 'Early Pregnancy Dating For CRL Data($_data)';
@@ -38,25 +41,25 @@ class EarlyPregnancyDatingForCRLData extends LengthBasedData {
 }
 
 @freezed
-sealed class EarlyPregnancyDatingForCRL extends LengthBasedResult
-    with _$EarlyPregnancyDatingForCRL {
-  factory EarlyPregnancyDatingForCRL({
+sealed class IntergrowthEarlyPregnancyDatingForCRL extends LengthBasedResult
+    with _$IntergrowthEarlyPregnancyDatingForCRL {
+  factory IntergrowthEarlyPregnancyDatingForCRL({
     required Age age,
     required Length length,
-  }) = _EarlyPregnancyDatingForCRL;
+  }) = _IntergrowthEarlyPregnancyDatingForCRL;
 
-  const EarlyPregnancyDatingForCRL._();
+  const IntergrowthEarlyPregnancyDatingForCRL._();
 
-  factory EarlyPregnancyDatingForCRL.fromJson(
+  factory IntergrowthEarlyPregnancyDatingForCRL.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$EarlyPregnancyDatingForCRLFromJson(json);
+      _$IntergrowthEarlyPregnancyDatingForCRLFromJson(json);
 
   @override
-  EarlyPregnancyDatingForCRLData get contextData =>
-      EarlyPregnancyDatingForCRLData();
+  IntergrowthEarlyPregnancyDatingForCRLData get contextData =>
+      IntergrowthEarlyPregnancyDatingForCRLData();
 
-  _EarlyPregnancyDatingForCRLLMS get _ageData =>
+  _IntergrowthEarlyPregnancyDatingForCRLLMS get _ageData =>
       contextData._data.values.first[_length]!;
 
   @override
@@ -81,14 +84,14 @@ sealed class EarlyPregnancyDatingForCRL extends LengthBasedResult
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
-  _EarlyPregnancyDatingForCRLLMS get lmsData => _ageData;
+  _IntergrowthEarlyPregnancyDatingForCRLLMS get lmsData => _ageData;
 
   @override
   num get measurementResultInDefaultUnit => length.toCentimeter.value;
 }
 
-class _EarlyPregnancyDatingForCRLLMS extends LMSContext {
-  _EarlyPregnancyDatingForCRLLMS({
+class _IntergrowthEarlyPregnancyDatingForCRLLMS extends LMSContext {
+  _IntergrowthEarlyPregnancyDatingForCRLLMS({
     required this.lms,
   });
   @override

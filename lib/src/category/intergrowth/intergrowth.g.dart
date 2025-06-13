@@ -6,17 +6,17 @@ part of 'intergrowth.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_NewbornBirthWeightForAge _$NewbornBirthWeightForAgeFromJson(
-        Map<String, dynamic> json) =>
-    _NewbornBirthWeightForAge(
-      sex: $enumDecode(_$SexEnumMap, json['sex']),
-      age: Age.fromJson(json['age'] as Map<String, dynamic>),
-      measurementResult:
-          Mass.fromJson(json['measurementResult'] as Map<String, dynamic>),
-    );
+_IntergrowthNewbornBirthWeightForAge
+    _$IntergrowthNewbornBirthWeightForAgeFromJson(Map<String, dynamic> json) =>
+        _IntergrowthNewbornBirthWeightForAge(
+          sex: $enumDecode(_$SexEnumMap, json['sex']),
+          age: Age.fromJson(json['age'] as Map<String, dynamic>),
+          measurementResult:
+              Mass.fromJson(json['measurementResult'] as Map<String, dynamic>),
+        );
 
-Map<String, dynamic> _$NewbornBirthWeightForAgeToJson(
-        _NewbornBirthWeightForAge instance) =>
+Map<String, dynamic> _$IntergrowthNewbornBirthWeightForAgeToJson(
+        _IntergrowthNewbornBirthWeightForAge instance) =>
     <String, dynamic>{
       'sex': _$SexEnumMap[instance.sex]!,
       'age': instance.age.toJson(),
@@ -28,104 +28,108 @@ const _$SexEnumMap = {
   Sex.female: 2,
 };
 
-_NewbornBirthHeadCircumferenceForAge
-    _$NewbornBirthHeadCircumferenceForAgeFromJson(Map<String, dynamic> json) =>
-        _NewbornBirthHeadCircumferenceForAge(
+_IntergrowthNewbornBirthHeadCircumferenceForAge
+    _$IntergrowthNewbornBirthHeadCircumferenceForAgeFromJson(
+            Map<String, dynamic> json) =>
+        _IntergrowthNewbornBirthHeadCircumferenceForAge(
           sex: $enumDecode(_$SexEnumMap, json['sex']),
           age: Age.fromJson(json['age'] as Map<String, dynamic>),
           measurementResult: Length.fromJson(
               json['measurementResult'] as Map<String, dynamic>),
         );
 
-Map<String, dynamic> _$NewbornBirthHeadCircumferenceForAgeToJson(
-        _NewbornBirthHeadCircumferenceForAge instance) =>
+Map<String, dynamic> _$IntergrowthNewbornBirthHeadCircumferenceForAgeToJson(
+        _IntergrowthNewbornBirthHeadCircumferenceForAge instance) =>
     <String, dynamic>{
       'sex': _$SexEnumMap[instance.sex]!,
       'age': instance.age.toJson(),
       'measurementResult': instance.measurementResult.toJson(),
     };
 
-_NewbornBirthLengthForAge _$NewbornBirthLengthForAgeFromJson(
-        Map<String, dynamic> json) =>
-    _NewbornBirthLengthForAge(
-      sex: $enumDecode(_$SexEnumMap, json['sex']),
-      age: Age.fromJson(json['age'] as Map<String, dynamic>),
-      measurementResult:
-          Length.fromJson(json['measurementResult'] as Map<String, dynamic>),
-    );
+_IntergrowthNewbornBirthLengthForAge
+    _$IntergrowthNewbornBirthLengthForAgeFromJson(Map<String, dynamic> json) =>
+        _IntergrowthNewbornBirthLengthForAge(
+          sex: $enumDecode(_$SexEnumMap, json['sex']),
+          age: Age.fromJson(json['age'] as Map<String, dynamic>),
+          measurementResult: Length.fromJson(
+              json['measurementResult'] as Map<String, dynamic>),
+        );
 
-Map<String, dynamic> _$NewbornBirthLengthForAgeToJson(
-        _NewbornBirthLengthForAge instance) =>
+Map<String, dynamic> _$IntergrowthNewbornBirthLengthForAgeToJson(
+        _IntergrowthNewbornBirthLengthForAge instance) =>
     <String, dynamic>{
       'sex': _$SexEnumMap[instance.sex]!,
       'age': instance.age.toJson(),
       'measurementResult': instance.measurementResult.toJson(),
     };
 
-_NewbornBirthWeightForLengthRatioForAge
-    _$NewbornBirthWeightForLengthRatioForAgeFromJson(
+_IntergrowthNewbornBirthWeightForLengthRatioForAge
+    _$IntergrowthNewbornBirthWeightForLengthRatioForAgeFromJson(
             Map<String, dynamic> json) =>
-        _NewbornBirthWeightForLengthRatioForAge(
+        _IntergrowthNewbornBirthWeightForLengthRatioForAge(
           sex: $enumDecode(_$SexEnumMap, json['sex']),
           age: Age.fromJson(json['age'] as Map<String, dynamic>),
           measurementResult: NewbornWeightLengthRatioMeasurement.fromJson(
               json['measurementResult'] as Map<String, dynamic>),
         );
 
-Map<String, dynamic> _$NewbornBirthWeightForLengthRatioForAgeToJson(
-        _NewbornBirthWeightForLengthRatioForAge instance) =>
+Map<String, dynamic> _$IntergrowthNewbornBirthWeightForLengthRatioForAgeToJson(
+        _IntergrowthNewbornBirthWeightForLengthRatioForAge instance) =>
     <String, dynamic>{
       'sex': _$SexEnumMap[instance.sex]!,
       'age': instance.age.toJson(),
       'measurementResult': instance.measurementResult.toJson(),
     };
 
-_VeryPretermNewbornBirthWeightForAge
-    _$VeryPretermNewbornBirthWeightForAgeFromJson(Map<String, dynamic> json) =>
-        _VeryPretermNewbornBirthWeightForAge(
+_IntergrowthVeryPretermNewbornBirthWeightForAge
+    _$IntergrowthVeryPretermNewbornBirthWeightForAgeFromJson(
+            Map<String, dynamic> json) =>
+        _IntergrowthVeryPretermNewbornBirthWeightForAge(
           sex: $enumDecode(_$SexEnumMap, json['sex']),
           age: Age.fromJson(json['age'] as Map<String, dynamic>),
           measurementResult:
               Mass.fromJson(json['measurementResult'] as Map<String, dynamic>),
         );
 
-Map<String, dynamic> _$VeryPretermNewbornBirthWeightForAgeToJson(
-        _VeryPretermNewbornBirthWeightForAge instance) =>
+Map<String, dynamic> _$IntergrowthVeryPretermNewbornBirthWeightForAgeToJson(
+        _IntergrowthVeryPretermNewbornBirthWeightForAge instance) =>
     <String, dynamic>{
       'sex': _$SexEnumMap[instance.sex]!,
       'age': instance.age.toJson(),
       'measurementResult': instance.measurementResult.toJson(),
     };
 
-_VeryPretermNewbornBirthHeadCircumferenceForAge
-    _$VeryPretermNewbornBirthHeadCircumferenceForAgeFromJson(
+_IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge
+    _$IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeFromJson(
             Map<String, dynamic> json) =>
-        _VeryPretermNewbornBirthHeadCircumferenceForAge(
+        _IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge(
           sex: $enumDecode(_$SexEnumMap, json['sex']),
           age: Age.fromJson(json['age'] as Map<String, dynamic>),
           measurementResult: Length.fromJson(
               json['measurementResult'] as Map<String, dynamic>),
         );
 
-Map<String, dynamic> _$VeryPretermNewbornBirthHeadCircumferenceForAgeToJson(
-        _VeryPretermNewbornBirthHeadCircumferenceForAge instance) =>
+Map<String,
+    dynamic> _$IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeToJson(
+        _IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge instance) =>
     <String, dynamic>{
       'sex': _$SexEnumMap[instance.sex]!,
       'age': instance.age.toJson(),
       'measurementResult': instance.measurementResult.toJson(),
     };
 
-_VeryPretermNewbornBirthLengthForAge
-    _$VeryPretermNewbornBirthLengthForAgeFromJson(Map<String, dynamic> json) =>
-        _VeryPretermNewbornBirthLengthForAge(
+_IntergrowthVeryPretermNewbornBirthLengthForAge
+    _$IntergrowthVeryPretermNewbornBirthLengthForAgeFromJson(
+            Map<String, dynamic> json) =>
+        _IntergrowthVeryPretermNewbornBirthLengthForAge(
           sex: $enumDecode(_$SexEnumMap, json['sex']),
           age: Age.fromJson(json['age'] as Map<String, dynamic>),
           measurementResult: Length.fromJson(
               json['measurementResult'] as Map<String, dynamic>),
         );
 
-Map<String, dynamic> _$VeryPretermNewbornBirthLengthForAgeToJson(
-        _VeryPretermNewbornBirthLengthForAge instance) =>
+Map<String, dynamic> _$IntergrowthVeryPretermNewbornBirthLengthForAgeToJson(
+        _IntergrowthVeryPretermNewbornBirthLengthForAge instance) =>
     <String, dynamic>{
       'sex': _$SexEnumMap[instance.sex]!,
       'age': instance.age.toJson(),
@@ -144,119 +148,125 @@ Map<String, dynamic> _$NewbornWeightLengthRatioMeasurementToJson(
       'value': instance.value,
     };
 
-_VeryPretermNewbornBirthWeightForLengthRatioForAge
-    _$VeryPretermNewbornBirthWeightForLengthRatioForAgeFromJson(
+_IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge
+    _$IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeFromJson(
             Map<String, dynamic> json) =>
-        _VeryPretermNewbornBirthWeightForLengthRatioForAge(
+        _IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge(
           sex: $enumDecode(_$SexEnumMap, json['sex']),
           age: Age.fromJson(json['age'] as Map<String, dynamic>),
           measurementResult: NewbornWeightLengthRatioMeasurement.fromJson(
               json['measurementResult'] as Map<String, dynamic>),
         );
 
-Map<String, dynamic> _$VeryPretermNewbornBirthWeightForLengthRatioForAgeToJson(
-        _VeryPretermNewbornBirthWeightForLengthRatioForAge instance) =>
-    <String, dynamic>{
-      'sex': _$SexEnumMap[instance.sex]!,
-      'age': instance.age.toJson(),
-      'measurementResult': instance.measurementResult.toJson(),
-    };
+Map<String, dynamic>
+    _$IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeToJson(
+            _IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge
+                instance) =>
+        <String, dynamic>{
+          'sex': _$SexEnumMap[instance.sex]!,
+          'age': instance.age.toJson(),
+          'measurementResult': instance.measurementResult.toJson(),
+        };
 
-_EarlyPregnancyDatingForCRL _$EarlyPregnancyDatingForCRLFromJson(
-        Map<String, dynamic> json) =>
-    _EarlyPregnancyDatingForCRL(
-      age: Age.fromJson(json['age'] as Map<String, dynamic>),
-      length: Length.fromJson(json['length'] as Map<String, dynamic>),
-    );
+_IntergrowthEarlyPregnancyDatingForCRL
+    _$IntergrowthEarlyPregnancyDatingForCRLFromJson(
+            Map<String, dynamic> json) =>
+        _IntergrowthEarlyPregnancyDatingForCRL(
+          age: Age.fromJson(json['age'] as Map<String, dynamic>),
+          length: Length.fromJson(json['length'] as Map<String, dynamic>),
+        );
 
-Map<String, dynamic> _$EarlyPregnancyDatingForCRLToJson(
-        _EarlyPregnancyDatingForCRL instance) =>
+Map<String, dynamic> _$IntergrowthEarlyPregnancyDatingForCRLToJson(
+        _IntergrowthEarlyPregnancyDatingForCRL instance) =>
     <String, dynamic>{
       'age': instance.age.toJson(),
       'length': instance.length.toJson(),
     };
 
-_FetalGrowtAbdominalCircumferenceForAge
-    _$FetalGrowtAbdominalCircumferenceForAgeFromJson(
+_IntergrowthFetalGrowtAbdominalCircumferenceForAge
+    _$IntergrowthFetalGrowtAbdominalCircumferenceForAgeFromJson(
             Map<String, dynamic> json) =>
-        _FetalGrowtAbdominalCircumferenceForAge(
+        _IntergrowthFetalGrowtAbdominalCircumferenceForAge(
           age: Age.fromJson(json['age'] as Map<String, dynamic>),
           measurementResult: Length.fromJson(
               json['measurementResult'] as Map<String, dynamic>),
         );
 
-Map<String, dynamic> _$FetalGrowtAbdominalCircumferenceForAgeToJson(
-        _FetalGrowtAbdominalCircumferenceForAge instance) =>
+Map<String, dynamic> _$IntergrowthFetalGrowtAbdominalCircumferenceForAgeToJson(
+        _IntergrowthFetalGrowtAbdominalCircumferenceForAge instance) =>
     <String, dynamic>{
       'age': instance.age.toJson(),
       'measurementResult': instance.measurementResult.toJson(),
     };
 
-_FetalGrowtBiparietalDiameterForAge
-    _$FetalGrowtBiparietalDiameterForAgeFromJson(Map<String, dynamic> json) =>
-        _FetalGrowtBiparietalDiameterForAge(
+_IntergrowthFetalGrowtBiparietalDiameterForAge
+    _$IntergrowthFetalGrowtBiparietalDiameterForAgeFromJson(
+            Map<String, dynamic> json) =>
+        _IntergrowthFetalGrowtBiparietalDiameterForAge(
           age: Age.fromJson(json['age'] as Map<String, dynamic>),
           measurementResult: Length.fromJson(
               json['measurementResult'] as Map<String, dynamic>),
         );
 
-Map<String, dynamic> _$FetalGrowtBiparietalDiameterForAgeToJson(
-        _FetalGrowtBiparietalDiameterForAge instance) =>
+Map<String, dynamic> _$IntergrowthFetalGrowtBiparietalDiameterForAgeToJson(
+        _IntergrowthFetalGrowtBiparietalDiameterForAge instance) =>
     <String, dynamic>{
       'age': instance.age.toJson(),
       'measurementResult': instance.measurementResult.toJson(),
     };
 
-_FetalGrowtHeadCircumferenceForAge _$FetalGrowtHeadCircumferenceForAgeFromJson(
-        Map<String, dynamic> json) =>
-    _FetalGrowtHeadCircumferenceForAge(
-      age: Age.fromJson(json['age'] as Map<String, dynamic>),
-      measurementResult:
-          Length.fromJson(json['measurementResult'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$FetalGrowtHeadCircumferenceForAgeToJson(
-        _FetalGrowtHeadCircumferenceForAge instance) =>
-    <String, dynamic>{
-      'age': instance.age.toJson(),
-      'measurementResult': instance.measurementResult.toJson(),
-    };
-
-_FetalGrowtFemurLengthForAge _$FetalGrowtFemurLengthForAgeFromJson(
-        Map<String, dynamic> json) =>
-    _FetalGrowtFemurLengthForAge(
-      age: Age.fromJson(json['age'] as Map<String, dynamic>),
-      measurementResult:
-          Length.fromJson(json['measurementResult'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$FetalGrowtFemurLengthForAgeToJson(
-        _FetalGrowtFemurLengthForAge instance) =>
-    <String, dynamic>{
-      'age': instance.age.toJson(),
-      'measurementResult': instance.measurementResult.toJson(),
-    };
-
-_FetalGrowtOccipitoFrontalDiameterForAge
-    _$FetalGrowtOccipitoFrontalDiameterForAgeFromJson(
+_IntergrowthFetalGrowtHeadCircumferenceForAge
+    _$IntergrowthFetalGrowtHeadCircumferenceForAgeFromJson(
             Map<String, dynamic> json) =>
-        _FetalGrowtOccipitoFrontalDiameterForAge(
+        _IntergrowthFetalGrowtHeadCircumferenceForAge(
           age: Age.fromJson(json['age'] as Map<String, dynamic>),
           measurementResult: Length.fromJson(
               json['measurementResult'] as Map<String, dynamic>),
         );
 
-Map<String, dynamic> _$FetalGrowtOccipitoFrontalDiameterForAgeToJson(
-        _FetalGrowtOccipitoFrontalDiameterForAge instance) =>
+Map<String, dynamic> _$IntergrowthFetalGrowtHeadCircumferenceForAgeToJson(
+        _IntergrowthFetalGrowtHeadCircumferenceForAge instance) =>
     <String, dynamic>{
       'age': instance.age.toJson(),
       'measurementResult': instance.measurementResult.toJson(),
     };
 
-_PretermInfantsPostnatalGrowthHeadCircumferenceForAge
-    _$PretermInfantsPostnatalGrowthHeadCircumferenceForAgeFromJson(
+_IntergrowthFetalGrowtFemurLengthForAge
+    _$IntergrowthFetalGrowtFemurLengthForAgeFromJson(
             Map<String, dynamic> json) =>
-        _PretermInfantsPostnatalGrowthHeadCircumferenceForAge(
+        _IntergrowthFetalGrowtFemurLengthForAge(
+          age: Age.fromJson(json['age'] as Map<String, dynamic>),
+          measurementResult: Length.fromJson(
+              json['measurementResult'] as Map<String, dynamic>),
+        );
+
+Map<String, dynamic> _$IntergrowthFetalGrowtFemurLengthForAgeToJson(
+        _IntergrowthFetalGrowtFemurLengthForAge instance) =>
+    <String, dynamic>{
+      'age': instance.age.toJson(),
+      'measurementResult': instance.measurementResult.toJson(),
+    };
+
+_IntergrowthFetalGrowtOccipitoFrontalDiameterForAge
+    _$IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeFromJson(
+            Map<String, dynamic> json) =>
+        _IntergrowthFetalGrowtOccipitoFrontalDiameterForAge(
+          age: Age.fromJson(json['age'] as Map<String, dynamic>),
+          measurementResult: Length.fromJson(
+              json['measurementResult'] as Map<String, dynamic>),
+        );
+
+Map<String, dynamic> _$IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeToJson(
+        _IntergrowthFetalGrowtOccipitoFrontalDiameterForAge instance) =>
+    <String, dynamic>{
+      'age': instance.age.toJson(),
+      'measurementResult': instance.measurementResult.toJson(),
+    };
+
+_IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge
+    _$IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeFromJson(
+            Map<String, dynamic> json) =>
+        _IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge(
           sex: $enumDecode(_$SexEnumMap, json['sex']),
           age: Age.fromJson(json['age'] as Map<String, dynamic>),
           measurementResult: Length.fromJson(
@@ -264,90 +274,95 @@ _PretermInfantsPostnatalGrowthHeadCircumferenceForAge
         );
 
 Map<String, dynamic>
-    _$PretermInfantsPostnatalGrowthHeadCircumferenceForAgeToJson(
-            _PretermInfantsPostnatalGrowthHeadCircumferenceForAge instance) =>
+    _$IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeToJson(
+            _IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge
+                instance) =>
         <String, dynamic>{
           'sex': _$SexEnumMap[instance.sex]!,
           'age': instance.age.toJson(),
           'measurementResult': instance.measurementResult.toJson(),
         };
 
-_PretermInfantsPostnatalGrowthLengthForAge
-    _$PretermInfantsPostnatalGrowthLengthForAgeFromJson(
+_IntergrowthPretermInfantsPostnatalGrowthLengthForAge
+    _$IntergrowthPretermInfantsPostnatalGrowthLengthForAgeFromJson(
             Map<String, dynamic> json) =>
-        _PretermInfantsPostnatalGrowthLengthForAge(
+        _IntergrowthPretermInfantsPostnatalGrowthLengthForAge(
           sex: $enumDecode(_$SexEnumMap, json['sex']),
           age: Age.fromJson(json['age'] as Map<String, dynamic>),
           measurementResult: Length.fromJson(
               json['measurementResult'] as Map<String, dynamic>),
         );
 
-Map<String, dynamic> _$PretermInfantsPostnatalGrowthLengthForAgeToJson(
-        _PretermInfantsPostnatalGrowthLengthForAge instance) =>
-    <String, dynamic>{
-      'sex': _$SexEnumMap[instance.sex]!,
-      'age': instance.age.toJson(),
-      'measurementResult': instance.measurementResult.toJson(),
-    };
+Map<String, dynamic>
+    _$IntergrowthPretermInfantsPostnatalGrowthLengthForAgeToJson(
+            _IntergrowthPretermInfantsPostnatalGrowthLengthForAge instance) =>
+        <String, dynamic>{
+          'sex': _$SexEnumMap[instance.sex]!,
+          'age': instance.age.toJson(),
+          'measurementResult': instance.measurementResult.toJson(),
+        };
 
-_PretermInfantsPostnatalGrowthWeightForAge
-    _$PretermInfantsPostnatalGrowthWeightForAgeFromJson(
+_IntergrowthPretermInfantsPostnatalGrowthWeightForAge
+    _$IntergrowthPretermInfantsPostnatalGrowthWeightForAgeFromJson(
             Map<String, dynamic> json) =>
-        _PretermInfantsPostnatalGrowthWeightForAge(
+        _IntergrowthPretermInfantsPostnatalGrowthWeightForAge(
           sex: $enumDecode(_$SexEnumMap, json['sex']),
           age: Age.fromJson(json['age'] as Map<String, dynamic>),
           measurementResult:
               Mass.fromJson(json['measurementResult'] as Map<String, dynamic>),
         );
 
-Map<String, dynamic> _$PretermInfantsPostnatalGrowthWeightForAgeToJson(
-        _PretermInfantsPostnatalGrowthWeightForAge instance) =>
-    <String, dynamic>{
-      'sex': _$SexEnumMap[instance.sex]!,
-      'age': instance.age.toJson(),
-      'measurementResult': instance.measurementResult.toJson(),
-    };
+Map<String, dynamic>
+    _$IntergrowthPretermInfantsPostnatalGrowthWeightForAgeToJson(
+            _IntergrowthPretermInfantsPostnatalGrowthWeightForAge instance) =>
+        <String, dynamic>{
+          'sex': _$SexEnumMap[instance.sex]!,
+          'age': instance.age.toJson(),
+          'measurementResult': instance.measurementResult.toJson(),
+        };
 
-_SymphysisFundalHeightForAge _$SymphysisFundalHeightForAgeFromJson(
-        Map<String, dynamic> json) =>
-    _SymphysisFundalHeightForAge(
-      age: Age.fromJson(json['age'] as Map<String, dynamic>),
-      length: Length.fromJson(json['length'] as Map<String, dynamic>),
-    );
+_IntergrowthSymphysisFundalHeightForAge
+    _$IntergrowthSymphysisFundalHeightForAgeFromJson(
+            Map<String, dynamic> json) =>
+        _IntergrowthSymphysisFundalHeightForAge(
+          age: Age.fromJson(json['age'] as Map<String, dynamic>),
+          length: Length.fromJson(json['length'] as Map<String, dynamic>),
+        );
 
-Map<String, dynamic> _$SymphysisFundalHeightForAgeToJson(
-        _SymphysisFundalHeightForAge instance) =>
+Map<String, dynamic> _$IntergrowthSymphysisFundalHeightForAgeToJson(
+        _IntergrowthSymphysisFundalHeightForAge instance) =>
     <String, dynamic>{
       'age': instance.age.toJson(),
       'length': instance.length.toJson(),
     };
 
-_GestationalWeightGainForAge _$GestationalWeightGainForAgeFromJson(
-        Map<String, dynamic> json) =>
-    _GestationalWeightGainForAge(
-      sex: $enumDecode(_$SexEnumMap, json['sex']),
-      age: Age.fromJson(json['age'] as Map<String, dynamic>),
-      measurementResult:
-          Mass.fromJson(json['measurementResult'] as Map<String, dynamic>),
-    );
+_IntergrowthGestationalWeightGainForAge
+    _$IntergrowthGestationalWeightGainForAgeFromJson(
+            Map<String, dynamic> json) =>
+        _IntergrowthGestationalWeightGainForAge(
+          sex: $enumDecode(_$SexEnumMap, json['sex']),
+          age: Age.fromJson(json['age'] as Map<String, dynamic>),
+          measurementResult:
+              Mass.fromJson(json['measurementResult'] as Map<String, dynamic>),
+        );
 
-Map<String, dynamic> _$GestationalWeightGainForAgeToJson(
-        _GestationalWeightGainForAge instance) =>
+Map<String, dynamic> _$IntergrowthGestationalWeightGainForAgeToJson(
+        _IntergrowthGestationalWeightGainForAge instance) =>
     <String, dynamic>{
       'sex': _$SexEnumMap[instance.sex]!,
       'age': instance.age.toJson(),
       'measurementResult': instance.measurementResult.toJson(),
     };
 
-_CrownRumpLengthForAge _$CrownRumpLengthForAgeFromJson(
+_IntergrowthCrownRumpLengthForAge _$IntergrowthCrownRumpLengthForAgeFromJson(
         Map<String, dynamic> json) =>
-    _CrownRumpLengthForAge(
+    _IntergrowthCrownRumpLengthForAge(
       age: Age.fromJson(json['age'] as Map<String, dynamic>),
       length: Length.fromJson(json['length'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$CrownRumpLengthForAgeToJson(
-        _CrownRumpLengthForAge instance) =>
+Map<String, dynamic> _$IntergrowthCrownRumpLengthForAgeToJson(
+        _IntergrowthCrownRumpLengthForAge instance) =>
     <String, dynamic>{
       'age': instance.age.toJson(),
       'length': instance.length.toJson(),

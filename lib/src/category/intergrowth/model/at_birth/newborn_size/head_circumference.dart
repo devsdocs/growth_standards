@@ -1,44 +1,47 @@
 part of '../../../intergrowth.dart';
 
-class NewbornBirthHeadCircumferenceForAgeData extends AgeBasedData {
-  factory NewbornBirthHeadCircumferenceForAgeData() => _singleton;
-  NewbornBirthHeadCircumferenceForAgeData._(this._data);
+class IntergrowthNewbornBirthHeadCircumferenceForAgeData extends AgeBasedData {
+  factory IntergrowthNewbornBirthHeadCircumferenceForAgeData() => _singleton;
+  IntergrowthNewbornBirthHeadCircumferenceForAgeData._(this._data);
 
-  static final _singleton = NewbornBirthHeadCircumferenceForAgeData._(_parse());
+  static final _singleton =
+      IntergrowthNewbornBirthHeadCircumferenceForAgeData._(_parse());
 
-  static Map<Sex, Map<int, _NewbornBirthHeadCircumferenceForAgeLMS>> _parse() =>
-      {
-        Sex.male: _grow_newborn_boys_hc.toJsonObjectAsMap.map(
-          (k1, v1) {
-            v1 as Map<String, dynamic>;
-            final lms =
-                LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
-            return MapEntry(
-              int.parse(k1),
-              _NewbornBirthHeadCircumferenceForAgeLMS(
-                lms: lms,
-              ),
-            );
-          },
-        ),
-        Sex.female: _grow_newborn_girls_hc.toJsonObjectAsMap.map(
-          (k1, v1) {
-            v1 as Map<String, dynamic>;
-            final lms =
-                LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
-            return MapEntry(
-              int.parse(k1),
-              _NewbornBirthHeadCircumferenceForAgeLMS(
-                lms: lms,
-              ),
-            );
-          },
-        ),
-      };
+  static Map<Sex, Map<int, _IntergrowthNewbornBirthHeadCircumferenceForAgeLMS>>
+      _parse() => {
+            Sex.male: _grow_newborn_boys_hc.toJsonObjectAsMap.map(
+              (k1, v1) {
+                v1 as Map<String, dynamic>;
+                final lms = LMS(
+                    l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
+                return MapEntry(
+                  int.parse(k1),
+                  _IntergrowthNewbornBirthHeadCircumferenceForAgeLMS(
+                    lms: lms,
+                  ),
+                );
+              },
+            ),
+            Sex.female: _grow_newborn_girls_hc.toJsonObjectAsMap.map(
+              (k1, v1) {
+                v1 as Map<String, dynamic>;
+                final lms = LMS(
+                    l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
+                return MapEntry(
+                  int.parse(k1),
+                  _IntergrowthNewbornBirthHeadCircumferenceForAgeLMS(
+                    lms: lms,
+                  ),
+                );
+              },
+            ),
+          };
 
-  final Map<Sex, Map<int, _NewbornBirthHeadCircumferenceForAgeLMS>> _data;
+  final Map<Sex, Map<int, _IntergrowthNewbornBirthHeadCircumferenceForAgeLMS>>
+      _data;
   @override
-  Map<Sex, Map<int, _NewbornBirthHeadCircumferenceForAgeLMS>> get data => _data;
+  Map<Sex, Map<int, _IntergrowthNewbornBirthHeadCircumferenceForAgeLMS>>
+      get data => _data;
 
   @override
   String toString() => 'Newborn Head Circumference For Age Data($_data)';
@@ -49,26 +52,27 @@ class NewbornBirthHeadCircumferenceForAgeData extends AgeBasedData {
 
 /// Measure within first 24 hours of life, for infants born between gestational weeks 24 and 33
 @freezed
-sealed class NewbornBirthHeadCircumferenceForAge extends AgeBasedResult
-    with _$NewbornBirthHeadCircumferenceForAge {
-  factory NewbornBirthHeadCircumferenceForAge({
+sealed class IntergrowthNewbornBirthHeadCircumferenceForAge
+    extends AgeBasedResult
+    with _$IntergrowthNewbornBirthHeadCircumferenceForAge {
+  factory IntergrowthNewbornBirthHeadCircumferenceForAge({
     required Sex sex,
     required Age age,
     required Length measurementResult,
-  }) = _NewbornBirthHeadCircumferenceForAge;
+  }) = _IntergrowthNewbornBirthHeadCircumferenceForAge;
 
-  const NewbornBirthHeadCircumferenceForAge._();
+  const IntergrowthNewbornBirthHeadCircumferenceForAge._();
 
-  factory NewbornBirthHeadCircumferenceForAge.fromJson(
+  factory IntergrowthNewbornBirthHeadCircumferenceForAge.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$NewbornBirthHeadCircumferenceForAgeFromJson(json);
+      _$IntergrowthNewbornBirthHeadCircumferenceForAgeFromJson(json);
 
   @override
-  NewbornBirthHeadCircumferenceForAgeData get contextData =>
-      NewbornBirthHeadCircumferenceForAgeData();
+  IntergrowthNewbornBirthHeadCircumferenceForAgeData get contextData =>
+      IntergrowthNewbornBirthHeadCircumferenceForAgeData();
 
-  _NewbornBirthHeadCircumferenceForAgeLMS get _ageData =>
+  _IntergrowthNewbornBirthHeadCircumferenceForAgeLMS get _ageData =>
       contextData._data[sex]![ageAtObservationDate.ageInTotalDaysByNow]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
@@ -92,15 +96,15 @@ sealed class NewbornBirthHeadCircumferenceForAge extends AgeBasedResult
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
-  _NewbornBirthHeadCircumferenceForAgeLMS get lmsData => _ageData;
+  _IntergrowthNewbornBirthHeadCircumferenceForAgeLMS get lmsData => _ageData;
 
   @override
   num get measurementResultInDefaultUnit =>
       measurementResult.toCentimeter.value;
 }
 
-class _NewbornBirthHeadCircumferenceForAgeLMS extends LMSContext {
-  _NewbornBirthHeadCircumferenceForAgeLMS({
+class _IntergrowthNewbornBirthHeadCircumferenceForAgeLMS extends LMSContext {
+  _IntergrowthNewbornBirthHeadCircumferenceForAgeLMS({
     required this.lms,
   });
   @override

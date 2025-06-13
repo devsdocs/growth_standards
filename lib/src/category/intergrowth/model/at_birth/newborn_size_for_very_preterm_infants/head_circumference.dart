@@ -1,13 +1,18 @@
 part of '../../../intergrowth.dart';
 
-class VeryPretermNewbornBirthHeadCircumferenceForAgeData extends AgeBasedData {
-  factory VeryPretermNewbornBirthHeadCircumferenceForAgeData() => _singleton;
-  VeryPretermNewbornBirthHeadCircumferenceForAgeData._(this._data);
+class IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeData
+    extends AgeBasedData {
+  factory IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeData() =>
+      _singleton;
+  IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeData._(this._data);
 
   static final _singleton =
-      VeryPretermNewbornBirthHeadCircumferenceForAgeData._(_parse());
+      IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeData._(_parse());
 
-  static Map<Sex, Map<int, _VeryPretermNewbornBirthHeadCircumferenceForAgeLMS>>
+  static Map<
+          Sex,
+          Map<int,
+              _IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeLMS>>
       _parse() => {
             Sex.male: _grow_verypreterm_boys_hc.toJsonObjectAsMap.map(
               (k1, v1) {
@@ -16,7 +21,7 @@ class VeryPretermNewbornBirthHeadCircumferenceForAgeData extends AgeBasedData {
                     l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
                 return MapEntry(
                   int.parse(k1),
-                  _VeryPretermNewbornBirthHeadCircumferenceForAgeLMS(
+                  _IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeLMS(
                     lms: lms,
                   ),
                 );
@@ -29,7 +34,7 @@ class VeryPretermNewbornBirthHeadCircumferenceForAgeData extends AgeBasedData {
                     l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
                 return MapEntry(
                   int.parse(k1),
-                  _VeryPretermNewbornBirthHeadCircumferenceForAgeLMS(
+                  _IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeLMS(
                     lms: lms,
                   ),
                 );
@@ -37,10 +42,15 @@ class VeryPretermNewbornBirthHeadCircumferenceForAgeData extends AgeBasedData {
             ),
           };
 
-  final Map<Sex, Map<int, _VeryPretermNewbornBirthHeadCircumferenceForAgeLMS>>
-      _data;
+  final Map<
+      Sex,
+      Map<int,
+          _IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeLMS>> _data;
   @override
-  Map<Sex, Map<int, _VeryPretermNewbornBirthHeadCircumferenceForAgeLMS>>
+  Map<
+          Sex,
+          Map<int,
+              _IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeLMS>>
       get data => _data;
 
   @override
@@ -52,27 +62,28 @@ class VeryPretermNewbornBirthHeadCircumferenceForAgeData extends AgeBasedData {
 
 /// Measure within first 24 hours of life, for infants born between gestational weeks 33 and 43
 @freezed
-sealed class VeryPretermNewbornBirthHeadCircumferenceForAge
+sealed class IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge
     extends AgeBasedResult
-    with _$VeryPretermNewbornBirthHeadCircumferenceForAge {
-  factory VeryPretermNewbornBirthHeadCircumferenceForAge({
+    with _$IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge {
+  factory IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge({
     required Sex sex,
     required Age age,
     required Length measurementResult,
-  }) = _VeryPretermNewbornBirthHeadCircumferenceForAge;
+  }) = _IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge;
 
-  const VeryPretermNewbornBirthHeadCircumferenceForAge._();
+  const IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge._();
 
-  factory VeryPretermNewbornBirthHeadCircumferenceForAge.fromJson(
+  factory IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$VeryPretermNewbornBirthHeadCircumferenceForAgeFromJson(json);
+      _$IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeFromJson(json);
 
   @override
-  VeryPretermNewbornBirthHeadCircumferenceForAgeData get contextData =>
-      VeryPretermNewbornBirthHeadCircumferenceForAgeData();
+  IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeData
+      get contextData =>
+          IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeData();
 
-  _VeryPretermNewbornBirthHeadCircumferenceForAgeLMS get _ageData =>
+  _IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeLMS get _ageData =>
       contextData._data[sex]![ageAtObservationDate.ageInTotalDaysByNow]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
@@ -96,15 +107,17 @@ sealed class VeryPretermNewbornBirthHeadCircumferenceForAge
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
-  _VeryPretermNewbornBirthHeadCircumferenceForAgeLMS get lmsData => _ageData;
+  _IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeLMS get lmsData =>
+      _ageData;
 
   @override
   num get measurementResultInDefaultUnit =>
       measurementResult.toCentimeter.value;
 }
 
-class _VeryPretermNewbornBirthHeadCircumferenceForAgeLMS extends LMSContext {
-  _VeryPretermNewbornBirthHeadCircumferenceForAgeLMS({
+class _IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeLMS
+    extends LMSContext {
+  _IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeLMS({
     required this.lms,
   });
   @override

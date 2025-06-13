@@ -1,12 +1,13 @@
 part of '../../../intergrowth.dart';
 
-class NewbornBirthLengthForAgeData extends AgeBasedData {
-  factory NewbornBirthLengthForAgeData() => _singleton;
-  NewbornBirthLengthForAgeData._(this._data);
+class IntergrowthNewbornBirthLengthForAgeData extends AgeBasedData {
+  factory IntergrowthNewbornBirthLengthForAgeData() => _singleton;
+  IntergrowthNewbornBirthLengthForAgeData._(this._data);
 
-  static final _singleton = NewbornBirthLengthForAgeData._(_parse());
+  static final _singleton = IntergrowthNewbornBirthLengthForAgeData._(_parse());
 
-  static Map<Sex, Map<int, _NewbornBirthLengthForAgeLMS>> _parse() => {
+  static Map<Sex, Map<int, _IntergrowthNewbornBirthLengthForAgeLMS>> _parse() =>
+      {
         Sex.male: _grow_newborn_boys_lt.toJsonObjectAsMap.map(
           (k1, v1) {
             v1 as Map<String, dynamic>;
@@ -14,7 +15,7 @@ class NewbornBirthLengthForAgeData extends AgeBasedData {
                 LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
             return MapEntry(
               int.parse(k1),
-              _NewbornBirthLengthForAgeLMS(
+              _IntergrowthNewbornBirthLengthForAgeLMS(
                 lms: lms,
               ),
             );
@@ -27,7 +28,7 @@ class NewbornBirthLengthForAgeData extends AgeBasedData {
                 LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
             return MapEntry(
               int.parse(k1),
-              _NewbornBirthLengthForAgeLMS(
+              _IntergrowthNewbornBirthLengthForAgeLMS(
                 lms: lms,
               ),
             );
@@ -35,9 +36,9 @@ class NewbornBirthLengthForAgeData extends AgeBasedData {
         ),
       };
 
-  final Map<Sex, Map<int, _NewbornBirthLengthForAgeLMS>> _data;
+  final Map<Sex, Map<int, _IntergrowthNewbornBirthLengthForAgeLMS>> _data;
   @override
-  Map<Sex, Map<int, _NewbornBirthLengthForAgeLMS>> get data => _data;
+  Map<Sex, Map<int, _IntergrowthNewbornBirthLengthForAgeLMS>> get data => _data;
 
   @override
   String toString() => 'Newborn Length For Age Data($_data)';
@@ -48,26 +49,26 @@ class NewbornBirthLengthForAgeData extends AgeBasedData {
 
 /// Measure within first 24 hours of life, for infants born between gestational weeks 33 and 43
 @freezed
-sealed class NewbornBirthLengthForAge extends AgeBasedResult
-    with _$NewbornBirthLengthForAge {
-  factory NewbornBirthLengthForAge({
+sealed class IntergrowthNewbornBirthLengthForAge extends AgeBasedResult
+    with _$IntergrowthNewbornBirthLengthForAge {
+  factory IntergrowthNewbornBirthLengthForAge({
     required Sex sex,
     required Age age,
     required Length measurementResult,
-  }) = _NewbornBirthLengthForAge;
+  }) = _IntergrowthNewbornBirthLengthForAge;
 
-  const NewbornBirthLengthForAge._();
+  const IntergrowthNewbornBirthLengthForAge._();
 
-  factory NewbornBirthLengthForAge.fromJson(
+  factory IntergrowthNewbornBirthLengthForAge.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$NewbornBirthLengthForAgeFromJson(json);
+      _$IntergrowthNewbornBirthLengthForAgeFromJson(json);
 
   @override
-  NewbornBirthLengthForAgeData get contextData =>
-      NewbornBirthLengthForAgeData();
+  IntergrowthNewbornBirthLengthForAgeData get contextData =>
+      IntergrowthNewbornBirthLengthForAgeData();
 
-  _NewbornBirthLengthForAgeLMS get _ageData =>
+  _IntergrowthNewbornBirthLengthForAgeLMS get _ageData =>
       contextData._data[sex]![ageAtObservationDate.ageInTotalDaysByNow]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
@@ -91,15 +92,15 @@ sealed class NewbornBirthLengthForAge extends AgeBasedResult
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
-  _NewbornBirthLengthForAgeLMS get lmsData => _ageData;
+  _IntergrowthNewbornBirthLengthForAgeLMS get lmsData => _ageData;
 
   @override
   num get measurementResultInDefaultUnit =>
       measurementResult.toCentimeter.value;
 }
 
-class _NewbornBirthLengthForAgeLMS extends LMSContext {
-  _NewbornBirthLengthForAgeLMS({
+class _IntergrowthNewbornBirthLengthForAgeLMS extends LMSContext {
+  _IntergrowthNewbornBirthLengthForAgeLMS({
     required this.lms,
   });
   @override

@@ -1,13 +1,16 @@
 part of '../../../intergrowth.dart';
 
-class FetalGrowtOccipitoFrontalDiameterForAgeData extends AgeBasedData {
-  factory FetalGrowtOccipitoFrontalDiameterForAgeData() => _singleton;
-  FetalGrowtOccipitoFrontalDiameterForAgeData._(this._data);
+class IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeData
+    extends AgeBasedData {
+  factory IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeData() =>
+      _singleton;
+  IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeData._(this._data);
 
   static final _singleton =
-      FetalGrowtOccipitoFrontalDiameterForAgeData._(_parse());
+      IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeData._(_parse());
 
-  static Map<Sex, Map<int, _FetalGrowtOccipitoFrontalDiameterForAgeLMS>>
+  static Map<Sex,
+          Map<int, _IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeLMS>>
       _parse() {
     final map = _grow_fetal_ofd.toJsonObjectAsMap.map(
       (k1, v1) {
@@ -16,7 +19,7 @@ class FetalGrowtOccipitoFrontalDiameterForAgeData extends AgeBasedData {
             LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
         return MapEntry(
           int.parse(k1),
-          _FetalGrowtOccipitoFrontalDiameterForAgeLMS(
+          _IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeLMS(
             lms: lms,
           ),
         );
@@ -28,10 +31,11 @@ class FetalGrowtOccipitoFrontalDiameterForAgeData extends AgeBasedData {
     };
   }
 
-  final Map<Sex, Map<int, _FetalGrowtOccipitoFrontalDiameterForAgeLMS>> _data;
+  final Map<Sex,
+      Map<int, _IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeLMS>> _data;
   @override
-  Map<Sex, Map<int, _FetalGrowtOccipitoFrontalDiameterForAgeLMS>> get data =>
-      _data;
+  Map<Sex, Map<int, _IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeLMS>>
+      get data => _data;
 
   @override
   String toString() => 'Newborn Head Circumference For Age Data($_data)';
@@ -42,26 +46,28 @@ class FetalGrowtOccipitoFrontalDiameterForAgeData extends AgeBasedData {
 
 /// Measure within first 24 hours of life, for infants born between gestational weeks 24 and 33
 @freezed
-sealed class FetalGrowtOccipitoFrontalDiameterForAge extends AgeBasedResult
-    with _$FetalGrowtOccipitoFrontalDiameterForAge {
-  factory FetalGrowtOccipitoFrontalDiameterForAge({
+sealed class IntergrowthFetalGrowtOccipitoFrontalDiameterForAge
+    extends AgeBasedResult
+    with _$IntergrowthFetalGrowtOccipitoFrontalDiameterForAge {
+  factory IntergrowthFetalGrowtOccipitoFrontalDiameterForAge({
     required Age age,
     required Length measurementResult,
-  }) = _FetalGrowtOccipitoFrontalDiameterForAge;
+  }) = _IntergrowthFetalGrowtOccipitoFrontalDiameterForAge;
 
-  const FetalGrowtOccipitoFrontalDiameterForAge._();
+  const IntergrowthFetalGrowtOccipitoFrontalDiameterForAge._();
 
-  factory FetalGrowtOccipitoFrontalDiameterForAge.fromJson(
+  factory IntergrowthFetalGrowtOccipitoFrontalDiameterForAge.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$FetalGrowtOccipitoFrontalDiameterForAgeFromJson(json);
+      _$IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeFromJson(json);
 
   @override
-  FetalGrowtOccipitoFrontalDiameterForAgeData get contextData =>
-      FetalGrowtOccipitoFrontalDiameterForAgeData();
+  IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeData get contextData =>
+      IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeData();
 
-  _FetalGrowtOccipitoFrontalDiameterForAgeLMS get _ageData => contextData
-      ._data.values.first[ageAtObservationDate.ageInTotalWeeksByNow]!;
+  _IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeLMS get _ageData =>
+      contextData
+          ._data.values.first[ageAtObservationDate.ageInTotalWeeksByNow]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 
@@ -84,15 +90,17 @@ sealed class FetalGrowtOccipitoFrontalDiameterForAge extends AgeBasedResult
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
-  _FetalGrowtOccipitoFrontalDiameterForAgeLMS get lmsData => _ageData;
+  _IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeLMS get lmsData =>
+      _ageData;
 
   @override
   num get measurementResultInDefaultUnit =>
       measurementResult.toMillimeter.value;
 }
 
-class _FetalGrowtOccipitoFrontalDiameterForAgeLMS extends LMSContext {
-  _FetalGrowtOccipitoFrontalDiameterForAgeLMS({
+class _IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeLMS
+    extends LMSContext {
+  _IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeLMS({
     required this.lms,
   });
   @override

@@ -1,12 +1,14 @@
 part of '../../../intergrowth.dart';
 
-class FetalGrowtFemurLengthForAgeData extends AgeBasedData {
-  factory FetalGrowtFemurLengthForAgeData() => _singleton;
-  FetalGrowtFemurLengthForAgeData._(this._data);
+class IntergrowthFetalGrowtFemurLengthForAgeData extends AgeBasedData {
+  factory IntergrowthFetalGrowtFemurLengthForAgeData() => _singleton;
+  IntergrowthFetalGrowtFemurLengthForAgeData._(this._data);
 
-  static final _singleton = FetalGrowtFemurLengthForAgeData._(_parse());
+  static final _singleton =
+      IntergrowthFetalGrowtFemurLengthForAgeData._(_parse());
 
-  static Map<Sex, Map<int, _FetalGrowtFemurLengthForAgeLMS>> _parse() {
+  static Map<Sex, Map<int, _IntergrowthFetalGrowtFemurLengthForAgeLMS>>
+      _parse() {
     final map = _grow_fetal_fl.toJsonObjectAsMap.map(
       (k1, v1) {
         v1 as Map<String, dynamic>;
@@ -14,7 +16,7 @@ class FetalGrowtFemurLengthForAgeData extends AgeBasedData {
             LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
         return MapEntry(
           int.parse(k1),
-          _FetalGrowtFemurLengthForAgeLMS(
+          _IntergrowthFetalGrowtFemurLengthForAgeLMS(
             lms: lms,
           ),
         );
@@ -26,9 +28,10 @@ class FetalGrowtFemurLengthForAgeData extends AgeBasedData {
     };
   }
 
-  final Map<Sex, Map<int, _FetalGrowtFemurLengthForAgeLMS>> _data;
+  final Map<Sex, Map<int, _IntergrowthFetalGrowtFemurLengthForAgeLMS>> _data;
   @override
-  Map<Sex, Map<int, _FetalGrowtFemurLengthForAgeLMS>> get data => _data;
+  Map<Sex, Map<int, _IntergrowthFetalGrowtFemurLengthForAgeLMS>> get data =>
+      _data;
 
   @override
   String toString() => 'Newborn Head Circumference For Age Data($_data)';
@@ -39,25 +42,25 @@ class FetalGrowtFemurLengthForAgeData extends AgeBasedData {
 
 /// Measure within first 24 hours of life, for infants born between gestational weeks 24 and 33
 @freezed
-sealed class FetalGrowtFemurLengthForAge extends AgeBasedResult
-    with _$FetalGrowtFemurLengthForAge {
-  factory FetalGrowtFemurLengthForAge({
+sealed class IntergrowthFetalGrowtFemurLengthForAge extends AgeBasedResult
+    with _$IntergrowthFetalGrowtFemurLengthForAge {
+  factory IntergrowthFetalGrowtFemurLengthForAge({
     required Age age,
     required Length measurementResult,
-  }) = _FetalGrowtFemurLengthForAge;
+  }) = _IntergrowthFetalGrowtFemurLengthForAge;
 
-  const FetalGrowtFemurLengthForAge._();
+  const IntergrowthFetalGrowtFemurLengthForAge._();
 
-  factory FetalGrowtFemurLengthForAge.fromJson(
+  factory IntergrowthFetalGrowtFemurLengthForAge.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$FetalGrowtFemurLengthForAgeFromJson(json);
+      _$IntergrowthFetalGrowtFemurLengthForAgeFromJson(json);
 
   @override
-  FetalGrowtFemurLengthForAgeData get contextData =>
-      FetalGrowtFemurLengthForAgeData();
+  IntergrowthFetalGrowtFemurLengthForAgeData get contextData =>
+      IntergrowthFetalGrowtFemurLengthForAgeData();
 
-  _FetalGrowtFemurLengthForAgeLMS get _ageData => contextData
+  _IntergrowthFetalGrowtFemurLengthForAgeLMS get _ageData => contextData
       ._data.values.first[ageAtObservationDate.ageInTotalWeeksByNow]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
@@ -81,15 +84,15 @@ sealed class FetalGrowtFemurLengthForAge extends AgeBasedResult
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
-  _FetalGrowtFemurLengthForAgeLMS get lmsData => _ageData;
+  _IntergrowthFetalGrowtFemurLengthForAgeLMS get lmsData => _ageData;
 
   @override
   num get measurementResultInDefaultUnit =>
       measurementResult.toMillimeter.value;
 }
 
-class _FetalGrowtFemurLengthForAgeLMS extends LMSContext {
-  _FetalGrowtFemurLengthForAgeLMS({
+class _IntergrowthFetalGrowtFemurLengthForAgeLMS extends LMSContext {
+  _IntergrowthFetalGrowtFemurLengthForAgeLMS({
     required this.lms,
   });
   @override

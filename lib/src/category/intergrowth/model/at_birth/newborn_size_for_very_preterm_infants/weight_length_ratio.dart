@@ -1,49 +1,59 @@
 part of '../../../intergrowth.dart';
 
-class VeryPretermNewbornBirthWeightForLengthRatioForAgeData
+class IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeData
     extends AgeBasedData {
-  factory VeryPretermNewbornBirthWeightForLengthRatioForAgeData() => _singleton;
-  VeryPretermNewbornBirthWeightForLengthRatioForAgeData._(this._data);
+  factory IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeData() =>
+      _singleton;
+  IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeData._(
+      this._data);
 
   static final _singleton =
-      VeryPretermNewbornBirthWeightForLengthRatioForAgeData._(_parse());
+      IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeData._(
+          _parse());
 
   static Map<
-      Sex,
-      Map<int,
-          _VeryPretermNewbornBirthWeightForLengthRatioForAgeLMS>> _parse() => {
-        Sex.male: _grow_verypreterm_wlr_boys.toJsonObjectAsMap.map(
-          (k1, v1) {
-            v1 as Map<String, dynamic>;
-            final lms =
-                LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
-            return MapEntry(
-              int.parse(k1),
-              _VeryPretermNewbornBirthWeightForLengthRatioForAgeLMS(
-                lms: lms,
-              ),
-            );
-          },
-        ),
-        Sex.female: _grow_verypreterm_wlr_girls.toJsonObjectAsMap.map(
-          (k1, v1) {
-            v1 as Map<String, dynamic>;
-            final lms =
-                LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
-            return MapEntry(
-              int.parse(k1),
-              _VeryPretermNewbornBirthWeightForLengthRatioForAgeLMS(
-                lms: lms,
-              ),
-            );
-          },
-        ),
-      };
+          Sex,
+          Map<int,
+              _IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeLMS>>
+      _parse() => {
+            Sex.male: _grow_verypreterm_wlr_boys.toJsonObjectAsMap.map(
+              (k1, v1) {
+                v1 as Map<String, dynamic>;
+                final lms = LMS(
+                    l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
+                return MapEntry(
+                  int.parse(k1),
+                  _IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeLMS(
+                    lms: lms,
+                  ),
+                );
+              },
+            ),
+            Sex.female: _grow_verypreterm_wlr_girls.toJsonObjectAsMap.map(
+              (k1, v1) {
+                v1 as Map<String, dynamic>;
+                final lms = LMS(
+                    l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
+                return MapEntry(
+                  int.parse(k1),
+                  _IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeLMS(
+                    lms: lms,
+                  ),
+                );
+              },
+            ),
+          };
 
-  final Map<Sex,
-      Map<int, _VeryPretermNewbornBirthWeightForLengthRatioForAgeLMS>> _data;
+  final Map<
+          Sex,
+          Map<int,
+              _IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeLMS>>
+      _data;
   @override
-  Map<Sex, Map<int, _VeryPretermNewbornBirthWeightForLengthRatioForAgeLMS>>
+  Map<
+          Sex,
+          Map<int,
+              _IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeLMS>>
       get data => _data;
 
   @override
@@ -81,28 +91,31 @@ sealed class NewbornWeightLengthRatioMeasurement
 
 /// Measure within first 24 hours of life, for infants born between gestational weeks 24 and 33
 @freezed
-sealed class VeryPretermNewbornBirthWeightForLengthRatioForAge
+sealed class IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge
     extends AgeBasedResult
-    with _$VeryPretermNewbornBirthWeightForLengthRatioForAge {
-  factory VeryPretermNewbornBirthWeightForLengthRatioForAge({
+    with _$IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge {
+  factory IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge({
     required Sex sex,
     required Age age,
     required NewbornWeightLengthRatioMeasurement measurementResult,
-  }) = _VeryPretermNewbornBirthWeightForLengthRatioForAge;
+  }) = _IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge;
 
-  const VeryPretermNewbornBirthWeightForLengthRatioForAge._();
+  const IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge._();
 
-  factory VeryPretermNewbornBirthWeightForLengthRatioForAge.fromJson(
+  factory IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$VeryPretermNewbornBirthWeightForLengthRatioForAgeFromJson(json);
+      _$IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeFromJson(
+          json);
 
   @override
-  VeryPretermNewbornBirthWeightForLengthRatioForAgeData get contextData =>
-      VeryPretermNewbornBirthWeightForLengthRatioForAgeData();
+  IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeData
+      get contextData =>
+          IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeData();
 
-  _VeryPretermNewbornBirthWeightForLengthRatioForAgeLMS get _ageData =>
-      contextData._data[sex]![ageAtObservationDate.ageInTotalDaysByNow]!;
+  _IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeLMS
+      get _ageData =>
+          contextData._data[sex]![ageAtObservationDate.ageInTotalDaysByNow]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 
@@ -125,14 +138,16 @@ sealed class VeryPretermNewbornBirthWeightForLengthRatioForAge
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
-  _VeryPretermNewbornBirthWeightForLengthRatioForAgeLMS get lmsData => _ageData;
+  _IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeLMS
+      get lmsData => _ageData;
 
   @override
   num get measurementResultInDefaultUnit => measurementResult.value;
 }
 
-class _VeryPretermNewbornBirthWeightForLengthRatioForAgeLMS extends LMSContext {
-  _VeryPretermNewbornBirthWeightForLengthRatioForAgeLMS({
+class _IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeLMS
+    extends LMSContext {
+  _IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeLMS({
     required this.lms,
   });
   @override

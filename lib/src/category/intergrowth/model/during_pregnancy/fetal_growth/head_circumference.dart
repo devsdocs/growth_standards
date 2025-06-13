@@ -1,12 +1,14 @@
 part of '../../../intergrowth.dart';
 
-class FetalGrowtHeadCircumferenceForAgeData extends AgeBasedData {
-  factory FetalGrowtHeadCircumferenceForAgeData() => _singleton;
-  FetalGrowtHeadCircumferenceForAgeData._(this._data);
+class IntergrowthFetalGrowtHeadCircumferenceForAgeData extends AgeBasedData {
+  factory IntergrowthFetalGrowtHeadCircumferenceForAgeData() => _singleton;
+  IntergrowthFetalGrowtHeadCircumferenceForAgeData._(this._data);
 
-  static final _singleton = FetalGrowtHeadCircumferenceForAgeData._(_parse());
+  static final _singleton =
+      IntergrowthFetalGrowtHeadCircumferenceForAgeData._(_parse());
 
-  static Map<Sex, Map<int, _FetalGrowtHeadCircumferenceForAgeLMS>> _parse() {
+  static Map<Sex, Map<int, _IntergrowthFetalGrowtHeadCircumferenceForAgeLMS>>
+      _parse() {
     final map = _grow_fetal_hc.toJsonObjectAsMap.map(
       (k1, v1) {
         v1 as Map<String, dynamic>;
@@ -14,7 +16,7 @@ class FetalGrowtHeadCircumferenceForAgeData extends AgeBasedData {
             LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
         return MapEntry(
           int.parse(k1),
-          _FetalGrowtHeadCircumferenceForAgeLMS(
+          _IntergrowthFetalGrowtHeadCircumferenceForAgeLMS(
             lms: lms,
           ),
         );
@@ -26,9 +28,11 @@ class FetalGrowtHeadCircumferenceForAgeData extends AgeBasedData {
     };
   }
 
-  final Map<Sex, Map<int, _FetalGrowtHeadCircumferenceForAgeLMS>> _data;
+  final Map<Sex, Map<int, _IntergrowthFetalGrowtHeadCircumferenceForAgeLMS>>
+      _data;
   @override
-  Map<Sex, Map<int, _FetalGrowtHeadCircumferenceForAgeLMS>> get data => _data;
+  Map<Sex, Map<int, _IntergrowthFetalGrowtHeadCircumferenceForAgeLMS>>
+      get data => _data;
 
   @override
   String toString() => 'Newborn Head Circumference For Age Data($_data)';
@@ -39,25 +43,25 @@ class FetalGrowtHeadCircumferenceForAgeData extends AgeBasedData {
 
 /// Measure within first 24 hours of life, for infants born between gestational weeks 24 and 33
 @freezed
-sealed class FetalGrowtHeadCircumferenceForAge extends AgeBasedResult
-    with _$FetalGrowtHeadCircumferenceForAge {
-  factory FetalGrowtHeadCircumferenceForAge({
+sealed class IntergrowthFetalGrowtHeadCircumferenceForAge extends AgeBasedResult
+    with _$IntergrowthFetalGrowtHeadCircumferenceForAge {
+  factory IntergrowthFetalGrowtHeadCircumferenceForAge({
     required Age age,
     required Length measurementResult,
-  }) = _FetalGrowtHeadCircumferenceForAge;
+  }) = _IntergrowthFetalGrowtHeadCircumferenceForAge;
 
-  const FetalGrowtHeadCircumferenceForAge._();
+  const IntergrowthFetalGrowtHeadCircumferenceForAge._();
 
-  factory FetalGrowtHeadCircumferenceForAge.fromJson(
+  factory IntergrowthFetalGrowtHeadCircumferenceForAge.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$FetalGrowtHeadCircumferenceForAgeFromJson(json);
+      _$IntergrowthFetalGrowtHeadCircumferenceForAgeFromJson(json);
 
   @override
-  FetalGrowtHeadCircumferenceForAgeData get contextData =>
-      FetalGrowtHeadCircumferenceForAgeData();
+  IntergrowthFetalGrowtHeadCircumferenceForAgeData get contextData =>
+      IntergrowthFetalGrowtHeadCircumferenceForAgeData();
 
-  _FetalGrowtHeadCircumferenceForAgeLMS get _ageData => contextData
+  _IntergrowthFetalGrowtHeadCircumferenceForAgeLMS get _ageData => contextData
       ._data.values.first[ageAtObservationDate.ageInTotalWeeksByNow]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
@@ -81,15 +85,15 @@ sealed class FetalGrowtHeadCircumferenceForAge extends AgeBasedResult
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
-  _FetalGrowtHeadCircumferenceForAgeLMS get lmsData => _ageData;
+  _IntergrowthFetalGrowtHeadCircumferenceForAgeLMS get lmsData => _ageData;
 
   @override
   num get measurementResultInDefaultUnit =>
       measurementResult.toMillimeter.value;
 }
 
-class _FetalGrowtHeadCircumferenceForAgeLMS extends LMSContext {
-  _FetalGrowtHeadCircumferenceForAgeLMS({
+class _IntergrowthFetalGrowtHeadCircumferenceForAgeLMS extends LMSContext {
+  _IntergrowthFetalGrowtHeadCircumferenceForAgeLMS({
     required this.lms,
   });
   @override

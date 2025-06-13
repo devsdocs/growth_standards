@@ -1,46 +1,52 @@
 part of '../../../intergrowth.dart';
 
-class PretermInfantsPostnatalGrowthWeightForAgeData extends AgeBasedData {
-  factory PretermInfantsPostnatalGrowthWeightForAgeData() => _singleton;
-  PretermInfantsPostnatalGrowthWeightForAgeData._(this._data);
+class IntergrowthPretermInfantsPostnatalGrowthWeightForAgeData
+    extends AgeBasedData {
+  factory IntergrowthPretermInfantsPostnatalGrowthWeightForAgeData() =>
+      _singleton;
+  IntergrowthPretermInfantsPostnatalGrowthWeightForAgeData._(this._data);
 
   static final _singleton =
-      PretermInfantsPostnatalGrowthWeightForAgeData._(_parse());
+      IntergrowthPretermInfantsPostnatalGrowthWeightForAgeData._(_parse());
 
-  static Map<Sex, Map<int, _PretermInfantsPostnatalGrowthWeightForAgeLMS>>
-      _parse() => {
-            Sex.male: _grow_preterm_boys_bw.toJsonObjectAsMap.map(
-              (k1, v1) {
-                v1 as Map<String, dynamic>;
-                final lms = LMS(
-                    l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
-                return MapEntry(
-                  int.parse(k1),
-                  _PretermInfantsPostnatalGrowthWeightForAgeLMS(
-                    lms: lms,
-                  ),
-                );
-              },
-            ),
-            Sex.female: _grow_preterm_girls_bw.toJsonObjectAsMap.map(
-              (k1, v1) {
-                v1 as Map<String, dynamic>;
-                final lms = LMS(
-                    l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
-                return MapEntry(
-                  int.parse(k1),
-                  _PretermInfantsPostnatalGrowthWeightForAgeLMS(
-                    lms: lms,
-                  ),
-                );
-              },
-            ),
-          };
+  static Map<
+      Sex,
+      Map<int,
+          _IntergrowthPretermInfantsPostnatalGrowthWeightForAgeLMS>> _parse() =>
+      {
+        Sex.male: _grow_preterm_boys_bw.toJsonObjectAsMap.map(
+          (k1, v1) {
+            v1 as Map<String, dynamic>;
+            final lms =
+                LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
+            return MapEntry(
+              int.parse(k1),
+              _IntergrowthPretermInfantsPostnatalGrowthWeightForAgeLMS(
+                lms: lms,
+              ),
+            );
+          },
+        ),
+        Sex.female: _grow_preterm_girls_bw.toJsonObjectAsMap.map(
+          (k1, v1) {
+            v1 as Map<String, dynamic>;
+            final lms =
+                LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
+            return MapEntry(
+              int.parse(k1),
+              _IntergrowthPretermInfantsPostnatalGrowthWeightForAgeLMS(
+                lms: lms,
+              ),
+            );
+          },
+        ),
+      };
 
-  final Map<Sex, Map<int, _PretermInfantsPostnatalGrowthWeightForAgeLMS>> _data;
+  final Map<Sex,
+      Map<int, _IntergrowthPretermInfantsPostnatalGrowthWeightForAgeLMS>> _data;
   @override
-  Map<Sex, Map<int, _PretermInfantsPostnatalGrowthWeightForAgeLMS>> get data =>
-      _data;
+  Map<Sex, Map<int, _IntergrowthPretermInfantsPostnatalGrowthWeightForAgeLMS>>
+      get data => _data;
 
   @override
   String toString() => 'Newborn Weight For Age Data($_data)';
@@ -51,26 +57,27 @@ class PretermInfantsPostnatalGrowthWeightForAgeData extends AgeBasedData {
 
 /// Measure within first 24 hours of life, for infants born between gestational weeks 33 and 43
 @freezed
-sealed class PretermInfantsPostnatalGrowthWeightForAge extends AgeBasedResult
-    with _$PretermInfantsPostnatalGrowthWeightForAge {
-  factory PretermInfantsPostnatalGrowthWeightForAge({
+sealed class IntergrowthPretermInfantsPostnatalGrowthWeightForAge
+    extends AgeBasedResult
+    with _$IntergrowthPretermInfantsPostnatalGrowthWeightForAge {
+  factory IntergrowthPretermInfantsPostnatalGrowthWeightForAge({
     required Sex sex,
     required Age age,
     required Mass measurementResult,
-  }) = _PretermInfantsPostnatalGrowthWeightForAge;
+  }) = _IntergrowthPretermInfantsPostnatalGrowthWeightForAge;
 
-  const PretermInfantsPostnatalGrowthWeightForAge._();
+  const IntergrowthPretermInfantsPostnatalGrowthWeightForAge._();
 
-  factory PretermInfantsPostnatalGrowthWeightForAge.fromJson(
+  factory IntergrowthPretermInfantsPostnatalGrowthWeightForAge.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$PretermInfantsPostnatalGrowthWeightForAgeFromJson(json);
+      _$IntergrowthPretermInfantsPostnatalGrowthWeightForAgeFromJson(json);
 
   @override
-  PretermInfantsPostnatalGrowthWeightForAgeData get contextData =>
-      PretermInfantsPostnatalGrowthWeightForAgeData();
+  IntergrowthPretermInfantsPostnatalGrowthWeightForAgeData get contextData =>
+      IntergrowthPretermInfantsPostnatalGrowthWeightForAgeData();
 
-  _PretermInfantsPostnatalGrowthWeightForAgeLMS get _ageData =>
+  _IntergrowthPretermInfantsPostnatalGrowthWeightForAgeLMS get _ageData =>
       contextData._data[sex]![ageAtObservationDate.ageInTotalWeeksByNow]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
@@ -94,14 +101,16 @@ sealed class PretermInfantsPostnatalGrowthWeightForAge extends AgeBasedResult
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
-  _PretermInfantsPostnatalGrowthWeightForAgeLMS get lmsData => _ageData;
+  _IntergrowthPretermInfantsPostnatalGrowthWeightForAgeLMS get lmsData =>
+      _ageData;
 
   @override
   num get measurementResultInDefaultUnit => measurementResult.toKilogram.value;
 }
 
-class _PretermInfantsPostnatalGrowthWeightForAgeLMS extends LMSContext {
-  _PretermInfantsPostnatalGrowthWeightForAgeLMS({
+class _IntergrowthPretermInfantsPostnatalGrowthWeightForAgeLMS
+    extends LMSContext {
+  _IntergrowthPretermInfantsPostnatalGrowthWeightForAgeLMS({
     required this.lms,
   });
   @override

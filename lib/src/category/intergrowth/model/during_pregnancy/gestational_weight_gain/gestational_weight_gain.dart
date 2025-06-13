@@ -1,12 +1,14 @@
 part of '../../../intergrowth.dart';
 
-class GestationalWeightGainForAgeData extends AgeBasedData {
-  factory GestationalWeightGainForAgeData() => _singleton;
-  GestationalWeightGainForAgeData._(this._data);
+class IntergrowthGestationalWeightGainForAgeData extends AgeBasedData {
+  factory IntergrowthGestationalWeightGainForAgeData() => _singleton;
+  IntergrowthGestationalWeightGainForAgeData._(this._data);
 
-  static final _singleton = GestationalWeightGainForAgeData._(_parse());
+  static final _singleton =
+      IntergrowthGestationalWeightGainForAgeData._(_parse());
 
-  static Map<Sex, Map<int, _GestationalWeightGainForAgeLMS>> _parse() {
+  static Map<Sex, Map<int, _IntergrowthGestationalWeightGainForAgeLMS>>
+      _parse() {
     final map = _grow_gwg_nw.toJsonObjectAsMap.map(
       (k1, v1) {
         v1 as Map<String, dynamic>;
@@ -14,7 +16,7 @@ class GestationalWeightGainForAgeData extends AgeBasedData {
             LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
         return MapEntry(
           int.parse(k1),
-          _GestationalWeightGainForAgeLMS(
+          _IntergrowthGestationalWeightGainForAgeLMS(
             lms: lms,
           ),
         );
@@ -26,9 +28,10 @@ class GestationalWeightGainForAgeData extends AgeBasedData {
     };
   }
 
-  final Map<Sex, Map<int, _GestationalWeightGainForAgeLMS>> _data;
+  final Map<Sex, Map<int, _IntergrowthGestationalWeightGainForAgeLMS>> _data;
   @override
-  Map<Sex, Map<int, _GestationalWeightGainForAgeLMS>> get data => _data;
+  Map<Sex, Map<int, _IntergrowthGestationalWeightGainForAgeLMS>> get data =>
+      _data;
 
   @override
   String toString() => 'Newborn Weight For Age Data($_data)';
@@ -39,26 +42,26 @@ class GestationalWeightGainForAgeData extends AgeBasedData {
 
 /// Measure within first 24 hours of life, for infants born between gestational weeks 33 and 43
 @freezed
-sealed class GestationalWeightGainForAge extends AgeBasedResult
-    with _$GestationalWeightGainForAge {
-  factory GestationalWeightGainForAge({
+sealed class IntergrowthGestationalWeightGainForAge extends AgeBasedResult
+    with _$IntergrowthGestationalWeightGainForAge {
+  factory IntergrowthGestationalWeightGainForAge({
     required Sex sex,
     required Age age,
     required Mass measurementResult,
-  }) = _GestationalWeightGainForAge;
+  }) = _IntergrowthGestationalWeightGainForAge;
 
-  const GestationalWeightGainForAge._();
+  const IntergrowthGestationalWeightGainForAge._();
 
-  factory GestationalWeightGainForAge.fromJson(
+  factory IntergrowthGestationalWeightGainForAge.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$GestationalWeightGainForAgeFromJson(json);
+      _$IntergrowthGestationalWeightGainForAgeFromJson(json);
 
   @override
-  GestationalWeightGainForAgeData get contextData =>
-      GestationalWeightGainForAgeData();
+  IntergrowthGestationalWeightGainForAgeData get contextData =>
+      IntergrowthGestationalWeightGainForAgeData();
 
-  _GestationalWeightGainForAgeLMS get _ageData =>
+  _IntergrowthGestationalWeightGainForAgeLMS get _ageData =>
       contextData._data[sex]![ageAtObservationDate.ageInTotalWeeksByNow]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
@@ -82,14 +85,14 @@ sealed class GestationalWeightGainForAge extends AgeBasedResult
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
-  _GestationalWeightGainForAgeLMS get lmsData => _ageData;
+  _IntergrowthGestationalWeightGainForAgeLMS get lmsData => _ageData;
 
   @override
   num get measurementResultInDefaultUnit => measurementResult.toKilogram.value;
 }
 
-class _GestationalWeightGainForAgeLMS extends LMSContext {
-  _GestationalWeightGainForAgeLMS({
+class _IntergrowthGestationalWeightGainForAgeLMS extends LMSContext {
+  _IntergrowthGestationalWeightGainForAgeLMS({
     required this.lms,
   });
   @override

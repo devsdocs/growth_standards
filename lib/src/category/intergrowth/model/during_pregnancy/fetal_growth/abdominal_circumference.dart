@@ -1,13 +1,15 @@
 part of '../../../intergrowth.dart';
 
-class FetalGrowtAbdominalCircumferenceForAgeData extends AgeBasedData {
-  factory FetalGrowtAbdominalCircumferenceForAgeData() => _singleton;
-  FetalGrowtAbdominalCircumferenceForAgeData._(this._data);
+class IntergrowthFetalGrowtAbdominalCircumferenceForAgeData
+    extends AgeBasedData {
+  factory IntergrowthFetalGrowtAbdominalCircumferenceForAgeData() => _singleton;
+  IntergrowthFetalGrowtAbdominalCircumferenceForAgeData._(this._data);
 
   static final _singleton =
-      FetalGrowtAbdominalCircumferenceForAgeData._(_parse());
+      IntergrowthFetalGrowtAbdominalCircumferenceForAgeData._(_parse());
 
-  static Map<Sex, Map<int, _FetalGrowtAbdominalCircumferenceForAgeLMS>>
+  static Map<Sex,
+          Map<int, _IntergrowthFetalGrowtAbdominalCircumferenceForAgeLMS>>
       _parse() {
     final map = _grow_fetal_ac.toJsonObjectAsMap.map(
       (k1, v1) {
@@ -16,7 +18,7 @@ class FetalGrowtAbdominalCircumferenceForAgeData extends AgeBasedData {
             LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
         return MapEntry(
           int.parse(k1),
-          _FetalGrowtAbdominalCircumferenceForAgeLMS(
+          _IntergrowthFetalGrowtAbdominalCircumferenceForAgeLMS(
             lms: lms,
           ),
         );
@@ -28,10 +30,11 @@ class FetalGrowtAbdominalCircumferenceForAgeData extends AgeBasedData {
     };
   }
 
-  final Map<Sex, Map<int, _FetalGrowtAbdominalCircumferenceForAgeLMS>> _data;
+  final Map<Sex,
+      Map<int, _IntergrowthFetalGrowtAbdominalCircumferenceForAgeLMS>> _data;
   @override
-  Map<Sex, Map<int, _FetalGrowtAbdominalCircumferenceForAgeLMS>> get data =>
-      _data;
+  Map<Sex, Map<int, _IntergrowthFetalGrowtAbdominalCircumferenceForAgeLMS>>
+      get data => _data;
 
   @override
   String toString() => 'Newborn Head Circumference For Age Data($_data)';
@@ -42,26 +45,28 @@ class FetalGrowtAbdominalCircumferenceForAgeData extends AgeBasedData {
 
 /// Measure within first 24 hours of life, for infants born between gestational weeks 24 and 33
 @freezed
-sealed class FetalGrowtAbdominalCircumferenceForAge extends AgeBasedResult
-    with _$FetalGrowtAbdominalCircumferenceForAge {
-  factory FetalGrowtAbdominalCircumferenceForAge({
+sealed class IntergrowthFetalGrowtAbdominalCircumferenceForAge
+    extends AgeBasedResult
+    with _$IntergrowthFetalGrowtAbdominalCircumferenceForAge {
+  factory IntergrowthFetalGrowtAbdominalCircumferenceForAge({
     required Age age,
     required Length measurementResult,
-  }) = _FetalGrowtAbdominalCircumferenceForAge;
+  }) = _IntergrowthFetalGrowtAbdominalCircumferenceForAge;
 
-  const FetalGrowtAbdominalCircumferenceForAge._();
+  const IntergrowthFetalGrowtAbdominalCircumferenceForAge._();
 
-  factory FetalGrowtAbdominalCircumferenceForAge.fromJson(
+  factory IntergrowthFetalGrowtAbdominalCircumferenceForAge.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$FetalGrowtAbdominalCircumferenceForAgeFromJson(json);
+      _$IntergrowthFetalGrowtAbdominalCircumferenceForAgeFromJson(json);
 
   @override
-  FetalGrowtAbdominalCircumferenceForAgeData get contextData =>
-      FetalGrowtAbdominalCircumferenceForAgeData();
+  IntergrowthFetalGrowtAbdominalCircumferenceForAgeData get contextData =>
+      IntergrowthFetalGrowtAbdominalCircumferenceForAgeData();
 
-  _FetalGrowtAbdominalCircumferenceForAgeLMS get _ageData => contextData
-      ._data.values.first[ageAtObservationDate.ageInTotalWeeksByNow]!;
+  _IntergrowthFetalGrowtAbdominalCircumferenceForAgeLMS get _ageData =>
+      contextData
+          ._data.values.first[ageAtObservationDate.ageInTotalWeeksByNow]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 
@@ -84,15 +89,15 @@ sealed class FetalGrowtAbdominalCircumferenceForAge extends AgeBasedResult
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
-  _FetalGrowtAbdominalCircumferenceForAgeLMS get lmsData => _ageData;
+  _IntergrowthFetalGrowtAbdominalCircumferenceForAgeLMS get lmsData => _ageData;
 
   @override
   num get measurementResultInDefaultUnit =>
       measurementResult.toMillimeter.value;
 }
 
-class _FetalGrowtAbdominalCircumferenceForAgeLMS extends LMSContext {
-  _FetalGrowtAbdominalCircumferenceForAgeLMS({
+class _IntergrowthFetalGrowtAbdominalCircumferenceForAgeLMS extends LMSContext {
+  _IntergrowthFetalGrowtAbdominalCircumferenceForAgeLMS({
     required this.lms,
   });
   @override

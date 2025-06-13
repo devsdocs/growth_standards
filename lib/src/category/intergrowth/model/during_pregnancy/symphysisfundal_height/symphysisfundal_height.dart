@@ -1,12 +1,14 @@
 part of '../../../intergrowth.dart';
 
-class SymphysisFundalHeightForAgeData extends AgeBasedData {
-  factory SymphysisFundalHeightForAgeData() => _singleton;
-  SymphysisFundalHeightForAgeData._(this._data);
+class IntergrowthSymphysisFundalHeightForAgeData extends AgeBasedData {
+  factory IntergrowthSymphysisFundalHeightForAgeData() => _singleton;
+  IntergrowthSymphysisFundalHeightForAgeData._(this._data);
 
-  static final _singleton = SymphysisFundalHeightForAgeData._(_parse());
+  static final _singleton =
+      IntergrowthSymphysisFundalHeightForAgeData._(_parse());
 
-  static Map<Sex, Map<num, _SymphysisFundalHeightForAgeLMS>> _parse() {
+  static Map<Sex, Map<num, _IntergrowthSymphysisFundalHeightForAgeLMS>>
+      _parse() {
     final map = _grow_sfh_new.toJsonObjectAsMap.map(
       (k1, v1) {
         v1 as Map<String, dynamic>;
@@ -14,7 +16,7 @@ class SymphysisFundalHeightForAgeData extends AgeBasedData {
             LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
         return MapEntry(
           int.parse(k1),
-          _SymphysisFundalHeightForAgeLMS(
+          _IntergrowthSymphysisFundalHeightForAgeLMS(
             lms: lms,
           ),
         );
@@ -26,9 +28,10 @@ class SymphysisFundalHeightForAgeData extends AgeBasedData {
     };
   }
 
-  final Map<Sex, Map<num, _SymphysisFundalHeightForAgeLMS>> _data;
+  final Map<Sex, Map<num, _IntergrowthSymphysisFundalHeightForAgeLMS>> _data;
   @override
-  Map<Sex, Map<num, _SymphysisFundalHeightForAgeLMS>> get data => _data;
+  Map<Sex, Map<num, _IntergrowthSymphysisFundalHeightForAgeLMS>> get data =>
+      _data;
 
   @override
   String toString() => 'Early Pregnancy Dating For CRL Data($_data)';
@@ -38,25 +41,25 @@ class SymphysisFundalHeightForAgeData extends AgeBasedData {
 }
 
 @freezed
-sealed class SymphysisFundalHeightForAge extends AgeBasedResult
-    with _$SymphysisFundalHeightForAge {
-  factory SymphysisFundalHeightForAge({
+sealed class IntergrowthSymphysisFundalHeightForAge extends AgeBasedResult
+    with _$IntergrowthSymphysisFundalHeightForAge {
+  factory IntergrowthSymphysisFundalHeightForAge({
     required Age age,
     required Length length,
-  }) = _SymphysisFundalHeightForAge;
+  }) = _IntergrowthSymphysisFundalHeightForAge;
 
-  const SymphysisFundalHeightForAge._();
+  const IntergrowthSymphysisFundalHeightForAge._();
 
-  factory SymphysisFundalHeightForAge.fromJson(
+  factory IntergrowthSymphysisFundalHeightForAge.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$SymphysisFundalHeightForAgeFromJson(json);
+      _$IntergrowthSymphysisFundalHeightForAgeFromJson(json);
 
   @override
-  SymphysisFundalHeightForAgeData get contextData =>
-      SymphysisFundalHeightForAgeData();
+  IntergrowthSymphysisFundalHeightForAgeData get contextData =>
+      IntergrowthSymphysisFundalHeightForAgeData();
 
-  _SymphysisFundalHeightForAgeLMS get _ageData => contextData
+  _IntergrowthSymphysisFundalHeightForAgeLMS get _ageData => contextData
       ._data.values.first[ageAtObservationDate.ageInTotalWeeksByNow]!;
 
   num get _zScore =>
@@ -75,14 +78,14 @@ sealed class SymphysisFundalHeightForAge extends AgeBasedResult
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
-  _SymphysisFundalHeightForAgeLMS get lmsData => _ageData;
+  _IntergrowthSymphysisFundalHeightForAgeLMS get lmsData => _ageData;
 
   @override
   num get measurementResultInDefaultUnit => length.toCentimeter.value;
 }
 
-class _SymphysisFundalHeightForAgeLMS extends LMSContext {
-  _SymphysisFundalHeightForAgeLMS({
+class _IntergrowthSymphysisFundalHeightForAgeLMS extends LMSContext {
+  _IntergrowthSymphysisFundalHeightForAgeLMS({
     required this.lms,
   });
   @override

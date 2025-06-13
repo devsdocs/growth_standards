@@ -14,27 +14,29 @@ part of 'intergrowth.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$NewbornBirthWeightForAge {
+mixin _$IntergrowthNewbornBirthWeightForAge {
   Sex get sex;
   Age get age;
   Mass get measurementResult;
 
-  /// Create a copy of NewbornBirthWeightForAge
+  /// Create a copy of IntergrowthNewbornBirthWeightForAge
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $NewbornBirthWeightForAgeCopyWith<NewbornBirthWeightForAge> get copyWith =>
-      _$NewbornBirthWeightForAgeCopyWithImpl<NewbornBirthWeightForAge>(
-          this as NewbornBirthWeightForAge, _$identity);
+  $IntergrowthNewbornBirthWeightForAgeCopyWith<
+          IntergrowthNewbornBirthWeightForAge>
+      get copyWith => _$IntergrowthNewbornBirthWeightForAgeCopyWithImpl<
+              IntergrowthNewbornBirthWeightForAge>(
+          this as IntergrowthNewbornBirthWeightForAge, _$identity);
 
-  /// Serializes this NewbornBirthWeightForAge to a JSON map.
+  /// Serializes this IntergrowthNewbornBirthWeightForAge to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is NewbornBirthWeightForAge &&
+            other is IntergrowthNewbornBirthWeightForAge &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.measurementResult, measurementResult) ||
@@ -47,15 +49,16 @@ mixin _$NewbornBirthWeightForAge {
 
   @override
   String toString() {
-    return 'NewbornBirthWeightForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
+    return 'IntergrowthNewbornBirthWeightForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
   }
 }
 
 /// @nodoc
-abstract mixin class $NewbornBirthWeightForAgeCopyWith<$Res> {
-  factory $NewbornBirthWeightForAgeCopyWith(NewbornBirthWeightForAge value,
-          $Res Function(NewbornBirthWeightForAge) _then) =
-      _$NewbornBirthWeightForAgeCopyWithImpl;
+abstract mixin class $IntergrowthNewbornBirthWeightForAgeCopyWith<$Res> {
+  factory $IntergrowthNewbornBirthWeightForAgeCopyWith(
+          IntergrowthNewbornBirthWeightForAge value,
+          $Res Function(IntergrowthNewbornBirthWeightForAge) _then) =
+      _$IntergrowthNewbornBirthWeightForAgeCopyWithImpl;
   @useResult
   $Res call({Sex sex, Age age, Mass measurementResult});
 
@@ -63,14 +66,14 @@ abstract mixin class $NewbornBirthWeightForAgeCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$NewbornBirthWeightForAgeCopyWithImpl<$Res>
-    implements $NewbornBirthWeightForAgeCopyWith<$Res> {
-  _$NewbornBirthWeightForAgeCopyWithImpl(this._self, this._then);
+class _$IntergrowthNewbornBirthWeightForAgeCopyWithImpl<$Res>
+    implements $IntergrowthNewbornBirthWeightForAgeCopyWith<$Res> {
+  _$IntergrowthNewbornBirthWeightForAgeCopyWithImpl(this._self, this._then);
 
-  final NewbornBirthWeightForAge _self;
-  final $Res Function(NewbornBirthWeightForAge) _then;
+  final IntergrowthNewbornBirthWeightForAge _self;
+  final $Res Function(IntergrowthNewbornBirthWeightForAge) _then;
 
-  /// Create a copy of NewbornBirthWeightForAge
+  /// Create a copy of IntergrowthNewbornBirthWeightForAge
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -95,7 +98,7 @@ class _$NewbornBirthWeightForAgeCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of NewbornBirthWeightForAge
+  /// Create a copy of IntergrowthNewbornBirthWeightForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -108,12 +111,14 @@ class _$NewbornBirthWeightForAgeCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _NewbornBirthWeightForAge extends NewbornBirthWeightForAge {
-  _NewbornBirthWeightForAge(
+class _IntergrowthNewbornBirthWeightForAge
+    extends IntergrowthNewbornBirthWeightForAge {
+  _IntergrowthNewbornBirthWeightForAge(
       {required this.sex, required this.age, required this.measurementResult})
       : super._();
-  factory _NewbornBirthWeightForAge.fromJson(Map<String, dynamic> json) =>
-      _$NewbornBirthWeightForAgeFromJson(json);
+  factory _IntergrowthNewbornBirthWeightForAge.fromJson(
+          Map<String, dynamic> json) =>
+      _$IntergrowthNewbornBirthWeightForAgeFromJson(json);
 
   @override
   final Sex sex;
@@ -122,18 +127,19 @@ class _NewbornBirthWeightForAge extends NewbornBirthWeightForAge {
   @override
   final Mass measurementResult;
 
-  /// Create a copy of NewbornBirthWeightForAge
+  /// Create a copy of IntergrowthNewbornBirthWeightForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$NewbornBirthWeightForAgeCopyWith<_NewbornBirthWeightForAge> get copyWith =>
-      __$NewbornBirthWeightForAgeCopyWithImpl<_NewbornBirthWeightForAge>(
-          this, _$identity);
+  _$IntergrowthNewbornBirthWeightForAgeCopyWith<
+          _IntergrowthNewbornBirthWeightForAge>
+      get copyWith => __$IntergrowthNewbornBirthWeightForAgeCopyWithImpl<
+          _IntergrowthNewbornBirthWeightForAge>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$NewbornBirthWeightForAgeToJson(
+    return _$IntergrowthNewbornBirthWeightForAgeToJson(
       this,
     );
   }
@@ -142,7 +148,7 @@ class _NewbornBirthWeightForAge extends NewbornBirthWeightForAge {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _NewbornBirthWeightForAge &&
+            other is _IntergrowthNewbornBirthWeightForAge &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.measurementResult, measurementResult) ||
@@ -155,16 +161,17 @@ class _NewbornBirthWeightForAge extends NewbornBirthWeightForAge {
 
   @override
   String toString() {
-    return 'NewbornBirthWeightForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
+    return 'IntergrowthNewbornBirthWeightForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$NewbornBirthWeightForAgeCopyWith<$Res>
-    implements $NewbornBirthWeightForAgeCopyWith<$Res> {
-  factory _$NewbornBirthWeightForAgeCopyWith(_NewbornBirthWeightForAge value,
-          $Res Function(_NewbornBirthWeightForAge) _then) =
-      __$NewbornBirthWeightForAgeCopyWithImpl;
+abstract mixin class _$IntergrowthNewbornBirthWeightForAgeCopyWith<$Res>
+    implements $IntergrowthNewbornBirthWeightForAgeCopyWith<$Res> {
+  factory _$IntergrowthNewbornBirthWeightForAgeCopyWith(
+          _IntergrowthNewbornBirthWeightForAge value,
+          $Res Function(_IntergrowthNewbornBirthWeightForAge) _then) =
+      __$IntergrowthNewbornBirthWeightForAgeCopyWithImpl;
   @override
   @useResult
   $Res call({Sex sex, Age age, Mass measurementResult});
@@ -174,14 +181,14 @@ abstract mixin class _$NewbornBirthWeightForAgeCopyWith<$Res>
 }
 
 /// @nodoc
-class __$NewbornBirthWeightForAgeCopyWithImpl<$Res>
-    implements _$NewbornBirthWeightForAgeCopyWith<$Res> {
-  __$NewbornBirthWeightForAgeCopyWithImpl(this._self, this._then);
+class __$IntergrowthNewbornBirthWeightForAgeCopyWithImpl<$Res>
+    implements _$IntergrowthNewbornBirthWeightForAgeCopyWith<$Res> {
+  __$IntergrowthNewbornBirthWeightForAgeCopyWithImpl(this._self, this._then);
 
-  final _NewbornBirthWeightForAge _self;
-  final $Res Function(_NewbornBirthWeightForAge) _then;
+  final _IntergrowthNewbornBirthWeightForAge _self;
+  final $Res Function(_IntergrowthNewbornBirthWeightForAge) _then;
 
-  /// Create a copy of NewbornBirthWeightForAge
+  /// Create a copy of IntergrowthNewbornBirthWeightForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -190,7 +197,7 @@ class __$NewbornBirthWeightForAgeCopyWithImpl<$Res>
     Object? age = null,
     Object? measurementResult = null,
   }) {
-    return _then(_NewbornBirthWeightForAge(
+    return _then(_IntergrowthNewbornBirthWeightForAge(
       sex: null == sex
           ? _self.sex
           : sex // ignore: cast_nullable_to_non_nullable
@@ -206,7 +213,7 @@ class __$NewbornBirthWeightForAgeCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of NewbornBirthWeightForAge
+  /// Create a copy of IntergrowthNewbornBirthWeightForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -218,29 +225,31 @@ class __$NewbornBirthWeightForAgeCopyWithImpl<$Res>
 }
 
 /// @nodoc
-mixin _$NewbornBirthHeadCircumferenceForAge {
+mixin _$IntergrowthNewbornBirthHeadCircumferenceForAge {
   Sex get sex;
   Age get age;
   Length get measurementResult;
 
-  /// Create a copy of NewbornBirthHeadCircumferenceForAge
+  /// Create a copy of IntergrowthNewbornBirthHeadCircumferenceForAge
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $NewbornBirthHeadCircumferenceForAgeCopyWith<
-          NewbornBirthHeadCircumferenceForAge>
-      get copyWith => _$NewbornBirthHeadCircumferenceForAgeCopyWithImpl<
-              NewbornBirthHeadCircumferenceForAge>(
-          this as NewbornBirthHeadCircumferenceForAge, _$identity);
+  $IntergrowthNewbornBirthHeadCircumferenceForAgeCopyWith<
+          IntergrowthNewbornBirthHeadCircumferenceForAge>
+      get copyWith =>
+          _$IntergrowthNewbornBirthHeadCircumferenceForAgeCopyWithImpl<
+                  IntergrowthNewbornBirthHeadCircumferenceForAge>(
+              this as IntergrowthNewbornBirthHeadCircumferenceForAge,
+              _$identity);
 
-  /// Serializes this NewbornBirthHeadCircumferenceForAge to a JSON map.
+  /// Serializes this IntergrowthNewbornBirthHeadCircumferenceForAge to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is NewbornBirthHeadCircumferenceForAge &&
+            other is IntergrowthNewbornBirthHeadCircumferenceForAge &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.measurementResult, measurementResult) ||
@@ -253,16 +262,17 @@ mixin _$NewbornBirthHeadCircumferenceForAge {
 
   @override
   String toString() {
-    return 'NewbornBirthHeadCircumferenceForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
+    return 'IntergrowthNewbornBirthHeadCircumferenceForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
   }
 }
 
 /// @nodoc
-abstract mixin class $NewbornBirthHeadCircumferenceForAgeCopyWith<$Res> {
-  factory $NewbornBirthHeadCircumferenceForAgeCopyWith(
-          NewbornBirthHeadCircumferenceForAge value,
-          $Res Function(NewbornBirthHeadCircumferenceForAge) _then) =
-      _$NewbornBirthHeadCircumferenceForAgeCopyWithImpl;
+abstract mixin class $IntergrowthNewbornBirthHeadCircumferenceForAgeCopyWith<
+    $Res> {
+  factory $IntergrowthNewbornBirthHeadCircumferenceForAgeCopyWith(
+          IntergrowthNewbornBirthHeadCircumferenceForAge value,
+          $Res Function(IntergrowthNewbornBirthHeadCircumferenceForAge) _then) =
+      _$IntergrowthNewbornBirthHeadCircumferenceForAgeCopyWithImpl;
   @useResult
   $Res call({Sex sex, Age age, Length measurementResult});
 
@@ -270,14 +280,15 @@ abstract mixin class $NewbornBirthHeadCircumferenceForAgeCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$NewbornBirthHeadCircumferenceForAgeCopyWithImpl<$Res>
-    implements $NewbornBirthHeadCircumferenceForAgeCopyWith<$Res> {
-  _$NewbornBirthHeadCircumferenceForAgeCopyWithImpl(this._self, this._then);
+class _$IntergrowthNewbornBirthHeadCircumferenceForAgeCopyWithImpl<$Res>
+    implements $IntergrowthNewbornBirthHeadCircumferenceForAgeCopyWith<$Res> {
+  _$IntergrowthNewbornBirthHeadCircumferenceForAgeCopyWithImpl(
+      this._self, this._then);
 
-  final NewbornBirthHeadCircumferenceForAge _self;
-  final $Res Function(NewbornBirthHeadCircumferenceForAge) _then;
+  final IntergrowthNewbornBirthHeadCircumferenceForAge _self;
+  final $Res Function(IntergrowthNewbornBirthHeadCircumferenceForAge) _then;
 
-  /// Create a copy of NewbornBirthHeadCircumferenceForAge
+  /// Create a copy of IntergrowthNewbornBirthHeadCircumferenceForAge
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -302,7 +313,7 @@ class _$NewbornBirthHeadCircumferenceForAgeCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of NewbornBirthHeadCircumferenceForAge
+  /// Create a copy of IntergrowthNewbornBirthHeadCircumferenceForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -315,14 +326,14 @@ class _$NewbornBirthHeadCircumferenceForAgeCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _NewbornBirthHeadCircumferenceForAge
-    extends NewbornBirthHeadCircumferenceForAge {
-  _NewbornBirthHeadCircumferenceForAge(
+class _IntergrowthNewbornBirthHeadCircumferenceForAge
+    extends IntergrowthNewbornBirthHeadCircumferenceForAge {
+  _IntergrowthNewbornBirthHeadCircumferenceForAge(
       {required this.sex, required this.age, required this.measurementResult})
       : super._();
-  factory _NewbornBirthHeadCircumferenceForAge.fromJson(
+  factory _IntergrowthNewbornBirthHeadCircumferenceForAge.fromJson(
           Map<String, dynamic> json) =>
-      _$NewbornBirthHeadCircumferenceForAgeFromJson(json);
+      _$IntergrowthNewbornBirthHeadCircumferenceForAgeFromJson(json);
 
   @override
   final Sex sex;
@@ -331,19 +342,21 @@ class _NewbornBirthHeadCircumferenceForAge
   @override
   final Length measurementResult;
 
-  /// Create a copy of NewbornBirthHeadCircumferenceForAge
+  /// Create a copy of IntergrowthNewbornBirthHeadCircumferenceForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$NewbornBirthHeadCircumferenceForAgeCopyWith<
-          _NewbornBirthHeadCircumferenceForAge>
-      get copyWith => __$NewbornBirthHeadCircumferenceForAgeCopyWithImpl<
-          _NewbornBirthHeadCircumferenceForAge>(this, _$identity);
+  _$IntergrowthNewbornBirthHeadCircumferenceForAgeCopyWith<
+          _IntergrowthNewbornBirthHeadCircumferenceForAge>
+      get copyWith =>
+          __$IntergrowthNewbornBirthHeadCircumferenceForAgeCopyWithImpl<
+                  _IntergrowthNewbornBirthHeadCircumferenceForAge>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$NewbornBirthHeadCircumferenceForAgeToJson(
+    return _$IntergrowthNewbornBirthHeadCircumferenceForAgeToJson(
       this,
     );
   }
@@ -352,7 +365,7 @@ class _NewbornBirthHeadCircumferenceForAge
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _NewbornBirthHeadCircumferenceForAge &&
+            other is _IntergrowthNewbornBirthHeadCircumferenceForAge &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.measurementResult, measurementResult) ||
@@ -365,17 +378,19 @@ class _NewbornBirthHeadCircumferenceForAge
 
   @override
   String toString() {
-    return 'NewbornBirthHeadCircumferenceForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
+    return 'IntergrowthNewbornBirthHeadCircumferenceForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$NewbornBirthHeadCircumferenceForAgeCopyWith<$Res>
-    implements $NewbornBirthHeadCircumferenceForAgeCopyWith<$Res> {
-  factory _$NewbornBirthHeadCircumferenceForAgeCopyWith(
-          _NewbornBirthHeadCircumferenceForAge value,
-          $Res Function(_NewbornBirthHeadCircumferenceForAge) _then) =
-      __$NewbornBirthHeadCircumferenceForAgeCopyWithImpl;
+abstract mixin class _$IntergrowthNewbornBirthHeadCircumferenceForAgeCopyWith<
+        $Res>
+    implements $IntergrowthNewbornBirthHeadCircumferenceForAgeCopyWith<$Res> {
+  factory _$IntergrowthNewbornBirthHeadCircumferenceForAgeCopyWith(
+          _IntergrowthNewbornBirthHeadCircumferenceForAge value,
+          $Res Function(_IntergrowthNewbornBirthHeadCircumferenceForAge)
+              _then) =
+      __$IntergrowthNewbornBirthHeadCircumferenceForAgeCopyWithImpl;
   @override
   @useResult
   $Res call({Sex sex, Age age, Length measurementResult});
@@ -385,14 +400,15 @@ abstract mixin class _$NewbornBirthHeadCircumferenceForAgeCopyWith<$Res>
 }
 
 /// @nodoc
-class __$NewbornBirthHeadCircumferenceForAgeCopyWithImpl<$Res>
-    implements _$NewbornBirthHeadCircumferenceForAgeCopyWith<$Res> {
-  __$NewbornBirthHeadCircumferenceForAgeCopyWithImpl(this._self, this._then);
+class __$IntergrowthNewbornBirthHeadCircumferenceForAgeCopyWithImpl<$Res>
+    implements _$IntergrowthNewbornBirthHeadCircumferenceForAgeCopyWith<$Res> {
+  __$IntergrowthNewbornBirthHeadCircumferenceForAgeCopyWithImpl(
+      this._self, this._then);
 
-  final _NewbornBirthHeadCircumferenceForAge _self;
-  final $Res Function(_NewbornBirthHeadCircumferenceForAge) _then;
+  final _IntergrowthNewbornBirthHeadCircumferenceForAge _self;
+  final $Res Function(_IntergrowthNewbornBirthHeadCircumferenceForAge) _then;
 
-  /// Create a copy of NewbornBirthHeadCircumferenceForAge
+  /// Create a copy of IntergrowthNewbornBirthHeadCircumferenceForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -401,7 +417,7 @@ class __$NewbornBirthHeadCircumferenceForAgeCopyWithImpl<$Res>
     Object? age = null,
     Object? measurementResult = null,
   }) {
-    return _then(_NewbornBirthHeadCircumferenceForAge(
+    return _then(_IntergrowthNewbornBirthHeadCircumferenceForAge(
       sex: null == sex
           ? _self.sex
           : sex // ignore: cast_nullable_to_non_nullable
@@ -417,7 +433,7 @@ class __$NewbornBirthHeadCircumferenceForAgeCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of NewbornBirthHeadCircumferenceForAge
+  /// Create a copy of IntergrowthNewbornBirthHeadCircumferenceForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -429,27 +445,29 @@ class __$NewbornBirthHeadCircumferenceForAgeCopyWithImpl<$Res>
 }
 
 /// @nodoc
-mixin _$NewbornBirthLengthForAge {
+mixin _$IntergrowthNewbornBirthLengthForAge {
   Sex get sex;
   Age get age;
   Length get measurementResult;
 
-  /// Create a copy of NewbornBirthLengthForAge
+  /// Create a copy of IntergrowthNewbornBirthLengthForAge
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $NewbornBirthLengthForAgeCopyWith<NewbornBirthLengthForAge> get copyWith =>
-      _$NewbornBirthLengthForAgeCopyWithImpl<NewbornBirthLengthForAge>(
-          this as NewbornBirthLengthForAge, _$identity);
+  $IntergrowthNewbornBirthLengthForAgeCopyWith<
+          IntergrowthNewbornBirthLengthForAge>
+      get copyWith => _$IntergrowthNewbornBirthLengthForAgeCopyWithImpl<
+              IntergrowthNewbornBirthLengthForAge>(
+          this as IntergrowthNewbornBirthLengthForAge, _$identity);
 
-  /// Serializes this NewbornBirthLengthForAge to a JSON map.
+  /// Serializes this IntergrowthNewbornBirthLengthForAge to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is NewbornBirthLengthForAge &&
+            other is IntergrowthNewbornBirthLengthForAge &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.measurementResult, measurementResult) ||
@@ -462,15 +480,16 @@ mixin _$NewbornBirthLengthForAge {
 
   @override
   String toString() {
-    return 'NewbornBirthLengthForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
+    return 'IntergrowthNewbornBirthLengthForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
   }
 }
 
 /// @nodoc
-abstract mixin class $NewbornBirthLengthForAgeCopyWith<$Res> {
-  factory $NewbornBirthLengthForAgeCopyWith(NewbornBirthLengthForAge value,
-          $Res Function(NewbornBirthLengthForAge) _then) =
-      _$NewbornBirthLengthForAgeCopyWithImpl;
+abstract mixin class $IntergrowthNewbornBirthLengthForAgeCopyWith<$Res> {
+  factory $IntergrowthNewbornBirthLengthForAgeCopyWith(
+          IntergrowthNewbornBirthLengthForAge value,
+          $Res Function(IntergrowthNewbornBirthLengthForAge) _then) =
+      _$IntergrowthNewbornBirthLengthForAgeCopyWithImpl;
   @useResult
   $Res call({Sex sex, Age age, Length measurementResult});
 
@@ -478,14 +497,14 @@ abstract mixin class $NewbornBirthLengthForAgeCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$NewbornBirthLengthForAgeCopyWithImpl<$Res>
-    implements $NewbornBirthLengthForAgeCopyWith<$Res> {
-  _$NewbornBirthLengthForAgeCopyWithImpl(this._self, this._then);
+class _$IntergrowthNewbornBirthLengthForAgeCopyWithImpl<$Res>
+    implements $IntergrowthNewbornBirthLengthForAgeCopyWith<$Res> {
+  _$IntergrowthNewbornBirthLengthForAgeCopyWithImpl(this._self, this._then);
 
-  final NewbornBirthLengthForAge _self;
-  final $Res Function(NewbornBirthLengthForAge) _then;
+  final IntergrowthNewbornBirthLengthForAge _self;
+  final $Res Function(IntergrowthNewbornBirthLengthForAge) _then;
 
-  /// Create a copy of NewbornBirthLengthForAge
+  /// Create a copy of IntergrowthNewbornBirthLengthForAge
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -510,7 +529,7 @@ class _$NewbornBirthLengthForAgeCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of NewbornBirthLengthForAge
+  /// Create a copy of IntergrowthNewbornBirthLengthForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -523,12 +542,14 @@ class _$NewbornBirthLengthForAgeCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _NewbornBirthLengthForAge extends NewbornBirthLengthForAge {
-  _NewbornBirthLengthForAge(
+class _IntergrowthNewbornBirthLengthForAge
+    extends IntergrowthNewbornBirthLengthForAge {
+  _IntergrowthNewbornBirthLengthForAge(
       {required this.sex, required this.age, required this.measurementResult})
       : super._();
-  factory _NewbornBirthLengthForAge.fromJson(Map<String, dynamic> json) =>
-      _$NewbornBirthLengthForAgeFromJson(json);
+  factory _IntergrowthNewbornBirthLengthForAge.fromJson(
+          Map<String, dynamic> json) =>
+      _$IntergrowthNewbornBirthLengthForAgeFromJson(json);
 
   @override
   final Sex sex;
@@ -537,18 +558,19 @@ class _NewbornBirthLengthForAge extends NewbornBirthLengthForAge {
   @override
   final Length measurementResult;
 
-  /// Create a copy of NewbornBirthLengthForAge
+  /// Create a copy of IntergrowthNewbornBirthLengthForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$NewbornBirthLengthForAgeCopyWith<_NewbornBirthLengthForAge> get copyWith =>
-      __$NewbornBirthLengthForAgeCopyWithImpl<_NewbornBirthLengthForAge>(
-          this, _$identity);
+  _$IntergrowthNewbornBirthLengthForAgeCopyWith<
+          _IntergrowthNewbornBirthLengthForAge>
+      get copyWith => __$IntergrowthNewbornBirthLengthForAgeCopyWithImpl<
+          _IntergrowthNewbornBirthLengthForAge>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$NewbornBirthLengthForAgeToJson(
+    return _$IntergrowthNewbornBirthLengthForAgeToJson(
       this,
     );
   }
@@ -557,7 +579,7 @@ class _NewbornBirthLengthForAge extends NewbornBirthLengthForAge {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _NewbornBirthLengthForAge &&
+            other is _IntergrowthNewbornBirthLengthForAge &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.measurementResult, measurementResult) ||
@@ -570,16 +592,17 @@ class _NewbornBirthLengthForAge extends NewbornBirthLengthForAge {
 
   @override
   String toString() {
-    return 'NewbornBirthLengthForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
+    return 'IntergrowthNewbornBirthLengthForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$NewbornBirthLengthForAgeCopyWith<$Res>
-    implements $NewbornBirthLengthForAgeCopyWith<$Res> {
-  factory _$NewbornBirthLengthForAgeCopyWith(_NewbornBirthLengthForAge value,
-          $Res Function(_NewbornBirthLengthForAge) _then) =
-      __$NewbornBirthLengthForAgeCopyWithImpl;
+abstract mixin class _$IntergrowthNewbornBirthLengthForAgeCopyWith<$Res>
+    implements $IntergrowthNewbornBirthLengthForAgeCopyWith<$Res> {
+  factory _$IntergrowthNewbornBirthLengthForAgeCopyWith(
+          _IntergrowthNewbornBirthLengthForAge value,
+          $Res Function(_IntergrowthNewbornBirthLengthForAge) _then) =
+      __$IntergrowthNewbornBirthLengthForAgeCopyWithImpl;
   @override
   @useResult
   $Res call({Sex sex, Age age, Length measurementResult});
@@ -589,14 +612,14 @@ abstract mixin class _$NewbornBirthLengthForAgeCopyWith<$Res>
 }
 
 /// @nodoc
-class __$NewbornBirthLengthForAgeCopyWithImpl<$Res>
-    implements _$NewbornBirthLengthForAgeCopyWith<$Res> {
-  __$NewbornBirthLengthForAgeCopyWithImpl(this._self, this._then);
+class __$IntergrowthNewbornBirthLengthForAgeCopyWithImpl<$Res>
+    implements _$IntergrowthNewbornBirthLengthForAgeCopyWith<$Res> {
+  __$IntergrowthNewbornBirthLengthForAgeCopyWithImpl(this._self, this._then);
 
-  final _NewbornBirthLengthForAge _self;
-  final $Res Function(_NewbornBirthLengthForAge) _then;
+  final _IntergrowthNewbornBirthLengthForAge _self;
+  final $Res Function(_IntergrowthNewbornBirthLengthForAge) _then;
 
-  /// Create a copy of NewbornBirthLengthForAge
+  /// Create a copy of IntergrowthNewbornBirthLengthForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -605,7 +628,7 @@ class __$NewbornBirthLengthForAgeCopyWithImpl<$Res>
     Object? age = null,
     Object? measurementResult = null,
   }) {
-    return _then(_NewbornBirthLengthForAge(
+    return _then(_IntergrowthNewbornBirthLengthForAge(
       sex: null == sex
           ? _self.sex
           : sex // ignore: cast_nullable_to_non_nullable
@@ -621,7 +644,7 @@ class __$NewbornBirthLengthForAgeCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of NewbornBirthLengthForAge
+  /// Create a copy of IntergrowthNewbornBirthLengthForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -633,29 +656,31 @@ class __$NewbornBirthLengthForAgeCopyWithImpl<$Res>
 }
 
 /// @nodoc
-mixin _$NewbornBirthWeightForLengthRatioForAge {
+mixin _$IntergrowthNewbornBirthWeightForLengthRatioForAge {
   Sex get sex;
   Age get age;
   NewbornWeightLengthRatioMeasurement get measurementResult;
 
-  /// Create a copy of NewbornBirthWeightForLengthRatioForAge
+  /// Create a copy of IntergrowthNewbornBirthWeightForLengthRatioForAge
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $NewbornBirthWeightForLengthRatioForAgeCopyWith<
-          NewbornBirthWeightForLengthRatioForAge>
-      get copyWith => _$NewbornBirthWeightForLengthRatioForAgeCopyWithImpl<
-              NewbornBirthWeightForLengthRatioForAge>(
-          this as NewbornBirthWeightForLengthRatioForAge, _$identity);
+  $IntergrowthNewbornBirthWeightForLengthRatioForAgeCopyWith<
+          IntergrowthNewbornBirthWeightForLengthRatioForAge>
+      get copyWith =>
+          _$IntergrowthNewbornBirthWeightForLengthRatioForAgeCopyWithImpl<
+                  IntergrowthNewbornBirthWeightForLengthRatioForAge>(
+              this as IntergrowthNewbornBirthWeightForLengthRatioForAge,
+              _$identity);
 
-  /// Serializes this NewbornBirthWeightForLengthRatioForAge to a JSON map.
+  /// Serializes this IntergrowthNewbornBirthWeightForLengthRatioForAge to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is NewbornBirthWeightForLengthRatioForAge &&
+            other is IntergrowthNewbornBirthWeightForLengthRatioForAge &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.measurementResult, measurementResult) ||
@@ -668,16 +693,18 @@ mixin _$NewbornBirthWeightForLengthRatioForAge {
 
   @override
   String toString() {
-    return 'NewbornBirthWeightForLengthRatioForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
+    return 'IntergrowthNewbornBirthWeightForLengthRatioForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
   }
 }
 
 /// @nodoc
-abstract mixin class $NewbornBirthWeightForLengthRatioForAgeCopyWith<$Res> {
-  factory $NewbornBirthWeightForLengthRatioForAgeCopyWith(
-          NewbornBirthWeightForLengthRatioForAge value,
-          $Res Function(NewbornBirthWeightForLengthRatioForAge) _then) =
-      _$NewbornBirthWeightForLengthRatioForAgeCopyWithImpl;
+abstract mixin class $IntergrowthNewbornBirthWeightForLengthRatioForAgeCopyWith<
+    $Res> {
+  factory $IntergrowthNewbornBirthWeightForLengthRatioForAgeCopyWith(
+          IntergrowthNewbornBirthWeightForLengthRatioForAge value,
+          $Res Function(IntergrowthNewbornBirthWeightForLengthRatioForAge)
+              _then) =
+      _$IntergrowthNewbornBirthWeightForLengthRatioForAgeCopyWithImpl;
   @useResult
   $Res call(
       {Sex sex,
@@ -689,14 +716,16 @@ abstract mixin class $NewbornBirthWeightForLengthRatioForAgeCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$NewbornBirthWeightForLengthRatioForAgeCopyWithImpl<$Res>
-    implements $NewbornBirthWeightForLengthRatioForAgeCopyWith<$Res> {
-  _$NewbornBirthWeightForLengthRatioForAgeCopyWithImpl(this._self, this._then);
+class _$IntergrowthNewbornBirthWeightForLengthRatioForAgeCopyWithImpl<$Res>
+    implements
+        $IntergrowthNewbornBirthWeightForLengthRatioForAgeCopyWith<$Res> {
+  _$IntergrowthNewbornBirthWeightForLengthRatioForAgeCopyWithImpl(
+      this._self, this._then);
 
-  final NewbornBirthWeightForLengthRatioForAge _self;
-  final $Res Function(NewbornBirthWeightForLengthRatioForAge) _then;
+  final IntergrowthNewbornBirthWeightForLengthRatioForAge _self;
+  final $Res Function(IntergrowthNewbornBirthWeightForLengthRatioForAge) _then;
 
-  /// Create a copy of NewbornBirthWeightForLengthRatioForAge
+  /// Create a copy of IntergrowthNewbornBirthWeightForLengthRatioForAge
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -721,7 +750,7 @@ class _$NewbornBirthWeightForLengthRatioForAgeCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of NewbornBirthWeightForLengthRatioForAge
+  /// Create a copy of IntergrowthNewbornBirthWeightForLengthRatioForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -731,7 +760,7 @@ class _$NewbornBirthWeightForLengthRatioForAgeCopyWithImpl<$Res>
     });
   }
 
-  /// Create a copy of NewbornBirthWeightForLengthRatioForAge
+  /// Create a copy of IntergrowthNewbornBirthWeightForLengthRatioForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -745,14 +774,14 @@ class _$NewbornBirthWeightForLengthRatioForAgeCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _NewbornBirthWeightForLengthRatioForAge
-    extends NewbornBirthWeightForLengthRatioForAge {
-  _NewbornBirthWeightForLengthRatioForAge(
+class _IntergrowthNewbornBirthWeightForLengthRatioForAge
+    extends IntergrowthNewbornBirthWeightForLengthRatioForAge {
+  _IntergrowthNewbornBirthWeightForLengthRatioForAge(
       {required this.sex, required this.age, required this.measurementResult})
       : super._();
-  factory _NewbornBirthWeightForLengthRatioForAge.fromJson(
+  factory _IntergrowthNewbornBirthWeightForLengthRatioForAge.fromJson(
           Map<String, dynamic> json) =>
-      _$NewbornBirthWeightForLengthRatioForAgeFromJson(json);
+      _$IntergrowthNewbornBirthWeightForLengthRatioForAgeFromJson(json);
 
   @override
   final Sex sex;
@@ -761,19 +790,21 @@ class _NewbornBirthWeightForLengthRatioForAge
   @override
   final NewbornWeightLengthRatioMeasurement measurementResult;
 
-  /// Create a copy of NewbornBirthWeightForLengthRatioForAge
+  /// Create a copy of IntergrowthNewbornBirthWeightForLengthRatioForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$NewbornBirthWeightForLengthRatioForAgeCopyWith<
-          _NewbornBirthWeightForLengthRatioForAge>
-      get copyWith => __$NewbornBirthWeightForLengthRatioForAgeCopyWithImpl<
-          _NewbornBirthWeightForLengthRatioForAge>(this, _$identity);
+  _$IntergrowthNewbornBirthWeightForLengthRatioForAgeCopyWith<
+          _IntergrowthNewbornBirthWeightForLengthRatioForAge>
+      get copyWith =>
+          __$IntergrowthNewbornBirthWeightForLengthRatioForAgeCopyWithImpl<
+                  _IntergrowthNewbornBirthWeightForLengthRatioForAge>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$NewbornBirthWeightForLengthRatioForAgeToJson(
+    return _$IntergrowthNewbornBirthWeightForLengthRatioForAgeToJson(
       this,
     );
   }
@@ -782,7 +813,7 @@ class _NewbornBirthWeightForLengthRatioForAge
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _NewbornBirthWeightForLengthRatioForAge &&
+            other is _IntergrowthNewbornBirthWeightForLengthRatioForAge &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.measurementResult, measurementResult) ||
@@ -795,17 +826,20 @@ class _NewbornBirthWeightForLengthRatioForAge
 
   @override
   String toString() {
-    return 'NewbornBirthWeightForLengthRatioForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
+    return 'IntergrowthNewbornBirthWeightForLengthRatioForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$NewbornBirthWeightForLengthRatioForAgeCopyWith<$Res>
-    implements $NewbornBirthWeightForLengthRatioForAgeCopyWith<$Res> {
-  factory _$NewbornBirthWeightForLengthRatioForAgeCopyWith(
-          _NewbornBirthWeightForLengthRatioForAge value,
-          $Res Function(_NewbornBirthWeightForLengthRatioForAge) _then) =
-      __$NewbornBirthWeightForLengthRatioForAgeCopyWithImpl;
+abstract mixin class _$IntergrowthNewbornBirthWeightForLengthRatioForAgeCopyWith<
+        $Res>
+    implements
+        $IntergrowthNewbornBirthWeightForLengthRatioForAgeCopyWith<$Res> {
+  factory _$IntergrowthNewbornBirthWeightForLengthRatioForAgeCopyWith(
+          _IntergrowthNewbornBirthWeightForLengthRatioForAge value,
+          $Res Function(_IntergrowthNewbornBirthWeightForLengthRatioForAge)
+              _then) =
+      __$IntergrowthNewbornBirthWeightForLengthRatioForAgeCopyWithImpl;
   @override
   @useResult
   $Res call(
@@ -820,14 +854,16 @@ abstract mixin class _$NewbornBirthWeightForLengthRatioForAgeCopyWith<$Res>
 }
 
 /// @nodoc
-class __$NewbornBirthWeightForLengthRatioForAgeCopyWithImpl<$Res>
-    implements _$NewbornBirthWeightForLengthRatioForAgeCopyWith<$Res> {
-  __$NewbornBirthWeightForLengthRatioForAgeCopyWithImpl(this._self, this._then);
+class __$IntergrowthNewbornBirthWeightForLengthRatioForAgeCopyWithImpl<$Res>
+    implements
+        _$IntergrowthNewbornBirthWeightForLengthRatioForAgeCopyWith<$Res> {
+  __$IntergrowthNewbornBirthWeightForLengthRatioForAgeCopyWithImpl(
+      this._self, this._then);
 
-  final _NewbornBirthWeightForLengthRatioForAge _self;
-  final $Res Function(_NewbornBirthWeightForLengthRatioForAge) _then;
+  final _IntergrowthNewbornBirthWeightForLengthRatioForAge _self;
+  final $Res Function(_IntergrowthNewbornBirthWeightForLengthRatioForAge) _then;
 
-  /// Create a copy of NewbornBirthWeightForLengthRatioForAge
+  /// Create a copy of IntergrowthNewbornBirthWeightForLengthRatioForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -836,7 +872,7 @@ class __$NewbornBirthWeightForLengthRatioForAgeCopyWithImpl<$Res>
     Object? age = null,
     Object? measurementResult = null,
   }) {
-    return _then(_NewbornBirthWeightForLengthRatioForAge(
+    return _then(_IntergrowthNewbornBirthWeightForLengthRatioForAge(
       sex: null == sex
           ? _self.sex
           : sex // ignore: cast_nullable_to_non_nullable
@@ -852,7 +888,7 @@ class __$NewbornBirthWeightForLengthRatioForAgeCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of NewbornBirthWeightForLengthRatioForAge
+  /// Create a copy of IntergrowthNewbornBirthWeightForLengthRatioForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -862,7 +898,7 @@ class __$NewbornBirthWeightForLengthRatioForAgeCopyWithImpl<$Res>
     });
   }
 
-  /// Create a copy of NewbornBirthWeightForLengthRatioForAge
+  /// Create a copy of IntergrowthNewbornBirthWeightForLengthRatioForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -875,29 +911,31 @@ class __$NewbornBirthWeightForLengthRatioForAgeCopyWithImpl<$Res>
 }
 
 /// @nodoc
-mixin _$VeryPretermNewbornBirthWeightForAge {
+mixin _$IntergrowthVeryPretermNewbornBirthWeightForAge {
   Sex get sex;
   Age get age;
   Mass get measurementResult;
 
-  /// Create a copy of VeryPretermNewbornBirthWeightForAge
+  /// Create a copy of IntergrowthVeryPretermNewbornBirthWeightForAge
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $VeryPretermNewbornBirthWeightForAgeCopyWith<
-          VeryPretermNewbornBirthWeightForAge>
-      get copyWith => _$VeryPretermNewbornBirthWeightForAgeCopyWithImpl<
-              VeryPretermNewbornBirthWeightForAge>(
-          this as VeryPretermNewbornBirthWeightForAge, _$identity);
+  $IntergrowthVeryPretermNewbornBirthWeightForAgeCopyWith<
+          IntergrowthVeryPretermNewbornBirthWeightForAge>
+      get copyWith =>
+          _$IntergrowthVeryPretermNewbornBirthWeightForAgeCopyWithImpl<
+                  IntergrowthVeryPretermNewbornBirthWeightForAge>(
+              this as IntergrowthVeryPretermNewbornBirthWeightForAge,
+              _$identity);
 
-  /// Serializes this VeryPretermNewbornBirthWeightForAge to a JSON map.
+  /// Serializes this IntergrowthVeryPretermNewbornBirthWeightForAge to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is VeryPretermNewbornBirthWeightForAge &&
+            other is IntergrowthVeryPretermNewbornBirthWeightForAge &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.measurementResult, measurementResult) ||
@@ -910,16 +948,17 @@ mixin _$VeryPretermNewbornBirthWeightForAge {
 
   @override
   String toString() {
-    return 'VeryPretermNewbornBirthWeightForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
+    return 'IntergrowthVeryPretermNewbornBirthWeightForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
   }
 }
 
 /// @nodoc
-abstract mixin class $VeryPretermNewbornBirthWeightForAgeCopyWith<$Res> {
-  factory $VeryPretermNewbornBirthWeightForAgeCopyWith(
-          VeryPretermNewbornBirthWeightForAge value,
-          $Res Function(VeryPretermNewbornBirthWeightForAge) _then) =
-      _$VeryPretermNewbornBirthWeightForAgeCopyWithImpl;
+abstract mixin class $IntergrowthVeryPretermNewbornBirthWeightForAgeCopyWith<
+    $Res> {
+  factory $IntergrowthVeryPretermNewbornBirthWeightForAgeCopyWith(
+          IntergrowthVeryPretermNewbornBirthWeightForAge value,
+          $Res Function(IntergrowthVeryPretermNewbornBirthWeightForAge) _then) =
+      _$IntergrowthVeryPretermNewbornBirthWeightForAgeCopyWithImpl;
   @useResult
   $Res call({Sex sex, Age age, Mass measurementResult});
 
@@ -927,14 +966,15 @@ abstract mixin class $VeryPretermNewbornBirthWeightForAgeCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$VeryPretermNewbornBirthWeightForAgeCopyWithImpl<$Res>
-    implements $VeryPretermNewbornBirthWeightForAgeCopyWith<$Res> {
-  _$VeryPretermNewbornBirthWeightForAgeCopyWithImpl(this._self, this._then);
+class _$IntergrowthVeryPretermNewbornBirthWeightForAgeCopyWithImpl<$Res>
+    implements $IntergrowthVeryPretermNewbornBirthWeightForAgeCopyWith<$Res> {
+  _$IntergrowthVeryPretermNewbornBirthWeightForAgeCopyWithImpl(
+      this._self, this._then);
 
-  final VeryPretermNewbornBirthWeightForAge _self;
-  final $Res Function(VeryPretermNewbornBirthWeightForAge) _then;
+  final IntergrowthVeryPretermNewbornBirthWeightForAge _self;
+  final $Res Function(IntergrowthVeryPretermNewbornBirthWeightForAge) _then;
 
-  /// Create a copy of VeryPretermNewbornBirthWeightForAge
+  /// Create a copy of IntergrowthVeryPretermNewbornBirthWeightForAge
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -959,7 +999,7 @@ class _$VeryPretermNewbornBirthWeightForAgeCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of VeryPretermNewbornBirthWeightForAge
+  /// Create a copy of IntergrowthVeryPretermNewbornBirthWeightForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -972,14 +1012,14 @@ class _$VeryPretermNewbornBirthWeightForAgeCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _VeryPretermNewbornBirthWeightForAge
-    extends VeryPretermNewbornBirthWeightForAge {
-  _VeryPretermNewbornBirthWeightForAge(
+class _IntergrowthVeryPretermNewbornBirthWeightForAge
+    extends IntergrowthVeryPretermNewbornBirthWeightForAge {
+  _IntergrowthVeryPretermNewbornBirthWeightForAge(
       {required this.sex, required this.age, required this.measurementResult})
       : super._();
-  factory _VeryPretermNewbornBirthWeightForAge.fromJson(
+  factory _IntergrowthVeryPretermNewbornBirthWeightForAge.fromJson(
           Map<String, dynamic> json) =>
-      _$VeryPretermNewbornBirthWeightForAgeFromJson(json);
+      _$IntergrowthVeryPretermNewbornBirthWeightForAgeFromJson(json);
 
   @override
   final Sex sex;
@@ -988,19 +1028,21 @@ class _VeryPretermNewbornBirthWeightForAge
   @override
   final Mass measurementResult;
 
-  /// Create a copy of VeryPretermNewbornBirthWeightForAge
+  /// Create a copy of IntergrowthVeryPretermNewbornBirthWeightForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$VeryPretermNewbornBirthWeightForAgeCopyWith<
-          _VeryPretermNewbornBirthWeightForAge>
-      get copyWith => __$VeryPretermNewbornBirthWeightForAgeCopyWithImpl<
-          _VeryPretermNewbornBirthWeightForAge>(this, _$identity);
+  _$IntergrowthVeryPretermNewbornBirthWeightForAgeCopyWith<
+          _IntergrowthVeryPretermNewbornBirthWeightForAge>
+      get copyWith =>
+          __$IntergrowthVeryPretermNewbornBirthWeightForAgeCopyWithImpl<
+                  _IntergrowthVeryPretermNewbornBirthWeightForAge>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$VeryPretermNewbornBirthWeightForAgeToJson(
+    return _$IntergrowthVeryPretermNewbornBirthWeightForAgeToJson(
       this,
     );
   }
@@ -1009,7 +1051,7 @@ class _VeryPretermNewbornBirthWeightForAge
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _VeryPretermNewbornBirthWeightForAge &&
+            other is _IntergrowthVeryPretermNewbornBirthWeightForAge &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.measurementResult, measurementResult) ||
@@ -1022,17 +1064,19 @@ class _VeryPretermNewbornBirthWeightForAge
 
   @override
   String toString() {
-    return 'VeryPretermNewbornBirthWeightForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
+    return 'IntergrowthVeryPretermNewbornBirthWeightForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$VeryPretermNewbornBirthWeightForAgeCopyWith<$Res>
-    implements $VeryPretermNewbornBirthWeightForAgeCopyWith<$Res> {
-  factory _$VeryPretermNewbornBirthWeightForAgeCopyWith(
-          _VeryPretermNewbornBirthWeightForAge value,
-          $Res Function(_VeryPretermNewbornBirthWeightForAge) _then) =
-      __$VeryPretermNewbornBirthWeightForAgeCopyWithImpl;
+abstract mixin class _$IntergrowthVeryPretermNewbornBirthWeightForAgeCopyWith<
+        $Res>
+    implements $IntergrowthVeryPretermNewbornBirthWeightForAgeCopyWith<$Res> {
+  factory _$IntergrowthVeryPretermNewbornBirthWeightForAgeCopyWith(
+          _IntergrowthVeryPretermNewbornBirthWeightForAge value,
+          $Res Function(_IntergrowthVeryPretermNewbornBirthWeightForAge)
+              _then) =
+      __$IntergrowthVeryPretermNewbornBirthWeightForAgeCopyWithImpl;
   @override
   @useResult
   $Res call({Sex sex, Age age, Mass measurementResult});
@@ -1042,14 +1086,15 @@ abstract mixin class _$VeryPretermNewbornBirthWeightForAgeCopyWith<$Res>
 }
 
 /// @nodoc
-class __$VeryPretermNewbornBirthWeightForAgeCopyWithImpl<$Res>
-    implements _$VeryPretermNewbornBirthWeightForAgeCopyWith<$Res> {
-  __$VeryPretermNewbornBirthWeightForAgeCopyWithImpl(this._self, this._then);
+class __$IntergrowthVeryPretermNewbornBirthWeightForAgeCopyWithImpl<$Res>
+    implements _$IntergrowthVeryPretermNewbornBirthWeightForAgeCopyWith<$Res> {
+  __$IntergrowthVeryPretermNewbornBirthWeightForAgeCopyWithImpl(
+      this._self, this._then);
 
-  final _VeryPretermNewbornBirthWeightForAge _self;
-  final $Res Function(_VeryPretermNewbornBirthWeightForAge) _then;
+  final _IntergrowthVeryPretermNewbornBirthWeightForAge _self;
+  final $Res Function(_IntergrowthVeryPretermNewbornBirthWeightForAge) _then;
 
-  /// Create a copy of VeryPretermNewbornBirthWeightForAge
+  /// Create a copy of IntergrowthVeryPretermNewbornBirthWeightForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -1058,7 +1103,7 @@ class __$VeryPretermNewbornBirthWeightForAgeCopyWithImpl<$Res>
     Object? age = null,
     Object? measurementResult = null,
   }) {
-    return _then(_VeryPretermNewbornBirthWeightForAge(
+    return _then(_IntergrowthVeryPretermNewbornBirthWeightForAge(
       sex: null == sex
           ? _self.sex
           : sex // ignore: cast_nullable_to_non_nullable
@@ -1074,7 +1119,7 @@ class __$VeryPretermNewbornBirthWeightForAgeCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of VeryPretermNewbornBirthWeightForAge
+  /// Create a copy of IntergrowthVeryPretermNewbornBirthWeightForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -1086,31 +1131,32 @@ class __$VeryPretermNewbornBirthWeightForAgeCopyWithImpl<$Res>
 }
 
 /// @nodoc
-mixin _$VeryPretermNewbornBirthHeadCircumferenceForAge {
+mixin _$IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge {
   Sex get sex;
   Age get age;
   Length get measurementResult;
 
-  /// Create a copy of VeryPretermNewbornBirthHeadCircumferenceForAge
+  /// Create a copy of IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $VeryPretermNewbornBirthHeadCircumferenceForAgeCopyWith<
-          VeryPretermNewbornBirthHeadCircumferenceForAge>
+  $IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeCopyWith<
+          IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge>
       get copyWith =>
-          _$VeryPretermNewbornBirthHeadCircumferenceForAgeCopyWithImpl<
-                  VeryPretermNewbornBirthHeadCircumferenceForAge>(
-              this as VeryPretermNewbornBirthHeadCircumferenceForAge,
+          _$IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeCopyWithImpl<
+                  IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge>(
+              this as IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge,
               _$identity);
 
-  /// Serializes this VeryPretermNewbornBirthHeadCircumferenceForAge to a JSON map.
+  /// Serializes this IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is VeryPretermNewbornBirthHeadCircumferenceForAge &&
+            other
+                is IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.measurementResult, measurementResult) ||
@@ -1123,17 +1169,19 @@ mixin _$VeryPretermNewbornBirthHeadCircumferenceForAge {
 
   @override
   String toString() {
-    return 'VeryPretermNewbornBirthHeadCircumferenceForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
+    return 'IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
   }
 }
 
 /// @nodoc
-abstract mixin class $VeryPretermNewbornBirthHeadCircumferenceForAgeCopyWith<
+abstract mixin class $IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeCopyWith<
     $Res> {
-  factory $VeryPretermNewbornBirthHeadCircumferenceForAgeCopyWith(
-          VeryPretermNewbornBirthHeadCircumferenceForAge value,
-          $Res Function(VeryPretermNewbornBirthHeadCircumferenceForAge) _then) =
-      _$VeryPretermNewbornBirthHeadCircumferenceForAgeCopyWithImpl;
+  factory $IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeCopyWith(
+          IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge value,
+          $Res Function(
+                  IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge)
+              _then) =
+      _$IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeCopyWithImpl;
   @useResult
   $Res call({Sex sex, Age age, Length measurementResult});
 
@@ -1141,15 +1189,19 @@ abstract mixin class $VeryPretermNewbornBirthHeadCircumferenceForAgeCopyWith<
 }
 
 /// @nodoc
-class _$VeryPretermNewbornBirthHeadCircumferenceForAgeCopyWithImpl<$Res>
-    implements $VeryPretermNewbornBirthHeadCircumferenceForAgeCopyWith<$Res> {
-  _$VeryPretermNewbornBirthHeadCircumferenceForAgeCopyWithImpl(
+class _$IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeCopyWithImpl<
+        $Res>
+    implements
+        $IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeCopyWith<
+            $Res> {
+  _$IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeCopyWithImpl(
       this._self, this._then);
 
-  final VeryPretermNewbornBirthHeadCircumferenceForAge _self;
-  final $Res Function(VeryPretermNewbornBirthHeadCircumferenceForAge) _then;
+  final IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge _self;
+  final $Res Function(IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge)
+      _then;
 
-  /// Create a copy of VeryPretermNewbornBirthHeadCircumferenceForAge
+  /// Create a copy of IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -1174,7 +1226,7 @@ class _$VeryPretermNewbornBirthHeadCircumferenceForAgeCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of VeryPretermNewbornBirthHeadCircumferenceForAge
+  /// Create a copy of IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -1187,14 +1239,14 @@ class _$VeryPretermNewbornBirthHeadCircumferenceForAgeCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _VeryPretermNewbornBirthHeadCircumferenceForAge
-    extends VeryPretermNewbornBirthHeadCircumferenceForAge {
-  _VeryPretermNewbornBirthHeadCircumferenceForAge(
+class _IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge
+    extends IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge {
+  _IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge(
       {required this.sex, required this.age, required this.measurementResult})
       : super._();
-  factory _VeryPretermNewbornBirthHeadCircumferenceForAge.fromJson(
+  factory _IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge.fromJson(
           Map<String, dynamic> json) =>
-      _$VeryPretermNewbornBirthHeadCircumferenceForAgeFromJson(json);
+      _$IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeFromJson(json);
 
   @override
   final Sex sex;
@@ -1203,21 +1255,21 @@ class _VeryPretermNewbornBirthHeadCircumferenceForAge
   @override
   final Length measurementResult;
 
-  /// Create a copy of VeryPretermNewbornBirthHeadCircumferenceForAge
+  /// Create a copy of IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$VeryPretermNewbornBirthHeadCircumferenceForAgeCopyWith<
-          _VeryPretermNewbornBirthHeadCircumferenceForAge>
+  _$IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeCopyWith<
+          _IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge>
       get copyWith =>
-          __$VeryPretermNewbornBirthHeadCircumferenceForAgeCopyWithImpl<
-                  _VeryPretermNewbornBirthHeadCircumferenceForAge>(
+          __$IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeCopyWithImpl<
+                  _IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge>(
               this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$VeryPretermNewbornBirthHeadCircumferenceForAgeToJson(
+    return _$IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeToJson(
       this,
     );
   }
@@ -1226,7 +1278,8 @@ class _VeryPretermNewbornBirthHeadCircumferenceForAge
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _VeryPretermNewbornBirthHeadCircumferenceForAge &&
+            other
+                is _IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.measurementResult, measurementResult) ||
@@ -1239,19 +1292,22 @@ class _VeryPretermNewbornBirthHeadCircumferenceForAge
 
   @override
   String toString() {
-    return 'VeryPretermNewbornBirthHeadCircumferenceForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
+    return 'IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$VeryPretermNewbornBirthHeadCircumferenceForAgeCopyWith<
+abstract mixin class _$IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeCopyWith<
         $Res>
-    implements $VeryPretermNewbornBirthHeadCircumferenceForAgeCopyWith<$Res> {
-  factory _$VeryPretermNewbornBirthHeadCircumferenceForAgeCopyWith(
-          _VeryPretermNewbornBirthHeadCircumferenceForAge value,
-          $Res Function(_VeryPretermNewbornBirthHeadCircumferenceForAge)
+    implements
+        $IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeCopyWith<
+            $Res> {
+  factory _$IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeCopyWith(
+          _IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge value,
+          $Res Function(
+                  _IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge)
               _then) =
-      __$VeryPretermNewbornBirthHeadCircumferenceForAgeCopyWithImpl;
+      __$IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeCopyWithImpl;
   @override
   @useResult
   $Res call({Sex sex, Age age, Length measurementResult});
@@ -1261,15 +1317,19 @@ abstract mixin class _$VeryPretermNewbornBirthHeadCircumferenceForAgeCopyWith<
 }
 
 /// @nodoc
-class __$VeryPretermNewbornBirthHeadCircumferenceForAgeCopyWithImpl<$Res>
-    implements _$VeryPretermNewbornBirthHeadCircumferenceForAgeCopyWith<$Res> {
-  __$VeryPretermNewbornBirthHeadCircumferenceForAgeCopyWithImpl(
+class __$IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeCopyWithImpl<
+        $Res>
+    implements
+        _$IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeCopyWith<
+            $Res> {
+  __$IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeCopyWithImpl(
       this._self, this._then);
 
-  final _VeryPretermNewbornBirthHeadCircumferenceForAge _self;
-  final $Res Function(_VeryPretermNewbornBirthHeadCircumferenceForAge) _then;
+  final _IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge _self;
+  final $Res Function(
+      _IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge) _then;
 
-  /// Create a copy of VeryPretermNewbornBirthHeadCircumferenceForAge
+  /// Create a copy of IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -1278,7 +1338,7 @@ class __$VeryPretermNewbornBirthHeadCircumferenceForAgeCopyWithImpl<$Res>
     Object? age = null,
     Object? measurementResult = null,
   }) {
-    return _then(_VeryPretermNewbornBirthHeadCircumferenceForAge(
+    return _then(_IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge(
       sex: null == sex
           ? _self.sex
           : sex // ignore: cast_nullable_to_non_nullable
@@ -1294,7 +1354,7 @@ class __$VeryPretermNewbornBirthHeadCircumferenceForAgeCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of VeryPretermNewbornBirthHeadCircumferenceForAge
+  /// Create a copy of IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -1306,29 +1366,31 @@ class __$VeryPretermNewbornBirthHeadCircumferenceForAgeCopyWithImpl<$Res>
 }
 
 /// @nodoc
-mixin _$VeryPretermNewbornBirthLengthForAge {
+mixin _$IntergrowthVeryPretermNewbornBirthLengthForAge {
   Sex get sex;
   Age get age;
   Length get measurementResult;
 
-  /// Create a copy of VeryPretermNewbornBirthLengthForAge
+  /// Create a copy of IntergrowthVeryPretermNewbornBirthLengthForAge
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $VeryPretermNewbornBirthLengthForAgeCopyWith<
-          VeryPretermNewbornBirthLengthForAge>
-      get copyWith => _$VeryPretermNewbornBirthLengthForAgeCopyWithImpl<
-              VeryPretermNewbornBirthLengthForAge>(
-          this as VeryPretermNewbornBirthLengthForAge, _$identity);
+  $IntergrowthVeryPretermNewbornBirthLengthForAgeCopyWith<
+          IntergrowthVeryPretermNewbornBirthLengthForAge>
+      get copyWith =>
+          _$IntergrowthVeryPretermNewbornBirthLengthForAgeCopyWithImpl<
+                  IntergrowthVeryPretermNewbornBirthLengthForAge>(
+              this as IntergrowthVeryPretermNewbornBirthLengthForAge,
+              _$identity);
 
-  /// Serializes this VeryPretermNewbornBirthLengthForAge to a JSON map.
+  /// Serializes this IntergrowthVeryPretermNewbornBirthLengthForAge to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is VeryPretermNewbornBirthLengthForAge &&
+            other is IntergrowthVeryPretermNewbornBirthLengthForAge &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.measurementResult, measurementResult) ||
@@ -1341,16 +1403,17 @@ mixin _$VeryPretermNewbornBirthLengthForAge {
 
   @override
   String toString() {
-    return 'VeryPretermNewbornBirthLengthForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
+    return 'IntergrowthVeryPretermNewbornBirthLengthForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
   }
 }
 
 /// @nodoc
-abstract mixin class $VeryPretermNewbornBirthLengthForAgeCopyWith<$Res> {
-  factory $VeryPretermNewbornBirthLengthForAgeCopyWith(
-          VeryPretermNewbornBirthLengthForAge value,
-          $Res Function(VeryPretermNewbornBirthLengthForAge) _then) =
-      _$VeryPretermNewbornBirthLengthForAgeCopyWithImpl;
+abstract mixin class $IntergrowthVeryPretermNewbornBirthLengthForAgeCopyWith<
+    $Res> {
+  factory $IntergrowthVeryPretermNewbornBirthLengthForAgeCopyWith(
+          IntergrowthVeryPretermNewbornBirthLengthForAge value,
+          $Res Function(IntergrowthVeryPretermNewbornBirthLengthForAge) _then) =
+      _$IntergrowthVeryPretermNewbornBirthLengthForAgeCopyWithImpl;
   @useResult
   $Res call({Sex sex, Age age, Length measurementResult});
 
@@ -1358,14 +1421,15 @@ abstract mixin class $VeryPretermNewbornBirthLengthForAgeCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$VeryPretermNewbornBirthLengthForAgeCopyWithImpl<$Res>
-    implements $VeryPretermNewbornBirthLengthForAgeCopyWith<$Res> {
-  _$VeryPretermNewbornBirthLengthForAgeCopyWithImpl(this._self, this._then);
+class _$IntergrowthVeryPretermNewbornBirthLengthForAgeCopyWithImpl<$Res>
+    implements $IntergrowthVeryPretermNewbornBirthLengthForAgeCopyWith<$Res> {
+  _$IntergrowthVeryPretermNewbornBirthLengthForAgeCopyWithImpl(
+      this._self, this._then);
 
-  final VeryPretermNewbornBirthLengthForAge _self;
-  final $Res Function(VeryPretermNewbornBirthLengthForAge) _then;
+  final IntergrowthVeryPretermNewbornBirthLengthForAge _self;
+  final $Res Function(IntergrowthVeryPretermNewbornBirthLengthForAge) _then;
 
-  /// Create a copy of VeryPretermNewbornBirthLengthForAge
+  /// Create a copy of IntergrowthVeryPretermNewbornBirthLengthForAge
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -1390,7 +1454,7 @@ class _$VeryPretermNewbornBirthLengthForAgeCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of VeryPretermNewbornBirthLengthForAge
+  /// Create a copy of IntergrowthVeryPretermNewbornBirthLengthForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -1403,14 +1467,14 @@ class _$VeryPretermNewbornBirthLengthForAgeCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _VeryPretermNewbornBirthLengthForAge
-    extends VeryPretermNewbornBirthLengthForAge {
-  _VeryPretermNewbornBirthLengthForAge(
+class _IntergrowthVeryPretermNewbornBirthLengthForAge
+    extends IntergrowthVeryPretermNewbornBirthLengthForAge {
+  _IntergrowthVeryPretermNewbornBirthLengthForAge(
       {required this.sex, required this.age, required this.measurementResult})
       : super._();
-  factory _VeryPretermNewbornBirthLengthForAge.fromJson(
+  factory _IntergrowthVeryPretermNewbornBirthLengthForAge.fromJson(
           Map<String, dynamic> json) =>
-      _$VeryPretermNewbornBirthLengthForAgeFromJson(json);
+      _$IntergrowthVeryPretermNewbornBirthLengthForAgeFromJson(json);
 
   @override
   final Sex sex;
@@ -1419,19 +1483,21 @@ class _VeryPretermNewbornBirthLengthForAge
   @override
   final Length measurementResult;
 
-  /// Create a copy of VeryPretermNewbornBirthLengthForAge
+  /// Create a copy of IntergrowthVeryPretermNewbornBirthLengthForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$VeryPretermNewbornBirthLengthForAgeCopyWith<
-          _VeryPretermNewbornBirthLengthForAge>
-      get copyWith => __$VeryPretermNewbornBirthLengthForAgeCopyWithImpl<
-          _VeryPretermNewbornBirthLengthForAge>(this, _$identity);
+  _$IntergrowthVeryPretermNewbornBirthLengthForAgeCopyWith<
+          _IntergrowthVeryPretermNewbornBirthLengthForAge>
+      get copyWith =>
+          __$IntergrowthVeryPretermNewbornBirthLengthForAgeCopyWithImpl<
+                  _IntergrowthVeryPretermNewbornBirthLengthForAge>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$VeryPretermNewbornBirthLengthForAgeToJson(
+    return _$IntergrowthVeryPretermNewbornBirthLengthForAgeToJson(
       this,
     );
   }
@@ -1440,7 +1506,7 @@ class _VeryPretermNewbornBirthLengthForAge
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _VeryPretermNewbornBirthLengthForAge &&
+            other is _IntergrowthVeryPretermNewbornBirthLengthForAge &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.measurementResult, measurementResult) ||
@@ -1453,17 +1519,19 @@ class _VeryPretermNewbornBirthLengthForAge
 
   @override
   String toString() {
-    return 'VeryPretermNewbornBirthLengthForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
+    return 'IntergrowthVeryPretermNewbornBirthLengthForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$VeryPretermNewbornBirthLengthForAgeCopyWith<$Res>
-    implements $VeryPretermNewbornBirthLengthForAgeCopyWith<$Res> {
-  factory _$VeryPretermNewbornBirthLengthForAgeCopyWith(
-          _VeryPretermNewbornBirthLengthForAge value,
-          $Res Function(_VeryPretermNewbornBirthLengthForAge) _then) =
-      __$VeryPretermNewbornBirthLengthForAgeCopyWithImpl;
+abstract mixin class _$IntergrowthVeryPretermNewbornBirthLengthForAgeCopyWith<
+        $Res>
+    implements $IntergrowthVeryPretermNewbornBirthLengthForAgeCopyWith<$Res> {
+  factory _$IntergrowthVeryPretermNewbornBirthLengthForAgeCopyWith(
+          _IntergrowthVeryPretermNewbornBirthLengthForAge value,
+          $Res Function(_IntergrowthVeryPretermNewbornBirthLengthForAge)
+              _then) =
+      __$IntergrowthVeryPretermNewbornBirthLengthForAgeCopyWithImpl;
   @override
   @useResult
   $Res call({Sex sex, Age age, Length measurementResult});
@@ -1473,14 +1541,15 @@ abstract mixin class _$VeryPretermNewbornBirthLengthForAgeCopyWith<$Res>
 }
 
 /// @nodoc
-class __$VeryPretermNewbornBirthLengthForAgeCopyWithImpl<$Res>
-    implements _$VeryPretermNewbornBirthLengthForAgeCopyWith<$Res> {
-  __$VeryPretermNewbornBirthLengthForAgeCopyWithImpl(this._self, this._then);
+class __$IntergrowthVeryPretermNewbornBirthLengthForAgeCopyWithImpl<$Res>
+    implements _$IntergrowthVeryPretermNewbornBirthLengthForAgeCopyWith<$Res> {
+  __$IntergrowthVeryPretermNewbornBirthLengthForAgeCopyWithImpl(
+      this._self, this._then);
 
-  final _VeryPretermNewbornBirthLengthForAge _self;
-  final $Res Function(_VeryPretermNewbornBirthLengthForAge) _then;
+  final _IntergrowthVeryPretermNewbornBirthLengthForAge _self;
+  final $Res Function(_IntergrowthVeryPretermNewbornBirthLengthForAge) _then;
 
-  /// Create a copy of VeryPretermNewbornBirthLengthForAge
+  /// Create a copy of IntergrowthVeryPretermNewbornBirthLengthForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -1489,7 +1558,7 @@ class __$VeryPretermNewbornBirthLengthForAgeCopyWithImpl<$Res>
     Object? age = null,
     Object? measurementResult = null,
   }) {
-    return _then(_VeryPretermNewbornBirthLengthForAge(
+    return _then(_IntergrowthVeryPretermNewbornBirthLengthForAge(
       sex: null == sex
           ? _self.sex
           : sex // ignore: cast_nullable_to_non_nullable
@@ -1505,7 +1574,7 @@ class __$VeryPretermNewbornBirthLengthForAgeCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of VeryPretermNewbornBirthLengthForAge
+  /// Create a copy of IntergrowthVeryPretermNewbornBirthLengthForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -1669,31 +1738,33 @@ class __$NewbornWeightLengthRatioMeasurementCopyWithImpl<$Res>
 }
 
 /// @nodoc
-mixin _$VeryPretermNewbornBirthWeightForLengthRatioForAge {
+mixin _$IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge {
   Sex get sex;
   Age get age;
   NewbornWeightLengthRatioMeasurement get measurementResult;
 
-  /// Create a copy of VeryPretermNewbornBirthWeightForLengthRatioForAge
+  /// Create a copy of IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $VeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWith<
-          VeryPretermNewbornBirthWeightForLengthRatioForAge>
+  $IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWith<
+          IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge>
       get copyWith =>
-          _$VeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWithImpl<
-                  VeryPretermNewbornBirthWeightForLengthRatioForAge>(
-              this as VeryPretermNewbornBirthWeightForLengthRatioForAge,
+          _$IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWithImpl<
+                  IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge>(
+              this
+                  as IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge,
               _$identity);
 
-  /// Serializes this VeryPretermNewbornBirthWeightForLengthRatioForAge to a JSON map.
+  /// Serializes this IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is VeryPretermNewbornBirthWeightForLengthRatioForAge &&
+            other
+                is IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.measurementResult, measurementResult) ||
@@ -1706,18 +1777,19 @@ mixin _$VeryPretermNewbornBirthWeightForLengthRatioForAge {
 
   @override
   String toString() {
-    return 'VeryPretermNewbornBirthWeightForLengthRatioForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
+    return 'IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
   }
 }
 
 /// @nodoc
-abstract mixin class $VeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWith<
+abstract mixin class $IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWith<
     $Res> {
-  factory $VeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWith(
-          VeryPretermNewbornBirthWeightForLengthRatioForAge value,
-          $Res Function(VeryPretermNewbornBirthWeightForLengthRatioForAge)
+  factory $IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWith(
+          IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge value,
+          $Res Function(
+                  IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge)
               _then) =
-      _$VeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWithImpl;
+      _$IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWithImpl;
   @useResult
   $Res call(
       {Sex sex,
@@ -1729,16 +1801,19 @@ abstract mixin class $VeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWith<
 }
 
 /// @nodoc
-class _$VeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWithImpl<$Res>
+class _$IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWithImpl<
+        $Res>
     implements
-        $VeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWith<$Res> {
-  _$VeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWithImpl(
+        $IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWith<
+            $Res> {
+  _$IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWithImpl(
       this._self, this._then);
 
-  final VeryPretermNewbornBirthWeightForLengthRatioForAge _self;
-  final $Res Function(VeryPretermNewbornBirthWeightForLengthRatioForAge) _then;
+  final IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge _self;
+  final $Res Function(
+      IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge) _then;
 
-  /// Create a copy of VeryPretermNewbornBirthWeightForLengthRatioForAge
+  /// Create a copy of IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -1763,7 +1838,7 @@ class _$VeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of VeryPretermNewbornBirthWeightForLengthRatioForAge
+  /// Create a copy of IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -1773,7 +1848,7 @@ class _$VeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWithImpl<$Res>
     });
   }
 
-  /// Create a copy of VeryPretermNewbornBirthWeightForLengthRatioForAge
+  /// Create a copy of IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -1787,14 +1862,15 @@ class _$VeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _VeryPretermNewbornBirthWeightForLengthRatioForAge
-    extends VeryPretermNewbornBirthWeightForLengthRatioForAge {
-  _VeryPretermNewbornBirthWeightForLengthRatioForAge(
+class _IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge
+    extends IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge {
+  _IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge(
       {required this.sex, required this.age, required this.measurementResult})
       : super._();
-  factory _VeryPretermNewbornBirthWeightForLengthRatioForAge.fromJson(
+  factory _IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge.fromJson(
           Map<String, dynamic> json) =>
-      _$VeryPretermNewbornBirthWeightForLengthRatioForAgeFromJson(json);
+      _$IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeFromJson(
+          json);
 
   @override
   final Sex sex;
@@ -1803,21 +1879,21 @@ class _VeryPretermNewbornBirthWeightForLengthRatioForAge
   @override
   final NewbornWeightLengthRatioMeasurement measurementResult;
 
-  /// Create a copy of VeryPretermNewbornBirthWeightForLengthRatioForAge
+  /// Create a copy of IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$VeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWith<
-          _VeryPretermNewbornBirthWeightForLengthRatioForAge>
+  _$IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWith<
+          _IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge>
       get copyWith =>
-          __$VeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWithImpl<
-                  _VeryPretermNewbornBirthWeightForLengthRatioForAge>(
+          __$IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWithImpl<
+                  _IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge>(
               this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$VeryPretermNewbornBirthWeightForLengthRatioForAgeToJson(
+    return _$IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeToJson(
       this,
     );
   }
@@ -1826,7 +1902,8 @@ class _VeryPretermNewbornBirthWeightForLengthRatioForAge
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _VeryPretermNewbornBirthWeightForLengthRatioForAge &&
+            other
+                is _IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.measurementResult, measurementResult) ||
@@ -1839,20 +1916,22 @@ class _VeryPretermNewbornBirthWeightForLengthRatioForAge
 
   @override
   String toString() {
-    return 'VeryPretermNewbornBirthWeightForLengthRatioForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
+    return 'IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$VeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWith<
+abstract mixin class _$IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWith<
         $Res>
     implements
-        $VeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWith<$Res> {
-  factory _$VeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWith(
-          _VeryPretermNewbornBirthWeightForLengthRatioForAge value,
-          $Res Function(_VeryPretermNewbornBirthWeightForLengthRatioForAge)
+        $IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWith<
+            $Res> {
+  factory _$IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWith(
+          _IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge value,
+          $Res Function(
+                  _IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge)
               _then) =
-      __$VeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWithImpl;
+      __$IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWithImpl;
   @override
   @useResult
   $Res call(
@@ -1867,16 +1946,19 @@ abstract mixin class _$VeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWith
 }
 
 /// @nodoc
-class __$VeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWithImpl<$Res>
+class __$IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWithImpl<
+        $Res>
     implements
-        _$VeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWith<$Res> {
-  __$VeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWithImpl(
+        _$IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWith<
+            $Res> {
+  __$IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWithImpl(
       this._self, this._then);
 
-  final _VeryPretermNewbornBirthWeightForLengthRatioForAge _self;
-  final $Res Function(_VeryPretermNewbornBirthWeightForLengthRatioForAge) _then;
+  final _IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge _self;
+  final $Res Function(
+      _IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge) _then;
 
-  /// Create a copy of VeryPretermNewbornBirthWeightForLengthRatioForAge
+  /// Create a copy of IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -1885,7 +1967,7 @@ class __$VeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWithImpl<$Res>
     Object? age = null,
     Object? measurementResult = null,
   }) {
-    return _then(_VeryPretermNewbornBirthWeightForLengthRatioForAge(
+    return _then(_IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge(
       sex: null == sex
           ? _self.sex
           : sex // ignore: cast_nullable_to_non_nullable
@@ -1901,7 +1983,7 @@ class __$VeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of VeryPretermNewbornBirthWeightForLengthRatioForAge
+  /// Create a copy of IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -1911,7 +1993,7 @@ class __$VeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWithImpl<$Res>
     });
   }
 
-  /// Create a copy of VeryPretermNewbornBirthWeightForLengthRatioForAge
+  /// Create a copy of IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -1924,27 +2006,28 @@ class __$VeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWithImpl<$Res>
 }
 
 /// @nodoc
-mixin _$EarlyPregnancyDatingForCRL {
+mixin _$IntergrowthEarlyPregnancyDatingForCRL {
   Age get age;
   Length get length;
 
-  /// Create a copy of EarlyPregnancyDatingForCRL
+  /// Create a copy of IntergrowthEarlyPregnancyDatingForCRL
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $EarlyPregnancyDatingForCRLCopyWith<EarlyPregnancyDatingForCRL>
-      get copyWith =>
-          _$EarlyPregnancyDatingForCRLCopyWithImpl<EarlyPregnancyDatingForCRL>(
-              this as EarlyPregnancyDatingForCRL, _$identity);
+  $IntergrowthEarlyPregnancyDatingForCRLCopyWith<
+          IntergrowthEarlyPregnancyDatingForCRL>
+      get copyWith => _$IntergrowthEarlyPregnancyDatingForCRLCopyWithImpl<
+              IntergrowthEarlyPregnancyDatingForCRL>(
+          this as IntergrowthEarlyPregnancyDatingForCRL, _$identity);
 
-  /// Serializes this EarlyPregnancyDatingForCRL to a JSON map.
+  /// Serializes this IntergrowthEarlyPregnancyDatingForCRL to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is EarlyPregnancyDatingForCRL &&
+            other is IntergrowthEarlyPregnancyDatingForCRL &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.length, length) || other.length == length));
   }
@@ -1955,15 +2038,16 @@ mixin _$EarlyPregnancyDatingForCRL {
 
   @override
   String toString() {
-    return 'EarlyPregnancyDatingForCRL(age: $age, length: $length)';
+    return 'IntergrowthEarlyPregnancyDatingForCRL(age: $age, length: $length)';
   }
 }
 
 /// @nodoc
-abstract mixin class $EarlyPregnancyDatingForCRLCopyWith<$Res> {
-  factory $EarlyPregnancyDatingForCRLCopyWith(EarlyPregnancyDatingForCRL value,
-          $Res Function(EarlyPregnancyDatingForCRL) _then) =
-      _$EarlyPregnancyDatingForCRLCopyWithImpl;
+abstract mixin class $IntergrowthEarlyPregnancyDatingForCRLCopyWith<$Res> {
+  factory $IntergrowthEarlyPregnancyDatingForCRLCopyWith(
+          IntergrowthEarlyPregnancyDatingForCRL value,
+          $Res Function(IntergrowthEarlyPregnancyDatingForCRL) _then) =
+      _$IntergrowthEarlyPregnancyDatingForCRLCopyWithImpl;
   @useResult
   $Res call({Age age, Length length});
 
@@ -1971,14 +2055,14 @@ abstract mixin class $EarlyPregnancyDatingForCRLCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$EarlyPregnancyDatingForCRLCopyWithImpl<$Res>
-    implements $EarlyPregnancyDatingForCRLCopyWith<$Res> {
-  _$EarlyPregnancyDatingForCRLCopyWithImpl(this._self, this._then);
+class _$IntergrowthEarlyPregnancyDatingForCRLCopyWithImpl<$Res>
+    implements $IntergrowthEarlyPregnancyDatingForCRLCopyWith<$Res> {
+  _$IntergrowthEarlyPregnancyDatingForCRLCopyWithImpl(this._self, this._then);
 
-  final EarlyPregnancyDatingForCRL _self;
-  final $Res Function(EarlyPregnancyDatingForCRL) _then;
+  final IntergrowthEarlyPregnancyDatingForCRL _self;
+  final $Res Function(IntergrowthEarlyPregnancyDatingForCRL) _then;
 
-  /// Create a copy of EarlyPregnancyDatingForCRL
+  /// Create a copy of IntergrowthEarlyPregnancyDatingForCRL
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -1998,7 +2082,7 @@ class _$EarlyPregnancyDatingForCRLCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of EarlyPregnancyDatingForCRL
+  /// Create a copy of IntergrowthEarlyPregnancyDatingForCRL
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -2011,29 +2095,33 @@ class _$EarlyPregnancyDatingForCRLCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _EarlyPregnancyDatingForCRL extends EarlyPregnancyDatingForCRL {
-  _EarlyPregnancyDatingForCRL({required this.age, required this.length})
+class _IntergrowthEarlyPregnancyDatingForCRL
+    extends IntergrowthEarlyPregnancyDatingForCRL {
+  _IntergrowthEarlyPregnancyDatingForCRL(
+      {required this.age, required this.length})
       : super._();
-  factory _EarlyPregnancyDatingForCRL.fromJson(Map<String, dynamic> json) =>
-      _$EarlyPregnancyDatingForCRLFromJson(json);
+  factory _IntergrowthEarlyPregnancyDatingForCRL.fromJson(
+          Map<String, dynamic> json) =>
+      _$IntergrowthEarlyPregnancyDatingForCRLFromJson(json);
 
   @override
   final Age age;
   @override
   final Length length;
 
-  /// Create a copy of EarlyPregnancyDatingForCRL
+  /// Create a copy of IntergrowthEarlyPregnancyDatingForCRL
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$EarlyPregnancyDatingForCRLCopyWith<_EarlyPregnancyDatingForCRL>
-      get copyWith => __$EarlyPregnancyDatingForCRLCopyWithImpl<
-          _EarlyPregnancyDatingForCRL>(this, _$identity);
+  _$IntergrowthEarlyPregnancyDatingForCRLCopyWith<
+          _IntergrowthEarlyPregnancyDatingForCRL>
+      get copyWith => __$IntergrowthEarlyPregnancyDatingForCRLCopyWithImpl<
+          _IntergrowthEarlyPregnancyDatingForCRL>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$EarlyPregnancyDatingForCRLToJson(
+    return _$IntergrowthEarlyPregnancyDatingForCRLToJson(
       this,
     );
   }
@@ -2042,7 +2130,7 @@ class _EarlyPregnancyDatingForCRL extends EarlyPregnancyDatingForCRL {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _EarlyPregnancyDatingForCRL &&
+            other is _IntergrowthEarlyPregnancyDatingForCRL &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.length, length) || other.length == length));
   }
@@ -2053,17 +2141,17 @@ class _EarlyPregnancyDatingForCRL extends EarlyPregnancyDatingForCRL {
 
   @override
   String toString() {
-    return 'EarlyPregnancyDatingForCRL(age: $age, length: $length)';
+    return 'IntergrowthEarlyPregnancyDatingForCRL(age: $age, length: $length)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$EarlyPregnancyDatingForCRLCopyWith<$Res>
-    implements $EarlyPregnancyDatingForCRLCopyWith<$Res> {
-  factory _$EarlyPregnancyDatingForCRLCopyWith(
-          _EarlyPregnancyDatingForCRL value,
-          $Res Function(_EarlyPregnancyDatingForCRL) _then) =
-      __$EarlyPregnancyDatingForCRLCopyWithImpl;
+abstract mixin class _$IntergrowthEarlyPregnancyDatingForCRLCopyWith<$Res>
+    implements $IntergrowthEarlyPregnancyDatingForCRLCopyWith<$Res> {
+  factory _$IntergrowthEarlyPregnancyDatingForCRLCopyWith(
+          _IntergrowthEarlyPregnancyDatingForCRL value,
+          $Res Function(_IntergrowthEarlyPregnancyDatingForCRL) _then) =
+      __$IntergrowthEarlyPregnancyDatingForCRLCopyWithImpl;
   @override
   @useResult
   $Res call({Age age, Length length});
@@ -2073,14 +2161,14 @@ abstract mixin class _$EarlyPregnancyDatingForCRLCopyWith<$Res>
 }
 
 /// @nodoc
-class __$EarlyPregnancyDatingForCRLCopyWithImpl<$Res>
-    implements _$EarlyPregnancyDatingForCRLCopyWith<$Res> {
-  __$EarlyPregnancyDatingForCRLCopyWithImpl(this._self, this._then);
+class __$IntergrowthEarlyPregnancyDatingForCRLCopyWithImpl<$Res>
+    implements _$IntergrowthEarlyPregnancyDatingForCRLCopyWith<$Res> {
+  __$IntergrowthEarlyPregnancyDatingForCRLCopyWithImpl(this._self, this._then);
 
-  final _EarlyPregnancyDatingForCRL _self;
-  final $Res Function(_EarlyPregnancyDatingForCRL) _then;
+  final _IntergrowthEarlyPregnancyDatingForCRL _self;
+  final $Res Function(_IntergrowthEarlyPregnancyDatingForCRL) _then;
 
-  /// Create a copy of EarlyPregnancyDatingForCRL
+  /// Create a copy of IntergrowthEarlyPregnancyDatingForCRL
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -2088,7 +2176,7 @@ class __$EarlyPregnancyDatingForCRLCopyWithImpl<$Res>
     Object? age = null,
     Object? length = null,
   }) {
-    return _then(_EarlyPregnancyDatingForCRL(
+    return _then(_IntergrowthEarlyPregnancyDatingForCRL(
       age: null == age
           ? _self.age
           : age // ignore: cast_nullable_to_non_nullable
@@ -2100,7 +2188,7 @@ class __$EarlyPregnancyDatingForCRLCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of EarlyPregnancyDatingForCRL
+  /// Create a copy of IntergrowthEarlyPregnancyDatingForCRL
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -2112,1008 +2200,30 @@ class __$EarlyPregnancyDatingForCRLCopyWithImpl<$Res>
 }
 
 /// @nodoc
-mixin _$FetalGrowtAbdominalCircumferenceForAge {
+mixin _$IntergrowthFetalGrowtAbdominalCircumferenceForAge {
   Age get age;
   Length get measurementResult;
 
-  /// Create a copy of FetalGrowtAbdominalCircumferenceForAge
+  /// Create a copy of IntergrowthFetalGrowtAbdominalCircumferenceForAge
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $FetalGrowtAbdominalCircumferenceForAgeCopyWith<
-          FetalGrowtAbdominalCircumferenceForAge>
-      get copyWith => _$FetalGrowtAbdominalCircumferenceForAgeCopyWithImpl<
-              FetalGrowtAbdominalCircumferenceForAge>(
-          this as FetalGrowtAbdominalCircumferenceForAge, _$identity);
-
-  /// Serializes this FetalGrowtAbdominalCircumferenceForAge to a JSON map.
-  Map<String, dynamic> toJson();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is FetalGrowtAbdominalCircumferenceForAge &&
-            (identical(other.age, age) || other.age == age) &&
-            (identical(other.measurementResult, measurementResult) ||
-                other.measurementResult == measurementResult));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, age, measurementResult);
-
-  @override
-  String toString() {
-    return 'FetalGrowtAbdominalCircumferenceForAge(age: $age, measurementResult: $measurementResult)';
-  }
-}
-
-/// @nodoc
-abstract mixin class $FetalGrowtAbdominalCircumferenceForAgeCopyWith<$Res> {
-  factory $FetalGrowtAbdominalCircumferenceForAgeCopyWith(
-          FetalGrowtAbdominalCircumferenceForAge value,
-          $Res Function(FetalGrowtAbdominalCircumferenceForAge) _then) =
-      _$FetalGrowtAbdominalCircumferenceForAgeCopyWithImpl;
-  @useResult
-  $Res call({Age age, Length measurementResult});
-
-  $AgeCopyWith<$Res> get age;
-}
-
-/// @nodoc
-class _$FetalGrowtAbdominalCircumferenceForAgeCopyWithImpl<$Res>
-    implements $FetalGrowtAbdominalCircumferenceForAgeCopyWith<$Res> {
-  _$FetalGrowtAbdominalCircumferenceForAgeCopyWithImpl(this._self, this._then);
-
-  final FetalGrowtAbdominalCircumferenceForAge _self;
-  final $Res Function(FetalGrowtAbdominalCircumferenceForAge) _then;
-
-  /// Create a copy of FetalGrowtAbdominalCircumferenceForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? age = null,
-    Object? measurementResult = null,
-  }) {
-    return _then(_self.copyWith(
-      age: null == age
-          ? _self.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as Age,
-      measurementResult: null == measurementResult
-          ? _self.measurementResult
-          : measurementResult // ignore: cast_nullable_to_non_nullable
-              as Length,
-    ));
-  }
-
-  /// Create a copy of FetalGrowtAbdominalCircumferenceForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
-    });
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _FetalGrowtAbdominalCircumferenceForAge
-    extends FetalGrowtAbdominalCircumferenceForAge {
-  _FetalGrowtAbdominalCircumferenceForAge(
-      {required this.age, required this.measurementResult})
-      : super._();
-  factory _FetalGrowtAbdominalCircumferenceForAge.fromJson(
-          Map<String, dynamic> json) =>
-      _$FetalGrowtAbdominalCircumferenceForAgeFromJson(json);
-
-  @override
-  final Age age;
-  @override
-  final Length measurementResult;
-
-  /// Create a copy of FetalGrowtAbdominalCircumferenceForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$FetalGrowtAbdominalCircumferenceForAgeCopyWith<
-          _FetalGrowtAbdominalCircumferenceForAge>
-      get copyWith => __$FetalGrowtAbdominalCircumferenceForAgeCopyWithImpl<
-          _FetalGrowtAbdominalCircumferenceForAge>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$FetalGrowtAbdominalCircumferenceForAgeToJson(
-      this,
-    );
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _FetalGrowtAbdominalCircumferenceForAge &&
-            (identical(other.age, age) || other.age == age) &&
-            (identical(other.measurementResult, measurementResult) ||
-                other.measurementResult == measurementResult));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, age, measurementResult);
-
-  @override
-  String toString() {
-    return 'FetalGrowtAbdominalCircumferenceForAge(age: $age, measurementResult: $measurementResult)';
-  }
-}
-
-/// @nodoc
-abstract mixin class _$FetalGrowtAbdominalCircumferenceForAgeCopyWith<$Res>
-    implements $FetalGrowtAbdominalCircumferenceForAgeCopyWith<$Res> {
-  factory _$FetalGrowtAbdominalCircumferenceForAgeCopyWith(
-          _FetalGrowtAbdominalCircumferenceForAge value,
-          $Res Function(_FetalGrowtAbdominalCircumferenceForAge) _then) =
-      __$FetalGrowtAbdominalCircumferenceForAgeCopyWithImpl;
-  @override
-  @useResult
-  $Res call({Age age, Length measurementResult});
-
-  @override
-  $AgeCopyWith<$Res> get age;
-}
-
-/// @nodoc
-class __$FetalGrowtAbdominalCircumferenceForAgeCopyWithImpl<$Res>
-    implements _$FetalGrowtAbdominalCircumferenceForAgeCopyWith<$Res> {
-  __$FetalGrowtAbdominalCircumferenceForAgeCopyWithImpl(this._self, this._then);
-
-  final _FetalGrowtAbdominalCircumferenceForAge _self;
-  final $Res Function(_FetalGrowtAbdominalCircumferenceForAge) _then;
-
-  /// Create a copy of FetalGrowtAbdominalCircumferenceForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? age = null,
-    Object? measurementResult = null,
-  }) {
-    return _then(_FetalGrowtAbdominalCircumferenceForAge(
-      age: null == age
-          ? _self.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as Age,
-      measurementResult: null == measurementResult
-          ? _self.measurementResult
-          : measurementResult // ignore: cast_nullable_to_non_nullable
-              as Length,
-    ));
-  }
-
-  /// Create a copy of FetalGrowtAbdominalCircumferenceForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
-    });
-  }
-}
-
-/// @nodoc
-mixin _$FetalGrowtBiparietalDiameterForAge {
-  Age get age;
-  Length get measurementResult;
-
-  /// Create a copy of FetalGrowtBiparietalDiameterForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $FetalGrowtBiparietalDiameterForAgeCopyWith<
-          FetalGrowtBiparietalDiameterForAge>
-      get copyWith => _$FetalGrowtBiparietalDiameterForAgeCopyWithImpl<
-              FetalGrowtBiparietalDiameterForAge>(
-          this as FetalGrowtBiparietalDiameterForAge, _$identity);
-
-  /// Serializes this FetalGrowtBiparietalDiameterForAge to a JSON map.
-  Map<String, dynamic> toJson();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is FetalGrowtBiparietalDiameterForAge &&
-            (identical(other.age, age) || other.age == age) &&
-            (identical(other.measurementResult, measurementResult) ||
-                other.measurementResult == measurementResult));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, age, measurementResult);
-
-  @override
-  String toString() {
-    return 'FetalGrowtBiparietalDiameterForAge(age: $age, measurementResult: $measurementResult)';
-  }
-}
-
-/// @nodoc
-abstract mixin class $FetalGrowtBiparietalDiameterForAgeCopyWith<$Res> {
-  factory $FetalGrowtBiparietalDiameterForAgeCopyWith(
-          FetalGrowtBiparietalDiameterForAge value,
-          $Res Function(FetalGrowtBiparietalDiameterForAge) _then) =
-      _$FetalGrowtBiparietalDiameterForAgeCopyWithImpl;
-  @useResult
-  $Res call({Age age, Length measurementResult});
-
-  $AgeCopyWith<$Res> get age;
-}
-
-/// @nodoc
-class _$FetalGrowtBiparietalDiameterForAgeCopyWithImpl<$Res>
-    implements $FetalGrowtBiparietalDiameterForAgeCopyWith<$Res> {
-  _$FetalGrowtBiparietalDiameterForAgeCopyWithImpl(this._self, this._then);
-
-  final FetalGrowtBiparietalDiameterForAge _self;
-  final $Res Function(FetalGrowtBiparietalDiameterForAge) _then;
-
-  /// Create a copy of FetalGrowtBiparietalDiameterForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? age = null,
-    Object? measurementResult = null,
-  }) {
-    return _then(_self.copyWith(
-      age: null == age
-          ? _self.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as Age,
-      measurementResult: null == measurementResult
-          ? _self.measurementResult
-          : measurementResult // ignore: cast_nullable_to_non_nullable
-              as Length,
-    ));
-  }
-
-  /// Create a copy of FetalGrowtBiparietalDiameterForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
-    });
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _FetalGrowtBiparietalDiameterForAge
-    extends FetalGrowtBiparietalDiameterForAge {
-  _FetalGrowtBiparietalDiameterForAge(
-      {required this.age, required this.measurementResult})
-      : super._();
-  factory _FetalGrowtBiparietalDiameterForAge.fromJson(
-          Map<String, dynamic> json) =>
-      _$FetalGrowtBiparietalDiameterForAgeFromJson(json);
-
-  @override
-  final Age age;
-  @override
-  final Length measurementResult;
-
-  /// Create a copy of FetalGrowtBiparietalDiameterForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$FetalGrowtBiparietalDiameterForAgeCopyWith<
-          _FetalGrowtBiparietalDiameterForAge>
-      get copyWith => __$FetalGrowtBiparietalDiameterForAgeCopyWithImpl<
-          _FetalGrowtBiparietalDiameterForAge>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$FetalGrowtBiparietalDiameterForAgeToJson(
-      this,
-    );
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _FetalGrowtBiparietalDiameterForAge &&
-            (identical(other.age, age) || other.age == age) &&
-            (identical(other.measurementResult, measurementResult) ||
-                other.measurementResult == measurementResult));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, age, measurementResult);
-
-  @override
-  String toString() {
-    return 'FetalGrowtBiparietalDiameterForAge(age: $age, measurementResult: $measurementResult)';
-  }
-}
-
-/// @nodoc
-abstract mixin class _$FetalGrowtBiparietalDiameterForAgeCopyWith<$Res>
-    implements $FetalGrowtBiparietalDiameterForAgeCopyWith<$Res> {
-  factory _$FetalGrowtBiparietalDiameterForAgeCopyWith(
-          _FetalGrowtBiparietalDiameterForAge value,
-          $Res Function(_FetalGrowtBiparietalDiameterForAge) _then) =
-      __$FetalGrowtBiparietalDiameterForAgeCopyWithImpl;
-  @override
-  @useResult
-  $Res call({Age age, Length measurementResult});
-
-  @override
-  $AgeCopyWith<$Res> get age;
-}
-
-/// @nodoc
-class __$FetalGrowtBiparietalDiameterForAgeCopyWithImpl<$Res>
-    implements _$FetalGrowtBiparietalDiameterForAgeCopyWith<$Res> {
-  __$FetalGrowtBiparietalDiameterForAgeCopyWithImpl(this._self, this._then);
-
-  final _FetalGrowtBiparietalDiameterForAge _self;
-  final $Res Function(_FetalGrowtBiparietalDiameterForAge) _then;
-
-  /// Create a copy of FetalGrowtBiparietalDiameterForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? age = null,
-    Object? measurementResult = null,
-  }) {
-    return _then(_FetalGrowtBiparietalDiameterForAge(
-      age: null == age
-          ? _self.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as Age,
-      measurementResult: null == measurementResult
-          ? _self.measurementResult
-          : measurementResult // ignore: cast_nullable_to_non_nullable
-              as Length,
-    ));
-  }
-
-  /// Create a copy of FetalGrowtBiparietalDiameterForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
-    });
-  }
-}
-
-/// @nodoc
-mixin _$FetalGrowtHeadCircumferenceForAge {
-  Age get age;
-  Length get measurementResult;
-
-  /// Create a copy of FetalGrowtHeadCircumferenceForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $FetalGrowtHeadCircumferenceForAgeCopyWith<FetalGrowtHeadCircumferenceForAge>
-      get copyWith => _$FetalGrowtHeadCircumferenceForAgeCopyWithImpl<
-              FetalGrowtHeadCircumferenceForAge>(
-          this as FetalGrowtHeadCircumferenceForAge, _$identity);
-
-  /// Serializes this FetalGrowtHeadCircumferenceForAge to a JSON map.
-  Map<String, dynamic> toJson();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is FetalGrowtHeadCircumferenceForAge &&
-            (identical(other.age, age) || other.age == age) &&
-            (identical(other.measurementResult, measurementResult) ||
-                other.measurementResult == measurementResult));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, age, measurementResult);
-
-  @override
-  String toString() {
-    return 'FetalGrowtHeadCircumferenceForAge(age: $age, measurementResult: $measurementResult)';
-  }
-}
-
-/// @nodoc
-abstract mixin class $FetalGrowtHeadCircumferenceForAgeCopyWith<$Res> {
-  factory $FetalGrowtHeadCircumferenceForAgeCopyWith(
-          FetalGrowtHeadCircumferenceForAge value,
-          $Res Function(FetalGrowtHeadCircumferenceForAge) _then) =
-      _$FetalGrowtHeadCircumferenceForAgeCopyWithImpl;
-  @useResult
-  $Res call({Age age, Length measurementResult});
-
-  $AgeCopyWith<$Res> get age;
-}
-
-/// @nodoc
-class _$FetalGrowtHeadCircumferenceForAgeCopyWithImpl<$Res>
-    implements $FetalGrowtHeadCircumferenceForAgeCopyWith<$Res> {
-  _$FetalGrowtHeadCircumferenceForAgeCopyWithImpl(this._self, this._then);
-
-  final FetalGrowtHeadCircumferenceForAge _self;
-  final $Res Function(FetalGrowtHeadCircumferenceForAge) _then;
-
-  /// Create a copy of FetalGrowtHeadCircumferenceForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? age = null,
-    Object? measurementResult = null,
-  }) {
-    return _then(_self.copyWith(
-      age: null == age
-          ? _self.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as Age,
-      measurementResult: null == measurementResult
-          ? _self.measurementResult
-          : measurementResult // ignore: cast_nullable_to_non_nullable
-              as Length,
-    ));
-  }
-
-  /// Create a copy of FetalGrowtHeadCircumferenceForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
-    });
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _FetalGrowtHeadCircumferenceForAge
-    extends FetalGrowtHeadCircumferenceForAge {
-  _FetalGrowtHeadCircumferenceForAge(
-      {required this.age, required this.measurementResult})
-      : super._();
-  factory _FetalGrowtHeadCircumferenceForAge.fromJson(
-          Map<String, dynamic> json) =>
-      _$FetalGrowtHeadCircumferenceForAgeFromJson(json);
-
-  @override
-  final Age age;
-  @override
-  final Length measurementResult;
-
-  /// Create a copy of FetalGrowtHeadCircumferenceForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$FetalGrowtHeadCircumferenceForAgeCopyWith<
-          _FetalGrowtHeadCircumferenceForAge>
-      get copyWith => __$FetalGrowtHeadCircumferenceForAgeCopyWithImpl<
-          _FetalGrowtHeadCircumferenceForAge>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$FetalGrowtHeadCircumferenceForAgeToJson(
-      this,
-    );
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _FetalGrowtHeadCircumferenceForAge &&
-            (identical(other.age, age) || other.age == age) &&
-            (identical(other.measurementResult, measurementResult) ||
-                other.measurementResult == measurementResult));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, age, measurementResult);
-
-  @override
-  String toString() {
-    return 'FetalGrowtHeadCircumferenceForAge(age: $age, measurementResult: $measurementResult)';
-  }
-}
-
-/// @nodoc
-abstract mixin class _$FetalGrowtHeadCircumferenceForAgeCopyWith<$Res>
-    implements $FetalGrowtHeadCircumferenceForAgeCopyWith<$Res> {
-  factory _$FetalGrowtHeadCircumferenceForAgeCopyWith(
-          _FetalGrowtHeadCircumferenceForAge value,
-          $Res Function(_FetalGrowtHeadCircumferenceForAge) _then) =
-      __$FetalGrowtHeadCircumferenceForAgeCopyWithImpl;
-  @override
-  @useResult
-  $Res call({Age age, Length measurementResult});
-
-  @override
-  $AgeCopyWith<$Res> get age;
-}
-
-/// @nodoc
-class __$FetalGrowtHeadCircumferenceForAgeCopyWithImpl<$Res>
-    implements _$FetalGrowtHeadCircumferenceForAgeCopyWith<$Res> {
-  __$FetalGrowtHeadCircumferenceForAgeCopyWithImpl(this._self, this._then);
-
-  final _FetalGrowtHeadCircumferenceForAge _self;
-  final $Res Function(_FetalGrowtHeadCircumferenceForAge) _then;
-
-  /// Create a copy of FetalGrowtHeadCircumferenceForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? age = null,
-    Object? measurementResult = null,
-  }) {
-    return _then(_FetalGrowtHeadCircumferenceForAge(
-      age: null == age
-          ? _self.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as Age,
-      measurementResult: null == measurementResult
-          ? _self.measurementResult
-          : measurementResult // ignore: cast_nullable_to_non_nullable
-              as Length,
-    ));
-  }
-
-  /// Create a copy of FetalGrowtHeadCircumferenceForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
-    });
-  }
-}
-
-/// @nodoc
-mixin _$FetalGrowtFemurLengthForAge {
-  Age get age;
-  Length get measurementResult;
-
-  /// Create a copy of FetalGrowtFemurLengthForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $FetalGrowtFemurLengthForAgeCopyWith<FetalGrowtFemurLengthForAge>
-      get copyWith => _$FetalGrowtFemurLengthForAgeCopyWithImpl<
-              FetalGrowtFemurLengthForAge>(
-          this as FetalGrowtFemurLengthForAge, _$identity);
-
-  /// Serializes this FetalGrowtFemurLengthForAge to a JSON map.
-  Map<String, dynamic> toJson();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is FetalGrowtFemurLengthForAge &&
-            (identical(other.age, age) || other.age == age) &&
-            (identical(other.measurementResult, measurementResult) ||
-                other.measurementResult == measurementResult));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, age, measurementResult);
-
-  @override
-  String toString() {
-    return 'FetalGrowtFemurLengthForAge(age: $age, measurementResult: $measurementResult)';
-  }
-}
-
-/// @nodoc
-abstract mixin class $FetalGrowtFemurLengthForAgeCopyWith<$Res> {
-  factory $FetalGrowtFemurLengthForAgeCopyWith(
-          FetalGrowtFemurLengthForAge value,
-          $Res Function(FetalGrowtFemurLengthForAge) _then) =
-      _$FetalGrowtFemurLengthForAgeCopyWithImpl;
-  @useResult
-  $Res call({Age age, Length measurementResult});
-
-  $AgeCopyWith<$Res> get age;
-}
-
-/// @nodoc
-class _$FetalGrowtFemurLengthForAgeCopyWithImpl<$Res>
-    implements $FetalGrowtFemurLengthForAgeCopyWith<$Res> {
-  _$FetalGrowtFemurLengthForAgeCopyWithImpl(this._self, this._then);
-
-  final FetalGrowtFemurLengthForAge _self;
-  final $Res Function(FetalGrowtFemurLengthForAge) _then;
-
-  /// Create a copy of FetalGrowtFemurLengthForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? age = null,
-    Object? measurementResult = null,
-  }) {
-    return _then(_self.copyWith(
-      age: null == age
-          ? _self.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as Age,
-      measurementResult: null == measurementResult
-          ? _self.measurementResult
-          : measurementResult // ignore: cast_nullable_to_non_nullable
-              as Length,
-    ));
-  }
-
-  /// Create a copy of FetalGrowtFemurLengthForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
-    });
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _FetalGrowtFemurLengthForAge extends FetalGrowtFemurLengthForAge {
-  _FetalGrowtFemurLengthForAge(
-      {required this.age, required this.measurementResult})
-      : super._();
-  factory _FetalGrowtFemurLengthForAge.fromJson(Map<String, dynamic> json) =>
-      _$FetalGrowtFemurLengthForAgeFromJson(json);
-
-  @override
-  final Age age;
-  @override
-  final Length measurementResult;
-
-  /// Create a copy of FetalGrowtFemurLengthForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$FetalGrowtFemurLengthForAgeCopyWith<_FetalGrowtFemurLengthForAge>
-      get copyWith => __$FetalGrowtFemurLengthForAgeCopyWithImpl<
-          _FetalGrowtFemurLengthForAge>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$FetalGrowtFemurLengthForAgeToJson(
-      this,
-    );
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _FetalGrowtFemurLengthForAge &&
-            (identical(other.age, age) || other.age == age) &&
-            (identical(other.measurementResult, measurementResult) ||
-                other.measurementResult == measurementResult));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, age, measurementResult);
-
-  @override
-  String toString() {
-    return 'FetalGrowtFemurLengthForAge(age: $age, measurementResult: $measurementResult)';
-  }
-}
-
-/// @nodoc
-abstract mixin class _$FetalGrowtFemurLengthForAgeCopyWith<$Res>
-    implements $FetalGrowtFemurLengthForAgeCopyWith<$Res> {
-  factory _$FetalGrowtFemurLengthForAgeCopyWith(
-          _FetalGrowtFemurLengthForAge value,
-          $Res Function(_FetalGrowtFemurLengthForAge) _then) =
-      __$FetalGrowtFemurLengthForAgeCopyWithImpl;
-  @override
-  @useResult
-  $Res call({Age age, Length measurementResult});
-
-  @override
-  $AgeCopyWith<$Res> get age;
-}
-
-/// @nodoc
-class __$FetalGrowtFemurLengthForAgeCopyWithImpl<$Res>
-    implements _$FetalGrowtFemurLengthForAgeCopyWith<$Res> {
-  __$FetalGrowtFemurLengthForAgeCopyWithImpl(this._self, this._then);
-
-  final _FetalGrowtFemurLengthForAge _self;
-  final $Res Function(_FetalGrowtFemurLengthForAge) _then;
-
-  /// Create a copy of FetalGrowtFemurLengthForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? age = null,
-    Object? measurementResult = null,
-  }) {
-    return _then(_FetalGrowtFemurLengthForAge(
-      age: null == age
-          ? _self.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as Age,
-      measurementResult: null == measurementResult
-          ? _self.measurementResult
-          : measurementResult // ignore: cast_nullable_to_non_nullable
-              as Length,
-    ));
-  }
-
-  /// Create a copy of FetalGrowtFemurLengthForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
-    });
-  }
-}
-
-/// @nodoc
-mixin _$FetalGrowtOccipitoFrontalDiameterForAge {
-  Age get age;
-  Length get measurementResult;
-
-  /// Create a copy of FetalGrowtOccipitoFrontalDiameterForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $FetalGrowtOccipitoFrontalDiameterForAgeCopyWith<
-          FetalGrowtOccipitoFrontalDiameterForAge>
-      get copyWith => _$FetalGrowtOccipitoFrontalDiameterForAgeCopyWithImpl<
-              FetalGrowtOccipitoFrontalDiameterForAge>(
-          this as FetalGrowtOccipitoFrontalDiameterForAge, _$identity);
-
-  /// Serializes this FetalGrowtOccipitoFrontalDiameterForAge to a JSON map.
-  Map<String, dynamic> toJson();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is FetalGrowtOccipitoFrontalDiameterForAge &&
-            (identical(other.age, age) || other.age == age) &&
-            (identical(other.measurementResult, measurementResult) ||
-                other.measurementResult == measurementResult));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, age, measurementResult);
-
-  @override
-  String toString() {
-    return 'FetalGrowtOccipitoFrontalDiameterForAge(age: $age, measurementResult: $measurementResult)';
-  }
-}
-
-/// @nodoc
-abstract mixin class $FetalGrowtOccipitoFrontalDiameterForAgeCopyWith<$Res> {
-  factory $FetalGrowtOccipitoFrontalDiameterForAgeCopyWith(
-          FetalGrowtOccipitoFrontalDiameterForAge value,
-          $Res Function(FetalGrowtOccipitoFrontalDiameterForAge) _then) =
-      _$FetalGrowtOccipitoFrontalDiameterForAgeCopyWithImpl;
-  @useResult
-  $Res call({Age age, Length measurementResult});
-
-  $AgeCopyWith<$Res> get age;
-}
-
-/// @nodoc
-class _$FetalGrowtOccipitoFrontalDiameterForAgeCopyWithImpl<$Res>
-    implements $FetalGrowtOccipitoFrontalDiameterForAgeCopyWith<$Res> {
-  _$FetalGrowtOccipitoFrontalDiameterForAgeCopyWithImpl(this._self, this._then);
-
-  final FetalGrowtOccipitoFrontalDiameterForAge _self;
-  final $Res Function(FetalGrowtOccipitoFrontalDiameterForAge) _then;
-
-  /// Create a copy of FetalGrowtOccipitoFrontalDiameterForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? age = null,
-    Object? measurementResult = null,
-  }) {
-    return _then(_self.copyWith(
-      age: null == age
-          ? _self.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as Age,
-      measurementResult: null == measurementResult
-          ? _self.measurementResult
-          : measurementResult // ignore: cast_nullable_to_non_nullable
-              as Length,
-    ));
-  }
-
-  /// Create a copy of FetalGrowtOccipitoFrontalDiameterForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
-    });
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _FetalGrowtOccipitoFrontalDiameterForAge
-    extends FetalGrowtOccipitoFrontalDiameterForAge {
-  _FetalGrowtOccipitoFrontalDiameterForAge(
-      {required this.age, required this.measurementResult})
-      : super._();
-  factory _FetalGrowtOccipitoFrontalDiameterForAge.fromJson(
-          Map<String, dynamic> json) =>
-      _$FetalGrowtOccipitoFrontalDiameterForAgeFromJson(json);
-
-  @override
-  final Age age;
-  @override
-  final Length measurementResult;
-
-  /// Create a copy of FetalGrowtOccipitoFrontalDiameterForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$FetalGrowtOccipitoFrontalDiameterForAgeCopyWith<
-          _FetalGrowtOccipitoFrontalDiameterForAge>
-      get copyWith => __$FetalGrowtOccipitoFrontalDiameterForAgeCopyWithImpl<
-          _FetalGrowtOccipitoFrontalDiameterForAge>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$FetalGrowtOccipitoFrontalDiameterForAgeToJson(
-      this,
-    );
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _FetalGrowtOccipitoFrontalDiameterForAge &&
-            (identical(other.age, age) || other.age == age) &&
-            (identical(other.measurementResult, measurementResult) ||
-                other.measurementResult == measurementResult));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, age, measurementResult);
-
-  @override
-  String toString() {
-    return 'FetalGrowtOccipitoFrontalDiameterForAge(age: $age, measurementResult: $measurementResult)';
-  }
-}
-
-/// @nodoc
-abstract mixin class _$FetalGrowtOccipitoFrontalDiameterForAgeCopyWith<$Res>
-    implements $FetalGrowtOccipitoFrontalDiameterForAgeCopyWith<$Res> {
-  factory _$FetalGrowtOccipitoFrontalDiameterForAgeCopyWith(
-          _FetalGrowtOccipitoFrontalDiameterForAge value,
-          $Res Function(_FetalGrowtOccipitoFrontalDiameterForAge) _then) =
-      __$FetalGrowtOccipitoFrontalDiameterForAgeCopyWithImpl;
-  @override
-  @useResult
-  $Res call({Age age, Length measurementResult});
-
-  @override
-  $AgeCopyWith<$Res> get age;
-}
-
-/// @nodoc
-class __$FetalGrowtOccipitoFrontalDiameterForAgeCopyWithImpl<$Res>
-    implements _$FetalGrowtOccipitoFrontalDiameterForAgeCopyWith<$Res> {
-  __$FetalGrowtOccipitoFrontalDiameterForAgeCopyWithImpl(
-      this._self, this._then);
-
-  final _FetalGrowtOccipitoFrontalDiameterForAge _self;
-  final $Res Function(_FetalGrowtOccipitoFrontalDiameterForAge) _then;
-
-  /// Create a copy of FetalGrowtOccipitoFrontalDiameterForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? age = null,
-    Object? measurementResult = null,
-  }) {
-    return _then(_FetalGrowtOccipitoFrontalDiameterForAge(
-      age: null == age
-          ? _self.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as Age,
-      measurementResult: null == measurementResult
-          ? _self.measurementResult
-          : measurementResult // ignore: cast_nullable_to_non_nullable
-              as Length,
-    ));
-  }
-
-  /// Create a copy of FetalGrowtOccipitoFrontalDiameterForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
-    });
-  }
-}
-
-/// @nodoc
-mixin _$PretermInfantsPostnatalGrowthHeadCircumferenceForAge {
-  Sex get sex;
-  Age get age;
-  Length get measurementResult;
-
-  /// Create a copy of PretermInfantsPostnatalGrowthHeadCircumferenceForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $PretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWith<
-          PretermInfantsPostnatalGrowthHeadCircumferenceForAge>
+  $IntergrowthFetalGrowtAbdominalCircumferenceForAgeCopyWith<
+          IntergrowthFetalGrowtAbdominalCircumferenceForAge>
       get copyWith =>
-          _$PretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWithImpl<
-                  PretermInfantsPostnatalGrowthHeadCircumferenceForAge>(
-              this as PretermInfantsPostnatalGrowthHeadCircumferenceForAge,
+          _$IntergrowthFetalGrowtAbdominalCircumferenceForAgeCopyWithImpl<
+                  IntergrowthFetalGrowtAbdominalCircumferenceForAge>(
+              this as IntergrowthFetalGrowtAbdominalCircumferenceForAge,
               _$identity);
 
-  /// Serializes this PretermInfantsPostnatalGrowthHeadCircumferenceForAge to a JSON map.
+  /// Serializes this IntergrowthFetalGrowtAbdominalCircumferenceForAge to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PretermInfantsPostnatalGrowthHeadCircumferenceForAge &&
-            (identical(other.sex, sex) || other.sex == sex) &&
+            other is IntergrowthFetalGrowtAbdominalCircumferenceForAge &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.measurementResult, measurementResult) ||
                 other.measurementResult == measurementResult));
@@ -3121,53 +2231,47 @@ mixin _$PretermInfantsPostnatalGrowthHeadCircumferenceForAge {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, sex, age, measurementResult);
+  int get hashCode => Object.hash(runtimeType, age, measurementResult);
 
   @override
   String toString() {
-    return 'PretermInfantsPostnatalGrowthHeadCircumferenceForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
+    return 'IntergrowthFetalGrowtAbdominalCircumferenceForAge(age: $age, measurementResult: $measurementResult)';
   }
 }
 
 /// @nodoc
-abstract mixin class $PretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWith<
+abstract mixin class $IntergrowthFetalGrowtAbdominalCircumferenceForAgeCopyWith<
     $Res> {
-  factory $PretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWith(
-          PretermInfantsPostnatalGrowthHeadCircumferenceForAge value,
-          $Res Function(PretermInfantsPostnatalGrowthHeadCircumferenceForAge)
+  factory $IntergrowthFetalGrowtAbdominalCircumferenceForAgeCopyWith(
+          IntergrowthFetalGrowtAbdominalCircumferenceForAge value,
+          $Res Function(IntergrowthFetalGrowtAbdominalCircumferenceForAge)
               _then) =
-      _$PretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWithImpl;
+      _$IntergrowthFetalGrowtAbdominalCircumferenceForAgeCopyWithImpl;
   @useResult
-  $Res call({Sex sex, Age age, Length measurementResult});
+  $Res call({Age age, Length measurementResult});
 
   $AgeCopyWith<$Res> get age;
 }
 
 /// @nodoc
-class _$PretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWithImpl<$Res>
+class _$IntergrowthFetalGrowtAbdominalCircumferenceForAgeCopyWithImpl<$Res>
     implements
-        $PretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWith<$Res> {
-  _$PretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWithImpl(
+        $IntergrowthFetalGrowtAbdominalCircumferenceForAgeCopyWith<$Res> {
+  _$IntergrowthFetalGrowtAbdominalCircumferenceForAgeCopyWithImpl(
       this._self, this._then);
 
-  final PretermInfantsPostnatalGrowthHeadCircumferenceForAge _self;
-  final $Res Function(PretermInfantsPostnatalGrowthHeadCircumferenceForAge)
-      _then;
+  final IntergrowthFetalGrowtAbdominalCircumferenceForAge _self;
+  final $Res Function(IntergrowthFetalGrowtAbdominalCircumferenceForAge) _then;
 
-  /// Create a copy of PretermInfantsPostnatalGrowthHeadCircumferenceForAge
+  /// Create a copy of IntergrowthFetalGrowtAbdominalCircumferenceForAge
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? sex = null,
     Object? age = null,
     Object? measurementResult = null,
   }) {
     return _then(_self.copyWith(
-      sex: null == sex
-          ? _self.sex
-          : sex // ignore: cast_nullable_to_non_nullable
-              as Sex,
       age: null == age
           ? _self.age
           : age // ignore: cast_nullable_to_non_nullable
@@ -3179,7 +2283,7 @@ class _$PretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of PretermInfantsPostnatalGrowthHeadCircumferenceForAge
+  /// Create a copy of IntergrowthFetalGrowtAbdominalCircumferenceForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -3192,37 +2296,35 @@ class _$PretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _PretermInfantsPostnatalGrowthHeadCircumferenceForAge
-    extends PretermInfantsPostnatalGrowthHeadCircumferenceForAge {
-  _PretermInfantsPostnatalGrowthHeadCircumferenceForAge(
-      {required this.sex, required this.age, required this.measurementResult})
+class _IntergrowthFetalGrowtAbdominalCircumferenceForAge
+    extends IntergrowthFetalGrowtAbdominalCircumferenceForAge {
+  _IntergrowthFetalGrowtAbdominalCircumferenceForAge(
+      {required this.age, required this.measurementResult})
       : super._();
-  factory _PretermInfantsPostnatalGrowthHeadCircumferenceForAge.fromJson(
+  factory _IntergrowthFetalGrowtAbdominalCircumferenceForAge.fromJson(
           Map<String, dynamic> json) =>
-      _$PretermInfantsPostnatalGrowthHeadCircumferenceForAgeFromJson(json);
+      _$IntergrowthFetalGrowtAbdominalCircumferenceForAgeFromJson(json);
 
-  @override
-  final Sex sex;
   @override
   final Age age;
   @override
   final Length measurementResult;
 
-  /// Create a copy of PretermInfantsPostnatalGrowthHeadCircumferenceForAge
+  /// Create a copy of IntergrowthFetalGrowtAbdominalCircumferenceForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$PretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWith<
-          _PretermInfantsPostnatalGrowthHeadCircumferenceForAge>
+  _$IntergrowthFetalGrowtAbdominalCircumferenceForAgeCopyWith<
+          _IntergrowthFetalGrowtAbdominalCircumferenceForAge>
       get copyWith =>
-          __$PretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWithImpl<
-                  _PretermInfantsPostnatalGrowthHeadCircumferenceForAge>(
+          __$IntergrowthFetalGrowtAbdominalCircumferenceForAgeCopyWithImpl<
+                  _IntergrowthFetalGrowtAbdominalCircumferenceForAge>(
               this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$PretermInfantsPostnatalGrowthHeadCircumferenceForAgeToJson(
+    return _$IntergrowthFetalGrowtAbdominalCircumferenceForAgeToJson(
       this,
     );
   }
@@ -3231,8 +2333,7 @@ class _PretermInfantsPostnatalGrowthHeadCircumferenceForAge
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PretermInfantsPostnatalGrowthHeadCircumferenceForAge &&
-            (identical(other.sex, sex) || other.sex == sex) &&
+            other is _IntergrowthFetalGrowtAbdominalCircumferenceForAge &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.measurementResult, measurementResult) ||
                 other.measurementResult == measurementResult));
@@ -3240,57 +2341,51 @@ class _PretermInfantsPostnatalGrowthHeadCircumferenceForAge
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, sex, age, measurementResult);
+  int get hashCode => Object.hash(runtimeType, age, measurementResult);
 
   @override
   String toString() {
-    return 'PretermInfantsPostnatalGrowthHeadCircumferenceForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
+    return 'IntergrowthFetalGrowtAbdominalCircumferenceForAge(age: $age, measurementResult: $measurementResult)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$PretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWith<
+abstract mixin class _$IntergrowthFetalGrowtAbdominalCircumferenceForAgeCopyWith<
         $Res>
     implements
-        $PretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWith<$Res> {
-  factory _$PretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWith(
-          _PretermInfantsPostnatalGrowthHeadCircumferenceForAge value,
-          $Res Function(_PretermInfantsPostnatalGrowthHeadCircumferenceForAge)
+        $IntergrowthFetalGrowtAbdominalCircumferenceForAgeCopyWith<$Res> {
+  factory _$IntergrowthFetalGrowtAbdominalCircumferenceForAgeCopyWith(
+          _IntergrowthFetalGrowtAbdominalCircumferenceForAge value,
+          $Res Function(_IntergrowthFetalGrowtAbdominalCircumferenceForAge)
               _then) =
-      __$PretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWithImpl;
+      __$IntergrowthFetalGrowtAbdominalCircumferenceForAgeCopyWithImpl;
   @override
   @useResult
-  $Res call({Sex sex, Age age, Length measurementResult});
+  $Res call({Age age, Length measurementResult});
 
   @override
   $AgeCopyWith<$Res> get age;
 }
 
 /// @nodoc
-class __$PretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWithImpl<$Res>
+class __$IntergrowthFetalGrowtAbdominalCircumferenceForAgeCopyWithImpl<$Res>
     implements
-        _$PretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWith<$Res> {
-  __$PretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWithImpl(
+        _$IntergrowthFetalGrowtAbdominalCircumferenceForAgeCopyWith<$Res> {
+  __$IntergrowthFetalGrowtAbdominalCircumferenceForAgeCopyWithImpl(
       this._self, this._then);
 
-  final _PretermInfantsPostnatalGrowthHeadCircumferenceForAge _self;
-  final $Res Function(_PretermInfantsPostnatalGrowthHeadCircumferenceForAge)
-      _then;
+  final _IntergrowthFetalGrowtAbdominalCircumferenceForAge _self;
+  final $Res Function(_IntergrowthFetalGrowtAbdominalCircumferenceForAge) _then;
 
-  /// Create a copy of PretermInfantsPostnatalGrowthHeadCircumferenceForAge
+  /// Create a copy of IntergrowthFetalGrowtAbdominalCircumferenceForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? sex = null,
     Object? age = null,
     Object? measurementResult = null,
   }) {
-    return _then(_PretermInfantsPostnatalGrowthHeadCircumferenceForAge(
-      sex: null == sex
-          ? _self.sex
-          : sex // ignore: cast_nullable_to_non_nullable
-              as Sex,
+    return _then(_IntergrowthFetalGrowtAbdominalCircumferenceForAge(
       age: null == age
           ? _self.age
           : age // ignore: cast_nullable_to_non_nullable
@@ -3302,7 +2397,7 @@ class __$PretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of PretermInfantsPostnatalGrowthHeadCircumferenceForAge
+  /// Create a copy of IntergrowthFetalGrowtAbdominalCircumferenceForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -3314,29 +2409,844 @@ class __$PretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWithImpl<$Res>
 }
 
 /// @nodoc
-mixin _$PretermInfantsPostnatalGrowthLengthForAge {
-  Sex get sex;
+mixin _$IntergrowthFetalGrowtBiparietalDiameterForAge {
   Age get age;
   Length get measurementResult;
 
-  /// Create a copy of PretermInfantsPostnatalGrowthLengthForAge
+  /// Create a copy of IntergrowthFetalGrowtBiparietalDiameterForAge
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $PretermInfantsPostnatalGrowthLengthForAgeCopyWith<
-          PretermInfantsPostnatalGrowthLengthForAge>
-      get copyWith => _$PretermInfantsPostnatalGrowthLengthForAgeCopyWithImpl<
-              PretermInfantsPostnatalGrowthLengthForAge>(
-          this as PretermInfantsPostnatalGrowthLengthForAge, _$identity);
+  $IntergrowthFetalGrowtBiparietalDiameterForAgeCopyWith<
+          IntergrowthFetalGrowtBiparietalDiameterForAge>
+      get copyWith =>
+          _$IntergrowthFetalGrowtBiparietalDiameterForAgeCopyWithImpl<
+                  IntergrowthFetalGrowtBiparietalDiameterForAge>(
+              this as IntergrowthFetalGrowtBiparietalDiameterForAge,
+              _$identity);
 
-  /// Serializes this PretermInfantsPostnatalGrowthLengthForAge to a JSON map.
+  /// Serializes this IntergrowthFetalGrowtBiparietalDiameterForAge to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PretermInfantsPostnatalGrowthLengthForAge &&
+            other is IntergrowthFetalGrowtBiparietalDiameterForAge &&
+            (identical(other.age, age) || other.age == age) &&
+            (identical(other.measurementResult, measurementResult) ||
+                other.measurementResult == measurementResult));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, age, measurementResult);
+
+  @override
+  String toString() {
+    return 'IntergrowthFetalGrowtBiparietalDiameterForAge(age: $age, measurementResult: $measurementResult)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $IntergrowthFetalGrowtBiparietalDiameterForAgeCopyWith<
+    $Res> {
+  factory $IntergrowthFetalGrowtBiparietalDiameterForAgeCopyWith(
+          IntergrowthFetalGrowtBiparietalDiameterForAge value,
+          $Res Function(IntergrowthFetalGrowtBiparietalDiameterForAge) _then) =
+      _$IntergrowthFetalGrowtBiparietalDiameterForAgeCopyWithImpl;
+  @useResult
+  $Res call({Age age, Length measurementResult});
+
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class _$IntergrowthFetalGrowtBiparietalDiameterForAgeCopyWithImpl<$Res>
+    implements $IntergrowthFetalGrowtBiparietalDiameterForAgeCopyWith<$Res> {
+  _$IntergrowthFetalGrowtBiparietalDiameterForAgeCopyWithImpl(
+      this._self, this._then);
+
+  final IntergrowthFetalGrowtBiparietalDiameterForAge _self;
+  final $Res Function(IntergrowthFetalGrowtBiparietalDiameterForAge) _then;
+
+  /// Create a copy of IntergrowthFetalGrowtBiparietalDiameterForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? age = null,
+    Object? measurementResult = null,
+  }) {
+    return _then(_self.copyWith(
+      age: null == age
+          ? _self.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+      measurementResult: null == measurementResult
+          ? _self.measurementResult
+          : measurementResult // ignore: cast_nullable_to_non_nullable
+              as Length,
+    ));
+  }
+
+  /// Create a copy of IntergrowthFetalGrowtBiparietalDiameterForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AgeCopyWith<$Res> get age {
+    return $AgeCopyWith<$Res>(_self.age, (value) {
+      return _then(_self.copyWith(age: value));
+    });
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _IntergrowthFetalGrowtBiparietalDiameterForAge
+    extends IntergrowthFetalGrowtBiparietalDiameterForAge {
+  _IntergrowthFetalGrowtBiparietalDiameterForAge(
+      {required this.age, required this.measurementResult})
+      : super._();
+  factory _IntergrowthFetalGrowtBiparietalDiameterForAge.fromJson(
+          Map<String, dynamic> json) =>
+      _$IntergrowthFetalGrowtBiparietalDiameterForAgeFromJson(json);
+
+  @override
+  final Age age;
+  @override
+  final Length measurementResult;
+
+  /// Create a copy of IntergrowthFetalGrowtBiparietalDiameterForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$IntergrowthFetalGrowtBiparietalDiameterForAgeCopyWith<
+          _IntergrowthFetalGrowtBiparietalDiameterForAge>
+      get copyWith =>
+          __$IntergrowthFetalGrowtBiparietalDiameterForAgeCopyWithImpl<
+              _IntergrowthFetalGrowtBiparietalDiameterForAge>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$IntergrowthFetalGrowtBiparietalDiameterForAgeToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _IntergrowthFetalGrowtBiparietalDiameterForAge &&
+            (identical(other.age, age) || other.age == age) &&
+            (identical(other.measurementResult, measurementResult) ||
+                other.measurementResult == measurementResult));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, age, measurementResult);
+
+  @override
+  String toString() {
+    return 'IntergrowthFetalGrowtBiparietalDiameterForAge(age: $age, measurementResult: $measurementResult)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$IntergrowthFetalGrowtBiparietalDiameterForAgeCopyWith<
+        $Res>
+    implements $IntergrowthFetalGrowtBiparietalDiameterForAgeCopyWith<$Res> {
+  factory _$IntergrowthFetalGrowtBiparietalDiameterForAgeCopyWith(
+          _IntergrowthFetalGrowtBiparietalDiameterForAge value,
+          $Res Function(_IntergrowthFetalGrowtBiparietalDiameterForAge) _then) =
+      __$IntergrowthFetalGrowtBiparietalDiameterForAgeCopyWithImpl;
+  @override
+  @useResult
+  $Res call({Age age, Length measurementResult});
+
+  @override
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class __$IntergrowthFetalGrowtBiparietalDiameterForAgeCopyWithImpl<$Res>
+    implements _$IntergrowthFetalGrowtBiparietalDiameterForAgeCopyWith<$Res> {
+  __$IntergrowthFetalGrowtBiparietalDiameterForAgeCopyWithImpl(
+      this._self, this._then);
+
+  final _IntergrowthFetalGrowtBiparietalDiameterForAge _self;
+  final $Res Function(_IntergrowthFetalGrowtBiparietalDiameterForAge) _then;
+
+  /// Create a copy of IntergrowthFetalGrowtBiparietalDiameterForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? age = null,
+    Object? measurementResult = null,
+  }) {
+    return _then(_IntergrowthFetalGrowtBiparietalDiameterForAge(
+      age: null == age
+          ? _self.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+      measurementResult: null == measurementResult
+          ? _self.measurementResult
+          : measurementResult // ignore: cast_nullable_to_non_nullable
+              as Length,
+    ));
+  }
+
+  /// Create a copy of IntergrowthFetalGrowtBiparietalDiameterForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AgeCopyWith<$Res> get age {
+    return $AgeCopyWith<$Res>(_self.age, (value) {
+      return _then(_self.copyWith(age: value));
+    });
+  }
+}
+
+/// @nodoc
+mixin _$IntergrowthFetalGrowtHeadCircumferenceForAge {
+  Age get age;
+  Length get measurementResult;
+
+  /// Create a copy of IntergrowthFetalGrowtHeadCircumferenceForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $IntergrowthFetalGrowtHeadCircumferenceForAgeCopyWith<
+          IntergrowthFetalGrowtHeadCircumferenceForAge>
+      get copyWith =>
+          _$IntergrowthFetalGrowtHeadCircumferenceForAgeCopyWithImpl<
+                  IntergrowthFetalGrowtHeadCircumferenceForAge>(
+              this as IntergrowthFetalGrowtHeadCircumferenceForAge, _$identity);
+
+  /// Serializes this IntergrowthFetalGrowtHeadCircumferenceForAge to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is IntergrowthFetalGrowtHeadCircumferenceForAge &&
+            (identical(other.age, age) || other.age == age) &&
+            (identical(other.measurementResult, measurementResult) ||
+                other.measurementResult == measurementResult));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, age, measurementResult);
+
+  @override
+  String toString() {
+    return 'IntergrowthFetalGrowtHeadCircumferenceForAge(age: $age, measurementResult: $measurementResult)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $IntergrowthFetalGrowtHeadCircumferenceForAgeCopyWith<
+    $Res> {
+  factory $IntergrowthFetalGrowtHeadCircumferenceForAgeCopyWith(
+          IntergrowthFetalGrowtHeadCircumferenceForAge value,
+          $Res Function(IntergrowthFetalGrowtHeadCircumferenceForAge) _then) =
+      _$IntergrowthFetalGrowtHeadCircumferenceForAgeCopyWithImpl;
+  @useResult
+  $Res call({Age age, Length measurementResult});
+
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class _$IntergrowthFetalGrowtHeadCircumferenceForAgeCopyWithImpl<$Res>
+    implements $IntergrowthFetalGrowtHeadCircumferenceForAgeCopyWith<$Res> {
+  _$IntergrowthFetalGrowtHeadCircumferenceForAgeCopyWithImpl(
+      this._self, this._then);
+
+  final IntergrowthFetalGrowtHeadCircumferenceForAge _self;
+  final $Res Function(IntergrowthFetalGrowtHeadCircumferenceForAge) _then;
+
+  /// Create a copy of IntergrowthFetalGrowtHeadCircumferenceForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? age = null,
+    Object? measurementResult = null,
+  }) {
+    return _then(_self.copyWith(
+      age: null == age
+          ? _self.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+      measurementResult: null == measurementResult
+          ? _self.measurementResult
+          : measurementResult // ignore: cast_nullable_to_non_nullable
+              as Length,
+    ));
+  }
+
+  /// Create a copy of IntergrowthFetalGrowtHeadCircumferenceForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AgeCopyWith<$Res> get age {
+    return $AgeCopyWith<$Res>(_self.age, (value) {
+      return _then(_self.copyWith(age: value));
+    });
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _IntergrowthFetalGrowtHeadCircumferenceForAge
+    extends IntergrowthFetalGrowtHeadCircumferenceForAge {
+  _IntergrowthFetalGrowtHeadCircumferenceForAge(
+      {required this.age, required this.measurementResult})
+      : super._();
+  factory _IntergrowthFetalGrowtHeadCircumferenceForAge.fromJson(
+          Map<String, dynamic> json) =>
+      _$IntergrowthFetalGrowtHeadCircumferenceForAgeFromJson(json);
+
+  @override
+  final Age age;
+  @override
+  final Length measurementResult;
+
+  /// Create a copy of IntergrowthFetalGrowtHeadCircumferenceForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$IntergrowthFetalGrowtHeadCircumferenceForAgeCopyWith<
+          _IntergrowthFetalGrowtHeadCircumferenceForAge>
+      get copyWith =>
+          __$IntergrowthFetalGrowtHeadCircumferenceForAgeCopyWithImpl<
+              _IntergrowthFetalGrowtHeadCircumferenceForAge>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$IntergrowthFetalGrowtHeadCircumferenceForAgeToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _IntergrowthFetalGrowtHeadCircumferenceForAge &&
+            (identical(other.age, age) || other.age == age) &&
+            (identical(other.measurementResult, measurementResult) ||
+                other.measurementResult == measurementResult));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, age, measurementResult);
+
+  @override
+  String toString() {
+    return 'IntergrowthFetalGrowtHeadCircumferenceForAge(age: $age, measurementResult: $measurementResult)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$IntergrowthFetalGrowtHeadCircumferenceForAgeCopyWith<
+        $Res>
+    implements $IntergrowthFetalGrowtHeadCircumferenceForAgeCopyWith<$Res> {
+  factory _$IntergrowthFetalGrowtHeadCircumferenceForAgeCopyWith(
+          _IntergrowthFetalGrowtHeadCircumferenceForAge value,
+          $Res Function(_IntergrowthFetalGrowtHeadCircumferenceForAge) _then) =
+      __$IntergrowthFetalGrowtHeadCircumferenceForAgeCopyWithImpl;
+  @override
+  @useResult
+  $Res call({Age age, Length measurementResult});
+
+  @override
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class __$IntergrowthFetalGrowtHeadCircumferenceForAgeCopyWithImpl<$Res>
+    implements _$IntergrowthFetalGrowtHeadCircumferenceForAgeCopyWith<$Res> {
+  __$IntergrowthFetalGrowtHeadCircumferenceForAgeCopyWithImpl(
+      this._self, this._then);
+
+  final _IntergrowthFetalGrowtHeadCircumferenceForAge _self;
+  final $Res Function(_IntergrowthFetalGrowtHeadCircumferenceForAge) _then;
+
+  /// Create a copy of IntergrowthFetalGrowtHeadCircumferenceForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? age = null,
+    Object? measurementResult = null,
+  }) {
+    return _then(_IntergrowthFetalGrowtHeadCircumferenceForAge(
+      age: null == age
+          ? _self.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+      measurementResult: null == measurementResult
+          ? _self.measurementResult
+          : measurementResult // ignore: cast_nullable_to_non_nullable
+              as Length,
+    ));
+  }
+
+  /// Create a copy of IntergrowthFetalGrowtHeadCircumferenceForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AgeCopyWith<$Res> get age {
+    return $AgeCopyWith<$Res>(_self.age, (value) {
+      return _then(_self.copyWith(age: value));
+    });
+  }
+}
+
+/// @nodoc
+mixin _$IntergrowthFetalGrowtFemurLengthForAge {
+  Age get age;
+  Length get measurementResult;
+
+  /// Create a copy of IntergrowthFetalGrowtFemurLengthForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $IntergrowthFetalGrowtFemurLengthForAgeCopyWith<
+          IntergrowthFetalGrowtFemurLengthForAge>
+      get copyWith => _$IntergrowthFetalGrowtFemurLengthForAgeCopyWithImpl<
+              IntergrowthFetalGrowtFemurLengthForAge>(
+          this as IntergrowthFetalGrowtFemurLengthForAge, _$identity);
+
+  /// Serializes this IntergrowthFetalGrowtFemurLengthForAge to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is IntergrowthFetalGrowtFemurLengthForAge &&
+            (identical(other.age, age) || other.age == age) &&
+            (identical(other.measurementResult, measurementResult) ||
+                other.measurementResult == measurementResult));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, age, measurementResult);
+
+  @override
+  String toString() {
+    return 'IntergrowthFetalGrowtFemurLengthForAge(age: $age, measurementResult: $measurementResult)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $IntergrowthFetalGrowtFemurLengthForAgeCopyWith<$Res> {
+  factory $IntergrowthFetalGrowtFemurLengthForAgeCopyWith(
+          IntergrowthFetalGrowtFemurLengthForAge value,
+          $Res Function(IntergrowthFetalGrowtFemurLengthForAge) _then) =
+      _$IntergrowthFetalGrowtFemurLengthForAgeCopyWithImpl;
+  @useResult
+  $Res call({Age age, Length measurementResult});
+
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class _$IntergrowthFetalGrowtFemurLengthForAgeCopyWithImpl<$Res>
+    implements $IntergrowthFetalGrowtFemurLengthForAgeCopyWith<$Res> {
+  _$IntergrowthFetalGrowtFemurLengthForAgeCopyWithImpl(this._self, this._then);
+
+  final IntergrowthFetalGrowtFemurLengthForAge _self;
+  final $Res Function(IntergrowthFetalGrowtFemurLengthForAge) _then;
+
+  /// Create a copy of IntergrowthFetalGrowtFemurLengthForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? age = null,
+    Object? measurementResult = null,
+  }) {
+    return _then(_self.copyWith(
+      age: null == age
+          ? _self.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+      measurementResult: null == measurementResult
+          ? _self.measurementResult
+          : measurementResult // ignore: cast_nullable_to_non_nullable
+              as Length,
+    ));
+  }
+
+  /// Create a copy of IntergrowthFetalGrowtFemurLengthForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AgeCopyWith<$Res> get age {
+    return $AgeCopyWith<$Res>(_self.age, (value) {
+      return _then(_self.copyWith(age: value));
+    });
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _IntergrowthFetalGrowtFemurLengthForAge
+    extends IntergrowthFetalGrowtFemurLengthForAge {
+  _IntergrowthFetalGrowtFemurLengthForAge(
+      {required this.age, required this.measurementResult})
+      : super._();
+  factory _IntergrowthFetalGrowtFemurLengthForAge.fromJson(
+          Map<String, dynamic> json) =>
+      _$IntergrowthFetalGrowtFemurLengthForAgeFromJson(json);
+
+  @override
+  final Age age;
+  @override
+  final Length measurementResult;
+
+  /// Create a copy of IntergrowthFetalGrowtFemurLengthForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$IntergrowthFetalGrowtFemurLengthForAgeCopyWith<
+          _IntergrowthFetalGrowtFemurLengthForAge>
+      get copyWith => __$IntergrowthFetalGrowtFemurLengthForAgeCopyWithImpl<
+          _IntergrowthFetalGrowtFemurLengthForAge>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$IntergrowthFetalGrowtFemurLengthForAgeToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _IntergrowthFetalGrowtFemurLengthForAge &&
+            (identical(other.age, age) || other.age == age) &&
+            (identical(other.measurementResult, measurementResult) ||
+                other.measurementResult == measurementResult));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, age, measurementResult);
+
+  @override
+  String toString() {
+    return 'IntergrowthFetalGrowtFemurLengthForAge(age: $age, measurementResult: $measurementResult)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$IntergrowthFetalGrowtFemurLengthForAgeCopyWith<$Res>
+    implements $IntergrowthFetalGrowtFemurLengthForAgeCopyWith<$Res> {
+  factory _$IntergrowthFetalGrowtFemurLengthForAgeCopyWith(
+          _IntergrowthFetalGrowtFemurLengthForAge value,
+          $Res Function(_IntergrowthFetalGrowtFemurLengthForAge) _then) =
+      __$IntergrowthFetalGrowtFemurLengthForAgeCopyWithImpl;
+  @override
+  @useResult
+  $Res call({Age age, Length measurementResult});
+
+  @override
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class __$IntergrowthFetalGrowtFemurLengthForAgeCopyWithImpl<$Res>
+    implements _$IntergrowthFetalGrowtFemurLengthForAgeCopyWith<$Res> {
+  __$IntergrowthFetalGrowtFemurLengthForAgeCopyWithImpl(this._self, this._then);
+
+  final _IntergrowthFetalGrowtFemurLengthForAge _self;
+  final $Res Function(_IntergrowthFetalGrowtFemurLengthForAge) _then;
+
+  /// Create a copy of IntergrowthFetalGrowtFemurLengthForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? age = null,
+    Object? measurementResult = null,
+  }) {
+    return _then(_IntergrowthFetalGrowtFemurLengthForAge(
+      age: null == age
+          ? _self.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+      measurementResult: null == measurementResult
+          ? _self.measurementResult
+          : measurementResult // ignore: cast_nullable_to_non_nullable
+              as Length,
+    ));
+  }
+
+  /// Create a copy of IntergrowthFetalGrowtFemurLengthForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AgeCopyWith<$Res> get age {
+    return $AgeCopyWith<$Res>(_self.age, (value) {
+      return _then(_self.copyWith(age: value));
+    });
+  }
+}
+
+/// @nodoc
+mixin _$IntergrowthFetalGrowtOccipitoFrontalDiameterForAge {
+  Age get age;
+  Length get measurementResult;
+
+  /// Create a copy of IntergrowthFetalGrowtOccipitoFrontalDiameterForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeCopyWith<
+          IntergrowthFetalGrowtOccipitoFrontalDiameterForAge>
+      get copyWith =>
+          _$IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeCopyWithImpl<
+                  IntergrowthFetalGrowtOccipitoFrontalDiameterForAge>(
+              this as IntergrowthFetalGrowtOccipitoFrontalDiameterForAge,
+              _$identity);
+
+  /// Serializes this IntergrowthFetalGrowtOccipitoFrontalDiameterForAge to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is IntergrowthFetalGrowtOccipitoFrontalDiameterForAge &&
+            (identical(other.age, age) || other.age == age) &&
+            (identical(other.measurementResult, measurementResult) ||
+                other.measurementResult == measurementResult));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, age, measurementResult);
+
+  @override
+  String toString() {
+    return 'IntergrowthFetalGrowtOccipitoFrontalDiameterForAge(age: $age, measurementResult: $measurementResult)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeCopyWith<
+    $Res> {
+  factory $IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeCopyWith(
+          IntergrowthFetalGrowtOccipitoFrontalDiameterForAge value,
+          $Res Function(IntergrowthFetalGrowtOccipitoFrontalDiameterForAge)
+              _then) =
+      _$IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeCopyWithImpl;
+  @useResult
+  $Res call({Age age, Length measurementResult});
+
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class _$IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeCopyWithImpl<$Res>
+    implements
+        $IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeCopyWith<$Res> {
+  _$IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeCopyWithImpl(
+      this._self, this._then);
+
+  final IntergrowthFetalGrowtOccipitoFrontalDiameterForAge _self;
+  final $Res Function(IntergrowthFetalGrowtOccipitoFrontalDiameterForAge) _then;
+
+  /// Create a copy of IntergrowthFetalGrowtOccipitoFrontalDiameterForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? age = null,
+    Object? measurementResult = null,
+  }) {
+    return _then(_self.copyWith(
+      age: null == age
+          ? _self.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+      measurementResult: null == measurementResult
+          ? _self.measurementResult
+          : measurementResult // ignore: cast_nullable_to_non_nullable
+              as Length,
+    ));
+  }
+
+  /// Create a copy of IntergrowthFetalGrowtOccipitoFrontalDiameterForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AgeCopyWith<$Res> get age {
+    return $AgeCopyWith<$Res>(_self.age, (value) {
+      return _then(_self.copyWith(age: value));
+    });
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _IntergrowthFetalGrowtOccipitoFrontalDiameterForAge
+    extends IntergrowthFetalGrowtOccipitoFrontalDiameterForAge {
+  _IntergrowthFetalGrowtOccipitoFrontalDiameterForAge(
+      {required this.age, required this.measurementResult})
+      : super._();
+  factory _IntergrowthFetalGrowtOccipitoFrontalDiameterForAge.fromJson(
+          Map<String, dynamic> json) =>
+      _$IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeFromJson(json);
+
+  @override
+  final Age age;
+  @override
+  final Length measurementResult;
+
+  /// Create a copy of IntergrowthFetalGrowtOccipitoFrontalDiameterForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeCopyWith<
+          _IntergrowthFetalGrowtOccipitoFrontalDiameterForAge>
+      get copyWith =>
+          __$IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeCopyWithImpl<
+                  _IntergrowthFetalGrowtOccipitoFrontalDiameterForAge>(
+              this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _IntergrowthFetalGrowtOccipitoFrontalDiameterForAge &&
+            (identical(other.age, age) || other.age == age) &&
+            (identical(other.measurementResult, measurementResult) ||
+                other.measurementResult == measurementResult));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, age, measurementResult);
+
+  @override
+  String toString() {
+    return 'IntergrowthFetalGrowtOccipitoFrontalDiameterForAge(age: $age, measurementResult: $measurementResult)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeCopyWith<
+        $Res>
+    implements
+        $IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeCopyWith<$Res> {
+  factory _$IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeCopyWith(
+          _IntergrowthFetalGrowtOccipitoFrontalDiameterForAge value,
+          $Res Function(_IntergrowthFetalGrowtOccipitoFrontalDiameterForAge)
+              _then) =
+      __$IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeCopyWithImpl;
+  @override
+  @useResult
+  $Res call({Age age, Length measurementResult});
+
+  @override
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class __$IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeCopyWithImpl<$Res>
+    implements
+        _$IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeCopyWith<$Res> {
+  __$IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeCopyWithImpl(
+      this._self, this._then);
+
+  final _IntergrowthFetalGrowtOccipitoFrontalDiameterForAge _self;
+  final $Res Function(_IntergrowthFetalGrowtOccipitoFrontalDiameterForAge)
+      _then;
+
+  /// Create a copy of IntergrowthFetalGrowtOccipitoFrontalDiameterForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? age = null,
+    Object? measurementResult = null,
+  }) {
+    return _then(_IntergrowthFetalGrowtOccipitoFrontalDiameterForAge(
+      age: null == age
+          ? _self.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+      measurementResult: null == measurementResult
+          ? _self.measurementResult
+          : measurementResult // ignore: cast_nullable_to_non_nullable
+              as Length,
+    ));
+  }
+
+  /// Create a copy of IntergrowthFetalGrowtOccipitoFrontalDiameterForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AgeCopyWith<$Res> get age {
+    return $AgeCopyWith<$Res>(_self.age, (value) {
+      return _then(_self.copyWith(age: value));
+    });
+  }
+}
+
+/// @nodoc
+mixin _$IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge {
+  Sex get sex;
+  Age get age;
+  Length get measurementResult;
+
+  /// Create a copy of IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWith<
+          IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge>
+      get copyWith =>
+          _$IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWithImpl<
+                  IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge>(
+              this
+                  as IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge,
+              _$identity);
+
+  /// Serializes this IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other
+                is IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.measurementResult, measurementResult) ||
@@ -3349,16 +3259,19 @@ mixin _$PretermInfantsPostnatalGrowthLengthForAge {
 
   @override
   String toString() {
-    return 'PretermInfantsPostnatalGrowthLengthForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
+    return 'IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
   }
 }
 
 /// @nodoc
-abstract mixin class $PretermInfantsPostnatalGrowthLengthForAgeCopyWith<$Res> {
-  factory $PretermInfantsPostnatalGrowthLengthForAgeCopyWith(
-          PretermInfantsPostnatalGrowthLengthForAge value,
-          $Res Function(PretermInfantsPostnatalGrowthLengthForAge) _then) =
-      _$PretermInfantsPostnatalGrowthLengthForAgeCopyWithImpl;
+abstract mixin class $IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWith<
+    $Res> {
+  factory $IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWith(
+          IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge value,
+          $Res Function(
+                  IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge)
+              _then) =
+      _$IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWithImpl;
   @useResult
   $Res call({Sex sex, Age age, Length measurementResult});
 
@@ -3366,15 +3279,19 @@ abstract mixin class $PretermInfantsPostnatalGrowthLengthForAgeCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PretermInfantsPostnatalGrowthLengthForAgeCopyWithImpl<$Res>
-    implements $PretermInfantsPostnatalGrowthLengthForAgeCopyWith<$Res> {
-  _$PretermInfantsPostnatalGrowthLengthForAgeCopyWithImpl(
+class _$IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWithImpl<
+        $Res>
+    implements
+        $IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWith<
+            $Res> {
+  _$IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWithImpl(
       this._self, this._then);
 
-  final PretermInfantsPostnatalGrowthLengthForAge _self;
-  final $Res Function(PretermInfantsPostnatalGrowthLengthForAge) _then;
+  final IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge _self;
+  final $Res Function(
+      IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge) _then;
 
-  /// Create a copy of PretermInfantsPostnatalGrowthLengthForAge
+  /// Create a copy of IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -3399,7 +3316,7 @@ class _$PretermInfantsPostnatalGrowthLengthForAgeCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of PretermInfantsPostnatalGrowthLengthForAge
+  /// Create a copy of IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -3412,14 +3329,15 @@ class _$PretermInfantsPostnatalGrowthLengthForAgeCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _PretermInfantsPostnatalGrowthLengthForAge
-    extends PretermInfantsPostnatalGrowthLengthForAge {
-  _PretermInfantsPostnatalGrowthLengthForAge(
+class _IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge
+    extends IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge {
+  _IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge(
       {required this.sex, required this.age, required this.measurementResult})
       : super._();
-  factory _PretermInfantsPostnatalGrowthLengthForAge.fromJson(
+  factory _IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge.fromJson(
           Map<String, dynamic> json) =>
-      _$PretermInfantsPostnatalGrowthLengthForAgeFromJson(json);
+      _$IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeFromJson(
+          json);
 
   @override
   final Sex sex;
@@ -3428,19 +3346,21 @@ class _PretermInfantsPostnatalGrowthLengthForAge
   @override
   final Length measurementResult;
 
-  /// Create a copy of PretermInfantsPostnatalGrowthLengthForAge
+  /// Create a copy of IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$PretermInfantsPostnatalGrowthLengthForAgeCopyWith<
-          _PretermInfantsPostnatalGrowthLengthForAge>
-      get copyWith => __$PretermInfantsPostnatalGrowthLengthForAgeCopyWithImpl<
-          _PretermInfantsPostnatalGrowthLengthForAge>(this, _$identity);
+  _$IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWith<
+          _IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge>
+      get copyWith =>
+          __$IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWithImpl<
+                  _IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$PretermInfantsPostnatalGrowthLengthForAgeToJson(
+    return _$IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeToJson(
       this,
     );
   }
@@ -3449,7 +3369,8 @@ class _PretermInfantsPostnatalGrowthLengthForAge
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PretermInfantsPostnatalGrowthLengthForAge &&
+            other
+                is _IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.measurementResult, measurementResult) ||
@@ -3462,17 +3383,22 @@ class _PretermInfantsPostnatalGrowthLengthForAge
 
   @override
   String toString() {
-    return 'PretermInfantsPostnatalGrowthLengthForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
+    return 'IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$PretermInfantsPostnatalGrowthLengthForAgeCopyWith<$Res>
-    implements $PretermInfantsPostnatalGrowthLengthForAgeCopyWith<$Res> {
-  factory _$PretermInfantsPostnatalGrowthLengthForAgeCopyWith(
-          _PretermInfantsPostnatalGrowthLengthForAge value,
-          $Res Function(_PretermInfantsPostnatalGrowthLengthForAge) _then) =
-      __$PretermInfantsPostnatalGrowthLengthForAgeCopyWithImpl;
+abstract mixin class _$IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWith<
+        $Res>
+    implements
+        $IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWith<
+            $Res> {
+  factory _$IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWith(
+          _IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge value,
+          $Res Function(
+                  _IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge)
+              _then) =
+      __$IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWithImpl;
   @override
   @useResult
   $Res call({Sex sex, Age age, Length measurementResult});
@@ -3482,15 +3408,19 @@ abstract mixin class _$PretermInfantsPostnatalGrowthLengthForAgeCopyWith<$Res>
 }
 
 /// @nodoc
-class __$PretermInfantsPostnatalGrowthLengthForAgeCopyWithImpl<$Res>
-    implements _$PretermInfantsPostnatalGrowthLengthForAgeCopyWith<$Res> {
-  __$PretermInfantsPostnatalGrowthLengthForAgeCopyWithImpl(
+class __$IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWithImpl<
+        $Res>
+    implements
+        _$IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWith<
+            $Res> {
+  __$IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeCopyWithImpl(
       this._self, this._then);
 
-  final _PretermInfantsPostnatalGrowthLengthForAge _self;
-  final $Res Function(_PretermInfantsPostnatalGrowthLengthForAge) _then;
+  final _IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge _self;
+  final $Res Function(
+      _IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge) _then;
 
-  /// Create a copy of PretermInfantsPostnatalGrowthLengthForAge
+  /// Create a copy of IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -3499,7 +3429,8 @@ class __$PretermInfantsPostnatalGrowthLengthForAgeCopyWithImpl<$Res>
     Object? age = null,
     Object? measurementResult = null,
   }) {
-    return _then(_PretermInfantsPostnatalGrowthLengthForAge(
+    return _then(
+        _IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge(
       sex: null == sex
           ? _self.sex
           : sex // ignore: cast_nullable_to_non_nullable
@@ -3515,7 +3446,7 @@ class __$PretermInfantsPostnatalGrowthLengthForAgeCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of PretermInfantsPostnatalGrowthLengthForAge
+  /// Create a copy of IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -3527,29 +3458,31 @@ class __$PretermInfantsPostnatalGrowthLengthForAgeCopyWithImpl<$Res>
 }
 
 /// @nodoc
-mixin _$PretermInfantsPostnatalGrowthWeightForAge {
+mixin _$IntergrowthPretermInfantsPostnatalGrowthLengthForAge {
   Sex get sex;
   Age get age;
-  Mass get measurementResult;
+  Length get measurementResult;
 
-  /// Create a copy of PretermInfantsPostnatalGrowthWeightForAge
+  /// Create a copy of IntergrowthPretermInfantsPostnatalGrowthLengthForAge
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $PretermInfantsPostnatalGrowthWeightForAgeCopyWith<
-          PretermInfantsPostnatalGrowthWeightForAge>
-      get copyWith => _$PretermInfantsPostnatalGrowthWeightForAgeCopyWithImpl<
-              PretermInfantsPostnatalGrowthWeightForAge>(
-          this as PretermInfantsPostnatalGrowthWeightForAge, _$identity);
+  $IntergrowthPretermInfantsPostnatalGrowthLengthForAgeCopyWith<
+          IntergrowthPretermInfantsPostnatalGrowthLengthForAge>
+      get copyWith =>
+          _$IntergrowthPretermInfantsPostnatalGrowthLengthForAgeCopyWithImpl<
+                  IntergrowthPretermInfantsPostnatalGrowthLengthForAge>(
+              this as IntergrowthPretermInfantsPostnatalGrowthLengthForAge,
+              _$identity);
 
-  /// Serializes this PretermInfantsPostnatalGrowthWeightForAge to a JSON map.
+  /// Serializes this IntergrowthPretermInfantsPostnatalGrowthLengthForAge to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PretermInfantsPostnatalGrowthWeightForAge &&
+            other is IntergrowthPretermInfantsPostnatalGrowthLengthForAge &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.measurementResult, measurementResult) ||
@@ -3562,32 +3495,36 @@ mixin _$PretermInfantsPostnatalGrowthWeightForAge {
 
   @override
   String toString() {
-    return 'PretermInfantsPostnatalGrowthWeightForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
+    return 'IntergrowthPretermInfantsPostnatalGrowthLengthForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
   }
 }
 
 /// @nodoc
-abstract mixin class $PretermInfantsPostnatalGrowthWeightForAgeCopyWith<$Res> {
-  factory $PretermInfantsPostnatalGrowthWeightForAgeCopyWith(
-          PretermInfantsPostnatalGrowthWeightForAge value,
-          $Res Function(PretermInfantsPostnatalGrowthWeightForAge) _then) =
-      _$PretermInfantsPostnatalGrowthWeightForAgeCopyWithImpl;
+abstract mixin class $IntergrowthPretermInfantsPostnatalGrowthLengthForAgeCopyWith<
+    $Res> {
+  factory $IntergrowthPretermInfantsPostnatalGrowthLengthForAgeCopyWith(
+          IntergrowthPretermInfantsPostnatalGrowthLengthForAge value,
+          $Res Function(IntergrowthPretermInfantsPostnatalGrowthLengthForAge)
+              _then) =
+      _$IntergrowthPretermInfantsPostnatalGrowthLengthForAgeCopyWithImpl;
   @useResult
-  $Res call({Sex sex, Age age, Mass measurementResult});
+  $Res call({Sex sex, Age age, Length measurementResult});
 
   $AgeCopyWith<$Res> get age;
 }
 
 /// @nodoc
-class _$PretermInfantsPostnatalGrowthWeightForAgeCopyWithImpl<$Res>
-    implements $PretermInfantsPostnatalGrowthWeightForAgeCopyWith<$Res> {
-  _$PretermInfantsPostnatalGrowthWeightForAgeCopyWithImpl(
+class _$IntergrowthPretermInfantsPostnatalGrowthLengthForAgeCopyWithImpl<$Res>
+    implements
+        $IntergrowthPretermInfantsPostnatalGrowthLengthForAgeCopyWith<$Res> {
+  _$IntergrowthPretermInfantsPostnatalGrowthLengthForAgeCopyWithImpl(
       this._self, this._then);
 
-  final PretermInfantsPostnatalGrowthWeightForAge _self;
-  final $Res Function(PretermInfantsPostnatalGrowthWeightForAge) _then;
+  final IntergrowthPretermInfantsPostnatalGrowthLengthForAge _self;
+  final $Res Function(IntergrowthPretermInfantsPostnatalGrowthLengthForAge)
+      _then;
 
-  /// Create a copy of PretermInfantsPostnatalGrowthWeightForAge
+  /// Create a copy of IntergrowthPretermInfantsPostnatalGrowthLengthForAge
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -3608,11 +3545,11 @@ class _$PretermInfantsPostnatalGrowthWeightForAgeCopyWithImpl<$Res>
       measurementResult: null == measurementResult
           ? _self.measurementResult
           : measurementResult // ignore: cast_nullable_to_non_nullable
-              as Mass,
+              as Length,
     ));
   }
 
-  /// Create a copy of PretermInfantsPostnatalGrowthWeightForAge
+  /// Create a copy of IntergrowthPretermInfantsPostnatalGrowthLengthForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -3625,35 +3562,37 @@ class _$PretermInfantsPostnatalGrowthWeightForAgeCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _PretermInfantsPostnatalGrowthWeightForAge
-    extends PretermInfantsPostnatalGrowthWeightForAge {
-  _PretermInfantsPostnatalGrowthWeightForAge(
+class _IntergrowthPretermInfantsPostnatalGrowthLengthForAge
+    extends IntergrowthPretermInfantsPostnatalGrowthLengthForAge {
+  _IntergrowthPretermInfantsPostnatalGrowthLengthForAge(
       {required this.sex, required this.age, required this.measurementResult})
       : super._();
-  factory _PretermInfantsPostnatalGrowthWeightForAge.fromJson(
+  factory _IntergrowthPretermInfantsPostnatalGrowthLengthForAge.fromJson(
           Map<String, dynamic> json) =>
-      _$PretermInfantsPostnatalGrowthWeightForAgeFromJson(json);
+      _$IntergrowthPretermInfantsPostnatalGrowthLengthForAgeFromJson(json);
 
   @override
   final Sex sex;
   @override
   final Age age;
   @override
-  final Mass measurementResult;
+  final Length measurementResult;
 
-  /// Create a copy of PretermInfantsPostnatalGrowthWeightForAge
+  /// Create a copy of IntergrowthPretermInfantsPostnatalGrowthLengthForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$PretermInfantsPostnatalGrowthWeightForAgeCopyWith<
-          _PretermInfantsPostnatalGrowthWeightForAge>
-      get copyWith => __$PretermInfantsPostnatalGrowthWeightForAgeCopyWithImpl<
-          _PretermInfantsPostnatalGrowthWeightForAge>(this, _$identity);
+  _$IntergrowthPretermInfantsPostnatalGrowthLengthForAgeCopyWith<
+          _IntergrowthPretermInfantsPostnatalGrowthLengthForAge>
+      get copyWith =>
+          __$IntergrowthPretermInfantsPostnatalGrowthLengthForAgeCopyWithImpl<
+                  _IntergrowthPretermInfantsPostnatalGrowthLengthForAge>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$PretermInfantsPostnatalGrowthWeightForAgeToJson(
+    return _$IntergrowthPretermInfantsPostnatalGrowthLengthForAgeToJson(
       this,
     );
   }
@@ -3662,7 +3601,7 @@ class _PretermInfantsPostnatalGrowthWeightForAge
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PretermInfantsPostnatalGrowthWeightForAge &&
+            other is _IntergrowthPretermInfantsPostnatalGrowthLengthForAge &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.measurementResult, measurementResult) ||
@@ -3675,35 +3614,40 @@ class _PretermInfantsPostnatalGrowthWeightForAge
 
   @override
   String toString() {
-    return 'PretermInfantsPostnatalGrowthWeightForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
+    return 'IntergrowthPretermInfantsPostnatalGrowthLengthForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$PretermInfantsPostnatalGrowthWeightForAgeCopyWith<$Res>
-    implements $PretermInfantsPostnatalGrowthWeightForAgeCopyWith<$Res> {
-  factory _$PretermInfantsPostnatalGrowthWeightForAgeCopyWith(
-          _PretermInfantsPostnatalGrowthWeightForAge value,
-          $Res Function(_PretermInfantsPostnatalGrowthWeightForAge) _then) =
-      __$PretermInfantsPostnatalGrowthWeightForAgeCopyWithImpl;
+abstract mixin class _$IntergrowthPretermInfantsPostnatalGrowthLengthForAgeCopyWith<
+        $Res>
+    implements
+        $IntergrowthPretermInfantsPostnatalGrowthLengthForAgeCopyWith<$Res> {
+  factory _$IntergrowthPretermInfantsPostnatalGrowthLengthForAgeCopyWith(
+          _IntergrowthPretermInfantsPostnatalGrowthLengthForAge value,
+          $Res Function(_IntergrowthPretermInfantsPostnatalGrowthLengthForAge)
+              _then) =
+      __$IntergrowthPretermInfantsPostnatalGrowthLengthForAgeCopyWithImpl;
   @override
   @useResult
-  $Res call({Sex sex, Age age, Mass measurementResult});
+  $Res call({Sex sex, Age age, Length measurementResult});
 
   @override
   $AgeCopyWith<$Res> get age;
 }
 
 /// @nodoc
-class __$PretermInfantsPostnatalGrowthWeightForAgeCopyWithImpl<$Res>
-    implements _$PretermInfantsPostnatalGrowthWeightForAgeCopyWith<$Res> {
-  __$PretermInfantsPostnatalGrowthWeightForAgeCopyWithImpl(
+class __$IntergrowthPretermInfantsPostnatalGrowthLengthForAgeCopyWithImpl<$Res>
+    implements
+        _$IntergrowthPretermInfantsPostnatalGrowthLengthForAgeCopyWith<$Res> {
+  __$IntergrowthPretermInfantsPostnatalGrowthLengthForAgeCopyWithImpl(
       this._self, this._then);
 
-  final _PretermInfantsPostnatalGrowthWeightForAge _self;
-  final $Res Function(_PretermInfantsPostnatalGrowthWeightForAge) _then;
+  final _IntergrowthPretermInfantsPostnatalGrowthLengthForAge _self;
+  final $Res Function(_IntergrowthPretermInfantsPostnatalGrowthLengthForAge)
+      _then;
 
-  /// Create a copy of PretermInfantsPostnatalGrowthWeightForAge
+  /// Create a copy of IntergrowthPretermInfantsPostnatalGrowthLengthForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -3712,7 +3656,7 @@ class __$PretermInfantsPostnatalGrowthWeightForAgeCopyWithImpl<$Res>
     Object? age = null,
     Object? measurementResult = null,
   }) {
-    return _then(_PretermInfantsPostnatalGrowthWeightForAge(
+    return _then(_IntergrowthPretermInfantsPostnatalGrowthLengthForAge(
       sex: null == sex
           ? _self.sex
           : sex // ignore: cast_nullable_to_non_nullable
@@ -3724,98 +3668,11 @@ class __$PretermInfantsPostnatalGrowthWeightForAgeCopyWithImpl<$Res>
       measurementResult: null == measurementResult
           ? _self.measurementResult
           : measurementResult // ignore: cast_nullable_to_non_nullable
-              as Mass,
-    ));
-  }
-
-  /// Create a copy of PretermInfantsPostnatalGrowthWeightForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
-    });
-  }
-}
-
-/// @nodoc
-mixin _$SymphysisFundalHeightForAge {
-  Age get age;
-  Length get length;
-
-  /// Create a copy of SymphysisFundalHeightForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $SymphysisFundalHeightForAgeCopyWith<SymphysisFundalHeightForAge>
-      get copyWith => _$SymphysisFundalHeightForAgeCopyWithImpl<
-              SymphysisFundalHeightForAge>(
-          this as SymphysisFundalHeightForAge, _$identity);
-
-  /// Serializes this SymphysisFundalHeightForAge to a JSON map.
-  Map<String, dynamic> toJson();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is SymphysisFundalHeightForAge &&
-            (identical(other.age, age) || other.age == age) &&
-            (identical(other.length, length) || other.length == length));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, age, length);
-
-  @override
-  String toString() {
-    return 'SymphysisFundalHeightForAge(age: $age, length: $length)';
-  }
-}
-
-/// @nodoc
-abstract mixin class $SymphysisFundalHeightForAgeCopyWith<$Res> {
-  factory $SymphysisFundalHeightForAgeCopyWith(
-          SymphysisFundalHeightForAge value,
-          $Res Function(SymphysisFundalHeightForAge) _then) =
-      _$SymphysisFundalHeightForAgeCopyWithImpl;
-  @useResult
-  $Res call({Age age, Length length});
-
-  $AgeCopyWith<$Res> get age;
-}
-
-/// @nodoc
-class _$SymphysisFundalHeightForAgeCopyWithImpl<$Res>
-    implements $SymphysisFundalHeightForAgeCopyWith<$Res> {
-  _$SymphysisFundalHeightForAgeCopyWithImpl(this._self, this._then);
-
-  final SymphysisFundalHeightForAge _self;
-  final $Res Function(SymphysisFundalHeightForAge) _then;
-
-  /// Create a copy of SymphysisFundalHeightForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? age = null,
-    Object? length = null,
-  }) {
-    return _then(_self.copyWith(
-      age: null == age
-          ? _self.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as Age,
-      length: null == length
-          ? _self.length
-          : length // ignore: cast_nullable_to_non_nullable
               as Length,
     ));
   }
 
-  /// Create a copy of SymphysisFundalHeightForAge
+  /// Create a copy of IntergrowthPretermInfantsPostnatalGrowthLengthForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -3827,130 +3684,31 @@ class _$SymphysisFundalHeightForAgeCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _SymphysisFundalHeightForAge extends SymphysisFundalHeightForAge {
-  _SymphysisFundalHeightForAge({required this.age, required this.length})
-      : super._();
-  factory _SymphysisFundalHeightForAge.fromJson(Map<String, dynamic> json) =>
-      _$SymphysisFundalHeightForAgeFromJson(json);
-
-  @override
-  final Age age;
-  @override
-  final Length length;
-
-  /// Create a copy of SymphysisFundalHeightForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$SymphysisFundalHeightForAgeCopyWith<_SymphysisFundalHeightForAge>
-      get copyWith => __$SymphysisFundalHeightForAgeCopyWithImpl<
-          _SymphysisFundalHeightForAge>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$SymphysisFundalHeightForAgeToJson(
-      this,
-    );
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _SymphysisFundalHeightForAge &&
-            (identical(other.age, age) || other.age == age) &&
-            (identical(other.length, length) || other.length == length));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, age, length);
-
-  @override
-  String toString() {
-    return 'SymphysisFundalHeightForAge(age: $age, length: $length)';
-  }
-}
-
-/// @nodoc
-abstract mixin class _$SymphysisFundalHeightForAgeCopyWith<$Res>
-    implements $SymphysisFundalHeightForAgeCopyWith<$Res> {
-  factory _$SymphysisFundalHeightForAgeCopyWith(
-          _SymphysisFundalHeightForAge value,
-          $Res Function(_SymphysisFundalHeightForAge) _then) =
-      __$SymphysisFundalHeightForAgeCopyWithImpl;
-  @override
-  @useResult
-  $Res call({Age age, Length length});
-
-  @override
-  $AgeCopyWith<$Res> get age;
-}
-
-/// @nodoc
-class __$SymphysisFundalHeightForAgeCopyWithImpl<$Res>
-    implements _$SymphysisFundalHeightForAgeCopyWith<$Res> {
-  __$SymphysisFundalHeightForAgeCopyWithImpl(this._self, this._then);
-
-  final _SymphysisFundalHeightForAge _self;
-  final $Res Function(_SymphysisFundalHeightForAge) _then;
-
-  /// Create a copy of SymphysisFundalHeightForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? age = null,
-    Object? length = null,
-  }) {
-    return _then(_SymphysisFundalHeightForAge(
-      age: null == age
-          ? _self.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as Age,
-      length: null == length
-          ? _self.length
-          : length // ignore: cast_nullable_to_non_nullable
-              as Length,
-    ));
-  }
-
-  /// Create a copy of SymphysisFundalHeightForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_self.age, (value) {
-      return _then(_self.copyWith(age: value));
-    });
-  }
-}
-
-/// @nodoc
-mixin _$GestationalWeightGainForAge {
+mixin _$IntergrowthPretermInfantsPostnatalGrowthWeightForAge {
   Sex get sex;
   Age get age;
   Mass get measurementResult;
 
-  /// Create a copy of GestationalWeightGainForAge
+  /// Create a copy of IntergrowthPretermInfantsPostnatalGrowthWeightForAge
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $GestationalWeightGainForAgeCopyWith<GestationalWeightGainForAge>
-      get copyWith => _$GestationalWeightGainForAgeCopyWithImpl<
-              GestationalWeightGainForAge>(
-          this as GestationalWeightGainForAge, _$identity);
+  $IntergrowthPretermInfantsPostnatalGrowthWeightForAgeCopyWith<
+          IntergrowthPretermInfantsPostnatalGrowthWeightForAge>
+      get copyWith =>
+          _$IntergrowthPretermInfantsPostnatalGrowthWeightForAgeCopyWithImpl<
+                  IntergrowthPretermInfantsPostnatalGrowthWeightForAge>(
+              this as IntergrowthPretermInfantsPostnatalGrowthWeightForAge,
+              _$identity);
 
-  /// Serializes this GestationalWeightGainForAge to a JSON map.
+  /// Serializes this IntergrowthPretermInfantsPostnatalGrowthWeightForAge to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is GestationalWeightGainForAge &&
+            other is IntergrowthPretermInfantsPostnatalGrowthWeightForAge &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.measurementResult, measurementResult) ||
@@ -3963,16 +3721,18 @@ mixin _$GestationalWeightGainForAge {
 
   @override
   String toString() {
-    return 'GestationalWeightGainForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
+    return 'IntergrowthPretermInfantsPostnatalGrowthWeightForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
   }
 }
 
 /// @nodoc
-abstract mixin class $GestationalWeightGainForAgeCopyWith<$Res> {
-  factory $GestationalWeightGainForAgeCopyWith(
-          GestationalWeightGainForAge value,
-          $Res Function(GestationalWeightGainForAge) _then) =
-      _$GestationalWeightGainForAgeCopyWithImpl;
+abstract mixin class $IntergrowthPretermInfantsPostnatalGrowthWeightForAgeCopyWith<
+    $Res> {
+  factory $IntergrowthPretermInfantsPostnatalGrowthWeightForAgeCopyWith(
+          IntergrowthPretermInfantsPostnatalGrowthWeightForAge value,
+          $Res Function(IntergrowthPretermInfantsPostnatalGrowthWeightForAge)
+              _then) =
+      _$IntergrowthPretermInfantsPostnatalGrowthWeightForAgeCopyWithImpl;
   @useResult
   $Res call({Sex sex, Age age, Mass measurementResult});
 
@@ -3980,14 +3740,17 @@ abstract mixin class $GestationalWeightGainForAgeCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$GestationalWeightGainForAgeCopyWithImpl<$Res>
-    implements $GestationalWeightGainForAgeCopyWith<$Res> {
-  _$GestationalWeightGainForAgeCopyWithImpl(this._self, this._then);
+class _$IntergrowthPretermInfantsPostnatalGrowthWeightForAgeCopyWithImpl<$Res>
+    implements
+        $IntergrowthPretermInfantsPostnatalGrowthWeightForAgeCopyWith<$Res> {
+  _$IntergrowthPretermInfantsPostnatalGrowthWeightForAgeCopyWithImpl(
+      this._self, this._then);
 
-  final GestationalWeightGainForAge _self;
-  final $Res Function(GestationalWeightGainForAge) _then;
+  final IntergrowthPretermInfantsPostnatalGrowthWeightForAge _self;
+  final $Res Function(IntergrowthPretermInfantsPostnatalGrowthWeightForAge)
+      _then;
 
-  /// Create a copy of GestationalWeightGainForAge
+  /// Create a copy of IntergrowthPretermInfantsPostnatalGrowthWeightForAge
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -4012,7 +3775,7 @@ class _$GestationalWeightGainForAgeCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of GestationalWeightGainForAge
+  /// Create a copy of IntergrowthPretermInfantsPostnatalGrowthWeightForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -4025,12 +3788,14 @@ class _$GestationalWeightGainForAgeCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _GestationalWeightGainForAge extends GestationalWeightGainForAge {
-  _GestationalWeightGainForAge(
+class _IntergrowthPretermInfantsPostnatalGrowthWeightForAge
+    extends IntergrowthPretermInfantsPostnatalGrowthWeightForAge {
+  _IntergrowthPretermInfantsPostnatalGrowthWeightForAge(
       {required this.sex, required this.age, required this.measurementResult})
       : super._();
-  factory _GestationalWeightGainForAge.fromJson(Map<String, dynamic> json) =>
-      _$GestationalWeightGainForAgeFromJson(json);
+  factory _IntergrowthPretermInfantsPostnatalGrowthWeightForAge.fromJson(
+          Map<String, dynamic> json) =>
+      _$IntergrowthPretermInfantsPostnatalGrowthWeightForAgeFromJson(json);
 
   @override
   final Sex sex;
@@ -4039,18 +3804,21 @@ class _GestationalWeightGainForAge extends GestationalWeightGainForAge {
   @override
   final Mass measurementResult;
 
-  /// Create a copy of GestationalWeightGainForAge
+  /// Create a copy of IntergrowthPretermInfantsPostnatalGrowthWeightForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$GestationalWeightGainForAgeCopyWith<_GestationalWeightGainForAge>
-      get copyWith => __$GestationalWeightGainForAgeCopyWithImpl<
-          _GestationalWeightGainForAge>(this, _$identity);
+  _$IntergrowthPretermInfantsPostnatalGrowthWeightForAgeCopyWith<
+          _IntergrowthPretermInfantsPostnatalGrowthWeightForAge>
+      get copyWith =>
+          __$IntergrowthPretermInfantsPostnatalGrowthWeightForAgeCopyWithImpl<
+                  _IntergrowthPretermInfantsPostnatalGrowthWeightForAge>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$GestationalWeightGainForAgeToJson(
+    return _$IntergrowthPretermInfantsPostnatalGrowthWeightForAgeToJson(
       this,
     );
   }
@@ -4059,7 +3827,7 @@ class _GestationalWeightGainForAge extends GestationalWeightGainForAge {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _GestationalWeightGainForAge &&
+            other is _IntergrowthPretermInfantsPostnatalGrowthWeightForAge &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.measurementResult, measurementResult) ||
@@ -4072,17 +3840,20 @@ class _GestationalWeightGainForAge extends GestationalWeightGainForAge {
 
   @override
   String toString() {
-    return 'GestationalWeightGainForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
+    return 'IntergrowthPretermInfantsPostnatalGrowthWeightForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$GestationalWeightGainForAgeCopyWith<$Res>
-    implements $GestationalWeightGainForAgeCopyWith<$Res> {
-  factory _$GestationalWeightGainForAgeCopyWith(
-          _GestationalWeightGainForAge value,
-          $Res Function(_GestationalWeightGainForAge) _then) =
-      __$GestationalWeightGainForAgeCopyWithImpl;
+abstract mixin class _$IntergrowthPretermInfantsPostnatalGrowthWeightForAgeCopyWith<
+        $Res>
+    implements
+        $IntergrowthPretermInfantsPostnatalGrowthWeightForAgeCopyWith<$Res> {
+  factory _$IntergrowthPretermInfantsPostnatalGrowthWeightForAgeCopyWith(
+          _IntergrowthPretermInfantsPostnatalGrowthWeightForAge value,
+          $Res Function(_IntergrowthPretermInfantsPostnatalGrowthWeightForAge)
+              _then) =
+      __$IntergrowthPretermInfantsPostnatalGrowthWeightForAgeCopyWithImpl;
   @override
   @useResult
   $Res call({Sex sex, Age age, Mass measurementResult});
@@ -4092,14 +3863,17 @@ abstract mixin class _$GestationalWeightGainForAgeCopyWith<$Res>
 }
 
 /// @nodoc
-class __$GestationalWeightGainForAgeCopyWithImpl<$Res>
-    implements _$GestationalWeightGainForAgeCopyWith<$Res> {
-  __$GestationalWeightGainForAgeCopyWithImpl(this._self, this._then);
+class __$IntergrowthPretermInfantsPostnatalGrowthWeightForAgeCopyWithImpl<$Res>
+    implements
+        _$IntergrowthPretermInfantsPostnatalGrowthWeightForAgeCopyWith<$Res> {
+  __$IntergrowthPretermInfantsPostnatalGrowthWeightForAgeCopyWithImpl(
+      this._self, this._then);
 
-  final _GestationalWeightGainForAge _self;
-  final $Res Function(_GestationalWeightGainForAge) _then;
+  final _IntergrowthPretermInfantsPostnatalGrowthWeightForAge _self;
+  final $Res Function(_IntergrowthPretermInfantsPostnatalGrowthWeightForAge)
+      _then;
 
-  /// Create a copy of GestationalWeightGainForAge
+  /// Create a copy of IntergrowthPretermInfantsPostnatalGrowthWeightForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -4108,7 +3882,7 @@ class __$GestationalWeightGainForAgeCopyWithImpl<$Res>
     Object? age = null,
     Object? measurementResult = null,
   }) {
-    return _then(_GestationalWeightGainForAge(
+    return _then(_IntergrowthPretermInfantsPostnatalGrowthWeightForAge(
       sex: null == sex
           ? _self.sex
           : sex // ignore: cast_nullable_to_non_nullable
@@ -4124,7 +3898,7 @@ class __$GestationalWeightGainForAgeCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of GestationalWeightGainForAge
+  /// Create a copy of IntergrowthPretermInfantsPostnatalGrowthWeightForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -4136,26 +3910,28 @@ class __$GestationalWeightGainForAgeCopyWithImpl<$Res>
 }
 
 /// @nodoc
-mixin _$CrownRumpLengthForAge {
+mixin _$IntergrowthSymphysisFundalHeightForAge {
   Age get age;
   Length get length;
 
-  /// Create a copy of CrownRumpLengthForAge
+  /// Create a copy of IntergrowthSymphysisFundalHeightForAge
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $CrownRumpLengthForAgeCopyWith<CrownRumpLengthForAge> get copyWith =>
-      _$CrownRumpLengthForAgeCopyWithImpl<CrownRumpLengthForAge>(
-          this as CrownRumpLengthForAge, _$identity);
+  $IntergrowthSymphysisFundalHeightForAgeCopyWith<
+          IntergrowthSymphysisFundalHeightForAge>
+      get copyWith => _$IntergrowthSymphysisFundalHeightForAgeCopyWithImpl<
+              IntergrowthSymphysisFundalHeightForAge>(
+          this as IntergrowthSymphysisFundalHeightForAge, _$identity);
 
-  /// Serializes this CrownRumpLengthForAge to a JSON map.
+  /// Serializes this IntergrowthSymphysisFundalHeightForAge to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is CrownRumpLengthForAge &&
+            other is IntergrowthSymphysisFundalHeightForAge &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.length, length) || other.length == length));
   }
@@ -4166,15 +3942,16 @@ mixin _$CrownRumpLengthForAge {
 
   @override
   String toString() {
-    return 'CrownRumpLengthForAge(age: $age, length: $length)';
+    return 'IntergrowthSymphysisFundalHeightForAge(age: $age, length: $length)';
   }
 }
 
 /// @nodoc
-abstract mixin class $CrownRumpLengthForAgeCopyWith<$Res> {
-  factory $CrownRumpLengthForAgeCopyWith(CrownRumpLengthForAge value,
-          $Res Function(CrownRumpLengthForAge) _then) =
-      _$CrownRumpLengthForAgeCopyWithImpl;
+abstract mixin class $IntergrowthSymphysisFundalHeightForAgeCopyWith<$Res> {
+  factory $IntergrowthSymphysisFundalHeightForAgeCopyWith(
+          IntergrowthSymphysisFundalHeightForAge value,
+          $Res Function(IntergrowthSymphysisFundalHeightForAge) _then) =
+      _$IntergrowthSymphysisFundalHeightForAgeCopyWithImpl;
   @useResult
   $Res call({Age age, Length length});
 
@@ -4182,14 +3959,14 @@ abstract mixin class $CrownRumpLengthForAgeCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CrownRumpLengthForAgeCopyWithImpl<$Res>
-    implements $CrownRumpLengthForAgeCopyWith<$Res> {
-  _$CrownRumpLengthForAgeCopyWithImpl(this._self, this._then);
+class _$IntergrowthSymphysisFundalHeightForAgeCopyWithImpl<$Res>
+    implements $IntergrowthSymphysisFundalHeightForAgeCopyWith<$Res> {
+  _$IntergrowthSymphysisFundalHeightForAgeCopyWithImpl(this._self, this._then);
 
-  final CrownRumpLengthForAge _self;
-  final $Res Function(CrownRumpLengthForAge) _then;
+  final IntergrowthSymphysisFundalHeightForAge _self;
+  final $Res Function(IntergrowthSymphysisFundalHeightForAge) _then;
 
-  /// Create a copy of CrownRumpLengthForAge
+  /// Create a copy of IntergrowthSymphysisFundalHeightForAge
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -4209,7 +3986,7 @@ class _$CrownRumpLengthForAgeCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of CrownRumpLengthForAge
+  /// Create a copy of IntergrowthSymphysisFundalHeightForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -4222,28 +3999,33 @@ class _$CrownRumpLengthForAgeCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _CrownRumpLengthForAge extends CrownRumpLengthForAge {
-  _CrownRumpLengthForAge({required this.age, required this.length}) : super._();
-  factory _CrownRumpLengthForAge.fromJson(Map<String, dynamic> json) =>
-      _$CrownRumpLengthForAgeFromJson(json);
+class _IntergrowthSymphysisFundalHeightForAge
+    extends IntergrowthSymphysisFundalHeightForAge {
+  _IntergrowthSymphysisFundalHeightForAge(
+      {required this.age, required this.length})
+      : super._();
+  factory _IntergrowthSymphysisFundalHeightForAge.fromJson(
+          Map<String, dynamic> json) =>
+      _$IntergrowthSymphysisFundalHeightForAgeFromJson(json);
 
   @override
   final Age age;
   @override
   final Length length;
 
-  /// Create a copy of CrownRumpLengthForAge
+  /// Create a copy of IntergrowthSymphysisFundalHeightForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$CrownRumpLengthForAgeCopyWith<_CrownRumpLengthForAge> get copyWith =>
-      __$CrownRumpLengthForAgeCopyWithImpl<_CrownRumpLengthForAge>(
-          this, _$identity);
+  _$IntergrowthSymphysisFundalHeightForAgeCopyWith<
+          _IntergrowthSymphysisFundalHeightForAge>
+      get copyWith => __$IntergrowthSymphysisFundalHeightForAgeCopyWithImpl<
+          _IntergrowthSymphysisFundalHeightForAge>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$CrownRumpLengthForAgeToJson(
+    return _$IntergrowthSymphysisFundalHeightForAgeToJson(
       this,
     );
   }
@@ -4252,7 +4034,7 @@ class _CrownRumpLengthForAge extends CrownRumpLengthForAge {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _CrownRumpLengthForAge &&
+            other is _IntergrowthSymphysisFundalHeightForAge &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.length, length) || other.length == length));
   }
@@ -4263,16 +4045,17 @@ class _CrownRumpLengthForAge extends CrownRumpLengthForAge {
 
   @override
   String toString() {
-    return 'CrownRumpLengthForAge(age: $age, length: $length)';
+    return 'IntergrowthSymphysisFundalHeightForAge(age: $age, length: $length)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$CrownRumpLengthForAgeCopyWith<$Res>
-    implements $CrownRumpLengthForAgeCopyWith<$Res> {
-  factory _$CrownRumpLengthForAgeCopyWith(_CrownRumpLengthForAge value,
-          $Res Function(_CrownRumpLengthForAge) _then) =
-      __$CrownRumpLengthForAgeCopyWithImpl;
+abstract mixin class _$IntergrowthSymphysisFundalHeightForAgeCopyWith<$Res>
+    implements $IntergrowthSymphysisFundalHeightForAgeCopyWith<$Res> {
+  factory _$IntergrowthSymphysisFundalHeightForAgeCopyWith(
+          _IntergrowthSymphysisFundalHeightForAge value,
+          $Res Function(_IntergrowthSymphysisFundalHeightForAge) _then) =
+      __$IntergrowthSymphysisFundalHeightForAgeCopyWithImpl;
   @override
   @useResult
   $Res call({Age age, Length length});
@@ -4282,14 +4065,14 @@ abstract mixin class _$CrownRumpLengthForAgeCopyWith<$Res>
 }
 
 /// @nodoc
-class __$CrownRumpLengthForAgeCopyWithImpl<$Res>
-    implements _$CrownRumpLengthForAgeCopyWith<$Res> {
-  __$CrownRumpLengthForAgeCopyWithImpl(this._self, this._then);
+class __$IntergrowthSymphysisFundalHeightForAgeCopyWithImpl<$Res>
+    implements _$IntergrowthSymphysisFundalHeightForAgeCopyWith<$Res> {
+  __$IntergrowthSymphysisFundalHeightForAgeCopyWithImpl(this._self, this._then);
 
-  final _CrownRumpLengthForAge _self;
-  final $Res Function(_CrownRumpLengthForAge) _then;
+  final _IntergrowthSymphysisFundalHeightForAge _self;
+  final $Res Function(_IntergrowthSymphysisFundalHeightForAge) _then;
 
-  /// Create a copy of CrownRumpLengthForAge
+  /// Create a copy of IntergrowthSymphysisFundalHeightForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -4297,7 +4080,7 @@ class __$CrownRumpLengthForAgeCopyWithImpl<$Res>
     Object? age = null,
     Object? length = null,
   }) {
-    return _then(_CrownRumpLengthForAge(
+    return _then(_IntergrowthSymphysisFundalHeightForAge(
       age: null == age
           ? _self.age
           : age // ignore: cast_nullable_to_non_nullable
@@ -4309,7 +4092,409 @@ class __$CrownRumpLengthForAgeCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of CrownRumpLengthForAge
+  /// Create a copy of IntergrowthSymphysisFundalHeightForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AgeCopyWith<$Res> get age {
+    return $AgeCopyWith<$Res>(_self.age, (value) {
+      return _then(_self.copyWith(age: value));
+    });
+  }
+}
+
+/// @nodoc
+mixin _$IntergrowthGestationalWeightGainForAge {
+  Sex get sex;
+  Age get age;
+  Mass get measurementResult;
+
+  /// Create a copy of IntergrowthGestationalWeightGainForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $IntergrowthGestationalWeightGainForAgeCopyWith<
+          IntergrowthGestationalWeightGainForAge>
+      get copyWith => _$IntergrowthGestationalWeightGainForAgeCopyWithImpl<
+              IntergrowthGestationalWeightGainForAge>(
+          this as IntergrowthGestationalWeightGainForAge, _$identity);
+
+  /// Serializes this IntergrowthGestationalWeightGainForAge to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is IntergrowthGestationalWeightGainForAge &&
+            (identical(other.sex, sex) || other.sex == sex) &&
+            (identical(other.age, age) || other.age == age) &&
+            (identical(other.measurementResult, measurementResult) ||
+                other.measurementResult == measurementResult));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, sex, age, measurementResult);
+
+  @override
+  String toString() {
+    return 'IntergrowthGestationalWeightGainForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $IntergrowthGestationalWeightGainForAgeCopyWith<$Res> {
+  factory $IntergrowthGestationalWeightGainForAgeCopyWith(
+          IntergrowthGestationalWeightGainForAge value,
+          $Res Function(IntergrowthGestationalWeightGainForAge) _then) =
+      _$IntergrowthGestationalWeightGainForAgeCopyWithImpl;
+  @useResult
+  $Res call({Sex sex, Age age, Mass measurementResult});
+
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class _$IntergrowthGestationalWeightGainForAgeCopyWithImpl<$Res>
+    implements $IntergrowthGestationalWeightGainForAgeCopyWith<$Res> {
+  _$IntergrowthGestationalWeightGainForAgeCopyWithImpl(this._self, this._then);
+
+  final IntergrowthGestationalWeightGainForAge _self;
+  final $Res Function(IntergrowthGestationalWeightGainForAge) _then;
+
+  /// Create a copy of IntergrowthGestationalWeightGainForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? sex = null,
+    Object? age = null,
+    Object? measurementResult = null,
+  }) {
+    return _then(_self.copyWith(
+      sex: null == sex
+          ? _self.sex
+          : sex // ignore: cast_nullable_to_non_nullable
+              as Sex,
+      age: null == age
+          ? _self.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+      measurementResult: null == measurementResult
+          ? _self.measurementResult
+          : measurementResult // ignore: cast_nullable_to_non_nullable
+              as Mass,
+    ));
+  }
+
+  /// Create a copy of IntergrowthGestationalWeightGainForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AgeCopyWith<$Res> get age {
+    return $AgeCopyWith<$Res>(_self.age, (value) {
+      return _then(_self.copyWith(age: value));
+    });
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _IntergrowthGestationalWeightGainForAge
+    extends IntergrowthGestationalWeightGainForAge {
+  _IntergrowthGestationalWeightGainForAge(
+      {required this.sex, required this.age, required this.measurementResult})
+      : super._();
+  factory _IntergrowthGestationalWeightGainForAge.fromJson(
+          Map<String, dynamic> json) =>
+      _$IntergrowthGestationalWeightGainForAgeFromJson(json);
+
+  @override
+  final Sex sex;
+  @override
+  final Age age;
+  @override
+  final Mass measurementResult;
+
+  /// Create a copy of IntergrowthGestationalWeightGainForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$IntergrowthGestationalWeightGainForAgeCopyWith<
+          _IntergrowthGestationalWeightGainForAge>
+      get copyWith => __$IntergrowthGestationalWeightGainForAgeCopyWithImpl<
+          _IntergrowthGestationalWeightGainForAge>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$IntergrowthGestationalWeightGainForAgeToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _IntergrowthGestationalWeightGainForAge &&
+            (identical(other.sex, sex) || other.sex == sex) &&
+            (identical(other.age, age) || other.age == age) &&
+            (identical(other.measurementResult, measurementResult) ||
+                other.measurementResult == measurementResult));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, sex, age, measurementResult);
+
+  @override
+  String toString() {
+    return 'IntergrowthGestationalWeightGainForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$IntergrowthGestationalWeightGainForAgeCopyWith<$Res>
+    implements $IntergrowthGestationalWeightGainForAgeCopyWith<$Res> {
+  factory _$IntergrowthGestationalWeightGainForAgeCopyWith(
+          _IntergrowthGestationalWeightGainForAge value,
+          $Res Function(_IntergrowthGestationalWeightGainForAge) _then) =
+      __$IntergrowthGestationalWeightGainForAgeCopyWithImpl;
+  @override
+  @useResult
+  $Res call({Sex sex, Age age, Mass measurementResult});
+
+  @override
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class __$IntergrowthGestationalWeightGainForAgeCopyWithImpl<$Res>
+    implements _$IntergrowthGestationalWeightGainForAgeCopyWith<$Res> {
+  __$IntergrowthGestationalWeightGainForAgeCopyWithImpl(this._self, this._then);
+
+  final _IntergrowthGestationalWeightGainForAge _self;
+  final $Res Function(_IntergrowthGestationalWeightGainForAge) _then;
+
+  /// Create a copy of IntergrowthGestationalWeightGainForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? sex = null,
+    Object? age = null,
+    Object? measurementResult = null,
+  }) {
+    return _then(_IntergrowthGestationalWeightGainForAge(
+      sex: null == sex
+          ? _self.sex
+          : sex // ignore: cast_nullable_to_non_nullable
+              as Sex,
+      age: null == age
+          ? _self.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+      measurementResult: null == measurementResult
+          ? _self.measurementResult
+          : measurementResult // ignore: cast_nullable_to_non_nullable
+              as Mass,
+    ));
+  }
+
+  /// Create a copy of IntergrowthGestationalWeightGainForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AgeCopyWith<$Res> get age {
+    return $AgeCopyWith<$Res>(_self.age, (value) {
+      return _then(_self.copyWith(age: value));
+    });
+  }
+}
+
+/// @nodoc
+mixin _$IntergrowthCrownRumpLengthForAge {
+  Age get age;
+  Length get length;
+
+  /// Create a copy of IntergrowthCrownRumpLengthForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $IntergrowthCrownRumpLengthForAgeCopyWith<IntergrowthCrownRumpLengthForAge>
+      get copyWith => _$IntergrowthCrownRumpLengthForAgeCopyWithImpl<
+              IntergrowthCrownRumpLengthForAge>(
+          this as IntergrowthCrownRumpLengthForAge, _$identity);
+
+  /// Serializes this IntergrowthCrownRumpLengthForAge to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is IntergrowthCrownRumpLengthForAge &&
+            (identical(other.age, age) || other.age == age) &&
+            (identical(other.length, length) || other.length == length));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, age, length);
+
+  @override
+  String toString() {
+    return 'IntergrowthCrownRumpLengthForAge(age: $age, length: $length)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $IntergrowthCrownRumpLengthForAgeCopyWith<$Res> {
+  factory $IntergrowthCrownRumpLengthForAgeCopyWith(
+          IntergrowthCrownRumpLengthForAge value,
+          $Res Function(IntergrowthCrownRumpLengthForAge) _then) =
+      _$IntergrowthCrownRumpLengthForAgeCopyWithImpl;
+  @useResult
+  $Res call({Age age, Length length});
+
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class _$IntergrowthCrownRumpLengthForAgeCopyWithImpl<$Res>
+    implements $IntergrowthCrownRumpLengthForAgeCopyWith<$Res> {
+  _$IntergrowthCrownRumpLengthForAgeCopyWithImpl(this._self, this._then);
+
+  final IntergrowthCrownRumpLengthForAge _self;
+  final $Res Function(IntergrowthCrownRumpLengthForAge) _then;
+
+  /// Create a copy of IntergrowthCrownRumpLengthForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? age = null,
+    Object? length = null,
+  }) {
+    return _then(_self.copyWith(
+      age: null == age
+          ? _self.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+      length: null == length
+          ? _self.length
+          : length // ignore: cast_nullable_to_non_nullable
+              as Length,
+    ));
+  }
+
+  /// Create a copy of IntergrowthCrownRumpLengthForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AgeCopyWith<$Res> get age {
+    return $AgeCopyWith<$Res>(_self.age, (value) {
+      return _then(_self.copyWith(age: value));
+    });
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _IntergrowthCrownRumpLengthForAge
+    extends IntergrowthCrownRumpLengthForAge {
+  _IntergrowthCrownRumpLengthForAge({required this.age, required this.length})
+      : super._();
+  factory _IntergrowthCrownRumpLengthForAge.fromJson(
+          Map<String, dynamic> json) =>
+      _$IntergrowthCrownRumpLengthForAgeFromJson(json);
+
+  @override
+  final Age age;
+  @override
+  final Length length;
+
+  /// Create a copy of IntergrowthCrownRumpLengthForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$IntergrowthCrownRumpLengthForAgeCopyWith<_IntergrowthCrownRumpLengthForAge>
+      get copyWith => __$IntergrowthCrownRumpLengthForAgeCopyWithImpl<
+          _IntergrowthCrownRumpLengthForAge>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$IntergrowthCrownRumpLengthForAgeToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _IntergrowthCrownRumpLengthForAge &&
+            (identical(other.age, age) || other.age == age) &&
+            (identical(other.length, length) || other.length == length));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, age, length);
+
+  @override
+  String toString() {
+    return 'IntergrowthCrownRumpLengthForAge(age: $age, length: $length)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$IntergrowthCrownRumpLengthForAgeCopyWith<$Res>
+    implements $IntergrowthCrownRumpLengthForAgeCopyWith<$Res> {
+  factory _$IntergrowthCrownRumpLengthForAgeCopyWith(
+          _IntergrowthCrownRumpLengthForAge value,
+          $Res Function(_IntergrowthCrownRumpLengthForAge) _then) =
+      __$IntergrowthCrownRumpLengthForAgeCopyWithImpl;
+  @override
+  @useResult
+  $Res call({Age age, Length length});
+
+  @override
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class __$IntergrowthCrownRumpLengthForAgeCopyWithImpl<$Res>
+    implements _$IntergrowthCrownRumpLengthForAgeCopyWith<$Res> {
+  __$IntergrowthCrownRumpLengthForAgeCopyWithImpl(this._self, this._then);
+
+  final _IntergrowthCrownRumpLengthForAge _self;
+  final $Res Function(_IntergrowthCrownRumpLengthForAge) _then;
+
+  /// Create a copy of IntergrowthCrownRumpLengthForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? age = null,
+    Object? length = null,
+  }) {
+    return _then(_IntergrowthCrownRumpLengthForAge(
+      age: null == age
+          ? _self.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+      length: null == length
+          ? _self.length
+          : length // ignore: cast_nullable_to_non_nullable
+              as Length,
+    ));
+  }
+
+  /// Create a copy of IntergrowthCrownRumpLengthForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
