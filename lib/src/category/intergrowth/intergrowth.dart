@@ -56,5 +56,15 @@ part 'model/during_pregnancy/fetal_growth/head_circumference.dart';
 part 'model/during_pregnancy/fetal_growth/femur_length.dart';
 part 'model/during_pregnancy/fetal_growth/occipitofrontal_diameter.dart';
 
+part 'model/postnatal/postnatal_growth_of_preterm_infants/head_circumference.dart';
+part 'model/postnatal/postnatal_growth_of_preterm_infants/length.dart';
+part 'model/postnatal/postnatal_growth_of_preterm_infants/weight.dart';
+
+part 'model/during_pregnancy/symphysisfundal_height/symphysisfundal_height.dart';
+
+part 'model/during_pregnancy/gestational_weight_gain/gestational_weight_gain.dart';
+
+part 'model/during_pregnancy/fetal_size_in_early_pregnancy/fetal_size_in_early_pregnancy.dart';
+
 part 'intergrowth.freezed.dart';
 part 'intergrowth.g.dart';
