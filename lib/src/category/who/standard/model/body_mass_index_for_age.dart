@@ -98,14 +98,8 @@ sealed class WHOGrowthStandardsBodyMassIndexForAge extends AgeBasedResult
   WHOGrowthStandardsBodyMassIndexForAgeData get contextData =>
       WHOGrowthStandardsBodyMassIndexForAgeData();
 
-  Map<int, _WHOGrowthStandardsBodyMassIndexForAgeLMS> get _maleData =>
-      contextData._data[Sex.male]!;
-  Map<int, _WHOGrowthStandardsBodyMassIndexForAgeLMS> get _femaleData =>
-      contextData._data[Sex.female]!;
-
-  _WHOGrowthStandardsBodyMassIndexForAgeLMS get _ageData => (sex == Sex.male
-      ? _maleData
-      : _femaleData)[ageAtObservationDate.ageInTotalDaysByNow]!;
+  _WHOGrowthStandardsBodyMassIndexForAgeLMS get _ageData =>
+      contextData._data[sex]![ageAtObservationDate.ageInTotalDaysByNow]!;
 
   num get _zScore =>
       _ageData.lms.adjustedZScore(measurementResultInDefaultUnit);

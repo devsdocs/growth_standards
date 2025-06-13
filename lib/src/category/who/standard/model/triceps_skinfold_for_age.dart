@@ -55,14 +55,8 @@ sealed class WHOGrowthStandardsTricepsSkinfoldForAge extends AgeBasedResult
   WHOGrowthStandardsTricepsSkinfoldForAgeData get contextData =>
       WHOGrowthStandardsTricepsSkinfoldForAgeData();
 
-  Map<int, _WHOGrowthStandardsTricepsSkinfoldForAgeLMS> get _maleData =>
-      contextData._data[Sex.male]!;
-  Map<int, _WHOGrowthStandardsTricepsSkinfoldForAgeLMS> get _femaleData =>
-      contextData._data[Sex.female]!;
-
-  _WHOGrowthStandardsTricepsSkinfoldForAgeLMS get _ageData => (sex == Sex.male
-      ? _maleData
-      : _femaleData)[ageAtObservationDate.ageInTotalDaysByNow]!;
+  _WHOGrowthStandardsTricepsSkinfoldForAgeLMS get _ageData =>
+      contextData._data[sex]![ageAtObservationDate.ageInTotalDaysByNow]!;
 
   num get _zScore =>
       _ageData.lms.adjustedZScore(measurementResultInDefaultUnit);

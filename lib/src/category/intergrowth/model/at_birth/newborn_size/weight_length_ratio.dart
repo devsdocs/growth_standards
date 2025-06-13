@@ -56,7 +56,7 @@ sealed class NewbornBirthWeightForLengthRatioForAge extends AgeBasedResult
   factory NewbornBirthWeightForLengthRatioForAge({
     required Sex sex,
     required Age age,
-    required Length measurementResult,
+    required NewbornWeightLengthRatioMeasurement measurementResult,
   }) = _NewbornBirthWeightForLengthRatioForAge;
 
   const NewbornBirthWeightForLengthRatioForAge._();
@@ -70,8 +70,8 @@ sealed class NewbornBirthWeightForLengthRatioForAge extends AgeBasedResult
   NewbornBirthWeightForLengthRatioForAgeData get contextData =>
       NewbornBirthWeightForLengthRatioForAgeData();
 
-  _NewbornBirthWeightForLengthRatioForAgeLMS get _ageData => contextData
-      ._data.values.first[ageAtObservationDate.ageInTotalDaysByNow]!;
+  _NewbornBirthWeightForLengthRatioForAgeLMS get _ageData =>
+      contextData._data[sex]![ageAtObservationDate.ageInTotalDaysByNow]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 
@@ -97,8 +97,7 @@ sealed class NewbornBirthWeightForLengthRatioForAge extends AgeBasedResult
   _NewbornBirthWeightForLengthRatioForAgeLMS get lmsData => _ageData;
 
   @override
-  num get measurementResultInDefaultUnit =>
-      measurementResult.toCentimeter.value;
+  num get measurementResultInDefaultUnit => measurementResult.value;
 }
 
 class _NewbornBirthWeightForLengthRatioForAgeLMS extends LMSContext {

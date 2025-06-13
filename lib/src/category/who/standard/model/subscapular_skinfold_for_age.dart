@@ -57,15 +57,8 @@ sealed class WHOGrowthStandardsSubscapularSkinfoldForAge extends AgeBasedResult
   WHOGrowthStandardsSubscapularSkinfoldForAgeData get contextData =>
       WHOGrowthStandardsSubscapularSkinfoldForAgeData();
 
-  Map<int, _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS> get _maleData =>
-      contextData._data[Sex.male]!;
-  Map<int, _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS> get _femaleData =>
-      contextData._data[Sex.female]!;
-
   _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS get _ageData =>
-      (sex == Sex.male
-          ? _maleData
-          : _femaleData)[ageAtObservationDate.ageInTotalDaysByNow]!;
+      contextData._data[sex]![ageAtObservationDate.ageInTotalDaysByNow]!;
 
   num get _zScore =>
       _ageData.lms.adjustedZScore(measurementResultInDefaultUnit);

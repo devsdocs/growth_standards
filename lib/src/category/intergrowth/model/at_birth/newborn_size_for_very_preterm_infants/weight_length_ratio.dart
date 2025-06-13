@@ -53,6 +53,32 @@ class VeryPretermNewbornBirthWeightForLengthRatioForAgeData
   TimeUnit get unit => TimeUnit.days;
 }
 
+@freezed
+sealed class NewbornWeightLengthRatioMeasurement
+    with _$NewbornWeightLengthRatioMeasurement {
+  factory NewbornWeightLengthRatioMeasurement(num value) =
+      _NewbornWeightLengthRatioMeasurement;
+  const NewbornWeightLengthRatioMeasurement._();
+
+  factory NewbornWeightLengthRatioMeasurement.fromMeasurement({
+    required Length length,
+    required Mass weight,
+  }) {
+    final lengthInMeter = length.toMeter.value;
+    final weightInKilogram = weight.toKilogram.value;
+    final ratio = weightInKilogram / lengthInMeter;
+
+    return NewbornWeightLengthRatioMeasurement(
+      ratio,
+    );
+  }
+
+  factory NewbornWeightLengthRatioMeasurement.fromJson(
+    Map<String, dynamic> json,
+  ) =>
+      _$NewbornWeightLengthRatioMeasurementFromJson(json);
+}
+
 /// Measure within first 24 hours of life, for infants born between gestational weeks 24 and 33
 @freezed
 sealed class VeryPretermNewbornBirthWeightForLengthRatioForAge
@@ -61,7 +87,7 @@ sealed class VeryPretermNewbornBirthWeightForLengthRatioForAge
   factory VeryPretermNewbornBirthWeightForLengthRatioForAge({
     required Sex sex,
     required Age age,
-    required Length measurementResult,
+    required NewbornWeightLengthRatioMeasurement measurementResult,
   }) = _VeryPretermNewbornBirthWeightForLengthRatioForAge;
 
   const VeryPretermNewbornBirthWeightForLengthRatioForAge._();
@@ -76,7 +102,7 @@ sealed class VeryPretermNewbornBirthWeightForLengthRatioForAge
       VeryPretermNewbornBirthWeightForLengthRatioForAgeData();
 
   _VeryPretermNewbornBirthWeightForLengthRatioForAgeLMS get _ageData =>
-      contextData._data.values.first[ageAtObservationDate.ageInTotalDaysByNow]!;
+      contextData._data[sex]![ageAtObservationDate.ageInTotalDaysByNow]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 
@@ -102,8 +128,7 @@ sealed class VeryPretermNewbornBirthWeightForLengthRatioForAge
   _VeryPretermNewbornBirthWeightForLengthRatioForAgeLMS get lmsData => _ageData;
 
   @override
-  num get measurementResultInDefaultUnit =>
-      measurementResult.toCentimeter.value;
+  num get measurementResultInDefaultUnit => measurementResult.value;
 }
 
 class _VeryPretermNewbornBirthWeightForLengthRatioForAgeLMS extends LMSContext {

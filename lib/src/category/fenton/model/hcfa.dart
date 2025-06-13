@@ -6,21 +6,22 @@ class FentonHeadCircumferenceForAgeData extends AgeBasedData {
 
   static final _singleton = FentonHeadCircumferenceForAgeData._(_parse());
 
-  static Map<Sex, Map<int, _FentonHeadCircumferenceForAgeLMS>> _parse() => {
-        Sex.both: fentonHCfA.toJsonObjectAsMap.map(
-          (k1, v1) {
-            v1 as Map<String, dynamic>;
-            final lms =
-                LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
-            return MapEntry(
-              int.parse(k1),
-              _FentonHeadCircumferenceForAgeLMS(
-                lms: lms,
-              ),
-            );
-          },
-        )
-      };
+  static Map<Sex, Map<int, _FentonHeadCircumferenceForAgeLMS>> _parse() {
+    final map = fentonHCfA.toJsonObjectAsMap.map(
+      (k1, v1) {
+        v1 as Map<String, dynamic>;
+        final lms =
+            LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
+        return MapEntry(
+          int.parse(k1),
+          _FentonHeadCircumferenceForAgeLMS(
+            lms: lms,
+          ),
+        );
+      },
+    );
+    return {Sex.male: map, Sex.female: map};
+  }
 
   final Map<Sex, Map<int, _FentonHeadCircumferenceForAgeLMS>> _data;
   @override
@@ -37,7 +38,6 @@ class FentonHeadCircumferenceForAgeData extends AgeBasedData {
 sealed class FentonHeadCircumferenceForAge extends AgeBasedResult
     with _$FentonHeadCircumferenceForAge {
   factory FentonHeadCircumferenceForAge({
-    required Sex sex,
     required Age age,
     required Length measurementResult,
   }) = _FentonHeadCircumferenceForAge;

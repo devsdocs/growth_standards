@@ -4,8 +4,8 @@ import 'package:growth_standards/growth_standards.dart';
 ///
 /// Throws an [ArgumentError] if any assertion fails or if invalid parameters are provided.
 ///
-/// @param age The Age object to validate
-/// @param observationDate Optional date when the observation was made. Uses current date if null.
+/// @param [age] The Age object to validate
+/// @param [observationDate] Optional date when the observation was made. Uses current date if null.
 /// @param assertions List of time-based assertions to check against the age
 /// @return The validated Age object
 Age checkAge(

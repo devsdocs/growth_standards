@@ -69,7 +69,7 @@ sealed class VeryPretermNewbornBirthLengthForAge extends AgeBasedResult
       VeryPretermNewbornBirthLengthForAgeData();
 
   _VeryPretermNewbornBirthLengthForAgeLMS get _ageData =>
-      contextData._data.values.first[ageAtObservationDate.ageInTotalDaysByNow]!;
+      contextData._data[sex]![ageAtObservationDate.ageInTotalDaysByNow]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 

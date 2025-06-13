@@ -52,18 +52,13 @@ sealed class CDCStatureForAge extends AgeBasedResult with _$CDCStatureForAge {
   @override
   CDCStatureForAgeData get contextData => CDCStatureForAgeData();
 
-  Map<double, _CDCStatureForAgeLMS> get _maleData =>
-      contextData._data[Sex.male]!;
-  Map<double, _CDCStatureForAgeLMS> get _femaleData =>
-      contextData._data[Sex.female]!;
 //TODO(devsdocs): Fix CDC age calculation
   _CDCStatureForAgeLMS get _ageData =>
-      (sex == Sex.male ? _maleData : _femaleData)[
-          ageAtObservationDate.ageInTotalMonthsByNow == 24
-              ? 24
-              : ageAtObservationDate.ageInTotalMonthsByNow == 240
-                  ? 240
-                  : ageAtObservationDate.ageInTotalMonthsByNow + 0.5]!;
+      contextData._data[sex]![ageAtObservationDate.ageInTotalMonthsByNow == 24
+          ? 24
+          : ageAtObservationDate.ageInTotalMonthsByNow == 240
+              ? 240
+              : ageAtObservationDate.ageInTotalMonthsByNow + 0.5]!;
 
   Length$Centimeter get _adjustedLength => adjustedLengthHeight(
         measure: measure,

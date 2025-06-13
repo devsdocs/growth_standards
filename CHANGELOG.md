@@ -1,3 +1,8 @@
+## 4.0.0
+- Remove `Sex.both` enum.
+- Remove `Sex` parameter from `Fenton` measurement.
+- Add `Intergrowth-21` measurements.
+
 ## 3.0.6
 - Same as previous version
 - Use this version if your dependencies has not supported `freezed` version 3

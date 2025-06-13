@@ -4,7 +4,6 @@ import 'package:json_annotation/json_annotation.dart';
 enum Sex {
   male(1),
   female(2),
-  both(3),
   ;
 
   const Sex(this.number);

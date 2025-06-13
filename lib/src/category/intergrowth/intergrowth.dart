@@ -50,5 +50,11 @@ part 'model/at_birth/newborn_size_for_very_preterm_infants/weight_length_ratio.d
 
 part 'model/during_pregnancy/early_pregnancy_dating/crl.dart';
 
+part 'model/during_pregnancy/fetal_growth/abdominal_circumference.dart';
+part 'model/during_pregnancy/fetal_growth/biparietal_diameter.dart';
+part 'model/during_pregnancy/fetal_growth/head_circumference.dart';
+part 'model/during_pregnancy/fetal_growth/femur_length.dart';
+part 'model/during_pregnancy/fetal_growth/occipitofrontal_diameter.dart';
+
 part 'intergrowth.freezed.dart';
 part 'intergrowth.g.dart';

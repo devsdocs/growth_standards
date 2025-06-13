@@ -5,19 +5,23 @@ class FentonLengthForAgeData extends AgeBasedData {
   FentonLengthForAgeData._(this._data);
   static final _singleton = FentonLengthForAgeData._(_parse());
 
-  static Map<Sex, Map<int, _FentonLengthForAgeLMS>> _parse() => {
-        Sex.both: fentonLfA.toJsonObjectAsMap.map((k1, v1) {
-          v1 as Map<String, dynamic>;
-          final lms =
-              LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
-          return MapEntry(
-            int.parse(k1),
-            _FentonLengthForAgeLMS(
-              lms: lms,
-            ),
-          );
-        })
-      };
+  static Map<Sex, Map<int, _FentonLengthForAgeLMS>> _parse() {
+    final map = fentonLfA.toJsonObjectAsMap.map((k1, v1) {
+      v1 as Map<String, dynamic>;
+      final lms = LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
+      return MapEntry(
+        int.parse(k1),
+        _FentonLengthForAgeLMS(
+          lms: lms,
+        ),
+      );
+    });
+    return {
+      Sex.male: map,
+      Sex.female: map,
+    };
+  }
+
   final Map<Sex, Map<int, _FentonLengthForAgeLMS>> _data;
 
   @override
@@ -34,7 +38,6 @@ class FentonLengthForAgeData extends AgeBasedData {
 sealed class FentonLengthForAge extends AgeBasedResult
     with _$FentonLengthForAge {
   factory FentonLengthForAge({
-    required Sex sex,
     required Age age,
     required Length lengthHeight,
     required LengthHeightMeasurementPosition measure,

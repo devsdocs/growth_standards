@@ -66,13 +66,8 @@ sealed class WHOGrowthStandardsWeightForHeight extends LengthBasedResult
   WHOGrowthStandardsWeightForHeightData get contextData =>
       WHOGrowthStandardsWeightForHeightData();
 
-  Map<num, _WHOGrowthStandardsWeightForHeightLMS> get _maleData =>
-      contextData._data[Sex.male]!;
-  Map<num, _WHOGrowthStandardsWeightForHeightLMS> get _femaleData =>
-      contextData._data[Sex.female]!;
-
   _WHOGrowthStandardsWeightForHeightLMS get _ageData =>
-      (sex == Sex.male ? _maleData : _femaleData)[_length]!;
+      contextData._data[sex]![_length]!;
 
   @override
   Length get lengthAtObservationDate =>

@@ -51,16 +51,11 @@ sealed class CDCInfantLengthForAge extends AgeBasedResult
   @override
   CDCInfantLengthForAgeData get contextData => CDCInfantLengthForAgeData();
 
-  Map<double, _CDCInfantLengthForAgeLMS> get _maleData =>
-      contextData._data[Sex.male]!;
-  Map<double, _CDCInfantLengthForAgeLMS> get _femaleData =>
-      contextData._data[Sex.female]!;
 //TODO(devsdocs): Fix CDC age calculation
   _CDCInfantLengthForAgeLMS get _ageData =>
-      (sex == Sex.male ? _maleData : _femaleData)[
-          ageAtObservationDate.ageInTotalDaysByNow == 0
-              ? 0
-              : ageAtObservationDate.ageInTotalMonthsByNow + 0.5]!;
+      contextData._data[sex]![ageAtObservationDate.ageInTotalDaysByNow == 0
+          ? 0
+          : ageAtObservationDate.ageInTotalMonthsByNow + 0.5]!;
 
   Length$Centimeter get _adjustedLength => adjustedLengthHeight(
         measure: measure,

@@ -103,23 +103,6 @@ sealed class WHOGrowthStandardsHeadCircumferenceVelocityForAge
       get _headCircumferenceData =>
           WHOGrowthStandardsHeadCircumferenceVelocityForAgeData();
 
-  Map<
-          VelocityIncrement,
-          Map<VelocityMonths,
-              WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS>>
-      get _maleData => _headCircumferenceData._data[Sex.male]!;
-  Map<
-          VelocityIncrement,
-          Map<VelocityMonths,
-              WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS>>
-      get _femaleData => _headCircumferenceData._data[Sex.female]!;
-
-  Map<
-          VelocityIncrement,
-          Map<VelocityMonths,
-              WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS>>
-      get _incrementData => (sex == Sex.male ? _maleData : _femaleData);
-
   Map<VelocityIncrement, Map<({Date dateBefore, Date dateAfter}), num>>
       get _incrementalData =>
           VelocityPastMeasurement(pastMeasurement, const Length$Centimeter())
@@ -128,7 +111,7 @@ sealed class WHOGrowthStandardsHeadCircumferenceVelocityForAge
   @override
   Map<VelocityIncrement, Map<VelocityMonths, ZScorePercentile>>
       zScorePercentileMap([Precision precision = Precision.ten]) {
-    final joinMap = _incrementData.map((k1, v1) {
+    final joinMap = _headCircumferenceData._data[sex]!.map((k1, v1) {
       final alt = _incrementalData[k1];
       if (alt == null || alt.isEmpty) return MapEntry(k1, null);
 

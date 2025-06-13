@@ -54,14 +54,8 @@ sealed class WHOGrowthStandardsLengthForAge extends AgeBasedResult
   WHOGrowthStandardsLengthForAgeData get contextData =>
       WHOGrowthStandardsLengthForAgeData();
 
-  Map<int, _WHOGrowthStandardsLengthForAgeLMS> get _maleData =>
-      contextData._data[Sex.male]!;
-  Map<int, _WHOGrowthStandardsLengthForAgeLMS> get _femaleData =>
-      contextData._data[Sex.female]!;
-
-  _WHOGrowthStandardsLengthForAgeLMS get _ageData => (sex == Sex.male
-      ? _maleData
-      : _femaleData)[ageAtObservationDate.ageInTotalDaysByNow]!;
+  _WHOGrowthStandardsLengthForAgeLMS get _ageData =>
+      contextData._data[sex]![ageAtObservationDate.ageInTotalDaysByNow]!;
 
   Length$Centimeter get _adjustedLength => adjustedLengthHeight(
         measure: measure,

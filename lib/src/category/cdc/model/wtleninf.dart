@@ -62,13 +62,9 @@ sealed class CDCInfantWeightForLength extends LengthBasedResult
   CDCInfantWeightForLengthData get contextData =>
       CDCInfantWeightForLengthData();
 
-  Map<num, _CDCInfantWeightForLengthLMS> get _maleData =>
-      contextData._data[Sex.male]!;
-  Map<num, _CDCInfantWeightForLengthLMS> get _femaleData =>
-      contextData._data[Sex.female]!;
 //TODO(devsdocs): Fix CDC length calculation
   _CDCInfantWeightForLengthLMS get _ageData =>
-      (sex == Sex.male ? _maleData : _femaleData)[_length]!;
+      contextData._data[sex]![_length]!;
 
   @override
   Length get lengthAtObservationDate =>

@@ -57,14 +57,8 @@ sealed class WHOGrowthStandardsHeadCircumferenceForAge extends AgeBasedResult
   WHOGrowthStandardsHeadCircumferenceForAgeData get contextData =>
       WHOGrowthStandardsHeadCircumferenceForAgeData();
 
-  Map<int, _WHOGrowthStandardsHeadCircumferenceForAgeLMS> get _maleData =>
-      contextData._data[Sex.male]!;
-  Map<int, _WHOGrowthStandardsHeadCircumferenceForAgeLMS> get _femaleData =>
-      contextData._data[Sex.female]!;
-
-  _WHOGrowthStandardsHeadCircumferenceForAgeLMS get _ageData => (sex == Sex.male
-      ? _maleData
-      : _femaleData)[ageAtObservationDate.ageInTotalDaysByNow]!;
+  _WHOGrowthStandardsHeadCircumferenceForAgeLMS get _ageData =>
+      contextData._data[sex]![ageAtObservationDate.ageInTotalDaysByNow]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 

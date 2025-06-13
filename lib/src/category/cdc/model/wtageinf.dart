@@ -53,10 +53,6 @@ sealed class CDCInfantWeightForAge extends AgeBasedResult
   @override
   CDCInfantWeightForAgeData get contextData => CDCInfantWeightForAgeData();
 
-  Map<double, _CDCInfantWeightForAgeLMS> get _maleData =>
-      contextData._data[Sex.male]!;
-  Map<double, _CDCInfantWeightForAgeLMS> get _femaleData =>
-      contextData._data[Sex.female]!;
 //TODO(devsdocs): Fix CDC age calculation
   _CDCInfantWeightForAgeLMS get _ageData {
     final finalAge = ageAtObservationDate.ageInTotalDaysByNow == 0
@@ -65,7 +61,7 @@ sealed class CDCInfantWeightForAge extends AgeBasedResult
             ? 36
             : ageAtObservationDate.ageInTotalMonthsByNow + 0.5;
 
-    return (sex == Sex.male ? _maleData : _femaleData)[finalAge]!;
+    return contextData._data[sex]![finalAge]!;
   }
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);

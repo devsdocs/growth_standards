@@ -55,10 +55,6 @@ sealed class CDCInfantHeadCircumferenceForAge extends AgeBasedResult
   CDCInfantHeadCircumferenceForAgeData get contextData =>
       CDCInfantHeadCircumferenceForAgeData();
 
-  Map<double, _CDCInfantHeadCircumferenceForAgeLMS> get _maleData =>
-      contextData._data[Sex.male]!;
-  Map<double, _CDCInfantHeadCircumferenceForAgeLMS> get _femaleData =>
-      contextData._data[Sex.female]!;
 //TODO(devsdocs): Fix CDC age calculation
   _CDCInfantHeadCircumferenceForAgeLMS get _ageData {
     final finalAge = ageAtObservationDate.ageInTotalDaysByNow == 0
@@ -67,7 +63,7 @@ sealed class CDCInfantHeadCircumferenceForAge extends AgeBasedResult
             ? 36
             : ageAtObservationDate.ageInTotalMonthsByNow + 0.5;
 
-    return (sex == Sex.male ? _maleData : _femaleData)[finalAge]!;
+    return contextData._data[sex]![finalAge]!;
   }
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);

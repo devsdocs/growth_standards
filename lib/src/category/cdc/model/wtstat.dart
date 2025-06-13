@@ -61,13 +61,8 @@ sealed class CDCWeightForStature extends LengthBasedResult
   @override
   CDCWeightForStatureData get contextData => CDCWeightForStatureData();
 
-  Map<num, _CDCWeightForStatureLMS> get _maleData =>
-      contextData._data[Sex.male]!;
-  Map<num, _CDCWeightForStatureLMS> get _femaleData =>
-      contextData._data[Sex.female]!;
 //TODO(devsdocs): Fix CDC length calculation
-  _CDCWeightForStatureLMS get _ageData =>
-      (sex == Sex.male ? _maleData : _femaleData)[_length]!;
+  _CDCWeightForStatureLMS get _ageData => contextData._data[sex]![_length]!;
 
   @override
   Length get lengthAtObservationDate =>

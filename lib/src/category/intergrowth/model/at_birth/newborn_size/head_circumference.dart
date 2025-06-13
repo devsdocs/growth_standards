@@ -68,8 +68,8 @@ sealed class NewbornBirthHeadCircumferenceForAge extends AgeBasedResult
   NewbornBirthHeadCircumferenceForAgeData get contextData =>
       NewbornBirthHeadCircumferenceForAgeData();
 
-  _NewbornBirthHeadCircumferenceForAgeLMS get _ageData => contextData
-      ._data.values.first[ageAtObservationDate.ageInTotalDaysByNow]!;
+  _NewbornBirthHeadCircumferenceForAgeLMS get _ageData =>
+      contextData._data[sex]![ageAtObservationDate.ageInTotalDaysByNow]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 

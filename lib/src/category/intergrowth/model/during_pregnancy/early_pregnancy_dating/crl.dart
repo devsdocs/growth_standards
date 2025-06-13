@@ -6,27 +6,32 @@ class EarlyPregnancyDatingForCRLData extends LengthBasedData {
 
   static final _singleton = EarlyPregnancyDatingForCRLData._(_parse());
 
-  static Map<Sex, Map<num, _EarlyPregnancyDatingForCRLLMS>> _parse() => {
-        Sex.both: _grow_early_preg_charts_crl_dating.toJsonObjectAsMap.map(
-          (k1, v1) {
-            v1 as Map<String, dynamic>;
-            final lms =
-                LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
-            return MapEntry(
-              int.parse(k1),
-              _EarlyPregnancyDatingForCRLLMS(
-                lms: lms,
-              ),
-            );
-          },
-        ),
-      };
+  static Map<Sex, Map<num, _EarlyPregnancyDatingForCRLLMS>> _parse() {
+    final map = _grow_early_preg_charts_crl_dating.toJsonObjectAsMap.map(
+      (k1, v1) {
+        v1 as Map<String, dynamic>;
+        final lms =
+            LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
+        return MapEntry(
+          int.parse(k1),
+          _EarlyPregnancyDatingForCRLLMS(
+            lms: lms,
+          ),
+        );
+      },
+    );
+    return {
+      Sex.male: map,
+      Sex.female: map,
+    };
+  }
+
   final Map<Sex, Map<num, _EarlyPregnancyDatingForCRLLMS>> _data;
   @override
   Map<Sex, Map<num, _EarlyPregnancyDatingForCRLLMS>> get data => _data;
 
   @override
-  String toString() => 'Weight For Height Data($_data)';
+  String toString() => 'Early Pregnancy Dating For CRL Data($_data)';
 
   @override
   Length get unit => Length.centimeter;
@@ -37,7 +42,7 @@ sealed class EarlyPregnancyDatingForCRL extends LengthBasedResult
     with _$EarlyPregnancyDatingForCRL {
   factory EarlyPregnancyDatingForCRL({
     required Age age,
-    required Length height,
+    required Length length,
   }) = _EarlyPregnancyDatingForCRL;
 
   const EarlyPregnancyDatingForCRL._();
@@ -52,11 +57,11 @@ sealed class EarlyPregnancyDatingForCRL extends LengthBasedResult
       EarlyPregnancyDatingForCRLData();
 
   _EarlyPregnancyDatingForCRLLMS get _ageData =>
-      contextData._data[Sex.both]![_length]!;
+      contextData._data.values.first[_length]!;
 
   @override
   Length get lengthAtObservationDate =>
-      checkLength(height, contextData: contextData);
+      checkLength(length, contextData: contextData);
 
   num get _length => lengthAtObservationDate.value.toDouble().toPrecision(1);
 
@@ -79,7 +84,7 @@ sealed class EarlyPregnancyDatingForCRL extends LengthBasedResult
   _EarlyPregnancyDatingForCRLLMS get lmsData => _ageData;
 
   @override
-  num get measurementResultInDefaultUnit => height.toCentimeter.value;
+  num get measurementResultInDefaultUnit => length.toCentimeter.value;
 }
 
 class _EarlyPregnancyDatingForCRLLMS extends LMSContext {

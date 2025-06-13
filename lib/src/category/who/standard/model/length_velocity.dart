@@ -93,17 +93,6 @@ sealed class WHOGrowthStandardsLengthVelocityForAge extends VelocityBasedResult
   WHOGrowthStandardsLengthVelocityForAgeData get contextData =>
       WHOGrowthStandardsLengthVelocityForAgeData();
 
-  Map<VelocityIncrement,
-          Map<VelocityMonths, WHOGrowthStandardsLengthVelocityForAgeLMS>>
-      get _maleData => contextData._data[Sex.male]!;
-  Map<VelocityIncrement,
-          Map<VelocityMonths, WHOGrowthStandardsLengthVelocityForAgeLMS>>
-      get _femaleData => contextData._data[Sex.female]!;
-
-  Map<VelocityIncrement,
-          Map<VelocityMonths, WHOGrowthStandardsLengthVelocityForAgeLMS>>
-      get _incrementData => (sex == Sex.male ? _maleData : _femaleData);
-
   Map<VelocityIncrement, Map<({Date dateBefore, Date dateAfter}), num>>
       get _incrementalData => VelocityPastMeasurement(
             pastMeasurement
@@ -124,7 +113,7 @@ sealed class WHOGrowthStandardsLengthVelocityForAge extends VelocityBasedResult
   @override
   Map<VelocityIncrement, Map<VelocityMonths, ZScorePercentile>>
       zScorePercentileMap([Precision precision = Precision.ten]) {
-    final joinMap = _incrementData.map((k1, v1) {
+    final joinMap = contextData._data[sex]!.map((k1, v1) {
       final alt = _incrementalData[k1];
       if (alt == null || alt.isEmpty) return MapEntry(k1, null);
 

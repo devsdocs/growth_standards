@@ -67,8 +67,8 @@ sealed class NewbornBirthLengthForAge extends AgeBasedResult
   NewbornBirthLengthForAgeData get contextData =>
       NewbornBirthLengthForAgeData();
 
-  _NewbornBirthLengthForAgeLMS get _ageData => contextData
-      ._data.values.first[ageAtObservationDate.ageInTotalDaysByNow]!;
+  _NewbornBirthLengthForAgeLMS get _ageData =>
+      contextData._data[sex]![ageAtObservationDate.ageInTotalDaysByNow]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 

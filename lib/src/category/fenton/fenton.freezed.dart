@@ -15,7 +15,6 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$FentonHeadCircumferenceForAge {
-  Sex get sex;
   Age get age;
   Length get measurementResult;
 
@@ -36,7 +35,6 @@ mixin _$FentonHeadCircumferenceForAge {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is FentonHeadCircumferenceForAge &&
-            (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.measurementResult, measurementResult) ||
                 other.measurementResult == measurementResult));
@@ -44,11 +42,11 @@ mixin _$FentonHeadCircumferenceForAge {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, sex, age, measurementResult);
+  int get hashCode => Object.hash(runtimeType, age, measurementResult);
 
   @override
   String toString() {
-    return 'FentonHeadCircumferenceForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
+    return 'FentonHeadCircumferenceForAge(age: $age, measurementResult: $measurementResult)';
   }
 }
 
@@ -59,7 +57,7 @@ abstract mixin class $FentonHeadCircumferenceForAgeCopyWith<$Res> {
           $Res Function(FentonHeadCircumferenceForAge) _then) =
       _$FentonHeadCircumferenceForAgeCopyWithImpl;
   @useResult
-  $Res call({Sex sex, Age age, Length measurementResult});
+  $Res call({Age age, Length measurementResult});
 
   $AgeCopyWith<$Res> get age;
 }
@@ -77,15 +75,10 @@ class _$FentonHeadCircumferenceForAgeCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? sex = null,
     Object? age = null,
     Object? measurementResult = null,
   }) {
     return _then(_self.copyWith(
-      sex: null == sex
-          ? _self.sex
-          : sex // ignore: cast_nullable_to_non_nullable
-              as Sex,
       age: null == age
           ? _self.age
           : age // ignore: cast_nullable_to_non_nullable
@@ -112,13 +105,11 @@ class _$FentonHeadCircumferenceForAgeCopyWithImpl<$Res>
 @JsonSerializable()
 class _FentonHeadCircumferenceForAge extends FentonHeadCircumferenceForAge {
   _FentonHeadCircumferenceForAge(
-      {required this.sex, required this.age, required this.measurementResult})
+      {required this.age, required this.measurementResult})
       : super._();
   factory _FentonHeadCircumferenceForAge.fromJson(Map<String, dynamic> json) =>
       _$FentonHeadCircumferenceForAgeFromJson(json);
 
-  @override
-  final Sex sex;
   @override
   final Age age;
   @override
@@ -145,7 +136,6 @@ class _FentonHeadCircumferenceForAge extends FentonHeadCircumferenceForAge {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _FentonHeadCircumferenceForAge &&
-            (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.measurementResult, measurementResult) ||
                 other.measurementResult == measurementResult));
@@ -153,11 +143,11 @@ class _FentonHeadCircumferenceForAge extends FentonHeadCircumferenceForAge {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, sex, age, measurementResult);
+  int get hashCode => Object.hash(runtimeType, age, measurementResult);
 
   @override
   String toString() {
-    return 'FentonHeadCircumferenceForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
+    return 'FentonHeadCircumferenceForAge(age: $age, measurementResult: $measurementResult)';
   }
 }
 
@@ -170,7 +160,7 @@ abstract mixin class _$FentonHeadCircumferenceForAgeCopyWith<$Res>
       __$FentonHeadCircumferenceForAgeCopyWithImpl;
   @override
   @useResult
-  $Res call({Sex sex, Age age, Length measurementResult});
+  $Res call({Age age, Length measurementResult});
 
   @override
   $AgeCopyWith<$Res> get age;
@@ -189,15 +179,10 @@ class __$FentonHeadCircumferenceForAgeCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? sex = null,
     Object? age = null,
     Object? measurementResult = null,
   }) {
     return _then(_FentonHeadCircumferenceForAge(
-      sex: null == sex
-          ? _self.sex
-          : sex // ignore: cast_nullable_to_non_nullable
-              as Sex,
       age: null == age
           ? _self.age
           : age // ignore: cast_nullable_to_non_nullable
@@ -222,7 +207,6 @@ class __$FentonHeadCircumferenceForAgeCopyWithImpl<$Res>
 
 /// @nodoc
 mixin _$FentonLengthForAge {
-  Sex get sex;
   Age get age;
   Length get lengthHeight;
   LengthHeightMeasurementPosition get measure;
@@ -243,7 +227,6 @@ mixin _$FentonLengthForAge {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is FentonLengthForAge &&
-            (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.lengthHeight, lengthHeight) ||
                 other.lengthHeight == lengthHeight) &&
@@ -252,11 +235,11 @@ mixin _$FentonLengthForAge {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, sex, age, lengthHeight, measure);
+  int get hashCode => Object.hash(runtimeType, age, lengthHeight, measure);
 
   @override
   String toString() {
-    return 'FentonLengthForAge(sex: $sex, age: $age, lengthHeight: $lengthHeight, measure: $measure)';
+    return 'FentonLengthForAge(age: $age, lengthHeight: $lengthHeight, measure: $measure)';
   }
 }
 
@@ -267,10 +250,7 @@ abstract mixin class $FentonLengthForAgeCopyWith<$Res> {
       _$FentonLengthForAgeCopyWithImpl;
   @useResult
   $Res call(
-      {Sex sex,
-      Age age,
-      Length lengthHeight,
-      LengthHeightMeasurementPosition measure});
+      {Age age, Length lengthHeight, LengthHeightMeasurementPosition measure});
 
   $AgeCopyWith<$Res> get age;
 }
@@ -288,16 +268,11 @@ class _$FentonLengthForAgeCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? sex = null,
     Object? age = null,
     Object? lengthHeight = null,
     Object? measure = null,
   }) {
     return _then(_self.copyWith(
-      sex: null == sex
-          ? _self.sex
-          : sex // ignore: cast_nullable_to_non_nullable
-              as Sex,
       age: null == age
           ? _self.age
           : age // ignore: cast_nullable_to_non_nullable
@@ -328,16 +303,11 @@ class _$FentonLengthForAgeCopyWithImpl<$Res>
 @JsonSerializable()
 class _FentonLengthForAge extends FentonLengthForAge {
   _FentonLengthForAge(
-      {required this.sex,
-      required this.age,
-      required this.lengthHeight,
-      required this.measure})
+      {required this.age, required this.lengthHeight, required this.measure})
       : super._();
   factory _FentonLengthForAge.fromJson(Map<String, dynamic> json) =>
       _$FentonLengthForAgeFromJson(json);
 
-  @override
-  final Sex sex;
   @override
   final Age age;
   @override
@@ -365,7 +335,6 @@ class _FentonLengthForAge extends FentonLengthForAge {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _FentonLengthForAge &&
-            (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.lengthHeight, lengthHeight) ||
                 other.lengthHeight == lengthHeight) &&
@@ -374,11 +343,11 @@ class _FentonLengthForAge extends FentonLengthForAge {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, sex, age, lengthHeight, measure);
+  int get hashCode => Object.hash(runtimeType, age, lengthHeight, measure);
 
   @override
   String toString() {
-    return 'FentonLengthForAge(sex: $sex, age: $age, lengthHeight: $lengthHeight, measure: $measure)';
+    return 'FentonLengthForAge(age: $age, lengthHeight: $lengthHeight, measure: $measure)';
   }
 }
 
@@ -391,10 +360,7 @@ abstract mixin class _$FentonLengthForAgeCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Sex sex,
-      Age age,
-      Length lengthHeight,
-      LengthHeightMeasurementPosition measure});
+      {Age age, Length lengthHeight, LengthHeightMeasurementPosition measure});
 
   @override
   $AgeCopyWith<$Res> get age;
@@ -413,16 +379,11 @@ class __$FentonLengthForAgeCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? sex = null,
     Object? age = null,
     Object? lengthHeight = null,
     Object? measure = null,
   }) {
     return _then(_FentonLengthForAge(
-      sex: null == sex
-          ? _self.sex
-          : sex // ignore: cast_nullable_to_non_nullable
-              as Sex,
       age: null == age
           ? _self.age
           : age // ignore: cast_nullable_to_non_nullable
@@ -451,7 +412,6 @@ class __$FentonLengthForAgeCopyWithImpl<$Res>
 
 /// @nodoc
 mixin _$FentonWeightForAge {
-  Sex get sex;
   Age get age;
   Mass get weight;
 
@@ -471,18 +431,17 @@ mixin _$FentonWeightForAge {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is FentonWeightForAge &&
-            (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.weight, weight) || other.weight == weight));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, sex, age, weight);
+  int get hashCode => Object.hash(runtimeType, age, weight);
 
   @override
   String toString() {
-    return 'FentonWeightForAge(sex: $sex, age: $age, weight: $weight)';
+    return 'FentonWeightForAge(age: $age, weight: $weight)';
   }
 }
 
@@ -492,7 +451,7 @@ abstract mixin class $FentonWeightForAgeCopyWith<$Res> {
           FentonWeightForAge value, $Res Function(FentonWeightForAge) _then) =
       _$FentonWeightForAgeCopyWithImpl;
   @useResult
-  $Res call({Sex sex, Age age, Mass weight});
+  $Res call({Age age, Mass weight});
 
   $AgeCopyWith<$Res> get age;
 }
@@ -510,15 +469,10 @@ class _$FentonWeightForAgeCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? sex = null,
     Object? age = null,
     Object? weight = null,
   }) {
     return _then(_self.copyWith(
-      sex: null == sex
-          ? _self.sex
-          : sex // ignore: cast_nullable_to_non_nullable
-              as Sex,
       age: null == age
           ? _self.age
           : age // ignore: cast_nullable_to_non_nullable
@@ -544,14 +498,10 @@ class _$FentonWeightForAgeCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _FentonWeightForAge extends FentonWeightForAge {
-  _FentonWeightForAge(
-      {required this.sex, required this.age, required this.weight})
-      : super._();
+  _FentonWeightForAge({required this.age, required this.weight}) : super._();
   factory _FentonWeightForAge.fromJson(Map<String, dynamic> json) =>
       _$FentonWeightForAgeFromJson(json);
 
-  @override
-  final Sex sex;
   @override
   final Age age;
   @override
@@ -577,18 +527,17 @@ class _FentonWeightForAge extends FentonWeightForAge {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _FentonWeightForAge &&
-            (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.weight, weight) || other.weight == weight));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, sex, age, weight);
+  int get hashCode => Object.hash(runtimeType, age, weight);
 
   @override
   String toString() {
-    return 'FentonWeightForAge(sex: $sex, age: $age, weight: $weight)';
+    return 'FentonWeightForAge(age: $age, weight: $weight)';
   }
 }
 
@@ -600,7 +549,7 @@ abstract mixin class _$FentonWeightForAgeCopyWith<$Res>
       __$FentonWeightForAgeCopyWithImpl;
   @override
   @useResult
-  $Res call({Sex sex, Age age, Mass weight});
+  $Res call({Age age, Mass weight});
 
   @override
   $AgeCopyWith<$Res> get age;
@@ -619,15 +568,10 @@ class __$FentonWeightForAgeCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? sex = null,
     Object? age = null,
     Object? weight = null,
   }) {
     return _then(_FentonWeightForAge(
-      sex: null == sex
-          ? _self.sex
-          : sex // ignore: cast_nullable_to_non_nullable
-              as Sex,
       age: null == age
           ? _self.age
           : age // ignore: cast_nullable_to_non_nullable

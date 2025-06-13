@@ -72,16 +72,11 @@ sealed class CDCBodyMassIndexForAge extends AgeBasedResult
   @override
   CDCBodyMassIndexForAgeData get contextData => CDCBodyMassIndexForAgeData();
 
-  Map<double, _CDCBodyMassIndexForAgeLMS> get _maleData =>
-      contextData._data[Sex.male]!;
-  Map<double, _CDCBodyMassIndexForAgeLMS> get _femaleData =>
-      contextData._data[Sex.female]!;
 //TODO(devsdocs): Fix CDC age calculation
   _CDCBodyMassIndexForAgeLMS get _ageData =>
-      (sex == Sex.male ? _maleData : _femaleData)[
-          ageAtObservationDate.ageInTotalMonthsByNow == 24
-              ? 24
-              : ageAtObservationDate.ageInTotalMonthsByNow + 0.5]!;
+      contextData._data[sex]![ageAtObservationDate.ageInTotalMonthsByNow == 24
+          ? 24
+          : ageAtObservationDate.ageInTotalMonthsByNow + 0.5]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 
