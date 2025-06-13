@@ -354,15 +354,16 @@ Map<String, dynamic> _$IntergrowthGestationalWeightGainForAgeToJson(
       'measurementResult': instance.measurementResult.toJson(),
     };
 
-_IntergrowthCrownRumpLengthForAge _$IntergrowthCrownRumpLengthForAgeFromJson(
-        Map<String, dynamic> json) =>
-    _IntergrowthCrownRumpLengthForAge(
-      age: Age.fromJson(json['age'] as Map<String, dynamic>),
-      length: Length.fromJson(json['length'] as Map<String, dynamic>),
-    );
+_IntergrowthFetalCrownRumpLengthForAge
+    _$IntergrowthFetalCrownRumpLengthForAgeFromJson(
+            Map<String, dynamic> json) =>
+        _IntergrowthFetalCrownRumpLengthForAge(
+          age: Age.fromJson(json['age'] as Map<String, dynamic>),
+          length: Length.fromJson(json['length'] as Map<String, dynamic>),
+        );
 
-Map<String, dynamic> _$IntergrowthCrownRumpLengthForAgeToJson(
-        _IntergrowthCrownRumpLengthForAge instance) =>
+Map<String, dynamic> _$IntergrowthFetalCrownRumpLengthForAgeToJson(
+        _IntergrowthFetalCrownRumpLengthForAge instance) =>
     <String, dynamic>{
       'age': instance.age.toJson(),
       'length': instance.length.toJson(),

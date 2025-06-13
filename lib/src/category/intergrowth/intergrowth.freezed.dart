@@ -4315,27 +4315,28 @@ class __$IntergrowthGestationalWeightGainForAgeCopyWithImpl<$Res>
 }
 
 /// @nodoc
-mixin _$IntergrowthCrownRumpLengthForAge {
+mixin _$IntergrowthFetalCrownRumpLengthForAge {
   Age get age;
   Length get length;
 
-  /// Create a copy of IntergrowthCrownRumpLengthForAge
+  /// Create a copy of IntergrowthFetalCrownRumpLengthForAge
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $IntergrowthCrownRumpLengthForAgeCopyWith<IntergrowthCrownRumpLengthForAge>
-      get copyWith => _$IntergrowthCrownRumpLengthForAgeCopyWithImpl<
-              IntergrowthCrownRumpLengthForAge>(
-          this as IntergrowthCrownRumpLengthForAge, _$identity);
+  $IntergrowthFetalCrownRumpLengthForAgeCopyWith<
+          IntergrowthFetalCrownRumpLengthForAge>
+      get copyWith => _$IntergrowthFetalCrownRumpLengthForAgeCopyWithImpl<
+              IntergrowthFetalCrownRumpLengthForAge>(
+          this as IntergrowthFetalCrownRumpLengthForAge, _$identity);
 
-  /// Serializes this IntergrowthCrownRumpLengthForAge to a JSON map.
+  /// Serializes this IntergrowthFetalCrownRumpLengthForAge to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is IntergrowthCrownRumpLengthForAge &&
+            other is IntergrowthFetalCrownRumpLengthForAge &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.length, length) || other.length == length));
   }
@@ -4346,16 +4347,16 @@ mixin _$IntergrowthCrownRumpLengthForAge {
 
   @override
   String toString() {
-    return 'IntergrowthCrownRumpLengthForAge(age: $age, length: $length)';
+    return 'IntergrowthFetalCrownRumpLengthForAge(age: $age, length: $length)';
   }
 }
 
 /// @nodoc
-abstract mixin class $IntergrowthCrownRumpLengthForAgeCopyWith<$Res> {
-  factory $IntergrowthCrownRumpLengthForAgeCopyWith(
-          IntergrowthCrownRumpLengthForAge value,
-          $Res Function(IntergrowthCrownRumpLengthForAge) _then) =
-      _$IntergrowthCrownRumpLengthForAgeCopyWithImpl;
+abstract mixin class $IntergrowthFetalCrownRumpLengthForAgeCopyWith<$Res> {
+  factory $IntergrowthFetalCrownRumpLengthForAgeCopyWith(
+          IntergrowthFetalCrownRumpLengthForAge value,
+          $Res Function(IntergrowthFetalCrownRumpLengthForAge) _then) =
+      _$IntergrowthFetalCrownRumpLengthForAgeCopyWithImpl;
   @useResult
   $Res call({Age age, Length length});
 
@@ -4363,14 +4364,14 @@ abstract mixin class $IntergrowthCrownRumpLengthForAgeCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$IntergrowthCrownRumpLengthForAgeCopyWithImpl<$Res>
-    implements $IntergrowthCrownRumpLengthForAgeCopyWith<$Res> {
-  _$IntergrowthCrownRumpLengthForAgeCopyWithImpl(this._self, this._then);
+class _$IntergrowthFetalCrownRumpLengthForAgeCopyWithImpl<$Res>
+    implements $IntergrowthFetalCrownRumpLengthForAgeCopyWith<$Res> {
+  _$IntergrowthFetalCrownRumpLengthForAgeCopyWithImpl(this._self, this._then);
 
-  final IntergrowthCrownRumpLengthForAge _self;
-  final $Res Function(IntergrowthCrownRumpLengthForAge) _then;
+  final IntergrowthFetalCrownRumpLengthForAge _self;
+  final $Res Function(IntergrowthFetalCrownRumpLengthForAge) _then;
 
-  /// Create a copy of IntergrowthCrownRumpLengthForAge
+  /// Create a copy of IntergrowthFetalCrownRumpLengthForAge
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -4390,7 +4391,7 @@ class _$IntergrowthCrownRumpLengthForAgeCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of IntergrowthCrownRumpLengthForAge
+  /// Create a copy of IntergrowthFetalCrownRumpLengthForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -4403,31 +4404,33 @@ class _$IntergrowthCrownRumpLengthForAgeCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _IntergrowthCrownRumpLengthForAge
-    extends IntergrowthCrownRumpLengthForAge {
-  _IntergrowthCrownRumpLengthForAge({required this.age, required this.length})
+class _IntergrowthFetalCrownRumpLengthForAge
+    extends IntergrowthFetalCrownRumpLengthForAge {
+  _IntergrowthFetalCrownRumpLengthForAge(
+      {required this.age, required this.length})
       : super._();
-  factory _IntergrowthCrownRumpLengthForAge.fromJson(
+  factory _IntergrowthFetalCrownRumpLengthForAge.fromJson(
           Map<String, dynamic> json) =>
-      _$IntergrowthCrownRumpLengthForAgeFromJson(json);
+      _$IntergrowthFetalCrownRumpLengthForAgeFromJson(json);
 
   @override
   final Age age;
   @override
   final Length length;
 
-  /// Create a copy of IntergrowthCrownRumpLengthForAge
+  /// Create a copy of IntergrowthFetalCrownRumpLengthForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$IntergrowthCrownRumpLengthForAgeCopyWith<_IntergrowthCrownRumpLengthForAge>
-      get copyWith => __$IntergrowthCrownRumpLengthForAgeCopyWithImpl<
-          _IntergrowthCrownRumpLengthForAge>(this, _$identity);
+  _$IntergrowthFetalCrownRumpLengthForAgeCopyWith<
+          _IntergrowthFetalCrownRumpLengthForAge>
+      get copyWith => __$IntergrowthFetalCrownRumpLengthForAgeCopyWithImpl<
+          _IntergrowthFetalCrownRumpLengthForAge>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$IntergrowthCrownRumpLengthForAgeToJson(
+    return _$IntergrowthFetalCrownRumpLengthForAgeToJson(
       this,
     );
   }
@@ -4436,7 +4439,7 @@ class _IntergrowthCrownRumpLengthForAge
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _IntergrowthCrownRumpLengthForAge &&
+            other is _IntergrowthFetalCrownRumpLengthForAge &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.length, length) || other.length == length));
   }
@@ -4447,17 +4450,17 @@ class _IntergrowthCrownRumpLengthForAge
 
   @override
   String toString() {
-    return 'IntergrowthCrownRumpLengthForAge(age: $age, length: $length)';
+    return 'IntergrowthFetalCrownRumpLengthForAge(age: $age, length: $length)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$IntergrowthCrownRumpLengthForAgeCopyWith<$Res>
-    implements $IntergrowthCrownRumpLengthForAgeCopyWith<$Res> {
-  factory _$IntergrowthCrownRumpLengthForAgeCopyWith(
-          _IntergrowthCrownRumpLengthForAge value,
-          $Res Function(_IntergrowthCrownRumpLengthForAge) _then) =
-      __$IntergrowthCrownRumpLengthForAgeCopyWithImpl;
+abstract mixin class _$IntergrowthFetalCrownRumpLengthForAgeCopyWith<$Res>
+    implements $IntergrowthFetalCrownRumpLengthForAgeCopyWith<$Res> {
+  factory _$IntergrowthFetalCrownRumpLengthForAgeCopyWith(
+          _IntergrowthFetalCrownRumpLengthForAge value,
+          $Res Function(_IntergrowthFetalCrownRumpLengthForAge) _then) =
+      __$IntergrowthFetalCrownRumpLengthForAgeCopyWithImpl;
   @override
   @useResult
   $Res call({Age age, Length length});
@@ -4467,14 +4470,14 @@ abstract mixin class _$IntergrowthCrownRumpLengthForAgeCopyWith<$Res>
 }
 
 /// @nodoc
-class __$IntergrowthCrownRumpLengthForAgeCopyWithImpl<$Res>
-    implements _$IntergrowthCrownRumpLengthForAgeCopyWith<$Res> {
-  __$IntergrowthCrownRumpLengthForAgeCopyWithImpl(this._self, this._then);
+class __$IntergrowthFetalCrownRumpLengthForAgeCopyWithImpl<$Res>
+    implements _$IntergrowthFetalCrownRumpLengthForAgeCopyWith<$Res> {
+  __$IntergrowthFetalCrownRumpLengthForAgeCopyWithImpl(this._self, this._then);
 
-  final _IntergrowthCrownRumpLengthForAge _self;
-  final $Res Function(_IntergrowthCrownRumpLengthForAge) _then;
+  final _IntergrowthFetalCrownRumpLengthForAge _self;
+  final $Res Function(_IntergrowthFetalCrownRumpLengthForAge) _then;
 
-  /// Create a copy of IntergrowthCrownRumpLengthForAge
+  /// Create a copy of IntergrowthFetalCrownRumpLengthForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -4482,7 +4485,7 @@ class __$IntergrowthCrownRumpLengthForAgeCopyWithImpl<$Res>
     Object? age = null,
     Object? length = null,
   }) {
-    return _then(_IntergrowthCrownRumpLengthForAge(
+    return _then(_IntergrowthFetalCrownRumpLengthForAge(
       age: null == age
           ? _self.age
           : age // ignore: cast_nullable_to_non_nullable
@@ -4494,7 +4497,7 @@ class __$IntergrowthCrownRumpLengthForAgeCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of IntergrowthCrownRumpLengthForAge
+  /// Create a copy of IntergrowthFetalCrownRumpLengthForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')

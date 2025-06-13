@@ -1,12 +1,14 @@
 part of '../../../intergrowth.dart';
 
-class IntergrowthCrownRumpLengthForAgeData extends AgeBasedData {
-  factory IntergrowthCrownRumpLengthForAgeData() => _singleton;
-  IntergrowthCrownRumpLengthForAgeData._(this._data);
+class IntergrowthFetalCrownRumpLengthForAgeData extends AgeBasedData {
+  factory IntergrowthFetalCrownRumpLengthForAgeData() => _singleton;
+  IntergrowthFetalCrownRumpLengthForAgeData._(this._data);
 
-  static final _singleton = IntergrowthCrownRumpLengthForAgeData._(_parse());
+  static final _singleton =
+      IntergrowthFetalCrownRumpLengthForAgeData._(_parse());
 
-  static Map<Sex, Map<num, _IntergrowthCrownRumpLengthForAgeLMS>> _parse() {
+  static Map<Sex, Map<num, _IntergrowthFetalCrownRumpLengthForAgeLMS>>
+      _parse() {
     final map = _grow_early_preg_charts_size.toJsonObjectAsMap.map(
       (k1, v1) {
         v1 as Map<String, dynamic>;
@@ -14,7 +16,7 @@ class IntergrowthCrownRumpLengthForAgeData extends AgeBasedData {
             LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
         return MapEntry(
           int.parse(k1),
-          _IntergrowthCrownRumpLengthForAgeLMS(
+          _IntergrowthFetalCrownRumpLengthForAgeLMS(
             lms: lms,
           ),
         );
@@ -26,9 +28,10 @@ class IntergrowthCrownRumpLengthForAgeData extends AgeBasedData {
     };
   }
 
-  final Map<Sex, Map<num, _IntergrowthCrownRumpLengthForAgeLMS>> _data;
+  final Map<Sex, Map<num, _IntergrowthFetalCrownRumpLengthForAgeLMS>> _data;
   @override
-  Map<Sex, Map<num, _IntergrowthCrownRumpLengthForAgeLMS>> get data => _data;
+  Map<Sex, Map<num, _IntergrowthFetalCrownRumpLengthForAgeLMS>> get data =>
+      _data;
 
   @override
   String toString() => 'Early Pregnancy Dating For CRL Data($_data)';
@@ -38,25 +41,25 @@ class IntergrowthCrownRumpLengthForAgeData extends AgeBasedData {
 }
 
 @freezed
-sealed class IntergrowthCrownRumpLengthForAge extends AgeBasedResult
-    with _$IntergrowthCrownRumpLengthForAge {
-  factory IntergrowthCrownRumpLengthForAge({
+sealed class IntergrowthFetalCrownRumpLengthForAge extends AgeBasedResult
+    with _$IntergrowthFetalCrownRumpLengthForAge {
+  factory IntergrowthFetalCrownRumpLengthForAge({
     required Age age,
     required Length length,
-  }) = _IntergrowthCrownRumpLengthForAge;
+  }) = _IntergrowthFetalCrownRumpLengthForAge;
 
-  const IntergrowthCrownRumpLengthForAge._();
+  const IntergrowthFetalCrownRumpLengthForAge._();
 
-  factory IntergrowthCrownRumpLengthForAge.fromJson(
+  factory IntergrowthFetalCrownRumpLengthForAge.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$IntergrowthCrownRumpLengthForAgeFromJson(json);
+      _$IntergrowthFetalCrownRumpLengthForAgeFromJson(json);
 
   @override
-  IntergrowthCrownRumpLengthForAgeData get contextData =>
-      IntergrowthCrownRumpLengthForAgeData();
+  IntergrowthFetalCrownRumpLengthForAgeData get contextData =>
+      IntergrowthFetalCrownRumpLengthForAgeData();
 
-  _IntergrowthCrownRumpLengthForAgeLMS get _ageData => contextData
+  _IntergrowthFetalCrownRumpLengthForAgeLMS get _ageData => contextData
       ._data.values.first[ageAtObservationDate.ageInTotalWeeksByNow]!;
 
   num get _zScore =>
@@ -75,14 +78,14 @@ sealed class IntergrowthCrownRumpLengthForAge extends AgeBasedResult
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
-  _IntergrowthCrownRumpLengthForAgeLMS get lmsData => _ageData;
+  _IntergrowthFetalCrownRumpLengthForAgeLMS get lmsData => _ageData;
 
   @override
   num get measurementResultInDefaultUnit => length.toMillimeter.value;
 }
 
-class _IntergrowthCrownRumpLengthForAgeLMS extends LMSContext {
-  _IntergrowthCrownRumpLengthForAgeLMS({
+class _IntergrowthFetalCrownRumpLengthForAgeLMS extends LMSContext {
+  _IntergrowthFetalCrownRumpLengthForAgeLMS({
     required this.lms,
   });
   @override
