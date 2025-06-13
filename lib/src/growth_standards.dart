@@ -35,10 +35,10 @@ export 'category/fenton/fenton.dart'
         FentonWeightForAgeData;
 export 'category/intergrowth/intergrowth.dart'
     show
-        IntergrowthCrownRumpLengthForAge,
-        IntergrowthCrownRumpLengthForAgeData,
         IntergrowthEarlyPregnancyDatingForCRL,
         IntergrowthEarlyPregnancyDatingForCRLData,
+        IntergrowthFetalCrownRumpLengthForAge,
+        IntergrowthFetalCrownRumpLengthForAgeData,
         IntergrowthFetalGrowtAbdominalCircumferenceForAge,
         IntergrowthFetalGrowtAbdominalCircumferenceForAgeData,
         IntergrowthFetalGrowtBiparietalDiameterForAge,
