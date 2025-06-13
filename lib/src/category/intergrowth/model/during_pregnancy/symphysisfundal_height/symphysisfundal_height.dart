@@ -66,6 +66,12 @@ sealed class IntergrowthSymphysisFundalHeightForAge extends AgeBasedResult
       _ageData.lms.adjustedZScore(measurementResultInDefaultUnit);
 
   @override
+  Age get ageAtObservationDate => checkAge(
+        age,
+        contextData: contextData,
+      );
+
+  @override
   num zScore([
     Precision precision = Precision.ten,
   ]) =>
