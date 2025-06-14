@@ -1,3 +1,6 @@
+## 4.1.0
+- Add missing `TimeUnit`
+
 ## 4.0.0
 - Remove `Sex.both` enum.
 - Remove `Sex` parameter from `Fenton` measurement.
