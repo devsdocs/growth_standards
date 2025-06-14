@@ -3415,7 +3415,6 @@ class __$IntergrowthFetalCrownRumpLengthForAgeCopyWithImpl<$Res>
 
 /// @nodoc
 mixin _$IntergrowthGestationalWeightGainForAge {
-  Sex get sex;
   Age get age;
   Mass get measurementResult;
 
@@ -3437,7 +3436,6 @@ mixin _$IntergrowthGestationalWeightGainForAge {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is IntergrowthGestationalWeightGainForAge &&
-            (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.measurementResult, measurementResult) ||
                 other.measurementResult == measurementResult));
@@ -3445,11 +3443,11 @@ mixin _$IntergrowthGestationalWeightGainForAge {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, sex, age, measurementResult);
+  int get hashCode => Object.hash(runtimeType, age, measurementResult);
 
   @override
   String toString() {
-    return 'IntergrowthGestationalWeightGainForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
+    return 'IntergrowthGestationalWeightGainForAge(age: $age, measurementResult: $measurementResult)';
   }
 }
 
@@ -3460,7 +3458,7 @@ abstract mixin class $IntergrowthGestationalWeightGainForAgeCopyWith<$Res> {
           $Res Function(IntergrowthGestationalWeightGainForAge) _then) =
       _$IntergrowthGestationalWeightGainForAgeCopyWithImpl;
   @useResult
-  $Res call({Sex sex, Age age, Mass measurementResult});
+  $Res call({Age age, Mass measurementResult});
 
   $AgeCopyWith<$Res> get age;
 }
@@ -3478,15 +3476,10 @@ class _$IntergrowthGestationalWeightGainForAgeCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? sex = null,
     Object? age = null,
     Object? measurementResult = null,
   }) {
     return _then(_self.copyWith(
-      sex: null == sex
-          ? _self.sex
-          : sex // ignore: cast_nullable_to_non_nullable
-              as Sex,
       age: null == age
           ? _self.age
           : age // ignore: cast_nullable_to_non_nullable
@@ -3514,14 +3507,12 @@ class _$IntergrowthGestationalWeightGainForAgeCopyWithImpl<$Res>
 class _IntergrowthGestationalWeightGainForAge
     extends IntergrowthGestationalWeightGainForAge {
   _IntergrowthGestationalWeightGainForAge(
-      {required this.sex, required this.age, required this.measurementResult})
+      {required this.age, required this.measurementResult})
       : super._();
   factory _IntergrowthGestationalWeightGainForAge.fromJson(
           Map<String, dynamic> json) =>
       _$IntergrowthGestationalWeightGainForAgeFromJson(json);
 
-  @override
-  final Sex sex;
   @override
   final Age age;
   @override
@@ -3549,7 +3540,6 @@ class _IntergrowthGestationalWeightGainForAge
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _IntergrowthGestationalWeightGainForAge &&
-            (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.measurementResult, measurementResult) ||
                 other.measurementResult == measurementResult));
@@ -3557,11 +3547,11 @@ class _IntergrowthGestationalWeightGainForAge
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, sex, age, measurementResult);
+  int get hashCode => Object.hash(runtimeType, age, measurementResult);
 
   @override
   String toString() {
-    return 'IntergrowthGestationalWeightGainForAge(sex: $sex, age: $age, measurementResult: $measurementResult)';
+    return 'IntergrowthGestationalWeightGainForAge(age: $age, measurementResult: $measurementResult)';
   }
 }
 
@@ -3574,7 +3564,7 @@ abstract mixin class _$IntergrowthGestationalWeightGainForAgeCopyWith<$Res>
       __$IntergrowthGestationalWeightGainForAgeCopyWithImpl;
   @override
   @useResult
-  $Res call({Sex sex, Age age, Mass measurementResult});
+  $Res call({Age age, Mass measurementResult});
 
   @override
   $AgeCopyWith<$Res> get age;
@@ -3593,15 +3583,10 @@ class __$IntergrowthGestationalWeightGainForAgeCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? sex = null,
     Object? age = null,
     Object? measurementResult = null,
   }) {
     return _then(_IntergrowthGestationalWeightGainForAge(
-      sex: null == sex
-          ? _self.sex
-          : sex // ignore: cast_nullable_to_non_nullable
-              as Sex,
       age: null == age
           ? _self.age
           : age // ignore: cast_nullable_to_non_nullable

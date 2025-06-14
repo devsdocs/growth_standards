@@ -45,7 +45,6 @@ class IntergrowthGestationalWeightGainForAgeData extends AgeBasedData {
 sealed class IntergrowthGestationalWeightGainForAge extends AgeBasedResult
     with _$IntergrowthGestationalWeightGainForAge {
   factory IntergrowthGestationalWeightGainForAge({
-    required Sex sex,
     required Age age,
     required Mass measurementResult,
   }) = _IntergrowthGestationalWeightGainForAge;
@@ -61,8 +60,8 @@ sealed class IntergrowthGestationalWeightGainForAge extends AgeBasedResult
   IntergrowthGestationalWeightGainForAgeData get contextData =>
       IntergrowthGestationalWeightGainForAgeData();
 
-  _IntergrowthGestationalWeightGainForAgeLMS get _ageData =>
-      contextData._data[sex]![ageAtObservationDate.ageInTotalWeeksByNow]!;
+  _IntergrowthGestationalWeightGainForAgeLMS get _ageData => contextData
+      ._data.values.first[ageAtObservationDate.ageInTotalWeeksByNow]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 

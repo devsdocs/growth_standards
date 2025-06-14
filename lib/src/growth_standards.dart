@@ -1,5 +1,6 @@
 import 'package:growth_standards/src/category/cdc/cdc.dart';
 import 'package:growth_standards/src/category/fenton/fenton.dart';
+import 'package:growth_standards/src/category/intergrowth/intergrowth.dart';
 import 'package:growth_standards/src/category/who/who.dart';
 
 /// Directly exporting all required model for direct access

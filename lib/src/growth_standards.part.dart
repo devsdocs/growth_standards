@@ -16,6 +16,10 @@ class GrowthStandard {
   ///
   /// For preterm infant
   static Fenton get fenton => Fenton();
+
+  /// Accessing Intergrowth growth standard
+  ///
+  static _Intergrowth get intergrowth => _Intergrowth();
 }
 
 class _WHO {
@@ -34,4 +38,22 @@ class _CDC {
   /// From birth to 36 months
   CDCGrowthStandardFromBirthTo36Months get fromBirthTo36Months =>
       CDCGrowthStandardFromBirthTo36Months();
+}
+
+class _Intergrowth {
+  /// Accessing Intergrowth data
+  ///
+  /// From birth to 5 years old
+  IntergrowthAtBirth get atBirth => IntergrowthAtBirth();
+
+  /// Accessing Intergrowth data during pregnancy
+  ///
+  /// From early pregnancy to delivery
+  IntergrowthDuringPregnancy get duringPregnancy =>
+      IntergrowthDuringPregnancy();
+
+  /// Accessing Intergrowth data postnatal
+  ///
+  /// For preterm infants
+  IntergrowthPostnatal get postnatal => IntergrowthPostnatal();
 }

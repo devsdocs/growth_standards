@@ -282,7 +282,6 @@ _IntergrowthGestationalWeightGainForAge
     _$IntergrowthGestationalWeightGainForAgeFromJson(
             Map<String, dynamic> json) =>
         _IntergrowthGestationalWeightGainForAge(
-          sex: $enumDecode(_$SexEnumMap, json['sex']),
           age: Age.fromJson(json['age'] as Map<String, dynamic>),
           measurementResult:
               Mass.fromJson(json['measurementResult'] as Map<String, dynamic>),
@@ -291,7 +290,6 @@ _IntergrowthGestationalWeightGainForAge
 Map<String, dynamic> _$IntergrowthGestationalWeightGainForAgeToJson(
         _IntergrowthGestationalWeightGainForAge instance) =>
     <String, dynamic>{
-      'sex': _$SexEnumMap[instance.sex]!,
       'age': instance.age.toJson(),
       'measurementResult': instance.measurementResult.toJson(),
     };
