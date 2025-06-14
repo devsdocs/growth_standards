@@ -60,7 +60,7 @@ class IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeData
   TimeUnit get unit => TimeUnit.days;
 }
 
-/// Measure within first 24 hours of life, for infants born between gestational weeks 33 and 43
+/// Measure within first 24 hours of life, for infants born between gestational weeks 24 and 33
 @freezed
 sealed class IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge
     extends AgeBasedResult
@@ -124,5 +124,6 @@ class _IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeLMS
   final LMS lms;
 
   @override
-  String toString() => 'New Born Birth Weight For Age LMS(lms: $lms)';
+  String toString() =>
+      'Very Preterm Newborn Head Circumference For Age LMS(lms: $lms)';
 }

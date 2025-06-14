@@ -106,5 +106,5 @@ class _IntergrowthNewbornBirthWeightForAgeLMS extends LMSContext {
   final LMS lms;
 
   @override
-  String toString() => 'New Born Birth Weight For Age LMS(lms: $lms)';
+  String toString() => 'Newborn Weight For Age LMS(lms: $lms)';
 }

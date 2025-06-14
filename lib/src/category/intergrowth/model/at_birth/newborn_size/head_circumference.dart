@@ -111,5 +111,5 @@ class _IntergrowthNewbornBirthHeadCircumferenceForAgeLMS extends LMSContext {
   final LMS lms;
 
   @override
-  String toString() => 'New Born Birth Weight For Age LMS(lms: $lms)';
+  String toString() => 'Newborn Head Circumference For Age LMS(lms: $lms)';
 }

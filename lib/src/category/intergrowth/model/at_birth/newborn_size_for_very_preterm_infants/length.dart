@@ -44,7 +44,7 @@ class IntergrowthVeryPretermNewbornBirthLengthForAgeData extends AgeBasedData {
       get data => _data;
 
   @override
-  String toString() => 'Infant Head Circumference For Age Data($_data)';
+  String toString() => 'Very Preterm Newborn Length For Age Data($_data)';
 
   @override
   TimeUnit get unit => TimeUnit.days;
@@ -111,5 +111,5 @@ class _IntergrowthVeryPretermNewbornBirthLengthForAgeLMS extends LMSContext {
   final LMS lms;
 
   @override
-  String toString() => 'New Born Birth Weight For Age LMS(lms: $lms)';
+  String toString() => 'Very Preterm Newborn Length For Age LMS(lms: $lms)';
 }
