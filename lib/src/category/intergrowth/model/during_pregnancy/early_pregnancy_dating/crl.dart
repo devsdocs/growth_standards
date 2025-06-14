@@ -37,7 +37,7 @@ class IntergrowthEarlyPregnancyDatingForCRLData extends LengthBasedData {
   String toString() => 'Early Pregnancy Dating For CRL Data($_data)';
 
   @override
-  Length get unit => Length.centimeter;
+  Length get unit => Length.millimeter;
 }
 
 @freezed
@@ -66,7 +66,7 @@ sealed class IntergrowthEarlyPregnancyDatingForCRL extends LengthBasedResult
   Length get lengthAtObservationDate =>
       checkLength(length, contextData: contextData);
 
-  num get _length => lengthAtObservationDate.value.toDouble().toPrecision(1);
+  num get _length => lengthAtObservationDate.value.toDouble().toPrecision(0);
 
   num get _zScore =>
       _ageData.lms.adjustedZScore(measurementResultInDefaultUnit);
@@ -87,7 +87,7 @@ sealed class IntergrowthEarlyPregnancyDatingForCRL extends LengthBasedResult
   _IntergrowthEarlyPregnancyDatingForCRLLMS get lmsData => _ageData;
 
   @override
-  num get measurementResultInDefaultUnit => length.toCentimeter.value;
+  num get measurementResultInDefaultUnit => length.toMillimeter.value;
 }
 
 class _IntergrowthEarlyPregnancyDatingForCRLLMS extends LMSContext {

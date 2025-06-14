@@ -59,8 +59,8 @@ sealed class IntergrowthFetalCrownRumpLengthForAge extends AgeBasedResult
   IntergrowthFetalCrownRumpLengthForAgeData get contextData =>
       IntergrowthFetalCrownRumpLengthForAgeData();
 
-  _IntergrowthFetalCrownRumpLengthForAgeLMS get _ageData => contextData
-      ._data.values.first[ageAtObservationDate.ageInTotalWeeksByNow]!;
+  _IntergrowthFetalCrownRumpLengthForAgeLMS get _ageData =>
+      contextData._data.values.first[ageAtObservationDate.ageInTotalDaysByNow]!;
 
   @override
   Age get ageAtObservationDate => checkAge(
