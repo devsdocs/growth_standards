@@ -30,7 +30,7 @@ class CDCInfantLengthForAgeData extends AgeBasedData {
   String toString() => 'Infant Length For Age Data($_data)';
 
   @override
-  TimeUnit get unit => throw UnimplementedError();
+  TimeUnit get unit => TimeUnit.months;
 }
 
 @freezed
