@@ -1,4 +1,7 @@
-## 4.1.0
+## 4.1.1
+- Exportinng `pnorm` and `qnorm`
+
+## 4.1.0 
 - Add missing `TimeUnit`
 
 ## 4.0.0

@@ -118,6 +118,7 @@ export 'category/who/tools.dart'
 export 'category/who/typedef.dart';
 export 'common/base.dart';
 export 'common/extension.dart' show DateTimeToDate;
+export 'common/math.dart' show pnorm, qnorm;
 export 'common/model/age.dart' show Age, Date;
 export 'common/model/bmi.dart' show BodyMassIndex;
 export 'common/tools.dart' show TimeUnit;
