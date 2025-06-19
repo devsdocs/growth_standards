@@ -1,7 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:growth_standards/growth_standards.dart';
 import 'package:growth_standards/src/common/extension.dart';
-import 'package:growth_standards/src/common/math.dart';
 import 'package:growth_standards/src/common/model/age.dart';
 import 'package:growth_standards/src/common/model/lms.dart';
 import 'package:growth_standards/src/common/tools.dart';
