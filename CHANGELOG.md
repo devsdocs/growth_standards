@@ -1,3 +1,7 @@
+## 4.1.2
+
+- Minor performance improvements
+
 ## 4.1.1
 - Exportinng `pnorm` and `qnorm`
 
