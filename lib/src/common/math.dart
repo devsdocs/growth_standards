@@ -99,7 +99,9 @@ Length$Centimeter adjustedLengthHeight({
 }
 
 /// Normal distribution equation, the name [pnorm] inspired from R language
-num pnorm(num zScore) => 0.5 * (1 + erf(zScore / sqrt(2)));
+num pnorm(num zScore) => 0.5 * (1 + erf(zScore / _sq2));
 
 /// Normal distribution equation, the name [qnorm] inspired from R language
-num qnorm(num percentile) => sqrt(2) * erfInv(2 * percentile - 1);
+num qnorm(num percentile) => _sq2 * erfInv(2 * percentile - 1);
+
+final _sq2 = sqrt(2);
