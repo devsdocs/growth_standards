@@ -59,8 +59,8 @@ sealed class IntergrowthSymphysisFundalHeightForAge extends AgeBasedResult
   IntergrowthSymphysisFundalHeightForAgeData get contextData =>
       IntergrowthSymphysisFundalHeightForAgeData();
 
-  _IntergrowthSymphysisFundalHeightForAgeLMS get _ageData => contextData
-      ._data.values.first[ageAtObservationDate.ageInTotalWeeksByNow]!;
+  _IntergrowthSymphysisFundalHeightForAgeLMS get _ageData => contextData._data
+      .values.first[ageAtObservationDate.ageInTotalByUnit(contextData.unit)]!;
 
   num get _zScore =>
       _ageData.lms.adjustedZScore(measurementResultInDefaultUnit);

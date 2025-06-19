@@ -60,8 +60,8 @@ sealed class IntergrowthFetalGrowtFemurLengthForAge extends AgeBasedResult
   IntergrowthFetalGrowtFemurLengthForAgeData get contextData =>
       IntergrowthFetalGrowtFemurLengthForAgeData();
 
-  _IntergrowthFetalGrowtFemurLengthForAgeLMS get _ageData => contextData
-      ._data.values.first[ageAtObservationDate.ageInTotalWeeksByNow]!;
+  _IntergrowthFetalGrowtFemurLengthForAgeLMS get _ageData => contextData._data
+      .values.first[ageAtObservationDate.ageInTotalByUnit(contextData.unit)]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 

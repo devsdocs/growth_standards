@@ -49,8 +49,8 @@ sealed class FentonWeightForAge extends AgeBasedResult
   @override
   FentonWeightForAgeData get contextData => FentonWeightForAgeData();
 
-  _FentonWeightForAgeLMS get _ageData => contextData
-      ._data.values.first[ageAtObservationDate.ageInTotalWeeksByNow]!;
+  _FentonWeightForAgeLMS get _ageData => contextData._data.values
+      .first[ageAtObservationDate.ageInTotalByUnit(contextData.unit)]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 

@@ -76,7 +76,8 @@ sealed class IntergrowthNewbornBirthWeightForLengthRatioForAge
       IntergrowthNewbornBirthWeightForLengthRatioForAgeData();
 
   _IntergrowthNewbornBirthWeightForLengthRatioForAgeLMS get _ageData =>
-      contextData._data[sex]![ageAtObservationDate.ageInTotalDaysByNow]!;
+      contextData._data[sex]![
+          ageAtObservationDate.ageInTotalByUnit(contextData.unit)]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 

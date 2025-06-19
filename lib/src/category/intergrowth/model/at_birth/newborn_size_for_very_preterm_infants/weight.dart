@@ -72,8 +72,8 @@ sealed class IntergrowthVeryPretermNewbornBirthWeightForAge
   IntergrowthVeryPretermNewbornBirthWeightForAgeData get contextData =>
       IntergrowthVeryPretermNewbornBirthWeightForAgeData();
 
-  _IntergrowthVeryPretermNewbornBirthWeightForAgeLMS get _ageData =>
-      contextData._data[sex]![ageAtObservationDate.ageInTotalDaysByNow]!;
+  _IntergrowthVeryPretermNewbornBirthWeightForAgeLMS get _ageData => contextData
+      ._data[sex]![ageAtObservationDate.ageInTotalByUnit(contextData.unit)]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 

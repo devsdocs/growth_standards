@@ -54,8 +54,8 @@ sealed class WHOGrowthStandardsLengthForAge extends AgeBasedResult
   WHOGrowthStandardsLengthForAgeData get contextData =>
       WHOGrowthStandardsLengthForAgeData();
 
-  _WHOGrowthStandardsLengthForAgeLMS get _ageData =>
-      contextData._data[sex]![ageAtObservationDate.ageInTotalDaysByNow]!;
+  _WHOGrowthStandardsLengthForAgeLMS get _ageData => contextData
+      ._data[sex]![ageAtObservationDate.ageInTotalByUnit(contextData.unit)]!;
 
   Length$Centimeter get _adjustedLength => adjustedLengthHeight(
         measure: measure,

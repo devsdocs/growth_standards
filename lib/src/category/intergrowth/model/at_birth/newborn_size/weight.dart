@@ -68,8 +68,8 @@ sealed class IntergrowthNewbornBirthWeightForAge extends AgeBasedResult
   IntergrowthNewbornBirthWeightForAgeData get contextData =>
       IntergrowthNewbornBirthWeightForAgeData();
 
-  _IntergrowthNewbornBirthWeightForAgeLMS get _ageData =>
-      contextData._data[sex]![ageAtObservationDate.ageInTotalDaysByNow]!;
+  _IntergrowthNewbornBirthWeightForAgeLMS get _ageData => contextData
+      ._data[sex]![ageAtObservationDate.ageInTotalByUnit(contextData.unit)]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 

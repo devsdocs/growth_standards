@@ -72,8 +72,8 @@ sealed class IntergrowthNewbornBirthHeadCircumferenceForAge
   IntergrowthNewbornBirthHeadCircumferenceForAgeData get contextData =>
       IntergrowthNewbornBirthHeadCircumferenceForAgeData();
 
-  _IntergrowthNewbornBirthHeadCircumferenceForAgeLMS get _ageData =>
-      contextData._data[sex]![ageAtObservationDate.ageInTotalDaysByNow]!;
+  _IntergrowthNewbornBirthHeadCircumferenceForAgeLMS get _ageData => contextData
+      ._data[sex]![ageAtObservationDate.ageInTotalByUnit(contextData.unit)]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 

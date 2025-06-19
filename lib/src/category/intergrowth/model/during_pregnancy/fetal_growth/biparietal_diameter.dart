@@ -63,7 +63,9 @@ sealed class IntergrowthFetalGrowtBiparietalDiameterForAge
       IntergrowthFetalGrowtBiparietalDiameterForAgeData();
 
   _IntergrowthFetalGrowtBiparietalDiameterForAgeLMS get _ageData => contextData
-      ._data.values.first[ageAtObservationDate.ageInTotalWeeksByNow]!;
+      ._data
+      .values
+      .first[ageAtObservationDate.ageInTotalByUnit(contextData.unit)]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 

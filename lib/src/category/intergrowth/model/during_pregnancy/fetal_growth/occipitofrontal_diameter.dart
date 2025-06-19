@@ -66,8 +66,8 @@ sealed class IntergrowthFetalGrowtOccipitoFrontalDiameterForAge
       IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeData();
 
   _IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeLMS get _ageData =>
-      contextData
-          ._data.values.first[ageAtObservationDate.ageInTotalWeeksByNow]!;
+      contextData._data.values
+          .first[ageAtObservationDate.ageInTotalByUnit(contextData.unit)]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 

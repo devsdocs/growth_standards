@@ -52,8 +52,8 @@ sealed class WHOGrowthStandardsWeightForAge extends AgeBasedResult
   WHOGrowthStandardsWeightForAgeData get contextData =>
       WHOGrowthStandardsWeightForAgeData();
 
-  _WHOGrowthStandardsWeightForAgeLMS get _ageData =>
-      contextData._data[sex]![ageAtObservationDate.ageInTotalDaysByNow]!;
+  _WHOGrowthStandardsWeightForAgeLMS get _ageData => contextData
+      ._data[sex]![ageAtObservationDate.ageInTotalByUnit(contextData.unit)]!;
 
   num get _zScore =>
       _ageData.lms.adjustedZScore(measurementResultInDefaultUnit);

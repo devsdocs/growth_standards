@@ -51,8 +51,8 @@ sealed class FentonLengthForAge extends AgeBasedResult
   @override
   FentonLengthForAgeData get contextData => FentonLengthForAgeData();
 
-  _FentonLengthForAgeLMS get _ageData => contextData
-      ._data.values.first[ageAtObservationDate.ageInTotalWeeksByNow]!;
+  _FentonLengthForAgeLMS get _ageData => contextData._data.values
+      .first[ageAtObservationDate.ageInTotalByUnit(contextData.unit)]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 

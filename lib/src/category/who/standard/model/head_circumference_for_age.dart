@@ -57,8 +57,8 @@ sealed class WHOGrowthStandardsHeadCircumferenceForAge extends AgeBasedResult
   WHOGrowthStandardsHeadCircumferenceForAgeData get contextData =>
       WHOGrowthStandardsHeadCircumferenceForAgeData();
 
-  _WHOGrowthStandardsHeadCircumferenceForAgeLMS get _ageData =>
-      contextData._data[sex]![ageAtObservationDate.ageInTotalDaysByNow]!;
+  _WHOGrowthStandardsHeadCircumferenceForAgeLMS get _ageData => contextData
+      ._data[sex]![ageAtObservationDate.ageInTotalByUnit(contextData.unit)]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 

@@ -1,5 +1,6 @@
 import 'package:clock/clock.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:growth_standards/src/common/tools.dart';
 import 'package:growth_standards/src/common/types.dart';
 
 part 'age.freezed.dart';
@@ -119,6 +120,13 @@ sealed class Age with _$Age {
   int get ageInTotalWeeksByNow => ageInTotalWeeksAtDate(getObservedDate());
 
   int get ageInTotalDaysByNow => ageInTotalDaysAtDate(getObservedDate());
+
+  int ageInTotalByUnit(TimeUnit unit) => switch (unit) {
+        TimeUnit.years => ageInTotalYearsByNow,
+        TimeUnit.months => ageInTotalMonthsByNow,
+        TimeUnit.weeks => ageInTotalWeeksByNow,
+        TimeUnit.days => ageInTotalDaysByNow,
+      };
 
   Date dateAtDaysAfterBirth(int daysAfterBirth) =>
       dateOfBirth.addDays(daysAfterBirth);

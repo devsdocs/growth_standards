@@ -78,7 +78,8 @@ sealed class IntergrowthPretermInfantsPostnatalGrowthLengthForAge
       IntergrowthPretermInfantsPostnatalGrowthLengthForAgeData();
 
   _IntergrowthPretermInfantsPostnatalGrowthLengthForAgeLMS get _ageData =>
-      contextData._data[sex]![ageAtObservationDate.ageInTotalWeeksByNow]!;
+      contextData._data[sex]![
+          ageAtObservationDate.ageInTotalByUnit(contextData.unit)]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 
