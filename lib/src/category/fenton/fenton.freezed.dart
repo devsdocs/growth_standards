@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,159 +10,31 @@ part of 'fenton.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-FentonHeadCircumferenceForAge _$FentonHeadCircumferenceForAgeFromJson(
-    Map<String, dynamic> json) {
-  return _FentonHeadCircumferenceForAge.fromJson(json);
-}
 
 /// @nodoc
 mixin _$FentonHeadCircumferenceForAge {
-  Age get age => throw _privateConstructorUsedError;
-  Length get measurementResult => throw _privateConstructorUsedError;
-
-  /// Serializes this FentonHeadCircumferenceForAge to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Age get age;
+  Length get measurementResult;
 
   /// Create a copy of FentonHeadCircumferenceForAge
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $FentonHeadCircumferenceForAgeCopyWith<FentonHeadCircumferenceForAge>
-      get copyWith => throw _privateConstructorUsedError;
-}
+      get copyWith => _$FentonHeadCircumferenceForAgeCopyWithImpl<
+              FentonHeadCircumferenceForAge>(
+          this as FentonHeadCircumferenceForAge, _$identity);
 
-/// @nodoc
-abstract class $FentonHeadCircumferenceForAgeCopyWith<$Res> {
-  factory $FentonHeadCircumferenceForAgeCopyWith(
-          FentonHeadCircumferenceForAge value,
-          $Res Function(FentonHeadCircumferenceForAge) then) =
-      _$FentonHeadCircumferenceForAgeCopyWithImpl<$Res,
-          FentonHeadCircumferenceForAge>;
-  @useResult
-  $Res call({Age age, Length measurementResult});
-
-  $AgeCopyWith<$Res> get age;
-}
-
-/// @nodoc
-class _$FentonHeadCircumferenceForAgeCopyWithImpl<$Res,
-        $Val extends FentonHeadCircumferenceForAge>
-    implements $FentonHeadCircumferenceForAgeCopyWith<$Res> {
-  _$FentonHeadCircumferenceForAgeCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of FentonHeadCircumferenceForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? age = null,
-    Object? measurementResult = null,
-  }) {
-    return _then(_value.copyWith(
-      age: null == age
-          ? _value.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as Age,
-      measurementResult: null == measurementResult
-          ? _value.measurementResult
-          : measurementResult // ignore: cast_nullable_to_non_nullable
-              as Length,
-    ) as $Val);
-  }
-
-  /// Create a copy of FentonHeadCircumferenceForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_value.age, (value) {
-      return _then(_value.copyWith(age: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$FentonHeadCircumferenceForAgeImplCopyWith<$Res>
-    implements $FentonHeadCircumferenceForAgeCopyWith<$Res> {
-  factory _$$FentonHeadCircumferenceForAgeImplCopyWith(
-          _$FentonHeadCircumferenceForAgeImpl value,
-          $Res Function(_$FentonHeadCircumferenceForAgeImpl) then) =
-      __$$FentonHeadCircumferenceForAgeImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({Age age, Length measurementResult});
-
-  @override
-  $AgeCopyWith<$Res> get age;
-}
-
-/// @nodoc
-class __$$FentonHeadCircumferenceForAgeImplCopyWithImpl<$Res>
-    extends _$FentonHeadCircumferenceForAgeCopyWithImpl<$Res,
-        _$FentonHeadCircumferenceForAgeImpl>
-    implements _$$FentonHeadCircumferenceForAgeImplCopyWith<$Res> {
-  __$$FentonHeadCircumferenceForAgeImplCopyWithImpl(
-      _$FentonHeadCircumferenceForAgeImpl _value,
-      $Res Function(_$FentonHeadCircumferenceForAgeImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of FentonHeadCircumferenceForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? age = null,
-    Object? measurementResult = null,
-  }) {
-    return _then(_$FentonHeadCircumferenceForAgeImpl(
-      age: null == age
-          ? _value.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as Age,
-      measurementResult: null == measurementResult
-          ? _value.measurementResult
-          : measurementResult // ignore: cast_nullable_to_non_nullable
-              as Length,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$FentonHeadCircumferenceForAgeImpl
-    extends _FentonHeadCircumferenceForAge {
-  _$FentonHeadCircumferenceForAgeImpl(
-      {required this.age, required this.measurementResult})
-      : super._();
-
-  factory _$FentonHeadCircumferenceForAgeImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$FentonHeadCircumferenceForAgeImplFromJson(json);
-
-  @override
-  final Age age;
-  @override
-  final Length measurementResult;
-
-  @override
-  String toString() {
-    return 'FentonHeadCircumferenceForAge(age: $age, measurementResult: $measurementResult)';
-  }
+  /// Serializes this FentonHeadCircumferenceForAge to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FentonHeadCircumferenceForAgeImpl &&
+            other is FentonHeadCircumferenceForAge &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.measurementResult, measurementResult) ||
                 other.measurementResult == measurementResult));
@@ -171,203 +44,189 @@ class _$FentonHeadCircumferenceForAgeImpl
   @override
   int get hashCode => Object.hash(runtimeType, age, measurementResult);
 
-  /// Create a copy of FentonHeadCircumferenceForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$FentonHeadCircumferenceForAgeImplCopyWith<
-          _$FentonHeadCircumferenceForAgeImpl>
-      get copyWith => __$$FentonHeadCircumferenceForAgeImplCopyWithImpl<
-          _$FentonHeadCircumferenceForAgeImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$FentonHeadCircumferenceForAgeImplToJson(
-      this,
-    );
+  String toString() {
+    return 'FentonHeadCircumferenceForAge(age: $age, measurementResult: $measurementResult)';
   }
 }
 
-abstract class _FentonHeadCircumferenceForAge
-    extends FentonHeadCircumferenceForAge {
-  factory _FentonHeadCircumferenceForAge(
-          {required final Age age, required final Length measurementResult}) =
-      _$FentonHeadCircumferenceForAgeImpl;
-  _FentonHeadCircumferenceForAge._() : super._();
-
-  factory _FentonHeadCircumferenceForAge.fromJson(Map<String, dynamic> json) =
-      _$FentonHeadCircumferenceForAgeImpl.fromJson;
-
-  @override
-  Age get age;
-  @override
-  Length get measurementResult;
-
-  /// Create a copy of FentonHeadCircumferenceForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$FentonHeadCircumferenceForAgeImplCopyWith<
-          _$FentonHeadCircumferenceForAgeImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-FentonLengthForAge _$FentonLengthForAgeFromJson(Map<String, dynamic> json) {
-  return _FentonLengthForAge.fromJson(json);
-}
-
 /// @nodoc
-mixin _$FentonLengthForAge {
-  Age get age => throw _privateConstructorUsedError;
-  Length get lengthHeight => throw _privateConstructorUsedError;
-  LengthHeightMeasurementPosition get measure =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this FentonLengthForAge to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of FentonLengthForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $FentonLengthForAgeCopyWith<FentonLengthForAge> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $FentonLengthForAgeCopyWith<$Res> {
-  factory $FentonLengthForAgeCopyWith(
-          FentonLengthForAge value, $Res Function(FentonLengthForAge) then) =
-      _$FentonLengthForAgeCopyWithImpl<$Res, FentonLengthForAge>;
+abstract mixin class $FentonHeadCircumferenceForAgeCopyWith<$Res> {
+  factory $FentonHeadCircumferenceForAgeCopyWith(
+          FentonHeadCircumferenceForAge value,
+          $Res Function(FentonHeadCircumferenceForAge) _then) =
+      _$FentonHeadCircumferenceForAgeCopyWithImpl;
   @useResult
-  $Res call(
-      {Age age, Length lengthHeight, LengthHeightMeasurementPosition measure});
+  $Res call({Age age, Length measurementResult});
 
   $AgeCopyWith<$Res> get age;
 }
 
 /// @nodoc
-class _$FentonLengthForAgeCopyWithImpl<$Res, $Val extends FentonLengthForAge>
-    implements $FentonLengthForAgeCopyWith<$Res> {
-  _$FentonLengthForAgeCopyWithImpl(this._value, this._then);
+class _$FentonHeadCircumferenceForAgeCopyWithImpl<$Res>
+    implements $FentonHeadCircumferenceForAgeCopyWith<$Res> {
+  _$FentonHeadCircumferenceForAgeCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final FentonHeadCircumferenceForAge _self;
+  final $Res Function(FentonHeadCircumferenceForAge) _then;
 
-  /// Create a copy of FentonLengthForAge
+  /// Create a copy of FentonHeadCircumferenceForAge
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? age = null,
-    Object? lengthHeight = null,
-    Object? measure = null,
+    Object? measurementResult = null,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       age: null == age
-          ? _value.age
+          ? _self.age
           : age // ignore: cast_nullable_to_non_nullable
               as Age,
-      lengthHeight: null == lengthHeight
-          ? _value.lengthHeight
-          : lengthHeight // ignore: cast_nullable_to_non_nullable
+      measurementResult: null == measurementResult
+          ? _self.measurementResult
+          : measurementResult // ignore: cast_nullable_to_non_nullable
               as Length,
-      measure: null == measure
-          ? _value.measure
-          : measure // ignore: cast_nullable_to_non_nullable
-              as LengthHeightMeasurementPosition,
-    ) as $Val);
+    ));
   }
 
-  /// Create a copy of FentonLengthForAge
+  /// Create a copy of FentonHeadCircumferenceForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_value.age, (value) {
-      return _then(_value.copyWith(age: value) as $Val);
+    return $AgeCopyWith<$Res>(_self.age, (value) {
+      return _then(_self.copyWith(age: value));
     });
   }
 }
 
 /// @nodoc
-abstract class _$$FentonLengthForAgeImplCopyWith<$Res>
-    implements $FentonLengthForAgeCopyWith<$Res> {
-  factory _$$FentonLengthForAgeImplCopyWith(_$FentonLengthForAgeImpl value,
-          $Res Function(_$FentonLengthForAgeImpl) then) =
-      __$$FentonLengthForAgeImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {Age age, Length lengthHeight, LengthHeightMeasurementPosition measure});
-
-  @override
-  $AgeCopyWith<$Res> get age;
-}
-
-/// @nodoc
-class __$$FentonLengthForAgeImplCopyWithImpl<$Res>
-    extends _$FentonLengthForAgeCopyWithImpl<$Res, _$FentonLengthForAgeImpl>
-    implements _$$FentonLengthForAgeImplCopyWith<$Res> {
-  __$$FentonLengthForAgeImplCopyWithImpl(_$FentonLengthForAgeImpl _value,
-      $Res Function(_$FentonLengthForAgeImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of FentonLengthForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? age = null,
-    Object? lengthHeight = null,
-    Object? measure = null,
-  }) {
-    return _then(_$FentonLengthForAgeImpl(
-      age: null == age
-          ? _value.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as Age,
-      lengthHeight: null == lengthHeight
-          ? _value.lengthHeight
-          : lengthHeight // ignore: cast_nullable_to_non_nullable
-              as Length,
-      measure: null == measure
-          ? _value.measure
-          : measure // ignore: cast_nullable_to_non_nullable
-              as LengthHeightMeasurementPosition,
-    ));
-  }
-}
-
-/// @nodoc
 @JsonSerializable()
-class _$FentonLengthForAgeImpl extends _FentonLengthForAge {
-  _$FentonLengthForAgeImpl(
-      {required this.age, required this.lengthHeight, required this.measure})
+class _FentonHeadCircumferenceForAge extends FentonHeadCircumferenceForAge {
+  _FentonHeadCircumferenceForAge(
+      {required this.age, required this.measurementResult})
       : super._();
-
-  factory _$FentonLengthForAgeImpl.fromJson(Map<String, dynamic> json) =>
-      _$$FentonLengthForAgeImplFromJson(json);
+  factory _FentonHeadCircumferenceForAge.fromJson(Map<String, dynamic> json) =>
+      _$FentonHeadCircumferenceForAgeFromJson(json);
 
   @override
   final Age age;
   @override
-  final Length lengthHeight;
+  final Length measurementResult;
+
+  /// Create a copy of FentonHeadCircumferenceForAge
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  final LengthHeightMeasurementPosition measure;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$FentonHeadCircumferenceForAgeCopyWith<_FentonHeadCircumferenceForAge>
+      get copyWith => __$FentonHeadCircumferenceForAgeCopyWithImpl<
+          _FentonHeadCircumferenceForAge>(this, _$identity);
 
   @override
-  String toString() {
-    return 'FentonLengthForAge(age: $age, lengthHeight: $lengthHeight, measure: $measure)';
+  Map<String, dynamic> toJson() {
+    return _$FentonHeadCircumferenceForAgeToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FentonLengthForAgeImpl &&
+            other is _FentonHeadCircumferenceForAge &&
+            (identical(other.age, age) || other.age == age) &&
+            (identical(other.measurementResult, measurementResult) ||
+                other.measurementResult == measurementResult));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, age, measurementResult);
+
+  @override
+  String toString() {
+    return 'FentonHeadCircumferenceForAge(age: $age, measurementResult: $measurementResult)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$FentonHeadCircumferenceForAgeCopyWith<$Res>
+    implements $FentonHeadCircumferenceForAgeCopyWith<$Res> {
+  factory _$FentonHeadCircumferenceForAgeCopyWith(
+          _FentonHeadCircumferenceForAge value,
+          $Res Function(_FentonHeadCircumferenceForAge) _then) =
+      __$FentonHeadCircumferenceForAgeCopyWithImpl;
+  @override
+  @useResult
+  $Res call({Age age, Length measurementResult});
+
+  @override
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class __$FentonHeadCircumferenceForAgeCopyWithImpl<$Res>
+    implements _$FentonHeadCircumferenceForAgeCopyWith<$Res> {
+  __$FentonHeadCircumferenceForAgeCopyWithImpl(this._self, this._then);
+
+  final _FentonHeadCircumferenceForAge _self;
+  final $Res Function(_FentonHeadCircumferenceForAge) _then;
+
+  /// Create a copy of FentonHeadCircumferenceForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? age = null,
+    Object? measurementResult = null,
+  }) {
+    return _then(_FentonHeadCircumferenceForAge(
+      age: null == age
+          ? _self.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+      measurementResult: null == measurementResult
+          ? _self.measurementResult
+          : measurementResult // ignore: cast_nullable_to_non_nullable
+              as Length,
+    ));
+  }
+
+  /// Create a copy of FentonHeadCircumferenceForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AgeCopyWith<$Res> get age {
+    return $AgeCopyWith<$Res>(_self.age, (value) {
+      return _then(_self.copyWith(age: value));
+    });
+  }
+}
+
+/// @nodoc
+mixin _$FentonLengthForAge {
+  Age get age;
+  Length get lengthHeight;
+  LengthHeightMeasurementPosition get measure;
+
+  /// Create a copy of FentonLengthForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $FentonLengthForAgeCopyWith<FentonLengthForAge> get copyWith =>
+      _$FentonLengthForAgeCopyWithImpl<FentonLengthForAge>(
+          this as FentonLengthForAge, _$identity);
+
+  /// Serializes this FentonLengthForAge to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is FentonLengthForAge &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.lengthHeight, lengthHeight) ||
                 other.lengthHeight == lengthHeight) &&
@@ -378,187 +237,200 @@ class _$FentonLengthForAgeImpl extends _FentonLengthForAge {
   @override
   int get hashCode => Object.hash(runtimeType, age, lengthHeight, measure);
 
-  /// Create a copy of FentonLengthForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$FentonLengthForAgeImplCopyWith<_$FentonLengthForAgeImpl> get copyWith =>
-      __$$FentonLengthForAgeImplCopyWithImpl<_$FentonLengthForAgeImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$FentonLengthForAgeImplToJson(
-      this,
-    );
+  String toString() {
+    return 'FentonLengthForAge(age: $age, lengthHeight: $lengthHeight, measure: $measure)';
   }
 }
 
-abstract class _FentonLengthForAge extends FentonLengthForAge {
-  factory _FentonLengthForAge(
-          {required final Age age,
-          required final Length lengthHeight,
-          required final LengthHeightMeasurementPosition measure}) =
-      _$FentonLengthForAgeImpl;
-  _FentonLengthForAge._() : super._();
-
-  factory _FentonLengthForAge.fromJson(Map<String, dynamic> json) =
-      _$FentonLengthForAgeImpl.fromJson;
-
-  @override
-  Age get age;
-  @override
-  Length get lengthHeight;
-  @override
-  LengthHeightMeasurementPosition get measure;
-
-  /// Create a copy of FentonLengthForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$FentonLengthForAgeImplCopyWith<_$FentonLengthForAgeImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-FentonWeightForAge _$FentonWeightForAgeFromJson(Map<String, dynamic> json) {
-  return _FentonWeightForAge.fromJson(json);
-}
-
 /// @nodoc
-mixin _$FentonWeightForAge {
-  Age get age => throw _privateConstructorUsedError;
-  Mass get weight => throw _privateConstructorUsedError;
-
-  /// Serializes this FentonWeightForAge to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of FentonWeightForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $FentonWeightForAgeCopyWith<FentonWeightForAge> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $FentonWeightForAgeCopyWith<$Res> {
-  factory $FentonWeightForAgeCopyWith(
-          FentonWeightForAge value, $Res Function(FentonWeightForAge) then) =
-      _$FentonWeightForAgeCopyWithImpl<$Res, FentonWeightForAge>;
+abstract mixin class $FentonLengthForAgeCopyWith<$Res> {
+  factory $FentonLengthForAgeCopyWith(
+          FentonLengthForAge value, $Res Function(FentonLengthForAge) _then) =
+      _$FentonLengthForAgeCopyWithImpl;
   @useResult
-  $Res call({Age age, Mass weight});
+  $Res call(
+      {Age age, Length lengthHeight, LengthHeightMeasurementPosition measure});
 
   $AgeCopyWith<$Res> get age;
 }
 
 /// @nodoc
-class _$FentonWeightForAgeCopyWithImpl<$Res, $Val extends FentonWeightForAge>
-    implements $FentonWeightForAgeCopyWith<$Res> {
-  _$FentonWeightForAgeCopyWithImpl(this._value, this._then);
+class _$FentonLengthForAgeCopyWithImpl<$Res>
+    implements $FentonLengthForAgeCopyWith<$Res> {
+  _$FentonLengthForAgeCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final FentonLengthForAge _self;
+  final $Res Function(FentonLengthForAge) _then;
 
-  /// Create a copy of FentonWeightForAge
+  /// Create a copy of FentonLengthForAge
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? age = null,
-    Object? weight = null,
+    Object? lengthHeight = null,
+    Object? measure = null,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       age: null == age
-          ? _value.age
+          ? _self.age
           : age // ignore: cast_nullable_to_non_nullable
               as Age,
-      weight: null == weight
-          ? _value.weight
-          : weight // ignore: cast_nullable_to_non_nullable
-              as Mass,
-    ) as $Val);
+      lengthHeight: null == lengthHeight
+          ? _self.lengthHeight
+          : lengthHeight // ignore: cast_nullable_to_non_nullable
+              as Length,
+      measure: null == measure
+          ? _self.measure
+          : measure // ignore: cast_nullable_to_non_nullable
+              as LengthHeightMeasurementPosition,
+    ));
   }
 
-  /// Create a copy of FentonWeightForAge
+  /// Create a copy of FentonLengthForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AgeCopyWith<$Res> get age {
-    return $AgeCopyWith<$Res>(_value.age, (value) {
-      return _then(_value.copyWith(age: value) as $Val);
+    return $AgeCopyWith<$Res>(_self.age, (value) {
+      return _then(_self.copyWith(age: value));
     });
   }
 }
 
 /// @nodoc
-abstract class _$$FentonWeightForAgeImplCopyWith<$Res>
-    implements $FentonWeightForAgeCopyWith<$Res> {
-  factory _$$FentonWeightForAgeImplCopyWith(_$FentonWeightForAgeImpl value,
-          $Res Function(_$FentonWeightForAgeImpl) then) =
-      __$$FentonWeightForAgeImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({Age age, Mass weight});
-
-  @override
-  $AgeCopyWith<$Res> get age;
-}
-
-/// @nodoc
-class __$$FentonWeightForAgeImplCopyWithImpl<$Res>
-    extends _$FentonWeightForAgeCopyWithImpl<$Res, _$FentonWeightForAgeImpl>
-    implements _$$FentonWeightForAgeImplCopyWith<$Res> {
-  __$$FentonWeightForAgeImplCopyWithImpl(_$FentonWeightForAgeImpl _value,
-      $Res Function(_$FentonWeightForAgeImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of FentonWeightForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? age = null,
-    Object? weight = null,
-  }) {
-    return _then(_$FentonWeightForAgeImpl(
-      age: null == age
-          ? _value.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as Age,
-      weight: null == weight
-          ? _value.weight
-          : weight // ignore: cast_nullable_to_non_nullable
-              as Mass,
-    ));
-  }
-}
-
-/// @nodoc
 @JsonSerializable()
-class _$FentonWeightForAgeImpl extends _FentonWeightForAge {
-  _$FentonWeightForAgeImpl({required this.age, required this.weight})
+class _FentonLengthForAge extends FentonLengthForAge {
+  _FentonLengthForAge(
+      {required this.age, required this.lengthHeight, required this.measure})
       : super._();
-
-  factory _$FentonWeightForAgeImpl.fromJson(Map<String, dynamic> json) =>
-      _$$FentonWeightForAgeImplFromJson(json);
+  factory _FentonLengthForAge.fromJson(Map<String, dynamic> json) =>
+      _$FentonLengthForAgeFromJson(json);
 
   @override
   final Age age;
   @override
-  final Mass weight;
+  final Length lengthHeight;
+  @override
+  final LengthHeightMeasurementPosition measure;
+
+  /// Create a copy of FentonLengthForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$FentonLengthForAgeCopyWith<_FentonLengthForAge> get copyWith =>
+      __$FentonLengthForAgeCopyWithImpl<_FentonLengthForAge>(this, _$identity);
 
   @override
-  String toString() {
-    return 'FentonWeightForAge(age: $age, weight: $weight)';
+  Map<String, dynamic> toJson() {
+    return _$FentonLengthForAgeToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FentonWeightForAgeImpl &&
+            other is _FentonLengthForAge &&
+            (identical(other.age, age) || other.age == age) &&
+            (identical(other.lengthHeight, lengthHeight) ||
+                other.lengthHeight == lengthHeight) &&
+            (identical(other.measure, measure) || other.measure == measure));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, age, lengthHeight, measure);
+
+  @override
+  String toString() {
+    return 'FentonLengthForAge(age: $age, lengthHeight: $lengthHeight, measure: $measure)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$FentonLengthForAgeCopyWith<$Res>
+    implements $FentonLengthForAgeCopyWith<$Res> {
+  factory _$FentonLengthForAgeCopyWith(
+          _FentonLengthForAge value, $Res Function(_FentonLengthForAge) _then) =
+      __$FentonLengthForAgeCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {Age age, Length lengthHeight, LengthHeightMeasurementPosition measure});
+
+  @override
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class __$FentonLengthForAgeCopyWithImpl<$Res>
+    implements _$FentonLengthForAgeCopyWith<$Res> {
+  __$FentonLengthForAgeCopyWithImpl(this._self, this._then);
+
+  final _FentonLengthForAge _self;
+  final $Res Function(_FentonLengthForAge) _then;
+
+  /// Create a copy of FentonLengthForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? age = null,
+    Object? lengthHeight = null,
+    Object? measure = null,
+  }) {
+    return _then(_FentonLengthForAge(
+      age: null == age
+          ? _self.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+      lengthHeight: null == lengthHeight
+          ? _self.lengthHeight
+          : lengthHeight // ignore: cast_nullable_to_non_nullable
+              as Length,
+      measure: null == measure
+          ? _self.measure
+          : measure // ignore: cast_nullable_to_non_nullable
+              as LengthHeightMeasurementPosition,
+    ));
+  }
+
+  /// Create a copy of FentonLengthForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AgeCopyWith<$Res> get age {
+    return $AgeCopyWith<$Res>(_self.age, (value) {
+      return _then(_self.copyWith(age: value));
+    });
+  }
+}
+
+/// @nodoc
+mixin _$FentonWeightForAge {
+  Age get age;
+  Mass get weight;
+
+  /// Create a copy of FentonWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $FentonWeightForAgeCopyWith<FentonWeightForAge> get copyWith =>
+      _$FentonWeightForAgeCopyWithImpl<FentonWeightForAge>(
+          this as FentonWeightForAge, _$identity);
+
+  /// Serializes this FentonWeightForAge to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is FentonWeightForAge &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.weight, weight) || other.weight == weight));
   }
@@ -567,41 +439,159 @@ class _$FentonWeightForAgeImpl extends _FentonWeightForAge {
   @override
   int get hashCode => Object.hash(runtimeType, age, weight);
 
-  /// Create a copy of FentonWeightForAge
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$FentonWeightForAgeImplCopyWith<_$FentonWeightForAgeImpl> get copyWith =>
-      __$$FentonWeightForAgeImplCopyWithImpl<_$FentonWeightForAgeImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$FentonWeightForAgeImplToJson(
-      this,
-    );
+  String toString() {
+    return 'FentonWeightForAge(age: $age, weight: $weight)';
   }
 }
 
-abstract class _FentonWeightForAge extends FentonWeightForAge {
-  factory _FentonWeightForAge(
-      {required final Age age,
-      required final Mass weight}) = _$FentonWeightForAgeImpl;
-  _FentonWeightForAge._() : super._();
+/// @nodoc
+abstract mixin class $FentonWeightForAgeCopyWith<$Res> {
+  factory $FentonWeightForAgeCopyWith(
+          FentonWeightForAge value, $Res Function(FentonWeightForAge) _then) =
+      _$FentonWeightForAgeCopyWithImpl;
+  @useResult
+  $Res call({Age age, Mass weight});
 
-  factory _FentonWeightForAge.fromJson(Map<String, dynamic> json) =
-      _$FentonWeightForAgeImpl.fromJson;
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class _$FentonWeightForAgeCopyWithImpl<$Res>
+    implements $FentonWeightForAgeCopyWith<$Res> {
+  _$FentonWeightForAgeCopyWithImpl(this._self, this._then);
+
+  final FentonWeightForAge _self;
+  final $Res Function(FentonWeightForAge) _then;
+
+  /// Create a copy of FentonWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? age = null,
+    Object? weight = null,
+  }) {
+    return _then(_self.copyWith(
+      age: null == age
+          ? _self.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+      weight: null == weight
+          ? _self.weight
+          : weight // ignore: cast_nullable_to_non_nullable
+              as Mass,
+    ));
+  }
+
+  /// Create a copy of FentonWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AgeCopyWith<$Res> get age {
+    return $AgeCopyWith<$Res>(_self.age, (value) {
+      return _then(_self.copyWith(age: value));
+    });
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _FentonWeightForAge extends FentonWeightForAge {
+  _FentonWeightForAge({required this.age, required this.weight}) : super._();
+  factory _FentonWeightForAge.fromJson(Map<String, dynamic> json) =>
+      _$FentonWeightForAgeFromJson(json);
 
   @override
-  Age get age;
+  final Age age;
   @override
-  Mass get weight;
+  final Mass weight;
 
   /// Create a copy of FentonWeightForAge
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$FentonWeightForAgeImplCopyWith<_$FentonWeightForAgeImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$FentonWeightForAgeCopyWith<_FentonWeightForAge> get copyWith =>
+      __$FentonWeightForAgeCopyWithImpl<_FentonWeightForAge>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$FentonWeightForAgeToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _FentonWeightForAge &&
+            (identical(other.age, age) || other.age == age) &&
+            (identical(other.weight, weight) || other.weight == weight));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, age, weight);
+
+  @override
+  String toString() {
+    return 'FentonWeightForAge(age: $age, weight: $weight)';
+  }
 }
+
+/// @nodoc
+abstract mixin class _$FentonWeightForAgeCopyWith<$Res>
+    implements $FentonWeightForAgeCopyWith<$Res> {
+  factory _$FentonWeightForAgeCopyWith(
+          _FentonWeightForAge value, $Res Function(_FentonWeightForAge) _then) =
+      __$FentonWeightForAgeCopyWithImpl;
+  @override
+  @useResult
+  $Res call({Age age, Mass weight});
+
+  @override
+  $AgeCopyWith<$Res> get age;
+}
+
+/// @nodoc
+class __$FentonWeightForAgeCopyWithImpl<$Res>
+    implements _$FentonWeightForAgeCopyWith<$Res> {
+  __$FentonWeightForAgeCopyWithImpl(this._self, this._then);
+
+  final _FentonWeightForAge _self;
+  final $Res Function(_FentonWeightForAge) _then;
+
+  /// Create a copy of FentonWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? age = null,
+    Object? weight = null,
+  }) {
+    return _then(_FentonWeightForAge(
+      age: null == age
+          ? _self.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as Age,
+      weight: null == weight
+          ? _self.weight
+          : weight // ignore: cast_nullable_to_non_nullable
+              as Mass,
+    ));
+  }
+
+  /// Create a copy of FentonWeightForAge
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AgeCopyWith<$Res> get age {
+    return $AgeCopyWith<$Res>(_self.age, (value) {
+      return _then(_self.copyWith(age: value));
+    });
+  }
+}
+
+// dart format on
