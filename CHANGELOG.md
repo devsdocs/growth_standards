@@ -1,3 +1,7 @@
+## 4.1.3
+
+- Same as previous version, but support for `freezed` v2
+
 ## 4.1.2
 
 - Minor performance improvements

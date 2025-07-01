@@ -6,25 +6,25 @@ part of 'tools.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_MassMeasurementHistory _$MassMeasurementHistoryFromJson(
+_$MassMeasurementHistoryImpl _$$MassMeasurementHistoryImplFromJson(
         Map<String, dynamic> json) =>
-    _MassMeasurementHistory(
+    _$MassMeasurementHistoryImpl(
       Date.fromJson(json['date'] as Map<String, dynamic>),
       Mass.fromJson(json['measurement'] as Map<String, dynamic>),
       isOedema: json['isOedema'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$MassMeasurementHistoryToJson(
-        _MassMeasurementHistory instance) =>
+Map<String, dynamic> _$$MassMeasurementHistoryImplToJson(
+        _$MassMeasurementHistoryImpl instance) =>
     <String, dynamic>{
       'date': instance.date.toJson(),
       'measurement': instance.measurement.toJson(),
       'isOedema': instance.isOedema,
     };
 
-_LengthMeasurementHistory _$LengthMeasurementHistoryFromJson(
+_$LengthMeasurementHistoryImpl _$$LengthMeasurementHistoryImplFromJson(
         Map<String, dynamic> json) =>
-    _LengthMeasurementHistory(
+    _$LengthMeasurementHistoryImpl(
       Date.fromJson(json['date'] as Map<String, dynamic>),
       Length.fromJson(json['measurement'] as Map<String, dynamic>),
       measurementPosition: $enumDecodeNullable(
@@ -33,8 +33,8 @@ _LengthMeasurementHistory _$LengthMeasurementHistoryFromJson(
           LengthHeightMeasurementPosition.recumbent,
     );
 
-Map<String, dynamic> _$LengthMeasurementHistoryToJson(
-        _LengthMeasurementHistory instance) =>
+Map<String, dynamic> _$$LengthMeasurementHistoryImplToJson(
+        _$LengthMeasurementHistoryImpl instance) =>
     <String, dynamic>{
       'date': instance.date.toJson(),
       'measurement': instance.measurement.toJson(),
