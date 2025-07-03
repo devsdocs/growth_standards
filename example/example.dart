@@ -29,8 +29,8 @@ void main() {
   print(Date.fromJson(birthDay.toJson()));
   print(Age.fromJson(age.toJson()));
 
-  print(calcLengthForAgeStanding.zScore(Precision.two));
-  print(calcLengthForAgeStanding.percentile(Precision.two));
+  print(calcLengthForAgeStanding.zScore());
+  print(calcLengthForAgeStanding.percentile());
   print(calcLengthForAgeStanding.toJson());
   print(
     gs.fromJson.lengthForAge(calcLengthForAgeStanding.toJson()),
@@ -39,8 +39,8 @@ void main() {
   final calcLengthForAgeRecumbent = calcLengthForAgeStanding.copyWith(
     measure: LengthHeightMeasurementPosition.recumbent,
   );
-  print(calcLengthForAgeRecumbent.zScore(Precision.two));
-  print(calcLengthForAgeRecumbent.percentile(Precision.two));
+  print(calcLengthForAgeRecumbent.zScore());
+  print(calcLengthForAgeRecumbent.percentile());
   print(calcLengthForAgeRecumbent.toJson());
 
   final calcWeightForAge = gs.weightForAge(
@@ -49,8 +49,8 @@ void main() {
     sex: sex,
   );
 
-  print(calcWeightForAge.zScore(Precision.two));
-  print(calcWeightForAge.percentile(Precision.two));
+  print(calcWeightForAge.zScore());
+  print(calcWeightForAge.percentile());
   print(calcWeightForAge.toJson());
 
   final calcWeightForLength = gs.weightForLength(
@@ -60,8 +60,8 @@ void main() {
     age: age,
     measure: LengthHeightMeasurementPosition.recumbent,
   );
-  print(calcWeightForLength.zScore(Precision.two));
-  print(calcWeightForLength.percentile(Precision.two));
+  print(calcWeightForLength.zScore());
+  print(calcWeightForLength.percentile());
   print(calcWeightForLength.toJson());
 
   final calcBMIForAge = gs.bodyMassIndexForAge(
@@ -75,7 +75,7 @@ void main() {
     sex: sex,
   );
 
-  print(calcBMIForAge.zScore(Precision.two));
-  print(calcBMIForAge.percentile(Precision.two));
+  print(calcBMIForAge.zScore());
+  print(calcBMIForAge.percentile());
   print(calcBMIForAge.toJson());
 }

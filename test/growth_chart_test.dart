@@ -394,9 +394,9 @@ void main() {
       //! Test observation date
 
       expect(
-        male.zScore(Precision.two),
+        male.zScore(),
         equals(
-          male.copyWith(age: Age(observationDate)).zScore(Precision.two),
+          male.copyWith(age: Age(observationDate)).zScore(),
         ),
       );
 
@@ -413,7 +413,7 @@ void main() {
               measurementResult: const Length$Centimeter(11.5),
               sex: Sex.male,
             )
-            .zScore(Precision.two),
+            .zScore(),
         -4.11,
       );
       expect(
@@ -423,7 +423,7 @@ void main() {
               measurementResult: const Length$Centimeter(17.4),
               sex: Sex.male,
             )
-            .zScore(Precision.two),
+            .zScore(),
         1.57,
       );
     });
@@ -439,7 +439,7 @@ void main() {
         sex: Sex.male,
       );
       expect(
-        male.zScore(Precision.two),
+        male.zScore(),
         3.4,
       );
 
@@ -453,7 +453,7 @@ void main() {
               ),
               oedemaExist: true,
             )
-            .zScore(Precision.two)
+            .zScore()
             .isNaN,
         true,
       );
@@ -467,7 +467,7 @@ void main() {
                 age: Age(observationDate),
               ),
             )
-            .zScore(Precision.two),
+            .zScore(),
         3.39,
       );
       expect(
@@ -480,7 +480,7 @@ void main() {
                 age: Age.byMonthsAgo(28),
               ),
             )
-            .zScore(Precision.two),
+            .zScore(),
         -3.75,
       );
       expect(
@@ -493,7 +493,7 @@ void main() {
                 age: Age.byMonthsAgo(52),
               ),
             )
-            .zScore(Precision.two),
+            .zScore(),
         anyOf(2.36, 2.37),
       );
     });
@@ -515,7 +515,7 @@ void main() {
         sex: Sex.female,
         pastMeasurement: [msr1, msr2],
       );
-      final result = measurement.zScorePercentileMap(Precision.two);
+      final result = measurement.zScorePercentileMap();
       expect(result.containsKey(VelocityIncrement.$3), true);
       expect(
         result[VelocityIncrement.$3]?.containsKey((high: 12, low: 9)),
@@ -540,7 +540,7 @@ void main() {
         sex: Sex.female,
         pastMeasurement: [msr1, msr2],
       );
-      final result = measurement.zScorePercentileMap(Precision.two);
+      final result = measurement.zScorePercentileMap();
       expect(result.containsKey(VelocityIncrement.$3), true);
       expect(
         result[VelocityIncrement.$3]?.containsKey((high: 18, low: 15)),
@@ -565,7 +565,7 @@ void main() {
         sex: Sex.female,
         pastMeasurement: [msr1, msr2],
       );
-      final result = measurement.zScorePercentileMap(Precision.two);
+      final result = measurement.zScorePercentileMap();
       expect(result.containsKey(VelocityIncrement.$3), true);
       expect(
         result[VelocityIncrement.$3]?.containsKey((high: 6, low: 3)),
@@ -591,7 +591,7 @@ void main() {
         sex: Sex.male,
         pastMeasurement: [msr1, msr2],
       );
-      final result = measurement.zScorePercentileMap(Precision.two);
+      final result = measurement.zScorePercentileMap();
       expect(result.containsKey(VelocityIncrement.$2), true);
       expect(
         result[VelocityIncrement.$2]?.containsKey((high: 6, low: 4)),
@@ -601,7 +601,7 @@ void main() {
 
       final fromJson = whoGS.fromJson
           .weightVelocityForAge(measurement.toJson())
-          .zScorePercentileMap(Precision.two);
+          .zScorePercentileMap();
 
       expect(fromJson.containsKey(VelocityIncrement.$2), true);
       expect(
@@ -627,7 +627,7 @@ void main() {
         sex: Sex.male,
         pastMeasurement: [msr1, msr2],
       );
-      final result = measurement.zScorePercentileMap(Precision.two);
+      final result = measurement.zScorePercentileMap();
       expect(result.containsKey(VelocityIncrement.$2), true);
       expect(
         result[VelocityIncrement.$2]?.containsKey((high: 18, low: 16)),
@@ -652,7 +652,7 @@ void main() {
         sex: Sex.male,
         pastMeasurement: [msr1, msr2],
       );
-      final result = measurement.zScorePercentileMap(Precision.two);
+      final result = measurement.zScorePercentileMap();
       expect(result.containsKey(VelocityIncrement.$2), true);
       expect(
         result[VelocityIncrement.$2]?.containsKey((high: 13, low: 11)),
@@ -673,7 +673,7 @@ void main() {
         bodyMassIndexMeasurement: bodyMassIndexMeasurement,
       );
 
-      expect(calc.zScore(Precision.two), 2.83);
+      expect(calc.zScore(), 2.83);
       expect(calc.percentile(Precision.four), 99.7683);
     });
     test('BMI 2', () {
