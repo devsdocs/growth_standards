@@ -108,7 +108,7 @@ sealed class WHOGrowthStandardsWeightVelocityForAge extends VelocityBasedResult
 
   @override
   Map<VelocityIncrement, Map<VelocityMonths, ZScorePercentile>>
-      zScorePercentileMap([Precision precision = Precision.ten]) {
+      zScorePercentileMap([Precision precision = Precision.two]) {
     final joinMap = contextData._data[sex]!.map((k1, v1) {
       final alt = _incrementalData[k1];
       if (alt == null || alt.isEmpty) return MapEntry(k1, null);

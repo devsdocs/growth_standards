@@ -105,13 +105,13 @@ sealed class CDCBodyMassIndexForAge extends AgeBasedResult
 
   @override
   num zScore([
-    Precision precision = Precision.ten,
+    Precision precision = Precision.two,
   ]) =>
       _finalZScore.precision(precision);
 
   @override
   num percentile([
-    Precision precision = Precision.ten,
+    Precision precision = Precision.two,
   ]) =>
       _finalPercentile.precision(precision);
 

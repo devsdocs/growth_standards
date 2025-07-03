@@ -66,13 +66,13 @@ sealed class WHOGrowthStandardsWeightForAge extends AgeBasedResult
 
   @override
   num zScore([
-    Precision precision = Precision.ten,
+    Precision precision = Precision.two,
   ]) =>
       oedemaExist ? double.nan : _zScore.precision(precision);
 
   @override
   num percentile([
-    Precision precision = Precision.ten,
+    Precision precision = Precision.two,
   ]) =>
       oedemaExist ? double.nan : (pnorm(_zScore) * 100).precision(precision);
 

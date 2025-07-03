@@ -81,13 +81,13 @@ sealed class IntergrowthNewbornBirthLengthForAge extends AgeBasedResult
 
   @override
   num zScore([
-    Precision precision = Precision.ten,
+    Precision precision = Precision.two,
   ]) =>
       _zScore.precision(precision);
 
   @override
   num percentile([
-    Precision precision = Precision.ten,
+    Precision precision = Precision.two,
   ]) =>
       (pnorm(_zScore) * 100).precision(precision);
 
