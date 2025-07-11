@@ -1,3 +1,7 @@
+## 4.1.5
+
+- Same as previous version, but support for `freezed` v2
+
 ## 4.1.4
 
 - Set default decimal `Precision` to `Precision.two`

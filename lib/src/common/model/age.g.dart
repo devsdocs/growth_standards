@@ -6,25 +6,26 @@ part of 'age.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_Age _$AgeFromJson(Map<String, dynamic> json) => _Age(
+_$AgeImpl _$$AgeImplFromJson(Map<String, dynamic> json) => _$AgeImpl(
       Date.fromJson(json['dateOfBirth'] as Map<String, dynamic>),
       observedDate: json['observedDate'] == null
           ? null
           : Date.fromJson(json['observedDate'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$AgeToJson(_Age instance) => <String, dynamic>{
+Map<String, dynamic> _$$AgeImplToJson(_$AgeImpl instance) => <String, dynamic>{
       'dateOfBirth': instance.dateOfBirth.toJson(),
       'observedDate': instance.observedDate?.toJson(),
     };
 
-_Date _$DateFromJson(Map<String, dynamic> json) => _Date(
+_$DateImpl _$$DateImplFromJson(Map<String, dynamic> json) => _$DateImpl(
       year: (json['year'] as num).toInt(),
       month: $enumDecode(_$MonthsEnumMap, json['month']),
       date: (json['date'] as num).toInt(),
     );
 
-Map<String, dynamic> _$DateToJson(_Date instance) => <String, dynamic>{
+Map<String, dynamic> _$$DateImplToJson(_$DateImpl instance) =>
+    <String, dynamic>{
       'year': instance.year,
       'month': _$MonthsEnumMap[instance.month]!,
       'date': instance.date,
