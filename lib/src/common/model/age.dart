@@ -12,6 +12,8 @@ Months _monthFromNumber(int number) => _reverseMonthsEnum[number]!;
 final _reverseMonthsEnum = _$MonthsEnumMap.map((k, v) => MapEntry(v, k));
 
 @freezed
+
+/// Add [dateOfBirth] and optional [observedDate]
 sealed class Age with _$Age {
   @Assert(
     'observedDate == null || (observedDate.isSameOrAfter(dateOfBirth) && observedDate.isSameOrBefore(Date.today()))',
@@ -21,7 +23,8 @@ sealed class Age with _$Age {
     'dateOfBirth.isSameOrBefore(Date.today())',
     'Date of birth cannot be in the future',
   )
-  factory Age(Date dateOfBirth, {Date? observedDate}) = _Age;
+  factory Age(Date dateOfBirth,
+      {Date? observedDate, @Default(false) bool countObservationDate}) = _Age;
 
   const Age._();
 
@@ -47,7 +50,10 @@ sealed class Age with _$Age {
   factory Age.fromJson(Map<String, dynamic> json) => _$AgeFromJson(json);
 
   /// Returns the observed date if provided, otherwise returns today's date
-  Date getObservedDate() => observedDate ?? Date.today();
+  Date getObservedDate() {
+    final date = observedDate ?? Date.today();
+    return countObservationDate ? date : date.subtractDays(1);
+  }
 
   bool get isValid => dateOfBirth.isSameOrBefore(getObservedDate());
 

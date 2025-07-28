@@ -16,6 +16,7 @@ T _$identity<T>(T value) => value;
 mixin _$Age {
   Date get dateOfBirth;
   Date? get observedDate;
+  bool get countObservationDate;
 
   /// Create a copy of Age
   /// with the given fields replaced by the non-null parameter values.
@@ -35,16 +36,19 @@ mixin _$Age {
             (identical(other.dateOfBirth, dateOfBirth) ||
                 other.dateOfBirth == dateOfBirth) &&
             (identical(other.observedDate, observedDate) ||
-                other.observedDate == observedDate));
+                other.observedDate == observedDate) &&
+            (identical(other.countObservationDate, countObservationDate) ||
+                other.countObservationDate == countObservationDate));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, dateOfBirth, observedDate);
+  int get hashCode =>
+      Object.hash(runtimeType, dateOfBirth, observedDate, countObservationDate);
 
   @override
   String toString() {
-    return 'Age(dateOfBirth: $dateOfBirth, observedDate: $observedDate)';
+    return 'Age(dateOfBirth: $dateOfBirth, observedDate: $observedDate, countObservationDate: $countObservationDate)';
   }
 }
 
@@ -52,7 +56,7 @@ mixin _$Age {
 abstract mixin class $AgeCopyWith<$Res> {
   factory $AgeCopyWith(Age value, $Res Function(Age) _then) = _$AgeCopyWithImpl;
   @useResult
-  $Res call({Date dateOfBirth, Date? observedDate});
+  $Res call({Date dateOfBirth, Date? observedDate, bool countObservationDate});
 
   $DateCopyWith<$Res> get dateOfBirth;
   $DateCopyWith<$Res>? get observedDate;
@@ -72,6 +76,7 @@ class _$AgeCopyWithImpl<$Res> implements $AgeCopyWith<$Res> {
   $Res call({
     Object? dateOfBirth = null,
     Object? observedDate = freezed,
+    Object? countObservationDate = null,
   }) {
     return _then(_self.copyWith(
       dateOfBirth: null == dateOfBirth
@@ -82,6 +87,10 @@ class _$AgeCopyWithImpl<$Res> implements $AgeCopyWith<$Res> {
           ? _self.observedDate
           : observedDate // ignore: cast_nullable_to_non_nullable
               as Date?,
+      countObservationDate: null == countObservationDate
+          ? _self.countObservationDate
+          : countObservationDate // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 
@@ -201,13 +210,16 @@ extension AgePatterns on Age {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(Date dateOfBirth, Date? observedDate)? $default, {
+    TResult Function(
+            Date dateOfBirth, Date? observedDate, bool countObservationDate)?
+        $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _Age() when $default != null:
-        return $default(_that.dateOfBirth, _that.observedDate);
+        return $default(
+            _that.dateOfBirth, _that.observedDate, _that.countObservationDate);
       case _:
         return orElse();
     }
@@ -228,12 +240,15 @@ extension AgePatterns on Age {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(Date dateOfBirth, Date? observedDate) $default,
+    TResult Function(
+            Date dateOfBirth, Date? observedDate, bool countObservationDate)
+        $default,
   ) {
     final _that = this;
     switch (_that) {
       case _Age():
-        return $default(_that.dateOfBirth, _that.observedDate);
+        return $default(
+            _that.dateOfBirth, _that.observedDate, _that.countObservationDate);
     }
   }
 
@@ -251,12 +266,15 @@ extension AgePatterns on Age {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(Date dateOfBirth, Date? observedDate)? $default,
+    TResult? Function(
+            Date dateOfBirth, Date? observedDate, bool countObservationDate)?
+        $default,
   ) {
     final _that = this;
     switch (_that) {
       case _Age() when $default != null:
-        return $default(_that.dateOfBirth, _that.observedDate);
+        return $default(
+            _that.dateOfBirth, _that.observedDate, _that.countObservationDate);
       case _:
         return null;
     }
@@ -266,7 +284,7 @@ extension AgePatterns on Age {
 /// @nodoc
 @JsonSerializable()
 class _Age extends Age {
-  _Age(this.dateOfBirth, {this.observedDate})
+  _Age(this.dateOfBirth, {this.observedDate, this.countObservationDate = false})
       : assert(
             observedDate == null ||
                 (observedDate.isSameOrAfter(dateOfBirth) &&
@@ -281,6 +299,9 @@ class _Age extends Age {
   final Date dateOfBirth;
   @override
   final Date? observedDate;
+  @override
+  @JsonKey()
+  final bool countObservationDate;
 
   /// Create a copy of Age
   /// with the given fields replaced by the non-null parameter values.
@@ -305,16 +326,19 @@ class _Age extends Age {
             (identical(other.dateOfBirth, dateOfBirth) ||
                 other.dateOfBirth == dateOfBirth) &&
             (identical(other.observedDate, observedDate) ||
-                other.observedDate == observedDate));
+                other.observedDate == observedDate) &&
+            (identical(other.countObservationDate, countObservationDate) ||
+                other.countObservationDate == countObservationDate));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, dateOfBirth, observedDate);
+  int get hashCode =>
+      Object.hash(runtimeType, dateOfBirth, observedDate, countObservationDate);
 
   @override
   String toString() {
-    return 'Age(dateOfBirth: $dateOfBirth, observedDate: $observedDate)';
+    return 'Age(dateOfBirth: $dateOfBirth, observedDate: $observedDate, countObservationDate: $countObservationDate)';
   }
 }
 
@@ -324,7 +348,7 @@ abstract mixin class _$AgeCopyWith<$Res> implements $AgeCopyWith<$Res> {
       __$AgeCopyWithImpl;
   @override
   @useResult
-  $Res call({Date dateOfBirth, Date? observedDate});
+  $Res call({Date dateOfBirth, Date? observedDate, bool countObservationDate});
 
   @override
   $DateCopyWith<$Res> get dateOfBirth;
@@ -346,6 +370,7 @@ class __$AgeCopyWithImpl<$Res> implements _$AgeCopyWith<$Res> {
   $Res call({
     Object? dateOfBirth = null,
     Object? observedDate = freezed,
+    Object? countObservationDate = null,
   }) {
     return _then(_Age(
       null == dateOfBirth
@@ -356,6 +381,10 @@ class __$AgeCopyWithImpl<$Res> implements _$AgeCopyWith<$Res> {
           ? _self.observedDate
           : observedDate // ignore: cast_nullable_to_non_nullable
               as Date?,
+      countObservationDate: null == countObservationDate
+          ? _self.countObservationDate
+          : countObservationDate // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 
