@@ -1,3 +1,6 @@
+## 4.2.0
+- Add `countObservationDate` to `Age` with default value to `false`
+
 ## 4.1.5
 
 - Same as previous version, but support for `freezed` v2
