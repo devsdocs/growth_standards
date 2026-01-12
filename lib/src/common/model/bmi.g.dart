@@ -8,8 +8,9 @@ part of 'bmi.dart';
 
 _BodyMassIndex _$BodyMassIndexFromJson(Map<String, dynamic> json) =>
     _BodyMassIndex(
-      lengthHeight:
-          Length.fromJson(json['lengthHeight'] as Map<String, dynamic>),
+      lengthHeight: Length.fromJson(
+        json['lengthHeight'] as Map<String, dynamic>,
+      ),
       weight: Mass.fromJson(json['weight'] as Map<String, dynamic>),
     );
 

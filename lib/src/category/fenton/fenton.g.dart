@@ -7,27 +7,31 @@ part of 'fenton.dart';
 // **************************************************************************
 
 _FentonHeadCircumferenceForAge _$FentonHeadCircumferenceForAgeFromJson(
-        Map<String, dynamic> json) =>
-    _FentonHeadCircumferenceForAge(
-      age: Age.fromJson(json['age'] as Map<String, dynamic>),
-      measurementResult:
-          Length.fromJson(json['measurementResult'] as Map<String, dynamic>),
-    );
+  Map<String, dynamic> json,
+) => _FentonHeadCircumferenceForAge(
+  age: Age.fromJson(json['age'] as Map<String, dynamic>),
+  measurementResult: Length.fromJson(
+    json['measurementResult'] as Map<String, dynamic>,
+  ),
+);
 
 Map<String, dynamic> _$FentonHeadCircumferenceForAgeToJson(
-        _FentonHeadCircumferenceForAge instance) =>
-    <String, dynamic>{
-      'age': instance.age.toJson(),
-      'measurementResult': instance.measurementResult.toJson(),
-    };
+  _FentonHeadCircumferenceForAge instance,
+) => <String, dynamic>{
+  'age': instance.age.toJson(),
+  'measurementResult': instance.measurementResult.toJson(),
+};
 
 _FentonLengthForAge _$FentonLengthForAgeFromJson(Map<String, dynamic> json) =>
     _FentonLengthForAge(
       age: Age.fromJson(json['age'] as Map<String, dynamic>),
-      lengthHeight:
-          Length.fromJson(json['lengthHeight'] as Map<String, dynamic>),
+      lengthHeight: Length.fromJson(
+        json['lengthHeight'] as Map<String, dynamic>,
+      ),
       measure: $enumDecode(
-          _$LengthHeightMeasurementPositionEnumMap, json['measure']),
+        _$LengthHeightMeasurementPositionEnumMap,
+        json['measure'],
+      ),
     );
 
 Map<String, dynamic> _$FentonLengthForAgeToJson(_FentonLengthForAge instance) =>

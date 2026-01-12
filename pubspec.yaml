@@ -4,7 +4,7 @@ version: 4.2.0
 repository: https://github.com/devsdocs/growth_standards
 
 environment:
-  sdk: ^3.5.4
+  sdk: ^3.8.0
 
 dependencies:
   clock: ^1.1.2

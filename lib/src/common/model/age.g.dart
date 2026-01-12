@@ -7,30 +7,30 @@ part of 'age.dart';
 // **************************************************************************
 
 _Age _$AgeFromJson(Map<String, dynamic> json) => _Age(
-      Date.fromJson(json['dateOfBirth'] as Map<String, dynamic>),
-      observedDate: json['observedDate'] == null
-          ? null
-          : Date.fromJson(json['observedDate'] as Map<String, dynamic>),
-      countObservationDate: json['countObservationDate'] as bool? ?? false,
-    );
+  Date.fromJson(json['dateOfBirth'] as Map<String, dynamic>),
+  observedDate: json['observedDate'] == null
+      ? null
+      : Date.fromJson(json['observedDate'] as Map<String, dynamic>),
+  countObservationDate: json['countObservationDate'] as bool? ?? false,
+);
 
 Map<String, dynamic> _$AgeToJson(_Age instance) => <String, dynamic>{
-      'dateOfBirth': instance.dateOfBirth.toJson(),
-      'observedDate': instance.observedDate?.toJson(),
-      'countObservationDate': instance.countObservationDate,
-    };
+  'dateOfBirth': instance.dateOfBirth.toJson(),
+  'observedDate': instance.observedDate?.toJson(),
+  'countObservationDate': instance.countObservationDate,
+};
 
 _Date _$DateFromJson(Map<String, dynamic> json) => _Date(
-      year: (json['year'] as num).toInt(),
-      month: $enumDecode(_$MonthsEnumMap, json['month']),
-      date: (json['date'] as num).toInt(),
-    );
+  year: (json['year'] as num).toInt(),
+  month: $enumDecode(_$MonthsEnumMap, json['month']),
+  date: (json['date'] as num).toInt(),
+);
 
 Map<String, dynamic> _$DateToJson(_Date instance) => <String, dynamic>{
-      'year': instance.year,
-      'month': _$MonthsEnumMap[instance.month]!,
-      'date': instance.date,
-    };
+  'year': instance.year,
+  'month': _$MonthsEnumMap[instance.month]!,
+  'date': instance.date,
+};
 
 const _$MonthsEnumMap = {
   Months.january: 1,
