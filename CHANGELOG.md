@@ -1,3 +1,6 @@
+## 4.2.1
+- Dependencies bump
+
 ## 4.2.0
 - Add `countObservationDate` to `Age` with default value to `false`
 
