@@ -172,8 +172,9 @@ void main() async {
               continue;
             }
 
-            String fileName =
-                downloadUrl.split('/').last.toString().replaceAll('-', '_');
+            String fileName = downloadUrl.split('/').last.toString()
+                // .replaceAll('-', '_')
+                ;
             if (fileName.contains('table_0.pdf')) {
               fileName = fileName.replaceAll('table_0.pdf', 'table.pdf');
             }
