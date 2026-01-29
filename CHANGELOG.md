@@ -1,3 +1,6 @@
+## 4.3.1
+- Add latest Symphisis-Fundal Height score update
+
 ## 4.3.0
 - Fix intergrowth source data error
 
