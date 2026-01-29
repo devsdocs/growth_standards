@@ -10,7 +10,7 @@ class IntergrowthSymphysisFundalHeightForAgeData extends AgeBasedData {
 
   static Map<Sex, Map<num, _IntergrowthSymphysisFundalHeightForAgeLMS>>
   _parse() {
-    final map = _grow_sfh_new.toJsonObjectAsMap.map((k1, v1) {
+    final map = _sfhcore_16to41.toJsonObjectAsMap.map((k1, v1) {
       v1 as Map<String, dynamic>;
       final lms = LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
       return MapEntry(

@@ -132,6 +132,8 @@ void writeDart(Intergrowth model, Item item, FileNameInfo fileNameInfo,
   final name = fileNameInfo.baseName
       .replaceAll('-', '_')
       .replaceAll('_table', '')
+      .replaceAll('tables_', '')
+      .replaceAll('table_', '')
       .replaceAll('_zs', '')
       .replaceAll('_ct', '')
       .replaceAll('___', '_')
