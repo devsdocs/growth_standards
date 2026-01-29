@@ -285,6 +285,13 @@ List<List<String>> cleanData(List<List<String>> data) {
             cleanedRow.add(weeksDays);
             continue;
           }
+        } else if (cell.contains('*')) {
+          final cleanedCell = cell.replaceAll('*', '').trim();
+          final parsedStarValue = num.tryParse(cleanedCell);
+          if (parsedStarValue != null) {
+            cleanedRow.add(parsedStarValue.toString());
+            continue;
+          }
         } else {
           cleanedRow.add(parsedValue.toString());
           continue;
