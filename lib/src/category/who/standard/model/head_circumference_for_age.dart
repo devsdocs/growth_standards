@@ -4,26 +4,28 @@ class WHOGrowthStandardsHeadCircumferenceForAgeData extends AgeBasedData {
   factory WHOGrowthStandardsHeadCircumferenceForAgeData() => _singleton;
   WHOGrowthStandardsHeadCircumferenceForAgeData._(this._data);
 
-  static final _singleton =
-      WHOGrowthStandardsHeadCircumferenceForAgeData._(_parse());
+  static final _singleton = WHOGrowthStandardsHeadCircumferenceForAgeData._(
+    _parse(),
+  );
 
   static Map<Sex, Map<int, _WHOGrowthStandardsHeadCircumferenceForAgeLMS>>
-      _parse() => _hcanthro.toJsonObjectAsMap.map(
-            (k1, v1) => MapEntry(
-              k1 == '1' ? Sex.male : Sex.female,
-              (v1 as Map<String, dynamic>).map((k2, v2) {
-                v2 as Map<String, dynamic>;
-                final lms = LMS(
-                    l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
-                return MapEntry(
-                  int.parse(k2),
-                  _WHOGrowthStandardsHeadCircumferenceForAgeLMS(
-                    lms: lms,
-                  ),
-                );
-              }),
-            ),
-          );
+  _parse() => _hcanthro.toJsonObjectAsMap.map(
+    (k1, v1) => MapEntry(
+      k1 == '1' ? Sex.male : Sex.female,
+      (v1 as Map<String, dynamic>).map((k2, v2) {
+        v2 as Map<String, dynamic>;
+        final lms = LMS(
+          l: v2['l'] as num,
+          m: v2['m'] as num,
+          s: v2['s'] as num,
+        );
+        return MapEntry(
+          int.parse(k2),
+          _WHOGrowthStandardsHeadCircumferenceForAgeLMS(lms: lms),
+        );
+      }),
+    ),
+  );
 
   final Map<Sex, Map<int, _WHOGrowthStandardsHeadCircumferenceForAgeLMS>> _data;
   @override
@@ -50,34 +52,28 @@ sealed class WHOGrowthStandardsHeadCircumferenceForAge extends AgeBasedResult
 
   factory WHOGrowthStandardsHeadCircumferenceForAge.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$WHOGrowthStandardsHeadCircumferenceForAgeFromJson(json);
+  ) => _$WHOGrowthStandardsHeadCircumferenceForAgeFromJson(json);
 
   @override
   WHOGrowthStandardsHeadCircumferenceForAgeData get contextData =>
       WHOGrowthStandardsHeadCircumferenceForAgeData();
 
-  _WHOGrowthStandardsHeadCircumferenceForAgeLMS get _ageData => contextData
-      ._data[sex]![ageAtObservationDate.ageInTotalByUnit(contextData.unit)]!;
+  _WHOGrowthStandardsHeadCircumferenceForAgeLMS get _ageData =>
+      contextData._data[sex]![ageAtObservationDate.ageInTotalByUnit(
+        contextData.unit,
+      )]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 
   @override
-  Age get ageAtObservationDate => checkAge(
-        age,
-        contextData: contextData,
-      );
+  Age get ageAtObservationDate => checkAge(age, contextData: contextData);
 
   @override
-  num zScore([
-    Precision precision = Precision.two,
-  ]) =>
+  num zScore([Precision precision = Precision.two]) =>
       _zScore.precision(precision);
 
   @override
-  num percentile([
-    Precision precision = Precision.two,
-  ]) =>
+  num percentile([Precision precision = Precision.two]) =>
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
@@ -89,9 +85,7 @@ sealed class WHOGrowthStandardsHeadCircumferenceForAge extends AgeBasedResult
 }
 
 class _WHOGrowthStandardsHeadCircumferenceForAgeLMS extends LMSContext {
-  _WHOGrowthStandardsHeadCircumferenceForAgeLMS({
-    required this.lms,
-  });
+  _WHOGrowthStandardsHeadCircumferenceForAgeLMS({required this.lms});
   @override
   final LMS lms;
 

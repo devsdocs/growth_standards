@@ -4,28 +4,21 @@ class IntergrowthFetalCrownRumpLengthForAgeData extends AgeBasedData {
   factory IntergrowthFetalCrownRumpLengthForAgeData() => _singleton;
   IntergrowthFetalCrownRumpLengthForAgeData._(this._data);
 
-  static final _singleton =
-      IntergrowthFetalCrownRumpLengthForAgeData._(_parse());
+  static final _singleton = IntergrowthFetalCrownRumpLengthForAgeData._(
+    _parse(),
+  );
 
   static Map<Sex, Map<num, _IntergrowthFetalCrownRumpLengthForAgeLMS>>
-      _parse() {
-    final map = _grow_early_preg_charts_size.toJsonObjectAsMap.map(
-      (k1, v1) {
-        v1 as Map<String, dynamic>;
-        final lms =
-            LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
-        return MapEntry(
-          int.parse(k1),
-          _IntergrowthFetalCrownRumpLengthForAgeLMS(
-            lms: lms,
-          ),
-        );
-      },
-    );
-    return {
-      Sex.male: map,
-      Sex.female: map,
-    };
+  _parse() {
+    final map = _grow_early_preg_charts_size.toJsonObjectAsMap.map((k1, v1) {
+      v1 as Map<String, dynamic>;
+      final lms = LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
+      return MapEntry(
+        int.parse(k1),
+        _IntergrowthFetalCrownRumpLengthForAgeLMS(lms: lms),
+      );
+    });
+    return {Sex.male: map, Sex.female: map};
   }
 
   final Map<Sex, Map<num, _IntergrowthFetalCrownRumpLengthForAgeLMS>> _data;
@@ -52,35 +45,29 @@ sealed class IntergrowthFetalCrownRumpLengthForAge extends AgeBasedResult
 
   factory IntergrowthFetalCrownRumpLengthForAge.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$IntergrowthFetalCrownRumpLengthForAgeFromJson(json);
+  ) => _$IntergrowthFetalCrownRumpLengthForAgeFromJson(json);
 
   @override
   IntergrowthFetalCrownRumpLengthForAgeData get contextData =>
       IntergrowthFetalCrownRumpLengthForAgeData();
 
-  _IntergrowthFetalCrownRumpLengthForAgeLMS get _ageData => contextData._data
-      .values.first[ageAtObservationDate.ageInTotalByUnit(contextData.unit)]!;
+  _IntergrowthFetalCrownRumpLengthForAgeLMS get _ageData =>
+      contextData._data.values.first[ageAtObservationDate.ageInTotalByUnit(
+        contextData.unit,
+      )]!;
 
   @override
-  Age get ageAtObservationDate => checkAge(
-        age,
-        contextData: contextData,
-      );
+  Age get ageAtObservationDate => checkAge(age, contextData: contextData);
 
   num get _zScore =>
       _ageData.lms.adjustedZScore(measurementResultInDefaultUnit);
 
   @override
-  num zScore([
-    Precision precision = Precision.two,
-  ]) =>
+  num zScore([Precision precision = Precision.two]) =>
       _zScore.precision(precision);
 
   @override
-  num percentile([
-    Precision precision = Precision.two,
-  ]) =>
+  num percentile([Precision precision = Precision.two]) =>
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
@@ -91,9 +78,7 @@ sealed class IntergrowthFetalCrownRumpLengthForAge extends AgeBasedResult
 }
 
 class _IntergrowthFetalCrownRumpLengthForAgeLMS extends LMSContext {
-  _IntergrowthFetalCrownRumpLengthForAgeLMS({
-    required this.lms,
-  });
+  _IntergrowthFetalCrownRumpLengthForAgeLMS({required this.lms});
   @override
   final LMS lms;
 

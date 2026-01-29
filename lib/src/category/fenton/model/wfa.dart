@@ -10,12 +10,7 @@ class FentonWeightForAgeData extends AgeBasedData {
     final map = fentonWfA.toJsonObjectAsMap.map((k1, v1) {
       v1 as Map<String, dynamic>;
       final lms = LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
-      return MapEntry(
-        int.parse(k1),
-        _FentonWeightForAgeLMS(
-          lms: lms,
-        ),
-      );
+      return MapEntry(int.parse(k1), _FentonWeightForAgeLMS(lms: lms));
     });
     return {Sex.male: map, Sex.female: map};
   }
@@ -34,42 +29,33 @@ class FentonWeightForAgeData extends AgeBasedData {
 @freezed
 sealed class FentonWeightForAge extends AgeBasedResult
     with _$FentonWeightForAge {
-  factory FentonWeightForAge({
-    required Age age,
-    required Mass weight,
-  }) = _FentonWeightForAge;
+  factory FentonWeightForAge({required Age age, required Mass weight}) =
+      _FentonWeightForAge;
 
   const FentonWeightForAge._();
 
-  factory FentonWeightForAge.fromJson(
-    Map<String, dynamic> json,
-  ) =>
+  factory FentonWeightForAge.fromJson(Map<String, dynamic> json) =>
       _$FentonWeightForAgeFromJson(json);
 
   @override
   FentonWeightForAgeData get contextData => FentonWeightForAgeData();
 
-  _FentonWeightForAgeLMS get _ageData => contextData._data.values
-      .first[ageAtObservationDate.ageInTotalByUnit(contextData.unit)]!;
+  _FentonWeightForAgeLMS get _ageData =>
+      contextData._data.values.first[ageAtObservationDate.ageInTotalByUnit(
+        contextData.unit,
+      )]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 
   @override
-  Age get ageAtObservationDate => checkAge(
-        age,
-        contextData: contextData,
-      );
+  Age get ageAtObservationDate => checkAge(age, contextData: contextData);
 
   @override
-  num zScore([
-    Precision precision = Precision.two,
-  ]) =>
+  num zScore([Precision precision = Precision.two]) =>
       _zScore.precision(precision);
 
   @override
-  num percentile([
-    Precision precision = Precision.two,
-  ]) =>
+  num percentile([Precision precision = Precision.two]) =>
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
@@ -80,9 +66,7 @@ sealed class FentonWeightForAge extends AgeBasedResult
 }
 
 class _FentonWeightForAgeLMS extends LMSContext {
-  _FentonWeightForAgeLMS({
-    required this.lms,
-  });
+  _FentonWeightForAgeLMS({required this.lms});
   @override
   final LMS lms;
 

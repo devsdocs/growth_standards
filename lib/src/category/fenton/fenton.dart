@@ -31,8 +31,7 @@ class FentonData {
 class FentonFromJson {
   FentonHeadCircumferenceForAge headCircumferenceForAge(
     Map<String, dynamic> json,
-  ) =>
-      FentonHeadCircumferenceForAge.fromJson(json);
+  ) => FentonHeadCircumferenceForAge.fromJson(json);
 
   FentonWeightForAge weightForAge(Map<String, dynamic> json) =>
       FentonWeightForAge.fromJson(json);
@@ -51,30 +50,22 @@ class Fenton {
   FentonHeadCircumferenceForAge headCircumferenceForAge({
     required Age age,
     required Length measurementResult,
-  }) =>
-      FentonHeadCircumferenceForAge(
-        age: age,
-        measurementResult: measurementResult,
-      );
+  }) => FentonHeadCircumferenceForAge(
+    age: age,
+    measurementResult: measurementResult,
+  );
 
-  FentonWeightForAge weightForAge({
-    required Age age,
-    required Mass weight,
-  }) =>
-      FentonWeightForAge(
-        age: age,
-        weight: weight,
-      );
+  FentonWeightForAge weightForAge({required Age age, required Mass weight}) =>
+      FentonWeightForAge(age: age, weight: weight);
 
   FentonLengthForAge lengthForAge({
     required Sex sex,
     required Age age,
     required Length lengthHeight,
     required LengthHeightMeasurementPosition measure,
-  }) =>
-      FentonLengthForAge(
-        age: age,
-        lengthHeight: lengthHeight,
-        measure: measure,
-      );
+  }) => FentonLengthForAge(
+    age: age,
+    lengthHeight: lengthHeight,
+    measure: measure,
+  );
 }

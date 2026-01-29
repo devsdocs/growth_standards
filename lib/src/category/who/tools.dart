@@ -13,30 +13,30 @@ part 'tools.g.dart';
 
 class WHOGrowthStandardsBodyMassIndexMeasurementConverter
     implements
-        JsonConverter<WHOGrowthStandardsBodyMassIndexMeasurement,
-            Map<String, dynamic>> {
+        JsonConverter<
+          WHOGrowthStandardsBodyMassIndexMeasurement,
+          Map<String, dynamic>
+        > {
   const WHOGrowthStandardsBodyMassIndexMeasurementConverter();
   @override
   WHOGrowthStandardsBodyMassIndexMeasurement fromJson(
     Map<String, dynamic> json,
-  ) =>
-      WHOGrowthStandardsBodyMassIndexMeasurement(
-        json['value'] as num,
-        age: Age.fromJson(
-          json['age'] as Map<String, dynamic>,
-        ),
-      );
+  ) => WHOGrowthStandardsBodyMassIndexMeasurement(
+    json['value'] as num,
+    age: Age.fromJson(json['age'] as Map<String, dynamic>),
+  );
 
   @override
   Map<String, dynamic> toJson(
     WHOGrowthStandardsBodyMassIndexMeasurement object,
-  ) =>
-      {'value': object.value, 'age': object.age.toJson()};
+  ) => {'value': object.value, 'age': object.age.toJson()};
 }
 
 VelocityMonths parseVelocityIncrement(String source) {
   final clean = source.clean.splitSpace.first;
-  final splitC = clean.split('-').map(
+  final splitC = clean
+      .split('-')
+      .map(
         (e) => int.tryParse(e) == null
             ? int.parse(
                 e.replaceAll(RegExp('[a-zA-z]'), '').replaceAll(' ', ''),
@@ -63,8 +63,7 @@ enum VelocityIncrement {
   $2(2),
   $3(3),
   $4(4),
-  $6(6),
-  ;
+  $6(6);
 
   const VelocityIncrement(this.value);
   final int value;
@@ -90,33 +89,31 @@ class VelocityPastMeasurement<T extends Unit<T>> {
 
   final T convertTo;
 
-  Map<Date, T> get sortedByDate => Map<Date, T>.fromEntries(
-        _splayMap.entries,
-      );
+  Map<Date, T> get sortedByDate => Map<Date, T>.fromEntries(_splayMap.entries);
 
-  SplayTreeMap<Date, T> get _splayMap => SplayTreeMap<Date, T>.of(
-        unsortedDate,
-      );
+  SplayTreeMap<Date, T> get _splayMap => SplayTreeMap<Date, T>.of(unsortedDate);
 
   Map<Date, T> get unsortedDate =>
       measurementHistory.asMap().map((_, v) => MapEntry(v.date, v.measurement));
 
   Map<VelocityIncrement, Map<({Date dateBefore, Date dateAfter}), num>>
-      get incrementalData {
+  get incrementalData {
     final keys = sortedByDate.keys.toList();
     final length = keys.length;
     if (keys.isEmpty || length == 1) return {};
     final Map<VelocityIncrement, Map<({Date dateBefore, Date dateAfter}), num>>
-        result = {};
+    result = {};
 
     for (int i = 0; i < length - 1; i++) {
       for (int j = i + 1; j < length; j++) {
         final before = keys[i];
         final now = keys[j];
 
-        final ageAtDate =
-            TimeIntervalCount(before.year, before.month.number, before.date)
-                .ageAtDate(now.toDateTime());
+        final ageAtDate = TimeIntervalCount(
+          before.year,
+          before.month.number,
+          before.date,
+        ).ageAtDate(now.toDateTime());
 
         if (ageAtDate.years > 0) continue;
 
@@ -189,13 +186,15 @@ sealed class MeasurementHistory<T extends Unit<T>> {
 extension MapExt1
     on Map<VelocityIncrement, Map<VelocityMonths, ZScorePercentile>?> {
   Map<VelocityIncrement, Map<VelocityMonths, ZScorePercentile>>
-      get removeAllNull => (this..removeWhere((_, v) => v == null))
-          .map((k3, v3) => MapEntry(k3, v3!));
+  get removeAllNull => (this..removeWhere((_, v) => v == null)).map(
+    (k3, v3) => MapEntry(k3, v3!),
+  );
 }
 
 extension MapExt2 on Map<VelocityMonths, ZScorePercentile?> {
   bool get isAllValuesNull => entries.every((e) => e.value == null);
   Map<VelocityMonths, ZScorePercentile> get removeAllNull =>
-      (this..removeWhere((_, v) => v == null))
-          .map((k3, v3) => MapEntry(k3, v3!));
+      (this..removeWhere((_, v) => v == null)).map(
+        (k3, v3) => MapEntry(k3, v3!),
+      );
 }

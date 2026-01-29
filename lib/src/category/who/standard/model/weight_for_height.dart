@@ -9,21 +9,25 @@ class WHOGrowthStandardsWeightForHeightData extends LengthBasedData {
   static Map<Sex, Map<num, _WHOGrowthStandardsWeightForHeightLMS>> _parse() =>
       _wfhanthro.toJsonObjectAsMap.map(
         (k1, v1) => MapEntry(
-            k1 == '1' ? Sex.male : Sex.female,
-            (v1 as Map<String, dynamic>).map((k2, v2) {
-              v2 as Map<String, dynamic>;
-              final lms =
-                  LMS(l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
-              return MapEntry(
-                num.parse(k2),
-                _WHOGrowthStandardsWeightForHeightLMS(
-                  lms: lms,
-                  lengthOrHeight: v2['lorh'].toString().toLowerCase() == 'l'
-                      ? LengthHeightMeasurementPosition.recumbent
-                      : LengthHeightMeasurementPosition.standing,
-                ),
-              );
-            })),
+          k1 == '1' ? Sex.male : Sex.female,
+          (v1 as Map<String, dynamic>).map((k2, v2) {
+            v2 as Map<String, dynamic>;
+            final lms = LMS(
+              l: v2['l'] as num,
+              m: v2['m'] as num,
+              s: v2['s'] as num,
+            );
+            return MapEntry(
+              num.parse(k2),
+              _WHOGrowthStandardsWeightForHeightLMS(
+                lms: lms,
+                lengthOrHeight: v2['lorh'].toString().toLowerCase() == 'l'
+                    ? LengthHeightMeasurementPosition.recumbent
+                    : LengthHeightMeasurementPosition.standing,
+              ),
+            );
+          }),
+        ),
       );
   final Map<Sex, Map<num, _WHOGrowthStandardsWeightForHeightLMS>> _data;
   @override
@@ -52,15 +56,14 @@ sealed class WHOGrowthStandardsWeightForHeight extends LengthBasedResult
 
   factory WHOGrowthStandardsWeightForHeight.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$WHOGrowthStandardsWeightForHeightFromJson(json);
+  ) => _$WHOGrowthStandardsWeightForHeightFromJson(json);
 
   Length$Centimeter get _adjustedHeight => adjustedLengthHeight(
-        measure: measure,
-        age: age,
-        lengthHeight: height,
-        type: AdjustedLengthType.who,
-      );
+    measure: measure,
+    age: age,
+    lengthHeight: height,
+    type: AdjustedLengthType.who,
+  );
 
   @override
   WHOGrowthStandardsWeightForHeightData get contextData =>
@@ -79,15 +82,11 @@ sealed class WHOGrowthStandardsWeightForHeight extends LengthBasedResult
       _ageData.lms.adjustedZScore(measurementResultInDefaultUnit);
 
   @override
-  num zScore([
-    Precision precision = Precision.two,
-  ]) =>
+  num zScore([Precision precision = Precision.two]) =>
       oedemaExist ? double.nan : _zScore.precision(precision);
 
   @override
-  num percentile([
-    Precision precision = Precision.two,
-  ]) =>
+  num percentile([Precision precision = Precision.two]) =>
       oedemaExist ? double.nan : (pnorm(_zScore) * 100).precision(precision);
 
   @override

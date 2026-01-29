@@ -7,10 +7,7 @@ import 'package:growth_standards/src/common/types.dart';
 import 'package:super_measurement/super_measurement.dart';
 
 /// SD calculation using [LMS]
-num standardDeviationCalculation(
-  num sd, {
-  required LMS lms,
-}) =>
+num standardDeviationCalculation(num sd, {required LMS lms}) =>
     lms.m * pow(1 + lms.l * lms.s * sd, 1 / lms.l);
 
 /// COMPUTATION OF CENTILES AND Z-SCORES FOR
@@ -20,10 +17,7 @@ num standardDeviationCalculation(
 /// LENGTH-FOR-AGE,
 ///
 /// HEIGHT-FOR-AGE,
-num zScoreCalculation(
-  num y, {
-  required LMS lms,
-}) =>
+num zScoreCalculation(num y, {required LMS lms}) =>
     (pow(y / lms.m, lms.l) - 1) / (lms.s * lms.l);
 
 /// COMPUTATION OF CENTILES AND Z-SCORES FOR
@@ -41,10 +35,7 @@ num zScoreCalculation(
 /// TRICEPS SKINFOLD-FOR-AGE,
 ///
 /// SUBSCAPULAR SKINFOLD-FOR-AGE
-num adjustedZScoreCalculation(
-  num y, {
-  required LMS lms,
-}) {
+num adjustedZScoreCalculation(num y, {required LMS lms}) {
   // print('y: $y, l:$l, m:$m, s:$s');
 
   final num zScore = lms.zScore(y);

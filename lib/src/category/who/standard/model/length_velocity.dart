@@ -4,47 +4,57 @@ class WHOGrowthStandardsLengthVelocityForAgeData extends VelocityBaseData {
   factory WHOGrowthStandardsLengthVelocityForAgeData() => _singleton;
   WHOGrowthStandardsLengthVelocityForAgeData._(this._data);
 
-  static final _singleton =
-      WHOGrowthStandardsLengthVelocityForAgeData._(_parse());
+  static final _singleton = WHOGrowthStandardsLengthVelocityForAgeData._(
+    _parse(),
+  );
 
   static Map<
-          Sex,
-          Map<VelocityIncrement,
-              Map<VelocityMonths, WHOGrowthStandardsLengthVelocityForAgeLMS>>>
-      _parse() => _lv.toJsonObjectAsMap.map(
-            (k1, v1) => MapEntry(
-                k1 == '1' ? Sex.male : Sex.female,
-                (v1 as Map<String, dynamic>).map(
-                  (k2, v2) => MapEntry(
-                      parseIncrement(k2),
-                      (v2 as Map<String, dynamic>).map((k3, v3) {
-                        v3 as Map<String, dynamic>;
-                        final lms = LMS(
-                          l: v3['l'] as num,
-                          m: v3['m'] as num,
-                          s: v3['s'] as num,
-                        );
-                        return MapEntry(
-                          parseVelocityIncrement(k3),
-                          WHOGrowthStandardsLengthVelocityForAgeLMS(
-                            lms: lms,
-                          ),
-                        );
-                      })),
-                )),
-          );
+    Sex,
+    Map<
+      VelocityIncrement,
+      Map<VelocityMonths, WHOGrowthStandardsLengthVelocityForAgeLMS>
+    >
+  >
+  _parse() => _lv.toJsonObjectAsMap.map(
+    (k1, v1) => MapEntry(
+      k1 == '1' ? Sex.male : Sex.female,
+      (v1 as Map<String, dynamic>).map(
+        (k2, v2) => MapEntry(
+          parseIncrement(k2),
+          (v2 as Map<String, dynamic>).map((k3, v3) {
+            v3 as Map<String, dynamic>;
+            final lms = LMS(
+              l: v3['l'] as num,
+              m: v3['m'] as num,
+              s: v3['s'] as num,
+            );
+            return MapEntry(
+              parseVelocityIncrement(k3),
+              WHOGrowthStandardsLengthVelocityForAgeLMS(lms: lms),
+            );
+          }),
+        ),
+      ),
+    ),
+  );
 
   final Map<
-          Sex,
-          Map<VelocityIncrement,
-              Map<VelocityMonths, WHOGrowthStandardsLengthVelocityForAgeLMS>>>
-      _data;
+    Sex,
+    Map<
+      VelocityIncrement,
+      Map<VelocityMonths, WHOGrowthStandardsLengthVelocityForAgeLMS>
+    >
+  >
+  _data;
   @override
   Map<
-          Sex,
-          Map<VelocityIncrement,
-              Map<VelocityMonths, WHOGrowthStandardsLengthVelocityForAgeLMS>>>
-      get data => _data;
+    Sex,
+    Map<
+      VelocityIncrement,
+      Map<VelocityMonths, WHOGrowthStandardsLengthVelocityForAgeLMS>
+    >
+  >
+  get data => _data;
 
   @override
   String toString() => 'Length Velocity For Age Data($_data)';
@@ -87,61 +97,52 @@ sealed class WHOGrowthStandardsLengthVelocityForAge extends VelocityBasedResult
 
   factory WHOGrowthStandardsLengthVelocityForAge.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$WHOGrowthStandardsLengthVelocityForAgeFromJson(json);
+  ) => _$WHOGrowthStandardsLengthVelocityForAgeFromJson(json);
 
   WHOGrowthStandardsLengthVelocityForAgeData get contextData =>
       WHOGrowthStandardsLengthVelocityForAgeData();
 
   Map<VelocityIncrement, Map<({Date dateBefore, Date dateAfter}), num>>
-      get _incrementalData => VelocityPastMeasurement(
-            pastMeasurement
-                .map(
-                  (e) => e.copyWith(
-                    measurement: adjustedLengthHeight(
-                      age: age.ageAtPastDate(e.date),
-                      measure: e.measurementPosition!,
-                      type: AdjustedLengthType.who,
-                      lengthHeight: e.measurement,
-                    ),
-                  ),
-                )
-                .toList(),
-            const Length$Centimeter(),
-          ).incrementalData;
+  get _incrementalData => VelocityPastMeasurement(
+    pastMeasurement
+        .map(
+          (e) => e.copyWith(
+            measurement: adjustedLengthHeight(
+              age: age.ageAtPastDate(e.date),
+              measure: e.measurementPosition!,
+              type: AdjustedLengthType.who,
+              lengthHeight: e.measurement,
+            ),
+          ),
+        )
+        .toList(),
+    const Length$Centimeter(),
+  ).incrementalData;
 
   @override
   Map<VelocityIncrement, Map<VelocityMonths, ZScorePercentile>>
-      zScorePercentileMap([Precision precision = Precision.two]) {
+  zScorePercentileMap([Precision precision = Precision.two]) {
     final joinMap = contextData._data[sex]!.map((k1, v1) {
       final alt = _incrementalData[k1];
       if (alt == null || alt.isEmpty) return MapEntry(k1, null);
 
       final alv = alt.map((k2, v2) {
         final VelocityMonths vm = (
-          low: age.ageInTotalMonthsAtDate(
-            k2.dateBefore,
-          ),
+          low: age.ageInTotalMonthsAtDate(k2.dateBefore),
           high: age.ageInTotalMonthsAtDate(k2.dateAfter),
         );
 
         final whoGrowthStandardsLengthVelocityForAgeLMS = v1[vm];
 
         if (whoGrowthStandardsLengthVelocityForAgeLMS != null) {
-          final adjustedZScore =
-              whoGrowthStandardsLengthVelocityForAgeLMS.lms.adjustedZScore(v2);
-          return MapEntry(
-            vm,
-            (
-              zScore: adjustedZScore.precision(precision),
-              percentile: (pnorm(adjustedZScore) * 100).precision(precision)
-            ),
-          );
+          final adjustedZScore = whoGrowthStandardsLengthVelocityForAgeLMS.lms
+              .adjustedZScore(v2);
+          return MapEntry(vm, (
+            zScore: adjustedZScore.precision(precision),
+            percentile: (pnorm(adjustedZScore) * 100).precision(precision),
+          ));
         }
-        return MapEntry(
-          vm,
-          null,
-        );
+        return MapEntry(vm, null);
       });
       final rVal = alv.isAllValuesNull ? null : alv.removeAllNull;
       return MapEntry(k1, rVal);
@@ -151,9 +152,7 @@ sealed class WHOGrowthStandardsLengthVelocityForAge extends VelocityBasedResult
 }
 
 class WHOGrowthStandardsLengthVelocityForAgeLMS extends LMSContext {
-  WHOGrowthStandardsLengthVelocityForAgeLMS({
-    required this.lms,
-  });
+  WHOGrowthStandardsLengthVelocityForAgeLMS({required this.lms});
   @override
   final LMS lms;
 

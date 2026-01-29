@@ -9,10 +9,8 @@ part 'bmi.g.dart';
 
 @freezed
 sealed class BodyMassIndex with _$BodyMassIndex {
-  factory BodyMassIndex({
-    required Length lengthHeight,
-    required Mass weight,
-  }) = _BodyMassIndex;
+  factory BodyMassIndex({required Length lengthHeight, required Mass weight}) =
+      _BodyMassIndex;
 
   factory BodyMassIndex.fromJson(Map<String, dynamic> json) =>
       _$BodyMassIndexFromJson(json);
@@ -20,10 +18,7 @@ sealed class BodyMassIndex with _$BodyMassIndex {
   const BodyMassIndex._();
 
   num get value {
-    final toMeterSquare = pow(
-      lengthHeight.toMeter.value,
-      2,
-    );
+    final toMeterSquare = pow(lengthHeight.toMeter.value, 2);
     final toKg = weight.toKilogram.value;
 
     return toKg / toMeterSquare;

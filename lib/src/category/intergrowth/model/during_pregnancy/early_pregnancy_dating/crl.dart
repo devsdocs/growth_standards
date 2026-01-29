@@ -4,28 +4,24 @@ class IntergrowthEarlyPregnancyDatingForCRLData extends LengthBasedData {
   factory IntergrowthEarlyPregnancyDatingForCRLData() => _singleton;
   IntergrowthEarlyPregnancyDatingForCRLData._(this._data);
 
-  static final _singleton =
-      IntergrowthEarlyPregnancyDatingForCRLData._(_parse());
+  static final _singleton = IntergrowthEarlyPregnancyDatingForCRLData._(
+    _parse(),
+  );
 
   static Map<Sex, Map<num, _IntergrowthEarlyPregnancyDatingForCRLLMS>>
-      _parse() {
-    final map = _grow_early_preg_charts_crl_dating.toJsonObjectAsMap.map(
-      (k1, v1) {
-        v1 as Map<String, dynamic>;
-        final lms =
-            LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
-        return MapEntry(
-          int.parse(k1),
-          _IntergrowthEarlyPregnancyDatingForCRLLMS(
-            lms: lms,
-          ),
-        );
-      },
-    );
-    return {
-      Sex.male: map,
-      Sex.female: map,
-    };
+  _parse() {
+    final map = _grow_early_preg_charts_crl_dating.toJsonObjectAsMap.map((
+      k1,
+      v1,
+    ) {
+      v1 as Map<String, dynamic>;
+      final lms = LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
+      return MapEntry(
+        int.parse(k1),
+        _IntergrowthEarlyPregnancyDatingForCRLLMS(lms: lms),
+      );
+    });
+    return {Sex.male: map, Sex.female: map};
   }
 
   final Map<Sex, Map<num, _IntergrowthEarlyPregnancyDatingForCRLLMS>> _data;
@@ -52,8 +48,7 @@ sealed class IntergrowthEarlyPregnancyDatingForCRL extends LengthBasedResult
 
   factory IntergrowthEarlyPregnancyDatingForCRL.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$IntergrowthEarlyPregnancyDatingForCRLFromJson(json);
+  ) => _$IntergrowthEarlyPregnancyDatingForCRLFromJson(json);
 
   @override
   IntergrowthEarlyPregnancyDatingForCRLData get contextData =>
@@ -72,15 +67,11 @@ sealed class IntergrowthEarlyPregnancyDatingForCRL extends LengthBasedResult
       _ageData.lms.adjustedZScore(measurementResultInDefaultUnit);
 
   @override
-  num zScore([
-    Precision precision = Precision.two,
-  ]) =>
+  num zScore([Precision precision = Precision.two]) =>
       _zScore.precision(precision);
 
   @override
-  num percentile([
-    Precision precision = Precision.two,
-  ]) =>
+  num percentile([Precision precision = Precision.two]) =>
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
@@ -91,9 +82,7 @@ sealed class IntergrowthEarlyPregnancyDatingForCRL extends LengthBasedResult
 }
 
 class _IntergrowthEarlyPregnancyDatingForCRLLMS extends LMSContext {
-  _IntergrowthEarlyPregnancyDatingForCRLLMS({
-    required this.lms,
-  });
+  _IntergrowthEarlyPregnancyDatingForCRLLMS({required this.lms});
   @override
   final LMS lms;
 

@@ -7,19 +7,14 @@ class FentonHeadCircumferenceForAgeData extends AgeBasedData {
   static final _singleton = FentonHeadCircumferenceForAgeData._(_parse());
 
   static Map<Sex, Map<int, _FentonHeadCircumferenceForAgeLMS>> _parse() {
-    final map = fentonHCfA.toJsonObjectAsMap.map(
-      (k1, v1) {
-        v1 as Map<String, dynamic>;
-        final lms =
-            LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
-        return MapEntry(
-          int.parse(k1),
-          _FentonHeadCircumferenceForAgeLMS(
-            lms: lms,
-          ),
-        );
-      },
-    );
+    final map = fentonHCfA.toJsonObjectAsMap.map((k1, v1) {
+      v1 as Map<String, dynamic>;
+      final lms = LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
+      return MapEntry(
+        int.parse(k1),
+        _FentonHeadCircumferenceForAgeLMS(lms: lms),
+      );
+    });
     return {Sex.male: map, Sex.female: map};
   }
 
@@ -44,36 +39,29 @@ sealed class FentonHeadCircumferenceForAge extends AgeBasedResult
 
   const FentonHeadCircumferenceForAge._();
 
-  factory FentonHeadCircumferenceForAge.fromJson(
-    Map<String, dynamic> json,
-  ) =>
+  factory FentonHeadCircumferenceForAge.fromJson(Map<String, dynamic> json) =>
       _$FentonHeadCircumferenceForAgeFromJson(json);
 
   @override
   FentonHeadCircumferenceForAgeData get contextData =>
       FentonHeadCircumferenceForAgeData();
 
-  _FentonHeadCircumferenceForAgeLMS get _ageData => contextData._data.values
-      .first[ageAtObservationDate.ageInTotalByUnit(contextData.unit)]!;
+  _FentonHeadCircumferenceForAgeLMS get _ageData =>
+      contextData._data.values.first[ageAtObservationDate.ageInTotalByUnit(
+        contextData.unit,
+      )]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 
   @override
-  Age get ageAtObservationDate => checkAge(
-        age,
-        contextData: contextData,
-      );
+  Age get ageAtObservationDate => checkAge(age, contextData: contextData);
 
   @override
-  num zScore([
-    Precision precision = Precision.two,
-  ]) =>
+  num zScore([Precision precision = Precision.two]) =>
       _zScore.precision(precision);
 
   @override
-  num percentile([
-    Precision precision = Precision.two,
-  ]) =>
+  num percentile([Precision precision = Precision.two]) =>
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
@@ -85,9 +73,7 @@ sealed class FentonHeadCircumferenceForAge extends AgeBasedResult
 }
 
 class _FentonHeadCircumferenceForAgeLMS extends LMSContext {
-  _FentonHeadCircumferenceForAgeLMS({
-    required this.lms,
-  });
+  _FentonHeadCircumferenceForAgeLMS({required this.lms});
   @override
   final LMS lms;
 

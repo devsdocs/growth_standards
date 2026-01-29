@@ -4,35 +4,28 @@ class IntergrowthFetalGrowtBiparietalDiameterForAgeData extends AgeBasedData {
   factory IntergrowthFetalGrowtBiparietalDiameterForAgeData() => _singleton;
   IntergrowthFetalGrowtBiparietalDiameterForAgeData._(this._data);
 
-  static final _singleton =
-      IntergrowthFetalGrowtBiparietalDiameterForAgeData._(_parse());
+  static final _singleton = IntergrowthFetalGrowtBiparietalDiameterForAgeData._(
+    _parse(),
+  );
 
   static Map<Sex, Map<int, _IntergrowthFetalGrowtBiparietalDiameterForAgeLMS>>
-      _parse() {
-    final map = _grow_fetal_bpd.toJsonObjectAsMap.map(
-      (k1, v1) {
-        v1 as Map<String, dynamic>;
-        final lms =
-            LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
-        return MapEntry(
-          int.parse(k1),
-          _IntergrowthFetalGrowtBiparietalDiameterForAgeLMS(
-            lms: lms,
-          ),
-        );
-      },
-    );
-    return {
-      Sex.male: map,
-      Sex.female: map,
-    };
+  _parse() {
+    final map = _grow_fetal_bpd.toJsonObjectAsMap.map((k1, v1) {
+      v1 as Map<String, dynamic>;
+      final lms = LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
+      return MapEntry(
+        int.parse(k1),
+        _IntergrowthFetalGrowtBiparietalDiameterForAgeLMS(lms: lms),
+      );
+    });
+    return {Sex.male: map, Sex.female: map};
   }
 
   final Map<Sex, Map<int, _IntergrowthFetalGrowtBiparietalDiameterForAgeLMS>>
-      _data;
+  _data;
   @override
   Map<Sex, Map<int, _IntergrowthFetalGrowtBiparietalDiameterForAgeLMS>>
-      get data => _data;
+  get data => _data;
 
   @override
   String toString() => 'Newborn Head Circumference For Age Data($_data)';
@@ -55,36 +48,28 @@ sealed class IntergrowthFetalGrowtBiparietalDiameterForAge
 
   factory IntergrowthFetalGrowtBiparietalDiameterForAge.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$IntergrowthFetalGrowtBiparietalDiameterForAgeFromJson(json);
+  ) => _$IntergrowthFetalGrowtBiparietalDiameterForAgeFromJson(json);
 
   @override
   IntergrowthFetalGrowtBiparietalDiameterForAgeData get contextData =>
       IntergrowthFetalGrowtBiparietalDiameterForAgeData();
 
-  _IntergrowthFetalGrowtBiparietalDiameterForAgeLMS get _ageData => contextData
-      ._data
-      .values
-      .first[ageAtObservationDate.ageInTotalByUnit(contextData.unit)]!;
+  _IntergrowthFetalGrowtBiparietalDiameterForAgeLMS get _ageData =>
+      contextData._data.values.first[ageAtObservationDate.ageInTotalByUnit(
+        contextData.unit,
+      )]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 
   @override
-  Age get ageAtObservationDate => checkAge(
-        age,
-        contextData: contextData,
-      );
+  Age get ageAtObservationDate => checkAge(age, contextData: contextData);
 
   @override
-  num zScore([
-    Precision precision = Precision.two,
-  ]) =>
+  num zScore([Precision precision = Precision.two]) =>
       _zScore.precision(precision);
 
   @override
-  num percentile([
-    Precision precision = Precision.two,
-  ]) =>
+  num percentile([Precision precision = Precision.two]) =>
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
@@ -96,9 +81,7 @@ sealed class IntergrowthFetalGrowtBiparietalDiameterForAge
 }
 
 class _IntergrowthFetalGrowtBiparietalDiameterForAgeLMS extends LMSContext {
-  _IntergrowthFetalGrowtBiparietalDiameterForAgeLMS({
-    required this.lms,
-  });
+  _IntergrowthFetalGrowtBiparietalDiameterForAgeLMS({required this.lms});
   @override
   final LMS lms;
 

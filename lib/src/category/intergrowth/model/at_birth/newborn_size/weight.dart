@@ -6,35 +6,25 @@ class IntergrowthNewbornBirthWeightForAgeData extends AgeBasedData {
 
   static final _singleton = IntergrowthNewbornBirthWeightForAgeData._(_parse());
 
-  static Map<Sex, Map<int, _IntergrowthNewbornBirthWeightForAgeLMS>> _parse() =>
-      {
-        Sex.male: _grow_newborn_boys_bw.toJsonObjectAsMap.map(
-          (k1, v1) {
-            v1 as Map<String, dynamic>;
-            final lms =
-                LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
-            return MapEntry(
-              int.parse(k1),
-              _IntergrowthNewbornBirthWeightForAgeLMS(
-                lms: lms,
-              ),
-            );
-          },
-        ),
-        Sex.female: _grow_newborn_girls_bw.toJsonObjectAsMap.map(
-          (k1, v1) {
-            v1 as Map<String, dynamic>;
-            final lms =
-                LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
-            return MapEntry(
-              int.parse(k1),
-              _IntergrowthNewbornBirthWeightForAgeLMS(
-                lms: lms,
-              ),
-            );
-          },
-        ),
-      };
+  static Map<Sex, Map<int, _IntergrowthNewbornBirthWeightForAgeLMS>>
+  _parse() => {
+    Sex.male: _grow_newborn_boys_bw.toJsonObjectAsMap.map((k1, v1) {
+      v1 as Map<String, dynamic>;
+      final lms = LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
+      return MapEntry(
+        int.parse(k1),
+        _IntergrowthNewbornBirthWeightForAgeLMS(lms: lms),
+      );
+    }),
+    Sex.female: _grow_newborn_girls_bw.toJsonObjectAsMap.map((k1, v1) {
+      v1 as Map<String, dynamic>;
+      final lms = LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
+      return MapEntry(
+        int.parse(k1),
+        _IntergrowthNewbornBirthWeightForAgeLMS(lms: lms),
+      );
+    }),
+  };
 
   final Map<Sex, Map<int, _IntergrowthNewbornBirthWeightForAgeLMS>> _data;
   @override
@@ -61,34 +51,28 @@ sealed class IntergrowthNewbornBirthWeightForAge extends AgeBasedResult
 
   factory IntergrowthNewbornBirthWeightForAge.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$IntergrowthNewbornBirthWeightForAgeFromJson(json);
+  ) => _$IntergrowthNewbornBirthWeightForAgeFromJson(json);
 
   @override
   IntergrowthNewbornBirthWeightForAgeData get contextData =>
       IntergrowthNewbornBirthWeightForAgeData();
 
-  _IntergrowthNewbornBirthWeightForAgeLMS get _ageData => contextData
-      ._data[sex]![ageAtObservationDate.ageInTotalByUnit(contextData.unit)]!;
+  _IntergrowthNewbornBirthWeightForAgeLMS get _ageData =>
+      contextData._data[sex]![ageAtObservationDate.ageInTotalByUnit(
+        contextData.unit,
+      )]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 
   @override
-  Age get ageAtObservationDate => checkAge(
-        age,
-        contextData: contextData,
-      );
+  Age get ageAtObservationDate => checkAge(age, contextData: contextData);
 
   @override
-  num zScore([
-    Precision precision = Precision.two,
-  ]) =>
+  num zScore([Precision precision = Precision.two]) =>
       _zScore.precision(precision);
 
   @override
-  num percentile([
-    Precision precision = Precision.two,
-  ]) =>
+  num percentile([Precision precision = Precision.two]) =>
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
@@ -99,9 +83,7 @@ sealed class IntergrowthNewbornBirthWeightForAge extends AgeBasedResult
 }
 
 class _IntergrowthNewbornBirthWeightForAgeLMS extends LMSContext {
-  _IntergrowthNewbornBirthWeightForAgeLMS({
-    required this.lms,
-  });
+  _IntergrowthNewbornBirthWeightForAgeLMS({required this.lms});
   @override
   final LMS lms;
 

@@ -4,18 +4,14 @@ import 'package:growth_standards/src/common/model/lms.dart';
 abstract class VelocityBasedResult {
   const VelocityBasedResult();
   Map<VelocityIncrement, Map<VelocityMonths, ZScorePercentile>>
-      zScorePercentileMap([Precision precision = Precision.two]);
+  zScorePercentileMap([Precision precision = Precision.two]);
 }
 
 sealed class Result {
   const Result();
 
-  num zScore([
-    Precision precision = Precision.two,
-  ]);
-  num percentile([
-    Precision precision = Precision.two,
-  ]);
+  num zScore([Precision precision = Precision.two]);
+  num percentile([Precision precision = Precision.two]);
 
   num get measurementResultInDefaultUnit;
 

@@ -8,33 +8,30 @@ class IntergrowthFetalGrowtAbdominalCircumferenceForAgeData
   static final _singleton =
       IntergrowthFetalGrowtAbdominalCircumferenceForAgeData._(_parse());
 
-  static Map<Sex,
-          Map<int, _IntergrowthFetalGrowtAbdominalCircumferenceForAgeLMS>>
-      _parse() {
-    final map = _grow_fetal_ac.toJsonObjectAsMap.map(
-      (k1, v1) {
-        v1 as Map<String, dynamic>;
-        final lms =
-            LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
-        return MapEntry(
-          int.parse(k1),
-          _IntergrowthFetalGrowtAbdominalCircumferenceForAgeLMS(
-            lms: lms,
-          ),
-        );
-      },
-    );
-    return {
-      Sex.male: map,
-      Sex.female: map,
-    };
+  static Map<
+    Sex,
+    Map<int, _IntergrowthFetalGrowtAbdominalCircumferenceForAgeLMS>
+  >
+  _parse() {
+    final map = _grow_fetal_ac.toJsonObjectAsMap.map((k1, v1) {
+      v1 as Map<String, dynamic>;
+      final lms = LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
+      return MapEntry(
+        int.parse(k1),
+        _IntergrowthFetalGrowtAbdominalCircumferenceForAgeLMS(lms: lms),
+      );
+    });
+    return {Sex.male: map, Sex.female: map};
   }
 
-  final Map<Sex,
-      Map<int, _IntergrowthFetalGrowtAbdominalCircumferenceForAgeLMS>> _data;
+  final Map<
+    Sex,
+    Map<int, _IntergrowthFetalGrowtAbdominalCircumferenceForAgeLMS>
+  >
+  _data;
   @override
   Map<Sex, Map<int, _IntergrowthFetalGrowtAbdominalCircumferenceForAgeLMS>>
-      get data => _data;
+  get data => _data;
 
   @override
   String toString() => 'Newborn Head Circumference For Age Data($_data)';
@@ -57,35 +54,28 @@ sealed class IntergrowthFetalGrowtAbdominalCircumferenceForAge
 
   factory IntergrowthFetalGrowtAbdominalCircumferenceForAge.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$IntergrowthFetalGrowtAbdominalCircumferenceForAgeFromJson(json);
+  ) => _$IntergrowthFetalGrowtAbdominalCircumferenceForAgeFromJson(json);
 
   @override
   IntergrowthFetalGrowtAbdominalCircumferenceForAgeData get contextData =>
       IntergrowthFetalGrowtAbdominalCircumferenceForAgeData();
 
   _IntergrowthFetalGrowtAbdominalCircumferenceForAgeLMS get _ageData =>
-      contextData._data.values
-          .first[ageAtObservationDate.ageInTotalByUnit(contextData.unit)]!;
+      contextData._data.values.first[ageAtObservationDate.ageInTotalByUnit(
+        contextData.unit,
+      )]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 
   @override
-  Age get ageAtObservationDate => checkAge(
-        age,
-        contextData: contextData,
-      );
+  Age get ageAtObservationDate => checkAge(age, contextData: contextData);
 
   @override
-  num zScore([
-    Precision precision = Precision.two,
-  ]) =>
+  num zScore([Precision precision = Precision.two]) =>
       _zScore.precision(precision);
 
   @override
-  num percentile([
-    Precision precision = Precision.two,
-  ]) =>
+  num percentile([Precision precision = Precision.two]) =>
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
@@ -97,9 +87,7 @@ sealed class IntergrowthFetalGrowtAbdominalCircumferenceForAge
 }
 
 class _IntergrowthFetalGrowtAbdominalCircumferenceForAgeLMS extends LMSContext {
-  _IntergrowthFetalGrowtAbdominalCircumferenceForAgeLMS({
-    required this.lms,
-  });
+  _IntergrowthFetalGrowtAbdominalCircumferenceForAgeLMS({required this.lms});
   @override
   final LMS lms;
 

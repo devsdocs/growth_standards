@@ -8,40 +8,30 @@ class IntergrowthNewbornBirthHeadCircumferenceForAgeData extends AgeBasedData {
       IntergrowthNewbornBirthHeadCircumferenceForAgeData._(_parse());
 
   static Map<Sex, Map<int, _IntergrowthNewbornBirthHeadCircumferenceForAgeLMS>>
-      _parse() => {
-            Sex.male: _grow_newborn_boys_hc.toJsonObjectAsMap.map(
-              (k1, v1) {
-                v1 as Map<String, dynamic>;
-                final lms = LMS(
-                    l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
-                return MapEntry(
-                  int.parse(k1),
-                  _IntergrowthNewbornBirthHeadCircumferenceForAgeLMS(
-                    lms: lms,
-                  ),
-                );
-              },
-            ),
-            Sex.female: _grow_newborn_girls_hc.toJsonObjectAsMap.map(
-              (k1, v1) {
-                v1 as Map<String, dynamic>;
-                final lms = LMS(
-                    l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
-                return MapEntry(
-                  int.parse(k1),
-                  _IntergrowthNewbornBirthHeadCircumferenceForAgeLMS(
-                    lms: lms,
-                  ),
-                );
-              },
-            ),
-          };
+  _parse() => {
+    Sex.male: _grow_newborn_boys_hc.toJsonObjectAsMap.map((k1, v1) {
+      v1 as Map<String, dynamic>;
+      final lms = LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
+      return MapEntry(
+        int.parse(k1),
+        _IntergrowthNewbornBirthHeadCircumferenceForAgeLMS(lms: lms),
+      );
+    }),
+    Sex.female: _grow_newborn_girls_hc.toJsonObjectAsMap.map((k1, v1) {
+      v1 as Map<String, dynamic>;
+      final lms = LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
+      return MapEntry(
+        int.parse(k1),
+        _IntergrowthNewbornBirthHeadCircumferenceForAgeLMS(lms: lms),
+      );
+    }),
+  };
 
   final Map<Sex, Map<int, _IntergrowthNewbornBirthHeadCircumferenceForAgeLMS>>
-      _data;
+  _data;
   @override
   Map<Sex, Map<int, _IntergrowthNewbornBirthHeadCircumferenceForAgeLMS>>
-      get data => _data;
+  get data => _data;
 
   @override
   String toString() => 'Newborn Head Circumference For Age Data($_data)';
@@ -65,34 +55,28 @@ sealed class IntergrowthNewbornBirthHeadCircumferenceForAge
 
   factory IntergrowthNewbornBirthHeadCircumferenceForAge.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$IntergrowthNewbornBirthHeadCircumferenceForAgeFromJson(json);
+  ) => _$IntergrowthNewbornBirthHeadCircumferenceForAgeFromJson(json);
 
   @override
   IntergrowthNewbornBirthHeadCircumferenceForAgeData get contextData =>
       IntergrowthNewbornBirthHeadCircumferenceForAgeData();
 
-  _IntergrowthNewbornBirthHeadCircumferenceForAgeLMS get _ageData => contextData
-      ._data[sex]![ageAtObservationDate.ageInTotalByUnit(contextData.unit)]!;
+  _IntergrowthNewbornBirthHeadCircumferenceForAgeLMS get _ageData =>
+      contextData._data[sex]![ageAtObservationDate.ageInTotalByUnit(
+        contextData.unit,
+      )]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 
   @override
-  Age get ageAtObservationDate => checkAge(
-        age,
-        contextData: contextData,
-      );
+  Age get ageAtObservationDate => checkAge(age, contextData: contextData);
 
   @override
-  num zScore([
-    Precision precision = Precision.two,
-  ]) =>
+  num zScore([Precision precision = Precision.two]) =>
       _zScore.precision(precision);
 
   @override
-  num percentile([
-    Precision precision = Precision.two,
-  ]) =>
+  num percentile([Precision precision = Precision.two]) =>
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
@@ -104,9 +88,7 @@ sealed class IntergrowthNewbornBirthHeadCircumferenceForAge
 }
 
 class _IntergrowthNewbornBirthHeadCircumferenceForAgeLMS extends LMSContext {
-  _IntergrowthNewbornBirthHeadCircumferenceForAgeLMS({
-    required this.lms,
-  });
+  _IntergrowthNewbornBirthHeadCircumferenceForAgeLMS({required this.lms});
   @override
   final LMS lms;
 

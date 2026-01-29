@@ -12,13 +12,14 @@ class CDCInfantWeightForLengthData extends LengthBasedData {
           k1 == '1' ? Sex.male : Sex.female,
           (v1 as Map<String, dynamic>).map((k2, v2) {
             v2 as Map<String, dynamic>;
-            final lms =
-                LMS(l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
+            final lms = LMS(
+              l: v2['l'] as num,
+              m: v2['m'] as num,
+              s: v2['s'] as num,
+            );
             return MapEntry(
               num.parse(k2),
-              _CDCInfantWeightForLengthLMS(
-                lms: lms,
-              ),
+              _CDCInfantWeightForLengthLMS(lms: lms),
             );
           }),
         ),
@@ -52,17 +53,17 @@ sealed class CDCInfantWeightForLength extends LengthBasedResult
       _$CDCInfantWeightForLengthFromJson(json);
 
   Length$Centimeter get _adjustedLength => adjustedLengthHeight(
-        measure: measure,
-        age: age,
-        lengthHeight: length,
-        type: AdjustedLengthType.cdc,
-      );
+    measure: measure,
+    age: age,
+    lengthHeight: length,
+    type: AdjustedLengthType.cdc,
+  );
 
   @override
   CDCInfantWeightForLengthData get contextData =>
       CDCInfantWeightForLengthData();
 
-//TODO(devsdocs): Fix CDC length calculation
+  //TODO(devsdocs): Fix CDC length calculation
   _CDCInfantWeightForLengthLMS get _ageData =>
       contextData._data[sex]![_length]!;
 
@@ -77,15 +78,11 @@ sealed class CDCInfantWeightForLength extends LengthBasedResult
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 
   @override
-  num zScore([
-    Precision precision = Precision.two,
-  ]) =>
+  num zScore([Precision precision = Precision.two]) =>
       _zScore.precision(precision);
 
   @override
-  num percentile([
-    Precision precision = Precision.two,
-  ]) =>
+  num percentile([Precision precision = Precision.two]) =>
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
@@ -96,9 +93,7 @@ sealed class CDCInfantWeightForLength extends LengthBasedResult
 }
 
 class _CDCInfantWeightForLengthLMS extends LMSContext {
-  _CDCInfantWeightForLengthLMS({
-    required this.lms,
-  });
+  _CDCInfantWeightForLengthLMS({required this.lms});
   @override
   final LMS lms;
 

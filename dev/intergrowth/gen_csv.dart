@@ -156,11 +156,11 @@ void writeDart(Intergrowth model, Item item, FileNameInfo fileNameInfo,
         .asMap()
         .map((_, value) => getVal(c, value).entries.first)
         .map((key, value) {
-          final tryParseNum = num.tryParse(value.toString());
-          final parsedValue = tryParseNum ?? value;
-          final mapEntry = MapEntry(key.toLowerCase(), parsedValue);
-          return mapEntry;
-        }),
+      final tryParseNum = num.tryParse(value.toString());
+      final parsedValue = tryParseNum ?? value;
+      final mapEntry = MapEntry(key.toLowerCase(), parsedValue);
+      return mapEntry;
+    }),
   )
       .forEach((element) {
     expMap[element['csv'].toString()] = element..remove('csv');

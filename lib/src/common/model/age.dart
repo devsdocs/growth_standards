@@ -12,7 +12,6 @@ Months _monthFromNumber(int number) => _reverseMonthsEnum[number]!;
 final _reverseMonthsEnum = _$MonthsEnumMap.map((k, v) => MapEntry(v, k));
 
 @freezed
-
 /// Add [dateOfBirth] and optional [observedDate]
 sealed class Age with _$Age {
   @Assert(
@@ -23,29 +22,24 @@ sealed class Age with _$Age {
     'dateOfBirth.isSameOrBefore(Date.today())',
     'Date of birth cannot be in the future',
   )
-  factory Age(Date dateOfBirth,
-      {Date? observedDate, @Default(false) bool countObservationDate}) = _Age;
+  factory Age(
+    Date dateOfBirth, {
+    Date? observedDate,
+    @Default(false) bool countObservationDate,
+  }) = _Age;
 
   const Age._();
 
-  factory Age.byYearsAgo(int years, {Date? observedDate}) => Age(
-        Date.fromYearsAgo(years),
-        observedDate: observedDate,
-      );
+  factory Age.byYearsAgo(int years, {Date? observedDate}) =>
+      Age(Date.fromYearsAgo(years), observedDate: observedDate);
 
-  factory Age.byMonthsAgo(int months, {Date? observedDate}) => Age(
-        Date.fromMonthsAgo(months),
-        observedDate: observedDate,
-      );
-  factory Age.byWeeksAgo(int weeks, {Date? observedDate}) => Age(
-        Date.fromWeeksAgo(weeks),
-        observedDate: observedDate,
-      );
+  factory Age.byMonthsAgo(int months, {Date? observedDate}) =>
+      Age(Date.fromMonthsAgo(months), observedDate: observedDate);
+  factory Age.byWeeksAgo(int weeks, {Date? observedDate}) =>
+      Age(Date.fromWeeksAgo(weeks), observedDate: observedDate);
 
-  factory Age.byDaysAgo(int days, {Date? observedDate}) => Age(
-        Date.fromDaysAgo(days),
-        observedDate: observedDate,
-      );
+  factory Age.byDaysAgo(int days, {Date? observedDate}) =>
+      Age(Date.fromDaysAgo(days), observedDate: observedDate);
 
   factory Age.fromJson(Map<String, dynamic> json) => _$AgeFromJson(json);
 
@@ -58,15 +52,14 @@ sealed class Age with _$Age {
   bool get isValid => dateOfBirth.isSameOrBefore(getObservedDate());
 
   TimeIntervalCount get _dobCount => TimeIntervalCount(
-        dateOfBirth.year,
-        dateOfBirth.month.number,
-        dateOfBirth.date,
-      );
+    dateOfBirth.year,
+    dateOfBirth.month.number,
+    dateOfBirth.date,
+  );
 
   TimeDifferenceInYearMonthsWeeksDays timeUntilNextBirthdayFromDate(
     Date date,
-  ) =>
-      _dobCount.timeUntilNextBirthday(date.toDateTime());
+  ) => _dobCount.timeUntilNextBirthday(date.toDateTime());
 
   bool _checkDate(Date date) => date.isSameOrBefore(dateOfBirth);
 
@@ -128,11 +121,11 @@ sealed class Age with _$Age {
   int get ageInTotalDaysByNow => ageInTotalDaysAtDate(getObservedDate());
 
   int ageInTotalByUnit(TimeUnit unit) => switch (unit) {
-        TimeUnit.years => ageInTotalYearsByNow,
-        TimeUnit.months => ageInTotalMonthsByNow,
-        TimeUnit.weeks => ageInTotalWeeksByNow,
-        TimeUnit.days => ageInTotalDaysByNow,
-      };
+    TimeUnit.years => ageInTotalYearsByNow,
+    TimeUnit.months => ageInTotalMonthsByNow,
+    TimeUnit.weeks => ageInTotalWeeksByNow,
+    TimeUnit.days => ageInTotalDaysByNow,
+  };
 
   Date dateAtDaysAfterBirth(int daysAfterBirth) =>
       dateOfBirth.addDays(daysAfterBirth);
@@ -170,11 +163,8 @@ sealed class Date with _$Date implements Comparable<Date> {
     'date <= DateTimeUtils.getDaysInMonth(year, month.number)',
     'Date exceeded, max date is at \${DateTimeUtils.getDaysInMonth(year, month.number)} in \${month.text} \$year',
   )
-  factory Date({
-    required int year,
-    required Months month,
-    required int date,
-  }) = _Date;
+  factory Date({required int year, required Months month, required int date}) =
+      _Date;
 
   const Date._();
 
@@ -193,10 +183,10 @@ sealed class Date with _$Date implements Comparable<Date> {
   factory Date.today() => Date.fromDateTime(DateTimeUtils.now());
 
   factory Date.fromDateTime(DateTime dateTime) => Date(
-        year: dateTime.year,
-        month: _monthFromNumber(dateTime.month),
-        date: dateTime.day,
-      );
+    year: dateTime.year,
+    month: _monthFromNumber(dateTime.month),
+    date: dateTime.day,
+  );
 
   factory Date.fromJson(Map<String, dynamic> json) => _$DateFromJson(json);
 
@@ -215,27 +205,22 @@ sealed class Date with _$Date implements Comparable<Date> {
   Date subtract(Duration duration) => this - duration;
 
   Duration difference(Date other) => Duration(
-        days: DateTimeUtils.getDaysDifference(toDateTime(), other.toDateTime()),
-      );
+    days: DateTimeUtils.getDaysDifference(toDateTime(), other.toDateTime()),
+  );
 
-  Duration differenceWithDateTime(DateTime other) => Duration(
-        days: DateTimeUtils.getDaysDifference(toDateTime(), other),
-      );
+  Duration differenceWithDateTime(DateTime other) =>
+      Duration(days: DateTimeUtils.getDaysDifference(toDateTime(), other));
 
   DateTime toDateTime() => DateTime(year, month.number, date);
 
-  Date addDays(int days) => Date.fromDateTime(
-        DateTimeUtils.addDays(toDateTime(), days),
-      );
-  Date addWeeks(int weeks) => Date.fromDateTime(
-        DateTimeUtils.addWeeks(toDateTime(), weeks),
-      );
-  Date addMonths(int months) => Date.fromDateTime(
-        DateTimeUtils.addMonths(toDateTime(), months),
-      );
-  Date addYears(int years) => Date.fromDateTime(
-        DateTimeUtils.addYears(toDateTime(), years),
-      );
+  Date addDays(int days) =>
+      Date.fromDateTime(DateTimeUtils.addDays(toDateTime(), days));
+  Date addWeeks(int weeks) =>
+      Date.fromDateTime(DateTimeUtils.addWeeks(toDateTime(), weeks));
+  Date addMonths(int months) =>
+      Date.fromDateTime(DateTimeUtils.addMonths(toDateTime(), months));
+  Date addYears(int years) =>
+      Date.fromDateTime(DateTimeUtils.addYears(toDateTime(), years));
 
   Date subtractDays(int days) => addDays(-days);
   Date subtractWeeks(int weeks) => addWeeks(-weeks);
@@ -365,9 +350,10 @@ extension DateFormatExtension on Date {
     final nextQuarterFirstMonth = (nextQuarter - 1) * 3 + 1;
 
     final nextQuarterFirstDay = Date(
-        year: nextQuarterYear,
-        month: _monthFromNumber(nextQuarterFirstMonth),
-        date: 1);
+      year: nextQuarterYear,
+      month: _monthFromNumber(nextQuarterFirstMonth),
+      date: 1,
+    );
 
     return nextQuarterFirstDay.subtractDays(1);
   }

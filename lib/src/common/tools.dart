@@ -8,10 +8,7 @@ import 'package:growth_standards/growth_standards.dart';
 /// @param [observationDate] Optional date when the observation was made. Uses current date if null.
 /// @param assertions List of time-based assertions to check against the age
 /// @return The validated Age object
-Age checkAge(
-  Age age, {
-  required AgeBasedData contextData,
-}) {
+Age checkAge(Age age, {required AgeBasedData contextData}) {
   // Validate all assertions
   _validateAssertion(age, contextData);
 
@@ -39,8 +36,10 @@ void _validateAssertion(Age age, AgeBasedData context) {
 
   // Check if the value is within bounds
   if (actualValue < lowerBound || actualValue > upperBound) {
-    throw ArgumentError('Age is invalid: '
-        'Age is $actualValue ${context.unit} at observation date, Expected range: $lowerBound to $upperBound ${context.unit}');
+    throw ArgumentError(
+      'Age is invalid: '
+      'Age is $actualValue ${context.unit} at observation date, Expected range: $lowerBound to $upperBound ${context.unit}',
+    );
   }
 }
 
@@ -49,8 +48,7 @@ enum TimeUnit {
   days,
   weeks,
   months,
-  years,
-  ;
+  years;
 
   @override
   String toString() {
@@ -59,10 +57,7 @@ enum TimeUnit {
 }
 
 class LengthAssertion {
-  const LengthAssertion({
-    required this.lowerBound,
-    required this.upperBound,
-  });
+  const LengthAssertion({required this.lowerBound, required this.upperBound});
 
   final Length lowerBound;
   final Length upperBound;
@@ -74,9 +69,11 @@ class LengthAssertion {
   }
 }
 
-Length checkLength(Length length,
-    {Length destinationType = const Length$Centimeter(),
-    required LengthBasedData contextData}) {
+Length checkLength(
+  Length length, {
+  Length destinationType = const Length$Centimeter(),
+  required LengthBasedData contextData,
+}) {
   final convertedLength = length.convertTo(destinationType);
   final lowerBound = contextData.unit
       .withValue(contextData.lowerBound)
@@ -88,7 +85,8 @@ Length checkLength(Length length,
   if (convertedLength.value < lowerBound.value ||
       convertedLength.value > upperBound.value) {
     throw ArgumentError(
-        'Length or Height is invalid: Value: $convertedLength, Expected range: $lowerBound to $upperBound');
+      'Length or Height is invalid: Value: $convertedLength, Expected range: $lowerBound to $upperBound',
+    );
   }
 
   return length;

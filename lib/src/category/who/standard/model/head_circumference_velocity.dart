@@ -9,50 +9,52 @@ class WHOGrowthStandardsHeadCircumferenceVelocityForAgeData
       WHOGrowthStandardsHeadCircumferenceVelocityForAgeData._(_parse());
 
   static Map<
-          Sex,
-          Map<
-              VelocityIncrement,
-              Map<VelocityMonths,
-                  WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS>>>
-      _parse() => _hv.toJsonObjectAsMap.map(
-            (k1, v1) => MapEntry(
-              k1 == '1' ? Sex.male : Sex.female,
-              (v1 as Map<String, dynamic>).map(
-                (k2, v2) => MapEntry(
-                  parseIncrement(k2),
-                  (v2 as Map<String, dynamic>).map((k3, v3) {
-                    v3 as Map<String, dynamic>;
-                    final lms = LMS(
-                      l: v3['l'] as num,
-                      m: v3['m'] as num,
-                      s: v3['s'] as num,
-                    );
-                    return MapEntry(
-                      parseVelocityIncrement(k3),
-                      WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS(
-                        lms: lms,
-                      ),
-                    );
-                  }),
-                ),
-              ),
-            ),
-          );
+    Sex,
+    Map<
+      VelocityIncrement,
+      Map<VelocityMonths, WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS>
+    >
+  >
+  _parse() => _hv.toJsonObjectAsMap.map(
+    (k1, v1) => MapEntry(
+      k1 == '1' ? Sex.male : Sex.female,
+      (v1 as Map<String, dynamic>).map(
+        (k2, v2) => MapEntry(
+          parseIncrement(k2),
+          (v2 as Map<String, dynamic>).map((k3, v3) {
+            v3 as Map<String, dynamic>;
+            final lms = LMS(
+              l: v3['l'] as num,
+              m: v3['m'] as num,
+              s: v3['s'] as num,
+            );
+            return MapEntry(
+              parseVelocityIncrement(k3),
+              WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS(lms: lms),
+            );
+          }),
+        ),
+      ),
+    ),
+  );
 
   final Map<
-      Sex,
-      Map<
-          VelocityIncrement,
-          Map<VelocityMonths,
-              WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS>>> _data;
+    Sex,
+    Map<
+      VelocityIncrement,
+      Map<VelocityMonths, WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS>
+    >
+  >
+  _data;
   @override
   Map<
-          Sex,
-          Map<
-              VelocityIncrement,
-              Map<VelocityMonths,
-                  WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS>>>
-      get data => _data;
+    Sex,
+    Map<
+      VelocityIncrement,
+      Map<VelocityMonths, WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS>
+    >
+  >
+  get data => _data;
 
   @override
   String toString() => 'Head Circumference Velocity For Age Data($_data)';
@@ -96,30 +98,28 @@ sealed class WHOGrowthStandardsHeadCircumferenceVelocityForAge
 
   factory WHOGrowthStandardsHeadCircumferenceVelocityForAge.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeFromJson(json);
+  ) => _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeFromJson(json);
 
   WHOGrowthStandardsHeadCircumferenceVelocityForAgeData
-      get _headCircumferenceData =>
-          WHOGrowthStandardsHeadCircumferenceVelocityForAgeData();
+  get _headCircumferenceData =>
+      WHOGrowthStandardsHeadCircumferenceVelocityForAgeData();
 
   Map<VelocityIncrement, Map<({Date dateBefore, Date dateAfter}), num>>
-      get _incrementalData =>
-          VelocityPastMeasurement(pastMeasurement, const Length$Centimeter())
-              .incrementalData;
+  get _incrementalData => VelocityPastMeasurement(
+    pastMeasurement,
+    const Length$Centimeter(),
+  ).incrementalData;
 
   @override
   Map<VelocityIncrement, Map<VelocityMonths, ZScorePercentile>>
-      zScorePercentileMap([Precision precision = Precision.two]) {
+  zScorePercentileMap([Precision precision = Precision.two]) {
     final joinMap = _headCircumferenceData._data[sex]!.map((k1, v1) {
       final alt = _incrementalData[k1];
       if (alt == null || alt.isEmpty) return MapEntry(k1, null);
 
       final alv = alt.map((k2, v2) {
         final VelocityMonths vm = (
-          low: age.ageInTotalMonthsAtDate(
-            k2.dateBefore,
-          ),
+          low: age.ageInTotalMonthsAtDate(k2.dateBefore),
           high: age.ageInTotalMonthsAtDate(k2.dateAfter),
         );
 
@@ -129,18 +129,12 @@ sealed class WHOGrowthStandardsHeadCircumferenceVelocityForAge
           final adjustedZScore =
               whoGrowthStandardsHeadCircumferenceVelocityForAgeLMS.lms
                   .adjustedZScore(v2);
-          return MapEntry(
-            vm,
-            (
-              zScore: adjustedZScore.precision(precision),
-              percentile: (pnorm(adjustedZScore) * 100).precision(precision)
-            ),
-          );
+          return MapEntry(vm, (
+            zScore: adjustedZScore.precision(precision),
+            percentile: (pnorm(adjustedZScore) * 100).precision(precision),
+          ));
         }
-        return MapEntry(
-          vm,
-          null,
-        );
+        return MapEntry(vm, null);
       });
       final rVal = alv.isAllValuesNull ? null : alv.removeAllNull;
       return MapEntry(k1, rVal);
@@ -150,9 +144,7 @@ sealed class WHOGrowthStandardsHeadCircumferenceVelocityForAge
 }
 
 class WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS extends LMSContext {
-  WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS({
-    required this.lms,
-  });
+  WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS({required this.lms});
   @override
   final LMS lms;
 

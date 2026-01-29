@@ -3,8 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 @JsonEnum(valueField: 'number')
 enum Sex {
   male(1),
-  female(2),
-  ;
+  female(2);
 
   const Sex(this.number);
   final int number;
@@ -19,8 +18,7 @@ enum LengthHeightMeasurementPosition {
   recumbent('recumbent'),
 
   /// [standing] for age > 730 days
-  standing('standing'),
-  ;
+  standing('standing');
 
   const LengthHeightMeasurementPosition(this.value);
   final String value;
@@ -39,8 +37,7 @@ enum Months {
   september(DateTime.september, 'September', 30),
   october(DateTime.october, 'October', 31),
   november(DateTime.november, 'November', 30),
-  december(DateTime.december, 'December', 31),
-  ;
+  december(DateTime.december, 'December', 31);
 
   const Months(this.number, this.text, this.date);
   final int date;
@@ -59,8 +56,7 @@ enum ZScoreValue {
   pos2(2),
   pos3(3),
   pos4(4),
-  pos5(5),
-  ;
+  pos5(5);
 
   const ZScoreValue(this.value);
   final int value;
@@ -165,8 +161,7 @@ enum PercentileValue {
   $96(96),
   $97(97),
   $98(98),
-  $99(99),
-  ;
+  $99(99);
 
   const PercentileValue(this.value);
   final num value;
@@ -174,8 +169,7 @@ enum PercentileValue {
 
 enum AdjustedLengthType {
   who(0.7),
-  cdc(0.8),
-  ;
+  cdc(0.8);
 
   const AdjustedLengthType(this.value);
 

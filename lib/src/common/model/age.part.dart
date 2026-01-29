@@ -1,17 +1,8 @@
 part of 'age.dart';
 
 class TimeIntervalCount {
-  TimeIntervalCount(
-    int year, [
-    int month = 1,
-    int date = 1,
-  ]) : dob = DateTimeUtils.startOfDay(
-          DateTime(
-            year,
-            month,
-            date,
-          ),
-        ) {
+  TimeIntervalCount(int year, [int month = 1, int date = 1])
+    : dob = DateTimeUtils.startOfDay(DateTime(year, month, date)) {
     if (date > DateTimeUtils.getDaysInMonth(year, month)) {
       throw Exception('Days exceeded');
     }
@@ -23,10 +14,7 @@ class TimeIntervalCount {
       TimeDifferenceInYearMonthsWeeksDays._();
 
   TimeDifferenceInYearMonthsWeeksDays ageAtDate(DateTime day) =>
-      DateTimeUtils.timeDifference(
-        fromDate: dob,
-        toDate: day,
-      );
+      DateTimeUtils.timeDifference(fromDate: dob, toDate: day);
 
   TimeDifferenceInYearMonthsWeeksDays timeUntilNextBirthday(DateTime fromDate) {
     final DateTime endDate = fromDate;
@@ -72,9 +60,9 @@ class TimeDifferenceInYearMonthsWeeksDays
     this.weeks = 0,
     this.days = 0,
   ]) : assert(
-          [days, months, weeks, years].every((e) => e >= 0),
-          'All value can not below zero',
-        );
+         [days, months, weeks, years].every((e) => e >= 0),
+         'All value can not below zero',
+       );
 
   int days;
   int months;
@@ -179,17 +167,16 @@ class DateTimeUtils {
     int seconds = 0,
     int milliseconds = 0,
     int microseconds = 0,
-  ]) =>
-      _date(
-        date.year,
-        date.month,
-        date.day,
-        hours,
-        minutes,
-        seconds,
-        milliseconds,
-        microseconds,
-      );
+  ]) => _date(
+    date.year,
+    date.month,
+    date.day,
+    hours,
+    minutes,
+    seconds,
+    milliseconds,
+    microseconds,
+  );
 
   /// Creates a copy of [date] but with the given fields
   /// replaced with the new values.
@@ -203,17 +190,16 @@ class DateTimeUtils {
     int? second,
     int? millisecond,
     int? microsecond,
-  }) =>
-      _date(
-        year ?? date.year,
-        month ?? date.month,
-        day ?? date.day,
-        hour ?? date.hour,
-        minute ?? date.minute,
-        second ?? date.second,
-        millisecond ?? date.millisecond,
-        microsecond ?? date.microsecond,
-      );
+  }) => _date(
+    year ?? date.year,
+    month ?? date.month,
+    day ?? date.day,
+    hour ?? date.hour,
+    minute ?? date.minute,
+    second ?? date.second,
+    millisecond ?? date.millisecond,
+    microsecond ?? date.microsecond,
+  );
 
   /// Returns a number of the next month.
   static int nextMonth(DateTime date) {
@@ -296,8 +282,10 @@ class DateTimeUtils {
     assert(firstWeekday == null || firstWeekday > 0 && firstWeekday < 8);
 
     if (isWeekInYear(date, date.year, firstWeekday)) {
-      final startOfTheFirstWeek =
-          firstDayOfFirstWeek(date.year, firstWeekday: firstWeekday);
+      final startOfTheFirstWeek = firstDayOfFirstWeek(
+        date.year,
+        firstWeekday: firstWeekday,
+      );
       final diffInDays = getDaysDifference(date, startOfTheFirstWeek);
       return (diffInDays / DateTime.daysPerWeek).floor() + 1;
     } else if (date.month == DateTime.december) {
@@ -434,11 +422,7 @@ class DateTimeUtils {
     var days = dateTime.weekday - (firstWeekday ?? DateTime.monday);
     if (days < 0) days += DateTime.daysPerWeek;
 
-    return _date(
-      dateTime.year,
-      dateTime.month,
-      dateTime.day - days,
-    );
+    return _date(dateTime.year, dateTime.month, dateTime.day - days);
   }
 
   /// Returns start of the first day of the first week in [year].
@@ -474,11 +458,7 @@ class DateTimeUtils {
 
     var days = dateTime.weekday - (firstWeekday ?? DateTime.monday);
     if (days >= 0) days -= DateTime.daysPerWeek;
-    return _date(
-      dateTime.year,
-      dateTime.month,
-      dateTime.day - days,
-    );
+    return _date(dateTime.year, dateTime.month, dateTime.day - days);
   }
 
   /// Returns start of the last day of the week for specified [dateTime].
@@ -497,11 +477,7 @@ class DateTimeUtils {
     var days = (firstWeekday ?? DateTime.monday) - 1 - dateTime.weekday;
     if (days < 0) days += DateTime.daysPerWeek;
 
-    return _date(
-      dateTime.year,
-      dateTime.month,
-      dateTime.day + days,
-    );
+    return _date(dateTime.year, dateTime.month, dateTime.day + days);
   }
 
   /// Returns [DateTime] that represents a beginning
@@ -657,13 +633,17 @@ class DateTimeUtils {
         years -=
             1; // Correcting years since we're effectively within a 1-day difference, not a full year.
       } else {
-        final int adjYear =
-            workingFrom.month == 1 ? workingFrom.year - 1 : workingFrom.year;
-        final int adjMonth =
-            workingFrom.month == 1 ? 12 : workingFrom.month - 1;
+        final int adjYear = workingFrom.month == 1
+            ? workingFrom.year - 1
+            : workingFrom.year;
+        final int adjMonth = workingFrom.month == 1
+            ? 12
+            : workingFrom.month - 1;
 
-        monthLength =
-            getDaysInMonth(adjYear, adjMonth == 12 ? 1 : adjMonth + 1);
+        monthLength = getDaysInMonth(
+          adjYear,
+          adjMonth == 12 ? 1 : adjMonth + 1,
+        );
 
         days += monthLength;
       }
@@ -674,8 +654,8 @@ class DateTimeUtils {
       months += 12; // Normalize months after adjusting for negative days.
     }
 
-// Special handling for leap years, specifically around February calculations
-// Example: If starting in February of a leap year, ensure we recognize February 29th as valid.
+    // Special handling for leap years, specifically around February calculations
+    // Example: If starting in February of a leap year, ensure we recognize February 29th as valid.
     if ((workingFrom.month == 2 &&
             workingTo.month > 2 &&
             workingFrom.day == 29) ||
@@ -688,7 +668,7 @@ class DateTimeUtils {
       }
     }
 
-// Normalize the days into weeks and remaining days
+    // Normalize the days into weeks and remaining days
     final int weeks = days ~/ 7;
     days %= 7;
 
@@ -734,17 +714,16 @@ class DateTimeUtils {
     int second = 0,
     int millisecond = 0,
     int microsecond = 0,
-  ]) =>
-      DateTime.utc(
-        year,
-        month,
-        day,
-        hour,
-        minute,
-        second,
-        millisecond,
-        microsecond,
-      );
+  ]) => DateTime.utc(
+    year,
+    month,
+    day,
+    hour,
+    minute,
+    second,
+    millisecond,
+    microsecond,
+  );
 }
 
 extension DateTimeSmartCopyWith on DateTime {
@@ -818,21 +797,19 @@ extension DateTimeSmartCopyWith on DateTime {
       };
     }
 
-    return Function.apply(
-      (isUtc ?? this.isUtc) ? DateTime.utc : DateTime.new,
-      [
-        ...[
-          fix(microsecond, this.microsecond),
-          fix(millisecond, this.millisecond),
-          fix(second, this.second),
-          fix(minute, this.minute),
-          fix(hour, this.hour),
-          fix(day, this.day, 1), // mimic standard constructor
-          fix(month, this.month, 1), // mimic standard constructor
-          fix(year, this.year, this.year), // year is required
-        ].reversed,
-      ],
-    ) as DateTime;
+    return Function.apply((isUtc ?? this.isUtc) ? DateTime.utc : DateTime.new, [
+          ...[
+            fix(microsecond, this.microsecond),
+            fix(millisecond, this.millisecond),
+            fix(second, this.second),
+            fix(minute, this.minute),
+            fix(hour, this.hour),
+            fix(day, this.day, 1), // mimic standard constructor
+            fix(month, this.month, 1), // mimic standard constructor
+            fix(year, this.year, this.year), // year is required
+          ].reversed,
+        ])
+        as DateTime;
   }
 }
 
@@ -854,7 +831,8 @@ extension TimeDifferenceExtension on TimeDifferenceInYearMonthsWeeksDays {
 
   /// Add another time difference
   TimeDifferenceInYearMonthsWeeksDays add(
-      TimeDifferenceInYearMonthsWeeksDays other) {
+    TimeDifferenceInYearMonthsWeeksDays other,
+  ) {
     // This is a simplistic implementation that doesn't handle overflow
     // A more complex implementation would normalize the results
     return TimeDifferenceInYearMonthsWeeksDays._(
@@ -892,8 +870,11 @@ class DateRange {
 
     final nextMonth = month == 12 ? 1 : month + 1;
     final nextMonthYear = month == 12 ? year + 1 : year;
-    final nextMonthFirstDay =
-        Date(year: nextMonthYear, month: _monthFromNumber(nextMonth), date: 1);
+    final nextMonthFirstDay = Date(
+      year: nextMonthYear,
+      month: _monthFromNumber(nextMonth),
+      date: 1,
+    );
 
     return DateRange(firstDay, nextMonthFirstDay.subtractDays(1));
   }
@@ -908,7 +889,9 @@ class DateRange {
   /// Get the number of days in this range
   int get daysCount {
     return DateTimeUtils.getDaysDifference(
-            end.toDateTime(), start.toDateTime()) +
+          end.toDateTime(),
+          start.toDateTime(),
+        ) +
         1;
   }
 
@@ -991,7 +974,9 @@ class ExtendedDateUtils {
     if (futureDate.isAfter(now)) {
       // Calculate the difference between now and future date
       final daysDifference = DateTimeUtils.getDaysDifference(
-          futureDate.toDateTime(), now.toDateTime());
+        futureDate.toDateTime(),
+        now.toDateTime(),
+      );
 
       // Create an Age object using birth date
       final currentAge = Age(birthDate);

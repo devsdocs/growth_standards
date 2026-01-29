@@ -62,8 +62,8 @@ part 'model/postnatal/postnatal_growth_of_preterm_infants/weight.dart';
 
 class IntergrowthAtBirthData {
   IntergrowthNewbornBirthHeadCircumferenceForAgeData
-      get newbornSizeHeadCircumferenceData =>
-          IntergrowthNewbornBirthHeadCircumferenceForAgeData();
+  get newbornSizeHeadCircumferenceData =>
+      IntergrowthNewbornBirthHeadCircumferenceForAgeData();
 
   IntergrowthNewbornBirthLengthForAgeData get newbornSizeLengthData =>
       IntergrowthNewbornBirthLengthForAgeData();
@@ -72,60 +72,60 @@ class IntergrowthAtBirthData {
       IntergrowthNewbornBirthWeightForAgeData();
 
   IntergrowthNewbornBirthWeightForLengthRatioForAgeData
-      get newbornSizeWeightLengthRatioData =>
-          IntergrowthNewbornBirthWeightForLengthRatioForAgeData();
+  get newbornSizeWeightLengthRatioData =>
+      IntergrowthNewbornBirthWeightForLengthRatioForAgeData();
 
   IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeData
-      get veryPretermNewbornSizeHeadCircumferenceData =>
-          IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeData();
+  get veryPretermNewbornSizeHeadCircumferenceData =>
+      IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeData();
 
   IntergrowthVeryPretermNewbornBirthLengthForAgeData
-      get veryPretermNewbornSizeLengthData =>
-          IntergrowthVeryPretermNewbornBirthLengthForAgeData();
+  get veryPretermNewbornSizeLengthData =>
+      IntergrowthVeryPretermNewbornBirthLengthForAgeData();
 
   IntergrowthVeryPretermNewbornBirthWeightForAgeData
-      get veryPretermNewbornSizeWeightData =>
-          IntergrowthVeryPretermNewbornBirthWeightForAgeData();
+  get veryPretermNewbornSizeWeightData =>
+      IntergrowthVeryPretermNewbornBirthWeightForAgeData();
 
   IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeData
-      get veryPretermNewbornSizeWeightLengthRatioData =>
-          IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeData();
+  get veryPretermNewbornSizeWeightLengthRatioData =>
+      IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeData();
 }
 
 class IntergrowthAtBirthFromJson {
   IntergrowthNewbornBirthHeadCircumferenceForAge newbornSizeHeadCircumference(
-          Map<String, dynamic> json) =>
-      IntergrowthNewbornBirthHeadCircumferenceForAge.fromJson(json);
+    Map<String, dynamic> json,
+  ) => IntergrowthNewbornBirthHeadCircumferenceForAge.fromJson(json);
 
   IntergrowthNewbornBirthLengthForAge newbornSizeLength(
-          Map<String, dynamic> json) =>
-      IntergrowthNewbornBirthLengthForAge.fromJson(json);
+    Map<String, dynamic> json,
+  ) => IntergrowthNewbornBirthLengthForAge.fromJson(json);
 
   IntergrowthNewbornBirthWeightForAge newbornSizeWeight(
-          Map<String, dynamic> json) =>
-      IntergrowthNewbornBirthWeightForAge.fromJson(json);
+    Map<String, dynamic> json,
+  ) => IntergrowthNewbornBirthWeightForAge.fromJson(json);
 
   IntergrowthNewbornBirthWeightForLengthRatioForAge
-      newbornSizeWeightLengthRatio(Map<String, dynamic> json) =>
-          IntergrowthNewbornBirthWeightForLengthRatioForAge.fromJson(json);
+  newbornSizeWeightLengthRatio(Map<String, dynamic> json) =>
+      IntergrowthNewbornBirthWeightForLengthRatioForAge.fromJson(json);
 
   IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge
-      veryPretermNewbornSizeHeadCircumference(Map<String, dynamic> json) =>
-          IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge.fromJson(
-              json);
+  veryPretermNewbornSizeHeadCircumference(Map<String, dynamic> json) =>
+      IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge.fromJson(json);
 
   IntergrowthVeryPretermNewbornBirthLengthForAge veryPretermNewbornSizeLength(
-          Map<String, dynamic> json) =>
-      IntergrowthVeryPretermNewbornBirthLengthForAge.fromJson(json);
+    Map<String, dynamic> json,
+  ) => IntergrowthVeryPretermNewbornBirthLengthForAge.fromJson(json);
 
   IntergrowthVeryPretermNewbornBirthWeightForAge veryPretermNewbornSizeWeight(
-          Map<String, dynamic> json) =>
-      IntergrowthVeryPretermNewbornBirthWeightForAge.fromJson(json);
+    Map<String, dynamic> json,
+  ) => IntergrowthVeryPretermNewbornBirthWeightForAge.fromJson(json);
 
   IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge
-      veryPretermNewbornSizeWeightLengthRatio(Map<String, dynamic> json) =>
-          IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge.fromJson(
-              json);
+  veryPretermNewbornSizeWeightLengthRatio(Map<String, dynamic> json) =>
+      IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge.fromJson(
+        json,
+      );
 }
 
 class IntergrowthAtBirth {
@@ -139,102 +139,92 @@ class IntergrowthAtBirth {
     required Sex sex,
     required Age gestationalAge,
     required Length measurementResult,
-  }) =>
-      IntergrowthNewbornBirthHeadCircumferenceForAge(
-        sex: sex,
-        age: gestationalAge,
-        measurementResult: measurementResult,
-      );
+  }) => IntergrowthNewbornBirthHeadCircumferenceForAge(
+    sex: sex,
+    age: gestationalAge,
+    measurementResult: measurementResult,
+  );
 
   IntergrowthNewbornBirthLengthForAge newbornSizeLength({
     required Sex sex,
     required Age gestationalAge,
     required Length measurementResult,
-  }) =>
-      IntergrowthNewbornBirthLengthForAge(
-        sex: sex,
-        age: gestationalAge,
-        measurementResult: measurementResult,
-      );
+  }) => IntergrowthNewbornBirthLengthForAge(
+    sex: sex,
+    age: gestationalAge,
+    measurementResult: measurementResult,
+  );
 
   IntergrowthNewbornBirthWeightForAge newbornSizeWeight({
     required Sex sex,
     required Age gestationalAge,
     required Mass weight,
-  }) =>
-      IntergrowthNewbornBirthWeightForAge(
-        sex: sex,
-        age: gestationalAge,
-        measurementResult: weight,
-      );
+  }) => IntergrowthNewbornBirthWeightForAge(
+    sex: sex,
+    age: gestationalAge,
+    measurementResult: weight,
+  );
 
   IntergrowthNewbornBirthWeightForLengthRatioForAge
-      newbornSizeWeightLengthRatio({
+  newbornSizeWeightLengthRatio({
     required Sex sex,
     required Age gestationalAge,
     required Mass weight,
     required Length length,
-  }) =>
-          IntergrowthNewbornBirthWeightForLengthRatioForAge(
-            sex: sex,
-            age: gestationalAge,
-            measurementResult:
-                NewbornWeightLengthRatioMeasurement.fromMeasurement(
-              weight: weight,
-              length: length,
-            ),
-          );
+  }) => IntergrowthNewbornBirthWeightForLengthRatioForAge(
+    sex: sex,
+    age: gestationalAge,
+    measurementResult: NewbornWeightLengthRatioMeasurement.fromMeasurement(
+      weight: weight,
+      length: length,
+    ),
+  );
 
   IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge
-      veryPretermNewbornSizeHeadCircumference({
+  veryPretermNewbornSizeHeadCircumference({
     required Sex sex,
     required Age gestationalAge,
     required Length measurementResult,
-  }) =>
-          IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge(
-            sex: sex,
-            age: gestationalAge,
-            measurementResult: measurementResult,
-          );
+  }) => IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge(
+    sex: sex,
+    age: gestationalAge,
+    measurementResult: measurementResult,
+  );
 
   IntergrowthVeryPretermNewbornBirthLengthForAge veryPretermNewbornSizeLength({
     required Sex sex,
     required Age gestationalAge,
     required Length measurementResult,
-  }) =>
-      IntergrowthVeryPretermNewbornBirthLengthForAge(
-        sex: sex,
-        age: gestationalAge,
-        measurementResult: measurementResult,
-      );
+  }) => IntergrowthVeryPretermNewbornBirthLengthForAge(
+    sex: sex,
+    age: gestationalAge,
+    measurementResult: measurementResult,
+  );
 
   IntergrowthVeryPretermNewbornBirthWeightForAge veryPretermNewbornSizeWeight({
     required Sex sex,
     required Age gestationalAge,
     required Mass weight,
-  }) =>
-      IntergrowthVeryPretermNewbornBirthWeightForAge(
-        sex: sex,
-        age: gestationalAge,
-        measurementResult: weight,
-      );
+  }) => IntergrowthVeryPretermNewbornBirthWeightForAge(
+    sex: sex,
+    age: gestationalAge,
+    measurementResult: weight,
+  );
 
   IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge
-      veryPretermNewbornSizeWeightLengthRatio({
+  veryPretermNewbornSizeWeightLengthRatio({
     required Sex sex,
     required Age gestationalAge,
     required Mass weight,
     required Length length,
-  }) =>
-          IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge(
-            sex: sex,
-            age: gestationalAge,
-            measurementResult:
-                NewbornWeightLengthRatioMeasurement.fromMeasurement(
-              weight: weight,
-              length: length,
-            ),
-          );
+  }) => IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge(
+    sex: sex,
+    age: gestationalAge,
+    measurementResult: NewbornWeightLengthRatioMeasurement.fromMeasurement(
+      weight: weight,
+      length: length,
+    ),
+  );
 }
 
 class IntergrowthDuringPregnancyData {
@@ -242,23 +232,23 @@ class IntergrowthDuringPregnancyData {
       IntergrowthEarlyPregnancyDatingForCRLData();
 
   IntergrowthFetalGrowtAbdominalCircumferenceForAgeData
-      get fetalAbdominalCircumferenceData =>
-          IntergrowthFetalGrowtAbdominalCircumferenceForAgeData();
+  get fetalAbdominalCircumferenceData =>
+      IntergrowthFetalGrowtAbdominalCircumferenceForAgeData();
 
   IntergrowthFetalGrowtBiparietalDiameterForAgeData
-      get fetalBiparietalDiameterData =>
-          IntergrowthFetalGrowtBiparietalDiameterForAgeData();
+  get fetalBiparietalDiameterData =>
+      IntergrowthFetalGrowtBiparietalDiameterForAgeData();
 
   IntergrowthFetalGrowtFemurLengthForAgeData get fetalFemurLengthData =>
       IntergrowthFetalGrowtFemurLengthForAgeData();
 
   IntergrowthFetalGrowtHeadCircumferenceForAgeData
-      get fetalHeadCircumferenceData =>
-          IntergrowthFetalGrowtHeadCircumferenceForAgeData();
+  get fetalHeadCircumferenceData =>
+      IntergrowthFetalGrowtHeadCircumferenceForAgeData();
 
   IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeData
-      get fetalOccipitofrontalDiameterData =>
-          IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeData();
+  get fetalOccipitofrontalDiameterData =>
+      IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeData();
 
   IntergrowthFetalCrownRumpLengthForAgeData get fetalSizeInEarlyPregnancyData =>
       IntergrowthFetalCrownRumpLengthForAgeData();
@@ -272,40 +262,40 @@ class IntergrowthDuringPregnancyData {
 
 class IntergrowthDuringPregnancyFromJson {
   IntergrowthEarlyPregnancyDatingForCRL earlyPregnancyCRL(
-          Map<String, dynamic> json) =>
-      IntergrowthEarlyPregnancyDatingForCRL.fromJson(json);
+    Map<String, dynamic> json,
+  ) => IntergrowthEarlyPregnancyDatingForCRL.fromJson(json);
 
   IntergrowthFetalGrowtAbdominalCircumferenceForAge fetalAbdominalCircumference(
-          Map<String, dynamic> json) =>
-      IntergrowthFetalGrowtAbdominalCircumferenceForAge.fromJson(json);
+    Map<String, dynamic> json,
+  ) => IntergrowthFetalGrowtAbdominalCircumferenceForAge.fromJson(json);
 
   IntergrowthFetalGrowtBiparietalDiameterForAge fetalBiparietalDiameter(
-          Map<String, dynamic> json) =>
-      IntergrowthFetalGrowtBiparietalDiameterForAge.fromJson(json);
+    Map<String, dynamic> json,
+  ) => IntergrowthFetalGrowtBiparietalDiameterForAge.fromJson(json);
 
   IntergrowthFetalGrowtFemurLengthForAge fetalFemurLength(
-          Map<String, dynamic> json) =>
-      IntergrowthFetalGrowtFemurLengthForAge.fromJson(json);
+    Map<String, dynamic> json,
+  ) => IntergrowthFetalGrowtFemurLengthForAge.fromJson(json);
 
   IntergrowthFetalGrowtHeadCircumferenceForAge fetalHeadCircumference(
-          Map<String, dynamic> json) =>
-      IntergrowthFetalGrowtHeadCircumferenceForAge.fromJson(json);
+    Map<String, dynamic> json,
+  ) => IntergrowthFetalGrowtHeadCircumferenceForAge.fromJson(json);
 
   IntergrowthFetalGrowtOccipitoFrontalDiameterForAge
-      fetalOccipitofrontalDiameter(Map<String, dynamic> json) =>
-          IntergrowthFetalGrowtOccipitoFrontalDiameterForAge.fromJson(json);
+  fetalOccipitofrontalDiameter(Map<String, dynamic> json) =>
+      IntergrowthFetalGrowtOccipitoFrontalDiameterForAge.fromJson(json);
 
   IntergrowthFetalCrownRumpLengthForAge fetalSizeInEarlyPregnancy(
-          Map<String, dynamic> json) =>
-      IntergrowthFetalCrownRumpLengthForAge.fromJson(json);
+    Map<String, dynamic> json,
+  ) => IntergrowthFetalCrownRumpLengthForAge.fromJson(json);
 
   IntergrowthGestationalWeightGainForAge gestationalWeightGain(
-          Map<String, dynamic> json) =>
-      IntergrowthGestationalWeightGainForAge.fromJson(json);
+    Map<String, dynamic> json,
+  ) => IntergrowthGestationalWeightGainForAge.fromJson(json);
 
   IntergrowthSymphysisFundalHeightForAge symphysisfundalHeight(
-          Map<String, dynamic> json) =>
-      IntergrowthSymphysisFundalHeightForAge.fromJson(json);
+    Map<String, dynamic> json,
+  ) => IntergrowthSymphysisFundalHeightForAge.fromJson(json);
 }
 
 class IntergrowthDuringPregnancy {
@@ -319,115 +309,106 @@ class IntergrowthDuringPregnancy {
   IntergrowthEarlyPregnancyDatingForCRL earlyPregnancyCRL({
     required Age gestationalAge,
     required Length measurementResult,
-  }) =>
-      IntergrowthEarlyPregnancyDatingForCRL(
-        age: gestationalAge,
-        length: measurementResult,
-      );
+  }) => IntergrowthEarlyPregnancyDatingForCRL(
+    age: gestationalAge,
+    length: measurementResult,
+  );
 
   IntergrowthFetalGrowtAbdominalCircumferenceForAge
-      fetalAbdominalCircumference({
+  fetalAbdominalCircumference({
     required Age gestationalAge,
     required Length measurementResult,
-  }) =>
-          IntergrowthFetalGrowtAbdominalCircumferenceForAge(
-            age: gestationalAge,
-            measurementResult: measurementResult,
-          );
+  }) => IntergrowthFetalGrowtAbdominalCircumferenceForAge(
+    age: gestationalAge,
+    measurementResult: measurementResult,
+  );
 
   IntergrowthFetalGrowtBiparietalDiameterForAge fetalBiparietalDiameter({
     required Age gestationalAge,
     required Length measurementResult,
-  }) =>
-      IntergrowthFetalGrowtBiparietalDiameterForAge(
-        age: gestationalAge,
-        measurementResult: measurementResult,
-      );
+  }) => IntergrowthFetalGrowtBiparietalDiameterForAge(
+    age: gestationalAge,
+    measurementResult: measurementResult,
+  );
 
   IntergrowthFetalGrowtFemurLengthForAge fetalFemurLength({
     required Age gestationalAge,
     required Length measurementResult,
-  }) =>
-      IntergrowthFetalGrowtFemurLengthForAge(
-        age: gestationalAge,
-        measurementResult: measurementResult,
-      );
+  }) => IntergrowthFetalGrowtFemurLengthForAge(
+    age: gestationalAge,
+    measurementResult: measurementResult,
+  );
 
   IntergrowthFetalGrowtHeadCircumferenceForAge fetalHeadCircumference({
     required Age gestationalAge,
     required Length measurementResult,
-  }) =>
-      IntergrowthFetalGrowtHeadCircumferenceForAge(
-        age: gestationalAge,
-        measurementResult: measurementResult,
-      );
+  }) => IntergrowthFetalGrowtHeadCircumferenceForAge(
+    age: gestationalAge,
+    measurementResult: measurementResult,
+  );
 
   IntergrowthFetalGrowtOccipitoFrontalDiameterForAge
-      fetalOccipitofrontalDiameter({
+  fetalOccipitofrontalDiameter({
     required Age gestationalAge,
     required Length measurementResult,
-  }) =>
-          IntergrowthFetalGrowtOccipitoFrontalDiameterForAge(
-            age: gestationalAge,
-            measurementResult: measurementResult,
-          );
+  }) => IntergrowthFetalGrowtOccipitoFrontalDiameterForAge(
+    age: gestationalAge,
+    measurementResult: measurementResult,
+  );
 
   IntergrowthFetalCrownRumpLengthForAge fetalSizeInEarlyPregnancy({
     required Age gestationalAge,
     required Length measurementResult,
-  }) =>
-      IntergrowthFetalCrownRumpLengthForAge(
-        age: gestationalAge,
-        length: measurementResult,
-      );
+  }) => IntergrowthFetalCrownRumpLengthForAge(
+    age: gestationalAge,
+    length: measurementResult,
+  );
 
   IntergrowthGestationalWeightGainForAge gestationalWeightGain({
     required Age gestationalAge,
     required Mass weight,
-  }) =>
-      IntergrowthGestationalWeightGainForAge(
-        age: gestationalAge,
-        measurementResult: weight,
-      );
+  }) => IntergrowthGestationalWeightGainForAge(
+    age: gestationalAge,
+    measurementResult: weight,
+  );
 
   IntergrowthSymphysisFundalHeightForAge symphysisfundalHeight({
     required Age gestationalAge,
     required Length measurementResult,
-  }) =>
-      IntergrowthSymphysisFundalHeightForAge(
-        age: gestationalAge,
-        length: measurementResult,
-      );
+  }) => IntergrowthSymphysisFundalHeightForAge(
+    age: gestationalAge,
+    length: measurementResult,
+  );
 }
 
 class IntergrowthPostnatalData {
   IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeData
-      get postnatalGrowthPretermInfantsHeadCircumferenceData =>
-          IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeData();
+  get postnatalGrowthPretermInfantsHeadCircumferenceData =>
+      IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeData();
 
   IntergrowthPretermInfantsPostnatalGrowthLengthForAgeData
-      get postnatalGrowthPretermInfantsLengthData =>
-          IntergrowthPretermInfantsPostnatalGrowthLengthForAgeData();
+  get postnatalGrowthPretermInfantsLengthData =>
+      IntergrowthPretermInfantsPostnatalGrowthLengthForAgeData();
 
   IntergrowthPretermInfantsPostnatalGrowthWeightForAgeData
-      get postnatalGrowthPretermInfantsWeightData =>
-          IntergrowthPretermInfantsPostnatalGrowthWeightForAgeData();
+  get postnatalGrowthPretermInfantsWeightData =>
+      IntergrowthPretermInfantsPostnatalGrowthWeightForAgeData();
 }
 
 class IntergrowthPostnatalFromJson {
   IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge
-      postnatalGrowthPretermInfantsHeadCircumference(
-              Map<String, dynamic> json) =>
-          IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge
-              .fromJson(json);
+  postnatalGrowthPretermInfantsHeadCircumference(Map<String, dynamic> json) =>
+      IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge.fromJson(
+        json,
+      );
 
   IntergrowthPretermInfantsPostnatalGrowthLengthForAge
-      postnatalGrowthPretermInfantsLength(Map<String, dynamic> json) =>
-          IntergrowthPretermInfantsPostnatalGrowthLengthForAge.fromJson(json);
+  postnatalGrowthPretermInfantsLength(Map<String, dynamic> json) =>
+      IntergrowthPretermInfantsPostnatalGrowthLengthForAge.fromJson(json);
 
   IntergrowthPretermInfantsPostnatalGrowthWeightForAge
-      postnatalGrowthPretermInfantsWeight(Map<String, dynamic> json) =>
-          IntergrowthPretermInfantsPostnatalGrowthWeightForAge.fromJson(json);
+  postnatalGrowthPretermInfantsWeight(Map<String, dynamic> json) =>
+      IntergrowthPretermInfantsPostnatalGrowthWeightForAge.fromJson(json);
 }
 
 class IntergrowthPostnatal {
@@ -438,38 +419,35 @@ class IntergrowthPostnatal {
   IntergrowthPostnatalFromJson get fromJson => IntergrowthPostnatalFromJson();
 
   IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge
-      postnatalGrowthPretermInfantsHeadCircumference({
+  postnatalGrowthPretermInfantsHeadCircumference({
     required Sex sex,
     required Age age,
     required Length measurementResult,
-  }) =>
-          IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge(
-            sex: sex,
-            age: age,
-            measurementResult: measurementResult,
-          );
+  }) => IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge(
+    sex: sex,
+    age: age,
+    measurementResult: measurementResult,
+  );
 
   IntergrowthPretermInfantsPostnatalGrowthLengthForAge
-      postnatalGrowthPretermInfantsLength({
+  postnatalGrowthPretermInfantsLength({
     required Sex sex,
     required Age age,
     required Length measurementResult,
-  }) =>
-          IntergrowthPretermInfantsPostnatalGrowthLengthForAge(
-            sex: sex,
-            age: age,
-            measurementResult: measurementResult,
-          );
+  }) => IntergrowthPretermInfantsPostnatalGrowthLengthForAge(
+    sex: sex,
+    age: age,
+    measurementResult: measurementResult,
+  );
 
   IntergrowthPretermInfantsPostnatalGrowthWeightForAge
-      postnatalGrowthPretermInfantsWeight({
+  postnatalGrowthPretermInfantsWeight({
     required Sex sex,
     required Age age,
     required Mass weight,
-  }) =>
-          IntergrowthPretermInfantsPostnatalGrowthWeightForAge(
-            sex: sex,
-            age: age,
-            measurementResult: weight,
-          );
+  }) => IntergrowthPretermInfantsPostnatalGrowthWeightForAge(
+    sex: sex,
+    age: age,
+    measurementResult: weight,
+  );
 }

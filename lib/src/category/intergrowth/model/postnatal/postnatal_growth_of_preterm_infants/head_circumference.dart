@@ -5,56 +5,61 @@ class IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeData
   factory IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeData() =>
       _singleton;
   IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeData._(
-      this._data);
+    this._data,
+  );
 
   static final _singleton =
       IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeData._(
-          _parse());
+        _parse(),
+      );
 
   static Map<
-          Sex,
-          Map<int,
-              _IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeLMS>>
-      _parse() => {
-            Sex.male: _grow_preterm_boys_hc.toJsonObjectAsMap.map(
-              (k1, v1) {
-                v1 as Map<String, dynamic>;
-                final lms = LMS(
-                    l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
-                return MapEntry(
-                  int.parse(k1),
-                  _IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeLMS(
-                    lms: lms,
-                  ),
-                );
-              },
-            ),
-            Sex.female: _grow_preterm_girls_hc.toJsonObjectAsMap.map(
-              (k1, v1) {
-                v1 as Map<String, dynamic>;
-                final lms = LMS(
-                    l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
-                return MapEntry(
-                  int.parse(k1),
-                  _IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeLMS(
-                    lms: lms,
-                  ),
-                );
-              },
-            ),
-          };
+    Sex,
+    Map<
+      int,
+      _IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeLMS
+    >
+  >
+  _parse() => {
+    Sex.male: _grow_preterm_boys_hc.toJsonObjectAsMap.map((k1, v1) {
+      v1 as Map<String, dynamic>;
+      final lms = LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
+      return MapEntry(
+        int.parse(k1),
+        _IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeLMS(
+          lms: lms,
+        ),
+      );
+    }),
+    Sex.female: _grow_preterm_girls_hc.toJsonObjectAsMap.map((k1, v1) {
+      v1 as Map<String, dynamic>;
+      final lms = LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
+      return MapEntry(
+        int.parse(k1),
+        _IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeLMS(
+          lms: lms,
+        ),
+      );
+    }),
+  };
 
   final Map<
-          Sex,
-          Map<int,
-              _IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeLMS>>
-      _data;
+    Sex,
+    Map<
+      int,
+      _IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeLMS
+    >
+  >
+  _data;
   @override
   Map<
-          Sex,
-          Map<int,
-              _IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeLMS>>
-      get data => _data;
+    Sex,
+    Map<
+      int,
+      _IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeLMS
+    >
+  >
+  get data => _data;
 
   @override
   String toString() => 'Newborn Head Circumference For Age Data($_data)';
@@ -80,40 +85,36 @@ sealed class IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge
     Map<String, dynamic> json,
   ) =>
       _$IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeFromJson(
-          json);
+        json,
+      );
 
   @override
   IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeData
-      get contextData =>
-          IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeData();
+  get contextData =>
+      IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeData();
 
   _IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeLMS
-      get _ageData => contextData._data[sex]![
-          ageAtObservationDate.ageInTotalByUnit(contextData.unit)]!;
+  get _ageData =>
+      contextData._data[sex]![ageAtObservationDate.ageInTotalByUnit(
+        contextData.unit,
+      )]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 
   @override
-  Age get ageAtObservationDate => checkAge(
-        age,
-        contextData: contextData,
-      );
+  Age get ageAtObservationDate => checkAge(age, contextData: contextData);
 
   @override
-  num zScore([
-    Precision precision = Precision.two,
-  ]) =>
+  num zScore([Precision precision = Precision.two]) =>
       _zScore.precision(precision);
 
   @override
-  num percentile([
-    Precision precision = Precision.two,
-  ]) =>
+  num percentile([Precision precision = Precision.two]) =>
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
   _IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeLMS
-      get lmsData => _ageData;
+  get lmsData => _ageData;
 
   @override
   num get measurementResultInDefaultUnit =>

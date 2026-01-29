@@ -4,26 +4,28 @@ class WHOGrowthReferenceBodyMassIndexForAgeData extends AgeBasedData {
   factory WHOGrowthReferenceBodyMassIndexForAgeData() => _singleton;
   const WHOGrowthReferenceBodyMassIndexForAgeData._(this._data);
 
-  static final _singleton =
-      WHOGrowthReferenceBodyMassIndexForAgeData._(_parse());
+  static final _singleton = WHOGrowthReferenceBodyMassIndexForAgeData._(
+    _parse(),
+  );
 
   static Map<Sex, Map<int, _WHOGrowthReferenceBodyMassIndexForAgeLMS>>
-      _parse() => _bmi5yo.toJsonObjectAsMap.map(
-            (k1, v1) => MapEntry(
-              k1 == '1' ? Sex.male : Sex.female,
-              (v1 as Map<String, dynamic>).map((k2, v2) {
-                v2 as Map<String, dynamic>;
-                final lms = LMS(
-                    l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
-                return MapEntry(
-                  int.parse(k2),
-                  _WHOGrowthReferenceBodyMassIndexForAgeLMS(
-                    lms: lms,
-                  ),
-                );
-              }),
-            ),
-          );
+  _parse() => _bmi5yo.toJsonObjectAsMap.map(
+    (k1, v1) => MapEntry(
+      k1 == '1' ? Sex.male : Sex.female,
+      (v1 as Map<String, dynamic>).map((k2, v2) {
+        v2 as Map<String, dynamic>;
+        final lms = LMS(
+          l: v2['l'] as num,
+          m: v2['m'] as num,
+          s: v2['s'] as num,
+        );
+        return MapEntry(
+          int.parse(k2),
+          _WHOGrowthReferenceBodyMassIndexForAgeLMS(lms: lms),
+        );
+      }),
+    ),
+  );
 
   final Map<Sex, Map<int, _WHOGrowthReferenceBodyMassIndexForAgeLMS>> _data;
   @override
@@ -46,13 +48,11 @@ sealed class WHOGrowthReferenceBodyMassIndexMeasurement
 
   factory WHOGrowthReferenceBodyMassIndexMeasurement.fromMeasurement(
     BodyMassIndex bodyMassIndex,
-  ) =>
-      WHOGrowthReferenceBodyMassIndexMeasurement(bodyMassIndex.value);
+  ) => WHOGrowthReferenceBodyMassIndexMeasurement(bodyMassIndex.value);
 
   factory WHOGrowthReferenceBodyMassIndexMeasurement.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$WHOGrowthReferenceBodyMassIndexMeasurementFromJson(json);
+  ) => _$WHOGrowthReferenceBodyMassIndexMeasurementFromJson(json);
 }
 
 @freezed
@@ -62,42 +62,36 @@ sealed class WHOGrowthReferenceBodyMassIndexForAge extends AgeBasedResult
     required Sex sex,
     required Age age,
     required WHOGrowthReferenceBodyMassIndexMeasurement
-        bodyMassIndexMeasurement,
+    bodyMassIndexMeasurement,
   }) = _WHOGrowthReferenceBodyMassIndexForAge;
 
   const WHOGrowthReferenceBodyMassIndexForAge._();
 
   factory WHOGrowthReferenceBodyMassIndexForAge.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$WHOGrowthReferenceBodyMassIndexForAgeFromJson(json);
+  ) => _$WHOGrowthReferenceBodyMassIndexForAgeFromJson(json);
 
   @override
   WHOGrowthReferenceBodyMassIndexForAgeData get contextData =>
       WHOGrowthReferenceBodyMassIndexForAgeData();
 
-  _WHOGrowthReferenceBodyMassIndexForAgeLMS get _ageData => contextData
-      ._data[sex]![ageAtObservationDate.ageInTotalByUnit(contextData.unit)]!;
+  _WHOGrowthReferenceBodyMassIndexForAgeLMS get _ageData =>
+      contextData._data[sex]![ageAtObservationDate.ageInTotalByUnit(
+        contextData.unit,
+      )]!;
 
   num get _zScore =>
       _ageData.lms.adjustedZScore(measurementResultInDefaultUnit);
 
   @override
-  Age get ageAtObservationDate => checkAge(
-        age,
-        contextData: contextData,
-      );
+  Age get ageAtObservationDate => checkAge(age, contextData: contextData);
 
   @override
-  num zScore([
-    Precision precision = Precision.two,
-  ]) =>
+  num zScore([Precision precision = Precision.two]) =>
       _zScore.precision(precision);
 
   @override
-  num percentile([
-    Precision precision = Precision.two,
-  ]) =>
+  num percentile([Precision precision = Precision.two]) =>
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
@@ -108,9 +102,7 @@ sealed class WHOGrowthReferenceBodyMassIndexForAge extends AgeBasedResult
 }
 
 class _WHOGrowthReferenceBodyMassIndexForAgeLMS extends LMSContext {
-  _WHOGrowthReferenceBodyMassIndexForAgeLMS({
-    required this.lms,
-  });
+  _WHOGrowthReferenceBodyMassIndexForAgeLMS({required this.lms});
   @override
   final LMS lms;
 

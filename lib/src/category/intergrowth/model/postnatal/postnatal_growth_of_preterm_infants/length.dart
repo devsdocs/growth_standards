@@ -10,43 +10,36 @@ class IntergrowthPretermInfantsPostnatalGrowthLengthForAgeData
       IntergrowthPretermInfantsPostnatalGrowthLengthForAgeData._(_parse());
 
   static Map<
-      Sex,
-      Map<int,
-          _IntergrowthPretermInfantsPostnatalGrowthLengthForAgeLMS>> _parse() =>
-      {
-        Sex.male: _grow_preterm_boys_lt.toJsonObjectAsMap.map(
-          (k1, v1) {
-            v1 as Map<String, dynamic>;
-            final lms =
-                LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
-            return MapEntry(
-              int.parse(k1),
-              _IntergrowthPretermInfantsPostnatalGrowthLengthForAgeLMS(
-                lms: lms,
-              ),
-            );
-          },
-        ),
-        Sex.female: _grow_preterm_girls_lt.toJsonObjectAsMap.map(
-          (k1, v1) {
-            v1 as Map<String, dynamic>;
-            final lms =
-                LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
-            return MapEntry(
-              int.parse(k1),
-              _IntergrowthPretermInfantsPostnatalGrowthLengthForAgeLMS(
-                lms: lms,
-              ),
-            );
-          },
-        ),
-      };
+    Sex,
+    Map<int, _IntergrowthPretermInfantsPostnatalGrowthLengthForAgeLMS>
+  >
+  _parse() => {
+    Sex.male: _grow_preterm_boys_lt.toJsonObjectAsMap.map((k1, v1) {
+      v1 as Map<String, dynamic>;
+      final lms = LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
+      return MapEntry(
+        int.parse(k1),
+        _IntergrowthPretermInfantsPostnatalGrowthLengthForAgeLMS(lms: lms),
+      );
+    }),
+    Sex.female: _grow_preterm_girls_lt.toJsonObjectAsMap.map((k1, v1) {
+      v1 as Map<String, dynamic>;
+      final lms = LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
+      return MapEntry(
+        int.parse(k1),
+        _IntergrowthPretermInfantsPostnatalGrowthLengthForAgeLMS(lms: lms),
+      );
+    }),
+  };
 
-  final Map<Sex,
-      Map<int, _IntergrowthPretermInfantsPostnatalGrowthLengthForAgeLMS>> _data;
+  final Map<
+    Sex,
+    Map<int, _IntergrowthPretermInfantsPostnatalGrowthLengthForAgeLMS>
+  >
+  _data;
   @override
   Map<Sex, Map<int, _IntergrowthPretermInfantsPostnatalGrowthLengthForAgeLMS>>
-      get data => _data;
+  get data => _data;
 
   @override
   String toString() => 'Newborn Length For Age Data($_data)';
@@ -70,35 +63,28 @@ sealed class IntergrowthPretermInfantsPostnatalGrowthLengthForAge
 
   factory IntergrowthPretermInfantsPostnatalGrowthLengthForAge.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$IntergrowthPretermInfantsPostnatalGrowthLengthForAgeFromJson(json);
+  ) => _$IntergrowthPretermInfantsPostnatalGrowthLengthForAgeFromJson(json);
 
   @override
   IntergrowthPretermInfantsPostnatalGrowthLengthForAgeData get contextData =>
       IntergrowthPretermInfantsPostnatalGrowthLengthForAgeData();
 
   _IntergrowthPretermInfantsPostnatalGrowthLengthForAgeLMS get _ageData =>
-      contextData._data[sex]![
-          ageAtObservationDate.ageInTotalByUnit(contextData.unit)]!;
+      contextData._data[sex]![ageAtObservationDate.ageInTotalByUnit(
+        contextData.unit,
+      )]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 
   @override
-  Age get ageAtObservationDate => checkAge(
-        age,
-        contextData: contextData,
-      );
+  Age get ageAtObservationDate => checkAge(age, contextData: contextData);
 
   @override
-  num zScore([
-    Precision precision = Precision.two,
-  ]) =>
+  num zScore([Precision precision = Precision.two]) =>
       _zScore.precision(precision);
 
   @override
-  num percentile([
-    Precision precision = Precision.two,
-  ]) =>
+  num percentile([Precision precision = Precision.two]) =>
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
@@ -112,9 +98,7 @@ sealed class IntergrowthPretermInfantsPostnatalGrowthLengthForAge
 
 class _IntergrowthPretermInfantsPostnatalGrowthLengthForAgeLMS
     extends LMSContext {
-  _IntergrowthPretermInfantsPostnatalGrowthLengthForAgeLMS({
-    required this.lms,
-  });
+  _IntergrowthPretermInfantsPostnatalGrowthLengthForAgeLMS({required this.lms});
   @override
   final LMS lms;
 

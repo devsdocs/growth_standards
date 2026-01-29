@@ -8,40 +8,30 @@ class IntergrowthVeryPretermNewbornBirthWeightForAgeData extends AgeBasedData {
       IntergrowthVeryPretermNewbornBirthWeightForAgeData._(_parse());
 
   static Map<Sex, Map<int, _IntergrowthVeryPretermNewbornBirthWeightForAgeLMS>>
-      _parse() => {
-            Sex.male: _grow_verypreterm_boys_bw.toJsonObjectAsMap.map(
-              (k1, v1) {
-                v1 as Map<String, dynamic>;
-                final lms = LMS(
-                    l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
-                return MapEntry(
-                  int.parse(k1),
-                  _IntergrowthVeryPretermNewbornBirthWeightForAgeLMS(
-                    lms: lms,
-                  ),
-                );
-              },
-            ),
-            Sex.female: _grow_verypreterm_girls_bw.toJsonObjectAsMap.map(
-              (k1, v1) {
-                v1 as Map<String, dynamic>;
-                final lms = LMS(
-                    l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
-                return MapEntry(
-                  int.parse(k1),
-                  _IntergrowthVeryPretermNewbornBirthWeightForAgeLMS(
-                    lms: lms,
-                  ),
-                );
-              },
-            ),
-          };
+  _parse() => {
+    Sex.male: _grow_verypreterm_boys_bw.toJsonObjectAsMap.map((k1, v1) {
+      v1 as Map<String, dynamic>;
+      final lms = LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
+      return MapEntry(
+        int.parse(k1),
+        _IntergrowthVeryPretermNewbornBirthWeightForAgeLMS(lms: lms),
+      );
+    }),
+    Sex.female: _grow_verypreterm_girls_bw.toJsonObjectAsMap.map((k1, v1) {
+      v1 as Map<String, dynamic>;
+      final lms = LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
+      return MapEntry(
+        int.parse(k1),
+        _IntergrowthVeryPretermNewbornBirthWeightForAgeLMS(lms: lms),
+      );
+    }),
+  };
 
   final Map<Sex, Map<int, _IntergrowthVeryPretermNewbornBirthWeightForAgeLMS>>
-      _data;
+  _data;
   @override
   Map<Sex, Map<int, _IntergrowthVeryPretermNewbornBirthWeightForAgeLMS>>
-      get data => _data;
+  get data => _data;
 
   @override
   String toString() => 'Very Preterm Newborn Weight For Age Data($_data)';
@@ -65,34 +55,28 @@ sealed class IntergrowthVeryPretermNewbornBirthWeightForAge
 
   factory IntergrowthVeryPretermNewbornBirthWeightForAge.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$IntergrowthVeryPretermNewbornBirthWeightForAgeFromJson(json);
+  ) => _$IntergrowthVeryPretermNewbornBirthWeightForAgeFromJson(json);
 
   @override
   IntergrowthVeryPretermNewbornBirthWeightForAgeData get contextData =>
       IntergrowthVeryPretermNewbornBirthWeightForAgeData();
 
-  _IntergrowthVeryPretermNewbornBirthWeightForAgeLMS get _ageData => contextData
-      ._data[sex]![ageAtObservationDate.ageInTotalByUnit(contextData.unit)]!;
+  _IntergrowthVeryPretermNewbornBirthWeightForAgeLMS get _ageData =>
+      contextData._data[sex]![ageAtObservationDate.ageInTotalByUnit(
+        contextData.unit,
+      )]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 
   @override
-  Age get ageAtObservationDate => checkAge(
-        age,
-        contextData: contextData,
-      );
+  Age get ageAtObservationDate => checkAge(age, contextData: contextData);
 
   @override
-  num zScore([
-    Precision precision = Precision.two,
-  ]) =>
+  num zScore([Precision precision = Precision.two]) =>
       _zScore.precision(precision);
 
   @override
-  num percentile([
-    Precision precision = Precision.two,
-  ]) =>
+  num percentile([Precision precision = Precision.two]) =>
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
@@ -103,9 +87,7 @@ sealed class IntergrowthVeryPretermNewbornBirthWeightForAge
 }
 
 class _IntergrowthVeryPretermNewbornBirthWeightForAgeLMS extends LMSContext {
-  _IntergrowthVeryPretermNewbornBirthWeightForAgeLMS({
-    required this.lms,
-  });
+  _IntergrowthVeryPretermNewbornBirthWeightForAgeLMS({required this.lms});
   @override
   final LMS lms;
 

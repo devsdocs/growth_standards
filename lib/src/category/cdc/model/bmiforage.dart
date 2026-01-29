@@ -12,8 +12,11 @@ class CDCBodyMassIndexForAgeData extends AgeBasedData {
           k1 == '1' ? Sex.male : Sex.female,
           (v1 as Map<String, dynamic>).map((k2, v2) {
             v2 as Map<String, dynamic>;
-            final lms =
-                LMS(l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
+            final lms = LMS(
+              l: v2['l'] as num,
+              m: v2['m'] as num,
+              s: v2['s'] as num,
+            );
             return MapEntry(
               double.parse(k2),
               _CDCBodyMassIndexForAgeLMS(
@@ -44,12 +47,9 @@ sealed class CDCBodyMassIndexMeasurement with _$CDCBodyMassIndexMeasurement {
 
   factory CDCBodyMassIndexMeasurement.fromMeasurement(
     BodyMassIndex bodyMassIndex,
-  ) =>
-      CDCBodyMassIndexMeasurement(bodyMassIndex.value);
+  ) => CDCBodyMassIndexMeasurement(bodyMassIndex.value);
 
-  factory CDCBodyMassIndexMeasurement.fromJson(
-    Map<String, dynamic> json,
-  ) =>
+  factory CDCBodyMassIndexMeasurement.fromJson(Map<String, dynamic> json) =>
       _$CDCBodyMassIndexMeasurementFromJson(json);
 }
 
@@ -64,15 +64,13 @@ sealed class CDCBodyMassIndexForAge extends AgeBasedResult
 
   const CDCBodyMassIndexForAge._();
 
-  factory CDCBodyMassIndexForAge.fromJson(
-    Map<String, dynamic> json,
-  ) =>
+  factory CDCBodyMassIndexForAge.fromJson(Map<String, dynamic> json) =>
       _$CDCBodyMassIndexForAgeFromJson(json);
 
   @override
   CDCBodyMassIndexForAgeData get contextData => CDCBodyMassIndexForAgeData();
 
-//TODO(devsdocs): Fix CDC age calculation
+  //TODO(devsdocs): Fix CDC age calculation
   _CDCBodyMassIndexForAgeLMS get _ageData =>
       contextData._data[sex]![ageAtObservationDate.ageInTotalMonthsByNow == 24
           ? 24
@@ -90,29 +88,22 @@ sealed class CDCBodyMassIndexForAge extends AgeBasedResult
 
   num get _finalPercentile => _isUseSigma
       ? 90 +
-          (10 *
-              pnorm(
-                (measurementResultInDefaultUnit - _bmiCutAt95Percentile) /
-                    _ageData.sigma,
-              ))
+            (10 *
+                pnorm(
+                  (measurementResultInDefaultUnit - _bmiCutAt95Percentile) /
+                      _ageData.sigma,
+                ))
       : (pnorm(_zScore) * 100);
 
   @override
-  Age get ageAtObservationDate => checkAge(
-        age,
-        contextData: contextData,
-      );
+  Age get ageAtObservationDate => checkAge(age, contextData: contextData);
 
   @override
-  num zScore([
-    Precision precision = Precision.two,
-  ]) =>
+  num zScore([Precision precision = Precision.two]) =>
       _finalZScore.precision(precision);
 
   @override
-  num percentile([
-    Precision precision = Precision.two,
-  ]) =>
+  num percentile([Precision precision = Precision.two]) =>
       _finalPercentile.precision(precision);
 
   @override
@@ -123,10 +114,7 @@ sealed class CDCBodyMassIndexForAge extends AgeBasedResult
 }
 
 class _CDCBodyMassIndexForAgeLMS extends LMSContext {
-  _CDCBodyMassIndexForAgeLMS({
-    required this.lms,
-    required this.sigma,
-  });
+  _CDCBodyMassIndexForAgeLMS({required this.lms, required this.sigma});
   @override
   final LMS lms;
 

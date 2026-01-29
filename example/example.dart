@@ -32,9 +32,7 @@ void main() {
   print(calcLengthForAgeStanding.zScore());
   print(calcLengthForAgeStanding.percentile());
   print(calcLengthForAgeStanding.toJson());
-  print(
-    gs.fromJson.lengthForAge(calcLengthForAgeStanding.toJson()),
-  );
+  print(gs.fromJson.lengthForAge(calcLengthForAgeStanding.toJson()));
 
   final calcLengthForAgeRecumbent = calcLengthForAgeStanding.copyWith(
     measure: LengthHeightMeasurementPosition.recumbent,
@@ -67,11 +65,11 @@ void main() {
   final calcBMIForAge = gs.bodyMassIndexForAge(
     bodyMassIndexMeasurement:
         WHOGrowthStandardsBodyMassIndexMeasurement.fromMeasurement(
-      measure: LengthHeightMeasurementPosition.recumbent,
-      lengthHeight: centimeters,
-      weight: kilograms,
-      age: age,
-    ),
+          measure: LengthHeightMeasurementPosition.recumbent,
+          lengthHeight: centimeters,
+          weight: kilograms,
+          age: age,
+        ),
     sex: sex,
   );
 

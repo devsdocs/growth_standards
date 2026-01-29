@@ -41,24 +41,16 @@ class CDCGrowthStandardFromTwoYearsOldAndAboveData {
 }
 
 class CDCGrowthStandardFromTwoYearsOldAndAboveFromJson {
-  CDCBodyMassIndexForAge bodyMassIndexForAge(
-    Map<String, dynamic> json,
-  ) =>
+  CDCBodyMassIndexForAge bodyMassIndexForAge(Map<String, dynamic> json) =>
       CDCBodyMassIndexForAge.fromJson(json);
 
-  CDCWeightForAge weightForAge(
-    Map<String, dynamic> json,
-  ) =>
+  CDCWeightForAge weightForAge(Map<String, dynamic> json) =>
       CDCWeightForAge.fromJson(json);
 
-  CDCStatureForAge statureForAge(
-    Map<String, dynamic> json,
-  ) =>
+  CDCStatureForAge statureForAge(Map<String, dynamic> json) =>
       CDCStatureForAge.fromJson(json);
 
-  CDCWeightForStature weightForStature(
-    Map<String, dynamic> json,
-  ) =>
+  CDCWeightForStature weightForStature(Map<String, dynamic> json) =>
       CDCWeightForStature.fromJson(json);
 }
 
@@ -75,36 +67,29 @@ class CDCGrowthStandardFromTwoYearsOldAndAbove {
     required Sex sex,
     required CDCBodyMassIndexMeasurement bodyMassIndexMeasurement,
     required Age age,
-  }) =>
-      CDCBodyMassIndexForAge(
-        age: age,
-        sex: sex,
-        bodyMassIndexMeasurement: bodyMassIndexMeasurement,
-      );
+  }) => CDCBodyMassIndexForAge(
+    age: age,
+    sex: sex,
+    bodyMassIndexMeasurement: bodyMassIndexMeasurement,
+  );
 
   CDCWeightForAge weightForAge({
     required Sex sex,
     required Age age,
     required Mass weight,
-  }) =>
-      CDCWeightForAge(
-        sex: sex,
-        age: age,
-        weight: weight,
-      );
+  }) => CDCWeightForAge(sex: sex, age: age, weight: weight);
 
   CDCStatureForAge statureForAge({
     required Sex sex,
     required Age age,
     required Length lengthHeight,
     required LengthHeightMeasurementPosition measure,
-  }) =>
-      CDCStatureForAge(
-        sex: sex,
-        age: age,
-        lengthHeight: lengthHeight,
-        measure: measure,
-      );
+  }) => CDCStatureForAge(
+    sex: sex,
+    age: age,
+    lengthHeight: lengthHeight,
+    measure: measure,
+  );
 
   CDCWeightForStature weightForStature({
     required Sex sex,
@@ -112,14 +97,13 @@ class CDCGrowthStandardFromTwoYearsOldAndAbove {
     required Length height,
     required Mass weight,
     required LengthHeightMeasurementPosition measure,
-  }) =>
-      CDCWeightForStature(
-        sex: sex,
-        age: age,
-        height: height,
-        weight: weight,
-        measure: measure,
-      );
+  }) => CDCWeightForStature(
+    sex: sex,
+    age: age,
+    height: height,
+    weight: weight,
+    measure: measure,
+  );
 }
 
 class CDCGrowthStandardFromBirthTo36MonthsData {
@@ -139,22 +123,15 @@ class CDCGrowthStandardFromBirthTo36MonthsData {
 class CDCGrowthStandardFromBirthTo36MonthsFomJson {
   CDCInfantHeadCircumferenceForAge infantHeadCircumferenceForAge(
     Map<String, dynamic> json,
-  ) =>
-      CDCInfantHeadCircumferenceForAge.fromJson(json);
+  ) => CDCInfantHeadCircumferenceForAge.fromJson(json);
 
-  CDCInfantLengthForAge infantLengthForAge(
-    Map<String, dynamic> json,
-  ) =>
+  CDCInfantLengthForAge infantLengthForAge(Map<String, dynamic> json) =>
       CDCInfantLengthForAge.fromJson(json);
 
-  CDCInfantWeightForAge infantWeightForAge(
-    Map<String, dynamic> json,
-  ) =>
+  CDCInfantWeightForAge infantWeightForAge(Map<String, dynamic> json) =>
       CDCInfantWeightForAge.fromJson(json);
 
-  CDCInfantWeightForLength infantWeightForLength(
-    Map<String, dynamic> json,
-  ) =>
+  CDCInfantWeightForLength infantWeightForLength(Map<String, dynamic> json) =>
       CDCInfantWeightForLength.fromJson(json);
 }
 
@@ -169,36 +146,29 @@ class CDCGrowthStandardFromBirthTo36Months {
     required Sex sex,
     required Age age,
     required Length measurementResult,
-  }) =>
-      CDCInfantHeadCircumferenceForAge(
-        sex: sex,
-        age: age,
-        measurementResult: measurementResult,
-      );
+  }) => CDCInfantHeadCircumferenceForAge(
+    sex: sex,
+    age: age,
+    measurementResult: measurementResult,
+  );
 
   CDCInfantLengthForAge lengthForAge({
     required Sex sex,
     required Age age,
     required Length lengthHeight,
     required LengthHeightMeasurementPosition measure,
-  }) =>
-      CDCInfantLengthForAge(
-        sex: sex,
-        age: age,
-        lengthHeight: lengthHeight,
-        measure: measure,
-      );
+  }) => CDCInfantLengthForAge(
+    sex: sex,
+    age: age,
+    lengthHeight: lengthHeight,
+    measure: measure,
+  );
 
   CDCInfantWeightForAge weightForAge({
     required Sex sex,
     required Age age,
     required Mass weight,
-  }) =>
-      CDCInfantWeightForAge(
-        sex: sex,
-        age: age,
-        weight: weight,
-      );
+  }) => CDCInfantWeightForAge(sex: sex, age: age, weight: weight);
 
   CDCInfantWeightForLength weightForLength({
     required Sex sex,
@@ -206,12 +176,11 @@ class CDCGrowthStandardFromBirthTo36Months {
     required Length length,
     required Mass weight,
     required LengthHeightMeasurementPosition measure,
-  }) =>
-      CDCInfantWeightForLength(
-        sex: sex,
-        age: age,
-        length: length,
-        weight: weight,
-        measure: measure,
-      );
+  }) => CDCInfantWeightForLength(
+    sex: sex,
+    age: age,
+    length: length,
+    weight: weight,
+    measure: measure,
+  );
 }

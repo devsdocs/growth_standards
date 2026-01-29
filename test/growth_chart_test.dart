@@ -104,14 +104,8 @@ void main() {
     // Normal Cases
     test('Same day', () {
       final result = Age(
-        Date.fromDateTime(
-          DateTime(2021),
-        ),
-      ).yearsMonthsWeeksDaysOfAgeAtDate(
-        Date.fromDateTime(
-          DateTime(2021),
-        ),
-      );
+        Date.fromDateTime(DateTime(2021)),
+      ).yearsMonthsWeeksDaysOfAgeAtDate(Date.fromDateTime(DateTime(2021)));
       expect(result.years, 0);
       expect(result.months, 0);
       expect(result.weeks, 0);
@@ -119,15 +113,10 @@ void main() {
     });
 
     test('One year apart', () {
-      final result = Age(
-        Date.fromDateTime(
-          DateTime(2020, 2, 29),
-        ),
-      ).yearsMonthsWeeksDaysOfAgeAtDate(
-        Date.fromDateTime(
-          DateTime(2021, 2, 28),
-        ),
-      );
+      final result = Age(Date.fromDateTime(DateTime(2020, 2, 29)))
+          .yearsMonthsWeeksDaysOfAgeAtDate(
+            Date.fromDateTime(DateTime(2021, 2, 28)),
+          );
 
       expect(result.years, 0);
       expect(result.months, 11);
@@ -138,14 +127,8 @@ void main() {
     // Edge Cases
     test('End of Month to Beginning of Next Month', () {
       final result = Age(
-        Date.fromDateTime(
-          DateTime(2023, 1, 31),
-        ),
-      ).yearsMonthsWeeksDaysOfAgeAtDate(
-        Date.fromDateTime(
-          DateTime(2023, 2),
-        ),
-      );
+        Date.fromDateTime(DateTime(2023, 1, 31)),
+      ).yearsMonthsWeeksDaysOfAgeAtDate(Date.fromDateTime(DateTime(2023, 2)));
       expect(result.years, 0);
       expect(result.months, 0);
       expect(result.weeks, 0);
@@ -153,15 +136,10 @@ void main() {
     });
 
     test('Leap year February', () {
-      final result = Age(
-        Date.fromDateTime(
-          DateTime(2020, 2, 29),
-        ),
-      ).yearsMonthsWeeksDaysOfAgeAtDate(
-        Date.fromDateTime(
-          DateTime(2024, 2, 29),
-        ),
-      );
+      final result = Age(Date.fromDateTime(DateTime(2020, 2, 29)))
+          .yearsMonthsWeeksDaysOfAgeAtDate(
+            Date.fromDateTime(DateTime(2024, 2, 29)),
+          );
       expect(result.years, 4);
       expect(result.months, 0);
       expect(result.weeks, 0);
@@ -169,15 +147,10 @@ void main() {
     });
 
     test('Non-leap year February', () {
-      final result = Age(
-        Date.fromDateTime(
-          DateTime(2019, 2, 28),
-        ),
-      ).yearsMonthsWeeksDaysOfAgeAtDate(
-        Date.fromDateTime(
-          DateTime(2020, 2, 29),
-        ),
-      );
+      final result = Age(Date.fromDateTime(DateTime(2019, 2, 28)))
+          .yearsMonthsWeeksDaysOfAgeAtDate(
+            Date.fromDateTime(DateTime(2020, 2, 29)),
+          );
       expect(result.years, 1);
       expect(result.months, 0);
       expect(result.weeks, 0);
@@ -186,14 +159,8 @@ void main() {
 
     test('Crossing Year Boundary', () {
       final result = Age(
-        Date.fromDateTime(
-          DateTime(2023, 12, 31),
-        ),
-      ).yearsMonthsWeeksDaysOfAgeAtDate(
-        Date.fromDateTime(
-          DateTime(2024),
-        ),
-      );
+        Date.fromDateTime(DateTime(2023, 12, 31)),
+      ).yearsMonthsWeeksDaysOfAgeAtDate(Date.fromDateTime(DateTime(2024)));
 
       expect(result.years, 0);
       expect(result.months, 0);
@@ -203,14 +170,8 @@ void main() {
 
     test('Full Month Difference of 28 Days February', () {
       final result = Age(
-        Date.fromDateTime(
-          DateTime(2023, 2),
-        ),
-      ).yearsMonthsWeeksDaysOfAgeAtDate(
-        Date.fromDateTime(
-          DateTime(2023, 3),
-        ),
-      );
+        Date.fromDateTime(DateTime(2023, 2)),
+      ).yearsMonthsWeeksDaysOfAgeAtDate(Date.fromDateTime(DateTime(2023, 3)));
       expect(result.years, 0);
       expect(result.months, 1);
       expect(result.weeks, 0);
@@ -219,14 +180,8 @@ void main() {
 
     test('Multiple Years with February Difference', () {
       final result = Age(
-        Date.fromDateTime(
-          DateTime(2020, 2, 29),
-        ),
-      ).yearsMonthsWeeksDaysOfAgeAtDate(
-        Date.fromDateTime(
-          DateTime(2024, 2),
-        ),
-      );
+        Date.fromDateTime(DateTime(2020, 2, 29)),
+      ).yearsMonthsWeeksDaysOfAgeAtDate(Date.fromDateTime(DateTime(2024, 2)));
       expect(result.years, 3);
       expect(result.months, 11);
       expect(result.weeks, 0);
@@ -234,13 +189,10 @@ void main() {
     });
 
     test('Same day', () {
-      final result = Age(
-        Date.fromDateTime(
-          DateTime(2021, 5, 15),
-        ),
-      ).yearsMonthsWeeksDaysOfAgeAtDate(
-        Date.fromDateTime(DateTime(2021, 5, 15)),
-      );
+      final result = Age(Date.fromDateTime(DateTime(2021, 5, 15)))
+          .yearsMonthsWeeksDaysOfAgeAtDate(
+            Date.fromDateTime(DateTime(2021, 5, 15)),
+          );
 
       expect(result.years, 0);
       expect(result.months, 0);
@@ -249,13 +201,10 @@ void main() {
     });
 
     test('Exactly one year', () {
-      final result = Age(
-        Date.fromDateTime(
-          DateTime(2021, 5, 15),
-        ),
-      ).yearsMonthsWeeksDaysOfAgeAtDate(
-        Date.fromDateTime(DateTime(2022, 5, 15)),
-      );
+      final result = Age(Date.fromDateTime(DateTime(2021, 5, 15)))
+          .yearsMonthsWeeksDaysOfAgeAtDate(
+            Date.fromDateTime(DateTime(2022, 5, 15)),
+          );
 
       expect(result.years, 1);
       expect(result.months, 0);
@@ -264,13 +213,10 @@ void main() {
     });
 
     test('Leap year to non-leap year, February 28 to February 28', () {
-      final result = Age(
-        Date.fromDateTime(
-          DateTime(2020, 2, 28),
-        ),
-      ).yearsMonthsWeeksDaysOfAgeAtDate(
-        Date.fromDateTime(DateTime(2021, 2, 28)),
-      );
+      final result = Age(Date.fromDateTime(DateTime(2020, 2, 28)))
+          .yearsMonthsWeeksDaysOfAgeAtDate(
+            Date.fromDateTime(DateTime(2021, 2, 28)),
+          );
 
       expect(result.years, 1);
       expect(result.months, 0);
@@ -278,13 +224,10 @@ void main() {
       expect(result.days, 0);
     });
     test('Leap year to non-leap year, February 29 to February 28', () {
-      final result = Age(
-        Date.fromDateTime(
-          DateTime(2020, 2, 29),
-        ),
-      ).yearsMonthsWeeksDaysOfAgeAtDate(
-        Date.fromDateTime(DateTime(2021, 2, 28)),
-      );
+      final result = Age(Date.fromDateTime(DateTime(2020, 2, 29)))
+          .yearsMonthsWeeksDaysOfAgeAtDate(
+            Date.fromDateTime(DateTime(2021, 2, 28)),
+          );
 
       expect(result.years, 0);
       expect(result.months, 11);
@@ -293,13 +236,10 @@ void main() {
     });
 
     test('One month difference', () {
-      final result = Age(
-        Date.fromDateTime(
-          DateTime(2021, 4, 15),
-        ),
-      ).yearsMonthsWeeksDaysOfAgeAtDate(
-        Date.fromDateTime(DateTime(2021, 5, 15)),
-      );
+      final result = Age(Date.fromDateTime(DateTime(2021, 4, 15)))
+          .yearsMonthsWeeksDaysOfAgeAtDate(
+            Date.fromDateTime(DateTime(2021, 5, 15)),
+          );
 
       expect(result.years, 0);
       expect(result.months, 1);
@@ -309,12 +249,8 @@ void main() {
 
     test('Crossing year boundary by one day', () {
       final result = Age(
-        Date.fromDateTime(
-          DateTime(2020, 12, 31),
-        ),
-      ).yearsMonthsWeeksDaysOfAgeAtDate(
-        Date.fromDateTime(DateTime(2021)),
-      );
+        Date.fromDateTime(DateTime(2020, 12, 31)),
+      ).yearsMonthsWeeksDaysOfAgeAtDate(Date.fromDateTime(DateTime(2021)));
 
       expect(result.years, 0);
       expect(result.months, 0);
@@ -323,13 +259,10 @@ void main() {
     });
 
     test('Multiple year span with leap year included', () {
-      final result = Age(
-        Date.fromDateTime(
-          DateTime(2019, 1, 15),
-        ),
-      ).yearsMonthsWeeksDaysOfAgeAtDate(
-        Date.fromDateTime(DateTime(2022, 2, 20)),
-      );
+      final result = Age(Date.fromDateTime(DateTime(2019, 1, 15)))
+          .yearsMonthsWeeksDaysOfAgeAtDate(
+            Date.fromDateTime(DateTime(2022, 2, 20)),
+          );
 
       expect(result.years, 3);
       expect(result.months, 1);
@@ -338,13 +271,10 @@ void main() {
     });
 
     test('Short span crossing month boundary', () {
-      final result = Age(
-        Date.fromDateTime(
-          DateTime(2021, 4, 30),
-        ),
-      ).yearsMonthsWeeksDaysOfAgeAtDate(
-        Date.fromDateTime(DateTime(2021, 5, 2)),
-      );
+      final result = Age(Date.fromDateTime(DateTime(2021, 4, 30)))
+          .yearsMonthsWeeksDaysOfAgeAtDate(
+            Date.fromDateTime(DateTime(2021, 5, 2)),
+          );
 
       expect(result.years, 0);
       expect(result.months, 0);
@@ -353,12 +283,8 @@ void main() {
     });
     test('Short span crossing month boundary 2', () {
       final result = Age(
-        Date.fromDateTime(
-          DateTime(2021, 4, 30),
-        ),
-      ).yearsMonthsWeeksDaysOfAgeAtDate(
-        Date.fromDateTime(DateTime(2021, 5)),
-      );
+        Date.fromDateTime(DateTime(2021, 4, 30)),
+      ).yearsMonthsWeeksDaysOfAgeAtDate(Date.fromDateTime(DateTime(2021, 5)));
 
       expect(result.years, 0);
       expect(result.months, 0);
@@ -367,12 +293,8 @@ void main() {
     });
     test('Short span crossing month boundary 3', () {
       final result = Age(
-        Date.fromDateTime(
-          DateTime(2024, 1, 31),
-        ),
-      ).yearsMonthsWeeksDaysOfAgeAtDate(
-        Date.fromDateTime(DateTime(2024, 2)),
-      );
+        Date.fromDateTime(DateTime(2024, 1, 31)),
+      ).yearsMonthsWeeksDaysOfAgeAtDate(Date.fromDateTime(DateTime(2024, 2)));
 
       expect(result.years, 0);
       expect(result.months, 0);
@@ -395,16 +317,12 @@ void main() {
 
       expect(
         male.zScore(),
-        equals(
-          male.copyWith(age: Age(observationDate)).zScore(),
-        ),
+        equals(male.copyWith(age: Age(observationDate)).zScore()),
       );
 
       expect(
         whoGS.fromJson.armCircumferenceForAge(male.toJson()).measurementResult,
-        equals(
-          const Length$Centimeter(20.3).toMeter,
-        ),
+        equals(const Length$Centimeter(20.3).toMeter),
       );
       expect(
         whoGS
@@ -430,27 +348,21 @@ void main() {
     test('BMI', () {
       final observationDate = Date.fromMonthsAgo(40);
       final age = Age.byMonthsAgo(44);
-      final bmi = WHOGrowthStandardsBodyMassIndexMeasurement(
-        20.5,
-        age: age,
-      );
+      final bmi = WHOGrowthStandardsBodyMassIndexMeasurement(20.5, age: age);
       final male = whoGS.bodyMassIndexForAge(
         bodyMassIndexMeasurement: bmi,
         sex: Sex.male,
       );
-      expect(
-        male.zScore(),
-        3.4,
-      );
+      expect(male.zScore(), 3.4);
 
       expect(
         male
             .copyWith(
               bodyMassIndexMeasurement:
                   WHOGrowthStandardsBodyMassIndexMeasurement(
-                20.5,
-                age: Age(observationDate),
-              ),
+                    20.5,
+                    age: Age(observationDate),
+                  ),
               oedemaExist: true,
             )
             .zScore()
@@ -463,9 +375,9 @@ void main() {
             .copyWith(
               bodyMassIndexMeasurement:
                   WHOGrowthStandardsBodyMassIndexMeasurement(
-                20.5,
-                age: Age(observationDate),
-              ),
+                    20.5,
+                    age: Age(observationDate),
+                  ),
             )
             .zScore(),
         3.39,
@@ -476,9 +388,9 @@ void main() {
               sex: Sex.male,
               bodyMassIndexMeasurement:
                   WHOGrowthStandardsBodyMassIndexMeasurement(
-                12,
-                age: Age.byMonthsAgo(28),
-              ),
+                    12,
+                    age: Age.byMonthsAgo(28),
+                  ),
             )
             .zScore(),
         -3.75,
@@ -489,9 +401,9 @@ void main() {
               sex: Sex.male,
               bodyMassIndexMeasurement:
                   WHOGrowthStandardsBodyMassIndexMeasurement(
-                18.8,
-                age: Age.byMonthsAgo(52),
-              ),
+                    18.8,
+                    age: Age.byMonthsAgo(52),
+                  ),
             )
             .zScore(),
         anyOf(2.36, 2.37),

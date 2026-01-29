@@ -12,13 +12,14 @@ class CDCInfantWeightForAgeData extends AgeBasedData {
           k1 == '1' ? Sex.male : Sex.female,
           (v1 as Map<String, dynamic>).map((k2, v2) {
             v2 as Map<String, dynamic>;
-            final lms =
-                LMS(l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
+            final lms = LMS(
+              l: v2['l'] as num,
+              m: v2['m'] as num,
+              s: v2['s'] as num,
+            );
             return MapEntry(
               double.parse(k2),
-              _CDCInfantWeightForAgeLMS(
-                lms: lms,
-              ),
+              _CDCInfantWeightForAgeLMS(lms: lms),
             );
           }),
         ),
@@ -45,21 +46,19 @@ sealed class CDCInfantWeightForAge extends AgeBasedResult
 
   const CDCInfantWeightForAge._();
 
-  factory CDCInfantWeightForAge.fromJson(
-    Map<String, dynamic> json,
-  ) =>
+  factory CDCInfantWeightForAge.fromJson(Map<String, dynamic> json) =>
       _$CDCInfantWeightForAgeFromJson(json);
 
   @override
   CDCInfantWeightForAgeData get contextData => CDCInfantWeightForAgeData();
 
-//TODO(devsdocs): Fix CDC age calculation
+  //TODO(devsdocs): Fix CDC age calculation
   _CDCInfantWeightForAgeLMS get _ageData {
     final finalAge = ageAtObservationDate.ageInTotalDaysByNow == 0
         ? 0
         : ageAtObservationDate.ageInTotalMonthsByNow == 36
-            ? 36
-            : ageAtObservationDate.ageInTotalMonthsByNow + 0.5;
+        ? 36
+        : ageAtObservationDate.ageInTotalMonthsByNow + 0.5;
 
     return contextData._data[sex]![finalAge]!;
   }
@@ -67,21 +66,14 @@ sealed class CDCInfantWeightForAge extends AgeBasedResult
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 
   @override
-  Age get ageAtObservationDate => checkAge(
-        age,
-        contextData: contextData,
-      );
+  Age get ageAtObservationDate => checkAge(age, contextData: contextData);
 
   @override
-  num zScore([
-    Precision precision = Precision.two,
-  ]) =>
+  num zScore([Precision precision = Precision.two]) =>
       _zScore.precision(precision);
 
   @override
-  num percentile([
-    Precision precision = Precision.two,
-  ]) =>
+  num percentile([Precision precision = Precision.two]) =>
       (pnorm(_zScore) * 100).precision(precision);
 
   @override
@@ -92,9 +84,7 @@ sealed class CDCInfantWeightForAge extends AgeBasedResult
 }
 
 class _CDCInfantWeightForAgeLMS extends LMSContext {
-  _CDCInfantWeightForAgeLMS({
-    required this.lms,
-  });
+  _CDCInfantWeightForAgeLMS({required this.lms});
   @override
   final LMS lms;
 

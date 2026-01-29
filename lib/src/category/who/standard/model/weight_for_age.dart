@@ -9,18 +9,20 @@ class WHOGrowthStandardsWeightForAgeData extends AgeBasedData {
   static Map<Sex, Map<int, _WHOGrowthStandardsWeightForAgeLMS>> _parse() =>
       _weianthro.toJsonObjectAsMap.map(
         (k1, v1) => MapEntry(
-            k1 == '1' ? Sex.male : Sex.female,
-            (v1 as Map<String, dynamic>).map((k2, v2) {
-              v2 as Map<String, dynamic>;
-              final lms =
-                  LMS(l: v2['l'] as num, m: v2['m'] as num, s: v2['s'] as num);
-              return MapEntry(
-                int.parse(k2),
-                _WHOGrowthStandardsWeightForAgeLMS(
-                  lms: lms,
-                ),
-              );
-            })),
+          k1 == '1' ? Sex.male : Sex.female,
+          (v1 as Map<String, dynamic>).map((k2, v2) {
+            v2 as Map<String, dynamic>;
+            final lms = LMS(
+              l: v2['l'] as num,
+              m: v2['m'] as num,
+              s: v2['s'] as num,
+            );
+            return MapEntry(
+              int.parse(k2),
+              _WHOGrowthStandardsWeightForAgeLMS(lms: lms),
+            );
+          }),
+        ),
       );
   final Map<Sex, Map<int, _WHOGrowthStandardsWeightForAgeLMS>> _data;
   @override
@@ -52,28 +54,23 @@ sealed class WHOGrowthStandardsWeightForAge extends AgeBasedResult
   WHOGrowthStandardsWeightForAgeData get contextData =>
       WHOGrowthStandardsWeightForAgeData();
 
-  _WHOGrowthStandardsWeightForAgeLMS get _ageData => contextData
-      ._data[sex]![ageAtObservationDate.ageInTotalByUnit(contextData.unit)]!;
+  _WHOGrowthStandardsWeightForAgeLMS get _ageData =>
+      contextData._data[sex]![ageAtObservationDate.ageInTotalByUnit(
+        contextData.unit,
+      )]!;
 
   num get _zScore =>
       _ageData.lms.adjustedZScore(measurementResultInDefaultUnit);
 
   @override
-  Age get ageAtObservationDate => checkAge(
-        age,
-        contextData: contextData,
-      );
+  Age get ageAtObservationDate => checkAge(age, contextData: contextData);
 
   @override
-  num zScore([
-    Precision precision = Precision.two,
-  ]) =>
+  num zScore([Precision precision = Precision.two]) =>
       oedemaExist ? double.nan : _zScore.precision(precision);
 
   @override
-  num percentile([
-    Precision precision = Precision.two,
-  ]) =>
+  num percentile([Precision precision = Precision.two]) =>
       oedemaExist ? double.nan : (pnorm(_zScore) * 100).precision(precision);
 
   @override
@@ -84,9 +81,7 @@ sealed class WHOGrowthStandardsWeightForAge extends AgeBasedResult
 }
 
 class _WHOGrowthStandardsWeightForAgeLMS extends LMSContext {
-  _WHOGrowthStandardsWeightForAgeLMS({
-    required this.lms,
-  });
+  _WHOGrowthStandardsWeightForAgeLMS({required this.lms});
   @override
   final LMS lms;
 
