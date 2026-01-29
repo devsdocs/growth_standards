@@ -1,3 +1,6 @@
+## 4.3.0
+- Fix intergrowth source data error
+
 ## 4.2.1
 - Dependencies bump
 
