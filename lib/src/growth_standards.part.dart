@@ -1,7 +1,7 @@
 part of 'growth_standards.dart';
 
 /// Global entry for another way of accessing various growth standard
-class GrowthStandard {
+abstract final class GrowthStandard {
   /// Accessing WHO Growth Standard
   ///
   /// From birth to 18 years old
@@ -22,7 +22,7 @@ class GrowthStandard {
   static _Intergrowth get intergrowth => _Intergrowth();
 }
 
-class _WHO {
+final class _WHO {
   /// For age 0 to 5 years old (<= 1856 days)
   WHOGrowthStandard get fromBirthTo5Years => WHOGrowthStandard();
 
@@ -30,7 +30,7 @@ class _WHO {
   WHOGrowthReference get from5YearsAndAbove => WHOGrowthReference();
 }
 
-class _CDC {
+final class _CDC {
   /// For age 2 years and above
   CDCGrowthStandardFromTwoYearsOldAndAbove get from2YearsAndAbove =>
       CDCGrowthStandardFromTwoYearsOldAndAbove();
@@ -40,7 +40,7 @@ class _CDC {
       CDCGrowthStandardFromBirthTo36Months();
 }
 
-class _Intergrowth {
+final class _Intergrowth {
   /// Accessing Intergrowth data
   ///
   /// From birth to 5 years old
