@@ -6,7 +6,7 @@
       {
         "key": "early_pregnancy_dating",
         "title": "Early Pregnancy Dating",
-        "description": "Purpose: Accurate gestational-age estimation in early pregnancy\nAge range: Gestational weeks 8 to 14",
+        "description": "Purpose: Accurate gestational-age estimation in early pregnancyAge range: 8 weeks until 14 weeks gestational age",
         "image_url": "https://intergrowth21.com/sites/default/files/styles/square_large/public/2023-05/pregnancy_dating.png?itok=gplnQ1U3",
         "page_url": "https://intergrowth21.com/tools-resources/pregnancy-dating",
         "resources": [
@@ -53,7 +53,7 @@
       {
         "key": "fetal_size_in_early_pregnancy",
         "title": "Fetal Size in Early Pregnancy",
-        "description": "Purpose: Assess early pregnancy fetal size (crown-rump length)\nAge range: Gestational weeks 8 to 14",
+        "description": "Purpose: Assess early pregnancy fetal size (crown-rump length)Age range: 8 weeks until 14 weeks gestational age",
         "image_url": "https://intergrowth21.com/sites/default/files/styles/square_large/public/2023-05/early_dating.png?itok=YWnsrmTn",
         "page_url": "https://intergrowth21.com/tools-resources/fetal-size-early-pregnancy",
         "resources": [
@@ -110,7 +110,7 @@
       {
         "key": "symphysisfundal_height",
         "title": "Symphysis-Fundal Height",
-        "description": "Purpose: Assess symphysis-fundal height Age range: Gestational week 15 until term",
+        "description": "Purpose: Assess symphysis-fundal height Age range: 16 weeks until 40 weeks gestational age",
         "image_url": "https://intergrowth21.com/sites/default/files/styles/square_large/public/2023-05/symphysis_fundal_height.png?itok=pa1q93Wo",
         "page_url": "https://intergrowth21.com/tools-resources/symphysis-fundal-height",
         "resources": [
@@ -119,28 +119,18 @@
             "title": "Tables & Graphs",
             "files": [
               {
-                "title": "SFH Centiles Table",
-                "url": "https://intergrowth21.com/sites/default/files/2025-01/grow_sfh_ext_package_-_new_1_2.pdf",
+                "title": "Guidelines for gestational age limits",
+                "url": "https://intergrowth21.com/sites/default/files/2025-10/policy_on_gestational_age_limits_for_fetal_growth_standards_5.pdf",
                 "file_type": "pdf"
               },
               {
-                "title": "SFH Centiles Graph",
-                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_sfh_ext_ct_en_-_new.pdf",
+                "title": "SFH Centiles Table",
+                "url": "https://intergrowth21.com/sites/default/files/2025-10/tables_sfh_centiles_-_16to41weeks.pdf",
                 "file_type": "pdf"
               },
               {
                 "title": "SFH Z-Scores Table",
-                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_sfh_zs_table_-_new.pdf",
-                "file_type": "pdf"
-              },
-              {
-                "title": "SFH Z-Scores Graph",
-                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_sfh_ext_zs_en_-_new.pdf",
-                "file_type": "pdf"
-              },
-              {
-                "title": "Download the Symphysis-Fundal Height Package",
-                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_sfh_ext_package_-_new.pdf",
+                "url": "https://intergrowth21.com/sites/default/files/2025-10/table-sfh-zscore_-_16to41.pdf",
                 "file_type": "pdf"
               }
             ]
@@ -177,7 +167,7 @@
       {
         "key": "fetal_growth",
         "title": "Fetal Growth",
-        "description": "Purpose: Assess fetal anthropometric growth measurementsAge range: Gestational week 14 until term",
+        "description": "Purpose: Assess fetal anthropometric growth measurementsAge range: 14 weeks until 40 weeks gestational age",
         "image_url": "https://intergrowth21.com/sites/default/files/styles/square_large/public/2023-05/fetal_growth.png?itok=cvM4Xjl-",
         "page_url": "https://intergrowth21.com/tools-resources/fetal-growth",
         "resources": [
@@ -186,13 +176,18 @@
             "title": "Tables & Graphs",
             "files": [
               {
+                "title": "Gestational age limits guidelines",
+                "url": "https://intergrowth21.com/sites/default/files/2025-10/policy_on_gestational_age_limits_for_fetal_growth_standards_6.pdf",
+                "file_type": "pdf"
+              },
+              {
                 "title": "HC Centiles Table",
                 "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_hc_table.pdf",
                 "file_type": "pdf"
               },
               {
                 "title": "HC Centiles Graph",
-                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_hc_en_0.pdf",
+                "url": "https://intergrowth21.com/sites/default/files/2025-10/hc-centiles-41dotted_0.pdf",
                 "file_type": "pdf"
               },
               {
@@ -202,7 +197,7 @@
               },
               {
                 "title": "HC Z-scores Graph",
-                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-zs_hc_en.pdf",
+                "url": "https://intergrowth21.com/sites/default/files/2025-10/hc-zscores-41dotted.pdf",
                 "file_type": "pdf"
               },
               {
@@ -212,7 +207,7 @@
               },
               {
                 "title": "BPD Centiles Graph",
-                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_bpd_en.pdf",
+                "url": "https://intergrowth21.com/sites/default/files/2025-10/bpd-centiles-41dotted.pdf",
                 "file_type": "pdf"
               },
               {
@@ -222,7 +217,7 @@
               },
               {
                 "title": "BPD Z-Scores Graph",
-                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-zs_bpd_en.pdf",
+                "url": "https://intergrowth21.com/sites/default/files/2025-10/bpd-zscores-41dotted.pdf",
                 "file_type": "pdf"
               },
               {
@@ -232,7 +227,7 @@
               },
               {
                 "title": "AC Centiles Graph",
-                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_ac_en.pdf",
+                "url": "https://intergrowth21.com/sites/default/files/2025-10/ac-centiles-41dotted.pdf",
                 "file_type": "pdf"
               },
               {
@@ -242,7 +237,7 @@
               },
               {
                 "title": "AC Z-scores Graph",
-                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-zs_ac_en.pdf",
+                "url": "https://intergrowth21.com/sites/default/files/2025-10/ac-zscores-41dotted.pdf",
                 "file_type": "pdf"
               },
               {
@@ -252,7 +247,7 @@
               },
               {
                 "title": "FL Centiles Graph",
-                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_fl_en.pdf",
+                "url": "https://intergrowth21.com/sites/default/files/2025-10/fl-centiles-41dotted.pdf",
                 "file_type": "pdf"
               },
               {
@@ -262,7 +257,7 @@
               },
               {
                 "title": "FL Z-Scores Graph",
-                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-zs_fl_en.pdf",
+                "url": "https://intergrowth21.com/sites/default/files/2025-10/fl-zcores-41dotted.pdf",
                 "file_type": "pdf"
               },
               {
@@ -272,7 +267,7 @@
               },
               {
                 "title": "OFD Centiles Graphs",
-                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_ofd_en.pdf",
+                "url": "https://intergrowth21.com/sites/default/files/2025-10/ofd-centiles-41dotted.pdf",
                 "file_type": "pdf"
               },
               {
@@ -282,7 +277,7 @@
               },
               {
                 "title": "OFD Z-Scores Graph",
-                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-zs_ofd_en.pdf",
+                "url": "https://intergrowth21.com/sites/default/files/2025-10/ofd-zscores-41dotted.pdf",
                 "file_type": "pdf"
               },
               {
@@ -349,7 +344,7 @@
       {
         "key": "fetal_doppler",
         "title": "Fetal Doppler",
-        "description": "Purpose: Provide gestational age-specific normative centiles for umbilical artery Doppler indices\nAge range: Gestational week 24 until term",
+        "description": "Purpose: Provide gestational age-specific normative centiles for umbilical artery Doppler indicesAge range: 24 weeks until 40 weeks gestational age",
         "image_url": "https://intergrowth21.com/sites/default/files/styles/square_large/public/2023-05/fetal_doppler_0.png?itok=aoTSoiTS",
         "page_url": "https://intergrowth21.com/tools-resources/fetal-doppler",
         "resources": [
@@ -357,6 +352,11 @@
             "key": "tables_graphs",
             "title": "Tables & Graphs",
             "files": [
+              {
+                "title": "Guidelines for gestational age limits",
+                "url": "https://intergrowth21.com/sites/default/files/2025-10/policy_on_gestational_age_limits_for_fetal_growth_standards_7.pdf",
+                "file_type": "pdf"
+              },
               {
                 "title": "Umbilical Artery Pulsatility Index (PI)",
                 "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_doppler_pi_ct_en.pdf",
@@ -390,7 +390,7 @@
       {
         "key": "gestational_weight_gain",
         "title": "Gestational Weight Gain",
-        "description": "Purpose: Assess maternal weight gain during pregnancy\nAge range: gestational week 15 until term",
+        "description": "Purpose: Assess maternal weight gain during pregnancyAge range: 15 weeks until 40 weeks gestational age",
         "image_url": "https://intergrowth21.com/sites/default/files/styles/square_large/public/2023-05/gestational_weight_gain.png?itok=vcvLZ2gB",
         "page_url": "https://intergrowth21.com/tools-resources/gestational-weight-gain",
         "resources": [
@@ -458,7 +458,7 @@
       {
         "key": "newborn_size_for_very_preterm_infants",
         "title": "Newborn Size for Very Preterm Infants",
-        "description": "Purpose: Assess size at birth (within 24 hours) for very preterm newborns\nAge range: At birth, born between gestational weeks 24 and 33",
+        "description": "Purpose: Assess size at birth (within 24 hours) for very preterm newbornsAge range: At birth, born between gestational weeks 24 and 32+6",
         "image_url": "https://intergrowth21.com/sites/default/files/styles/square_large/public/2023-05/newborn_size_for_very_preterm_infants.png?itok=J7mpRlMy",
         "page_url": "https://intergrowth21.com/tools-resources/newborn-size-very-preterm-infants",
         "resources": [
@@ -468,7 +468,7 @@
             "files": [
               {
                 "title": "Boys Weight Centiles Table",
-                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-boys_bw_table.pdf",
+                "url": "https://intergrowth21.com/sites/default/files/2025-09/grow_verypreterm-ct-boys_bw_table.pdf",
                 "file_type": "pdf"
               },
               {
@@ -478,7 +478,7 @@
               },
               {
                 "title": "Boys Weight Z-Scores Table",
-                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-zs-boys_bw_table.pdf",
+                "url": "https://intergrowth21.com/sites/default/files/2025-09/grow_verypreterm-zs-boys_bw_table.pdf",
                 "file_type": "pdf"
               },
               {
@@ -488,17 +488,12 @@
               },
               {
                 "title": "Girls Weight Centiles Table",
-                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-girls_bw_table.pdf",
-                "file_type": "pdf"
-              },
-              {
-                "title": "Girls Weight Centiles Graph",
-                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-girls_bw_en.pdf",
+                "url": "https://intergrowth21.com/sites/default/files/2025-09/grow_verypreterm-ct-girls_bw_table.pdf",
                 "file_type": "pdf"
               },
               {
                 "title": "Girls Weight Z-Scores Table",
-                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-zs-girls_bw_table.pdf",
+                "url": "https://intergrowth21.com/sites/default/files/2025-09/grow_verypreterm-zs-girls_bw_table.pdf",
                 "file_type": "pdf"
               },
               {
@@ -508,7 +503,7 @@
               },
               {
                 "title": "Boys Length Centiles Table",
-                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-boys_lt_table.pdf",
+                "url": "https://intergrowth21.com/sites/default/files/2025-09/grow_verypreterm-ct-boys_lt_table.pdf",
                 "file_type": "pdf"
               },
               {
@@ -518,7 +513,7 @@
               },
               {
                 "title": "Boys Length Z-Scores Table",
-                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-zs-boys_lt_table.pdf",
+                "url": "https://intergrowth21.com/sites/default/files/2025-09/grow_verypreterm-zs-boys_lt_table.pdf",
                 "file_type": "pdf"
               },
               {
@@ -548,7 +543,7 @@
               },
               {
                 "title": "Boys HC Centiles Table",
-                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-boys_hc_table.pdf",
+                "url": "https://intergrowth21.com/sites/default/files/2025-09/grow_verypreterm-ct-boys_hc_table_0.pdf",
                 "file_type": "pdf"
               },
               {
@@ -558,7 +553,7 @@
               },
               {
                 "title": "Boys HC Z-Scores Table",
-                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-zs-boys_hc_table.pdf",
+                "url": "https://intergrowth21.com/sites/default/files/2025-09/grow_verypreterm-zs-boys_hc_table.pdf",
                 "file_type": "pdf"
               },
               {
@@ -568,7 +563,7 @@
               },
               {
                 "title": "Girls HC Centiles Table",
-                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-girls_hc_table.pdf",
+                "url": "https://intergrowth21.com/sites/default/files/2025-09/grow_verypreterm-ct-girls_hc_table.pdf",
                 "file_type": "pdf"
               },
               {
@@ -578,7 +573,7 @@
               },
               {
                 "title": "Girls HC Z-Scores Table",
-                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-zs-girls_hc_table.pdf",
+                "url": "https://intergrowth21.com/sites/default/files/2025-09/grow_verypreterm-zs-girls_hc_table.pdf",
                 "file_type": "pdf"
               },
               {
@@ -588,7 +583,7 @@
               },
               {
                 "title": "Boys Weight:Length Centiles Table",
-                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-wlr-ct-boys_table.pdf",
+                "url": "https://intergrowth21.com/sites/default/files/2025-09/grow_verypreterm-wlr-ct-boys_table.pdf",
                 "file_type": "pdf"
               },
               {
@@ -598,7 +593,7 @@
               },
               {
                 "title": "Boys Weight:Length Z-Scores Table",
-                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-wlr-zs-boys_table.pdf",
+                "url": "https://intergrowth21.com/sites/default/files/2025-09/grow_verypreterm-wlr-zs-boys_table.pdf",
                 "file_type": "pdf"
               },
               {
@@ -608,7 +603,7 @@
               },
               {
                 "title": "Girls Weight:Length Centiles Table",
-                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-wlr-ct-girls_table.pdf",
+                "url": "https://intergrowth21.com/sites/default/files/2025-09/grow_verypreterm-wlr-ct-girls_table.pdf",
                 "file_type": "pdf"
               },
               {
@@ -618,7 +613,7 @@
               },
               {
                 "title": "Girls Weight:Length Z-Scores Table",
-                "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-wlr-zs-girls_table.pdf",
+                "url": "https://intergrowth21.com/sites/default/files/2025-09/grow_verypreterm-wlr-zs-girls_table.pdf",
                 "file_type": "pdf"
               },
               {
@@ -627,42 +622,42 @@
                 "file_type": "pdf"
               },
               {
-                "title": "Boys WLHC Centiles",
+                "title": "Boys WLHC Centiles Graph",
                 "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-boys_en.pdf",
                 "file_type": "pdf"
               },
               {
-                "title": "Boys WLHC Z-Scores",
+                "title": "Boys WLHC Z-Scores Graph",
                 "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-zs-boys_en.pdf",
                 "file_type": "pdf"
               },
               {
-                "title": "Girls WLHC Centiles",
+                "title": "Girls WLHC Centiles Graph",
                 "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-ct-girls_en.pdf",
                 "file_type": "pdf"
               },
               {
-                "title": "Girls WLHC Z-scores",
+                "title": "Girls WLHC Z-scores Graph",
                 "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_verypreterm-zs-girls_en.pdf",
                 "file_type": "pdf"
               },
               {
-                "title": "Boys Charts Centiles",
+                "title": "Boys Charts Centiles Graph",
                 "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_vp-nb-combined-ct-boys_en.pdf",
                 "file_type": "pdf"
               },
               {
-                "title": "Boys Charts Z-Scores",
+                "title": "Boys Charts Z-Scores Graph",
                 "url": "https://intergrowth21.com/sites/default/files/2023-01/grow_vp-nb-combined-zs-boys_en.pdf",
                 "file_type": "pdf"
               },
               {
-                "title": "Girls Charts Centiles",
+                "title": "Girls Charts Centiles Graph",
                 "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_vp-nb-combined-ct-girls_en.pdf",
                 "file_type": "pdf"
               },
               {
-                "title": "Girls Charts Z-Scores",
+                "title": "Girls Charts Z-Scores Graph",
                 "url": "https://intergrowth21.com/sites/default/files/2023-02/grow_vp-nb-combined-zs-girls_en.pdf",
                 "file_type": "pdf"
               }
@@ -705,7 +700,7 @@
       {
         "key": "newborn_size",
         "title": "Newborn Size",
-        "description": "Purpose: Assess size at birth (within 24 hours) for newbornsAge range: At birth, born between gestational weeks 33 and 43",
+        "description": "Purpose: Assess size at birth (within 24 hours) for newbornsAge range: At birth, born between gestational weeks 33 and 42+6",
         "image_url": "https://intergrowth21.com/sites/default/files/styles/square_large/public/2023-05/newborn_size.png?itok=-mD0GPnu",
         "page_url": "https://intergrowth21.com/tools-resources/newborn-size",
         "resources": [
@@ -971,7 +966,7 @@
       {
         "key": "postnatal_growth_of_preterm_infants",
         "title": "Postnatal Growth of Preterm Infants",
-        "description": "Purpose: Assess the postnatal growth of preterm infants (born between gestational weeks 26 and 37)\nAge range: From birth until 64 weeks postmenstrual age",
+        "description": "Purpose: Assess the postnatal growth of preterm infants (born between gestational weeks 27 and 37)Age range: From preterm birth (27+0 to 36+6) until 64 weeks postmenstrual age",
         "image_url": "https://intergrowth21.com/sites/default/files/styles/square_large/public/2023-05/postnatal_growth_of_preterm_infants.png?itok=iNogwCst",
         "page_url": "https://intergrowth21.com/tools-resources/postnatal-growth-preterm-infants",
         "resources": [
