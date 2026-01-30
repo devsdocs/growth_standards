@@ -19,7 +19,7 @@ class WHOGrowthStandardsBodyMassIndexForAgeData extends AgeBasedData {
           s: v2['s']! as num,
         );
         return MapEntry(
-         k2,
+          k2,
           _WHOGrowthStandardsBodyMassIndexForAgeLMS(
             lms: lms,
             loh: v2['loh'].toString().toLowerCase() == 'l'

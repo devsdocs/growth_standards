@@ -13,11 +13,7 @@ class WHOGrowthStandardsSubscapularSkinfoldForAgeData extends AgeBasedData {
     (k1, v1) => MapEntry(
       k1 == 1 ? Sex.male : Sex.female,
       v1.map((k2, v2) {
-        final lms = LMS(
-          l: v2['l']!,
-          m: v2['m']!,
-          s: v2['s']!,
-        );
+        final lms = LMS(l: v2['l']!, m: v2['m']!, s: v2['s']!);
         return MapEntry(
           k2,
           _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS(lms: lms),

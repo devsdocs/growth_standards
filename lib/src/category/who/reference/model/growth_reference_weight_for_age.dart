@@ -16,10 +16,7 @@ class WHOGrowthReferenceWeightForAgeData extends AgeBasedData {
               m: v2['m']! as num,
               s: v2['s']! as num,
             );
-            return MapEntry(
-             k2,
-              _WHOGrowthReferenceWeightForAgeLMS(lms: lms),
-            );
+            return MapEntry(k2, _WHOGrowthReferenceWeightForAgeLMS(lms: lms));
           }),
         ),
       );

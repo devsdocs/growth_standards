@@ -18,10 +18,7 @@ class CDCBodyMassIndexForAgeData extends AgeBasedData {
             );
             return MapEntry(
               k2.toDouble(),
-              _CDCBodyMassIndexForAgeLMS(
-                sigma: v2['sigma']!,
-                lms: lms,
-              ),
+              _CDCBodyMassIndexForAgeLMS(sigma: v2['sigma']!, lms: lms),
             );
           }),
         ),
