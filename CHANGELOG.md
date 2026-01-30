@@ -1,3 +1,7 @@
+## 4.4.0
+- Set default value for `countObservationDate` to  `true` in `Age`
+- Improve performance by change source data to map literal instead of `json` string
+
 ## 4.3.1
 - Add latest Symphisis-Fundal Height score update
 
