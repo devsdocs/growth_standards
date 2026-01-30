@@ -13,19 +13,25 @@ class IntergrowthNewbornBirthWeightForLengthRatioForAgeData
     Map<int, _IntergrowthNewbornBirthWeightForLengthRatioForAgeLMS>
   >
   _parse() => {
-    Sex.male: _grow_newborn_wlr_boys.toJsonObjectAsMap.map((k1, v1) {
-      v1 as Map<String, dynamic>;
-      final lms = LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
+    Sex.male: _grow_newborn_wlr_boys.map((k1, v1) {
+      final lms = LMS(
+        l: v1['l']! as num,
+        m: v1['m']! as num,
+        s: v1['s']! as num,
+      );
       return MapEntry(
-        int.parse(k1),
+        k1,
         _IntergrowthNewbornBirthWeightForLengthRatioForAgeLMS(lms: lms),
       );
     }),
-    Sex.female: _grow_newborn_wlr_girls.toJsonObjectAsMap.map((k1, v1) {
-      v1 as Map<String, dynamic>;
-      final lms = LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
+    Sex.female: _grow_newborn_wlr_girls.map((k1, v1) {
+      final lms = LMS(
+        l: v1['l']! as num,
+        m: v1['m']! as num,
+        s: v1['s']! as num,
+      );
       return MapEntry(
-        int.parse(k1),
+        k1,
         _IntergrowthNewbornBirthWeightForLengthRatioForAgeLMS(lms: lms),
       );
     }),

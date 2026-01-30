@@ -8,21 +8,21 @@ class IntergrowthNewbornBirthLengthForAgeData extends AgeBasedData {
 
   static Map<Sex, Map<int, _IntergrowthNewbornBirthLengthForAgeLMS>>
   _parse() => {
-    Sex.male: _grow_newborn_boys_lt.toJsonObjectAsMap.map((k1, v1) {
-      v1 as Map<String, dynamic>;
-      final lms = LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
-      return MapEntry(
-        int.parse(k1),
-        _IntergrowthNewbornBirthLengthForAgeLMS(lms: lms),
+    Sex.male: _grow_newborn_boys_lt.map((k1, v1) {
+      final lms = LMS(
+        l: v1['l']! as num,
+        m: v1['m']! as num,
+        s: v1['s']! as num,
       );
+      return MapEntry(k1, _IntergrowthNewbornBirthLengthForAgeLMS(lms: lms));
     }),
-    Sex.female: _grow_newborn_girls_lt.toJsonObjectAsMap.map((k1, v1) {
-      v1 as Map<String, dynamic>;
-      final lms = LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
-      return MapEntry(
-        int.parse(k1),
-        _IntergrowthNewbornBirthLengthForAgeLMS(lms: lms),
+    Sex.female: _grow_newborn_girls_lt.map((k1, v1) {
+      final lms = LMS(
+        l: v1['l']! as num,
+        m: v1['m']! as num,
+        s: v1['s']! as num,
       );
+      return MapEntry(k1, _IntergrowthNewbornBirthLengthForAgeLMS(lms: lms));
     }),
   };
 

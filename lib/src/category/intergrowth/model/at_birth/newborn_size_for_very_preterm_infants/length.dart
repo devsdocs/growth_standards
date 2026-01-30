@@ -9,19 +9,25 @@ class IntergrowthVeryPretermNewbornBirthLengthForAgeData extends AgeBasedData {
 
   static Map<Sex, Map<int, _IntergrowthVeryPretermNewbornBirthLengthForAgeLMS>>
   _parse() => {
-    Sex.male: _grow_verypreterm_boys_lt.toJsonObjectAsMap.map((k1, v1) {
-      v1 as Map<String, dynamic>;
-      final lms = LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
+    Sex.male: _grow_verypreterm_boys_lt.map((k1, v1) {
+      final lms = LMS(
+        l: v1['l']! as num,
+        m: v1['m']! as num,
+        s: v1['s']! as num,
+      );
       return MapEntry(
-        int.parse(k1),
+        k1,
         _IntergrowthVeryPretermNewbornBirthLengthForAgeLMS(lms: lms),
       );
     }),
-    Sex.female: _grow_verypreterm_girls_lt.toJsonObjectAsMap.map((k1, v1) {
-      v1 as Map<String, dynamic>;
-      final lms = LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
+    Sex.female: _grow_verypreterm_girls_lt.map((k1, v1) {
+      final lms = LMS(
+        l: v1['l']! as num,
+        m: v1['m']! as num,
+        s: v1['s']! as num,
+      );
       return MapEntry(
-        int.parse(k1),
+        k1,
         _IntergrowthVeryPretermNewbornBirthLengthForAgeLMS(lms: lms),
       );
     }),

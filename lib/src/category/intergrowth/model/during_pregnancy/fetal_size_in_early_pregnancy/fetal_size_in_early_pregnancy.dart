@@ -10,13 +10,13 @@ class IntergrowthFetalCrownRumpLengthForAgeData extends AgeBasedData {
 
   static Map<Sex, Map<num, _IntergrowthFetalCrownRumpLengthForAgeLMS>>
   _parse() {
-    final map = _grow_early_preg_charts_size.toJsonObjectAsMap.map((k1, v1) {
-      v1 as Map<String, dynamic>;
-      final lms = LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
-      return MapEntry(
-        int.parse(k1),
-        _IntergrowthFetalCrownRumpLengthForAgeLMS(lms: lms),
+    final map = _grow_early_preg_charts_size.map((k1, v1) {
+      final lms = LMS(
+        l: v1['l']! as num,
+        m: v1['m']! as num,
+        s: v1['s']! as num,
       );
+      return MapEntry(k1, _IntergrowthFetalCrownRumpLengthForAgeLMS(lms: lms));
     });
     return {Sex.male: map, Sex.female: map};
   }

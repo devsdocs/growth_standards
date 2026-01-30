@@ -127,6 +127,7 @@ List<List<Map<String, dynamic>>> sanitize(List<List<dynamic>> data) {
                       : v is DoubleCellValue
                           ? v.value
                           : v;
+
       return {'$key': value};
     }).toList();
   }).toList();

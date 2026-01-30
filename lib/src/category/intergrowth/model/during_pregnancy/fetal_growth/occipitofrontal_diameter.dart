@@ -14,11 +14,14 @@ class IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeData
     Map<int, _IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeLMS>
   >
   _parse() {
-    final map = _grow_fetal_ofd.toJsonObjectAsMap.map((k1, v1) {
-      v1 as Map<String, dynamic>;
-      final lms = LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
+    final map = _grow_fetal_ofd.map((k1, v1) {
+      final lms = LMS(
+        l: v1['l']! as num,
+        m: v1['m']! as num,
+        s: v1['s']! as num,
+      );
       return MapEntry(
-        int.parse(k1),
+        k1,
         _IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeLMS(lms: lms),
       );
     });

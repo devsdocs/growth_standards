@@ -1,6 +1,5 @@
 // ignore_for_file: avoid_print
 
-import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 
@@ -158,9 +157,11 @@ void writeDart(Intergrowth model, Item item, FileNameInfo fileNameInfo,
         .asMap()
         .map((_, value) => getVal(c, value).entries.first)
         .map((key, value) {
-      final tryParseNum = num.tryParse(value.toString());
-      final parsedValue = tryParseNum ?? value;
-      final mapEntry = MapEntry(key.toLowerCase(), parsedValue);
+      final tryParseValue = num.tryParse(value.toString());
+      final parsedValue = tryParseValue ?? value;
+      final tryParseKey = num.tryParse(key);
+      final parsedKey = tryParseKey ?? key;
+      final mapEntry = MapEntry(parsedKey, parsedValue);
       return mapEntry;
     }),
   )
@@ -168,15 +169,81 @@ void writeDart(Intergrowth model, Item item, FileNameInfo fileNameInfo,
     expMap[element['csv'].toString()] = element..remove('csv');
   });
 
-  final encode = json.encode(expMap);
+  final encode = _toDartLiteral(expMap, indent: 0);
 
   dartDataFile.writeAsStringSync("""
   part of '../../../intergrowth.dart';
   
   // ignore: constant_identifier_names
-  const _$name = '''\n$encode''';\n""");
+  const _$name = $encode;""");
 
   print("part 'data/${model.key}/${item.key}/$name.dart';");
+}
+
+String _toDartLiteral(Object? value, {required int indent}) {
+  final space = '  ' * indent;
+
+  if (value == null) return 'null';
+
+  if (value is String) {
+    final tryParseNum = num.tryParse(value);
+    if (tryParseNum != null) {
+      return value;
+    }
+    return "'${_escapeString(value)}'";
+  }
+
+  if (value is num || value is bool) {
+    return value.toString();
+  }
+
+  if (value is Enum) {
+    return '${value.runtimeType}.${value.name}';
+  }
+
+  if (value is List) {
+    if (value.isEmpty) return 'const []';
+
+    return '''
+[
+${value.map((e) => '$space  ${_toDartLiteral(e, indent: indent + 1)},').join('\n')}
+$space]''';
+  }
+
+  if (value is Set) {
+    if (value.isEmpty) return 'const {}';
+
+    return '''
+{
+${value.map((e) => '$space  ${_toDartLiteral(e, indent: indent + 1)},').join('\n')}
+$space}''';
+  }
+
+  if (value is Map) {
+    if (value.isEmpty) return 'const {}';
+
+    return '''
+{
+${value.entries.map((e) {
+      final k = _toDartLiteral(e.key, indent: indent + 1);
+      final v = _toDartLiteral(e.value, indent: indent + 1);
+      return '$space  $k: $v,';
+    }).join('\n')}
+$space}''';
+  }
+
+  throw UnsupportedError(
+    'Unsupported type: ${value.runtimeType}',
+  );
+}
+
+String _escapeString(String input) {
+  return input
+      .replaceAll(r'\', r'\\')
+      .replaceAll("'", r"\'")
+      .replaceAll('\n', r'\n')
+      .replaceAll('\r', r'\r')
+      .replaceAll('\t', r'\t');
 }
 
 int findMaxColumnCount(List<Element> tables) {
