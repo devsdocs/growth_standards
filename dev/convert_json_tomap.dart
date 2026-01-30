@@ -61,6 +61,12 @@ void main() {
 bool _isAnyDoubleInMapKey(Map map) {
   // itterate through map keys and value and check if any key is double also if value is map check recursively
   for (final entry in map.entries) {
+    if (entry.key is String) {
+      final tryParse = double.tryParse(entry.key as String);
+      if (tryParse != null) {
+        return true;
+      }
+    }
     if (entry.key is double) {
       return true;
     }
