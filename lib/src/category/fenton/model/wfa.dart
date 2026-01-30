@@ -8,7 +8,7 @@ class FentonWeightForAgeData extends AgeBasedData {
 
   static Map<Sex, Map<int, _FentonWeightForAgeLMS>> _parse() {
     final map = fentonWfA.map((k1, v1) {
-      v1 as Map<String, dynamic>;
+      v1;
       final lms = LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
       return MapEntry(k1, _FentonWeightForAgeLMS(lms: lms));
     });

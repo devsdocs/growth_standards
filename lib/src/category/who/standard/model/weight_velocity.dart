@@ -18,11 +18,11 @@ class WHOGrowthStandardsWeightVelocityForAgeData extends VelocityBaseData {
   _parse() => _wv.map(
     (k1, v1) => MapEntry(
       k1 == '1' ? Sex.male : Sex.female,
-      (v1 as Map<String, dynamic>).map(
+      (v1).map(
         (k2, v2) => MapEntry(
           parseIncrement(k2),
-          (v2 as Map<String, dynamic>).map((k3, v3) {
-            v3 as Map<String, dynamic>;
+          (v2).map((k3, v3) {
+            v3;
             final delta = v3['delta'] as num;
             final lms = LMS(
               l: v3['l'] as num,

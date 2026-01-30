@@ -10,8 +10,8 @@ class WHOGrowthStandardsWeightForLengthData extends LengthBasedData {
       _wflanthro.map(
         (k1, v1) => MapEntry(
           k1 == '1' ? Sex.male : Sex.female,
-          (v1 as Map<String, dynamic>).map((k2, v2) {
-            v2 as Map<String, dynamic>;
+          (v1).map((k2, v2) {
+            v2;
             final lms = LMS(
               l: v2['l'] as num,
               m: v2['m'] as num,

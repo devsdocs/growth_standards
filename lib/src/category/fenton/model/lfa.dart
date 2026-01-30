@@ -7,7 +7,7 @@ class FentonLengthForAgeData extends AgeBasedData {
 
   static Map<Sex, Map<int, _FentonLengthForAgeLMS>> _parse() {
     final map = fentonLfA.map((k1, v1) {
-      v1 as Map<String, dynamic>;
+      v1;
       final lms = LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
       return MapEntry(k1, _FentonLengthForAgeLMS(lms: lms));
     });
