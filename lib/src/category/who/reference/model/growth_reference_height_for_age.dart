@@ -9,7 +9,7 @@ class WHOGrowthReferenceHeightForAgeData extends AgeBasedData {
   static Map<Sex, Map<int, _WHOGrowthReferenceHeightForAgeLMS>> _parse() =>
       _hfa5yo.map(
         (k1, v1) => MapEntry(
-          k1 == '1' ? Sex.male : Sex.female,
+          k1 == 1 ? Sex.male : Sex.female,
           (v1).map((k2, v2) {
             v2;
             final lms = LMS(

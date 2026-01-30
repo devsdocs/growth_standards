@@ -17,7 +17,7 @@ class WHOGrowthStandardsHeadCircumferenceVelocityForAgeData
   >
   _parse() => _hv.map(
     (k1, v1) => MapEntry(
-      k1 == '1' ? Sex.male : Sex.female,
+      k1 == 1 ? Sex.male : Sex.female,
       (v1).map(
         (k2, v2) => MapEntry(
           parseIncrement(k2),
