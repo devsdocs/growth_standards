@@ -9,12 +9,11 @@ class CDCWeightForStatureData extends LengthBasedData {
   static Map<Sex, Map<num, _CDCWeightForStatureLMS>> _parse() => cdcwtstat.map(
     (k1, v1) => MapEntry(
       k1 == 1 ? Sex.male : Sex.female,
-      (v1).map((k2, v2) {
-        v2;
+      v1.map((k2, v2) {
         final lms = LMS(
-          l: v2['l'] as num,
-          m: v2['m'] as num,
-          s: v2['s'] as num,
+          l: v2['l']! as num,
+          m: v2['m']! as num,
+          s: v2['s']! as num,
         );
         return MapEntry(num.parse(k2), _CDCWeightForStatureLMS(lms: lms));
       }),

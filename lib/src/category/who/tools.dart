@@ -77,7 +77,7 @@ const velocityEnum = {
   6: VelocityIncrement.$6,
 };
 
-VelocityIncrement parseIncrement(String val) => velocityEnum[int.parse(val)]!;
+VelocityIncrement parseIncrement(int val) => velocityEnum[val]!;
 
 /// [measurementHistory] field can be either [List] of [MassMeasurementHistory]
 /// or [List] of [LengthMeasurementHistory]

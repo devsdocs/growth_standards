@@ -18,15 +18,14 @@ class WHOGrowthStandardsHeadCircumferenceVelocityForAgeData
   _parse() => _hv.map(
     (k1, v1) => MapEntry(
       k1 == 1 ? Sex.male : Sex.female,
-      (v1).map(
+      v1.map(
         (k2, v2) => MapEntry(
           parseIncrement(k2),
-          (v2).map((k3, v3) {
-            v3;
+          v2.map((k3, v3) {
             final lms = LMS(
-              l: v3['l'] as num,
-              m: v3['m'] as num,
-              s: v3['s'] as num,
+              l: v3['l']! as num,
+              m: v3['m']! as num,
+              s: v3['s']! as num,
             );
             return MapEntry(
               parseVelocityIncrement(k3),

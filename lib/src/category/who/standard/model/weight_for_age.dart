@@ -10,15 +10,14 @@ class WHOGrowthStandardsWeightForAgeData extends AgeBasedData {
       _weianthro.map(
         (k1, v1) => MapEntry(
           k1 == 1 ? Sex.male : Sex.female,
-          (v1).map((k2, v2) {
-            v2;
+          v1.map((k2, v2) {
             final lms = LMS(
-              l: v2['l'] as num,
-              m: v2['m'] as num,
-              s: v2['s'] as num,
+              l: v2['l']!,
+              m: v2['m']!,
+              s: v2['s']!,
             );
             return MapEntry(
-              int.parse(k2),
+              k2,
               _WHOGrowthStandardsWeightForAgeLMS(lms: lms),
             );
           }),
