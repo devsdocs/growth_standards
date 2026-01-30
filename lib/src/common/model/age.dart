@@ -25,21 +25,49 @@ sealed class Age with _$Age {
   factory Age(
     Date dateOfBirth, {
     Date? observedDate,
-    @Default(false) bool countObservationDate,
+    @Default(true) bool countObservationDate,
   }) = _Age;
 
   const Age._();
 
-  factory Age.byYearsAgo(int years, {Date? observedDate}) =>
-      Age(Date.fromYearsAgo(years), observedDate: observedDate);
+  factory Age.byYearsAgo(
+    int years, {
+    Date? observedDate,
+    bool countObservationDate = true,
+  }) => Age(
+    Date.fromYearsAgo(years),
+    observedDate: observedDate,
+    countObservationDate: countObservationDate,
+  );
 
-  factory Age.byMonthsAgo(int months, {Date? observedDate}) =>
-      Age(Date.fromMonthsAgo(months), observedDate: observedDate);
-  factory Age.byWeeksAgo(int weeks, {Date? observedDate}) =>
-      Age(Date.fromWeeksAgo(weeks), observedDate: observedDate);
+  factory Age.byMonthsAgo(
+    int months, {
+    Date? observedDate,
+    bool countObservationDate = true,
+  }) => Age(
+    Date.fromMonthsAgo(months),
+    observedDate: observedDate,
+    countObservationDate: countObservationDate,
+  );
+  factory Age.byWeeksAgo(
+    int weeks, {
+    Date? observedDate,
+    bool countObservationDate = true,
+  }) => Age(
+    Date.fromWeeksAgo(weeks),
+    observedDate: observedDate,
+    countObservationDate: countObservationDate,
+  );
 
-  factory Age.byDaysAgo(int days, {Date? observedDate}) =>
-      Age(Date.fromDaysAgo(days), observedDate: observedDate);
+  factory Age.byDaysAgo(
+    int days, {
+    Date? observedDate,
+    bool countObservationDate = true,
+  }) => Age(
+    Date.fromDaysAgo(days),
+    observedDate: observedDate,
+    countObservationDate: countObservationDate,
+  );
 
   factory Age.fromJson(Map<String, dynamic> json) => _$AgeFromJson(json);
 

@@ -226,7 +226,7 @@ return $default(_that.dateOfBirth,_that.observedDate,_that.countObservationDate)
 @JsonSerializable()
 
 class _Age extends Age {
-   _Age(this.dateOfBirth, {this.observedDate, this.countObservationDate = false}): assert(observedDate == null || (observedDate.isSameOrAfter(dateOfBirth) && observedDate.isSameOrBefore(Date.today())), 'Age is impossible because observed date is before date of birth or observed date is in the future'),assert(dateOfBirth.isSameOrBefore(Date.today()), 'Date of birth cannot be in the future'),super._();
+   _Age(this.dateOfBirth, {this.observedDate, this.countObservationDate = true}): assert(observedDate == null || (observedDate.isSameOrAfter(dateOfBirth) && observedDate.isSameOrBefore(Date.today())), 'Age is impossible because observed date is before date of birth or observed date is in the future'),assert(dateOfBirth.isSameOrBefore(Date.today()), 'Date of birth cannot be in the future'),super._();
   factory _Age.fromJson(Map<String, dynamic> json) => _$AgeFromJson(json);
 
 @override final  Date dateOfBirth;

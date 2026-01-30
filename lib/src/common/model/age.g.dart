@@ -11,7 +11,7 @@ _Age _$AgeFromJson(Map<String, dynamic> json) => _Age(
   observedDate: json['observedDate'] == null
       ? null
       : Date.fromJson(json['observedDate'] as Map<String, dynamic>),
-  countObservationDate: json['countObservationDate'] as bool? ?? false,
+  countObservationDate: json['countObservationDate'] as bool? ?? true,
 );
 
 Map<String, dynamic> _$AgeToJson(_Age instance) => <String, dynamic>{
