@@ -15,7 +15,7 @@ class CDCStatureForAgeData extends AgeBasedData {
           m: v2['m']! as num,
           s: v2['s']! as num,
         );
-        return MapEntry(double.parse(k2), _CDCStatureForAgeLMS(lms: lms));
+        return MapEntry(k2.toDouble(), _CDCStatureForAgeLMS(lms: lms));
       }),
     ),
   );

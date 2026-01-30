@@ -16,10 +16,7 @@ class CDCInfantWeightForLengthData extends LengthBasedData {
               m: v2['m']! as num,
               s: v2['s']! as num,
             );
-            return MapEntry(
-              num.parse(k2),
-              _CDCInfantWeightForLengthLMS(lms: lms),
-            );
+            return MapEntry(k2, _CDCInfantWeightForLengthLMS(lms: lms));
           }),
         ),
       );

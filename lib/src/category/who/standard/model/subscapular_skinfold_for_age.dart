@@ -19,7 +19,7 @@ class WHOGrowthStandardsSubscapularSkinfoldForAgeData extends AgeBasedData {
           s: v2['s']!,
         );
         return MapEntry(
-          int.parse(k2),
+          k2,
           _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS(lms: lms),
         );
       }),

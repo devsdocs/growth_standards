@@ -16,10 +16,7 @@ class CDCInfantWeightForAgeData extends AgeBasedData {
               m: v2['m']! as num,
               s: v2['s']! as num,
             );
-            return MapEntry(
-              double.parse(k2),
-              _CDCInfantWeightForAgeLMS(lms: lms),
-            );
+            return MapEntry(k2.toDouble(), _CDCInfantWeightForAgeLMS(lms: lms));
           }),
         ),
       );

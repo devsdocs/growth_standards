@@ -16,7 +16,7 @@ class CDCInfantLengthForAgeData extends AgeBasedData {
               s: v2['s']! as num,
             );
             return MapEntry(
-              double.parse(k2),
+              k2.toDouble(),
               _CDCInfantLengthForAgeLMS(lms: lms),
             );
           }),

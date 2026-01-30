@@ -17,7 +17,7 @@ class WHOGrowthStandardsWeightForLengthData extends LengthBasedData {
               s: v2['s']! as num,
             );
             return MapEntry(
-              num.parse(k2),
+              k2,
               _WHOGrowthStandardsWeightForLengthLMS(
                 lms: lms,
                 lengthOrHeight: v2['lorh'].toString().toLowerCase() == 'l'

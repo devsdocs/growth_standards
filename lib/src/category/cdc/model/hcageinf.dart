@@ -17,7 +17,7 @@ class CDCInfantHeadCircumferenceForAgeData extends AgeBasedData {
               s: v2['s']! as num,
             );
             return MapEntry(
-              k2 as double,
+              k2.toDouble(),
               _CDCInfantHeadCircumferenceForAgeLMS(lms: lms),
             );
           }),

@@ -15,7 +15,7 @@ class CDCWeightForAgeData extends AgeBasedData {
           m: v2['m']! as num,
           s: v2['s']! as num,
         );
-        return MapEntry(double.parse(k2), _CDCWeightForAgeLMS(lms: lms));
+        return MapEntry(k2.toDouble(), _CDCWeightForAgeLMS(lms: lms));
       }),
     ),
   );
