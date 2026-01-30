@@ -47,7 +47,7 @@ void main() {
         endIndex,
         '\n$dartLiteral\n',
       );
-      file.writeAsStringSync(newFileContent);
+      file.writeAsStringSync(newFileContent.replaceAll("'''", ''));
     }
   }
 }
