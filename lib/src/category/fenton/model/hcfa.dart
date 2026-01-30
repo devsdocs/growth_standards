@@ -7,11 +7,11 @@ class FentonHeadCircumferenceForAgeData extends AgeBasedData {
   static final _singleton = FentonHeadCircumferenceForAgeData._(_parse());
 
   static Map<Sex, Map<int, _FentonHeadCircumferenceForAgeLMS>> _parse() {
-    final map = fentonHCfA.toJsonObjectAsMap.map((k1, v1) {
+    final map = fentonHCfA.map((k1, v1) {
       v1 as Map<String, dynamic>;
       final lms = LMS(l: v1['l'] as num, m: v1['m'] as num, s: v1['s'] as num);
       return MapEntry(
-        int.parse(k1),
+        k1,
         _FentonHeadCircumferenceForAgeLMS(lms: lms),
       );
     });

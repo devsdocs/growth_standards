@@ -9,7 +9,7 @@ class WHOGrowthStandardsSubscapularSkinfoldForAgeData extends AgeBasedData {
   );
 
   static Map<Sex, Map<int, _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS>>
-  _parse() => _ssanthro.toJsonObjectAsMap.map(
+  _parse() => _ssanthro.map(
     (k1, v1) => MapEntry(
       k1 == '1' ? Sex.male : Sex.female,
       (v1 as Map<String, dynamic>).map((k2, v2) {

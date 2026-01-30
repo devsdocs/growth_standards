@@ -7,7 +7,7 @@ class CDCInfantWeightForLengthData extends LengthBasedData {
   static final _singleton = CDCInfantWeightForLengthData._(_parse());
 
   static Map<Sex, Map<num, _CDCInfantWeightForLengthLMS>> _parse() =>
-      cdcwtleninf.toJsonObjectAsMap.map(
+      cdcwtleninf.map(
         (k1, v1) => MapEntry(
           k1 == '1' ? Sex.male : Sex.female,
           (v1 as Map<String, dynamic>).map((k2, v2) {

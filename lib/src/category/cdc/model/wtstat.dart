@@ -6,21 +6,20 @@ class CDCWeightForStatureData extends LengthBasedData {
 
   static final _singleton = CDCWeightForStatureData._(_parse());
 
-  static Map<Sex, Map<num, _CDCWeightForStatureLMS>> _parse() =>
-      cdcwtstat.toJsonObjectAsMap.map(
-        (k1, v1) => MapEntry(
-          k1 == '1' ? Sex.male : Sex.female,
-          (v1 as Map<String, dynamic>).map((k2, v2) {
-            v2 as Map<String, dynamic>;
-            final lms = LMS(
-              l: v2['l'] as num,
-              m: v2['m'] as num,
-              s: v2['s'] as num,
-            );
-            return MapEntry(num.parse(k2), _CDCWeightForStatureLMS(lms: lms));
-          }),
-        ),
-      );
+  static Map<Sex, Map<num, _CDCWeightForStatureLMS>> _parse() => cdcwtstat.map(
+    (k1, v1) => MapEntry(
+      k1 == '1' ? Sex.male : Sex.female,
+      (v1 as Map<String, dynamic>).map((k2, v2) {
+        v2 as Map<String, dynamic>;
+        final lms = LMS(
+          l: v2['l'] as num,
+          m: v2['m'] as num,
+          s: v2['s'] as num,
+        );
+        return MapEntry(num.parse(k2), _CDCWeightForStatureLMS(lms: lms));
+      }),
+    ),
+  );
   final Map<Sex, Map<num, _CDCWeightForStatureLMS>> _data;
   @override
   Map<Sex, Map<num, _CDCWeightForStatureLMS>> get data => _data;

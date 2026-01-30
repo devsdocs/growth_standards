@@ -9,7 +9,7 @@ class WHOGrowthStandardsBodyMassIndexForAgeData extends AgeBasedData {
   );
 
   static Map<Sex, Map<int, _WHOGrowthStandardsBodyMassIndexForAgeLMS>>
-  _parse() => _bmianthro.toJsonObjectAsMap.map(
+  _parse() => _bmianthro.map(
     (k1, v1) => MapEntry(
       k1 == '1' ? Sex.male : Sex.female,
       (v1 as Map<String, dynamic>).map((k2, v2) {

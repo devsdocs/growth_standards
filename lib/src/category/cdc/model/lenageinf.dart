@@ -6,7 +6,7 @@ class CDCInfantLengthForAgeData extends AgeBasedData {
   static final _singleton = CDCInfantLengthForAgeData._(_parse());
 
   static Map<Sex, Map<double, _CDCInfantLengthForAgeLMS>> _parse() =>
-      cdclenageinf.toJsonObjectAsMap.map(
+      cdclenageinf.map(
         (k1, v1) => MapEntry(
           k1 == '1' ? Sex.male : Sex.female,
           (v1 as Map<String, dynamic>).map((k2, v2) {

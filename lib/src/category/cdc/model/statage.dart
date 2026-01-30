@@ -6,21 +6,20 @@ class CDCStatureForAgeData extends AgeBasedData {
 
   static final _singleton = CDCStatureForAgeData._(_parse());
 
-  static Map<Sex, Map<double, _CDCStatureForAgeLMS>> _parse() =>
-      cdcstatage.toJsonObjectAsMap.map(
-        (k1, v1) => MapEntry(
-          k1 == '1' ? Sex.male : Sex.female,
-          (v1 as Map<String, dynamic>).map((k2, v2) {
-            v2 as Map<String, dynamic>;
-            final lms = LMS(
-              l: v2['l'] as num,
-              m: v2['m'] as num,
-              s: v2['s'] as num,
-            );
-            return MapEntry(double.parse(k2), _CDCStatureForAgeLMS(lms: lms));
-          }),
-        ),
-      );
+  static Map<Sex, Map<double, _CDCStatureForAgeLMS>> _parse() => cdcstatage.map(
+    (k1, v1) => MapEntry(
+      k1 == '1' ? Sex.male : Sex.female,
+      (v1 as Map<String, dynamic>).map((k2, v2) {
+        v2 as Map<String, dynamic>;
+        final lms = LMS(
+          l: v2['l'] as num,
+          m: v2['m'] as num,
+          s: v2['s'] as num,
+        );
+        return MapEntry(double.parse(k2), _CDCStatureForAgeLMS(lms: lms));
+      }),
+    ),
+  );
   final Map<Sex, Map<double, _CDCStatureForAgeLMS>> _data;
   @override
   Map<Sex, Map<double, _CDCStatureForAgeLMS>> get data => _data;

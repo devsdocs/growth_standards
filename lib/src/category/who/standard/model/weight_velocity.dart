@@ -15,7 +15,7 @@ class WHOGrowthStandardsWeightVelocityForAgeData extends VelocityBaseData {
       Map<VelocityMonths, WHOGrowthStandardsWeightVelocityForAgeLMS>
     >
   >
-  _parse() => _wv.toJsonObjectAsMap.map(
+  _parse() => _wv.map(
     (k1, v1) => MapEntry(
       k1 == '1' ? Sex.male : Sex.female,
       (v1 as Map<String, dynamic>).map(

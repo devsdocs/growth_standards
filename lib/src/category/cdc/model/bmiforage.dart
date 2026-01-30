@@ -7,7 +7,7 @@ class CDCBodyMassIndexForAgeData extends AgeBasedData {
   static final _singleton = CDCBodyMassIndexForAgeData._(_parse());
 
   static Map<Sex, Map<double, _CDCBodyMassIndexForAgeLMS>> _parse() =>
-      cdcbmiage2022.toJsonObjectAsMap.map(
+      cdcbmiage2022.map(
         (k1, v1) => MapEntry(
           k1 == '1' ? Sex.male : Sex.female,
           (v1 as Map<String, dynamic>).map((k2, v2) {

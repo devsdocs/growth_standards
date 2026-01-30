@@ -7,7 +7,7 @@ class WHOGrowthReferenceHeightForAgeData extends AgeBasedData {
   static final _singleton = WHOGrowthReferenceHeightForAgeData._(_parse());
 
   static Map<Sex, Map<int, _WHOGrowthReferenceHeightForAgeLMS>> _parse() =>
-      _hfa5yo.toJsonObjectAsMap.map(
+      _hfa5yo.map(
         (k1, v1) => MapEntry(
           k1 == '1' ? Sex.male : Sex.female,
           (v1 as Map<String, dynamic>).map((k2, v2) {

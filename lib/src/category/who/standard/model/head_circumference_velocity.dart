@@ -15,7 +15,7 @@ class WHOGrowthStandardsHeadCircumferenceVelocityForAgeData
       Map<VelocityMonths, WHOGrowthStandardsHeadCircumferenceVelocityForAgeLMS>
     >
   >
-  _parse() => _hv.toJsonObjectAsMap.map(
+  _parse() => _hv.map(
     (k1, v1) => MapEntry(
       k1 == '1' ? Sex.male : Sex.female,
       (v1 as Map<String, dynamic>).map(

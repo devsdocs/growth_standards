@@ -9,7 +9,7 @@ class WHOGrowthStandardsTricepsSkinfoldForAgeData extends AgeBasedData {
   );
 
   static Map<Sex, Map<int, _WHOGrowthStandardsTricepsSkinfoldForAgeLMS>>
-  _parse() => _tsanthro.toJsonObjectAsMap.map(
+  _parse() => _tsanthro.map(
     (k1, v1) => MapEntry(
       k1 == '1' ? Sex.male : Sex.female,
       (v1 as Map<String, dynamic>).map((k2, v2) {

@@ -7,7 +7,7 @@ class WHOGrowthStandardsWeightForAgeData extends AgeBasedData {
   static final _singleton = WHOGrowthStandardsWeightForAgeData._(_parse());
 
   static Map<Sex, Map<int, _WHOGrowthStandardsWeightForAgeLMS>> _parse() =>
-      _weianthro.toJsonObjectAsMap.map(
+      _weianthro.map(
         (k1, v1) => MapEntry(
           k1 == '1' ? Sex.male : Sex.female,
           (v1 as Map<String, dynamic>).map((k2, v2) {
