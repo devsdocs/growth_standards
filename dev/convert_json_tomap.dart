@@ -65,9 +65,7 @@ bool _isAnyDoubleInMapKey(Map map) {
       return true;
     }
     if (entry.value is Map) {
-      if (_isAnyDoubleInMapKey(entry.value as Map)) {
-        return true;
-      }
+      return _isAnyDoubleInMapKey(entry.value as Map);
     }
   }
   return false;
