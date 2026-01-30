@@ -31,13 +31,11 @@ void main() {
           orElse: () => 'const data = ');
 
       assert(tryVariableName.contains('const '));
-      final getVariableName = tryVariableName
-          .substring(tryVariableName.indexOf('const ') + 'const '.length,
-              tryVariableName.indexOf('='))
-          .trim();
+
+      final decode = jsonDecode(jsonString);
 
       final dartLiteral = _toDartLiteral(
-        jsonDecode(jsonString),
+        decode,
         indent: 0,
       );
 
@@ -47,9 +45,32 @@ void main() {
         endIndex,
         '\n$dartLiteral\n',
       );
-      file.writeAsStringSync(newFileContent.replaceAll("'''", ''));
+      final isContainDoubleTypeKey =
+          decode is Map && _isAnyDoubleInMapKey(decode);
+
+      // if map contain double type key use final instead of const
+      final finalFileContent = isContainDoubleTypeKey
+          ? newFileContent.replaceFirst('const ', 'final ')
+          : newFileContent;
+
+      file.writeAsStringSync(finalFileContent.replaceAll("'''", ''));
     }
   }
+}
+
+bool _isAnyDoubleInMapKey(Map map) {
+  // itterate through map keys and value and check if any key is double also if value is map check recursively
+  for (final entry in map.entries) {
+    if (entry.key is double) {
+      return true;
+    }
+    if (entry.value is Map) {
+      if (_isAnyDoubleInMapKey(entry.value as Map)) {
+        return true;
+      }
+    }
+  }
+  return false;
 }
 
 String _toDartLiteral(Object? value, {required int indent}) {
