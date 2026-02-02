@@ -1,3 +1,7 @@
+## 4.4.1
+- Fix bug in growth velocity data parser
+- Add conversion unit symbol in length based growth measurement assertion
+
 ## 4.4.0
 - Set default value for `countObservationDate` to  `true` in `Age`
 - Improve performance by change source data to map literal instead of `json` string
