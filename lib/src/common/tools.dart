@@ -85,7 +85,7 @@ Length checkLength(
   if (convertedLength.value < lowerBound.value ||
       convertedLength.value > upperBound.value) {
     throw ArgumentError(
-      'Length or Height is invalid: Value: $convertedLength, Expected range: $lowerBound to $upperBound',
+      'Length or Height is invalid: Value: $convertedLength, Expected range: $lowerBound to $upperBound ${destinationType.symbol}',
     );
   }
 
