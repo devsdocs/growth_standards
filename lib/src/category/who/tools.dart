@@ -74,7 +74,7 @@ enum VelocityIncrement {
   final int value;
 }
 
-const velocityEnum = {
+const _velocityEnum = {
   1: VelocityIncrement.$1,
   2: VelocityIncrement.$2,
   3: VelocityIncrement.$3,
@@ -82,7 +82,7 @@ const velocityEnum = {
   6: VelocityIncrement.$6,
 };
 
-VelocityIncrement parseIncrement(int val) => velocityEnum[val]!;
+VelocityIncrement parseIncrement(int val) => _velocityEnum[val]!;
 
 /// [measurementHistory] field can be either [List] of [MassMeasurementHistory]
 /// or [List] of [LengthMeasurementHistory]
@@ -124,7 +124,7 @@ class VelocityPastMeasurement<T extends Unit<T>> {
 
         final countMos = ageAtDate.months;
 
-        final incremental = velocityEnum[countMos];
+        final incremental = _velocityEnum[countMos];
 
         if (incremental == null) continue;
 
