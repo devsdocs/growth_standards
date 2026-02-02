@@ -33,27 +33,32 @@ class WHOGrowthStandardsBodyMassIndexMeasurementConverter
 }
 
 VelocityMonths parseVelocityIncrement(String source) {
-  final clean = source.clean.splitSpace.first;
-  final splitC = clean
-      .split('-')
-      .map(
-        (e) => int.tryParse(e) == null
-            ? int.parse(
-                e.replaceAll(RegExp('[a-zA-z]'), '').replaceAll(' ', ''),
-              )
-            : int.parse(e),
-      );
-  if (splitC.length > 2) {
+  final isWeeksIncrement = source.contains('wks');
+  final isMonthsIncrement = source.contains('mo');
+  final isContainWeeksAndMonthsIncrement =
+      isWeeksIncrement && isMonthsIncrement;
+  final split =
+      (isContainWeeksAndMonthsIncrement
+              ? source.split('-').map((e) => e.splitSpace.first)
+              : source.splitSpace.first.split('-'))
+          .map(
+            (e) => int.tryParse(e) == null
+                ? int.parse(
+                    e.replaceAll(RegExp('[a-zA-z]'), '').replaceAll(' ', ''),
+                  )
+                : int.parse(e),
+          );
+  if (split.length > 2) {
     throw Exception('More than 2 element');
   }
 
-  if (source.contains('wks')) {
-    if (source.contains('mo')) {
-      return (low: splitC.first ~/ 4, high: splitC.last);
+  if (isWeeksIncrement) {
+    if (isMonthsIncrement) {
+      return (low: split.first ~/ 4, high: split.last);
     }
-    return (low: splitC.first ~/ 4, high: splitC.last ~/ 4);
+    return (low: split.first ~/ 4, high: split.last ~/ 4);
   } else {
-    return (low: splitC.first, high: splitC.last);
+    return (low: split.first, high: split.last);
   }
 }
 
