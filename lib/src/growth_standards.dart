@@ -119,8 +119,12 @@ export 'category/who/typedef.dart';
 export 'common/base.dart';
 export 'common/extension.dart' show DateTimeToDate;
 export 'common/math.dart' show pnorm, qnorm;
-export 'common/model/age.dart' show Age, Date;
+export 'common/model/age.dart'
+    show Age, AgeRangeExtension, Date, DateFormatExtension, ExtendedDateUtils;
 export 'common/model/bmi.dart' show BodyMassIndex;
+export 'common/model/gestational_age.dart'
+    show GestationalAge, PostmenstrualAge;
+export 'common/model/lms.dart' show LMS;
 export 'common/tools.dart' show TimeUnit;
 export 'common/types.dart'
     show

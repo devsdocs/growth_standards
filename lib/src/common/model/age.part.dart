@@ -931,62 +931,44 @@ class ExtendedDateUtils {
       }
     }
 
-    // Try dd/MM/yyyy format
-    final dmyRegex = RegExp(r'^(\d{1,2})/(\d{1,2})/(\d{4})$');
-    match = dmyRegex.firstMatch(dateString);
+    // Try slash formats (dd/MM/yyyy or MM/dd/yyyy)
+    final slashRegex = RegExp(r'^(\d{1,2})/(\d{1,2})/(\d{4})$');
+    match = slashRegex.firstMatch(dateString);
     if (match != null) {
-      final day = int.parse(match.group(1)!);
-      final month = int.parse(match.group(2)!);
+      final val1 = int.parse(match.group(1)!);
+      final val2 = int.parse(match.group(2)!);
       final year = int.parse(match.group(3)!);
 
-      try {
-        return Date.fromDateTime(DateTime(year, month, day));
-      } catch (e) {
-        return null;
+      // Try dd/MM/yyyy first (day = val1, month = val2)
+      if (val2 >= 1 &&
+          val2 <= 12 &&
+          val1 >= 1 &&
+          val1 <= DateTimeUtils.getDaysInMonth(year, val2)) {
+        try {
+          return Date.fromDateTime(DateTime(year, val2, val1));
+        } catch (_) {}
       }
-    }
 
-    // Try MM/dd/yyyy format
-    final mdyRegex = RegExp(r'^(\d{1,2})/(\d{1,2})/(\d{4})$');
-    match = mdyRegex.firstMatch(dateString);
-    if (match != null) {
-      final month = int.parse(match.group(1)!);
-      final day = int.parse(match.group(2)!);
-      final year = int.parse(match.group(3)!);
-
-      try {
-        return Date.fromDateTime(DateTime(year, month, day));
-      } catch (e) {
-        return null;
+      // Try MM/dd/yyyy second (month = val1, day = val2)
+      if (val1 >= 1 &&
+          val1 <= 12 &&
+          val2 >= 1 &&
+          val2 <= DateTimeUtils.getDaysInMonth(year, val1)) {
+        try {
+          return Date.fromDateTime(DateTime(year, val1, val2));
+        } catch (_) {}
       }
     }
 
     return null;
   }
 
-  /// Calculate a person's age at a specific future date
-  static Age calculateAgeAt(Date birthDate, Date futureDate) {
-    if (futureDate.isBefore(birthDate)) {
-      throw ArgumentError('Future date must be after birth date');
+  /// Calculate a person's age at a specific target date
+  static Age calculateAgeAt(Date birthDate, Date targetDate) {
+    if (targetDate.isBefore(birthDate)) {
+      throw ArgumentError('Target date must be at or after birth date');
     }
-
-    final now = Date.today();
-    if (futureDate.isAfter(now)) {
-      // Calculate the difference between now and future date
-      final daysDifference = DateTimeUtils.getDaysDifference(
-        futureDate.toDateTime(),
-        now.toDateTime(),
-      );
-
-      // Create an Age object using birth date
-      final currentAge = Age(birthDate);
-
-      // Add the difference to this person's current age
-      return Age(currentAge.dateOfBirth.subtractDays(daysDifference));
-    } else {
-      // For past or current dates, just calculate normally
-      return Age(birthDate);
-    }
+    return Age(birthDate, observedDate: targetDate);
   }
 
   /// Get a list of holidays for a given year (example implementation)

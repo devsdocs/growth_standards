@@ -11,7 +11,7 @@ _$IntergrowthNewbornBirthHeadCircumferenceForAgeFromJson(
   Map<String, dynamic> json,
 ) => _IntergrowthNewbornBirthHeadCircumferenceForAge(
   sex: $enumDecode(_$SexEnumMap, json['sex']),
-  age: Age.fromJson(json['age'] as Map<String, dynamic>),
+  age: GestationalAge.fromJson(json['age'] as Map<String, dynamic>),
   measurementResult: Length.fromJson(
     json['measurementResult'] as Map<String, dynamic>,
   ),
@@ -31,7 +31,7 @@ _IntergrowthNewbornBirthLengthForAge
 _$IntergrowthNewbornBirthLengthForAgeFromJson(Map<String, dynamic> json) =>
     _IntergrowthNewbornBirthLengthForAge(
       sex: $enumDecode(_$SexEnumMap, json['sex']),
-      age: Age.fromJson(json['age'] as Map<String, dynamic>),
+      age: GestationalAge.fromJson(json['age'] as Map<String, dynamic>),
       measurementResult: Length.fromJson(
         json['measurementResult'] as Map<String, dynamic>,
       ),
@@ -49,7 +49,7 @@ _IntergrowthNewbornBirthWeightForAge
 _$IntergrowthNewbornBirthWeightForAgeFromJson(Map<String, dynamic> json) =>
     _IntergrowthNewbornBirthWeightForAge(
       sex: $enumDecode(_$SexEnumMap, json['sex']),
-      age: Age.fromJson(json['age'] as Map<String, dynamic>),
+      age: GestationalAge.fromJson(json['age'] as Map<String, dynamic>),
       measurementResult: Mass.fromJson(
         json['measurementResult'] as Map<String, dynamic>,
       ),
@@ -68,7 +68,7 @@ _$IntergrowthNewbornBirthWeightForLengthRatioForAgeFromJson(
   Map<String, dynamic> json,
 ) => _IntergrowthNewbornBirthWeightForLengthRatioForAge(
   sex: $enumDecode(_$SexEnumMap, json['sex']),
-  age: Age.fromJson(json['age'] as Map<String, dynamic>),
+  age: GestationalAge.fromJson(json['age'] as Map<String, dynamic>),
   measurementResult: NewbornWeightLengthRatioMeasurement.fromJson(
     json['measurementResult'] as Map<String, dynamic>,
   ),
@@ -87,7 +87,7 @@ _$IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeFromJson(
   Map<String, dynamic> json,
 ) => _IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge(
   sex: $enumDecode(_$SexEnumMap, json['sex']),
-  age: Age.fromJson(json['age'] as Map<String, dynamic>),
+  age: GestationalAge.fromJson(json['age'] as Map<String, dynamic>),
   measurementResult: Length.fromJson(
     json['measurementResult'] as Map<String, dynamic>,
   ),
@@ -107,7 +107,7 @@ _$IntergrowthVeryPretermNewbornBirthLengthForAgeFromJson(
   Map<String, dynamic> json,
 ) => _IntergrowthVeryPretermNewbornBirthLengthForAge(
   sex: $enumDecode(_$SexEnumMap, json['sex']),
-  age: Age.fromJson(json['age'] as Map<String, dynamic>),
+  age: GestationalAge.fromJson(json['age'] as Map<String, dynamic>),
   measurementResult: Length.fromJson(
     json['measurementResult'] as Map<String, dynamic>,
   ),
@@ -126,7 +126,7 @@ _$IntergrowthVeryPretermNewbornBirthWeightForAgeFromJson(
   Map<String, dynamic> json,
 ) => _IntergrowthVeryPretermNewbornBirthWeightForAge(
   sex: $enumDecode(_$SexEnumMap, json['sex']),
-  age: Age.fromJson(json['age'] as Map<String, dynamic>),
+  age: GestationalAge.fromJson(json['age'] as Map<String, dynamic>),
   measurementResult: Mass.fromJson(
     json['measurementResult'] as Map<String, dynamic>,
   ),
@@ -153,7 +153,7 @@ _$IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeFromJson(
   Map<String, dynamic> json,
 ) => _IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge(
   sex: $enumDecode(_$SexEnumMap, json['sex']),
-  age: Age.fromJson(json['age'] as Map<String, dynamic>),
+  age: GestationalAge.fromJson(json['age'] as Map<String, dynamic>),
   measurementResult: NewbornWeightLengthRatioMeasurement.fromJson(
     json['measurementResult'] as Map<String, dynamic>,
   ),

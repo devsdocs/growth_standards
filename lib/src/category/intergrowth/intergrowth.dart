@@ -2,7 +2,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:growth_standards/growth_standards.dart';
 import 'package:growth_standards/src/common/extension.dart';
 import 'package:growth_standards/src/common/model/age.dart';
-import 'package:growth_standards/src/common/model/lms.dart';
 import 'package:growth_standards/src/common/tools.dart';
 import 'package:super_measurement/super_measurement.dart';
 
@@ -137,7 +136,7 @@ class IntergrowthAtBirth {
 
   IntergrowthNewbornBirthHeadCircumferenceForAge newbornSizeHeadCircumference({
     required Sex sex,
-    required Age gestationalAge,
+    required GestationalAge gestationalAge,
     required Length measurementResult,
   }) => IntergrowthNewbornBirthHeadCircumferenceForAge(
     sex: sex,
@@ -147,7 +146,7 @@ class IntergrowthAtBirth {
 
   IntergrowthNewbornBirthLengthForAge newbornSizeLength({
     required Sex sex,
-    required Age gestationalAge,
+    required GestationalAge gestationalAge,
     required Length measurementResult,
   }) => IntergrowthNewbornBirthLengthForAge(
     sex: sex,
@@ -157,7 +156,7 @@ class IntergrowthAtBirth {
 
   IntergrowthNewbornBirthWeightForAge newbornSizeWeight({
     required Sex sex,
-    required Age gestationalAge,
+    required GestationalAge gestationalAge,
     required Mass weight,
   }) => IntergrowthNewbornBirthWeightForAge(
     sex: sex,
@@ -168,7 +167,7 @@ class IntergrowthAtBirth {
   IntergrowthNewbornBirthWeightForLengthRatioForAge
   newbornSizeWeightLengthRatio({
     required Sex sex,
-    required Age gestationalAge,
+    required GestationalAge gestationalAge,
     required Mass weight,
     required Length length,
   }) => IntergrowthNewbornBirthWeightForLengthRatioForAge(
@@ -183,7 +182,7 @@ class IntergrowthAtBirth {
   IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge
   veryPretermNewbornSizeHeadCircumference({
     required Sex sex,
-    required Age gestationalAge,
+    required GestationalAge gestationalAge,
     required Length measurementResult,
   }) => IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge(
     sex: sex,
@@ -193,7 +192,7 @@ class IntergrowthAtBirth {
 
   IntergrowthVeryPretermNewbornBirthLengthForAge veryPretermNewbornSizeLength({
     required Sex sex,
-    required Age gestationalAge,
+    required GestationalAge gestationalAge,
     required Length measurementResult,
   }) => IntergrowthVeryPretermNewbornBirthLengthForAge(
     sex: sex,
@@ -203,7 +202,7 @@ class IntergrowthAtBirth {
 
   IntergrowthVeryPretermNewbornBirthWeightForAge veryPretermNewbornSizeWeight({
     required Sex sex,
-    required Age gestationalAge,
+    required GestationalAge gestationalAge,
     required Mass weight,
   }) => IntergrowthVeryPretermNewbornBirthWeightForAge(
     sex: sex,
@@ -214,7 +213,7 @@ class IntergrowthAtBirth {
   IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge
   veryPretermNewbornSizeWeightLengthRatio({
     required Sex sex,
-    required Age gestationalAge,
+    required GestationalAge gestationalAge,
     required Mass weight,
     required Length length,
   }) => IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge(

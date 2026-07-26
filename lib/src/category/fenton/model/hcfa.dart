@@ -6,17 +6,24 @@ class FentonHeadCircumferenceForAgeData extends AgeBasedData {
 
   static final _singleton = FentonHeadCircumferenceForAgeData._(_parse());
 
-  static Map<Sex, Map<int, _FentonHeadCircumferenceForAgeLMS>> _parse() {
-    final map = fentonHCfA.map((k1, v1) {
-      final lms = LMS(
-        l: v1['l']! as num,
-        m: v1['m']! as num,
-        s: v1['s']! as num,
-      );
-      return MapEntry(k1, _FentonHeadCircumferenceForAgeLMS(lms: lms));
-    });
-    return {Sex.male: map, Sex.female: map};
-  }
+  static Map<Sex, Map<int, _FentonHeadCircumferenceForAgeLMS>> _parse() => {
+    Sex.male: fentonBoysHCfA.map(
+      (k, v) => MapEntry(
+        k,
+        _FentonHeadCircumferenceForAgeLMS(
+          lms: LMS(l: v['l']! as num, m: v['m']! as num, s: v['s']! as num),
+        ),
+      ),
+    ),
+    Sex.female: fentonGirlsHCfA.map(
+      (k, v) => MapEntry(
+        k,
+        _FentonHeadCircumferenceForAgeLMS(
+          lms: LMS(l: v['l']! as num, m: v['m']! as num, s: v['s']! as num),
+        ),
+      ),
+    ),
+  };
 
   final Map<Sex, Map<int, _FentonHeadCircumferenceForAgeLMS>> _data;
   @override
@@ -30,10 +37,11 @@ class FentonHeadCircumferenceForAgeData extends AgeBasedData {
 }
 
 @freezed
-sealed class FentonHeadCircumferenceForAge extends AgeBasedResult
+sealed class FentonHeadCircumferenceForAge extends PostmenstrualAgeBasedResult
     with _$FentonHeadCircumferenceForAge {
   factory FentonHeadCircumferenceForAge({
-    required Age age,
+    required Sex sex,
+    required PostmenstrualAge age,
     required Length measurementResult,
   }) = _FentonHeadCircumferenceForAge;
 
@@ -47,14 +55,13 @@ sealed class FentonHeadCircumferenceForAge extends AgeBasedResult
       FentonHeadCircumferenceForAgeData();
 
   _FentonHeadCircumferenceForAgeLMS get _ageData =>
-      contextData._data.values.first[ageAtObservationDate.ageInTotalByUnit(
-        contextData.unit,
-      )]!;
+      contextData._data[sex]![postmenstrualAgeAtObservation.completedWeeks]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 
   @override
-  Age get ageAtObservationDate => checkAge(age, contextData: contextData);
+  PostmenstrualAge get postmenstrualAgeAtObservation =>
+      checkPostmenstrualAge(age, contextData: contextData);
 
   @override
   num zScore([Precision precision = Precision.two]) =>

@@ -1,3 +1,14 @@
+## 4.5.0
+- Add sex-specific Fenton 2013 LMS datasets for boys and girls (`wfa`, `lfa`, `hcfa`)
+- Require typed `PostmenstrualAge` for Fenton and `GestationalAge` for INTERGROWTH newborn models
+- Fix WHO growth velocity month classification for day-based clinical visit gaps (`days / 30.4375`)
+- Fix CDC Agemos mid-month `n + 0.5` grid lookups across endpoint months
+- Add WHO WFL (≤730 days) and WFH (>730 days) runtime age gates
+- Implement LMS $L=0$ limit form ($Z = \ln(y/M)/S$) and non-positive measurement guards in math core
+- Fix `DateFormatExtension.format` month name (`MMM`) token replacement order and export from package root
+- Fix `ageAtPastDate` DOB handling and standing/recumbent length adjustments
+- Add mathematical golden vector test suite (`test/golden_vectors_test.dart`)
+
 ## 4.4.1
 - Fix bug in growth velocity data parser
 - Add conversion unit symbol in length based growth measurement assertion

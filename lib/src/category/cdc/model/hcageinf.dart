@@ -54,7 +54,7 @@ sealed class CDCInfantHeadCircumferenceForAge extends AgeBasedResult
   CDCInfantHeadCircumferenceForAgeData get contextData =>
       CDCInfantHeadCircumferenceForAgeData();
 
-  //TODO(devsdocs): Fix CDC age calculation
+  // CDC: birth = 0; otherwise completed months → n + 0.5. Endpoint 36 has no 36.5.
   _CDCInfantHeadCircumferenceForAgeLMS get _ageData {
     final finalAge = ageAtObservationDate.ageInTotalDaysByNow == 0
         ? 0

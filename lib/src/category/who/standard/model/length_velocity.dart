@@ -58,30 +58,6 @@ class WHOGrowthStandardsLengthVelocityForAgeData extends VelocityBaseData {
 @freezed
 sealed class WHOGrowthStandardsLengthVelocityForAge extends VelocityBasedResult
     with _$WHOGrowthStandardsLengthVelocityForAge {
-  @Assert(
-    'age.ageInTotalDaysByNow >= 0 && age.ageInTotalMonthsByNow <= 24',
-    'Age must be in range of 0 days - 24 months',
-  )
-  @Assert(
-    'pastMeasurement.isNotEmpty',
-    'Calculation can not be done as past measurement is empty',
-  )
-  @Assert(
-    'pastMeasurement.toSet().length > 1',
-    'Calculation can not be done as there is only one measurement history',
-  )
-  @Assert(
-    'pastMeasurement.every((element) => element.date.isSameOrBefore(Date.today()))',
-    'Calculation can not be done as there is future date in past measurement',
-  )
-  // @Assert(
-  //   'observationDate == null || pastMeasurement.every((element) => element.date.isSameOrBefore(observationDate))',
-  //   'Calculation can not be done as there is future date in past measurement',
-  // )
-  @Assert(
-    'pastMeasurement.every((element) => element.date.isSameOrAfter(age.dateOfBirth))',
-    'Calculation can not be done as there is date less than Date of Birth in past measurement, if you find this exception is a mistake, try to provide exact \$Age',
-  )
   factory WHOGrowthStandardsLengthVelocityForAge({
     required Sex sex,
     required Age age,
@@ -117,6 +93,10 @@ sealed class WHOGrowthStandardsLengthVelocityForAge extends VelocityBasedResult
   @override
   Map<VelocityIncrement, Map<VelocityMonths, ZScorePercentile>>
   zScorePercentileMap([Precision precision = Precision.two]) {
+    ensureValidWhoVelocityInputs(
+      age: age,
+      measurementDates: pastMeasurement.map((e) => e.date).toList(),
+    );
     final joinMap = contextData._data[sex]!.map((k1, v1) {
       final alt = _incrementalData[k1];
       if (alt == null || alt.isEmpty) return MapEntry(k1, null);

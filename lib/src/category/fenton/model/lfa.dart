@@ -5,17 +5,24 @@ class FentonLengthForAgeData extends AgeBasedData {
   FentonLengthForAgeData._(this._data);
   static final _singleton = FentonLengthForAgeData._(_parse());
 
-  static Map<Sex, Map<int, _FentonLengthForAgeLMS>> _parse() {
-    final map = fentonLfA.map((k1, v1) {
-      final lms = LMS(
-        l: v1['l']! as num,
-        m: v1['m']! as num,
-        s: v1['s']! as num,
-      );
-      return MapEntry(k1, _FentonLengthForAgeLMS(lms: lms));
-    });
-    return {Sex.male: map, Sex.female: map};
-  }
+  static Map<Sex, Map<int, _FentonLengthForAgeLMS>> _parse() => {
+    Sex.male: fentonBoysLfA.map(
+      (k, v) => MapEntry(
+        k,
+        _FentonLengthForAgeLMS(
+          lms: LMS(l: v['l']! as num, m: v['m']! as num, s: v['s']! as num),
+        ),
+      ),
+    ),
+    Sex.female: fentonGirlsLfA.map(
+      (k, v) => MapEntry(
+        k,
+        _FentonLengthForAgeLMS(
+          lms: LMS(l: v['l']! as num, m: v['m']! as num, s: v['s']! as num),
+        ),
+      ),
+    ),
+  };
 
   final Map<Sex, Map<int, _FentonLengthForAgeLMS>> _data;
 
@@ -30,10 +37,11 @@ class FentonLengthForAgeData extends AgeBasedData {
 }
 
 @freezed
-sealed class FentonLengthForAge extends AgeBasedResult
+sealed class FentonLengthForAge extends PostmenstrualAgeBasedResult
     with _$FentonLengthForAge {
   factory FentonLengthForAge({
-    required Age age,
+    required Sex sex,
+    required PostmenstrualAge age,
     required Length lengthHeight,
     required LengthHeightMeasurementPosition measure,
   }) = _FentonLengthForAge;
@@ -47,14 +55,13 @@ sealed class FentonLengthForAge extends AgeBasedResult
   FentonLengthForAgeData get contextData => FentonLengthForAgeData();
 
   _FentonLengthForAgeLMS get _ageData =>
-      contextData._data.values.first[ageAtObservationDate.ageInTotalByUnit(
-        contextData.unit,
-      )]!;
+      contextData._data[sex]![postmenstrualAgeAtObservation.completedWeeks]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 
   @override
-  Age get ageAtObservationDate => checkAge(age, contextData: contextData);
+  PostmenstrualAge get postmenstrualAgeAtObservation =>
+      checkPostmenstrualAge(age, contextData: contextData);
 
   @override
   num zScore([Precision precision = Precision.two]) =>
@@ -67,8 +74,15 @@ sealed class FentonLengthForAge extends AgeBasedResult
   @override
   _FentonLengthForAgeLMS get lmsData => _ageData;
 
+  Length$Centimeter get _adjustedLength => adjustedLengthHeight(
+    measure: measure,
+    age: Age.byWeeksAgo(postmenstrualAgeAtObservation.completedWeeks),
+    lengthHeight: lengthHeight,
+    type: AdjustedLengthType.who,
+  );
+
   @override
-  num get measurementResultInDefaultUnit => lengthHeight.toCentimeter.value;
+  num get measurementResultInDefaultUnit => _adjustedLength.value;
 }
 
 class _FentonLengthForAgeLMS extends LMSContext {

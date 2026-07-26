@@ -68,8 +68,26 @@ sealed class WHOGrowthStandardsWeightForHeight extends LengthBasedResult
   WHOGrowthStandardsWeightForHeightData get contextData =>
       WHOGrowthStandardsWeightForHeightData();
 
-  _WHOGrowthStandardsWeightForHeightLMS get _ageData =>
-      contextData._data[sex]![_length]!;
+  _WHOGrowthStandardsWeightForHeightLMS get _ageData {
+    final data = contextData._data[sex]?[_length];
+    if (data == null) {
+      throw ArgumentError(
+        'No WHO weight-for-height data found for sex=$sex, height=$_length '
+        '(expected range: ${contextData.lowerBound} to ${contextData.upperBound} ${contextData.unit.symbol})',
+      );
+    }
+    return data;
+  }
+
+  void _ensureAgeAppropriateForHeightChart() {
+    final days = age.ageInTotalDaysByNow;
+    if (days <= 730) {
+      throw ArgumentError(
+        'Weight-for-height is for ages >24 months (>730 days); '
+        'got $days days. Use weight-for-length for younger children.',
+      );
+    }
+  }
 
   @override
   Length get lengthAtObservationDate =>
@@ -77,8 +95,10 @@ sealed class WHOGrowthStandardsWeightForHeight extends LengthBasedResult
 
   num get _length => lengthAtObservationDate.value.toDouble().toPrecision(1);
 
-  num get _zScore =>
-      _ageData.lms.adjustedZScore(measurementResultInDefaultUnit);
+  num get _zScore {
+    _ensureAgeAppropriateForHeightChart();
+    return _ageData.lms.adjustedZScore(measurementResultInDefaultUnit);
+  }
 
   @override
   num zScore([Precision precision = Precision.two]) =>

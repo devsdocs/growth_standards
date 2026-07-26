@@ -46,13 +46,12 @@ sealed class CDCWeightForAge extends AgeBasedResult with _$CDCWeightForAge {
   @override
   CDCWeightForAgeData get contextData => CDCWeightForAgeData();
 
-  //TODO(devsdocs): Fix CDC age calculation
-  _CDCWeightForAgeLMS get _ageData =>
-      contextData._data[sex]![ageAtObservationDate.ageInTotalMonthsByNow == 24
-          ? 24
-          : ageAtObservationDate.ageInTotalMonthsByNow == 240
-          ? 240
-          : ageAtObservationDate.ageInTotalMonthsByNow + 0.5]!;
+  // CDC: completed months → Agemos n + 0.5. Chart endpoint 240 has no 240.5 row.
+  _CDCWeightForAgeLMS get _ageData {
+    final months = ageAtObservationDate.ageInTotalMonthsByNow;
+    final agemos = months == 240 ? 240.0 : months + 0.5;
+    return contextData._data[sex]![agemos]!;
+  }
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 

@@ -33,7 +33,6 @@ class CDCWeightForStatureData extends LengthBasedData {
 @freezed
 sealed class CDCWeightForStature extends LengthBasedResult
     with _$CDCWeightForStature {
-  //TODO(devsdocs): Test this!
   factory CDCWeightForStature({
     required Sex sex,
     required Age age,
@@ -57,16 +56,29 @@ sealed class CDCWeightForStature extends LengthBasedResult
   @override
   CDCWeightForStatureData get contextData => CDCWeightForStatureData();
 
-  //TODO(devsdocs): Fix CDC length calculation
-  _CDCWeightForStatureLMS get _ageData => contextData._data[sex]![_length]!;
+  _CDCWeightForStatureLMS get _ageData {
+    final data = contextData._data[sex]?[_length];
+    if (data == null) {
+      throw ArgumentError(
+        'No CDC weight-for-stature data found for sex=$sex, height=$_length '
+        '(expected range: ${contextData.lowerBound} to ${contextData.upperBound} ${contextData.unit.symbol})',
+      );
+    }
+    return data;
+  }
 
   @override
   Length get lengthAtObservationDate =>
       checkLength(_adjustedLength, contextData: contextData);
 
-  num get _length => lengthAtObservationDate.value == 77
-      ? 77
-      : lengthAtObservationDate.value.truncate() + 0.5;
+  num get _length {
+    final val = lengthAtObservationDate.value;
+    final gridKey = (val * 2).round() / 2;
+    if (contextData._data[sex]?.containsKey(gridKey) ?? false) {
+      return gridKey;
+    }
+    return val.truncate() + 0.5;
+  }
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 

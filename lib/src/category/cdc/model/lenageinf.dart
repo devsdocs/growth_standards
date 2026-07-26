@@ -48,7 +48,7 @@ sealed class CDCInfantLengthForAge extends AgeBasedResult
   @override
   CDCInfantLengthForAgeData get contextData => CDCInfantLengthForAgeData();
 
-  //TODO(devsdocs): Fix CDC age calculation
+  // CDC: birth = 0; otherwise completed months → Agemos n + 0.5 (max key 35.5).
   _CDCInfantLengthForAgeLMS get _ageData =>
       contextData._data[sex]![ageAtObservationDate.ageInTotalDaysByNow == 0
           ? 0

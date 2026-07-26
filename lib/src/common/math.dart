@@ -7,8 +7,12 @@ import 'package:growth_standards/src/common/types.dart';
 import 'package:super_measurement/super_measurement.dart';
 
 /// SD calculation using [LMS]
-num standardDeviationCalculation(num sd, {required LMS lms}) =>
-    lms.m * pow(1 + lms.l * lms.s * sd, 1 / lms.l);
+num standardDeviationCalculation(num sd, {required LMS lms}) {
+  if (lms.l.abs() < 1e-7) {
+    return lms.m * exp(lms.s * sd);
+  }
+  return lms.m * pow(1 + lms.l * lms.s * sd, 1 / lms.l);
+}
 
 /// COMPUTATION OF CENTILES AND Z-SCORES FOR
 ///
@@ -17,8 +21,15 @@ num standardDeviationCalculation(num sd, {required LMS lms}) =>
 /// LENGTH-FOR-AGE,
 ///
 /// HEIGHT-FOR-AGE,
-num zScoreCalculation(num y, {required LMS lms}) =>
-    (pow(y / lms.m, lms.l) - 1) / (lms.s * lms.l);
+num zScoreCalculation(num y, {required LMS lms}) {
+  if (y <= 0) {
+    throw ArgumentError('Measurement must be strictly positive, got $y');
+  }
+  if (lms.l.abs() < 1e-7) {
+    return log(y / lms.m) / lms.s;
+  }
+  return (pow(y / lms.m, lms.l) - 1) / (lms.s * lms.l);
+}
 
 /// COMPUTATION OF CENTILES AND Z-SCORES FOR
 ///
@@ -93,6 +104,11 @@ Length$Centimeter adjustedLengthHeight({
 num pnorm(num zScore) => 0.5 * (1 + erf(zScore / _sq2));
 
 /// Normal distribution equation, the name [qnorm] inspired from R language
-num qnorm(num percentile) => _sq2 * erfInv(2 * percentile - 1);
+num qnorm(num percentile) {
+  final p = percentile > 1.0 ? percentile / 100 : percentile;
+  if (p <= 0) return double.negativeInfinity;
+  if (p >= 1) return double.infinity;
+  return _sq2 * erfInv(2 * p - 1);
+}
 
 final _sq2 = sqrt(2);

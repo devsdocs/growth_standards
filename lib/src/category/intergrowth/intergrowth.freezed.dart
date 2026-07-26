@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$IntergrowthNewbornBirthHeadCircumferenceForAge {
 
- Sex get sex; Age get age; Length get measurementResult;
+ Sex get sex; GestationalAge get age; Length get measurementResult;
 /// Create a copy of IntergrowthNewbornBirthHeadCircumferenceForAge
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,11 +48,11 @@ abstract mixin class $IntergrowthNewbornBirthHeadCircumferenceForAgeCopyWith<$Re
   factory $IntergrowthNewbornBirthHeadCircumferenceForAgeCopyWith(IntergrowthNewbornBirthHeadCircumferenceForAge value, $Res Function(IntergrowthNewbornBirthHeadCircumferenceForAge) _then) = _$IntergrowthNewbornBirthHeadCircumferenceForAgeCopyWithImpl;
 @useResult
 $Res call({
- Sex sex, Age age, Length measurementResult
+ Sex sex, GestationalAge age, Length measurementResult
 });
 
 
-$AgeCopyWith<$Res> get age;
+
 
 }
 /// @nodoc
@@ -69,20 +69,11 @@ class _$IntergrowthNewbornBirthHeadCircumferenceForAgeCopyWithImpl<$Res>
   return _then(_self.copyWith(
 sex: null == sex ? _self.sex : sex // ignore: cast_nullable_to_non_nullable
 as Sex,age: null == age ? _self.age : age // ignore: cast_nullable_to_non_nullable
-as Age,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
+as GestationalAge,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
 as Length,
   ));
 }
-/// Create a copy of IntergrowthNewbornBirthHeadCircumferenceForAge
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$AgeCopyWith<$Res> get age {
-  
-  return $AgeCopyWith<$Res>(_self.age, (value) {
-    return _then(_self.copyWith(age: value));
-  });
-}
+
 }
 
 
@@ -161,7 +152,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Sex sex,  Age age,  Length measurementResult)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Sex sex,  GestationalAge age,  Length measurementResult)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _IntergrowthNewbornBirthHeadCircumferenceForAge() when $default != null:
 return $default(_that.sex,_that.age,_that.measurementResult);case _:
@@ -182,7 +173,7 @@ return $default(_that.sex,_that.age,_that.measurementResult);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Sex sex,  Age age,  Length measurementResult)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Sex sex,  GestationalAge age,  Length measurementResult)  $default,) {final _that = this;
 switch (_that) {
 case _IntergrowthNewbornBirthHeadCircumferenceForAge():
 return $default(_that.sex,_that.age,_that.measurementResult);}
@@ -199,7 +190,7 @@ return $default(_that.sex,_that.age,_that.measurementResult);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Sex sex,  Age age,  Length measurementResult)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Sex sex,  GestationalAge age,  Length measurementResult)?  $default,) {final _that = this;
 switch (_that) {
 case _IntergrowthNewbornBirthHeadCircumferenceForAge() when $default != null:
 return $default(_that.sex,_that.age,_that.measurementResult);case _:
@@ -218,7 +209,7 @@ class _IntergrowthNewbornBirthHeadCircumferenceForAge extends IntergrowthNewborn
   factory _IntergrowthNewbornBirthHeadCircumferenceForAge.fromJson(Map<String, dynamic> json) => _$IntergrowthNewbornBirthHeadCircumferenceForAgeFromJson(json);
 
 @override final  Sex sex;
-@override final  Age age;
+@override final  GestationalAge age;
 @override final  Length measurementResult;
 
 /// Create a copy of IntergrowthNewbornBirthHeadCircumferenceForAge
@@ -254,11 +245,11 @@ abstract mixin class _$IntergrowthNewbornBirthHeadCircumferenceForAgeCopyWith<$R
   factory _$IntergrowthNewbornBirthHeadCircumferenceForAgeCopyWith(_IntergrowthNewbornBirthHeadCircumferenceForAge value, $Res Function(_IntergrowthNewbornBirthHeadCircumferenceForAge) _then) = __$IntergrowthNewbornBirthHeadCircumferenceForAgeCopyWithImpl;
 @override @useResult
 $Res call({
- Sex sex, Age age, Length measurementResult
+ Sex sex, GestationalAge age, Length measurementResult
 });
 
 
-@override $AgeCopyWith<$Res> get age;
+
 
 }
 /// @nodoc
@@ -275,28 +266,19 @@ class __$IntergrowthNewbornBirthHeadCircumferenceForAgeCopyWithImpl<$Res>
   return _then(_IntergrowthNewbornBirthHeadCircumferenceForAge(
 sex: null == sex ? _self.sex : sex // ignore: cast_nullable_to_non_nullable
 as Sex,age: null == age ? _self.age : age // ignore: cast_nullable_to_non_nullable
-as Age,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
+as GestationalAge,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
 as Length,
   ));
 }
 
-/// Create a copy of IntergrowthNewbornBirthHeadCircumferenceForAge
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$AgeCopyWith<$Res> get age {
-  
-  return $AgeCopyWith<$Res>(_self.age, (value) {
-    return _then(_self.copyWith(age: value));
-  });
-}
+
 }
 
 
 /// @nodoc
 mixin _$IntergrowthNewbornBirthLengthForAge {
 
- Sex get sex; Age get age; Length get measurementResult;
+ Sex get sex; GestationalAge get age; Length get measurementResult;
 /// Create a copy of IntergrowthNewbornBirthLengthForAge
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -329,11 +311,11 @@ abstract mixin class $IntergrowthNewbornBirthLengthForAgeCopyWith<$Res>  {
   factory $IntergrowthNewbornBirthLengthForAgeCopyWith(IntergrowthNewbornBirthLengthForAge value, $Res Function(IntergrowthNewbornBirthLengthForAge) _then) = _$IntergrowthNewbornBirthLengthForAgeCopyWithImpl;
 @useResult
 $Res call({
- Sex sex, Age age, Length measurementResult
+ Sex sex, GestationalAge age, Length measurementResult
 });
 
 
-$AgeCopyWith<$Res> get age;
+
 
 }
 /// @nodoc
@@ -350,20 +332,11 @@ class _$IntergrowthNewbornBirthLengthForAgeCopyWithImpl<$Res>
   return _then(_self.copyWith(
 sex: null == sex ? _self.sex : sex // ignore: cast_nullable_to_non_nullable
 as Sex,age: null == age ? _self.age : age // ignore: cast_nullable_to_non_nullable
-as Age,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
+as GestationalAge,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
 as Length,
   ));
 }
-/// Create a copy of IntergrowthNewbornBirthLengthForAge
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$AgeCopyWith<$Res> get age {
-  
-  return $AgeCopyWith<$Res>(_self.age, (value) {
-    return _then(_self.copyWith(age: value));
-  });
-}
+
 }
 
 
@@ -442,7 +415,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Sex sex,  Age age,  Length measurementResult)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Sex sex,  GestationalAge age,  Length measurementResult)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _IntergrowthNewbornBirthLengthForAge() when $default != null:
 return $default(_that.sex,_that.age,_that.measurementResult);case _:
@@ -463,7 +436,7 @@ return $default(_that.sex,_that.age,_that.measurementResult);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Sex sex,  Age age,  Length measurementResult)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Sex sex,  GestationalAge age,  Length measurementResult)  $default,) {final _that = this;
 switch (_that) {
 case _IntergrowthNewbornBirthLengthForAge():
 return $default(_that.sex,_that.age,_that.measurementResult);}
@@ -480,7 +453,7 @@ return $default(_that.sex,_that.age,_that.measurementResult);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Sex sex,  Age age,  Length measurementResult)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Sex sex,  GestationalAge age,  Length measurementResult)?  $default,) {final _that = this;
 switch (_that) {
 case _IntergrowthNewbornBirthLengthForAge() when $default != null:
 return $default(_that.sex,_that.age,_that.measurementResult);case _:
@@ -499,7 +472,7 @@ class _IntergrowthNewbornBirthLengthForAge extends IntergrowthNewbornBirthLength
   factory _IntergrowthNewbornBirthLengthForAge.fromJson(Map<String, dynamic> json) => _$IntergrowthNewbornBirthLengthForAgeFromJson(json);
 
 @override final  Sex sex;
-@override final  Age age;
+@override final  GestationalAge age;
 @override final  Length measurementResult;
 
 /// Create a copy of IntergrowthNewbornBirthLengthForAge
@@ -535,11 +508,11 @@ abstract mixin class _$IntergrowthNewbornBirthLengthForAgeCopyWith<$Res> impleme
   factory _$IntergrowthNewbornBirthLengthForAgeCopyWith(_IntergrowthNewbornBirthLengthForAge value, $Res Function(_IntergrowthNewbornBirthLengthForAge) _then) = __$IntergrowthNewbornBirthLengthForAgeCopyWithImpl;
 @override @useResult
 $Res call({
- Sex sex, Age age, Length measurementResult
+ Sex sex, GestationalAge age, Length measurementResult
 });
 
 
-@override $AgeCopyWith<$Res> get age;
+
 
 }
 /// @nodoc
@@ -556,28 +529,19 @@ class __$IntergrowthNewbornBirthLengthForAgeCopyWithImpl<$Res>
   return _then(_IntergrowthNewbornBirthLengthForAge(
 sex: null == sex ? _self.sex : sex // ignore: cast_nullable_to_non_nullable
 as Sex,age: null == age ? _self.age : age // ignore: cast_nullable_to_non_nullable
-as Age,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
+as GestationalAge,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
 as Length,
   ));
 }
 
-/// Create a copy of IntergrowthNewbornBirthLengthForAge
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$AgeCopyWith<$Res> get age {
-  
-  return $AgeCopyWith<$Res>(_self.age, (value) {
-    return _then(_self.copyWith(age: value));
-  });
-}
+
 }
 
 
 /// @nodoc
 mixin _$IntergrowthNewbornBirthWeightForAge {
 
- Sex get sex; Age get age; Mass get measurementResult;
+ Sex get sex; GestationalAge get age; Mass get measurementResult;
 /// Create a copy of IntergrowthNewbornBirthWeightForAge
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -610,11 +574,11 @@ abstract mixin class $IntergrowthNewbornBirthWeightForAgeCopyWith<$Res>  {
   factory $IntergrowthNewbornBirthWeightForAgeCopyWith(IntergrowthNewbornBirthWeightForAge value, $Res Function(IntergrowthNewbornBirthWeightForAge) _then) = _$IntergrowthNewbornBirthWeightForAgeCopyWithImpl;
 @useResult
 $Res call({
- Sex sex, Age age, Mass measurementResult
+ Sex sex, GestationalAge age, Mass measurementResult
 });
 
 
-$AgeCopyWith<$Res> get age;
+
 
 }
 /// @nodoc
@@ -631,20 +595,11 @@ class _$IntergrowthNewbornBirthWeightForAgeCopyWithImpl<$Res>
   return _then(_self.copyWith(
 sex: null == sex ? _self.sex : sex // ignore: cast_nullable_to_non_nullable
 as Sex,age: null == age ? _self.age : age // ignore: cast_nullable_to_non_nullable
-as Age,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
+as GestationalAge,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
 as Mass,
   ));
 }
-/// Create a copy of IntergrowthNewbornBirthWeightForAge
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$AgeCopyWith<$Res> get age {
-  
-  return $AgeCopyWith<$Res>(_self.age, (value) {
-    return _then(_self.copyWith(age: value));
-  });
-}
+
 }
 
 
@@ -723,7 +678,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Sex sex,  Age age,  Mass measurementResult)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Sex sex,  GestationalAge age,  Mass measurementResult)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _IntergrowthNewbornBirthWeightForAge() when $default != null:
 return $default(_that.sex,_that.age,_that.measurementResult);case _:
@@ -744,7 +699,7 @@ return $default(_that.sex,_that.age,_that.measurementResult);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Sex sex,  Age age,  Mass measurementResult)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Sex sex,  GestationalAge age,  Mass measurementResult)  $default,) {final _that = this;
 switch (_that) {
 case _IntergrowthNewbornBirthWeightForAge():
 return $default(_that.sex,_that.age,_that.measurementResult);}
@@ -761,7 +716,7 @@ return $default(_that.sex,_that.age,_that.measurementResult);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Sex sex,  Age age,  Mass measurementResult)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Sex sex,  GestationalAge age,  Mass measurementResult)?  $default,) {final _that = this;
 switch (_that) {
 case _IntergrowthNewbornBirthWeightForAge() when $default != null:
 return $default(_that.sex,_that.age,_that.measurementResult);case _:
@@ -780,7 +735,7 @@ class _IntergrowthNewbornBirthWeightForAge extends IntergrowthNewbornBirthWeight
   factory _IntergrowthNewbornBirthWeightForAge.fromJson(Map<String, dynamic> json) => _$IntergrowthNewbornBirthWeightForAgeFromJson(json);
 
 @override final  Sex sex;
-@override final  Age age;
+@override final  GestationalAge age;
 @override final  Mass measurementResult;
 
 /// Create a copy of IntergrowthNewbornBirthWeightForAge
@@ -816,11 +771,11 @@ abstract mixin class _$IntergrowthNewbornBirthWeightForAgeCopyWith<$Res> impleme
   factory _$IntergrowthNewbornBirthWeightForAgeCopyWith(_IntergrowthNewbornBirthWeightForAge value, $Res Function(_IntergrowthNewbornBirthWeightForAge) _then) = __$IntergrowthNewbornBirthWeightForAgeCopyWithImpl;
 @override @useResult
 $Res call({
- Sex sex, Age age, Mass measurementResult
+ Sex sex, GestationalAge age, Mass measurementResult
 });
 
 
-@override $AgeCopyWith<$Res> get age;
+
 
 }
 /// @nodoc
@@ -837,28 +792,19 @@ class __$IntergrowthNewbornBirthWeightForAgeCopyWithImpl<$Res>
   return _then(_IntergrowthNewbornBirthWeightForAge(
 sex: null == sex ? _self.sex : sex // ignore: cast_nullable_to_non_nullable
 as Sex,age: null == age ? _self.age : age // ignore: cast_nullable_to_non_nullable
-as Age,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
+as GestationalAge,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
 as Mass,
   ));
 }
 
-/// Create a copy of IntergrowthNewbornBirthWeightForAge
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$AgeCopyWith<$Res> get age {
-  
-  return $AgeCopyWith<$Res>(_self.age, (value) {
-    return _then(_self.copyWith(age: value));
-  });
-}
+
 }
 
 
 /// @nodoc
 mixin _$IntergrowthNewbornBirthWeightForLengthRatioForAge {
 
- Sex get sex; Age get age; NewbornWeightLengthRatioMeasurement get measurementResult;
+ Sex get sex; GestationalAge get age; NewbornWeightLengthRatioMeasurement get measurementResult;
 /// Create a copy of IntergrowthNewbornBirthWeightForLengthRatioForAge
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -891,11 +837,11 @@ abstract mixin class $IntergrowthNewbornBirthWeightForLengthRatioForAgeCopyWith<
   factory $IntergrowthNewbornBirthWeightForLengthRatioForAgeCopyWith(IntergrowthNewbornBirthWeightForLengthRatioForAge value, $Res Function(IntergrowthNewbornBirthWeightForLengthRatioForAge) _then) = _$IntergrowthNewbornBirthWeightForLengthRatioForAgeCopyWithImpl;
 @useResult
 $Res call({
- Sex sex, Age age, NewbornWeightLengthRatioMeasurement measurementResult
+ Sex sex, GestationalAge age, NewbornWeightLengthRatioMeasurement measurementResult
 });
 
 
-$AgeCopyWith<$Res> get age;$NewbornWeightLengthRatioMeasurementCopyWith<$Res> get measurementResult;
+$NewbornWeightLengthRatioMeasurementCopyWith<$Res> get measurementResult;
 
 }
 /// @nodoc
@@ -912,20 +858,11 @@ class _$IntergrowthNewbornBirthWeightForLengthRatioForAgeCopyWithImpl<$Res>
   return _then(_self.copyWith(
 sex: null == sex ? _self.sex : sex // ignore: cast_nullable_to_non_nullable
 as Sex,age: null == age ? _self.age : age // ignore: cast_nullable_to_non_nullable
-as Age,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
+as GestationalAge,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
 as NewbornWeightLengthRatioMeasurement,
   ));
 }
 /// Create a copy of IntergrowthNewbornBirthWeightForLengthRatioForAge
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$AgeCopyWith<$Res> get age {
-  
-  return $AgeCopyWith<$Res>(_self.age, (value) {
-    return _then(_self.copyWith(age: value));
-  });
-}/// Create a copy of IntergrowthNewbornBirthWeightForLengthRatioForAge
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
@@ -1013,7 +950,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Sex sex,  Age age,  NewbornWeightLengthRatioMeasurement measurementResult)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Sex sex,  GestationalAge age,  NewbornWeightLengthRatioMeasurement measurementResult)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _IntergrowthNewbornBirthWeightForLengthRatioForAge() when $default != null:
 return $default(_that.sex,_that.age,_that.measurementResult);case _:
@@ -1034,7 +971,7 @@ return $default(_that.sex,_that.age,_that.measurementResult);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Sex sex,  Age age,  NewbornWeightLengthRatioMeasurement measurementResult)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Sex sex,  GestationalAge age,  NewbornWeightLengthRatioMeasurement measurementResult)  $default,) {final _that = this;
 switch (_that) {
 case _IntergrowthNewbornBirthWeightForLengthRatioForAge():
 return $default(_that.sex,_that.age,_that.measurementResult);}
@@ -1051,7 +988,7 @@ return $default(_that.sex,_that.age,_that.measurementResult);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Sex sex,  Age age,  NewbornWeightLengthRatioMeasurement measurementResult)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Sex sex,  GestationalAge age,  NewbornWeightLengthRatioMeasurement measurementResult)?  $default,) {final _that = this;
 switch (_that) {
 case _IntergrowthNewbornBirthWeightForLengthRatioForAge() when $default != null:
 return $default(_that.sex,_that.age,_that.measurementResult);case _:
@@ -1070,7 +1007,7 @@ class _IntergrowthNewbornBirthWeightForLengthRatioForAge extends IntergrowthNewb
   factory _IntergrowthNewbornBirthWeightForLengthRatioForAge.fromJson(Map<String, dynamic> json) => _$IntergrowthNewbornBirthWeightForLengthRatioForAgeFromJson(json);
 
 @override final  Sex sex;
-@override final  Age age;
+@override final  GestationalAge age;
 @override final  NewbornWeightLengthRatioMeasurement measurementResult;
 
 /// Create a copy of IntergrowthNewbornBirthWeightForLengthRatioForAge
@@ -1106,11 +1043,11 @@ abstract mixin class _$IntergrowthNewbornBirthWeightForLengthRatioForAgeCopyWith
   factory _$IntergrowthNewbornBirthWeightForLengthRatioForAgeCopyWith(_IntergrowthNewbornBirthWeightForLengthRatioForAge value, $Res Function(_IntergrowthNewbornBirthWeightForLengthRatioForAge) _then) = __$IntergrowthNewbornBirthWeightForLengthRatioForAgeCopyWithImpl;
 @override @useResult
 $Res call({
- Sex sex, Age age, NewbornWeightLengthRatioMeasurement measurementResult
+ Sex sex, GestationalAge age, NewbornWeightLengthRatioMeasurement measurementResult
 });
 
 
-@override $AgeCopyWith<$Res> get age;@override $NewbornWeightLengthRatioMeasurementCopyWith<$Res> get measurementResult;
+@override $NewbornWeightLengthRatioMeasurementCopyWith<$Res> get measurementResult;
 
 }
 /// @nodoc
@@ -1127,21 +1064,12 @@ class __$IntergrowthNewbornBirthWeightForLengthRatioForAgeCopyWithImpl<$Res>
   return _then(_IntergrowthNewbornBirthWeightForLengthRatioForAge(
 sex: null == sex ? _self.sex : sex // ignore: cast_nullable_to_non_nullable
 as Sex,age: null == age ? _self.age : age // ignore: cast_nullable_to_non_nullable
-as Age,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
+as GestationalAge,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
 as NewbornWeightLengthRatioMeasurement,
   ));
 }
 
 /// Create a copy of IntergrowthNewbornBirthWeightForLengthRatioForAge
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$AgeCopyWith<$Res> get age {
-  
-  return $AgeCopyWith<$Res>(_self.age, (value) {
-    return _then(_self.copyWith(age: value));
-  });
-}/// Create a copy of IntergrowthNewbornBirthWeightForLengthRatioForAge
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
@@ -1157,7 +1085,7 @@ $NewbornWeightLengthRatioMeasurementCopyWith<$Res> get measurementResult {
 /// @nodoc
 mixin _$IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge {
 
- Sex get sex; Age get age; Length get measurementResult;
+ Sex get sex; GestationalAge get age; Length get measurementResult;
 /// Create a copy of IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1190,11 +1118,11 @@ abstract mixin class $IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeC
   factory $IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeCopyWith(IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge value, $Res Function(IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge) _then) = _$IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeCopyWithImpl;
 @useResult
 $Res call({
- Sex sex, Age age, Length measurementResult
+ Sex sex, GestationalAge age, Length measurementResult
 });
 
 
-$AgeCopyWith<$Res> get age;
+
 
 }
 /// @nodoc
@@ -1211,20 +1139,11 @@ class _$IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeCopyWithImpl<$R
   return _then(_self.copyWith(
 sex: null == sex ? _self.sex : sex // ignore: cast_nullable_to_non_nullable
 as Sex,age: null == age ? _self.age : age // ignore: cast_nullable_to_non_nullable
-as Age,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
+as GestationalAge,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
 as Length,
   ));
 }
-/// Create a copy of IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$AgeCopyWith<$Res> get age {
-  
-  return $AgeCopyWith<$Res>(_self.age, (value) {
-    return _then(_self.copyWith(age: value));
-  });
-}
+
 }
 
 
@@ -1303,7 +1222,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Sex sex,  Age age,  Length measurementResult)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Sex sex,  GestationalAge age,  Length measurementResult)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge() when $default != null:
 return $default(_that.sex,_that.age,_that.measurementResult);case _:
@@ -1324,7 +1243,7 @@ return $default(_that.sex,_that.age,_that.measurementResult);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Sex sex,  Age age,  Length measurementResult)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Sex sex,  GestationalAge age,  Length measurementResult)  $default,) {final _that = this;
 switch (_that) {
 case _IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge():
 return $default(_that.sex,_that.age,_that.measurementResult);}
@@ -1341,7 +1260,7 @@ return $default(_that.sex,_that.age,_that.measurementResult);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Sex sex,  Age age,  Length measurementResult)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Sex sex,  GestationalAge age,  Length measurementResult)?  $default,) {final _that = this;
 switch (_that) {
 case _IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge() when $default != null:
 return $default(_that.sex,_that.age,_that.measurementResult);case _:
@@ -1360,7 +1279,7 @@ class _IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge extends Intergr
   factory _IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge.fromJson(Map<String, dynamic> json) => _$IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeFromJson(json);
 
 @override final  Sex sex;
-@override final  Age age;
+@override final  GestationalAge age;
 @override final  Length measurementResult;
 
 /// Create a copy of IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge
@@ -1396,11 +1315,11 @@ abstract mixin class _$IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge
   factory _$IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeCopyWith(_IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge value, $Res Function(_IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge) _then) = __$IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeCopyWithImpl;
 @override @useResult
 $Res call({
- Sex sex, Age age, Length measurementResult
+ Sex sex, GestationalAge age, Length measurementResult
 });
 
 
-@override $AgeCopyWith<$Res> get age;
+
 
 }
 /// @nodoc
@@ -1417,28 +1336,19 @@ class __$IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeCopyWithImpl<$
   return _then(_IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge(
 sex: null == sex ? _self.sex : sex // ignore: cast_nullable_to_non_nullable
 as Sex,age: null == age ? _self.age : age // ignore: cast_nullable_to_non_nullable
-as Age,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
+as GestationalAge,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
 as Length,
   ));
 }
 
-/// Create a copy of IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$AgeCopyWith<$Res> get age {
-  
-  return $AgeCopyWith<$Res>(_self.age, (value) {
-    return _then(_self.copyWith(age: value));
-  });
-}
+
 }
 
 
 /// @nodoc
 mixin _$IntergrowthVeryPretermNewbornBirthLengthForAge {
 
- Sex get sex; Age get age; Length get measurementResult;
+ Sex get sex; GestationalAge get age; Length get measurementResult;
 /// Create a copy of IntergrowthVeryPretermNewbornBirthLengthForAge
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1471,11 +1381,11 @@ abstract mixin class $IntergrowthVeryPretermNewbornBirthLengthForAgeCopyWith<$Re
   factory $IntergrowthVeryPretermNewbornBirthLengthForAgeCopyWith(IntergrowthVeryPretermNewbornBirthLengthForAge value, $Res Function(IntergrowthVeryPretermNewbornBirthLengthForAge) _then) = _$IntergrowthVeryPretermNewbornBirthLengthForAgeCopyWithImpl;
 @useResult
 $Res call({
- Sex sex, Age age, Length measurementResult
+ Sex sex, GestationalAge age, Length measurementResult
 });
 
 
-$AgeCopyWith<$Res> get age;
+
 
 }
 /// @nodoc
@@ -1492,20 +1402,11 @@ class _$IntergrowthVeryPretermNewbornBirthLengthForAgeCopyWithImpl<$Res>
   return _then(_self.copyWith(
 sex: null == sex ? _self.sex : sex // ignore: cast_nullable_to_non_nullable
 as Sex,age: null == age ? _self.age : age // ignore: cast_nullable_to_non_nullable
-as Age,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
+as GestationalAge,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
 as Length,
   ));
 }
-/// Create a copy of IntergrowthVeryPretermNewbornBirthLengthForAge
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$AgeCopyWith<$Res> get age {
-  
-  return $AgeCopyWith<$Res>(_self.age, (value) {
-    return _then(_self.copyWith(age: value));
-  });
-}
+
 }
 
 
@@ -1584,7 +1485,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Sex sex,  Age age,  Length measurementResult)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Sex sex,  GestationalAge age,  Length measurementResult)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _IntergrowthVeryPretermNewbornBirthLengthForAge() when $default != null:
 return $default(_that.sex,_that.age,_that.measurementResult);case _:
@@ -1605,7 +1506,7 @@ return $default(_that.sex,_that.age,_that.measurementResult);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Sex sex,  Age age,  Length measurementResult)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Sex sex,  GestationalAge age,  Length measurementResult)  $default,) {final _that = this;
 switch (_that) {
 case _IntergrowthVeryPretermNewbornBirthLengthForAge():
 return $default(_that.sex,_that.age,_that.measurementResult);}
@@ -1622,7 +1523,7 @@ return $default(_that.sex,_that.age,_that.measurementResult);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Sex sex,  Age age,  Length measurementResult)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Sex sex,  GestationalAge age,  Length measurementResult)?  $default,) {final _that = this;
 switch (_that) {
 case _IntergrowthVeryPretermNewbornBirthLengthForAge() when $default != null:
 return $default(_that.sex,_that.age,_that.measurementResult);case _:
@@ -1641,7 +1542,7 @@ class _IntergrowthVeryPretermNewbornBirthLengthForAge extends IntergrowthVeryPre
   factory _IntergrowthVeryPretermNewbornBirthLengthForAge.fromJson(Map<String, dynamic> json) => _$IntergrowthVeryPretermNewbornBirthLengthForAgeFromJson(json);
 
 @override final  Sex sex;
-@override final  Age age;
+@override final  GestationalAge age;
 @override final  Length measurementResult;
 
 /// Create a copy of IntergrowthVeryPretermNewbornBirthLengthForAge
@@ -1677,11 +1578,11 @@ abstract mixin class _$IntergrowthVeryPretermNewbornBirthLengthForAgeCopyWith<$R
   factory _$IntergrowthVeryPretermNewbornBirthLengthForAgeCopyWith(_IntergrowthVeryPretermNewbornBirthLengthForAge value, $Res Function(_IntergrowthVeryPretermNewbornBirthLengthForAge) _then) = __$IntergrowthVeryPretermNewbornBirthLengthForAgeCopyWithImpl;
 @override @useResult
 $Res call({
- Sex sex, Age age, Length measurementResult
+ Sex sex, GestationalAge age, Length measurementResult
 });
 
 
-@override $AgeCopyWith<$Res> get age;
+
 
 }
 /// @nodoc
@@ -1698,28 +1599,19 @@ class __$IntergrowthVeryPretermNewbornBirthLengthForAgeCopyWithImpl<$Res>
   return _then(_IntergrowthVeryPretermNewbornBirthLengthForAge(
 sex: null == sex ? _self.sex : sex // ignore: cast_nullable_to_non_nullable
 as Sex,age: null == age ? _self.age : age // ignore: cast_nullable_to_non_nullable
-as Age,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
+as GestationalAge,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
 as Length,
   ));
 }
 
-/// Create a copy of IntergrowthVeryPretermNewbornBirthLengthForAge
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$AgeCopyWith<$Res> get age {
-  
-  return $AgeCopyWith<$Res>(_self.age, (value) {
-    return _then(_self.copyWith(age: value));
-  });
-}
+
 }
 
 
 /// @nodoc
 mixin _$IntergrowthVeryPretermNewbornBirthWeightForAge {
 
- Sex get sex; Age get age; Mass get measurementResult;
+ Sex get sex; GestationalAge get age; Mass get measurementResult;
 /// Create a copy of IntergrowthVeryPretermNewbornBirthWeightForAge
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1752,11 +1644,11 @@ abstract mixin class $IntergrowthVeryPretermNewbornBirthWeightForAgeCopyWith<$Re
   factory $IntergrowthVeryPretermNewbornBirthWeightForAgeCopyWith(IntergrowthVeryPretermNewbornBirthWeightForAge value, $Res Function(IntergrowthVeryPretermNewbornBirthWeightForAge) _then) = _$IntergrowthVeryPretermNewbornBirthWeightForAgeCopyWithImpl;
 @useResult
 $Res call({
- Sex sex, Age age, Mass measurementResult
+ Sex sex, GestationalAge age, Mass measurementResult
 });
 
 
-$AgeCopyWith<$Res> get age;
+
 
 }
 /// @nodoc
@@ -1773,20 +1665,11 @@ class _$IntergrowthVeryPretermNewbornBirthWeightForAgeCopyWithImpl<$Res>
   return _then(_self.copyWith(
 sex: null == sex ? _self.sex : sex // ignore: cast_nullable_to_non_nullable
 as Sex,age: null == age ? _self.age : age // ignore: cast_nullable_to_non_nullable
-as Age,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
+as GestationalAge,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
 as Mass,
   ));
 }
-/// Create a copy of IntergrowthVeryPretermNewbornBirthWeightForAge
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$AgeCopyWith<$Res> get age {
-  
-  return $AgeCopyWith<$Res>(_self.age, (value) {
-    return _then(_self.copyWith(age: value));
-  });
-}
+
 }
 
 
@@ -1865,7 +1748,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Sex sex,  Age age,  Mass measurementResult)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Sex sex,  GestationalAge age,  Mass measurementResult)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _IntergrowthVeryPretermNewbornBirthWeightForAge() when $default != null:
 return $default(_that.sex,_that.age,_that.measurementResult);case _:
@@ -1886,7 +1769,7 @@ return $default(_that.sex,_that.age,_that.measurementResult);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Sex sex,  Age age,  Mass measurementResult)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Sex sex,  GestationalAge age,  Mass measurementResult)  $default,) {final _that = this;
 switch (_that) {
 case _IntergrowthVeryPretermNewbornBirthWeightForAge():
 return $default(_that.sex,_that.age,_that.measurementResult);}
@@ -1903,7 +1786,7 @@ return $default(_that.sex,_that.age,_that.measurementResult);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Sex sex,  Age age,  Mass measurementResult)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Sex sex,  GestationalAge age,  Mass measurementResult)?  $default,) {final _that = this;
 switch (_that) {
 case _IntergrowthVeryPretermNewbornBirthWeightForAge() when $default != null:
 return $default(_that.sex,_that.age,_that.measurementResult);case _:
@@ -1922,7 +1805,7 @@ class _IntergrowthVeryPretermNewbornBirthWeightForAge extends IntergrowthVeryPre
   factory _IntergrowthVeryPretermNewbornBirthWeightForAge.fromJson(Map<String, dynamic> json) => _$IntergrowthVeryPretermNewbornBirthWeightForAgeFromJson(json);
 
 @override final  Sex sex;
-@override final  Age age;
+@override final  GestationalAge age;
 @override final  Mass measurementResult;
 
 /// Create a copy of IntergrowthVeryPretermNewbornBirthWeightForAge
@@ -1958,11 +1841,11 @@ abstract mixin class _$IntergrowthVeryPretermNewbornBirthWeightForAgeCopyWith<$R
   factory _$IntergrowthVeryPretermNewbornBirthWeightForAgeCopyWith(_IntergrowthVeryPretermNewbornBirthWeightForAge value, $Res Function(_IntergrowthVeryPretermNewbornBirthWeightForAge) _then) = __$IntergrowthVeryPretermNewbornBirthWeightForAgeCopyWithImpl;
 @override @useResult
 $Res call({
- Sex sex, Age age, Mass measurementResult
+ Sex sex, GestationalAge age, Mass measurementResult
 });
 
 
-@override $AgeCopyWith<$Res> get age;
+
 
 }
 /// @nodoc
@@ -1979,21 +1862,12 @@ class __$IntergrowthVeryPretermNewbornBirthWeightForAgeCopyWithImpl<$Res>
   return _then(_IntergrowthVeryPretermNewbornBirthWeightForAge(
 sex: null == sex ? _self.sex : sex // ignore: cast_nullable_to_non_nullable
 as Sex,age: null == age ? _self.age : age // ignore: cast_nullable_to_non_nullable
-as Age,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
+as GestationalAge,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
 as Mass,
   ));
 }
 
-/// Create a copy of IntergrowthVeryPretermNewbornBirthWeightForAge
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$AgeCopyWith<$Res> get age {
-  
-  return $AgeCopyWith<$Res>(_self.age, (value) {
-    return _then(_self.copyWith(age: value));
-  });
-}
+
 }
 
 
@@ -2257,7 +2131,7 @@ as num,
 /// @nodoc
 mixin _$IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge {
 
- Sex get sex; Age get age; NewbornWeightLengthRatioMeasurement get measurementResult;
+ Sex get sex; GestationalAge get age; NewbornWeightLengthRatioMeasurement get measurementResult;
 /// Create a copy of IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2290,11 +2164,11 @@ abstract mixin class $IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForA
   factory $IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWith(IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge value, $Res Function(IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge) _then) = _$IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWithImpl;
 @useResult
 $Res call({
- Sex sex, Age age, NewbornWeightLengthRatioMeasurement measurementResult
+ Sex sex, GestationalAge age, NewbornWeightLengthRatioMeasurement measurementResult
 });
 
 
-$AgeCopyWith<$Res> get age;$NewbornWeightLengthRatioMeasurementCopyWith<$Res> get measurementResult;
+$NewbornWeightLengthRatioMeasurementCopyWith<$Res> get measurementResult;
 
 }
 /// @nodoc
@@ -2311,20 +2185,11 @@ class _$IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWithImpl
   return _then(_self.copyWith(
 sex: null == sex ? _self.sex : sex // ignore: cast_nullable_to_non_nullable
 as Sex,age: null == age ? _self.age : age // ignore: cast_nullable_to_non_nullable
-as Age,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
+as GestationalAge,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
 as NewbornWeightLengthRatioMeasurement,
   ));
 }
 /// Create a copy of IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$AgeCopyWith<$Res> get age {
-  
-  return $AgeCopyWith<$Res>(_self.age, (value) {
-    return _then(_self.copyWith(age: value));
-  });
-}/// Create a copy of IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
@@ -2412,7 +2277,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Sex sex,  Age age,  NewbornWeightLengthRatioMeasurement measurementResult)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Sex sex,  GestationalAge age,  NewbornWeightLengthRatioMeasurement measurementResult)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge() when $default != null:
 return $default(_that.sex,_that.age,_that.measurementResult);case _:
@@ -2433,7 +2298,7 @@ return $default(_that.sex,_that.age,_that.measurementResult);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Sex sex,  Age age,  NewbornWeightLengthRatioMeasurement measurementResult)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Sex sex,  GestationalAge age,  NewbornWeightLengthRatioMeasurement measurementResult)  $default,) {final _that = this;
 switch (_that) {
 case _IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge():
 return $default(_that.sex,_that.age,_that.measurementResult);}
@@ -2450,7 +2315,7 @@ return $default(_that.sex,_that.age,_that.measurementResult);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Sex sex,  Age age,  NewbornWeightLengthRatioMeasurement measurementResult)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Sex sex,  GestationalAge age,  NewbornWeightLengthRatioMeasurement measurementResult)?  $default,) {final _that = this;
 switch (_that) {
 case _IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge() when $default != null:
 return $default(_that.sex,_that.age,_that.measurementResult);case _:
@@ -2469,7 +2334,7 @@ class _IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge extends Inte
   factory _IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge.fromJson(Map<String, dynamic> json) => _$IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeFromJson(json);
 
 @override final  Sex sex;
-@override final  Age age;
+@override final  GestationalAge age;
 @override final  NewbornWeightLengthRatioMeasurement measurementResult;
 
 /// Create a copy of IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge
@@ -2505,11 +2370,11 @@ abstract mixin class _$IntergrowthVeryPretermNewbornBirthWeightForLengthRatioFor
   factory _$IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWith(_IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge value, $Res Function(_IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge) _then) = __$IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWithImpl;
 @override @useResult
 $Res call({
- Sex sex, Age age, NewbornWeightLengthRatioMeasurement measurementResult
+ Sex sex, GestationalAge age, NewbornWeightLengthRatioMeasurement measurementResult
 });
 
 
-@override $AgeCopyWith<$Res> get age;@override $NewbornWeightLengthRatioMeasurementCopyWith<$Res> get measurementResult;
+@override $NewbornWeightLengthRatioMeasurementCopyWith<$Res> get measurementResult;
 
 }
 /// @nodoc
@@ -2526,21 +2391,12 @@ class __$IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeCopyWithImp
   return _then(_IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge(
 sex: null == sex ? _self.sex : sex // ignore: cast_nullable_to_non_nullable
 as Sex,age: null == age ? _self.age : age // ignore: cast_nullable_to_non_nullable
-as Age,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
+as GestationalAge,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
 as NewbornWeightLengthRatioMeasurement,
   ));
 }
 
 /// Create a copy of IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$AgeCopyWith<$Res> get age {
-  
-  return $AgeCopyWith<$Res>(_self.age, (value) {
-    return _then(_self.copyWith(age: value));
-  });
-}/// Create a copy of IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')

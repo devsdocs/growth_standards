@@ -11,77 +11,46 @@ import 'dart:convert';
 import 'package:growth_standards/growth_standards.dart';
 
 final birthDay = Date(year: 2022, month: Months.june, date: 30);
-const weight = 12.1;
-const length = 82;
+const weight = Mass$Kilogram(12.1);
+const length = Length$Centimeter(82);
 
-const centimeters = Centimeters(length);
-const kilograms = Kilograms(weight);
 final age = Age.byDate(birthDay);
-
-final gs = GrowthStandard.whoGrowthStandard;
-final gsFromJson = gs.fromJson;
+final gs = GrowthStandard.who.fromBirthTo5Years;
 const sex = Sex.male;
 
 void main() {
   print(
-    'Age: ${age.yearsMonthsDaysOfAge.years} Years, ${age.yearsMonthsDaysOfAge.months} Months, ${age.yearsMonthsDaysOfAge.days} Days, with total ${age.ageInTotalMonthsByNow} in Months or ${age.ageInTotalDaysByNow} in Days',
+    'Age: ${age.yearsMonthsDaysOfAge.years} Years, ${age.yearsMonthsDaysOfAge.months} Months, ${age.yearsMonthsDaysOfAge.days} Days',
   );
-  // Demonstrating adjusted zscore calculation
+
+  // WHO Length-for-Age
   final calcLengthForAgeStanding = gs.lengthForAge(
     age: age,
-    lengthHeight: centimeters,
+    lengthHeight: length,
     sex: sex,
-    measure: LengthHeigthMeasurementPosition.standing,
+    measure: LengthHeightMeasurementPosition.standing,
   );
-  print(calcLengthForAgeStanding.zScore(Precision.two));
-  print(calcLengthForAgeStanding.percentile(Precision.two));
-  final encode = json.encode(calcLengthForAgeStanding.toJson());
-  print(encode);
-  print(gsFromJson.lengthForAge(json.encode(encode) as Map<String, dynamic>));
+  print('Length-for-age Z-Score: ${calcLengthForAgeStanding.zScore(Precision.two)}');
+  print('Length-for-age Percentile: ${calcLengthForAgeStanding.percentile(Precision.two)}');
 
-  final calcLengthForAgeRecumbent = calcLengthForAgeStanding.copyWith(
-    measure: LengthHeigthMeasurementPosition.recumbent,
-  );
-  print(calcLengthForAgeRecumbent.zScore(Precision.two));
-  print(calcLengthForAgeRecumbent.percentile(Precision.two));
-  print(json.encode(calcLengthForAgeRecumbent.toJson()));
-
-  final calcWeigthForAge = gs.weightForAge(
+  // WHO Weight-for-Age
+  final calcWeightForAge = gs.weightForAge(
     age: age,
-    weight: kilograms,
+    weight: weight,
     sex: sex,
   );
-  print(calcWeigthForAge.zScore(Precision.two));
-  print(calcWeigthForAge.percentile(Precision.two));
-  print(json.encode(calcWeigthForAge.toJson()));
+  print('Weight-for-age Z-Score: ${calcWeightForAge.zScore(Precision.two)}');
 
-  final calcWeigthForLength = gs.weightForLength(
-    lengthMeasurementResult: centimeters,
-    massMeasurementResult: kilograms,
-    sex: sex,
-    age: age,
-    measure: LengthHeigthMeasurementPosition.recumbent,
+  // Fenton 2013 Preterm Growth Chart (sex-specific LMS)
+  final fentonWeight = GrowthStandard.fenton.weightForAge(
+    sex: Sex.male,
+    age: const PostmenstrualAge.completedWeeks(32),
+    weight: const Mass$Kilogram(1.88),
   );
-  print(calcWeigthForLength.zScore(Precision.two));
-  print(calcWeigthForLength.percentile(Precision.two));
-  print(json.encode(calcWeigthForLength.toJson()));
-
-  final calcBMIForAge = gs.bodyMassIndexForAge(
-    bodyMassIndexMeasurement: BodyMassIndexMeasurement.fromMeasurement(
-      measure: LengthHeigthMeasurementPosition.recumbent,
-      lengthHeight: centimeters,
-      weight: kilograms,
-      age: age,
-    ),
-    sex: sex,
-  );
-
-  print(calcBMIForAge.zScore(Precision.two));
-  print(calcBMIForAge.percentile(Precision.two));
-  print(json.encode(calcBMIForAge.toJson()));
+  print('Fenton 32w Weight Z-Score: ${fentonWeight.zScore()}');
 }
 ```
-### For updated example and usage check the test and example
+### For updated example and usage check the test files (`test/golden_vectors_test.dart`, `test/edge_cases_test.dart`)
 
 ### Hello amazing community! 🌟 I'm passionate about creating innovative solutions with Dart programming, and I've poured my heart into this project. Your support can help take this project to new heights. By contributing, you're not just donating; you're investing in the future of this valuable tool.
 

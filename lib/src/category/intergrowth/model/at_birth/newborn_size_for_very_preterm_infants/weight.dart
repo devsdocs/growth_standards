@@ -46,14 +46,14 @@ class IntergrowthVeryPretermNewbornBirthWeightForAgeData extends AgeBasedData {
   TimeUnit get unit => TimeUnit.days;
 }
 
-/// Measure within first 24 hours of life, for infants born between gestational weeks 24 and 33
+/// Measure within first 24 hours of life, for infants born between gestational days 168 and 230 (~24–32+6 weeks)
 @freezed
 sealed class IntergrowthVeryPretermNewbornBirthWeightForAge
-    extends AgeBasedResult
+    extends GestationalAgeBasedResult
     with _$IntergrowthVeryPretermNewbornBirthWeightForAge {
   factory IntergrowthVeryPretermNewbornBirthWeightForAge({
     required Sex sex,
-    required Age age,
+    required GestationalAge age,
     required Mass measurementResult,
   }) = _IntergrowthVeryPretermNewbornBirthWeightForAge;
 
@@ -68,14 +68,13 @@ sealed class IntergrowthVeryPretermNewbornBirthWeightForAge
       IntergrowthVeryPretermNewbornBirthWeightForAgeData();
 
   _IntergrowthVeryPretermNewbornBirthWeightForAgeLMS get _ageData =>
-      contextData._data[sex]![ageAtObservationDate.ageInTotalByUnit(
-        contextData.unit,
-      )]!;
+      contextData._data[sex]![gestationalAgeAtObservation.totalDays]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 
   @override
-  Age get ageAtObservationDate => checkAge(age, contextData: contextData);
+  GestationalAge get gestationalAgeAtObservation =>
+      checkGestationalAge(age, contextData: contextData);
 
   @override
   num zScore([Precision precision = Precision.two]) =>

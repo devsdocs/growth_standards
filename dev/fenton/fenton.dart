@@ -2,76 +2,88 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:csv/csv.dart';
-import 'package:reusable_tools/reusable_tools.dart';
-
-import '../common.dart';
 
 void main() {
-  final hcfa = <String, dynamic>{};
-  final wfa = <String, dynamic>{};
-  final lfa = <String, dynamic>{};
+  final hcfaBoys = <int, Map<String, num>>{};
+  final hcfaGirls = <int, Map<String, num>>{};
+  final wfaBoys = <int, Map<String, num>>{};
+  final wfaGirls = <int, Map<String, num>>{};
+  final lfaBoys = <int, Map<String, num>>{};
+  final lfaGirls = <int, Map<String, num>>{};
 
-  Directory('dev/fenton').listSync().forEach((element) {
-    final fileNameAndExt = element.uri.pathSegments.last;
-    final splt = fileNameAndExt.splitDot;
-    final fileName = splt.first;
-    final ext = splt.last;
+  final targetDir = Directory('dev/fenton');
 
-    if (element is File && ext == 'csv') {
-      final data =
-          const CsvToListConverter().convert(element.readAsStringSync());
+  for (final element in targetDir.listSync()) {
+    if (element is File && element.path.endsWith('.csv')) {
+      final filename = element.uri.pathSegments.last;
+      final name = filename.substring(0, filename.lastIndexOf('.'));
+      final raw = element.readAsStringSync().replaceAll('\r\n', '\n');
+      final rows = const CsvToListConverter(eol: '\n').convert(raw);
 
-      final expMap = <String, dynamic>{};
+      final expMap = <int, Map<String, num>>{};
 
-      sanitize(data)
-          .map(
-        (c) => dataTitle
-            .asMap()
-            .map((_, value) => getVal(c, value).entries.first)
-            .map((key, value) => MapEntry(key.toLowerCase(), value)),
-      )
-          .forEach((element) {
-        expMap[element['weeks'].toString()] = element..remove('weeks');
-      });
-
-      final isHCfa = fileName == 'hcfa';
-      final isLfa = fileName == 'lfa';
-      final isWfa = fileName == 'wfa';
-
-      if (isWfa) {
-        wfa.addAll(expMap);
+      for (var i = 1; i < rows.length; i++) {
+        final row = rows[i];
+        if (row.length < 4) continue;
+        final week = int.tryParse(row[0].toString());
+        final l = num.tryParse(row[1].toString());
+        final m = num.tryParse(row[2].toString());
+        final s = num.tryParse(row[3].toString());
+        if (week != null && l != null && m != null && s != null) {
+          expMap[week] = {'l': l, 'm': m, 's': s};
+        }
       }
-      if (isLfa) {
-        lfa.addAll(expMap);
-      }
-      if (isHCfa) {
-        hcfa.addAll(expMap);
-      }
+
+      if (name == 'wfa_boys') wfaBoys.addAll(expMap);
+      if (name == 'wfa_girls') wfaGirls.addAll(expMap);
+      if (name == 'lfa_boys') lfaBoys.addAll(expMap);
+      if (name == 'lfa_girls') lfaGirls.addAll(expMap);
+      if (name == 'hcfa_boys') hcfaBoys.addAll(expMap);
+      if (name == 'hcfa_girls') hcfaGirls.addAll(expMap);
     }
-  });
+  }
 
-  final encodeHCfa = json.encode(hcfa);
-  final encodeLfa = json.encode(lfa);
-  final encodeWFA = json.encode(wfa);
+  File('dev/fenton/wfa_boys.json')
+      .writeAsStringSync(json.encode(_stringifyKeys(wfaBoys)));
+  File('dev/fenton/wfa_girls.json')
+      .writeAsStringSync(json.encode(_stringifyKeys(wfaGirls)));
+  File('dev/fenton/lfa_boys.json')
+      .writeAsStringSync(json.encode(_stringifyKeys(lfaBoys)));
+  File('dev/fenton/lfa_girls.json')
+      .writeAsStringSync(json.encode(_stringifyKeys(lfaGirls)));
+  File('dev/fenton/hcfa_boys.json')
+      .writeAsStringSync(json.encode(_stringifyKeys(hcfaBoys)));
+  File('dev/fenton/hcfa_girls.json')
+      .writeAsStringSync(json.encode(_stringifyKeys(hcfaGirls)));
 
-  File('dev/fenton/hcfa.json')
-    ..createSync(recursive: true)
-    ..writeAsStringSync(encodeHCfa);
-  File('dev/fenton/wfa.json')
-    ..createSync(recursive: true)
-    ..writeAsStringSync(encodeWFA);
-  File('dev/fenton/lfa.json')
-    ..createSync(recursive: true)
-    ..writeAsStringSync(encodeLfa);
-  File('dev/fenton/hcfa.dart')
-    ..createSync(recursive: true)
-    ..writeAsStringSync("const fentonHCfA = '''\n$encodeHCfa\n''';\n");
-  File('dev/fenton/wfa.dart')
-    ..createSync(recursive: true)
-    ..writeAsStringSync("const fentonWfA = '''\n$encodeWFA\n''';\n");
-  File('dev/fenton/lfa.dart')
-    ..createSync(recursive: true)
-    ..writeAsStringSync("const fentonLfA = '''\n$encodeLfa\n''';\n");
+  File('lib/src/category/fenton/data/wfa.dart').writeAsStringSync(
+    "part of '../fenton.dart';\n\n"
+    'final fentonBoysWfA = ${_toLiteral(wfaBoys)};\n\n'
+    'final fentonGirlsWfA = ${_toLiteral(wfaGirls)};\n',
+  );
+
+  File('lib/src/category/fenton/data/lfa.dart').writeAsStringSync(
+    "part of '../fenton.dart';\n\n"
+    'final fentonBoysLfA = ${_toLiteral(lfaBoys)};\n\n'
+    'final fentonGirlsLfA = ${_toLiteral(lfaGirls)};\n',
+  );
+
+  File('lib/src/category/fenton/data/hcfa.dart').writeAsStringSync(
+    "part of '../fenton.dart';\n\n"
+    'final fentonBoysHCfA = ${_toLiteral(hcfaBoys)};\n\n'
+    'final fentonGirlsHCfA = ${_toLiteral(hcfaGirls)};\n',
+  );
 }
 
-final dataTitle = ['Weeks', 'L', 'M', 'S'];
+Map<String, dynamic> _stringifyKeys(Map<int, Map<String, num>> map) {
+  return map.map((k, v) => MapEntry(k.toString(), v));
+}
+
+String _toLiteral(Map<int, Map<String, num>> map) {
+  final entries = map.entries.map((e) {
+    final k = e.key;
+    final val = e.value;
+    return "  $k: {'l': ${val['l']}, 'm': ${val['m']}, 's': ${val['s']}}";
+  }).join(',\n');
+  return '{\n$entries,\n}';
+}

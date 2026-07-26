@@ -84,6 +84,47 @@ const _velocityEnum = {
 
 VelocityIncrement parseIncrement(int val) => _velocityEnum[val]!;
 
+/// Runtime guards for WHO velocity inputs (A7). Freezed `@Assert` only runs in
+/// debug; this throws [ArgumentError] in all modes before scoring.
+void ensureValidWhoVelocityInputs({
+  required Age age,
+  required List<Date> measurementDates,
+  int maxMonths = 24,
+}) {
+  if (age.ageInTotalDaysByNow < 0 || age.ageInTotalMonthsByNow > maxMonths) {
+    throw ArgumentError('Age must be in range of 0 days - $maxMonths months');
+  }
+  if (measurementDates.isEmpty) {
+    throw ArgumentError(
+      'Calculation can not be done as past measurement is empty',
+    );
+  }
+  if (measurementDates.toSet().length <= 1) {
+    throw ArgumentError(
+      'Calculation can not be done as there is only one measurement history',
+    );
+  }
+  if (measurementDates.toSet().length != measurementDates.length) {
+    throw ArgumentError(
+      'Calculation can not be done as there are duplicate measurement dates in past measurement',
+    );
+  }
+  final today = Date.today();
+  final dob = age.dateOfBirth;
+  for (final date in measurementDates) {
+    if (date.isAfter(today)) {
+      throw ArgumentError(
+        'Calculation can not be done as there is future date in past measurement',
+      );
+    }
+    if (date.isBefore(dob)) {
+      throw ArgumentError(
+        'Calculation can not be done as there is date less than Date of Birth in past measurement, if you find this exception is a mistake, try to provide exact Age',
+      );
+    }
+  }
+}
+
 /// [measurementHistory] field can be either [List] of [MassMeasurementHistory]
 /// or [List] of [LengthMeasurementHistory]
 class VelocityPastMeasurement<T extends Unit<T>> {
@@ -114,16 +155,14 @@ class VelocityPastMeasurement<T extends Unit<T>> {
         final before = keys[i];
         final now = keys[j];
 
-        final ageAtDate = TimeIntervalCount(
-          before.year,
-          before.month.number,
-          before.date,
-        ).ageAtDate(now.toDateTime());
+        // WHO velocity windows are fixed increments (~1–6 mo), not calendar
+        // month boundaries. A ~28–35 day visit pair is a 1-month increment even
+        // when both dates fall in the same calendar month (months == 0).
+        // WHO month length ≈ 30.4375 days (365.25 / 12).
+        final daysBetween = now.difference(before).inDays;
+        if (daysBetween <= 0) continue;
 
-        if (ageAtDate.years > 0) continue;
-
-        final countMos = ageAtDate.months;
-
+        final countMos = (daysBetween / 30.4375).round();
         final incremental = _velocityEnum[countMos];
 
         if (incremental == null) continue;

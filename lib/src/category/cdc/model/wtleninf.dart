@@ -34,7 +34,6 @@ class CDCInfantWeightForLengthData extends LengthBasedData {
 @freezed
 sealed class CDCInfantWeightForLength extends LengthBasedResult
     with _$CDCInfantWeightForLength {
-  //TODO(devsdocs): Test this!
   factory CDCInfantWeightForLength({
     required Sex sex,
     required Age age,
@@ -59,17 +58,29 @@ sealed class CDCInfantWeightForLength extends LengthBasedResult
   CDCInfantWeightForLengthData get contextData =>
       CDCInfantWeightForLengthData();
 
-  //TODO(devsdocs): Fix CDC length calculation
-  _CDCInfantWeightForLengthLMS get _ageData =>
-      contextData._data[sex]![_length]!;
+  _CDCInfantWeightForLengthLMS get _ageData {
+    final data = contextData._data[sex]?[_length];
+    if (data == null) {
+      throw ArgumentError(
+        'No CDC infant weight-for-length data found for sex=$sex, length=$_length '
+        '(expected range: ${contextData.lowerBound} to ${contextData.upperBound} ${contextData.unit.symbol})',
+      );
+    }
+    return data;
+  }
 
   @override
   Length get lengthAtObservationDate =>
       checkLength(_adjustedLength, contextData: contextData);
 
-  num get _length => lengthAtObservationDate.value == 45
-      ? 45
-      : lengthAtObservationDate.value.truncate() + 0.5;
+  num get _length {
+    final val = lengthAtObservationDate.value;
+    final gridKey = (val * 2).round() / 2;
+    if (contextData._data[sex]?.containsKey(gridKey) ?? false) {
+      return gridKey;
+    }
+    return val.truncate() + 0.5;
+  }
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 

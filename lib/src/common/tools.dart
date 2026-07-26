@@ -1,17 +1,72 @@
 import 'package:growth_standards/growth_standards.dart';
 
-/// Validates an Age object against a set of assertions at a specific observation date or current date.
+/// Validates an Age object against bounds defined in [contextData].
 ///
-/// Throws an [ArgumentError] if any assertion fails or if invalid parameters are provided.
+/// Throws an [ArgumentError] if age is outside the valid range.
 ///
-/// @param [age] The Age object to validate
-/// @param [observationDate] Optional date when the observation was made. Uses current date if null.
-/// @param assertions List of time-based assertions to check against the age
-/// @return The validated Age object
+/// [age] The Age object to validate.
+/// [contextData] Context containing lower and upper age bounds and time unit.
+/// Returns the validated Age object.
 Age checkAge(Age age, {required AgeBasedData contextData}) {
   // Validate all assertions
   _validateAssertion(age, contextData);
 
+  return age;
+}
+
+/// Validates postmenstrual age against an [AgeBasedData] week (or day) span.
+PostmenstrualAge checkPostmenstrualAge(
+  PostmenstrualAge age, {
+  required AgeBasedData contextData,
+}) {
+  if (contextData.unit != TimeUnit.weeks && contextData.unit != TimeUnit.days) {
+    throw ArgumentError(
+      'PostmenstrualAge validation expects TimeUnit.weeks or TimeUnit.days, '
+      'got ${contextData.unit}',
+    );
+  }
+
+  final actualValue = contextData.unit == TimeUnit.weeks
+      ? age.completedWeeks
+      : age.totalDays;
+  final lowerBound = contextData.lowerBound;
+  final upperBound = contextData.upperBound;
+
+  if (actualValue < lowerBound || actualValue > upperBound) {
+    throw ArgumentError(
+      'Postmenstrual age is invalid: '
+      'Age is $actualValue ${contextData.unit}, '
+      'Expected range: $lowerBound to $upperBound ${contextData.unit}',
+    );
+  }
+  return age;
+}
+
+/// Validates gestational age against an [AgeBasedData] day (or week) span.
+GestationalAge checkGestationalAge(
+  GestationalAge age, {
+  required AgeBasedData contextData,
+}) {
+  if (contextData.unit != TimeUnit.weeks && contextData.unit != TimeUnit.days) {
+    throw ArgumentError(
+      'GestationalAge validation expects TimeUnit.weeks or TimeUnit.days, '
+      'got ${contextData.unit}',
+    );
+  }
+
+  final actualValue = contextData.unit == TimeUnit.weeks
+      ? age.completedWeeks
+      : age.totalDays;
+  final lowerBound = contextData.lowerBound;
+  final upperBound = contextData.upperBound;
+
+  if (actualValue < lowerBound || actualValue > upperBound) {
+    throw ArgumentError(
+      'Gestational age is invalid: '
+      'Age is $actualValue ${contextData.unit}, '
+      'Expected range: $lowerBound to $upperBound ${contextData.unit}',
+    );
+  }
   return age;
 }
 

@@ -170,13 +170,17 @@ sealed class Age with _$Age {
   Age ageAtPastDate(Date date) {
     final referenceDate = getObservedDate();
 
-    // Handle invalid cases: if date is after reference date or before birth date
-    if (date.isSameOrAfter(referenceDate) || date.isSameOrBefore(dateOfBirth)) {
+    // Date of birth → age zero at that instant (needed for historical length
+    // adjustment on velocity / visit series).
+    if (date.isSameAs(dateOfBirth)) {
+      return Age(dateOfBirth, observedDate: dateOfBirth);
+    }
+
+    // Invalid: after current observation, or before birth → keep current age.
+    if (date.isSameOrAfter(referenceDate) || date.isBefore(dateOfBirth)) {
       return this;
     }
 
-    // Simply return a new Age with the same birth date but using the provided date
-    // as the observation point
     return Age(dateOfBirth, observedDate: date);
   }
 }
@@ -309,10 +313,11 @@ extension AgeRangeExtension on Age {
 
   /// Returns a string representation of the age in the most appropriate unit
   String toHumanReadableString() {
-    final years = ageInTotalYearsByNow;
-    final months = ageInTotalMonthsByNow % 12;
-    final weeks = ageInTotalWeeksByNow % 4;
-    final days = ageInTotalDaysByNow % 7;
+    final diff = yearsMonthsWeeksDaysOfAgeByNow;
+    final years = diff.years;
+    final months = diff.months;
+    final weeks = diff.weeks;
+    final days = diff.days;
 
     if (years > 0) {
       if (months > 0) {
@@ -339,19 +344,19 @@ extension DateFormatExtension on Date {
   /// Returns a formatted string representation of the date
   /// Format: 'yyyy-MM-dd' by default
   String format([String format = 'yyyy-MM-dd']) {
-    final Map<String, String> formatParams = {
-      'yyyy': year.toString(),
-      'MM': month.number.toString().padLeft(2, '0'),
-      'M': month.number.toString(),
-      'dd': date.toString().padLeft(2, '0'),
-      'd': date.toString(),
-      'MMM': month.text,
-    };
+    final formatParams = [
+      MapEntry('yyyy', year.toString()),
+      MapEntry('MMM', month.text),
+      MapEntry('MM', month.number.toString().padLeft(2, '0')),
+      MapEntry('M', month.number.toString()),
+      MapEntry('dd', date.toString().padLeft(2, '0')),
+      MapEntry('d', date.toString()),
+    ];
 
     String result = format;
-    formatParams.forEach((key, value) {
-      result = result.replaceAll(key, value);
-    });
+    for (final entry in formatParams) {
+      result = result.replaceAll(entry.key, entry.value);
+    }
 
     return result;
   }

@@ -3,6 +3,7 @@ import 'package:growth_standards/src/common/base.dart';
 import 'package:growth_standards/src/common/extension.dart';
 import 'package:growth_standards/src/common/math.dart';
 import 'package:growth_standards/src/common/model/age.dart';
+import 'package:growth_standards/src/common/model/gestational_age.dart';
 import 'package:growth_standards/src/common/model/lms.dart';
 import 'package:growth_standards/src/common/tools.dart';
 import 'package:growth_standards/src/common/types.dart';
@@ -48,22 +49,28 @@ class Fenton {
   FentonFromJson get fromJson => FentonFromJson();
 
   FentonHeadCircumferenceForAge headCircumferenceForAge({
-    required Age age,
+    required Sex sex,
+    required PostmenstrualAge age,
     required Length measurementResult,
   }) => FentonHeadCircumferenceForAge(
+    sex: sex,
     age: age,
     measurementResult: measurementResult,
   );
 
-  FentonWeightForAge weightForAge({required Age age, required Mass weight}) =>
-      FentonWeightForAge(age: age, weight: weight);
+  FentonWeightForAge weightForAge({
+    required Sex sex,
+    required PostmenstrualAge age,
+    required Mass weight,
+  }) => FentonWeightForAge(sex: sex, age: age, weight: weight);
 
   FentonLengthForAge lengthForAge({
     required Sex sex,
-    required Age age,
+    required PostmenstrualAge age,
     required Length lengthHeight,
     required LengthHeightMeasurementPosition measure,
   }) => FentonLengthForAge(
+    sex: sex,
     age: age,
     lengthHeight: lengthHeight,
     measure: measure,

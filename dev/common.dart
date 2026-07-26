@@ -78,7 +78,7 @@ const dataMap = {
     'long': 'Weight For Height',
     'short': 'wfh',
     'limit': {
-      'cat': 'heigth',
+      'cat': 'height',
       'unit': 'cm',
       'low': 0,
       'high': 1856,
@@ -89,7 +89,7 @@ const dataMap = {
     'short': 'wfl',
     'limit': {
       'cat': 'length',
-      'unit': 'c,',
+      'unit': 'cm',
       'low': 0,
       'high': 1856,
     },

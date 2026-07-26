@@ -37,13 +37,14 @@ class IntergrowthNewbornBirthLengthForAgeData extends AgeBasedData {
   TimeUnit get unit => TimeUnit.days;
 }
 
-/// Measure within first 24 hours of life, for infants born between gestational weeks 33 and 43
+/// Measure within first 24 hours of life, for infants born between gestational days 231 and 300 (~33–42+6 weeks)
 @freezed
-sealed class IntergrowthNewbornBirthLengthForAge extends AgeBasedResult
+sealed class IntergrowthNewbornBirthLengthForAge
+    extends GestationalAgeBasedResult
     with _$IntergrowthNewbornBirthLengthForAge {
   factory IntergrowthNewbornBirthLengthForAge({
     required Sex sex,
-    required Age age,
+    required GestationalAge age,
     required Length measurementResult,
   }) = _IntergrowthNewbornBirthLengthForAge;
 
@@ -58,14 +59,13 @@ sealed class IntergrowthNewbornBirthLengthForAge extends AgeBasedResult
       IntergrowthNewbornBirthLengthForAgeData();
 
   _IntergrowthNewbornBirthLengthForAgeLMS get _ageData =>
-      contextData._data[sex]![ageAtObservationDate.ageInTotalByUnit(
-        contextData.unit,
-      )]!;
+      contextData._data[sex]![gestationalAgeAtObservation.totalDays]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 
   @override
-  Age get ageAtObservationDate => checkAge(age, contextData: contextData);
+  GestationalAge get gestationalAgeAtObservation =>
+      checkGestationalAge(age, contextData: contextData);
 
   @override
   num zScore([Precision precision = Precision.two]) =>

@@ -1,5 +1,4 @@
 import 'package:growth_standards/growth_standards.dart';
-import 'package:growth_standards/src/common/model/lms.dart';
 
 abstract class VelocityBasedResult {
   const VelocityBasedResult();
@@ -23,6 +22,18 @@ sealed class Result {
 abstract class AgeBasedResult extends Result {
   const AgeBasedResult();
   Age get ageAtObservationDate;
+}
+
+/// Result keyed by postmenstrual / gestational weeks (Fenton, IG-21 newborn).
+abstract class PostmenstrualAgeBasedResult extends Result {
+  const PostmenstrualAgeBasedResult();
+  PostmenstrualAge get postmenstrualAgeAtObservation;
+}
+
+/// Result keyed by gestational age at birth (INTERGROWTH-21st newborn size).
+abstract class GestationalAgeBasedResult extends Result {
+  const GestationalAgeBasedResult();
+  GestationalAge get gestationalAgeAtObservation;
 }
 
 abstract class LengthBasedResult extends Result {

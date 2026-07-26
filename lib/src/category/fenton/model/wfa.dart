@@ -6,17 +6,24 @@ class FentonWeightForAgeData extends AgeBasedData {
 
   static final _singleton = FentonWeightForAgeData._(_parse());
 
-  static Map<Sex, Map<int, _FentonWeightForAgeLMS>> _parse() {
-    final map = fentonWfA.map((k1, v1) {
-      final lms = LMS(
-        l: v1['l']! as num,
-        m: v1['m']! as num,
-        s: v1['s']! as num,
-      );
-      return MapEntry(k1, _FentonWeightForAgeLMS(lms: lms));
-    });
-    return {Sex.male: map, Sex.female: map};
-  }
+  static Map<Sex, Map<int, _FentonWeightForAgeLMS>> _parse() => {
+    Sex.male: fentonBoysWfA.map(
+      (k, v) => MapEntry(
+        k,
+        _FentonWeightForAgeLMS(
+          lms: LMS(l: v['l']! as num, m: v['m']! as num, s: v['s']! as num),
+        ),
+      ),
+    ),
+    Sex.female: fentonGirlsWfA.map(
+      (k, v) => MapEntry(
+        k,
+        _FentonWeightForAgeLMS(
+          lms: LMS(l: v['l']! as num, m: v['m']! as num, s: v['s']! as num),
+        ),
+      ),
+    ),
+  };
 
   final Map<Sex, Map<int, _FentonWeightForAgeLMS>> _data;
   @override
@@ -30,10 +37,13 @@ class FentonWeightForAgeData extends AgeBasedData {
 }
 
 @freezed
-sealed class FentonWeightForAge extends AgeBasedResult
+sealed class FentonWeightForAge extends PostmenstrualAgeBasedResult
     with _$FentonWeightForAge {
-  factory FentonWeightForAge({required Age age, required Mass weight}) =
-      _FentonWeightForAge;
+  factory FentonWeightForAge({
+    required Sex sex,
+    required PostmenstrualAge age,
+    required Mass weight,
+  }) = _FentonWeightForAge;
 
   const FentonWeightForAge._();
 
@@ -44,14 +54,13 @@ sealed class FentonWeightForAge extends AgeBasedResult
   FentonWeightForAgeData get contextData => FentonWeightForAgeData();
 
   _FentonWeightForAgeLMS get _ageData =>
-      contextData._data.values.first[ageAtObservationDate.ageInTotalByUnit(
-        contextData.unit,
-      )]!;
+      contextData._data[sex]![postmenstrualAgeAtObservation.completedWeeks]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 
   @override
-  Age get ageAtObservationDate => checkAge(age, contextData: contextData);
+  PostmenstrualAge get postmenstrualAgeAtObservation =>
+      checkPostmenstrualAge(age, contextData: contextData);
 
   @override
   num zScore([Precision precision = Precision.two]) =>

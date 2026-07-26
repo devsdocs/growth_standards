@@ -66,11 +66,11 @@ sealed class CDCBodyMassIndexForAge extends AgeBasedResult
   @override
   CDCBodyMassIndexForAgeData get contextData => CDCBodyMassIndexForAgeData();
 
-  //TODO(devsdocs): Fix CDC age calculation
+  // CDC: when only completed months are known, use mid-month Agemos (n + 0.5).
+  // Applies at chart edges too when a mid-month row exists (e.g. 24.5, 240.5).
   _CDCBodyMassIndexForAgeLMS get _ageData =>
-      contextData._data[sex]![ageAtObservationDate.ageInTotalMonthsByNow == 24
-          ? 24
-          : ageAtObservationDate.ageInTotalMonthsByNow + 0.5]!;
+      contextData._data[sex]![ageAtObservationDate.ageInTotalMonthsByNow +
+          0.5]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 

@@ -1335,7 +1335,7 @@ return $default(_that.sex,_that.age,_that.pastMeasurement);case _:
 @JsonSerializable()
 
 class _WHOGrowthStandardsHeadCircumferenceVelocityForAge extends WHOGrowthStandardsHeadCircumferenceVelocityForAge {
-   _WHOGrowthStandardsHeadCircumferenceVelocityForAge({required this.sex, required this.age, required final  List<LengthMeasurementHistory> pastMeasurement}): assert(age.ageInTotalDaysByNow >= 0 && age.ageInTotalMonthsByNow <= 24, 'Age must be in range of 0 days - 24 months'),assert(pastMeasurement.isNotEmpty, 'Calculation can not be done as past measurement is empty'),assert(pastMeasurement.toSet().length > 1, 'Calculation can not be done as there is only one measurement history'),assert(pastMeasurement.every((element) => element.date.isSameOrBefore(Date.today())), 'Calculation can not be done as there is future date in past measurement'),assert(pastMeasurement.every((element) => element.date.isSameOrAfter(age.dateOfBirth)), 'Calculation can not be done as there is date less than Date of Birth in past measurement, if you find this exception is a mistake, try to provide exact $Age'),_pastMeasurement = pastMeasurement,super._();
+   _WHOGrowthStandardsHeadCircumferenceVelocityForAge({required this.sex, required this.age, required final  List<LengthMeasurementHistory> pastMeasurement}): _pastMeasurement = pastMeasurement,super._();
   factory _WHOGrowthStandardsHeadCircumferenceVelocityForAge.fromJson(Map<String, dynamic> json) => _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeFromJson(json);
 
 @override final  Sex sex;
@@ -1906,7 +1906,7 @@ return $default(_that.sex,_that.age,_that.pastMeasurement);case _:
 @JsonSerializable()
 
 class _WHOGrowthStandardsLengthVelocityForAge extends WHOGrowthStandardsLengthVelocityForAge {
-   _WHOGrowthStandardsLengthVelocityForAge({required this.sex, required this.age, required final  List<LengthMeasurementHistory> pastMeasurement}): assert(age.ageInTotalDaysByNow >= 0 && age.ageInTotalMonthsByNow <= 24, 'Age must be in range of 0 days - 24 months'),assert(pastMeasurement.isNotEmpty, 'Calculation can not be done as past measurement is empty'),assert(pastMeasurement.toSet().length > 1, 'Calculation can not be done as there is only one measurement history'),assert(pastMeasurement.every((element) => element.date.isSameOrBefore(Date.today())), 'Calculation can not be done as there is future date in past measurement'),assert(pastMeasurement.every((element) => element.date.isSameOrAfter(age.dateOfBirth)), 'Calculation can not be done as there is date less than Date of Birth in past measurement, if you find this exception is a mistake, try to provide exact $Age'),_pastMeasurement = pastMeasurement,super._();
+   _WHOGrowthStandardsLengthVelocityForAge({required this.sex, required this.age, required final  List<LengthMeasurementHistory> pastMeasurement}): _pastMeasurement = pastMeasurement,super._();
   factory _WHOGrowthStandardsLengthVelocityForAge.fromJson(Map<String, dynamic> json) => _$WHOGrowthStandardsLengthVelocityForAgeFromJson(json);
 
 @override final  Sex sex;
@@ -3619,7 +3619,7 @@ return $default(_that.sex,_that.age,_that.pastMeasurement);case _:
 @JsonSerializable()
 
 class _WHOGrowthStandardsWeightVelocityForAge extends WHOGrowthStandardsWeightVelocityForAge {
-   _WHOGrowthStandardsWeightVelocityForAge({required this.sex, required this.age, required final  List<MassMeasurementHistory> pastMeasurement}): assert(age.ageInTotalDaysByNow >= 0 && age.ageInTotalMonthsByNow <= 24, 'Age must be in range of 0 days - 24 months'),assert(pastMeasurement.isNotEmpty, 'Calculation can not be done as past measurement is empty'),assert(pastMeasurement.toSet().length > 1, 'Calculation can not be done as there is only one measurement history'),assert(pastMeasurement.every((element) => element.date.isSameOrBefore(Date.today())), 'Calculation can not be done as there is future date in past measurement'),assert(pastMeasurement.every((element) => element.date.isSameOrAfter(age.dateOfBirth)), 'Calculation can not be done as there is date less than Date of Birth in past measurement, if you find this exception is a mistake, try to provide exact $Age'),_pastMeasurement = pastMeasurement,super._();
+   _WHOGrowthStandardsWeightVelocityForAge({required this.sex, required this.age, required final  List<MassMeasurementHistory> pastMeasurement}): _pastMeasurement = pastMeasurement,super._();
   factory _WHOGrowthStandardsWeightVelocityForAge.fromJson(Map<String, dynamic> json) => _$WHOGrowthStandardsWeightVelocityForAgeFromJson(json);
 
 @override final  Sex sex;
