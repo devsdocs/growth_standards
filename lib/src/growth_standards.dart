@@ -126,6 +126,7 @@ export 'common/model/gestational_age.dart'
     show GestationalAge, PostmenstrualAge;
 export 'common/model/lms.dart' show LMS;
 export 'common/tools.dart' show TimeUnit;
+export 'common/trajectory.dart';
 export 'common/types.dart'
     show
         LengthHeightMeasurementPosition,
@@ -133,5 +134,10 @@ export 'common/types.dart'
         PercentileValue,
         Sex,
         ZScoreValue;
+export 'visualization/extension.dart';
+export 'visualization/growth_chart_config.dart';
+export 'visualization/growth_chart_model.dart';
+export 'visualization/growth_chart_theme.dart';
+export 'visualization/growth_chart_visualizer.dart';
 
 part 'growth_standards.part.dart';

@@ -11,3 +11,4 @@ dev/
 *.test.dart
 
 docs/
+doc/

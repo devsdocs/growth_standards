@@ -75,8 +75,7 @@ sealed class WHOGrowthStandardsHeadCircumferenceVelocityForAge
     Map<String, dynamic> json,
   ) => _$WHOGrowthStandardsHeadCircumferenceVelocityForAgeFromJson(json);
 
-  WHOGrowthStandardsHeadCircumferenceVelocityForAgeData
-  get _headCircumferenceData =>
+  WHOGrowthStandardsHeadCircumferenceVelocityForAgeData get contextData =>
       WHOGrowthStandardsHeadCircumferenceVelocityForAgeData();
 
   Map<VelocityIncrement, Map<({Date dateBefore, Date dateAfter}), num>>
@@ -92,7 +91,7 @@ sealed class WHOGrowthStandardsHeadCircumferenceVelocityForAge
       age: age,
       measurementDates: pastMeasurement.map((e) => e.date).toList(),
     );
-    final joinMap = _headCircumferenceData._data[sex]!.map((k1, v1) {
+    final joinMap = contextData._data[sex]!.map((k1, v1) {
       final alt = _incrementalData[k1];
       if (alt == null || alt.isEmpty) return MapEntry(k1, null);
 

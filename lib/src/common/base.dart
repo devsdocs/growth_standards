@@ -9,6 +9,7 @@ abstract class VelocityBasedResult {
 sealed class Result {
   const Result();
 
+  Sex? get sex => null;
   num zScore([Precision precision = Precision.two]);
   num percentile([Precision precision = Precision.two]);
 
@@ -17,6 +18,29 @@ sealed class Result {
   LMSContext get lmsData;
 
   BaseData get contextData;
+}
+
+class DummyVelocityResult extends Result {
+  const DummyVelocityResult(this._sex);
+  final Sex _sex;
+
+  @override
+  Sex? get sex => _sex;
+
+  @override
+  num zScore([Precision precision = Precision.two]) => 0.0;
+
+  @override
+  num percentile([Precision precision = Precision.two]) => 50.0;
+
+  @override
+  num get measurementResultInDefaultUnit => 0.0;
+
+  @override
+  LMSContext get lmsData => throw UnimplementedError();
+
+  @override
+  BaseData get contextData => throw UnimplementedError();
 }
 
 abstract class AgeBasedResult extends Result {

@@ -2,78 +2,102 @@
 
 import 'package:growth_standards/growth_standards.dart';
 
-final birthDay = Date(year: 2022, month: Months.june, date: 30);
-const weight = 11.75;
-const length = 82.8;
-
-const centimeters = Length$Centimeter(length);
-const kilograms = Mass$Kilogram(weight);
-final age = Age(birthDay);
-
-final gs = GrowthStandard.who.fromBirthTo5Years;
-const sex = Sex.male;
-
 void main() {
+  final birthDay = Date(year: 2022, month: Months.june, date: 30);
+  final age = Age(birthDay);
+  const sex = Sex.male;
+  const centimeters = Length$Centimeter(82.8);
+  const kilograms = Mass$Kilogram(11.75);
+
+  final gs = GrowthStandard.who.fromBirthTo5Years;
+
+  print('=== 1. WHO Standard Calculation ===');
   print(
-    'Age: ${age.yearsMonthsWeeksDaysOfAgeByNow} with total ${age.ageInTotalMonthsByNow} in Months or ${age.ageInTotalDaysByNow} in Days',
+    'Age: ${age.yearsMonthsWeeksDaysOfAgeByNow} (${age.ageInTotalMonthsByNow} months)',
   );
-  // Demonstrating adjusted zscore calculation
-  final calcLengthForAgeStanding = gs.lengthForAge(
+
+  // WHO Length-for-Age
+  final calcLengthForAge = gs.lengthForAge(
     age: age,
     lengthHeight: centimeters,
     sex: sex,
-    measure: LengthHeightMeasurementPosition.standing,
-  );
-  print(age.toJson());
-  print(birthDay.toJson());
-  print(Date.fromJson(birthDay.toJson()));
-  print(Age.fromJson(age.toJson()));
-
-  print(calcLengthForAgeStanding.zScore());
-  print(calcLengthForAgeStanding.percentile());
-  print(calcLengthForAgeStanding.toJson());
-  print(gs.fromJson.lengthForAge(calcLengthForAgeStanding.toJson()));
-
-  final calcLengthForAgeRecumbent = calcLengthForAgeStanding.copyWith(
     measure: LengthHeightMeasurementPosition.recumbent,
   );
-  print(calcLengthForAgeRecumbent.zScore());
-  print(calcLengthForAgeRecumbent.percentile());
-  print(calcLengthForAgeRecumbent.toJson());
+  print('Length-for-Age Z-Score: ${calcLengthForAge.zScore()} SD');
+  print('Length-for-Age Percentile: ${calcLengthForAge.percentile()}%');
 
+  // WHO Weight-for-Age
   final calcWeightForAge = gs.weightForAge(
     age: age,
     weight: kilograms,
     sex: sex,
   );
+  print('Weight-for-Age Z-Score: ${calcWeightForAge.zScore()} SD');
+  print('Weight-for-Age Percentile: ${calcWeightForAge.percentile()}%');
 
-  print(calcWeightForAge.zScore());
-  print(calcWeightForAge.percentile());
-  print(calcWeightForAge.toJson());
-
-  final calcWeightForLength = gs.weightForLength(
-    lengthMeasurementResult: centimeters,
-    massMeasurementResult: kilograms,
+  print('\n=== 2. Longitudinal Trajectory Tracking (GrowthTrajectory) ===');
+  final trajectory = GrowthTrajectory.whoWeightForAge(
     sex: sex,
-    age: age,
-    measure: LengthHeightMeasurementPosition.recumbent,
+    dateOfBirth: birthDay,
+    visits: [
+      VisitObservation(
+        Date(year: 2022, month: Months.june, date: 30),
+        const Mass$Kilogram(3.4),
+      ),
+      VisitObservation(
+        Date(year: 2022, month: Months.september, date: 30),
+        const Mass$Kilogram(6.4),
+      ),
+      VisitObservation(
+        Date(year: 2022, month: Months.december, date: 30),
+        const Mass$Kilogram(7.9),
+      ),
+      VisitObservation(
+        Date(year: 2023, month: Months.june, date: 30),
+        const Mass$Kilogram(9.6),
+      ),
+      VisitObservation(
+        Date(year: 2024, month: Months.june, date: 30),
+        const Mass$Kilogram(12.2),
+      ),
+    ],
   );
-  print(calcWeightForLength.zScore());
-  print(calcWeightForLength.percentile());
-  print(calcWeightForLength.toJson());
 
-  final calcBMIForAge = gs.bodyMassIndexForAge(
-    bodyMassIndexMeasurement:
-        WHOGrowthStandardsBodyMassIndexMeasurement.fromMeasurement(
-          measure: LengthHeightMeasurementPosition.recumbent,
-          lengthHeight: centimeters,
-          weight: kilograms,
-          age: age,
-        ),
+  print('Tracked Visits: ${trajectory.length}');
+  print('Latest Result: Z-Score = ${trajectory.latestResult?.zScore()} SD');
+
+  print('\n=== 3. WHO Growth Velocity Calculation ===');
+  final velocityAge = Age.byMonthsAgo(6);
+  final msr1 = MassMeasurementHistory(
+    velocityAge.dateAtMonthsAfterBirth(4),
+    const Mass$Kilogram(6.4),
+  );
+  final msr2 = MassMeasurementHistory(
+    velocityAge.dateAtMonthsAfterBirth(6),
+    const Mass$Kilogram(7.9),
+  );
+
+  final velocityResult = gs.weightVelocityForAge(
+    age: velocityAge,
     sex: sex,
+    pastMeasurement: [msr1, msr2],
+  );
+  print(
+    'Velocity Intervals Calculated: ${velocityResult.zScorePercentileMap().keys}',
   );
 
-  print(calcBMIForAge.zScore());
-  print(calcBMIForAge.percentile());
-  print(calcBMIForAge.toJson());
+  print('\n=== 4. Growth Chart Graphic Export ===');
+  final svgStr = calcWeightForAge.toSvg();
+  print('Generated SVG Growth Chart (${svgStr.length} bytes)');
+
+  final pngBytes = calcWeightForAge.toPng();
+  print('Generated PNG Growth Chart Image (${pngBytes.length} bytes)');
+
+  final trajectorySvg = trajectory.toSvg();
+  print(
+    'Generated Longitudinal Trajectory SVG (${trajectorySvg.length} bytes)',
+  );
+
+  final velocitySvg = velocityResult.toSvg();
+  print('Generated Growth Velocity SVG (${velocitySvg.length} bytes)');
 }

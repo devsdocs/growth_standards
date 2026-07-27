@@ -1,3 +1,17 @@
+## 4.6.0
+- **Growth Chart Visualizer Engine**: Pure Dart rendering engine generating vector SVG and high-resolution PNG growth charts.
+  - Supports WHO (0-5y & 5-18y), CDC (2-20y & 0-36m), Fenton 2013 Preterm, and WHO Growth Velocity charts.
+  - Pixel-perfect layout alignment between SVG and PNG renderers.
+  - Includes custom themes (`GrowthChartTheme.boy()`, `GrowthChartTheme.girl()`), display modes (Z-scores vs. Percentiles), legend rows, grid lines, and top-right callout result banners.
+  - Direct extension methods on `Result`, `List<Result>`, `VelocityBasedResult`, and `GrowthTrajectory` (`toSvg()`, `toPng()`, `saveSvg()`, `savePng()`).
+- **Core `GrowthTrajectory` API**: Decoupled longitudinal child growth tracking helper available at core library level (`lib/src/common/trajectory.dart`).
+  - Added 24 trajectory factory constructors covering WHO, CDC, Fenton, and INTERGROWTH-21st standards.
+  - Accepts `LengthMassObservation` paired visit measurements and returns `Result` calculations on `add()`.
+  - Added trajectory analytic getters (`zScores`, `percentiles`, `latestResult`, `firstResult`).
+- **WHO Growth Velocity Visualization**: Render interval growth velocity charts for weight, length, and head circumference gain across 1, 2, 3, 4, and 6-month increments.
+- **Pediatric Age & Sex Semantics**: Standardized sex labels (`BOY`/`GIRL` and `Boys`/`Girls` for pediatric age < 18y; `MALE`/`FEMALE` and `Males`/`Females` for adult age ≥ 18y).
+- **Expanded Modular Example Suite**: Added dedicated, runnable scripts under `example/` for every growth measurement type.
+
 ## 4.5.0
 - Add sex-specific Fenton 2013 LMS datasets for boys and girls (`wfa`, `lfa`, `hcfa`)
 - Require typed `PostmenstrualAge` for Fenton and `GestationalAge` for INTERGROWTH newborn models
