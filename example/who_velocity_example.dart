@@ -65,8 +65,7 @@ void main() {
   print('   Results Map: ${hcVelocity.zScorePercentileMap()}');
 
   // Export velocity graphics
-  print('\nExporting Velocity SVG & PNG charts...');
+  print('\nExporting Velocity SVG chart...');
   weightVelocity.saveSvg('doc/samples/who_weight_velocity.svg');
-  weightVelocity.savePng('doc/samples/who_weight_velocity.png');
-  print('Saved velocity charts to doc/samples/');
+  print('Saved velocity chart to doc/samples/');
 }

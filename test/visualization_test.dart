@@ -28,7 +28,7 @@ void main() {
       expect(svgStr, contains('Result:'));
     });
 
-    test('WHO Length-for-Age PNG Export', () {
+    test('WHO Length-for-Age SVG Export', () {
       final calcLengthForAge = gs.lengthForAge(
         age: age,
         lengthHeight: centimeters,
@@ -36,15 +36,12 @@ void main() {
         measure: LengthHeightMeasurementPosition.standing,
       );
 
-      final pngBytes = calcLengthForAge.toPng();
-      expect(pngBytes, isNotEmpty);
-      expect(pngBytes[0], equals(137));
-      expect(pngBytes[1], equals(80));
-      expect(pngBytes[2], equals(78));
-      expect(pngBytes[3], equals(71));
+      final svgStr = calcLengthForAge.toSvg();
+      expect(svgStr, contains('<svg'));
+      expect(svgStr, contains('GIRL'));
     });
 
-    test('Percentile Display Mode SVG & PNG Export', () {
+    test('Percentile Display Mode SVG Export', () {
       final calcBMI = gs.bodyMassIndexForAge(
         bodyMassIndexMeasurement:
             WHOGrowthStandardsBodyMassIndexMeasurement.fromMeasurement(
@@ -65,9 +62,6 @@ void main() {
       expect(svgStr, contains('Custom BMI Chart'));
       expect(svgStr, contains('50th'));
       expect(svgStr, contains('97th'));
-
-      final pngBytes = calcBMI.toPng(config: config);
-      expect(pngBytes, isNotEmpty);
     });
 
     test('Multi-Point Trajectory using GrowthTrajectory helper', () {
@@ -91,7 +85,6 @@ void main() {
 
       expect(tracker.results.length, equals(3));
       expect(tracker.toSvg(), contains('WHO Weight-for-Age'));
-      expect(tracker.toPng(), isNotEmpty);
     });
 
     test('Multi-Point Trajectory (Longitudinal Tracking)', () {
@@ -123,12 +116,10 @@ void main() {
 
       expect(svgStr, contains('Observation Trajectory'));
       expect(svgStr, contains('<circle'));
-
-      final pngBytes = trajectory.toPng();
-      expect(pngBytes.length, greaterThan(1000));
+      expect(svgStr, contains('Trajectory</text>'));
     });
 
-    test('File System SVG & PNG File Export', () {
+    test('File System SVG File Export', () {
       final infantAge = Age(Date(year: 2026, month: Months.january, date: 1));
       final calcWFL = gs.weightForLength(
         lengthMeasurementResult: const Length$Centimeter(65.0),
@@ -140,15 +131,10 @@ void main() {
 
       final tmpDir = Directory.systemTemp.createTempSync('growth_chart_test_');
       final svgPath = '${tmpDir.path}/chart.svg';
-      final pngPath = '${tmpDir.path}/chart.png';
 
       final svgFile = calcWFL.saveSvg(svgPath);
       expect(svgFile.existsSync(), isTrue);
       expect(svgFile.readAsStringSync(), contains('<svg'));
-
-      final pngFile = calcWFL.savePng(pngPath);
-      expect(pngFile.existsSync(), isTrue);
-      expect(pngFile.readAsBytesSync().length, greaterThan(500));
 
       tmpDir.deleteSync(recursive: true);
     });
@@ -199,9 +185,6 @@ void main() {
       final svgStr = velocityResult.toSvg();
       expect(svgStr, contains('Velocity'));
       expect(svgStr, contains('WHO'));
-
-      final pngBytes = velocityResult.toPng();
-      expect(pngBytes, isNotEmpty);
     });
   });
 }

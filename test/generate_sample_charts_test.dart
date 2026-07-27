@@ -20,7 +20,6 @@ void main() {
       sex: Sex.male,
     );
     wfaBoy.saveSvg('${outputDir.path}/who_weight_for_age_boy.svg');
-    wfaBoy.savePng('${outputDir.path}/who_weight_for_age_boy.png');
 
     // 2. WHO Length-for-Age (Girl, 1 Year Old)
     final lfaGirl = gs.lengthForAge(
@@ -30,7 +29,6 @@ void main() {
       measure: LengthHeightMeasurementPosition.recumbent,
     );
     lfaGirl.saveSvg('${outputDir.path}/who_length_for_age_girl.svg');
-    lfaGirl.savePng('${outputDir.path}/who_length_for_age_girl.png');
 
     // 3. CDC Weight-for-Age (Boy, 8 Years Old) in Percentile Mode
     final cdcGs = GrowthStandard.cdc.from2YearsAndAbove;
@@ -47,10 +45,6 @@ void main() {
       '${outputDir.path}/cdc_weight_for_age_boy.svg',
       config: cdcConfig,
     );
-    cdcWfaBoy.savePng(
-      '${outputDir.path}/cdc_weight_for_age_boy.png',
-      config: cdcConfig,
-    );
 
     // 4. Fenton Preterm Weight-for-Age (Girl, 34 Weeks PMA)
     final fentonWfa = GrowthStandard.fenton.weightForAge(
@@ -59,7 +53,6 @@ void main() {
       weight: const Mass$Kilogram(2.1),
     );
     fentonWfa.saveSvg('${outputDir.path}/fenton_weight_for_age_girl.svg');
-    fentonWfa.savePng('${outputDir.path}/fenton_weight_for_age_girl.png');
 
     // 5. Longitudinal Trajectory using GrowthTrajectory API (Boy, Birth to 24 Months)
     final trajectory = GrowthTrajectory.whoWeightForAge(
@@ -89,7 +82,6 @@ void main() {
       ],
     );
     trajectory.saveSvg('${outputDir.path}/who_longitudinal_trajectory.svg');
-    trajectory.savePng('${outputDir.path}/who_longitudinal_trajectory.png');
 
     // 6. WHO Weight Velocity (Boy, 2-Month Increment, 4 to 6 Months)
     final velocityAge = Age.byMonthsAgo(6);
@@ -108,11 +100,10 @@ void main() {
       pastMeasurement: [msr1, msr2],
     );
     velocityResult.saveSvg('${outputDir.path}/who_weight_velocity_boy.svg');
-    velocityResult.savePng('${outputDir.path}/who_weight_velocity_boy.png');
 
-    // Verify all 12 sample files were created
+    // Verify all 6 sample SVG files were created
     final files = outputDir.listSync();
-    expect(files.length, greaterThanOrEqualTo(12));
+    expect(files.length, greaterThanOrEqualTo(6));
     print(
       '\nSuccessfully generated ${files.length} sample chart files in ${outputDir.path}:',
     );

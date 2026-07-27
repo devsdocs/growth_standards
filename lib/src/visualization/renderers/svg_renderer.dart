@@ -1,3 +1,4 @@
+import 'package:growth_standards/src/visualization/growth_chart_config.dart';
 import 'package:growth_standards/src/visualization/growth_chart_model.dart';
 
 /// SVG Renderer for generating standardized vector growth charts
@@ -13,11 +14,11 @@ class SvgRenderer {
     final width = cfg.width;
     final height = cfg.height;
 
-    // Layout Margins
+    // Layout Margins (extra bottom row reserved for the legend when shown)
     const marginLeft = 80.0;
     const marginRight = 90.0;
     const marginTop = 100.0;
-    const marginBottom = 70.0;
+    final marginBottom = cfg.showLegend ? 96.0 : 64.0;
 
     final plotWidth = width - marginLeft - marginRight;
     final plotHeight = height - marginTop - marginBottom;
@@ -127,21 +128,28 @@ class SvgRenderer {
       '  <rect class="axis-line" fill="none" x="$marginLeft" y="$marginTop" width="$plotWidth" height="$plotHeight"/>',
     );
 
-    // X Axis Ticks & Labels
+    // X Axis Ticks & Labels (labels that would collide with the previous
+    // rendered label are skipped to avoid overlapping text on dense axes)
+    const tickCharWidth = 6.2;
+    var lastLabelEndX = double.negativeInfinity;
     for (final tick in model.xTicks) {
       final px = mapX(tick.value);
       if (px >= marginLeft && px <= marginLeft + plotWidth) {
         buffer.writeln(
           '  <line class="axis-line" x1="$px" y1="${marginTop + plotHeight}" x2="$px" y2="${marginTop + plotHeight + 6}"/>',
         );
-        buffer.writeln(
-          '  <text class="tick-label" x="$px" y="${marginTop + plotHeight + 20}" text-anchor="middle">${_escapeXml(tick.label)}</text>',
-        );
+        final labelHalfWidth = tick.label.length * tickCharWidth / 2;
+        if (px - labelHalfWidth >= lastLabelEndX + 8) {
+          buffer.writeln(
+            '  <text class="tick-label" x="$px" y="${marginTop + plotHeight + 20}" text-anchor="middle">${_escapeXml(tick.label)}</text>',
+          );
+          lastLabelEndX = px + labelHalfWidth;
+        }
       }
     }
-    // X Axis Title
+    // X Axis Title (fixed offset below tick labels, above the legend row)
     buffer.writeln(
-      '  <text class="axis-title" x="${marginLeft + plotWidth / 2}" y="${height - 20}" text-anchor="middle">${_escapeXml(model.xLabel)}</text>',
+      '  <text class="axis-title" x="${marginLeft + plotWidth / 2}" y="${marginTop + plotHeight + 44}" text-anchor="middle">${_escapeXml(model.xLabel)}</text>',
     );
 
     // Y Axis Ticks & Labels
@@ -281,50 +289,89 @@ class SvgRenderer {
       buffer.writeln('  </g>');
     }
 
-    // Legend Row at Bottom
+    // Legend Row at Bottom (dynamically laid out and centered so items never
+    // overlap each other or the x-axis title)
     if (cfg.showLegend) {
       buffer.writeln('  <!-- Legend -->');
-      final legendY = height - 14.0;
+      final legendY = height - 20.0;
+      final isPercentile = cfg.displayMode == GrowthChartDisplayMode.percentile;
+
+      final items = <_LegendItem>[
+        _LegendItem(
+          kind: _LegendSwatch.solidLine,
+          color: theme.medianCurveColor.toSvgRgb(),
+          strokeWidth: 3,
+          label: isPercentile ? '50th (Median)' : '0 SD (Median)',
+        ),
+        _LegendItem(
+          kind: _LegendSwatch.solidLine,
+          color: theme.normalCurveColor.toSvgRgb(),
+          strokeWidth: 2,
+          label: isPercentile ? '15th / 85th' : '\u00B11 SD',
+        ),
+        _LegendItem(
+          kind: _LegendSwatch.dashedLine,
+          color: theme.alertCurveColor.toSvgRgb(),
+          strokeWidth: 2,
+          label: isPercentile ? '3rd / 97th' : '\u00B12 / \u00B13 SD',
+        ),
+        if (cfg.showTrajectoryLine && model.observationPoints.length > 1)
+          _LegendItem(
+            kind: _LegendSwatch.dashedLine,
+            color: theme.pointTrajectoryColor.toSvgRgb(),
+            strokeWidth: 2.5,
+            label: 'Trajectory',
+          ),
+        const _LegendItem(
+          kind: _LegendSwatch.marker,
+          color: '',
+          strokeWidth: 0,
+          label: 'Calculated Result',
+        ),
+      ];
+
+      // Approximate text width for the 11px tick-label font
+      const charWidth = 6.2;
+      const swatchGap = 7.0;
+      const itemGap = 30.0;
+
+      double itemWidth(_LegendItem item) =>
+          item.kind.swatchWidth + swatchGap + item.label.length * charWidth;
+
+      final totalWidth =
+          items.fold<double>(0, (sum, it) => sum + itemWidth(it)) +
+          itemGap * (items.length - 1);
+      var cursorX = ((width - totalWidth) / 2).clamp(12.0, double.infinity);
+
       buffer.writeln('  <g>');
-
-      // Item 1: Median Line
-      buffer.writeln(
-        '    <line x1="165" y1="${legendY - 4}" x2="185" y2="${legendY - 4}" stroke="${theme.medianCurveColor.toSvgRgb()}" stroke-width="3"/>',
-      );
-      buffer.writeln(
-        '    <text class="tick-label" x="190" y="$legendY">0 SD (Median)</text>',
-      );
-
-      // Item 2: ±1 SD Line
-      buffer.writeln(
-        '    <line x1="295" y1="${legendY - 4}" x2="315" y2="${legendY - 4}" stroke="${theme.normalCurveColor.toSvgRgb()}" stroke-width="2"/>',
-      );
-      buffer.writeln(
-        '    <text class="tick-label" x="320" y="$legendY">±1 SD (15th/85th)</text>',
-      );
-
-      // Item 3: ±2/±3 SD Line
-      buffer.writeln(
-        '    <line x1="445" y1="${legendY - 4}" x2="465" y2="${legendY - 4}" stroke="${theme.alertCurveColor.toSvgRgb()}" stroke-width="2" stroke-dasharray="4,3"/>',
-      );
-      buffer.writeln(
-        '    <text class="tick-label" x="470" y="$legendY">±2/±3 SD (3rd/97th)</text>',
-      );
-
-      // Item 4: Result Point Marker
-      buffer.writeln(
-        '    <circle cx="610" cy="${legendY - 4}" r="5" fill="${theme.pointMarkerColor.toSvgRgba()}" opacity="0.3"/>',
-      );
-      buffer.writeln(
-        '    <circle cx="610" cy="${legendY - 4}" r="3" fill="${theme.pointMarkerFill.toSvgRgb()}" stroke="${theme.pointMarkerColor.toSvgRgb()}" stroke-width="1.5"/>',
-      );
-      buffer.writeln(
-        '    <circle cx="610" cy="${legendY - 4}" r="1.5" fill="${theme.pointMarkerColor.toSvgRgb()}"/>',
-      );
-      buffer.writeln(
-        '    <text class="tick-label" x="622" y="$legendY">Calculated Result</text>',
-      );
-
+      for (final item in items) {
+        final swatchMidY = legendY - 4;
+        switch (item.kind) {
+          case _LegendSwatch.solidLine:
+            buffer.writeln(
+              '    <line x1="$cursorX" y1="$swatchMidY" x2="${cursorX + item.kind.swatchWidth}" y2="$swatchMidY" stroke="${item.color}" stroke-width="${item.strokeWidth}"/>',
+            );
+          case _LegendSwatch.dashedLine:
+            buffer.writeln(
+              '    <line x1="$cursorX" y1="$swatchMidY" x2="${cursorX + item.kind.swatchWidth}" y2="$swatchMidY" stroke="${item.color}" stroke-width="${item.strokeWidth}" stroke-dasharray="4,3"/>',
+            );
+          case _LegendSwatch.marker:
+            final cx = cursorX + item.kind.swatchWidth / 2;
+            buffer.writeln(
+              '    <circle cx="$cx" cy="$swatchMidY" r="5" fill="${theme.pointMarkerColor.toSvgRgba()}" opacity="0.3"/>',
+            );
+            buffer.writeln(
+              '    <circle cx="$cx" cy="$swatchMidY" r="3" fill="${theme.pointMarkerFill.toSvgRgb()}" stroke="${theme.pointMarkerColor.toSvgRgb()}" stroke-width="1.5"/>',
+            );
+            buffer.writeln(
+              '    <circle cx="$cx" cy="$swatchMidY" r="1.5" fill="${theme.pointMarkerColor.toSvgRgb()}"/>',
+            );
+        }
+        buffer.writeln(
+          '    <text class="tick-label" x="${cursorX + item.kind.swatchWidth + swatchGap}" y="$legendY">${_escapeXml(item.label)}</text>',
+        );
+        cursorX += itemWidth(item) + itemGap;
+      }
       buffer.writeln('  </g>');
     }
 
@@ -340,4 +387,28 @@ class SvgRenderer {
         .replaceAll('"', '&quot;')
         .replaceAll("'", '&apos;');
   }
+}
+
+enum _LegendSwatch {
+  solidLine(22),
+  dashedLine(22),
+  marker(14);
+
+  const _LegendSwatch(this.swatchWidth);
+
+  final double swatchWidth;
+}
+
+class _LegendItem {
+  const _LegendItem({
+    required this.kind,
+    required this.color,
+    required this.strokeWidth,
+    required this.label,
+  });
+
+  final _LegendSwatch kind;
+  final String color;
+  final double strokeWidth;
+  final String label;
 }

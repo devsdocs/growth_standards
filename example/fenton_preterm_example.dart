@@ -43,8 +43,7 @@ void main() {
   );
 
   // Export Fenton Chart Graphics
-  print('\nGenerating Fenton Preterm SVG & PNG Growth Charts...');
+  print('\nGenerating Fenton Preterm SVG Growth Chart...');
   fentonWeight.saveSvg('doc/samples/fenton_preterm_girl.svg');
-  fentonWeight.savePng('doc/samples/fenton_preterm_girl.png');
-  print('Saved Fenton charts to doc/samples/');
+  print('Saved Fenton chart to doc/samples/');
 }

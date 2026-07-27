@@ -71,7 +71,7 @@ void main() {
   );
 
   // Render CDC Chart in Percentile Mode
-  print('\nGenerating CDC Percentile Growth Chart SVG & PNG...');
+  print('\nGenerating CDC Percentile Growth Chart SVG...');
   final cdcConfig = GrowthChartConfig(
     displayMode: GrowthChartDisplayMode.percentile,
     title: 'CDC Weight-for-Age Clinical Record (Male, 8 Years)',
@@ -79,6 +79,5 @@ void main() {
   );
 
   cdcWfa.saveSvg('doc/samples/cdc_wfa_percentile.svg', config: cdcConfig);
-  cdcWfa.savePng('doc/samples/cdc_wfa_percentile.png', config: cdcConfig);
-  print('Saved CDC charts to doc/samples/');
+  print('Saved CDC chart to doc/samples/');
 }

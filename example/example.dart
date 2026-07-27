@@ -90,9 +90,6 @@ void main() {
   final svgStr = calcWeightForAge.toSvg();
   print('Generated SVG Growth Chart (${svgStr.length} bytes)');
 
-  final pngBytes = calcWeightForAge.toPng();
-  print('Generated PNG Growth Chart Image (${pngBytes.length} bytes)');
-
   final trajectorySvg = trajectory.toSvg();
   print(
     'Generated Longitudinal Trajectory SVG (${trajectorySvg.length} bytes)',

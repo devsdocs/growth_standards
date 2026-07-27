@@ -1,3 +1,12 @@
+## 5.0.0
+- **BREAKING — SVG-only chart output**: Removed the PNG renderer and all PNG APIs (`toPng()`, `savePng()`, `toPngList()`, `savePngList()`, `renderVelocityPng()`, `saveVelocityPng()`). Charts are now rendered exclusively as SVG; convert to raster formats externally (e.g. `rsvg-convert`, Inkscape, or a browser).
+- **BREAKING — dropped `image` dependency**: The package no longer depends on `package:image`.
+- **Redesigned chart legend**: Legend items are now dynamically measured, evenly spaced, and horizontally centered on a dedicated bottom row, eliminating text overlap with the x-axis title and between entries.
+  - Legend labels adapt to the display mode (`0 SD (Median)` / `±1 SD` / `±2 / ±3 SD` for Z-scores; `50th (Median)` / `15th / 85th` / `3rd / 97th` for percentiles).
+  - A `Trajectory` legend entry is shown automatically for multi-point longitudinal charts.
+  - The x-axis title now sits at a fixed offset below the tick labels with dedicated space reserved for the legend row.
+- **X-axis tick label overlap guard**: Tick labels that would collide with the previous label (e.g. dense velocity interval labels like `10–12m`) are automatically skipped.
+
 ## 4.6.0
 - **Growth Chart Visualizer Engine**: Pure Dart rendering engine generating vector SVG and high-resolution PNG growth charts.
   - Supports WHO (0-5y & 5-18y), CDC (2-20y & 0-36m), Fenton 2013 Preterm, and WHO Growth Velocity charts.

@@ -56,8 +56,7 @@ void main() {
     );
   }
 
-  print('\nExporting Trajectory SVG & PNG graphics...');
+  print('\nExporting Trajectory SVG graphic...');
   trajectory.saveSvg('doc/samples/patient_longitudinal_trajectory.svg');
-  trajectory.savePng('doc/samples/patient_longitudinal_trajectory.png');
-  print('Saved trajectory charts to doc/samples/');
+  print('Saved trajectory chart to doc/samples/');
 }
