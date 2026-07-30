@@ -1,6 +1,7 @@
 # Growth Standards for Dart & Flutter
 
 [![pub package](https://img.shields.io/pub/v/growth_standards)](https://pub.dev/packages/growth_standards)
+[![codecov](https://codecov.io/gh/devsdocs/growth_standards/branch/main/graph/badge.svg)](https://codecov.io/gh/devsdocs/growth_standards)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 A comprehensive, clinically accurate growth standards library for **Dart** and **Flutter**. Calculates exact Z-scores, percentiles, longitudinal growth trajectories, and WHO growth velocities with built-in **SVG vector** growth chart rendering. Need PNG or PDF? Convert the SVG output with any external tool (e.g. `rsvg-convert`, Inkscape, or a browser).
