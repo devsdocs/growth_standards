@@ -589,7 +589,7 @@ class GrowthChartModel {
     for (final velocityResult in velocityResults) {
       final zpMap = velocityResult.zScorePercentileMap();
       final measuredMap = zpMap[activeIncrement];
-      
+
       if (measuredMap != null) {
         measuredMap.forEach((vm, zp) {
           final midX = (vm.low + vm.high) / 2.0;
@@ -777,15 +777,6 @@ class GrowthChartModel {
       return r.gestationalAgeAtObservation.weeks.toDouble();
     }
     return 0.0;
-  }
-
-  static String getSexBadge(Sex sex, [Result? r]) {
-    final isPediatric = r == null || _isPediatricResult(r);
-    if (sex == Sex.male) {
-      return isPediatric ? 'BOY' : 'MALE';
-    } else {
-      return isPediatric ? 'GIRL' : 'FEMALE';
-    }
   }
 
   static String getSexTitleStr(Sex sex, [Result? r]) {
