@@ -79,22 +79,6 @@ class SvgRenderer {
     }
     buffer.writeln('  </g>');
 
-    // Sex Badge (BOY / GIRL / MALE / FEMALE)
-    final sexBadgeText = GrowthChartModel.getSexBadge(
-      model.sex,
-      model.observationPoints.isNotEmpty
-          ? model.observationPoints.first.result
-          : null,
-    );
-    buffer.writeln(
-      '  <g transform="translate(${width - marginRight - 70}, 20)">',
-    );
-    buffer.writeln('    <rect class="badge-bg" width="70" height="24"/>');
-    buffer.writeln(
-      '    <text class="badge-text" x="35" y="16" text-anchor="middle">$sexBadgeText</text>',
-    );
-    buffer.writeln('  </g>');
-
     // Chart Area Background
     buffer.writeln('  <!-- Chart Grid Area -->');
     buffer.writeln(

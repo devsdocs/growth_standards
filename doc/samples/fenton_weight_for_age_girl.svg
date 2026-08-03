@@ -23,10 +23,6 @@
     <text class="title" x="0" y="0">Fenton Preterm Standard: Weight For Age — Girls</text>
     <text class="subtitle" x="0" y="22">Value: 2.10 kg at 34.0 wks PMA | Z-Score: -0.37 SD | Percentile: 35.6%</text>
   </g>
-  <g transform="translate(740.0, 20)">
-    <rect class="badge-bg" width="70" height="24"/>
-    <text class="badge-text" x="35" y="16" text-anchor="middle">GIRL</text>
-  </g>
   <!-- Chart Grid Area -->
   <rect class="chart-bg" x="80.0" y="100.0" width="730.0" height="454.0"/>
   <line class="grid-line" x1="158.21428571428572" y1="100.0" x2="158.21428571428572" y2="554.0"/>

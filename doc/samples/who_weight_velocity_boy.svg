@@ -23,10 +23,6 @@
     <text class="title" x="0" y="0">WHO Weight Velocity For Age (2-Month Increment) — Boys</text>
     <text class="subtitle" x="0" y="22">Gain: 2.10 kg | Z: +1.69 SD (95.4%ile)</text>
   </g>
-  <g transform="translate(740.0, 20)">
-    <rect class="badge-bg" width="70" height="24"/>
-    <text class="badge-text" x="35" y="16" text-anchor="middle">BOY</text>
-  </g>
   <!-- Chart Grid Area -->
   <rect class="chart-bg" x="80.0" y="100.0" width="730.0" height="454.0"/>
   <line class="grid-line" x1="110.41666666666666" y1="100.0" x2="110.41666666666666" y2="554.0"/>

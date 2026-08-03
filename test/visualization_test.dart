@@ -21,7 +21,6 @@ void main() {
       expect(svgStr, contains('<svg'));
       expect(svgStr, contains('</svg>'));
       expect(svgStr, contains('WHO Weight-for-Age'));
-      expect(svgStr, contains('BOY'));
       expect(svgStr, contains('0 (Median)'));
       expect(svgStr, contains('+3 SD'));
       expect(svgStr, contains('-3 SD'));
@@ -38,7 +37,7 @@ void main() {
 
       final svgStr = calcLengthForAge.toSvg();
       expect(svgStr, contains('<svg'));
-      expect(svgStr, contains('GIRL'));
+      expect(svgStr, contains('</svg>'));
     });
 
     test('Percentile Display Mode SVG Export', () {

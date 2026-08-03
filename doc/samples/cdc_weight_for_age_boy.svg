@@ -23,10 +23,6 @@
     <text class="title" x="0" y="0">CDC Weight-for-Age (Boy, 8 Years)</text>
     <text class="subtitle" x="0" y="22">Value: 26.50 kg at 98.1 mo (8.2y) | Z-Score: +0.07 SD | Percentile: 52.7%</text>
   </g>
-  <g transform="translate(740.0, 20)">
-    <rect class="badge-bg" width="70" height="24"/>
-    <text class="badge-text" x="35" y="16" text-anchor="middle">BOY</text>
-  </g>
   <!-- Chart Grid Area -->
   <rect class="chart-bg" x="80.0" y="100.0" width="730.0" height="454.0"/>
   <line class="grid-line" x1="80.0" y1="100.0" x2="80.0" y2="554.0"/>

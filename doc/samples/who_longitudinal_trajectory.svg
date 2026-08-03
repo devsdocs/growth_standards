@@ -23,10 +23,6 @@
     <text class="title" x="0" y="0">WHO Weight-for-Age (0 to 5 Years) — Boys</text>
     <text class="subtitle" x="0" y="22">Value: 12.20 kg at 24.0 mo (2.0y) | Z-Score: +0.03 SD | Percentile: 51.3%</text>
   </g>
-  <g transform="translate(740.0, 20)">
-    <rect class="badge-bg" width="70" height="24"/>
-    <text class="badge-text" x="35" y="16" text-anchor="middle">BOY</text>
-  </g>
   <!-- Chart Grid Area -->
   <rect class="chart-bg" x="80.0" y="100.0" width="730.0" height="454.0"/>
   <line class="grid-line" x1="80.0" y1="100.0" x2="80.0" y2="554.0"/>

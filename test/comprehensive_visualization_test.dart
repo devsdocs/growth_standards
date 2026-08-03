@@ -804,8 +804,8 @@ void main() {
 
       expect(maleSvg, isNotEmpty);
       expect(femaleSvg, isNotEmpty);
-      expect(maleSvg.contains('BOY') || maleSvg.contains('Male'), true);
-      expect(femaleSvg.contains('GIRL') || femaleSvg.contains('Female'), true);
+      // SVGs should be different due to different sex in title
+      expect(maleSvg, isNot(equals(femaleSvg)));
       print('✓ Different sexes work correctly');
     });
   });

@@ -23,10 +23,6 @@
     <text class="title" x="0" y="0">WHO Length-for-Age (0 to 5 Years) — Girls</text>
     <text class="subtitle" x="0" y="22">Value: 74.8 cm at 37.1 mo (3.1y) | Z-Score: -5.45 SD | Percentile: 0.0%</text>
   </g>
-  <g transform="translate(740.0, 20)">
-    <rect class="badge-bg" width="70" height="24"/>
-    <text class="badge-text" x="35" y="16" text-anchor="middle">GIRL</text>
-  </g>
   <!-- Chart Grid Area -->
   <rect class="chart-bg" x="80.0" y="100.0" width="730.0" height="454.0"/>
   <line class="grid-line" x1="80.0" y1="100.0" x2="80.0" y2="554.0"/>
