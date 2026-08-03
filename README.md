@@ -6,6 +6,8 @@
 
 A comprehensive, clinically accurate growth standards library for **Dart** and **Flutter**. Calculates exact Z-scores, percentiles, longitudinal growth trajectories, and WHO growth velocities with built-in **SVG vector** growth chart rendering. Need PNG or PDF? Convert the SVG output with any external tool (e.g. `rsvg-convert`, Inkscape, or a browser).
 
+> 📚 **Documentation**: See [`REFERENCES.md`](./REFERENCES.md) for comprehensive scientific documentation, official references, and implementation guidelines for all growth standards.
+
 > 💡 **Looking for code samples?** Check out the [`example/`](./example/) directory for dedicated runnable scripts covering every growth measurement type.
 
 ---

@@ -38,6 +38,17 @@ extension VelocityBasedResultVisualizationExtension on VelocityBasedResult {
       GrowthChartVisualizer.saveVelocitySvg(this, filePath, config: config);
 }
 
+/// Extension on [List<VelocityBasedResult>] for rendering velocity trajectories
+extension VelocityBasedResultListVisualizationExtension on List<VelocityBasedResult> {
+  /// Render multiple velocity calculations (velocity trajectory) into an SVG string
+  String toSvg({GrowthChartConfig? config}) =>
+      GrowthChartVisualizer.renderVelocitySvgList(this, config: config);
+
+  /// Save velocity trajectory to an SVG file
+  File saveSvg(String filePath, {GrowthChartConfig? config}) =>
+      GrowthChartVisualizer.saveVelocitySvgList(this, filePath, config: config);
+}
+
 /// Extension on [GrowthTrajectory] for direct chart rendering
 extension GrowthTrajectoryVisualizationExtension on GrowthTrajectory {
   /// Render growth trajectory into an SVG vector graphic string

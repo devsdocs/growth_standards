@@ -69,4 +69,31 @@ abstract final class GrowthChartVisualizer {
     file.writeAsStringSync(svgStr);
     return file;
   }
+
+  /// Renders a list of [VelocityBasedResult] calculations (velocity trajectory) into an SVG string
+  static String renderVelocitySvgList(
+    List<VelocityBasedResult> velocityResults, {
+    GrowthChartConfig? config,
+  }) {
+    if (velocityResults.isEmpty) {
+      throw ArgumentError('velocityResults list cannot be empty');
+    }
+    final model = GrowthChartModel.fromVelocityResults(
+      velocityResults,
+      config: config,
+    );
+    return _svgRenderer.render(model);
+  }
+
+  /// Saves a list of [VelocityBasedResult] calculations as an SVG file at [filePath]
+  static File saveVelocitySvgList(
+    List<VelocityBasedResult> velocityResults,
+    String filePath, {
+    GrowthChartConfig? config,
+  }) {
+    final svgStr = renderVelocitySvgList(velocityResults, config: config);
+    final file = File(filePath);
+    file.writeAsStringSync(svgStr);
+    return file;
+  }
 }

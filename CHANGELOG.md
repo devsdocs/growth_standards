@@ -1,3 +1,18 @@
+## 5.1.0
+- **Official calibration tests**: Added comprehensive validation tests against official WHO 2006 reference data with exact LMS calculations
+- **Precision documentation**: Documented official floating-point precision requirements for all growth standards (WHO, CDC, Fenton, INTERGROWTH-21st)
+- **Test tolerance**: Implemented WHO-documented acceptable tolerance of ≤0.01 for z-score calculations
+- **REFERENCES.md**: Added comprehensive reference documentation with all official documentation, scientific papers, and data sources for all growth standards
+- **LMS formula documentation**: Documented the Box-Cox power transformation method used across all standards
+- **Comparison tables**: Added detailed comparisons between growth standards (WHO vs CDC, WHO 2006 vs 2007, Fenton vs WHO, INTERGROWTH vs WHO)
+- **Implementation guidelines**: Added when-to-use guidelines, age calculation methods, measurement units, and extreme value flagging limits
+- **Quality control documentation**: Documented validation protocols for WHO MGRS, INTERGROWTH-21st, and CDC NHANES studies
+- **FAQ section**: Added frequently asked questions about growth standards, z-scores, and implementation differences
+- **Glossary**: Added comprehensive glossary of key terms (BCPE, BMI, LMS, MGRS, PMA, SD, TEM, Z-Score)
+- **Calculation examples**: Added step-by-step z-score calculation examples for WHO and Fenton standards
+- **Citation formats**: Added proper citation formats for all growth standards
+- **License information**: Documented licensing terms for each growth standard
+
 ## 5.0.0
 - **BREAKING — SVG-only chart output**: Removed the PNG renderer and all PNG APIs (`toPng()`, `savePng()`, `toPngList()`, `savePngList()`, `renderVelocityPng()`, `saveVelocityPng()`). Charts are now rendered exclusively as SVG; convert to raster formats externally (e.g. `rsvg-convert`, Inkscape, or a browser).
 - **BREAKING — dropped `image` dependency**: The package no longer depends on `package:image`.

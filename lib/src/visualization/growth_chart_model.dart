@@ -490,6 +490,248 @@ class GrowthChartModel {
     );
   }
 
+  /// Factory constructor to build a [GrowthChartModel] for velocity trajectory calculations
+  factory GrowthChartModel.fromVelocityResults(
+    List<VelocityBasedResult> velocityResults, {
+    GrowthChartConfig? config,
+  }) {
+    if (velocityResults.isEmpty) {
+      throw ArgumentError('velocityResults list cannot be empty');
+    }
+
+    final cfg = config ?? const GrowthChartConfig();
+    final firstResult = velocityResults.first;
+
+    final typeStr = firstResult.runtimeType.toString();
+    final isWeight = typeStr.contains('Weight');
+    final unitLabel = isWeight ? 'kg' : 'cm';
+
+    Sex sex = Sex.male;
+    if (firstResult is WHOGrowthStandardsWeightVelocityForAge) {
+      sex = firstResult.sex;
+    } else if (firstResult is WHOGrowthStandardsLengthVelocityForAge) {
+      sex = firstResult.sex;
+    } else if (firstResult
+        is WHOGrowthStandardsHeadCircumferenceVelocityForAge) {
+      sex = firstResult.sex;
+    }
+
+    final theme = cfg.theme ?? GrowthChartTheme.forSex(sex);
+    final sexTitle = getSexTitleStr(sex);
+
+    Map<VelocityIncrement, Map<VelocityMonths, dynamic>>? velocityData;
+    if (firstResult is WHOGrowthStandardsWeightVelocityForAge) {
+      velocityData = firstResult.contextData.data[sex];
+    } else if (firstResult is WHOGrowthStandardsLengthVelocityForAge) {
+      velocityData = firstResult.contextData.data[sex];
+    } else if (firstResult
+        is WHOGrowthStandardsHeadCircumferenceVelocityForAge) {
+      velocityData = firstResult.contextData.data[sex];
+    }
+
+    // Determine the active increment from the first result
+    final firstZpMap = firstResult.zScorePercentileMap();
+    VelocityIncrement activeIncrement = VelocityIncrement.$2;
+    if (firstZpMap.isNotEmpty) {
+      activeIncrement = firstZpMap.keys.first;
+    } else if (velocityData != null && velocityData.isNotEmpty) {
+      activeIncrement = velocityData.keys.first;
+    }
+
+    final incMonthsMap =
+        (velocityData != null && velocityData.containsKey(activeIncrement))
+        ? velocityData[activeIncrement]!
+        : <VelocityMonths, dynamic>{};
+
+    final incName = _formatVelocityIncrementName(activeIncrement);
+    final title =
+        cfg.title ??
+        'WHO ${_humanizeClassName(typeStr)} Trajectory ($incName) — $sexTitle';
+    final xLabel = cfg.xLabel ?? 'Age Interval (months)';
+    final yLabel = cfg.yLabel ?? 'Velocity Gain ($unitLabel)';
+
+    final sortedIntervals = incMonthsMap.keys.toList();
+    final xTicks = <ChartTick>[];
+    final curvesMap = <num, List<ChartPoint>>{};
+
+    final sdLines = cfg.displayMode == GrowthChartDisplayMode.zScore
+        ? cfg.zScoreLines
+        : cfg.percentileLines;
+
+    for (final sd in sdLines) {
+      curvesMap[sd] = [];
+    }
+
+    // Generate standard curves
+    for (final vm in sortedIntervals) {
+      final midX = (vm.low + vm.high) / 2.0;
+      final label = '${vm.low}–${vm.high}m';
+      xTicks.add(ChartTick(value: midX, label: label));
+
+      final lmsHolder = incMonthsMap[vm];
+      if (lmsHolder != null) {
+        final lms = (lmsHolder as LMSContext).lms;
+        for (final val in sdLines) {
+          double rawY = 0.0;
+          if (cfg.displayMode == GrowthChartDisplayMode.zScore) {
+            rawY = lms.standardDeviation(val).toDouble();
+          } else {
+            rawY = lms.standardDeviation(qnorm(val / 100)).toDouble();
+          }
+          final yVal = isWeight ? rawY / 1000.0 : rawY;
+          curvesMap[val]?.add(ChartPoint(midX, yVal));
+        }
+      }
+    }
+
+    // Extract observation points from all velocity results
+    final obsPoints = <ChartDataPoint>[];
+    for (final velocityResult in velocityResults) {
+      final zpMap = velocityResult.zScorePercentileMap();
+      final measuredMap = zpMap[activeIncrement];
+      
+      if (measuredMap != null) {
+        measuredMap.forEach((vm, zp) {
+          final midX = (vm.low + vm.high) / 2.0;
+          final lmsHolder = incMonthsMap[vm];
+          double yVal = 0.0;
+          if (lmsHolder != null) {
+            final lms = (lmsHolder as LMSContext).lms;
+            final rawY = lms.standardDeviation(zp.zScore).toDouble();
+            yVal = isWeight ? rawY / 1000.0 : rawY;
+          }
+
+          final formattedX = '${vm.low}–${vm.high} mo';
+          final formattedY = '${yVal.toStringAsFixed(2)} $unitLabel';
+
+          obsPoints.add(
+            ChartDataPoint(
+              x: midX,
+              y: yVal,
+              zScore: zp.zScore.toDouble(),
+              percentile: zp.percentile.toDouble(),
+              formattedX: formattedX,
+              formattedY: formattedY,
+              result: DummyVelocityResult(sex),
+            ),
+          );
+        });
+      }
+    }
+
+    // Sort observation points by x value for proper trajectory display
+    obsPoints.sort((a, b) => a.x.compareTo(b.x));
+
+    final subtitle =
+        cfg.subtitle ??
+        (obsPoints.isNotEmpty
+            ? '${obsPoints.length} measurements | Latest: ${obsPoints.last.formattedY} | Z: ${obsPoints.last.zScore > 0 ? "+" : ""}${obsPoints.last.zScore.toStringAsFixed(2)} SD (${obsPoints.last.percentile.toStringAsFixed(1)}%ile)'
+            : 'Velocity Standards');
+
+    final curves = <ChartCurve>[];
+    if (cfg.displayMode == GrowthChartDisplayMode.zScore) {
+      for (final sd in cfg.zScoreLines) {
+        final pts = curvesMap[sd] ?? [];
+        final isMedian = sd == 0;
+        final color = isMedian
+            ? theme.medianCurveColor
+            : (sd.abs() == 1
+                  ? theme.normalCurveColor
+                  : (sd.abs() == 2
+                        ? theme.warningCurveColor
+                        : theme.alertCurveColor));
+        final label = sd == 0 ? '0 SD' : '${sd > 0 ? "+" : ""}$sd SD';
+        curves.add(
+          ChartCurve(
+            id: 'sd_$sd',
+            label: label,
+            value: sd,
+            color: color,
+            points: pts,
+            isMedian: isMedian,
+            isDashed: sd.abs() >= 2,
+          ),
+        );
+      }
+    } else {
+      for (final p in cfg.percentileLines) {
+        final pts = curvesMap[p] ?? [];
+        final isMedian = p == 50;
+        final color = isMedian
+            ? theme.medianCurveColor
+            : ((p == 15 || p == 85)
+                  ? theme.normalCurveColor
+                  : ((p == 3 || p == 97)
+                        ? theme.alertCurveColor
+                        : theme.warningCurveColor));
+        curves.add(
+          ChartCurve(
+            id: 'p_$p',
+            label: '$p%',
+            value: p,
+            color: color,
+            points: pts,
+            isMedian: isMedian,
+            isDashed: p != 50,
+          ),
+        );
+      }
+    }
+
+    double minY = double.infinity;
+    double maxY = double.negativeInfinity;
+
+    for (final c in curves) {
+      for (final pt in c.points) {
+        if (pt.y < minY) minY = pt.y;
+        if (pt.y > maxY) maxY = pt.y;
+      }
+    }
+    for (final pt in obsPoints) {
+      if (pt.y < minY) minY = pt.y;
+      if (pt.y > maxY) maxY = pt.y;
+    }
+
+    if (minY == double.infinity) {
+      minY = 0.0;
+      maxY = 1.0;
+    }
+
+    final yPadding = (maxY - minY) * 0.08;
+    double yMin = cfg.customYMin ?? (minY - yPadding);
+    final double yMax = cfg.customYMax ?? (maxY + yPadding);
+    if (yMin < 0 && minY >= 0) yMin = 0;
+
+    double xMin = sortedIntervals.isNotEmpty
+        ? (sortedIntervals.first.low + sortedIntervals.first.high) / 2.0 - 1.0
+        : 0.0;
+    final double xMax = sortedIntervals.isNotEmpty
+        ? (sortedIntervals.last.low + sortedIntervals.last.high) / 2.0 + 1.0
+        : 12.0;
+
+    if (xMin < 0) xMin = 0;
+
+    final yTicks = _generateYTicks(yMin, yMax);
+
+    return GrowthChartModel._(
+      sex: sex,
+      title: title,
+      subtitle: subtitle,
+      xLabel: xLabel,
+      yLabel: yLabel,
+      theme: theme,
+      config: cfg,
+      xMin: xMin,
+      xMax: xMax,
+      yMin: yMin,
+      yMax: yMax,
+      xTicks: xTicks,
+      yTicks: yTicks,
+      curves: curves,
+      observationPoints: obsPoints,
+    );
+  }
+
   static String _formatVelocityIncrementName(VelocityIncrement inc) {
     switch (inc) {
       case VelocityIncrement.$1:
