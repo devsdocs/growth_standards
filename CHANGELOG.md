@@ -1,3 +1,6 @@
+## 5.1.1
+- **Fix**: Remove redundant sex badge in svg output
+
 ## 5.1.0
 - **Official calibration tests**: Added comprehensive validation tests against official WHO 2006 reference data with exact LMS calculations
 - **Precision documentation**: Documented official floating-point precision requirements for all growth standards (WHO, CDC, Fenton, INTERGROWTH-21st)
