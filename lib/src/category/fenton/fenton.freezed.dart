@@ -296,7 +296,7 @@ $PostmenstrualAgeCopyWith<$Res> get age {
 /// @nodoc
 mixin _$FentonLengthForAge {
 
- Sex get sex; PostmenstrualAge get age; Length get lengthHeight; LengthHeightMeasurementPosition get measure;
+ Sex get sex; PostmenstrualAge get age; Length get lengthHeight;
 /// Create a copy of FentonLengthForAge
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -309,16 +309,16 @@ $FentonLengthForAgeCopyWith<FentonLengthForAge> get copyWith => _$FentonLengthFo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FentonLengthForAge&&(identical(other.sex, sex) || other.sex == sex)&&(identical(other.age, age) || other.age == age)&&(identical(other.lengthHeight, lengthHeight) || other.lengthHeight == lengthHeight)&&(identical(other.measure, measure) || other.measure == measure));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FentonLengthForAge&&(identical(other.sex, sex) || other.sex == sex)&&(identical(other.age, age) || other.age == age)&&(identical(other.lengthHeight, lengthHeight) || other.lengthHeight == lengthHeight));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,sex,age,lengthHeight,measure);
+int get hashCode => Object.hash(runtimeType,sex,age,lengthHeight);
 
 @override
 String toString() {
-  return 'FentonLengthForAge(sex: $sex, age: $age, lengthHeight: $lengthHeight, measure: $measure)';
+  return 'FentonLengthForAge(sex: $sex, age: $age, lengthHeight: $lengthHeight)';
 }
 
 
@@ -329,7 +329,7 @@ abstract mixin class $FentonLengthForAgeCopyWith<$Res>  {
   factory $FentonLengthForAgeCopyWith(FentonLengthForAge value, $Res Function(FentonLengthForAge) _then) = _$FentonLengthForAgeCopyWithImpl;
 @useResult
 $Res call({
- Sex sex, PostmenstrualAge age, Length lengthHeight, LengthHeightMeasurementPosition measure
+ Sex sex, PostmenstrualAge age, Length lengthHeight
 });
 
 
@@ -346,13 +346,12 @@ class _$FentonLengthForAgeCopyWithImpl<$Res>
 
 /// Create a copy of FentonLengthForAge
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? sex = null,Object? age = null,Object? lengthHeight = null,Object? measure = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? sex = null,Object? age = null,Object? lengthHeight = null,}) {
   return _then(_self.copyWith(
 sex: null == sex ? _self.sex : sex // ignore: cast_nullable_to_non_nullable
 as Sex,age: null == age ? _self.age : age // ignore: cast_nullable_to_non_nullable
 as PostmenstrualAge,lengthHeight: null == lengthHeight ? _self.lengthHeight : lengthHeight // ignore: cast_nullable_to_non_nullable
-as Length,measure: null == measure ? _self.measure : measure // ignore: cast_nullable_to_non_nullable
-as LengthHeightMeasurementPosition,
+as Length,
   ));
 }
 /// Create a copy of FentonLengthForAge
@@ -443,10 +442,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Sex sex,  PostmenstrualAge age,  Length lengthHeight,  LengthHeightMeasurementPosition measure)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Sex sex,  PostmenstrualAge age,  Length lengthHeight)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _FentonLengthForAge() when $default != null:
-return $default(_that.sex,_that.age,_that.lengthHeight,_that.measure);case _:
+return $default(_that.sex,_that.age,_that.lengthHeight);case _:
   return orElse();
 
 }
@@ -464,10 +463,10 @@ return $default(_that.sex,_that.age,_that.lengthHeight,_that.measure);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Sex sex,  PostmenstrualAge age,  Length lengthHeight,  LengthHeightMeasurementPosition measure)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Sex sex,  PostmenstrualAge age,  Length lengthHeight)  $default,) {final _that = this;
 switch (_that) {
 case _FentonLengthForAge():
-return $default(_that.sex,_that.age,_that.lengthHeight,_that.measure);}
+return $default(_that.sex,_that.age,_that.lengthHeight);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -481,10 +480,10 @@ return $default(_that.sex,_that.age,_that.lengthHeight,_that.measure);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Sex sex,  PostmenstrualAge age,  Length lengthHeight,  LengthHeightMeasurementPosition measure)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Sex sex,  PostmenstrualAge age,  Length lengthHeight)?  $default,) {final _that = this;
 switch (_that) {
 case _FentonLengthForAge() when $default != null:
-return $default(_that.sex,_that.age,_that.lengthHeight,_that.measure);case _:
+return $default(_that.sex,_that.age,_that.lengthHeight);case _:
   return null;
 
 }
@@ -496,13 +495,12 @@ return $default(_that.sex,_that.age,_that.lengthHeight,_that.measure);case _:
 @JsonSerializable()
 
 class _FentonLengthForAge extends FentonLengthForAge {
-   _FentonLengthForAge({required this.sex, required this.age, required this.lengthHeight, required this.measure}): super._();
+   _FentonLengthForAge({required this.sex, required this.age, required this.lengthHeight}): super._();
   factory _FentonLengthForAge.fromJson(Map<String, dynamic> json) => _$FentonLengthForAgeFromJson(json);
 
 @override final  Sex sex;
 @override final  PostmenstrualAge age;
 @override final  Length lengthHeight;
-@override final  LengthHeightMeasurementPosition measure;
 
 /// Create a copy of FentonLengthForAge
 /// with the given fields replaced by the non-null parameter values.
@@ -517,16 +515,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _FentonLengthForAge&&(identical(other.sex, sex) || other.sex == sex)&&(identical(other.age, age) || other.age == age)&&(identical(other.lengthHeight, lengthHeight) || other.lengthHeight == lengthHeight)&&(identical(other.measure, measure) || other.measure == measure));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _FentonLengthForAge&&(identical(other.sex, sex) || other.sex == sex)&&(identical(other.age, age) || other.age == age)&&(identical(other.lengthHeight, lengthHeight) || other.lengthHeight == lengthHeight));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,sex,age,lengthHeight,measure);
+int get hashCode => Object.hash(runtimeType,sex,age,lengthHeight);
 
 @override
 String toString() {
-  return 'FentonLengthForAge(sex: $sex, age: $age, lengthHeight: $lengthHeight, measure: $measure)';
+  return 'FentonLengthForAge(sex: $sex, age: $age, lengthHeight: $lengthHeight)';
 }
 
 
@@ -537,7 +535,7 @@ abstract mixin class _$FentonLengthForAgeCopyWith<$Res> implements $FentonLength
   factory _$FentonLengthForAgeCopyWith(_FentonLengthForAge value, $Res Function(_FentonLengthForAge) _then) = __$FentonLengthForAgeCopyWithImpl;
 @override @useResult
 $Res call({
- Sex sex, PostmenstrualAge age, Length lengthHeight, LengthHeightMeasurementPosition measure
+ Sex sex, PostmenstrualAge age, Length lengthHeight
 });
 
 
@@ -554,13 +552,12 @@ class __$FentonLengthForAgeCopyWithImpl<$Res>
 
 /// Create a copy of FentonLengthForAge
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? sex = null,Object? age = null,Object? lengthHeight = null,Object? measure = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? sex = null,Object? age = null,Object? lengthHeight = null,}) {
   return _then(_FentonLengthForAge(
 sex: null == sex ? _self.sex : sex // ignore: cast_nullable_to_non_nullable
 as Sex,age: null == age ? _self.age : age // ignore: cast_nullable_to_non_nullable
 as PostmenstrualAge,lengthHeight: null == lengthHeight ? _self.lengthHeight : lengthHeight // ignore: cast_nullable_to_non_nullable
-as Length,measure: null == measure ? _self.measure : measure // ignore: cast_nullable_to_non_nullable
-as LengthHeightMeasurementPosition,
+as Length,
   ));
 }
 

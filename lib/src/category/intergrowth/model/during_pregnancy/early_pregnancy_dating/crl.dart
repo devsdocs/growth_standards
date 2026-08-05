@@ -75,8 +75,7 @@ sealed class IntergrowthEarlyPregnancyDatingForCRL extends LengthBasedResult
   _IntergrowthEarlyPregnancyDatingForCRLLMS get lmsData => _ageData;
 
   @override
-  num get measurementResultInDefaultUnit =>
-      length.toMillimeter.value.toDouble();
+  num get measurementResultInDefaultUnit => age.ageInTotalDaysByNow.toDouble();
 }
 
 class _IntergrowthEarlyPregnancyDatingForCRLLMS extends LMSContext {

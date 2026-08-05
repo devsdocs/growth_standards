@@ -493,8 +493,6 @@ class GrowthTrajectory {
     required Sex sex,
     required Date dateOfBirth,
     required PostmenstrualAge birthPma,
-    LengthHeightMeasurementPosition measure =
-        LengthHeightMeasurementPosition.recumbent,
     List<VisitObservation<Length>>? visits,
   }) {
     final fenton = GrowthStandard.fenton;
@@ -511,7 +509,6 @@ class GrowthTrajectory {
           sex: sex,
           age: currentPma,
           lengthHeight: measurement as Length,
-          measure: measure,
         );
       },
     );

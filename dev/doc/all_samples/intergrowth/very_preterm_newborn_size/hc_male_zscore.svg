@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900.0 650.0" width="900.0" height="650.0">
+  <style>
+    .bg { fill: rgb(255, 255, 255); }
+    .chart-bg { fill: rgb(250, 252, 255); }
+    .title { font-family: system-ui, -apple-system, sans-serif; font-size: 20px; font-weight: 700; fill: rgb(13, 71, 161); }
+    .subtitle { font-family: system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: 500; fill: rgb(21, 101, 192); }
+    .axis-title { font-family: system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: 600; fill: rgb(55, 71, 79); }
+    .tick-label { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; fill: rgb(55, 71, 79); }
+    .curve-label { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 600; }
+    .grid-line { stroke: rgb(225, 235, 245); stroke-width: 1; stroke-dasharray: 3,3; }
+    .axis-line { stroke: rgb(144, 164, 174); stroke-width: 1.5; }
+    .callout-box { fill: rgba(255, 255, 255, 1.00); stroke: rgb(2, 136, 209); stroke-width: 1.5; rx: 6; ry: 6; filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.1)); }
+    .callout-text-bold { font-family: system-ui, -apple-system, sans-serif; font-size: 12px; font-weight: 700; fill: rgb(33, 37, 41); }
+    .callout-text { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 500; fill: rgb(33, 37, 41); }
+    .badge-bg { fill: rgb(227, 242, 253); rx: 12; ry: 12; }
+    .badge-text { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 700; fill: rgb(25, 118, 210); }
+  </style>
+
+  <rect class="bg" width="900.0" height="650.0"/>
+  <!-- Header -->
+  <g transform="translate(80.0, 35)">
+    <text class="title" x="0" y="0">INTERGROWTH-21st Head Circumference-for-Age — Boys</text>
+    <text class="subtitle" x="0" y="22">Value: 26.0 cm at 196.0 wks GA | Z-Score: +0.06 SD | Percentile: 52.5%</text>
+  </g>
+  <!-- Chart Grid Area -->
+  <rect class="chart-bg" x="80.0" y="100.0" width="730.0" height="454.0"/>
+  <line class="grid-line" x1="80.0" y1="100.0" x2="80.0" y2="554.0"/>
+  <line class="grid-line" x1="244.83870967741936" y1="100.0" x2="244.83870967741936" y2="554.0"/>
+  <line class="grid-line" x1="409.6774193548387" y1="100.0" x2="409.6774193548387" y2="554.0"/>
+  <line class="grid-line" x1="574.516129032258" y1="100.0" x2="574.516129032258" y2="554.0"/>
+  <line class="grid-line" x1="739.3548387096774" y1="100.0" x2="739.3548387096774" y2="554.0"/>
+  <line class="grid-line" x1="80.0" y1="515.5099230635373" x2="810.0" y2="515.5099230635373"/>
+  <line class="grid-line" x1="80.0" y1="470.02328887442593" x2="810.0" y2="470.02328887442593"/>
+  <line class="grid-line" x1="80.0" y1="424.5366546853146" x2="810.0" y2="424.5366546853146"/>
+  <line class="grid-line" x1="80.0" y1="379.0500204962033" x2="810.0" y2="379.0500204962033"/>
+  <line class="grid-line" x1="80.0" y1="333.56338630709195" x2="810.0" y2="333.56338630709195"/>
+  <line class="grid-line" x1="80.0" y1="288.0767521179806" x2="810.0" y2="288.0767521179806"/>
+  <line class="grid-line" x1="80.0" y1="242.59011792886923" x2="810.0" y2="242.59011792886923"/>
+  <line class="grid-line" x1="80.0" y1="197.1034837397579" x2="810.0" y2="197.1034837397579"/>
+  <line class="grid-line" x1="80.0" y1="151.61684955064658" x2="810.0" y2="151.61684955064658"/>
+  <line class="grid-line" x1="80.0" y1="106.13021536153525" x2="810.0" y2="106.13021536153525"/>
+  <rect class="axis-line" fill="none" x="80.0" y="100.0" width="730.0" height="454.0"/>
+  <line class="axis-line" x1="80.0" y1="554.0" x2="80.0" y2="560.0"/>
+  <text class="tick-label" x="80.0" y="574.0" text-anchor="middle">24w</text>
+  <line class="axis-line" x1="244.83870967741936" y1="554.0" x2="244.83870967741936" y2="560.0"/>
+  <text class="tick-label" x="244.83870967741936" y="574.0" text-anchor="middle">26w</text>
+  <line class="axis-line" x1="409.6774193548387" y1="554.0" x2="409.6774193548387" y2="560.0"/>
+  <text class="tick-label" x="409.6774193548387" y="574.0" text-anchor="middle">28w</text>
+  <line class="axis-line" x1="574.516129032258" y1="554.0" x2="574.516129032258" y2="560.0"/>
+  <text class="tick-label" x="574.516129032258" y="574.0" text-anchor="middle">30w</text>
+  <line class="axis-line" x1="739.3548387096774" y1="554.0" x2="739.3548387096774" y2="560.0"/>
+  <text class="tick-label" x="739.3548387096774" y="574.0" text-anchor="middle">32w</text>
+  <text class="axis-title" x="445.0" y="598.0" text-anchor="middle">Gestational Age (weeks)</text>
+  <line class="axis-line" x1="74.0" y1="515.5099230635373" x2="80.0" y2="515.5099230635373"/>
+  <text class="tick-label" x="68.0" y="519.5099230635373" text-anchor="end">18</text>
+  <line class="axis-line" x1="74.0" y1="470.02328887442593" x2="80.0" y2="470.02328887442593"/>
+  <text class="tick-label" x="68.0" y="474.02328887442593" text-anchor="end">20</text>
+  <line class="axis-line" x1="74.0" y1="424.5366546853146" x2="80.0" y2="424.5366546853146"/>
+  <text class="tick-label" x="68.0" y="428.5366546853146" text-anchor="end">22</text>
+  <line class="axis-line" x1="74.0" y1="379.0500204962033" x2="80.0" y2="379.0500204962033"/>
+  <text class="tick-label" x="68.0" y="383.0500204962033" text-anchor="end">24</text>
+  <line class="axis-line" x1="74.0" y1="333.56338630709195" x2="80.0" y2="333.56338630709195"/>
+  <text class="tick-label" x="68.0" y="337.56338630709195" text-anchor="end">26</text>
+  <line class="axis-line" x1="74.0" y1="288.0767521179806" x2="80.0" y2="288.0767521179806"/>
+  <text class="tick-label" x="68.0" y="292.0767521179806" text-anchor="end">28</text>
+  <line class="axis-line" x1="74.0" y1="242.59011792886923" x2="80.0" y2="242.59011792886923"/>
+  <text class="tick-label" x="68.0" y="246.59011792886923" text-anchor="end">30</text>
+  <line class="axis-line" x1="74.0" y1="197.1034837397579" x2="80.0" y2="197.1034837397579"/>
+  <text class="tick-label" x="68.0" y="201.1034837397579" text-anchor="end">32</text>
+  <line class="axis-line" x1="74.0" y1="151.61684955064658" x2="80.0" y2="151.61684955064658"/>
+  <text class="tick-label" x="68.0" y="155.61684955064658" text-anchor="end">34</text>
+  <line class="axis-line" x1="74.0" y1="106.13021536153525" x2="80.0" y2="106.13021536153525"/>
+  <text class="tick-label" x="68.0" y="110.13021536153525" text-anchor="end">36</text>
+  <text class="axis-title" x="0" y="0" transform="translate(25, 327.0) rotate(-90)" text-anchor="middle">Head Circumference (cm)</text>
+  <!-- Percentile / Z-Score Curves -->
+  <path d="M 80.0 522.7 L 91.8 520.6 L 103.5 517.6 L 115.3 515.2 L 127.1 511.3 L 138.9 508.2 L 150.6 506.3 L 162.4 503.8 L 174.2 500.2 L 186.0 496.8 L 197.7 494.9 L 209.5 490.9 L 221.3 488.8 L 233.1 485.5 L 244.8 483.4 L 256.6 479.5 L 268.4 476.4 L 280.2 474.4 L 291.9 472.0 L 303.7 468.3 L 315.5 465.0 L 327.3 463.0 L 339.0 459.0 L 350.8 457.0 L 362.6 453.6 L 374.4 451.5 L 386.1 447.6 L 397.9 445.6 L 409.7 442.6 L 421.5 440.2 L 433.2 436.3 L 445.0 433.2 L 456.8 431.2 L 468.5 428.8 L 480.3 425.1 L 492.1 421.8 L 503.9 419.8 L 515.6 415.8 L 527.4 413.7 L 539.2 410.4 L 551.0 408.3 L 562.7 404.4 L 574.5 402.4 L 586.3 399.4 L 598.1 397.0 L 609.8 393.1 L 621.6 389.9 L 633.4 388.0 L 645.2 385.6 L 656.9 381.9 L 668.7 378.6 L 680.5 376.6 L 692.3 372.6 L 704.0 370.5 L 715.8 367.2 L 727.6 365.1 L 739.4 361.2 L 751.1 359.2 L 762.9 356.1 L 774.7 353.7 L 786.5 349.8 L 798.2 346.7 L 810.0 344.8" fill="none" stroke="rgb(211, 47, 47)" stroke-width="1.8" stroke-dasharray="6,4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text class="curve-label" x="818.0" y="348.772623655376" fill="rgb(211, 47, 47)">-3 SD</text>
+  <path d="M 80.0 487.6 L 91.8 485.0 L 103.5 482.0 L 115.3 479.3 L 127.1 476.2 L 138.9 473.1 L 150.6 470.7 L 162.4 467.9 L 174.2 464.5 L 186.0 461.7 L 197.7 459.3 L 209.5 455.7 L 221.3 453.1 L 233.1 450.4 L 244.8 447.4 L 256.6 444.4 L 268.4 441.3 L 280.2 438.8 L 291.9 436.1 L 303.7 432.7 L 315.5 429.9 L 327.3 427.5 L 339.0 423.9 L 350.8 421.3 L 362.6 418.5 L 374.4 415.6 L 386.1 412.5 L 397.9 409.9 L 409.7 407.0 L 421.5 404.2 L 433.2 401.1 L 445.0 398.1 L 456.8 395.6 L 468.5 392.8 L 480.3 389.4 L 492.1 386.7 L 503.9 384.2 L 515.6 380.7 L 527.4 378.1 L 539.2 375.3 L 551.0 372.4 L 562.7 369.3 L 574.5 366.7 L 586.3 363.8 L 598.1 361.0 L 609.8 357.9 L 621.6 354.9 L 633.4 352.4 L 645.2 349.6 L 656.9 346.2 L 668.7 343.5 L 680.5 341.0 L 692.3 337.5 L 704.0 334.9 L 715.8 332.1 L 727.6 329.2 L 739.4 326.1 L 751.1 323.5 L 762.9 320.6 L 774.7 317.8 L 786.5 314.7 L 798.2 311.6 L 810.0 309.2" fill="none" stroke="rgb(245, 124, 0)" stroke-width="1.8"  stroke-linecap="round" stroke-linejoin="round"/>
+  <text class="curve-label" x="818.0" y="313.1955429543867" fill="rgb(245, 124, 0)">-2 SD</text>
+  <path d="M 80.0 452.3 L 91.8 449.4 L 103.5 446.5 L 115.3 443.5 L 127.1 441.0 L 138.9 437.9 L 150.6 435.1 L 162.4 432.1 L 174.2 428.9 L 186.0 426.5 L 197.7 423.7 L 209.5 420.5 L 221.3 417.6 L 233.1 415.1 L 244.8 411.7 L 256.6 409.1 L 268.4 406.0 L 280.2 403.3 L 291.9 400.3 L 303.7 397.1 L 315.5 394.6 L 327.3 391.9 L 339.0 388.6 L 350.8 385.7 L 362.6 383.3 L 374.4 379.8 L 386.1 377.3 L 397.9 374.3 L 409.7 371.4 L 421.5 368.5 L 433.2 365.9 L 445.0 362.8 L 456.8 360.0 L 468.5 357.1 L 480.3 353.9 L 492.1 351.4 L 503.9 348.7 L 515.6 345.4 L 527.4 342.5 L 539.2 340.1 L 551.0 336.6 L 562.7 334.1 L 574.5 331.1 L 586.3 328.2 L 598.1 325.3 L 609.8 322.7 L 621.6 319.6 L 633.4 316.8 L 645.2 313.9 L 656.9 310.7 L 668.7 308.2 L 680.5 305.5 L 692.3 302.2 L 704.0 299.3 L 715.8 296.9 L 727.6 293.4 L 739.4 290.9 L 751.1 287.9 L 762.9 285.0 L 774.7 282.0 L 786.5 279.5 L 798.2 276.4 L 810.0 273.6" fill="none" stroke="rgb(124, 179, 66)" stroke-width="1.8"  stroke-linecap="round" stroke-linejoin="round"/>
+  <text class="curve-label" x="818.0" y="277.6184769373839" fill="rgb(124, 179, 66)">-1 SD</text>
+  <path d="M 80.0 417.0 L 91.8 413.9 L 103.5 410.9 L 115.3 407.9 L 127.1 405.6 L 138.9 402.4 L 150.6 399.5 L 162.4 396.6 L 174.2 393.5 L 186.0 391.1 L 197.7 388.1 L 209.5 385.1 L 221.3 382.1 L 233.1 379.7 L 244.8 376.1 L 256.6 373.8 L 268.4 370.6 L 280.2 367.7 L 291.9 364.7 L 303.7 361.6 L 315.5 359.2 L 327.3 356.3 L 339.0 353.3 L 350.8 350.3 L 362.6 347.8 L 374.4 344.3 L 386.1 341.9 L 397.9 338.9 L 409.7 335.8 L 421.5 332.9 L 433.2 330.5 L 445.0 327.4 L 456.8 324.5 L 468.5 321.5 L 480.3 318.4 L 492.1 316.0 L 503.9 313.1 L 515.6 310.1 L 527.4 307.0 L 539.2 304.6 L 551.0 301.1 L 562.7 298.7 L 574.5 295.7 L 586.3 292.6 L 598.1 289.7 L 609.8 287.3 L 621.6 284.2 L 633.4 281.3 L 645.2 278.3 L 656.9 275.2 L 668.7 272.8 L 680.5 269.9 L 692.3 266.9 L 704.0 263.8 L 715.8 261.4 L 727.6 257.8 L 739.4 255.5 L 751.1 252.5 L 762.9 249.4 L 774.7 246.5 L 786.5 244.1 L 798.2 241.0 L 810.0 238.0" fill="none" stroke="rgb(46, 125, 50)" stroke-width="3.0"  stroke-linecap="round" stroke-linejoin="round"/>
+  <text class="curve-label" x="818.0" y="242.04142480139018" fill="rgb(46, 125, 50)">0 (Median)</text>
+  <path d="M 80.0 381.5 L 91.8 378.6 L 103.5 375.3 L 115.3 372.6 L 127.1 370.1 L 138.9 366.8 L 150.6 363.9 L 162.4 361.2 L 174.2 358.1 L 186.0 355.5 L 197.7 352.6 L 209.5 349.6 L 221.3 346.7 L 233.1 344.1 L 244.8 340.7 L 256.6 338.3 L 268.4 335.0 L 280.2 332.1 L 291.9 329.3 L 303.7 326.3 L 315.5 323.6 L 327.3 320.7 L 339.0 317.8 L 350.8 314.9 L 362.6 312.3 L 374.4 308.9 L 386.1 306.4 L 397.9 303.5 L 409.7 300.3 L 421.5 297.5 L 433.2 295.1 L 445.0 291.8 L 456.8 288.9 L 468.5 286.1 L 480.3 283.1 L 492.1 280.4 L 503.9 277.5 L 515.6 274.6 L 527.4 271.7 L 539.2 269.1 L 551.0 265.7 L 562.7 263.2 L 574.5 260.3 L 586.3 257.0 L 598.1 254.3 L 609.8 251.9 L 621.6 248.6 L 633.4 245.7 L 645.2 242.9 L 656.9 239.8 L 668.7 237.2 L 680.5 234.3 L 692.3 231.4 L 704.0 228.5 L 715.8 225.8 L 727.6 222.4 L 739.4 220.0 L 751.1 217.1 L 762.9 213.8 L 774.7 211.1 L 786.5 208.6 L 798.2 205.4 L 810.0 202.5" fill="none" stroke="rgb(124, 179, 66)" stroke-width="1.8"  stroke-linecap="round" stroke-linejoin="round"/>
+  <text class="curve-label" x="818.0" y="206.46438582673142" fill="rgb(124, 179, 66)">+1 SD</text>
+  <path d="M 80.0 345.9 L 91.8 343.3 L 103.5 339.7 L 115.3 337.3 L 127.1 334.5 L 138.9 331.1 L 150.6 328.4 L 162.4 325.9 L 174.2 322.8 L 186.0 319.7 L 197.7 317.0 L 209.5 314.1 L 221.3 311.5 L 233.1 308.4 L 244.8 305.5 L 256.6 302.7 L 268.4 299.3 L 280.2 296.5 L 291.9 294.1 L 303.7 291.0 L 315.5 287.9 L 327.3 285.2 L 339.0 282.2 L 350.8 279.6 L 362.6 276.5 L 374.4 273.6 L 386.1 270.9 L 397.9 268.3 L 409.7 264.7 L 421.5 262.3 L 433.2 259.5 L 445.0 256.1 L 456.8 253.3 L 468.5 250.9 L 480.3 247.8 L 492.1 244.7 L 503.9 241.9 L 515.6 239.0 L 527.4 236.4 L 539.2 233.3 L 551.0 230.4 L 562.7 227.6 L 574.5 225.1 L 586.3 221.5 L 598.1 219.0 L 609.8 216.3 L 621.6 212.9 L 633.4 210.1 L 645.2 207.7 L 656.9 204.6 L 668.7 201.5 L 680.5 198.7 L 692.3 195.8 L 704.0 193.2 L 715.8 190.1 L 727.6 187.2 L 739.4 184.4 L 751.1 181.8 L 762.9 178.3 L 774.7 175.8 L 786.5 173.1 L 798.2 169.6 L 810.0 166.9" fill="none" stroke="rgb(245, 124, 0)" stroke-width="1.8"  stroke-linecap="round" stroke-linejoin="round"/>
+  <text class="curve-label" x="818.0" y="170.88735936470817" fill="rgb(245, 124, 0)">+2 SD</text>
+  <path d="M 80.0 310.2 L 91.8 308.1 L 103.5 304.2 L 115.3 302.2 L 127.1 298.8 L 138.9 295.2 L 150.6 292.8 L 162.4 290.8 L 174.2 287.7 L 186.0 283.9 L 197.7 281.4 L 209.5 278.4 L 221.3 276.3 L 233.1 272.5 L 244.8 270.4 L 256.6 267.0 L 268.4 263.4 L 280.2 260.9 L 291.9 259.0 L 303.7 255.8 L 315.5 252.0 L 327.3 249.6 L 339.0 246.5 L 350.8 244.5 L 362.6 240.7 L 374.4 238.5 L 386.1 235.2 L 397.9 233.1 L 409.7 229.1 L 421.5 227.2 L 433.2 223.8 L 445.0 220.2 L 456.8 217.7 L 468.5 215.8 L 480.3 212.6 L 492.1 208.8 L 503.9 206.4 L 515.6 203.3 L 527.4 201.2 L 539.2 197.4 L 551.0 195.3 L 562.7 192.0 L 574.5 189.9 L 586.3 185.9 L 598.1 184.0 L 609.8 180.6 L 621.6 177.0 L 633.4 174.5 L 645.2 172.6 L 656.9 169.4 L 668.7 165.6 L 680.5 163.2 L 692.3 160.1 L 704.0 158.0 L 715.8 154.2 L 727.6 152.1 L 739.4 148.7 L 751.1 146.7 L 762.9 142.7 L 774.7 140.7 L 786.5 137.4 L 798.2 133.8 L 810.0 131.3" fill="none" stroke="rgb(211, 47, 47)" stroke-width="1.8" stroke-dasharray="6,4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text class="curve-label" x="818.0" y="135.31034482758616" fill="rgb(211, 47, 47)">+3 SD</text>
+  <!-- Calculated Result Markers -->
+  <g transform="translate(409.6774193548387, 333.56338630709195)">
+    <circle r="12.0" fill="rgba(2, 136, 209, 1.00)" opacity="0.25"/>
+    <circle r="8.0" fill="rgb(255, 255, 255)" stroke="rgb(2, 136, 209)" stroke-width="2.5"/>
+    <circle r="3.0" fill="rgb(2, 136, 209)"/>
+  </g>
+  <!-- Header Callout Card -->
+  <g transform="translate(590.0, 44.0)">
+    <rect class="callout-box" width="220.0" height="46.0"/>
+    <text class="callout-text-bold" x="10" y="18">Result: 26.0 cm</text>
+    <text class="callout-text" x="10" y="34">Age/X: 196.0 wks GA</text>
+    <text class="callout-text-bold" x="210.0" y="18" text-anchor="end">+0.06 SD</text>
+    <text class="callout-text" x="210.0" y="34" text-anchor="end">52.5th %ile</text>
+  </g>
+  <!-- Legend -->
+  <g>
+    <line x1="211.5" y1="626.0" x2="233.5" y2="626.0" stroke="rgb(46, 125, 50)" stroke-width="3.0"/>
+    <text class="tick-label" x="240.5" y="630.0">0 SD (Median)</text>
+    <line x1="351.1" y1="626.0" x2="373.1" y2="626.0" stroke="rgb(124, 179, 66)" stroke-width="2.0"/>
+    <text class="tick-label" x="380.1" y="630.0">±1 SD</text>
+    <line x1="441.1" y1="626.0" x2="463.1" y2="626.0" stroke="rgb(211, 47, 47)" stroke-width="2.0" stroke-dasharray="4,3"/>
+    <text class="tick-label" x="470.1" y="630.0">±2 / ±3 SD</text>
+    <circle cx="569.1" cy="626.0" r="5" fill="rgba(2, 136, 209, 1.00)" opacity="0.3"/>
+    <circle cx="569.1" cy="626.0" r="3" fill="rgb(255, 255, 255)" stroke="rgb(2, 136, 209)" stroke-width="1.5"/>
+    <circle cx="569.1" cy="626.0" r="1.5" fill="rgb(2, 136, 209)"/>
+    <text class="tick-label" x="583.1" y="630.0">Calculated Result</text>
+  </g>
+</svg>

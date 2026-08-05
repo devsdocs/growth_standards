@@ -60,31 +60,13 @@ class ChartDataPoint {
 
 /// Consolidated layout and dataset model for rendering growth charts
 class GrowthChartModel {
-  GrowthChartModel._({
-    required this.sex,
-    required this.title,
-    required this.subtitle,
-    required this.xLabel,
-    required this.yLabel,
-    required this.theme,
-    required this.config,
-    required this.xMin,
-    required this.xMax,
-    required this.yMin,
-    required this.yMax,
-    required this.xTicks,
-    required this.yTicks,
-    required this.curves,
-    required this.observationPoints,
-  });
-
   /// Creates a [GrowthChartModel] from a list of calculation results and config
   factory GrowthChartModel.fromResults(
     List<Result> results, {
     GrowthChartConfig? config,
   }) {
-    final cfg = config ?? const GrowthChartConfig();
     final firstResult = results.first;
+    final cfg = _resolveConfig(config, firstResult);
 
     // Extract sex
     final sex = firstResult.sex ?? Sex.male;
@@ -102,7 +84,11 @@ class GrowthChartModel {
     final obsPoints = <ChartDataPoint>[];
     for (final r in results) {
       final xVal = _extractXValue(r);
-      final yVal = r.measurementResultInDefaultUnit.toDouble();
+      double yVal = r.measurementResultInDefaultUnit.toDouble();
+      if (r.runtimeType.toString().contains('Fenton') &&
+          r.runtimeType.toString().contains('Weight')) {
+        yVal /= 1000.0;
+      }
       final z = r.zScore().toDouble();
       final p = r.percentile().toDouble();
 
@@ -146,15 +132,19 @@ class GrowthChartModel {
     }
 
     // Compute curve points
+    final typeStr = firstResult.runtimeType.toString();
     final curves = <ChartCurve>[];
     if (cfg.displayMode == GrowthChartDisplayMode.zScore) {
-      for (final sd in cfg.zScoreLines) {
+      for (final sd in cfg.zScoreLines!) {
         final pts = <ChartPoint>[];
         for (final k in sortedXKeys) {
           if (k >= xMin && k <= xMax) {
             final lmsCtx = sexData[k] ?? sexData[k.toInt()];
             if (lmsCtx != null) {
-              final yVal = lmsCtx.lms.standardDeviation(sd).toDouble();
+              double yVal = lmsCtx.lms.standardDeviation(sd).toDouble();
+              if (typeStr.contains('Fenton') && typeStr.contains('Weight')) {
+                yVal /= 1000.0;
+              }
               pts.add(ChartPoint(k, yVal));
             }
           }
@@ -183,14 +173,17 @@ class GrowthChartModel {
       }
     } else {
       // Percentile mode
-      for (final p in cfg.percentileLines) {
+      for (final p in cfg.percentileLines!) {
         final pts = <ChartPoint>[];
         final zForP = qnorm(p / 100);
         for (final k in sortedXKeys) {
           if (k >= xMin && k <= xMax) {
             final lmsCtx = sexData[k] ?? sexData[k.toInt()];
             if (lmsCtx != null) {
-              final yVal = lmsCtx.lms.standardDeviation(zForP).toDouble();
+              double yVal = lmsCtx.lms.standardDeviation(zForP).toDouble();
+              if (typeStr.contains('Fenton') && typeStr.contains('Weight')) {
+                yVal /= 1000.0;
+              }
               pts.add(ChartPoint(k, yVal));
             }
           }
@@ -267,7 +260,13 @@ class GrowthChartModel {
     VelocityBasedResult velocityResult, {
     GrowthChartConfig? config,
   }) {
-    final cfg = config ?? const GrowthChartConfig();
+    var cfg = config ?? const GrowthChartConfig();
+    if (cfg.zScoreLines == null || cfg.percentileLines == null) {
+      cfg = cfg.copyWith(
+        zScoreLines: cfg.zScoreLines ?? const [-3, -2, -1, 0, 1, 2, 3],
+        percentileLines: cfg.percentileLines ?? const [3, 15, 50, 85, 97],
+      );
+    }
 
     final typeStr = velocityResult.runtimeType.toString();
     final isWeight = typeStr.contains('Weight');
@@ -322,8 +321,8 @@ class GrowthChartModel {
     final curvesMap = <num, List<ChartPoint>>{};
 
     final sdLines = cfg.displayMode == GrowthChartDisplayMode.zScore
-        ? cfg.zScoreLines
-        : cfg.percentileLines;
+        ? cfg.zScoreLines!
+        : cfg.percentileLines!;
 
     for (final sd in sdLines) {
       curvesMap[sd] = [];
@@ -359,7 +358,10 @@ class GrowthChartModel {
         double yVal = 0.0;
         if (lmsHolder != null) {
           final lms = (lmsHolder as LMSContext).lms;
-          final rawY = lms.standardDeviation(zp.zScore).toDouble();
+          double rawY = lms.standardDeviation(zp.zScore).toDouble();
+          if (typeStr.contains('Fenton') && typeStr.contains('Weight')) {
+            rawY /= 1000.0;
+          }
           yVal = isWeight ? rawY / 1000.0 : rawY;
         }
 
@@ -388,7 +390,7 @@ class GrowthChartModel {
 
     final curves = <ChartCurve>[];
     if (cfg.displayMode == GrowthChartDisplayMode.zScore) {
-      for (final sd in cfg.zScoreLines) {
+      for (final sd in cfg.zScoreLines!) {
         final pts = curvesMap[sd] ?? [];
         final isMedian = sd == 0;
         final color = isMedian
@@ -412,7 +414,7 @@ class GrowthChartModel {
         );
       }
     } else {
-      for (final p in cfg.percentileLines) {
+      for (final p in cfg.percentileLines!) {
         final pts = curvesMap[p] ?? [];
         final isMedian = p == 50;
         final color = isMedian
@@ -499,8 +501,14 @@ class GrowthChartModel {
       throw ArgumentError('velocityResults list cannot be empty');
     }
 
-    final cfg = config ?? const GrowthChartConfig();
     final firstResult = velocityResults.first;
+    var cfg = config ?? const GrowthChartConfig();
+    if (cfg.zScoreLines == null || cfg.percentileLines == null) {
+      cfg = cfg.copyWith(
+        zScoreLines: cfg.zScoreLines ?? const [-3, -2, -1, 0, 1, 2, 3],
+        percentileLines: cfg.percentileLines ?? const [3, 15, 50, 85, 97],
+      );
+    }
 
     final typeStr = firstResult.runtimeType.toString();
     final isWeight = typeStr.contains('Weight');
@@ -555,8 +563,8 @@ class GrowthChartModel {
     final curvesMap = <num, List<ChartPoint>>{};
 
     final sdLines = cfg.displayMode == GrowthChartDisplayMode.zScore
-        ? cfg.zScoreLines
-        : cfg.percentileLines;
+        ? cfg.zScoreLines!
+        : cfg.percentileLines!;
 
     for (final sd in sdLines) {
       curvesMap[sd] = [];
@@ -597,7 +605,10 @@ class GrowthChartModel {
           double yVal = 0.0;
           if (lmsHolder != null) {
             final lms = (lmsHolder as LMSContext).lms;
-            final rawY = lms.standardDeviation(zp.zScore).toDouble();
+            double rawY = lms.standardDeviation(zp.zScore).toDouble();
+            if (typeStr.contains('Fenton') && typeStr.contains('Weight')) {
+              rawY /= 1000.0;
+            }
             yVal = isWeight ? rawY / 1000.0 : rawY;
           }
 
@@ -630,7 +641,7 @@ class GrowthChartModel {
 
     final curves = <ChartCurve>[];
     if (cfg.displayMode == GrowthChartDisplayMode.zScore) {
-      for (final sd in cfg.zScoreLines) {
+      for (final sd in cfg.zScoreLines!) {
         final pts = curvesMap[sd] ?? [];
         final isMedian = sd == 0;
         final color = isMedian
@@ -654,7 +665,7 @@ class GrowthChartModel {
         );
       }
     } else {
-      for (final p in cfg.percentileLines) {
+      for (final p in cfg.percentileLines!) {
         final pts = curvesMap[p] ?? [];
         final isMedian = p == 50;
         final color = isMedian
@@ -731,6 +742,47 @@ class GrowthChartModel {
       observationPoints: obsPoints,
     );
   }
+  GrowthChartModel._({
+    required this.sex,
+    required this.title,
+    required this.subtitle,
+    required this.xLabel,
+    required this.yLabel,
+    required this.theme,
+    required this.config,
+    required this.xMin,
+    required this.xMax,
+    required this.yMin,
+    required this.yMax,
+    required this.xTicks,
+    required this.yTicks,
+    required this.curves,
+    required this.observationPoints,
+  });
+
+  static GrowthChartConfig _resolveConfig(GrowthChartConfig? config, Result r) {
+    final c = config ?? const GrowthChartConfig();
+    if (c.zScoreLines == null || c.percentileLines == null) {
+      final typeStr = r.runtimeType.toString();
+      const List<int> zLines = [-3, -2, -1, 0, 1, 2, 3];
+      List<num> pLines = const [3, 15, 50, 85, 97]; // Default WHO
+
+      if (typeStr.startsWith('CDC')) {
+        pLines = const [3, 10, 25, 50, 75, 90, 97];
+      } else if (typeStr.contains('Fenton')) {
+        pLines = const [3, 10, 50, 90, 97];
+      } else if (typeStr.startsWith('Intergrowth') ||
+          typeStr.startsWith('IG')) {
+        pLines = const [3, 10, 50, 90, 97];
+      }
+
+      return c.copyWith(
+        zScoreLines: c.zScoreLines ?? zLines,
+        percentileLines: c.percentileLines ?? pLines,
+      );
+    }
+    return c;
+  }
 
   static String _formatVelocityIncrementName(VelocityIncrement inc) {
     switch (inc) {
@@ -770,10 +822,29 @@ class GrowthChartModel {
           : TimeUnit.days;
       return r.ageAtObservationDate.ageInTotalByUnit(unit).toDouble();
     } else if (r is LengthBasedResult) {
+      final unit = r.contextData is LengthBasedData
+          ? (r.contextData as LengthBasedData).unit
+          : null;
+      if (unit.toString().contains('mm') ||
+          unit.toString().contains('millimeter')) {
+        return r.lengthAtObservationDate.toMillimeter.value.toDouble();
+      }
       return r.lengthAtObservationDate.toCentimeter.value.toDouble();
     } else if (r is PostmenstrualAgeBasedResult) {
+      final unit = r.contextData is AgeBasedData
+          ? (r.contextData as AgeBasedData).unit
+          : TimeUnit.weeks;
+      if (unit == TimeUnit.days) {
+        return r.postmenstrualAgeAtObservation.totalDays.toDouble();
+      }
       return r.postmenstrualAgeAtObservation.weeks.toDouble();
     } else if (r is GestationalAgeBasedResult) {
+      final unit = r.contextData is AgeBasedData
+          ? (r.contextData as AgeBasedData).unit
+          : TimeUnit.weeks;
+      if (unit == TimeUnit.days) {
+        return r.gestationalAgeAtObservation.totalDays.toDouble();
+      }
       return r.gestationalAgeAtObservation.weeks.toDouble();
     }
     return 0.0;
@@ -807,6 +878,13 @@ class GrowthChartModel {
       final years = days / 365.25;
       return '${months.toStringAsFixed(1)} mo (${years.toStringAsFixed(1)}y)';
     } else if (r is LengthBasedResult) {
+      final unit = r.contextData is LengthBasedData
+          ? (r.contextData as LengthBasedData).unit
+          : null;
+      if (unit.toString().contains('mm') ||
+          unit.toString().contains('millimeter')) {
+        return '${xVal.toStringAsFixed(1)} mm';
+      }
       return '${xVal.toStringAsFixed(1)} cm';
     } else if (r is PostmenstrualAgeBasedResult) {
       return '${xVal.toStringAsFixed(1)} wks PMA';
@@ -844,6 +922,8 @@ class GrowthChartModel {
         typeStr.contains('Height') ||
         typeStr.contains('Stature')) {
       yLabel = 'Length / Height (cm)';
+    } else if (typeStr.contains('EarlyPregnancyDatingForCRL')) {
+      yLabel = 'Gestational Age (days)';
     } else if (typeStr.contains('BodyMassIndex') || typeStr.contains('BMI')) {
       yLabel = 'BMI (kg/m²)';
     } else if (typeStr.contains('HeadCircumference')) {
@@ -856,66 +936,65 @@ class GrowthChartModel {
 
     String xLabel = 'X Axis';
     if (r is AgeBasedResult) {
-      xLabel = 'Age';
+      xLabel = 'Age (months)';
     } else if (r is LengthBasedResult) {
-      xLabel = 'Length / Height (cm)';
+      final unit = r.contextData is LengthBasedData
+          ? (r.contextData as LengthBasedData).unit
+          : null;
+      if (unit.toString().contains('mm') ||
+          unit.toString().contains('millimeter')) {
+        xLabel = 'Length / Height (mm)';
+      } else {
+        xLabel = 'Length / Height (cm)';
+      }
     } else if (r is PostmenstrualAgeBasedResult) {
       xLabel = 'Postmenstrual Age (weeks)';
     } else if (r is GestationalAgeBasedResult) {
       xLabel = 'Gestational Age (weeks)';
     }
 
-    String title = 'Growth Standard — $sexStr';
-
-    if (typeStr.contains('WHOGrowthStandardsWeightForAge')) {
-      title = 'WHO Weight-for-Age (0 to 5 Years) — $sexStr';
-      xLabel = 'Age (months)';
-      yLabel = 'Weight (kg)';
-    } else if (typeStr.contains('WHOGrowthStandardsLengthForAge')) {
-      title = 'WHO Length-for-Age (0 to 5 Years) — $sexStr';
-      xLabel = 'Age (months)';
-      yLabel = 'Length (cm)';
-    } else if (typeStr.contains('WHOGrowthStandardsWeightForLength')) {
-      title = 'WHO Weight-for-Length (45 to 110 cm) — $sexStr';
-      xLabel = 'Length (cm)';
-      yLabel = 'Weight (kg)';
-    } else if (typeStr.contains('WHOGrowthStandardsWeightForHeight')) {
-      title = 'WHO Weight-for-Height (65 to 120 cm) — $sexStr';
-      xLabel = 'Height (cm)';
-      yLabel = 'Weight (kg)';
-    } else if (typeStr.contains('WHOGrowthStandardsBodyMassIndexForAge')) {
-      title = 'WHO BMI-for-Age (0 to 5 Years) — $sexStr';
-      xLabel = 'Age (months)';
-      yLabel = 'BMI (kg/m²)';
-    } else if (typeStr.contains('WHOGrowthStandardsHeadCircumferenceForAge')) {
-      title = 'WHO Head Circumference-for-Age — $sexStr';
-      xLabel = 'Age (months)';
-      yLabel = 'Head Circumference (cm)';
-    } else if (typeStr.contains('WHOGrowthStandardsArmCircumferenceForAge')) {
-      title = 'WHO MUAC-for-Age — $sexStr';
-      xLabel = 'Age (months)';
-      yLabel = 'Arm Circumference (cm)';
-    } else if (typeStr.contains('WHOGrowthReferenceHeightForAge')) {
-      title = 'WHO Height-for-Age (5 to 19 Years) — $sexStr';
-      xLabel = 'Age (years)';
-      yLabel = 'Height (cm)';
-    } else if (typeStr.contains('WHOGrowthReferenceWeightForAge')) {
-      title = 'WHO Weight-for-Age (5 to 10 Years) — $sexStr';
-      xLabel = 'Age (years)';
-      yLabel = 'Weight (kg)';
-    } else if (typeStr.contains('WHOGrowthReferenceBodyMassIndexForAge')) {
-      title = 'WHO BMI-for-Age (5 to 19 Years) — $sexStr';
-      xLabel = 'Age (years)';
-      yLabel = 'BMI (kg/m²)';
+    String standardName = 'Growth Standard';
+    if (typeStr.contains('WHO')) {
+      standardName = 'WHO';
     } else if (typeStr.contains('CDC')) {
-      title = 'CDC Growth Standard: ${_humanizeClassName(typeStr)} — $sexStr';
+      standardName = 'CDC';
     } else if (typeStr.contains('Fenton')) {
-      title =
-          'Fenton Preterm Standard: ${_humanizeClassName(typeStr)} — $sexStr';
-    } else if (typeStr.contains('Intergrowth')) {
-      title =
-          'Intergrowth-21st Standard: ${_humanizeClassName(typeStr)} — $sexStr';
+      standardName = 'Fenton';
+    } else if (typeStr.contains('Intergrowth') || typeStr.contains('IG')) {
+      standardName = 'INTERGROWTH-21st';
     }
+
+    String measurementName = 'Measurement';
+    if (typeStr.contains('WeightForAge')) {
+      measurementName = 'Weight-for-Age';
+    } else if (typeStr.contains('LengthForAge')) {
+      measurementName = 'Length-for-Age';
+    } else if (typeStr.contains('StatureForAge')) {
+      measurementName = 'Stature-for-Age';
+    } else if (typeStr.contains('HeightForAge')) {
+      measurementName = 'Height-for-Age';
+    } else if (typeStr.contains('BMIForAge') ||
+        typeStr.contains('BodyMassIndexForAge')) {
+      measurementName = 'BMI-for-Age';
+    } else if (typeStr.contains('HeadCircumferenceForAge')) {
+      measurementName = 'Head Circumference-for-Age';
+    } else if (typeStr.contains('ArmCircumferenceForAge')) {
+      measurementName = 'MUAC-for-Age';
+    } else if (typeStr.contains('WeightForLength')) {
+      measurementName = 'Weight-for-Length';
+    } else if (typeStr.contains('WeightForHeight')) {
+      measurementName = 'Weight-for-Height';
+    } else if (typeStr.contains('WeightForStature')) {
+      measurementName = 'Weight-for-Stature';
+    } else if (typeStr.contains('WeightVelocity')) {
+      measurementName = 'Weight Velocity';
+    } else if (typeStr.contains('LengthVelocity')) {
+      measurementName = 'Length Velocity';
+    } else if (typeStr.contains('HeadCircumferenceVelocity')) {
+      measurementName = 'Head Circumference Velocity';
+    }
+
+    final String title = '$standardName $measurementName — $sexStr';
 
     return _IndicatorInfo(title: title, xLabel: xLabel, yLabel: yLabel);
   }
@@ -962,6 +1041,38 @@ class GrowthChartModel {
         for (double m = xMin; m <= xMax; m += monthInterval) {
           final yrs = (m / 12).toStringAsFixed(0);
           ticks.add(ChartTick(value: m, label: '${yrs}y'));
+        }
+        return ticks;
+      }
+    } else if (r is PostmenstrualAgeBasedResult ||
+        r is GestationalAgeBasedResult) {
+      final unit = r.contextData is AgeBasedData
+          ? (r.contextData as AgeBasedData).unit
+          : TimeUnit.weeks;
+
+      if (unit == TimeUnit.days) {
+        // Preterm standards using days but charting by weeks
+        final weekInterval = (xMax - xMin) > 100
+            ? 4
+            : 2; // e.g. every 4 weeks if long range
+        final startWeek = (xMin / 7.0).ceil();
+        final endWeek = (xMax / 7.0).floor();
+
+        for (int w = startWeek; w <= endWeek; w++) {
+          if (w % weekInterval == 0) {
+            ticks.add(ChartTick(value: (w * 7).toDouble(), label: '${w}w'));
+          }
+        }
+        return ticks;
+      } else {
+        final weekInterval = (xMax - xMin) > 20 ? 4 : 2;
+        final startWeek = xMin.ceil();
+        final endWeek = xMax.floor();
+
+        for (int w = startWeek; w <= endWeek; w++) {
+          if (w % weekInterval == 0) {
+            ticks.add(ChartTick(value: w.toDouble(), label: '${w}w'));
+          }
         }
         return ticks;
       }

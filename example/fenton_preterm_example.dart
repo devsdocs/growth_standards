@@ -4,7 +4,7 @@ import 'package:growth_standards/growth_standards.dart';
 
 void main() {
   print('====================================================');
-  print(' Fenton 2013 Preterm Growth Standards (22 to 50 Weeks)');
+  print(' Fenton 2025 Preterm Growth Standards (22 to 50 Weeks)');
   print('====================================================\n');
 
   final fenton = GrowthStandard.fenton;
@@ -26,7 +26,6 @@ void main() {
     sex: sex,
     age: pma,
     lengthHeight: Length$Centimeter(42.0),
-    measure: LengthHeightMeasurementPosition.recumbent,
   );
   print(
     '2. Fenton Length (32w PMA): Z = ${fentonLength.zScore()} SD | P = ${fentonLength.percentile()}%',

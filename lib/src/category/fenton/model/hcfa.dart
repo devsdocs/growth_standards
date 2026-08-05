@@ -33,7 +33,7 @@ class FentonHeadCircumferenceForAgeData extends AgeBasedData {
   String toString() => 'Infant Head Circumference For Age Data($_data)';
 
   @override
-  TimeUnit get unit => TimeUnit.weeks;
+  TimeUnit get unit => TimeUnit.days;
 }
 
 @freezed
@@ -55,7 +55,7 @@ sealed class FentonHeadCircumferenceForAge extends PostmenstrualAgeBasedResult
       FentonHeadCircumferenceForAgeData();
 
   _FentonHeadCircumferenceForAgeLMS get _ageData =>
-      contextData._data[sex]![postmenstrualAgeAtObservation.completedWeeks]!;
+      contextData._data[sex]![postmenstrualAgeAtObservation.totalDays]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 

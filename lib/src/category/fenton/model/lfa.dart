@@ -33,7 +33,7 @@ class FentonLengthForAgeData extends AgeBasedData {
   String toString() => 'Infant Length For Age Data($_data)';
 
   @override
-  TimeUnit get unit => TimeUnit.weeks;
+  TimeUnit get unit => TimeUnit.days;
 }
 
 @freezed
@@ -43,7 +43,6 @@ sealed class FentonLengthForAge extends PostmenstrualAgeBasedResult
     required Sex sex,
     required PostmenstrualAge age,
     required Length lengthHeight,
-    required LengthHeightMeasurementPosition measure,
   }) = _FentonLengthForAge;
 
   const FentonLengthForAge._();
@@ -55,7 +54,7 @@ sealed class FentonLengthForAge extends PostmenstrualAgeBasedResult
   FentonLengthForAgeData get contextData => FentonLengthForAgeData();
 
   _FentonLengthForAgeLMS get _ageData =>
-      contextData._data[sex]![postmenstrualAgeAtObservation.completedWeeks]!;
+      contextData._data[sex]![postmenstrualAgeAtObservation.totalDays]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 
@@ -75,7 +74,7 @@ sealed class FentonLengthForAge extends PostmenstrualAgeBasedResult
   _FentonLengthForAgeLMS get lmsData => _ageData;
 
   Length$Centimeter get _adjustedLength => adjustedLengthHeight(
-    measure: measure,
+    measure: LengthHeightMeasurementPosition.recumbent,
     age: Age.byWeeksAgo(postmenstrualAgeAtObservation.completedWeeks),
     lengthHeight: lengthHeight,
     type: AdjustedLengthType.who,

@@ -33,10 +33,6 @@ _FentonLengthForAge _$FentonLengthForAgeFromJson(Map<String, dynamic> json) =>
       lengthHeight: Length.fromJson(
         json['lengthHeight'] as Map<String, dynamic>,
       ),
-      measure: $enumDecode(
-        _$LengthHeightMeasurementPositionEnumMap,
-        json['measure'],
-      ),
     );
 
 Map<String, dynamic> _$FentonLengthForAgeToJson(_FentonLengthForAge instance) =>
@@ -44,13 +40,7 @@ Map<String, dynamic> _$FentonLengthForAgeToJson(_FentonLengthForAge instance) =>
       'sex': _$SexEnumMap[instance.sex]!,
       'age': instance.age.toJson(),
       'lengthHeight': instance.lengthHeight.toJson(),
-      'measure': _$LengthHeightMeasurementPositionEnumMap[instance.measure]!,
     };
-
-const _$LengthHeightMeasurementPositionEnumMap = {
-  LengthHeightMeasurementPosition.recumbent: 'recumbent',
-  LengthHeightMeasurementPosition.standing: 'standing',
-};
 
 _FentonWeightForAge _$FentonWeightForAgeFromJson(Map<String, dynamic> json) =>
     _FentonWeightForAge(

@@ -46,8 +46,9 @@ void main() {
   print('Z-Score: ${result.zScore()} SD');      // e.g. +0.5 SD
   print('Percentile: ${result.percentile()}%');  // e.g. 69.3%
 
-  // Render directly to an SVG vector file
-  result.saveSvg('who_weight_for_age_boy.svg');
+  // Render directly to an SVG vector file (Z-Score or Percentile variants)
+  result.saveSvg('who_weight_for_age_boy_zscore.svg');
+  result.saveSvg('who_weight_for_age_boy_percentile.svg', chartMode: ChartMode.percentile);
 }
 ```
 
@@ -80,7 +81,8 @@ void main() {
   print('Latest Result: ${trajectory.latestResult?.zScore()} SD');
 
   // Export full multi-point trajectory growth chart graphic
-  trajectory.saveSvg('patient_trajectory.svg');
+  trajectory.saveSvg('patient_trajectory_zscore.svg');
+  trajectory.saveSvg('patient_trajectory_percentile.svg', chartMode: ChartMode.percentile);
 }
 ```
 
@@ -155,7 +157,7 @@ Browse the [`example/`](./example/) folder for dedicated runnable examples for e
 - **[`example/who_standards_example.dart`](./example/who_standards_example.dart)**: All 12 WHO 0-5y & 5-18y growth standards.
 - **[`example/who_velocity_example.dart`](./example/who_velocity_example.dart)**: WHO Weight, Length, and Head Circumference velocity gains.
 - **[`example/cdc_standards_example.dart`](./example/cdc_standards_example.dart)**: CDC 2-20y & infant 0-36m growth charts.
-- **[`example/fenton_preterm_example.dart`](./example/fenton_preterm_example.dart)**: Fenton 2013 Preterm growth charts (22-50w PMA).
+- **[`example/fenton_preterm_example.dart`](./example/fenton_preterm_example.dart)**: Fenton 2025 Preterm growth charts (22-50w PMA).
 - **[`example/intergrowth_fetal_example.dart`](./example/intergrowth_fetal_example.dart)**: INTERGROWTH-21st fetal ultrasound & dating standards.
 - **[`example/growth_trajectory_example.dart`](./example/growth_trajectory_example.dart)**: Longitudinal child growth tracking with `GrowthTrajectory`.
 - **[`example/example.dart`](./example/example.dart)**: High-level package summary example.

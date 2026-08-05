@@ -22,8 +22,8 @@ class GrowthChartConfig {
     this.customXMax,
     this.customYMin,
     this.customYMax,
-    this.zScoreLines = const [-3, -2, -1, 0, 1, 2, 3],
-    this.percentileLines = const [3, 15, 50, 85, 97],
+    this.zScoreLines,
+    this.percentileLines,
   });
 
   final double width;
@@ -42,8 +42,8 @@ class GrowthChartConfig {
   final double? customXMax;
   final double? customYMin;
   final double? customYMax;
-  final List<int> zScoreLines;
-  final List<num> percentileLines;
+  final List<int>? zScoreLines;
+  final List<num>? percentileLines;
 
   GrowthChartConfig copyWith({
     double? width,

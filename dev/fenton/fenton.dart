@@ -1,47 +1,81 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:csv/csv.dart';
+void main() async {
+  const url =
+      'https://opendataarchive.github.io/raw-data/fenton2025_lmsdata.csv';
+  final httpClient = HttpClient();
+  final request = await httpClient.getUrl(Uri.parse(url));
+  final response = await request.close();
+  final content = await response.transform(utf8.decoder).join();
 
-void main() {
+  final lines = content.split('\n');
+
   final hcfaBoys = <int, Map<String, num>>{};
   final hcfaGirls = <int, Map<String, num>>{};
-  final wfaBoys = <int, Map<String, num>>{};
-  final wfaGirls = <int, Map<String, num>>{};
   final lfaBoys = <int, Map<String, num>>{};
   final lfaGirls = <int, Map<String, num>>{};
+  final wfaBoys = <int, Map<String, num>>{};
+  final wfaGirls = <int, Map<String, num>>{};
 
-  final targetDir = Directory('dev/fenton');
+  for (var i = 1; i < lines.length; i++) {
+    final line = lines[i].trim();
+    if (line.isEmpty) continue;
+    final parts = line.split(',');
+    if (parts.length < 9) continue;
 
-  for (final element in targetDir.listSync()) {
-    if (element is File && element.path.endsWith('.csv')) {
-      final filename = element.uri.pathSegments.last;
-      final name = filename.substring(0, filename.lastIndexOf('.'));
-      final raw = element.readAsStringSync().replaceAll('\r\n', '\n');
-      final rows = const CsvToListConverter(eol: '\n').convert(raw);
+    final age = double.tryParse(parts[1]);
+    if (age == null) continue;
 
-      final expMap = <int, Map<String, num>>{};
+    final gender = parts[3].replaceAll('"', '');
+    final measure = parts[4].replaceAll('"', '');
+    final l = double.tryParse(parts[6]);
+    final m = double.tryParse(parts[7]);
+    final s = double.tryParse(parts[8]);
 
-      for (var i = 1; i < rows.length; i++) {
-        final row = rows[i];
-        if (row.length < 4) continue;
-        final week = int.tryParse(row[0].toString());
-        final l = num.tryParse(row[1].toString());
-        final m = num.tryParse(row[2].toString());
-        final s = num.tryParse(row[3].toString());
-        if (week != null && l != null && m != null && s != null) {
-          expMap[week] = {'l': l, 'm': m, 's': s};
-        }
+    if (l == null || m == null || s == null) continue;
+
+    final days = (age * 7).round();
+    final data = {'l': l, 'm': m, 's': s};
+
+    if (measure == 'head_circ') {
+      if (gender == 'm') {
+        hcfaBoys[days] = data;
+      } else {
+        hcfaGirls[days] = data;
       }
-
-      if (name == 'wfa_boys') wfaBoys.addAll(expMap);
-      if (name == 'wfa_girls') wfaGirls.addAll(expMap);
-      if (name == 'lfa_boys') lfaBoys.addAll(expMap);
-      if (name == 'lfa_girls') lfaGirls.addAll(expMap);
-      if (name == 'hcfa_boys') hcfaBoys.addAll(expMap);
-      if (name == 'hcfa_girls') hcfaGirls.addAll(expMap);
+    } else if (measure == 'length') {
+      if (gender == 'm') {
+        lfaBoys[days] = data;
+      } else {
+        lfaGirls[days] = data;
+      }
+    } else if (measure == 'weight') {
+      if (gender == 'm') {
+        wfaBoys[days] = data;
+      } else {
+        wfaGirls[days] = data;
+      }
     }
   }
+
+  void exportCsv(String name, Map<int, Map<String, num>> map) {
+    final buffer = StringBuffer();
+    buffer.writeln('Days,L,M,S');
+    final keys = map.keys.toList()..sort();
+    for (final k in keys) {
+      final v = map[k]!;
+      buffer.writeln('$k,${v['l']},${v['m']},${v['s']}');
+    }
+    File('dev/fenton/$name.csv').writeAsStringSync(buffer.toString());
+  }
+
+  exportCsv('wfa_boys', wfaBoys);
+  exportCsv('wfa_girls', wfaGirls);
+  exportCsv('lfa_boys', lfaBoys);
+  exportCsv('lfa_girls', lfaGirls);
+  exportCsv('hcfa_boys', hcfaBoys);
+  exportCsv('hcfa_girls', hcfaGirls);
 
   File('dev/fenton/wfa_boys.json')
       .writeAsStringSync(json.encode(_stringifyKeys(wfaBoys)));
@@ -80,7 +114,8 @@ Map<String, dynamic> _stringifyKeys(Map<int, Map<String, num>> map) {
 }
 
 String _toLiteral(Map<int, Map<String, num>> map) {
-  final entries = map.entries.map((e) {
+  final entries =
+      (map.entries.toList()..sort((a, b) => a.key.compareTo(b.key))).map((e) {
     final k = e.key;
     final val = e.value;
     return "  $k: {'l': ${val['l']}, 'm': ${val['m']}, 's': ${val['s']}}";

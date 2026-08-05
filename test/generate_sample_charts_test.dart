@@ -54,6 +54,21 @@ void main() {
     );
     fentonWfa.saveSvg('${outputDir.path}/fenton_weight_for_age_girl.svg');
 
+    // 4b. Fenton Preterm Weight-for-Age (Boy, 40 Weeks PMA) in Percentile Mode
+    final fentonWfaBoy = GrowthStandard.fenton.weightForAge(
+      sex: Sex.male,
+      age: const PostmenstrualAge(weeks: 40),
+      weight: Mass$Kilogram(3.2),
+    );
+    const fentonConfig = GrowthChartConfig(
+      displayMode: GrowthChartDisplayMode.percentile,
+      title: 'Fenton Weight-for-Age (Boy, 40 Weeks)',
+    );
+    fentonWfaBoy.saveSvg(
+      '${outputDir.path}/fenton_weight_for_age_boy_percentile.svg',
+      config: fentonConfig,
+    );
+
     // 5. Longitudinal Trajectory using GrowthTrajectory API (Boy, Birth to 24 Months)
     final trajectory = GrowthTrajectory.whoWeightForAge(
       sex: Sex.male,
@@ -103,7 +118,7 @@ void main() {
 
     // Verify all 6 sample SVG files were created
     final files = outputDir.listSync();
-    expect(files.length, greaterThanOrEqualTo(6));
+    expect(files.length, greaterThanOrEqualTo(7));
     print(
       '\nSuccessfully generated ${files.length} sample chart files in ${outputDir.path}:',
     );

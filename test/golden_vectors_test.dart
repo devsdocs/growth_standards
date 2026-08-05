@@ -106,15 +106,15 @@ void main() {
     });
   });
 
-  group('Golden Test Vectors — Fenton 2013 Preterm Growth Standards', () {
+  group('Golden Test Vectors — Fenton 2025 Preterm Growth Standards', () {
     test('Fenton Male Weight-for-Age at 30 weeks PMA', () {
       final calc = GrowthStandard.fenton.weightForAge(
         sex: Sex.male,
         age: PostmenstrualAge.completedWeeks(30),
-        weight: Mass$Kilogram(1.48),
+        weight: Mass$Gram(1437.05589006801),
       );
 
-      // Fenton 2013 male median weight at 30 weeks PMA is exactly 1.48 kg
+      // Fenton 2025 male median weight at 30 weeks PMA is exactly 1437.055... g
       expect(calc.zScore(), closeTo(0.00, 0.001));
       expect(calc.percentile(), closeTo(50.00, 0.01));
     });
@@ -123,10 +123,10 @@ void main() {
       final calc = GrowthStandard.fenton.weightForAge(
         sex: Sex.female,
         age: PostmenstrualAge.completedWeeks(40),
-        weight: Mass$Kilogram(3.51),
+        weight: Mass$Gram(3416.58238435314),
       );
 
-      // Fenton 2013 female median weight at 40 weeks PMA is exactly 3.51 kg
+      // Fenton 2025 female median weight at 40 weeks PMA is exactly 3416.582... g
       expect(calc.zScore(), closeTo(0.00, 0.001));
       expect(calc.percentile(), closeTo(50.00, 0.01));
     });
@@ -135,11 +135,10 @@ void main() {
       final calc = GrowthStandard.fenton.lengthForAge(
         sex: Sex.male,
         age: PostmenstrualAge.completedWeeks(40),
-        lengthHeight: Length$Centimeter(51.6),
-        measure: LengthHeightMeasurementPosition.recumbent,
+        lengthHeight: Length$Centimeter(51.0031385015087),
       );
 
-      // Fenton 2013 male median length at 40 weeks PMA is 51.6 cm
+      // Fenton 2025 male median length at 40 weeks PMA is 51.003... cm
       expect(calc.zScore(), closeTo(0.00, 0.001));
       expect(calc.percentile(), closeTo(50.00, 0.01));
     });
@@ -148,10 +147,10 @@ void main() {
       final calc = GrowthStandard.fenton.headCircumferenceForAge(
         sex: Sex.female,
         age: PostmenstrualAge.completedWeeks(40),
-        measurementResult: Length$Centimeter(34.8),
+        measurementResult: Length$Centimeter(34.7142369900735),
       );
 
-      // Fenton 2013 female median head circumference at 40 weeks PMA is 34.8 cm
+      // Fenton 2025 female median head circumference at 40 weeks PMA is 34.714... cm
       expect(calc.zScore(), closeTo(0.00, 0.001));
       expect(calc.percentile(), closeTo(50.00, 0.01));
     });

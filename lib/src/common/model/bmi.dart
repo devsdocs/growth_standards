@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:super_measurement/super_measurement.dart';
@@ -16,9 +17,9 @@ sealed class BodyMassIndex with _$BodyMassIndex {
   const BodyMassIndex._();
 
   num get value {
-    final toMeterSquare = lengthHeight.toMeter.value.pow(2);
-    final toKg = weight.toKilogram.value;
+    final toMeterSquare = pow(lengthHeight.toMeter.value.toDouble(), 2);
+    final toKg = weight.toKilogram.value.toDouble();
 
-    return (toKg / toMeterSquare).toDouble();
+    return toKg / toMeterSquare;
   }
 }

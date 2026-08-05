@@ -1,3 +1,9 @@
+## 5.3.0
+- **SVG export restructuring**: Revamped SVG generation scripts. Outputs are now meticulously categorized into nested directories for each standard and measurement, producing both standard Z-score curves and percentile-based curves (`dev/generate_all_svg.dart`).
+- **LMS curve correctness**: Corrected the statistical calculations for rendering smooth `ChartCurve` points in graphical outputs to honor standard deviation limits (especially mapping age variables explicitly in equations).
+- **Intergrowth CRL fixes**: Corrected `earlyPregnancyCRL` gestational age reverse lookup. It now evaluates the exact gestational age derived from fetal crown-rump length ultrasound data properly.
+- **Unit normalization constraints**: Confirmed flawless abstraction mapping in measurement defaults; Fenton strictly uses grams vs WHO kg; Intergrowth ultrasound enforces millimeters.
+
 ## 5.2.0
 - **Math precision upgrade**: Fully migrated internal statistical equations (SD and Z-score calculations) to use the `Rational` class underneath, strictly preventing any floating-point precision loss during intermediate algebraic steps.
 - **Normal distribution accuracy**: Improved probability implementations (`pnorm` and `qnorm`) utilizing `Rational` objects for enhanced exactness.

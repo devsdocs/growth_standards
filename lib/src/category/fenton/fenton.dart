@@ -68,11 +68,5 @@ class Fenton {
     required Sex sex,
     required PostmenstrualAge age,
     required Length lengthHeight,
-    required LengthHeightMeasurementPosition measure,
-  }) => FentonLengthForAge(
-    sex: sex,
-    age: age,
-    lengthHeight: lengthHeight,
-    measure: measure,
-  );
+  }) => FentonLengthForAge(sex: sex, age: age, lengthHeight: lengthHeight);
 }

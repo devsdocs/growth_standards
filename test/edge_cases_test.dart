@@ -300,13 +300,11 @@ void main() {
         sex: Sex.male,
         age: age,
         lengthHeight: length,
-        measure: LengthHeightMeasurementPosition.recumbent,
       );
       final femaleL = GrowthStandard.fenton.lengthForAge(
         sex: Sex.female,
         age: age,
         lengthHeight: length,
-        measure: LengthHeightMeasurementPosition.recumbent,
       );
       final maleHc = GrowthStandard.fenton.headCircumferenceForAge(
         sex: Sex.male,
@@ -326,7 +324,7 @@ void main() {
       expect(maleHc.zScore().isFinite, isTrue);
       expect(femaleHc.zScore().isFinite, isTrue);
 
-      // With sex-specific Fenton 2013 LMS parameters, male and female z-scores are distinct.
+      // With sex-specific Fenton 2025 LMS parameters, male and female z-scores are distinct.
       expect(maleW.zScore(), isNot(equals(femaleW.zScore())));
       expect(maleL.zScore(), isNot(equals(femaleL.zScore())));
       expect(maleHc.zScore(), isNot(equals(femaleHc.zScore())));
@@ -365,22 +363,22 @@ void main() {
     });
 
     test(
-      'uses distinct sex-specific Fenton 2013 LMS parameters for boys vs girls',
+      'uses distinct sex-specific Fenton 2025 LMS parameters for boys vs girls',
       () {
         final maleCalc = GrowthStandard.fenton.weightForAge(
           sex: Sex.male,
           age: PostmenstrualAge.completedWeeks(40),
-          weight: Mass$Kilogram(3.5),
+          weight: Mass$Gram(3500),
         );
         final femaleCalc = GrowthStandard.fenton.weightForAge(
           sex: Sex.female,
           age: PostmenstrualAge.completedWeeks(40),
-          weight: Mass$Kilogram(3.5),
+          weight: Mass$Gram(3500),
         );
 
-        // Fenton 2013 male median M = 3.65 kg; female median M = 3.51 kg
-        expect(maleCalc.lmsData.lms.m, closeTo(3.65, 0.01));
-        expect(femaleCalc.lmsData.lms.m, closeTo(3.51, 0.01));
+        // Fenton 2025 male median M = 3543.50 g; female median M = 3416.58 g
+        expect(maleCalc.lmsData.lms.m, closeTo(3543.50, 0.01));
+        expect(femaleCalc.lmsData.lms.m, closeTo(3416.58, 0.01));
         expect(maleCalc.zScore(), isNot(equals(femaleCalc.zScore())));
       },
     );

@@ -7,7 +7,7 @@ This document provides comprehensive references for all growth standards impleme
 - [WHO Child Growth Standards (2006)](#who-child-growth-standards-2006)
 - [WHO Growth Reference (2007) - 5-19 Years](#who-growth-reference-2007---5-19-years)
 - [CDC Growth Charts (2000)](#cdc-growth-charts-2000)
-- [Fenton Growth Charts (2013)](#fenton-growth-charts-2013)
+- [Fenton Growth Charts (2025)](#fenton-growth-charts-2025)
 - [INTERGROWTH-21st Standards](#intergrowth-21st-standards)
 - [Statistical Methods (LMS)](#statistical-methods-lms)
 - [Software and Tools](#software-and-tools)
@@ -238,23 +238,20 @@ This document provides comprehensive references for all growth standards impleme
 
 ---
 
-## Fenton Growth Charts (2013)
+## Fenton Growth Charts (2025)
 
 ### Official Documentation
 
-**A systematic review and meta-analysis to revise the Fenton growth chart for preterm infants**
+**Fenton third-generation Growth Charts of preterm infants without abnormal fetal growth: A systematic review and meta-analysis**
 
-- **Authors**: Fenton TR, Kim JH
-- **Published**: 20 April 2013
-- **Journal**: BMC Pediatrics
-- **Volume**: 13
-- **Article Number**: 59
-- **DOI**: 10.1186/1471-2431-13-59
-- **URL**: https://link.springer.com/article/10.1186/1471-2431-13-59
+- **Authors**: Fenton TR, Elmrayed S, Alshaikh BN
+- **Published**: 2025
+- **Journal**: Paediatric and Perinatal Epidemiology
+- **URL**: https://ucalgary.ca/resource/preterm-growth-chart/preterm-growth-chart
 - **Open Access**: Yes
 
 **Key Features:**
-- Revision of 2003 Fenton Preterm Growth Chart
+- Revision of 2013 Fenton Preterm Growth Chart (Third Generation)
 - Harmonized with WHO 2006 Growth Standard
 - Sex-specific growth curves
 - Actual age (vs completed weeks) on x-axis
@@ -554,7 +551,7 @@ Where:
 - **Acceptable Difference**: ≤ 0.01 (consistent with WHO standards)
 - **Source**: CDC SAS documentation
 
-### Fenton 2013 Charts
+### Fenton 2025 Charts
 
 - **Storage Type**: Double precision (64-bit floating point)
 - **Internal Precision**: Full precision
@@ -590,6 +587,7 @@ Where:
 
 - **2003**: Original Fenton preterm growth chart
 - **2013**: Revised Fenton growth chart (harmonized with WHO 2006)
+- **2025**: Third-generation Fenton growth chart (~4.8 million births, corrected biases)
 
 ### INTERGROWTH-21st
 
@@ -629,10 +627,10 @@ World Health Organization. WHO Child Growth Standards: Length/height-for-age, we
 Kuczmarski RJ, Ogden CL, Grummer-Strawn LM, et al. CDC growth charts: United States. Adv Data. 2000;(314):1-28.
 ```
 
-### For Fenton 2013 Charts
+### For Fenton 2025 Charts
 
 ```
-Fenton TR, Kim JH. A systematic review and meta-analysis to revise the Fenton growth chart for preterm infants. BMC Pediatr. 2013;13:59.
+Fenton TR, Elmrayed S, Alshaikh BN. Fenton third-generation Growth Charts of preterm infants without abnormal fetal growth: A systematic review and meta-analysis. Paediatr Perinat Epidemiol. 2025.
 ```
 
 ### For INTERGROWTH-21st Standards
@@ -649,7 +647,7 @@ This library implements growth standards developed by the following organization
 
 - **World Health Organization (WHO)** - WHO Child Growth Standards (2006) and WHO Growth Reference (2007)
 - **Centers for Disease Control and Prevention (CDC)** - CDC Growth Charts (2000)
-- **University of Calgary** - Fenton Growth Charts (2013)
+- **University of Calgary** - Fenton Growth Charts (2025)
 - **INTERGROWTH-21st Consortium** - INTERGROWTH-21st Standards (2014)
 
 Special thanks to the researchers and institutions who contributed to the development of these standards through extensive multicentre studies and statistical analysis.
@@ -722,7 +720,7 @@ For questions about this library implementation, please refer to the project rep
 - WHO 2007 fills gap between WHO 2006 and adult BMI cut-offs
 - Smooth transition at 5 years between the two
 
-### Fenton 2013 vs WHO 2006
+### Fenton 2025 vs WHO 2006
 
 | Aspect | Fenton 2013 | WHO 2006 |
 |--------|-------------|-----------|
@@ -780,7 +778,7 @@ For questions about this library implementation, please refer to the project rep
 - **Best for**: Transition from WHO 2006 to adult BMI cut-offs
 - **Note**: Descriptive reference, not prescriptive standard
 
-### Fenton 2013 Charts (Preterm)
+### Fenton 2025 Charts (Preterm)
 - **Use when**: Monitoring growth of preterm infants
 - **Recommended for**: NICUs, preterm infant care
 - **Best for**: Preterm infants 22-50 weeks PMA
@@ -820,22 +818,29 @@ For questions about this library implementation, please refer to the project rep
 ### Measurement Units
 
 **Weight:**
-- WHO 2006: Kilograms (kg)
+- WHO 2006 / 2007: Kilograms (kg)
 - CDC 2000: Kilograms (kg)
-- Fenton 2013: Grams (g) for weight, centimeters (cm) for length/HC
-- INTERGROWTH-21st: Grams (g)
+- Fenton 2013: Grams (g)
+- INTERGROWTH-21st: Kilograms (kg)
 
 **Length/Height:**
-- WHO 2006: Length (0-24 months), Height (24-60 months)
-- CDC 2000: Length (0-36 months), Height (2-20 years)
-- Fenton 2013: Centimeters (cm)
-- INTERGROWTH-21st: Centimeters (cm)
-
-**Head Circumference:**
 - WHO 2006: Centimeters (cm)
 - CDC 2000: Centimeters (cm)
 - Fenton 2013: Centimeters (cm)
 - INTERGROWTH-21st: Centimeters (cm)
+
+**Fetal Ultrasound / Early Pregnancy (INTERGROWTH-21st only):**
+- Fetal AC, BPD, FL, HC, OFD: Millimeters (mm)
+- Fetal Crown-Rump Length (CRL): Millimeters (mm)
+- Symphysis-Fundal Height: Centimeters (cm)
+
+**Head Circumference (Postnatal):**
+- WHO 2006: Centimeters (cm)
+- CDC 2000: Centimeters (cm)
+- Fenton 2013: Centimeters (cm)
+- INTERGROWTH-21st: Centimeters (cm)
+
+> **Implementation Safety via `super_measurement`:** To prevent common clinical unit-mismatch errors (e.g. inputting `3000` assuming grams into a standard expecting kilograms, leading to `3,000,000` multiplier), this library forces the use of strongly-typed `super_measurement` wrappers (like `Mass$Kilogram(3.0)` or `Length$Centimeter(27.0)`). The internal getters forcibly cast to the exact metric required by the LMS equation (e.g. `weight.toGram.value` for Fenton vs `weight.toKilogram.value` for WHO, or `length.toMillimeter.value` for Fetal Ultrasound).
 
 ### Sex Assignment
 

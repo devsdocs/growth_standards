@@ -33,7 +33,7 @@ class FentonWeightForAgeData extends AgeBasedData {
   String toString() => 'Infant Weight For Age Data($_data)';
 
   @override
-  TimeUnit get unit => TimeUnit.weeks;
+  TimeUnit get unit => TimeUnit.days;
 }
 
 @freezed
@@ -54,7 +54,7 @@ sealed class FentonWeightForAge extends PostmenstrualAgeBasedResult
   FentonWeightForAgeData get contextData => FentonWeightForAgeData();
 
   _FentonWeightForAgeLMS get _ageData =>
-      contextData._data[sex]![postmenstrualAgeAtObservation.completedWeeks]!;
+      contextData._data[sex]![postmenstrualAgeAtObservation.totalDays]!;
 
   num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
 
@@ -74,7 +74,7 @@ sealed class FentonWeightForAge extends PostmenstrualAgeBasedResult
   _FentonWeightForAgeLMS get lmsData => _ageData;
 
   @override
-  num get measurementResultInDefaultUnit => weight.toKilogram.value.toDouble();
+  num get measurementResultInDefaultUnit => weight.toGram.value.toDouble();
 }
 
 class _FentonWeightForAgeLMS extends LMSContext {

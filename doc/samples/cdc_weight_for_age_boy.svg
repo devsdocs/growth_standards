@@ -66,7 +66,7 @@
   <text class="tick-label" x="728.8888888888888" y="574.0" text-anchor="middle">18y</text>
   <line class="axis-line" x1="810.0" y1="554.0" x2="810.0" y2="560.0"/>
   <text class="tick-label" x="810.0" y="574.0" text-anchor="middle">20y</text>
-  <text class="axis-title" x="445.0" y="598.0" text-anchor="middle">Age</text>
+  <text class="axis-title" x="445.0" y="598.0" text-anchor="middle">Age (months)</text>
   <line class="axis-line" x1="74.0" y1="524.3439511259978" x2="80.0" y2="524.3439511259978"/>
   <text class="tick-label" x="68.0" y="528.3439511259978" text-anchor="end">10</text>
   <line class="axis-line" x1="74.0" y1="481.04800302927265" x2="80.0" y2="481.04800302927265"/>

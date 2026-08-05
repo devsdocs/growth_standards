@@ -458,7 +458,6 @@ void main() {
         sex: Sex.male,
         age: pma,
         lengthHeight: Length$Centimeter(40.0),
-        measure: LengthHeightMeasurementPosition.recumbent,
       );
 
       final svg = result.toSvg();
