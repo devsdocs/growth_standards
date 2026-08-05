@@ -98,7 +98,8 @@ sealed class IntergrowthPretermInfantsPostnatalGrowthWeightForAge
       _ageData;
 
   @override
-  num get measurementResultInDefaultUnit => measurementResult.toKilogram.value;
+  num get measurementResultInDefaultUnit =>
+      measurementResult.toKilogram.value.toDouble();
 }
 
 class _IntergrowthPretermInfantsPostnatalGrowthWeightForAgeLMS

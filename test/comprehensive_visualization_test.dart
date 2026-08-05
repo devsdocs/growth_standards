@@ -16,7 +16,7 @@ void main() {
       final result = gs.weightForAge(
         sex: Sex.male,
         age: age,
-        weight: const Mass$Kilogram(9.5),
+        weight: Mass$Kilogram(9.5),
       );
 
       final svg = result.toSvg();
@@ -33,7 +33,7 @@ void main() {
       final result = gs.lengthForAge(
         sex: Sex.male,
         age: age,
-        lengthHeight: const Length$Centimeter(75.0),
+        lengthHeight: Length$Centimeter(75.0),
         measure: LengthHeightMeasurementPosition.standing,
       );
 
@@ -50,8 +50,8 @@ void main() {
 
       final bmiMeasurement =
           WHOGrowthStandardsBodyMassIndexMeasurement.fromMeasurement(
-            lengthHeight: const Length$Centimeter(75.0),
-            weight: const Mass$Kilogram(9.5),
+            lengthHeight: Length$Centimeter(75.0),
+            weight: Mass$Kilogram(9.5),
             measure: LengthHeightMeasurementPosition.standing,
             age: age,
           );
@@ -75,7 +75,7 @@ void main() {
       final result = gs.headCircumferenceForAge(
         sex: Sex.male,
         age: age,
-        measurementResult: const Length$Centimeter(43.0),
+        measurementResult: Length$Centimeter(43.0),
       );
 
       final svg = result.toSvg();
@@ -91,8 +91,8 @@ void main() {
 
       final result = gs.weightForLength(
         sex: Sex.male,
-        lengthMeasurementResult: const Length$Centimeter(75.0),
-        massMeasurementResult: const Mass$Kilogram(9.5),
+        lengthMeasurementResult: Length$Centimeter(75.0),
+        massMeasurementResult: Mass$Kilogram(9.5),
         age: age,
         measure: LengthHeightMeasurementPosition.standing,
       );
@@ -165,7 +165,7 @@ void main() {
       final result = gs.weightForAge(
         sex: Sex.male,
         age: age,
-        weight: const Mass$Kilogram(9.5),
+        weight: Mass$Kilogram(9.5),
       );
 
       final svg = [result].toSvg();
@@ -182,11 +182,11 @@ void main() {
 
       final weightMsr1 = MassMeasurementHistory(
         age.dateAtMonthsAfterBirth(4),
-        const Mass$Kilogram(6.4),
+        Mass$Kilogram(6.4),
       );
       final weightMsr2 = MassMeasurementHistory(
         age.dateAtMonthsAfterBirth(6),
-        const Mass$Kilogram(7.9),
+        Mass$Kilogram(7.9),
       );
 
       final velocity = gs.weightVelocityForAge(
@@ -208,11 +208,11 @@ void main() {
 
       final lengthMsr1 = LengthMeasurementHistory(
         age.dateAtMonthsAfterBirth(3),
-        const Length$Centimeter(61.0),
+        Length$Centimeter(61.0),
       );
       final lengthMsr2 = LengthMeasurementHistory(
         age.dateAtMonthsAfterBirth(6),
-        const Length$Centimeter(67.5),
+        Length$Centimeter(67.5),
       );
 
       final velocity = gs.lengthVelocityForAge(
@@ -234,11 +234,11 @@ void main() {
 
       final hcMsr1 = LengthMeasurementHistory(
         age.dateAtMonthsAfterBirth(4),
-        const Length$Centimeter(41.2),
+        Length$Centimeter(41.2),
       );
       final hcMsr2 = LengthMeasurementHistory(
         age.dateAtMonthsAfterBirth(6),
-        const Length$Centimeter(43.0),
+        Length$Centimeter(43.0),
       );
 
       final velocity = gs.headCircumferenceVelocityForAge(
@@ -332,11 +332,11 @@ void main() {
 
       final weightMsr1 = MassMeasurementHistory(
         age.dateAtMonthsAfterBirth(4),
-        const Mass$Kilogram(6.4),
+        Mass$Kilogram(6.4),
       );
       final weightMsr2 = MassMeasurementHistory(
         age.dateAtMonthsAfterBirth(6),
-        const Mass$Kilogram(7.9),
+        Mass$Kilogram(7.9),
       );
 
       final velocity = gs.weightVelocityForAge(
@@ -359,7 +359,7 @@ void main() {
       final result = CDCWeightForAge(
         sex: Sex.male,
         age: age,
-        weight: const Mass$Kilogram(14.0),
+        weight: Mass$Kilogram(14.0),
       );
 
       final svg = result.toSvg();
@@ -393,8 +393,8 @@ void main() {
       final age = Age.byMonthsAgo(120); // 10 years
       final bmiMeasurement = CDCBodyMassIndexMeasurement(
         BodyMassIndex(
-          lengthHeight: const Length$Centimeter(140.0),
-          weight: const Mass$Kilogram(35.0),
+          lengthHeight: Length$Centimeter(140.0),
+          weight: Mass$Kilogram(35.0),
         ).value,
       );
 
@@ -419,7 +419,7 @@ void main() {
       final result = gs.weightForAge(
         sex: Sex.male,
         age: pma,
-        weight: const Mass$Kilogram(1.8),
+        weight: Mass$Kilogram(1.8),
       );
 
       final svg = result.toSvg();
@@ -457,7 +457,7 @@ void main() {
       final result = gs.lengthForAge(
         sex: Sex.male,
         age: pma,
-        lengthHeight: const Length$Centimeter(40.0),
+        lengthHeight: Length$Centimeter(40.0),
         measure: LengthHeightMeasurementPosition.recumbent,
       );
 
@@ -474,7 +474,7 @@ void main() {
 
       final result = IntergrowthFetalGrowtHeadCircumferenceForAge(
         age: age,
-        measurementResult: const Length$Millimeter(150.0),
+        measurementResult: Length$Millimeter(150.0),
       );
 
       final svg = result.toSvg();
@@ -504,7 +504,7 @@ void main() {
     });
 
     test('INTERGROWTH Early Pregnancy Dating CRL single point SVG', () {
-      const length = Length$Millimeter(50.0);
+      final length = Length$Millimeter(50.0);
       final age = Age.byDaysAgo(60);
 
       final result = IntergrowthEarlyPregnancyDatingForCRL(
@@ -529,7 +529,7 @@ void main() {
       final result = gs.weightForAge(
         sex: Sex.male,
         age: age,
-        weight: const Mass$Kilogram(9.5),
+        weight: Mass$Kilogram(9.5),
       );
 
       final svg = result.toSvg();
@@ -545,7 +545,7 @@ void main() {
       final result = gs.weightForAge(
         sex: Sex.male,
         age: age,
-        weight: const Mass$Kilogram(9.5),
+        weight: Mass$Kilogram(9.5),
       );
 
       final tempFile = File('test_temp.svg');
@@ -608,11 +608,11 @@ void main() {
 
       final weightMsr1 = MassMeasurementHistory(
         age.dateAtMonthsAfterBirth(4),
-        const Mass$Kilogram(6.4),
+        Mass$Kilogram(6.4),
       );
       final weightMsr2 = MassMeasurementHistory(
         age.dateAtMonthsAfterBirth(6),
-        const Mass$Kilogram(7.9),
+        Mass$Kilogram(7.9),
       );
 
       final velocity = gs.weightVelocityForAge(
@@ -633,11 +633,11 @@ void main() {
 
       final weightMsr1 = MassMeasurementHistory(
         age.dateAtMonthsAfterBirth(4),
-        const Mass$Kilogram(6.4),
+        Mass$Kilogram(6.4),
       );
       final weightMsr2 = MassMeasurementHistory(
         age.dateAtMonthsAfterBirth(6),
-        const Mass$Kilogram(7.9),
+        Mass$Kilogram(7.9),
       );
 
       final velocity = gs.weightVelocityForAge(
@@ -728,7 +728,7 @@ void main() {
       final result = gs.weightForAge(
         sex: Sex.male,
         age: age,
-        weight: const Mass$Kilogram(9.5),
+        weight: Mass$Kilogram(9.5),
       );
 
       const config = GrowthChartConfig();
@@ -747,7 +747,7 @@ void main() {
       final result = gs.weightForAge(
         sex: Sex.male,
         age: age,
-        weight: const Mass$Kilogram(9.5),
+        weight: Mass$Kilogram(9.5),
       );
 
       const config = GrowthChartConfig(
@@ -768,7 +768,7 @@ void main() {
       final result = gs.weightForAge(
         sex: Sex.male,
         age: age,
-        weight: const Mass$Kilogram(9.5),
+        weight: Mass$Kilogram(9.5),
       );
 
       const config = GrowthChartConfig(
@@ -790,13 +790,13 @@ void main() {
       final maleResult = gs.weightForAge(
         sex: Sex.male,
         age: age,
-        weight: const Mass$Kilogram(9.5),
+        weight: Mass$Kilogram(9.5),
       );
 
       final femaleResult = gs.weightForAge(
         sex: Sex.female,
         age: age,
-        weight: const Mass$Kilogram(9.0),
+        weight: Mass$Kilogram(9.0),
       );
 
       final maleSvg = maleResult.toSvg();
@@ -829,7 +829,7 @@ void main() {
       final result = gs.weightForAge(
         sex: Sex.male,
         age: age,
-        weight: const Mass$Kilogram(9.5),
+        weight: Mass$Kilogram(9.5),
       );
 
       final svg = [result].toSvg();
@@ -844,11 +844,11 @@ void main() {
 
       final weightMsr1 = MassMeasurementHistory(
         age.dateAtMonthsAfterBirth(4),
-        const Mass$Kilogram(6.4),
+        Mass$Kilogram(6.4),
       );
       final weightMsr2 = MassMeasurementHistory(
         age.dateAtMonthsAfterBirth(6),
-        const Mass$Kilogram(7.9),
+        Mass$Kilogram(7.9),
       );
 
       final velocity = gs.weightVelocityForAge(
@@ -870,7 +870,7 @@ void main() {
       final result = gs.weightForAge(
         sex: Sex.male,
         age: age,
-        weight: const Mass$Kilogram(9.5),
+        weight: Mass$Kilogram(9.5),
       );
 
       final tempFile = File('test_save_valid.svg');
@@ -888,7 +888,7 @@ void main() {
       final result = WHOGrowthReferenceWeightForAge(
         sex: Sex.male,
         age: age,
-        weight: const Mass$Kilogram(32.0),
+        weight: Mass$Kilogram(32.0),
       );
 
       final svg = result.toSvg();

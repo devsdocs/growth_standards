@@ -76,11 +76,11 @@ Length$Centimeter adjustedLengthHeight({
   required Length lengthHeight,
   required AdjustedLengthType type,
 }) {
-  num toCm = lengthHeight.toCentimeter.value;
+  num toCm = lengthHeight.toCentimeter.value.toDouble();
   final isStanding = measure == LengthHeightMeasurementPosition.standing;
   final ageMos = age.ageInTotalMonthsByNow;
   final ageDays = age.ageInTotalDaysByNow;
-  final val = type.value;
+  final val = type.value.toDouble();
 
   final isAdd = type == AdjustedLengthType.who
       ? ageDays <= 730 && isStanding

@@ -78,7 +78,7 @@ sealed class WHOGrowthStandardsSubscapularSkinfoldForAge extends AgeBasedResult
 
   @override
   num get measurementResultInDefaultUnit =>
-      measurementResult.toMillimeter.value;
+      measurementResult.toMillimeter.value.toDouble();
 }
 
 class _WHOGrowthStandardsSubscapularSkinfoldForAgeLMS extends LMSContext {

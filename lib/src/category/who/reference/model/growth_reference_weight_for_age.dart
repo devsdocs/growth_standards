@@ -72,7 +72,7 @@ sealed class WHOGrowthReferenceWeightForAge extends AgeBasedResult
   _WHOGrowthReferenceWeightForAgeLMS get lmsData => _ageData;
 
   @override
-  num get measurementResultInDefaultUnit => weight.toKilogram.value;
+  num get measurementResultInDefaultUnit => weight.toKilogram.value.toDouble();
 }
 
 class _WHOGrowthReferenceWeightForAgeLMS extends LMSContext {

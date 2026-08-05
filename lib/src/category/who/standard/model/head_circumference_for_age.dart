@@ -76,7 +76,7 @@ sealed class WHOGrowthStandardsHeadCircumferenceForAge extends AgeBasedResult
 
   @override
   num get measurementResultInDefaultUnit =>
-      measurementResult.toCentimeter.value;
+      measurementResult.toCentimeter.value.toDouble();
 }
 
 class _WHOGrowthStandardsHeadCircumferenceForAgeLMS extends LMSContext {

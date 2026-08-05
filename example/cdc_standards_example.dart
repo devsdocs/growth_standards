@@ -18,7 +18,7 @@ void main() {
   final cdcWfa = cdc220.weightForAge(
     sex: sex,
     age: childAge,
-    weight: const Mass$Kilogram(26.5),
+    weight: Mass$Kilogram(26.5),
   );
   print(
     '1. CDC Weight-for-Age (8y): Z = ${cdcWfa.zScore()} SD | P = ${cdcWfa.percentile()}%',
@@ -28,7 +28,7 @@ void main() {
   final cdcStature = cdc220.statureForAge(
     sex: sex,
     age: childAge,
-    lengthHeight: const Length$Centimeter(128.0),
+    lengthHeight: Length$Centimeter(128.0),
     measure: LengthHeightMeasurementPosition.standing,
   );
   print(
@@ -54,7 +54,7 @@ void main() {
   final cdcInfantWfa = cdcInfant.weightForAge(
     sex: sex,
     age: infantAge,
-    weight: const Mass$Kilogram(10.5),
+    weight: Mass$Kilogram(10.5),
   );
   print(
     '4. CDC Infant Weight-for-Age (12m): Z = ${cdcInfantWfa.zScore()} SD | P = ${cdcInfantWfa.percentile()}%',
@@ -64,7 +64,7 @@ void main() {
   final cdcInfantHc = cdcInfant.headCircumferenceForAge(
     sex: sex,
     age: infantAge,
-    measurementResult: const Length$Centimeter(46.8),
+    measurementResult: Length$Centimeter(46.8),
   );
   print(
     '5. CDC Infant Head Circumference (12m): Z = ${cdcInfantHc.zScore()} SD | P = ${cdcInfantHc.percentile()}%',

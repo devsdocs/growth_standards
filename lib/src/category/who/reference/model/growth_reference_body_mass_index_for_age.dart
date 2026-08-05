@@ -97,7 +97,8 @@ sealed class WHOGrowthReferenceBodyMassIndexForAge extends AgeBasedResult
   _WHOGrowthReferenceBodyMassIndexForAgeLMS get lmsData => _ageData;
 
   @override
-  num get measurementResultInDefaultUnit => bodyMassIndexMeasurement.value;
+  num get measurementResultInDefaultUnit =>
+      bodyMassIndexMeasurement.value.toDouble();
 }
 
 class _WHOGrowthReferenceBodyMassIndexForAgeLMS extends LMSContext {

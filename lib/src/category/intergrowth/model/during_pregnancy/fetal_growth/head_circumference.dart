@@ -79,7 +79,7 @@ sealed class IntergrowthFetalGrowtHeadCircumferenceForAge extends AgeBasedResult
 
   @override
   num get measurementResultInDefaultUnit =>
-      measurementResult.toMillimeter.value;
+      measurementResult.toMillimeter.value.toDouble();
 }
 
 class _IntergrowthFetalGrowtHeadCircumferenceForAgeLMS extends LMSContext {

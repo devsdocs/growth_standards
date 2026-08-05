@@ -80,7 +80,7 @@ sealed class IntergrowthFetalGrowtBiparietalDiameterForAge
 
   @override
   num get measurementResultInDefaultUnit =>
-      measurementResult.toMillimeter.value;
+      measurementResult.toMillimeter.value.toDouble();
 }
 
 class _IntergrowthFetalGrowtBiparietalDiameterForAgeLMS extends LMSContext {

@@ -19,11 +19,11 @@ void main() {
   final age6m = Age.byMonthsAgo(6);
   final weightMsr1_6m = MassMeasurementHistory(
     age6m.dateAtMonthsAfterBirth(4),
-    const Mass$Kilogram(6.4),
+    Mass$Kilogram(6.4),
   );
   final weightMsr2_6m = MassMeasurementHistory(
     age6m.dateAtMonthsAfterBirth(6),
-    const Mass$Kilogram(7.9),
+    Mass$Kilogram(7.9),
   );
 
   final velocity6m = gs.weightVelocityForAge(
@@ -39,11 +39,11 @@ void main() {
   final age9m = Age.byMonthsAgo(9);
   final weightMsr1_9m = MassMeasurementHistory(
     age9m.dateAtMonthsAfterBirth(7),
-    const Mass$Kilogram(7.9),
+    Mass$Kilogram(7.9),
   );
   final weightMsr2_9m = MassMeasurementHistory(
     age9m.dateAtMonthsAfterBirth(9),
-    const Mass$Kilogram(8.7),
+    Mass$Kilogram(8.7),
   );
 
   final velocity9m = gs.weightVelocityForAge(
@@ -59,11 +59,11 @@ void main() {
   final age12m = Age.byMonthsAgo(12);
   final weightMsr1_12m = MassMeasurementHistory(
     age12m.dateAtMonthsAfterBirth(10),
-    const Mass$Kilogram(8.7),
+    Mass$Kilogram(8.7),
   );
   final weightMsr2_12m = MassMeasurementHistory(
     age12m.dateAtMonthsAfterBirth(12),
-    const Mass$Kilogram(9.5),
+    Mass$Kilogram(9.5),
   );
 
   final velocity12m = gs.weightVelocityForAge(
@@ -79,11 +79,11 @@ void main() {
   final age15m = Age.byMonthsAgo(15);
   final weightMsr1_15m = MassMeasurementHistory(
     age15m.dateAtMonthsAfterBirth(13),
-    const Mass$Kilogram(9.5),
+    Mass$Kilogram(9.5),
   );
   final weightMsr2_15m = MassMeasurementHistory(
     age15m.dateAtMonthsAfterBirth(15),
-    const Mass$Kilogram(10.1),
+    Mass$Kilogram(10.1),
   );
 
   final velocity15m = gs.weightVelocityForAge(
@@ -99,11 +99,11 @@ void main() {
   final age18m = Age.byMonthsAgo(18);
   final weightMsr1_18m = MassMeasurementHistory(
     age18m.dateAtMonthsAfterBirth(16),
-    const Mass$Kilogram(10.1),
+    Mass$Kilogram(10.1),
   );
   final weightMsr2_18m = MassMeasurementHistory(
     age18m.dateAtMonthsAfterBirth(18),
-    const Mass$Kilogram(10.6),
+    Mass$Kilogram(10.6),
   );
 
   final velocity18m = gs.weightVelocityForAge(

@@ -87,7 +87,7 @@ sealed class WHOGrowthStandardsLengthVelocityForAge extends VelocityBasedResult
           ),
         )
         .toList(),
-    const Length$Centimeter(),
+    Length$Centimeter(),
   ).incrementalData;
 
   @override

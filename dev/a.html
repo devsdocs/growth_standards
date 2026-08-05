@@ -38,7 +38,7 @@
     return z > 0.0 ? ((x + 1.0) * 0.5) : ((1.0 - x) * 0.5);
   }
   function calc() {
-    var z = document.getElementById("myz").value;
+    var z = document.getElementById("myz").value.toDouble();
     if (Math.abs(z) > s_maximum) {
       alert("Z value should be between -6 and 6.");
     }

@@ -7,7 +7,7 @@ void main() {
       final baseCalc = GrowthStandard.who.fromBirthTo5Years.weightForAge(
         sex: Sex.male,
         age: Age.byDaysAgo(0),
-        weight: const Mass$Kilogram(3.0),
+        weight: Mass$Kilogram(3.0),
       );
 
       final medianWeight = baseCalc.lmsData.lms.m;
@@ -26,7 +26,7 @@ void main() {
       final baseCalc = GrowthStandard.who.fromBirthTo5Years.lengthForAge(
         sex: Sex.female,
         age: Age.byDaysAgo(365),
-        lengthHeight: const Length$Centimeter(70.0),
+        lengthHeight: Length$Centimeter(70.0),
         measure: LengthHeightMeasurementPosition.recumbent,
       );
 
@@ -71,7 +71,7 @@ void main() {
       final baseCalc = GrowthStandard.cdc.from2YearsAndAbove.weightForAge(
         sex: Sex.male,
         age: Age.byMonthsAgo(24),
-        weight: const Mass$Kilogram(12.0),
+        weight: Mass$Kilogram(12.0),
       );
 
       final medianWeight = baseCalc.lmsData.lms.m;
@@ -111,7 +111,7 @@ void main() {
       final calc = GrowthStandard.fenton.weightForAge(
         sex: Sex.male,
         age: const PostmenstrualAge.completedWeeks(30),
-        weight: const Mass$Kilogram(1.48),
+        weight: Mass$Kilogram(1.48),
       );
 
       // Fenton 2013 male median weight at 30 weeks PMA is exactly 1.48 kg
@@ -123,7 +123,7 @@ void main() {
       final calc = GrowthStandard.fenton.weightForAge(
         sex: Sex.female,
         age: const PostmenstrualAge.completedWeeks(40),
-        weight: const Mass$Kilogram(3.51),
+        weight: Mass$Kilogram(3.51),
       );
 
       // Fenton 2013 female median weight at 40 weeks PMA is exactly 3.51 kg
@@ -135,7 +135,7 @@ void main() {
       final calc = GrowthStandard.fenton.lengthForAge(
         sex: Sex.male,
         age: const PostmenstrualAge.completedWeeks(40),
-        lengthHeight: const Length$Centimeter(51.6),
+        lengthHeight: Length$Centimeter(51.6),
         measure: LengthHeightMeasurementPosition.recumbent,
       );
 
@@ -148,7 +148,7 @@ void main() {
       final calc = GrowthStandard.fenton.headCircumferenceForAge(
         sex: Sex.female,
         age: const PostmenstrualAge.completedWeeks(40),
-        measurementResult: const Length$Centimeter(34.8),
+        measurementResult: Length$Centimeter(34.8),
       );
 
       // Fenton 2013 female median head circumference at 40 weeks PMA is 34.8 cm
@@ -162,7 +162,7 @@ void main() {
       final calc = GrowthStandard.intergrowth.atBirth.newbornSizeWeight(
         sex: Sex.male,
         gestationalAge: const GestationalAge(weeks: 38),
-        weight: const Mass$Kilogram(3.1415),
+        weight: Mass$Kilogram(3.1415),
       );
 
       expect(calc.zScore().isFinite, isTrue);

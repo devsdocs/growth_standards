@@ -1,4 +1,5 @@
 import 'package:growth_standards/growth_standards.dart';
+import 'package:super_measurement/super_measurement.dart' show Rational;
 
 /// Validates an Age object against bounds defined in [contextData].
 ///
@@ -126,21 +127,22 @@ class LengthAssertion {
 
 Length checkLength(
   Length length, {
-  Length destinationType = const Length$Centimeter(),
+  Length? destinationType,
   required LengthBasedData contextData,
 }) {
-  final convertedLength = length.convertTo(destinationType);
+  final destinationType_ = destinationType ?? Length.centimeter;
+  final convertedLength = length.convertTo(destinationType_);
   final lowerBound = contextData.unit
-      .withValue(contextData.lowerBound)
-      .convertTo(destinationType);
+      .withValue(Rational.parse(contextData.lowerBound.toString()))
+      .convertTo(destinationType_);
   final upperBound = contextData.unit
-      .withValue(contextData.upperBound)
-      .convertTo(destinationType);
+      .withValue(Rational.parse(contextData.upperBound.toString()))
+      .convertTo(destinationType_);
 
   if (convertedLength.value < lowerBound.value ||
       convertedLength.value > upperBound.value) {
     throw ArgumentError(
-      'Length or Height is invalid: Value: $convertedLength, Expected range: $lowerBound to $upperBound ${destinationType.symbol}',
+      'Length or Height is invalid: Value: $convertedLength, Expected range: $lowerBound to $upperBound ${destinationType?.symbol}',
     );
   }
 

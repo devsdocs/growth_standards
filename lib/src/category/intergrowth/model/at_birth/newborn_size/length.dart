@@ -80,7 +80,7 @@ sealed class IntergrowthNewbornBirthLengthForAge
 
   @override
   num get measurementResultInDefaultUnit =>
-      measurementResult.toCentimeter.value;
+      measurementResult.toCentimeter.value.toDouble();
 }
 
 class _IntergrowthNewbornBirthLengthForAgeLMS extends LMSContext {

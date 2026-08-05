@@ -83,7 +83,7 @@ sealed class CDCInfantHeadCircumferenceForAge extends AgeBasedResult
 
   @override
   num get measurementResultInDefaultUnit =>
-      measurementResult.toCentimeter.value;
+      measurementResult.toCentimeter.value.toDouble();
 }
 
 class _CDCInfantHeadCircumferenceForAgeLMS extends LMSContext {

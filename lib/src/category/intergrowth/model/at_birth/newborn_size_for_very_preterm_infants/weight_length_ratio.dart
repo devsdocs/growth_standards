@@ -77,8 +77,8 @@ sealed class NewbornWeightLengthRatioMeasurement
     required Length length,
     required Mass weight,
   }) {
-    final lengthInMeter = length.toMeter.value;
-    final weightInKilogram = weight.toKilogram.value;
+    final lengthInMeter = length.toMeter.value.toDouble();
+    final weightInKilogram = weight.toKilogram.value.toDouble();
     final ratio = weightInKilogram / lengthInMeter;
 
     return NewbornWeightLengthRatioMeasurement(ratio);
@@ -136,7 +136,7 @@ sealed class IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge
   get lmsData => _ageData;
 
   @override
-  num get measurementResultInDefaultUnit => measurementResult.value;
+  num get measurementResultInDefaultUnit => measurementResult.value.toDouble();
 }
 
 class _IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAgeLMS

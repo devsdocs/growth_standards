@@ -74,7 +74,8 @@ sealed class IntergrowthGestationalWeightGainForAge extends AgeBasedResult
   _IntergrowthGestationalWeightGainForAgeLMS get lmsData => _ageData;
 
   @override
-  num get measurementResultInDefaultUnit => measurementResult.toKilogram.value;
+  num get measurementResultInDefaultUnit =>
+      measurementResult.toKilogram.value.toDouble();
 }
 
 class _IntergrowthGestationalWeightGainForAgeLMS extends LMSContext {

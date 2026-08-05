@@ -66,7 +66,8 @@ sealed class WHOGrowthReferenceHeightForAge extends AgeBasedResult
   _WHOGrowthReferenceHeightForAgeLMS get lmsData => _ageData;
 
   @override
-  num get measurementResultInDefaultUnit => lengthHeight.toCentimeter.value;
+  num get measurementResultInDefaultUnit =>
+      lengthHeight.toCentimeter.value.toDouble();
 }
 
 class _WHOGrowthReferenceHeightForAgeLMS extends LMSContext {

@@ -74,7 +74,8 @@ sealed class IntergrowthSymphysisFundalHeightForAge extends AgeBasedResult
   _IntergrowthSymphysisFundalHeightForAgeLMS get lmsData => _ageData;
 
   @override
-  num get measurementResultInDefaultUnit => length.toCentimeter.value;
+  num get measurementResultInDefaultUnit =>
+      length.toCentimeter.value.toDouble();
 }
 
 class _IntergrowthSymphysisFundalHeightForAgeLMS extends LMSContext {

@@ -6,8 +6,8 @@ void main() {
   group('Growth Chart Visualization Tests', () {
     final birthDay = Date(year: 2022, month: Months.june, date: 30);
     final age = Age(birthDay);
-    const centimeters = Length$Centimeter(82.8);
-    const kilograms = Mass$Kilogram(11.75);
+    final centimeters = Length$Centimeter(82.8);
+    final kilograms = Mass$Kilogram(11.75);
     final gs = GrowthStandard.who.fromBirthTo5Years;
 
     test('WHO Weight-for-Age SVG Export', () {
@@ -71,15 +71,15 @@ void main() {
 
       tracker.add(
         Date(year: 2023, month: Months.january, date: 1),
-        const Mass$Kilogram(3.2),
+        Mass$Kilogram(3.2),
       );
       tracker.add(
         Date(year: 2023, month: Months.july, date: 1),
-        const Mass$Kilogram(7.5),
+        Mass$Kilogram(7.5),
       );
       tracker.add(
         Date(year: 2024, month: Months.january, date: 1),
-        const Mass$Kilogram(9.5),
+        Mass$Kilogram(9.5),
       );
 
       expect(tracker.results.length, equals(3));
@@ -90,7 +90,7 @@ void main() {
       final dob = Date(year: 2022, month: Months.june, date: 30);
       final pt1 = gs.weightForAge(
         age: Age(dob, observedDate: dob),
-        weight: const Mass$Kilogram(3.4),
+        weight: Mass$Kilogram(3.4),
         sex: Sex.male,
       );
       final pt2 = gs.weightForAge(
@@ -98,7 +98,7 @@ void main() {
           dob,
           observedDate: Date(year: 2022, month: Months.december, date: 30),
         ),
-        weight: const Mass$Kilogram(7.9),
+        weight: Mass$Kilogram(7.9),
         sex: Sex.male,
       );
       final pt3 = gs.weightForAge(
@@ -106,7 +106,7 @@ void main() {
           dob,
           observedDate: Date(year: 2023, month: Months.june, date: 30),
         ),
-        weight: const Mass$Kilogram(9.6),
+        weight: Mass$Kilogram(9.6),
         sex: Sex.male,
       );
 
@@ -121,8 +121,8 @@ void main() {
     test('File System SVG File Export', () {
       final infantAge = Age(Date(year: 2026, month: Months.january, date: 1));
       final calcWFL = gs.weightForLength(
-        lengthMeasurementResult: const Length$Centimeter(65.0),
-        massMeasurementResult: const Mass$Kilogram(7.2),
+        lengthMeasurementResult: Length$Centimeter(65.0),
+        massMeasurementResult: Mass$Kilogram(7.2),
         sex: Sex.female,
         age: infantAge,
         measure: LengthHeightMeasurementPosition.recumbent,
@@ -143,7 +143,7 @@ void main() {
       final cdcWfa = cdcGs.weightForAge(
         sex: Sex.male,
         age: Age(Date(year: 2018, month: Months.june, date: 1)),
-        weight: const Mass$Kilogram(18.5),
+        weight: Mass$Kilogram(18.5),
       );
 
       final svgStr = cdcWfa.toSvg();
@@ -156,7 +156,7 @@ void main() {
       final fentonWfa = fentonGs.weightForAge(
         sex: Sex.female,
         age: const PostmenstrualAge(weeks: 34),
-        weight: const Mass$Kilogram(2.1),
+        weight: Mass$Kilogram(2.1),
       );
 
       final svgStr = fentonWfa.toSvg();
@@ -168,11 +168,11 @@ void main() {
       final age = Age.byMonthsAgo(6);
       final msr1 = MassMeasurementHistory(
         age.dateAtMonthsAfterBirth(4),
-        const Mass$Kilogram(6.4),
+        Mass$Kilogram(6.4),
       );
       final msr2 = MassMeasurementHistory(
         age.dateAtMonthsAfterBirth(6),
-        const Mass$Kilogram(7.9),
+        Mass$Kilogram(7.9),
       );
 
       final velocityResult = gs.weightVelocityForAge(

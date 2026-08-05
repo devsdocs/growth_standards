@@ -89,7 +89,7 @@ sealed class IntergrowthVeryPretermNewbornBirthLengthForAge
 
   @override
   num get measurementResultInDefaultUnit =>
-      measurementResult.toCentimeter.value;
+      measurementResult.toCentimeter.value.toDouble();
 }
 
 class _IntergrowthVeryPretermNewbornBirthLengthForAgeLMS extends LMSContext {

@@ -124,7 +124,7 @@ sealed class IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge
 
   @override
   num get measurementResultInDefaultUnit =>
-      measurementResult.toCentimeter.value;
+      measurementResult.toCentimeter.value.toDouble();
 }
 
 class _IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeLMS

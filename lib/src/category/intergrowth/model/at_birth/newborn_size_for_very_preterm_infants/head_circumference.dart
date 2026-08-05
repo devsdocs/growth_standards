@@ -104,7 +104,7 @@ sealed class IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge
 
   @override
   num get measurementResultInDefaultUnit =>
-      measurementResult.toCentimeter.value;
+      measurementResult.toCentimeter.value.toDouble();
 }
 
 class _IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAgeLMS

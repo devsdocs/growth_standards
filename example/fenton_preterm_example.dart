@@ -15,7 +15,7 @@ void main() {
   final fentonWeight = fenton.weightForAge(
     sex: sex,
     age: pma,
-    weight: const Mass$Kilogram(1.85),
+    weight: Mass$Kilogram(1.85),
   );
   print(
     '1. Fenton Weight (32w PMA): Z = ${fentonWeight.zScore()} SD | P = ${fentonWeight.percentile()}%',
@@ -25,7 +25,7 @@ void main() {
   final fentonLength = fenton.lengthForAge(
     sex: sex,
     age: pma,
-    lengthHeight: const Length$Centimeter(42.0),
+    lengthHeight: Length$Centimeter(42.0),
     measure: LengthHeightMeasurementPosition.recumbent,
   );
   print(
@@ -36,7 +36,7 @@ void main() {
   final fentonHc = fenton.headCircumferenceForAge(
     sex: sex,
     age: pma,
-    measurementResult: const Length$Centimeter(29.5),
+    measurementResult: Length$Centimeter(29.5),
   );
   print(
     '3. Fenton Head Circumference (32w PMA): Z = ${fentonHc.zScore()} SD | P = ${fentonHc.percentile()}%',

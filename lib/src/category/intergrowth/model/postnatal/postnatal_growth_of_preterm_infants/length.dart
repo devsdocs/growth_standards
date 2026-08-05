@@ -99,7 +99,7 @@ sealed class IntergrowthPretermInfantsPostnatalGrowthLengthForAge
 
   @override
   num get measurementResultInDefaultUnit =>
-      measurementResult.toCentimeter.value;
+      measurementResult.toCentimeter.value.toDouble();
 }
 
 class _IntergrowthPretermInfantsPostnatalGrowthLengthForAgeLMS

@@ -76,7 +76,7 @@ sealed class CDCInfantWeightForAge extends AgeBasedResult
   _CDCInfantWeightForAgeLMS get lmsData => _ageData;
 
   @override
-  num get measurementResultInDefaultUnit => weight.toKilogram.value;
+  num get measurementResultInDefaultUnit => weight.toKilogram.value.toDouble();
 }
 
 class _CDCInfantWeightForAgeLMS extends LMSContext {

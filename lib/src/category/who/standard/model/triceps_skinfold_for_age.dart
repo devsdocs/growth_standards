@@ -80,7 +80,7 @@ sealed class WHOGrowthStandardsTricepsSkinfoldForAge extends AgeBasedResult
 
   @override
   num get measurementResultInDefaultUnit =>
-      measurementResult.toMillimeter.value;
+      measurementResult.toMillimeter.value.toDouble();
 }
 
 class _WHOGrowthStandardsTricepsSkinfoldForAgeLMS extends LMSContext {

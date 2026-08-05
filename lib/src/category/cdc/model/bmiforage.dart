@@ -106,7 +106,8 @@ sealed class CDCBodyMassIndexForAge extends AgeBasedResult
   _CDCBodyMassIndexForAgeLMS get lmsData => _ageData;
 
   @override
-  num get measurementResultInDefaultUnit => bodyMassIndexMeasurement.value;
+  num get measurementResultInDefaultUnit =>
+      bodyMassIndexMeasurement.value.toDouble();
 }
 
 class _CDCBodyMassIndexForAgeLMS extends LMSContext {

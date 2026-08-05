@@ -95,7 +95,7 @@ sealed class IntergrowthNewbornBirthWeightForLengthRatioForAge
   _IntergrowthNewbornBirthWeightForLengthRatioForAgeLMS get lmsData => _ageData;
 
   @override
-  num get measurementResultInDefaultUnit => measurementResult.value;
+  num get measurementResultInDefaultUnit => measurementResult.value.toDouble();
 }
 
 class _IntergrowthNewbornBirthWeightForLengthRatioForAgeLMS extends LMSContext {

@@ -63,7 +63,7 @@ void main() {
       final result = gs.weightForAge(
         sex: Sex.male,
         age: age,
-        weight: const Mass$Kilogram(9.5),
+        weight: Mass$Kilogram(9.5),
       );
 
       final zScore = result.zScore().toDouble();
@@ -92,7 +92,7 @@ void main() {
       final result = gs.weightForAge(
         sex: Sex.female,
         age: age,
-        weight: const Mass$Kilogram(7.9),
+        weight: Mass$Kilogram(7.9),
       );
 
       final zScore = result.zScore().toDouble();
@@ -121,7 +121,7 @@ void main() {
       final result = gs.weightForAge(
         sex: Sex.male,
         age: age,
-        weight: const Mass$Kilogram(5.3),
+        weight: Mass$Kilogram(5.3),
       );
 
       final zScore = result.zScore().toDouble();
@@ -150,7 +150,7 @@ void main() {
       final result = gs.weightForAge(
         sex: Sex.male,
         age: age,
-        weight: const Mass$Kilogram(10.4),
+        weight: Mass$Kilogram(10.4),
       );
 
       final zScore = result.zScore().toDouble();
@@ -179,7 +179,7 @@ void main() {
       final result = gs.weightForAge(
         sex: Sex.female,
         age: age,
-        weight: const Mass$Kilogram(9.5),
+        weight: Mass$Kilogram(9.5),
       );
 
       final zScore = result.zScore().toDouble();
@@ -208,7 +208,7 @@ void main() {
       final result = gs.lengthForAge(
         sex: Sex.male,
         age: age,
-        lengthHeight: const Length$Centimeter(75.0),
+        lengthHeight: Length$Centimeter(75.0),
         measure: LengthHeightMeasurementPosition.standing,
       );
 
@@ -240,11 +240,11 @@ void main() {
 
       final weightMsr1 = MassMeasurementHistory(
         age.dateAtMonthsAfterBirth(4),
-        const Mass$Kilogram(6.4),
+        Mass$Kilogram(6.4),
       );
       final weightMsr2 = MassMeasurementHistory(
         age.dateAtMonthsAfterBirth(6),
-        const Mass$Kilogram(7.9),
+        Mass$Kilogram(7.9),
       );
 
       final velocity = gs.weightVelocityForAge(
@@ -290,8 +290,8 @@ void main() {
 
       final bmiMeasurement =
           WHOGrowthStandardsBodyMassIndexMeasurement.fromMeasurement(
-            lengthHeight: const Length$Centimeter(75.0),
-            weight: const Mass$Kilogram(9.5),
+            lengthHeight: Length$Centimeter(75.0),
+            weight: Mass$Kilogram(9.5),
             measure: LengthHeightMeasurementPosition.standing,
             age: age,
           );
@@ -329,7 +329,7 @@ void main() {
       final result = gs.headCircumferenceForAge(
         sex: Sex.male,
         age: age,
-        measurementResult: const Length$Centimeter(43.0),
+        measurementResult: Length$Centimeter(43.0),
       );
 
       final zScore = result.zScore().toDouble();
@@ -359,8 +359,8 @@ void main() {
 
       final result = gs.weightForLength(
         sex: Sex.male,
-        lengthMeasurementResult: const Length$Centimeter(75.0),
-        massMeasurementResult: const Mass$Kilogram(9.5),
+        lengthMeasurementResult: Length$Centimeter(75.0),
+        massMeasurementResult: Mass$Kilogram(9.5),
         age: age,
         measure: LengthHeightMeasurementPosition.standing,
       );

@@ -6,8 +6,8 @@ void main() {
   final birthDay = Date(year: 2022, month: Months.june, date: 30);
   final age = Age(birthDay);
   const sex = Sex.male;
-  const centimeters = Length$Centimeter(82.8);
-  const kilograms = Mass$Kilogram(11.75);
+  final centimeters = Length$Centimeter(82.8);
+  final kilograms = Mass$Kilogram(11.75);
 
   final gs = GrowthStandard.who.fromBirthTo5Years;
 
@@ -42,23 +42,23 @@ void main() {
     visits: [
       VisitObservation(
         Date(year: 2022, month: Months.june, date: 30),
-        const Mass$Kilogram(3.4),
+        Mass$Kilogram(3.4),
       ),
       VisitObservation(
         Date(year: 2022, month: Months.september, date: 30),
-        const Mass$Kilogram(6.4),
+        Mass$Kilogram(6.4),
       ),
       VisitObservation(
         Date(year: 2022, month: Months.december, date: 30),
-        const Mass$Kilogram(7.9),
+        Mass$Kilogram(7.9),
       ),
       VisitObservation(
         Date(year: 2023, month: Months.june, date: 30),
-        const Mass$Kilogram(9.6),
+        Mass$Kilogram(9.6),
       ),
       VisitObservation(
         Date(year: 2024, month: Months.june, date: 30),
-        const Mass$Kilogram(12.2),
+        Mass$Kilogram(12.2),
       ),
     ],
   );
@@ -70,11 +70,11 @@ void main() {
   final velocityAge = Age.byMonthsAgo(6);
   final msr1 = MassMeasurementHistory(
     velocityAge.dateAtMonthsAfterBirth(4),
-    const Mass$Kilogram(6.4),
+    Mass$Kilogram(6.4),
   );
   final msr2 = MassMeasurementHistory(
     velocityAge.dateAtMonthsAfterBirth(6),
-    const Mass$Kilogram(7.9),
+    Mass$Kilogram(7.9),
   );
 
   final velocityResult = gs.weightVelocityForAge(

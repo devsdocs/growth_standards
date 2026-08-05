@@ -61,7 +61,7 @@ sealed class CDCInfantLengthForAge extends AgeBasedResult
     type: AdjustedLengthType.cdc,
   );
 
-  num get _zScore => _ageData.lms.zScore(_adjustedLength.value);
+  num get _zScore => _ageData.lms.zScore(_adjustedLength.value.toDouble());
 
   @override
   Age get ageAtObservationDate => checkAge(age, contextData: contextData);
@@ -78,7 +78,7 @@ sealed class CDCInfantLengthForAge extends AgeBasedResult
   _CDCInfantLengthForAgeLMS get lmsData => _ageData;
 
   @override
-  num get measurementResultInDefaultUnit => _adjustedLength.value;
+  num get measurementResultInDefaultUnit => _adjustedLength.value.toDouble();
 }
 
 class _CDCInfantLengthForAgeLMS extends LMSContext {

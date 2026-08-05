@@ -82,7 +82,7 @@ sealed class FentonLengthForAge extends PostmenstrualAgeBasedResult
   );
 
   @override
-  num get measurementResultInDefaultUnit => _adjustedLength.value;
+  num get measurementResultInDefaultUnit => _adjustedLength.value.toDouble();
 }
 
 class _FentonLengthForAgeLMS extends LMSContext {

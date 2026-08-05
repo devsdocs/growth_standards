@@ -89,7 +89,7 @@ sealed class IntergrowthNewbornBirthHeadCircumferenceForAge
 
   @override
   num get measurementResultInDefaultUnit =>
-      measurementResult.toCentimeter.value;
+      measurementResult.toCentimeter.value.toDouble();
 }
 
 class _IntergrowthNewbornBirthHeadCircumferenceForAgeLMS extends LMSContext {

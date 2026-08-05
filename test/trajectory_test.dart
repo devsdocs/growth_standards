@@ -13,7 +13,7 @@ void main() {
         visits: [
           VisitObservation(
             Date(year: 2023, month: Months.july, date: 15),
-            const LengthMassObservation(
+            LengthMassObservation(
               length: Length$Centimeter(67.5),
               weight: Mass$Kilogram(7.8),
             ),
@@ -32,7 +32,7 @@ void main() {
         visits: [
           VisitObservation(
             Date(year: 2025, month: Months.january, date: 15),
-            const LengthMassObservation(
+            LengthMassObservation(
               length: Length$Centimeter(88.0),
               weight: Mass$Kilogram(12.5),
             ),
@@ -51,7 +51,7 @@ void main() {
         visits: [
           VisitObservation(
             Date(year: 2024, month: Months.january, date: 15),
-            const LengthMassObservation(
+            LengthMassObservation(
               length: Length$Centimeter(75.5),
               weight: Mass$Kilogram(9.8),
             ),
@@ -70,7 +70,7 @@ void main() {
         visits: [
           VisitObservation(
             Date(year: 2024, month: Months.january, date: 15),
-            const Length$Centimeter(15.0),
+            Length$Centimeter(15.0),
           ),
         ],
       );
@@ -83,7 +83,7 @@ void main() {
             visits: [
               VisitObservation(
                 Date(year: 2024, month: Months.january, date: 15),
-                const Length$Millimeter(7.5),
+                Length$Millimeter(7.5),
               ),
             ],
           );
@@ -95,7 +95,7 @@ void main() {
         visits: [
           VisitObservation(
             Date(year: 2024, month: Months.january, date: 15),
-            const Length$Millimeter(8.0),
+            Length$Millimeter(8.0),
           ),
         ],
       );
@@ -110,7 +110,7 @@ void main() {
         visits: [
           VisitObservation(
             Date(year: 2024, month: Months.june, date: 1),
-            const Length$Centimeter(128.0),
+            Length$Centimeter(128.0),
           ),
         ],
       );
@@ -143,7 +143,7 @@ void main() {
         visits: [
           VisitObservation(
             Date(year: 2024, month: Months.january, date: 15),
-            const Mass$Kilogram(9.8),
+            Mass$Kilogram(9.8),
           ),
         ],
       );
@@ -159,7 +159,7 @@ void main() {
         visits: [
           VisitObservation(
             Date(year: 2023, month: Months.january, date: 15),
-            const Mass$Kilogram(1.1),
+            Mass$Kilogram(1.1),
           ),
         ],
       );
@@ -176,7 +176,7 @@ void main() {
             visits: [
               VisitObservation(
                 Date(year: 2023, month: Months.january, date: 20),
-                const Mass$Kilogram(1.4),
+                Mass$Kilogram(1.4),
               ),
             ],
           );

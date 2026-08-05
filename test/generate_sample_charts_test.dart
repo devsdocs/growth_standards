@@ -16,7 +16,7 @@ void main() {
     // 1. WHO Weight-for-Age (Boy, 2 Years Old)
     final wfaBoy = gs.weightForAge(
       age: Age(Date(year: 2022, month: Months.june, date: 30)),
-      weight: const Mass$Kilogram(12.5),
+      weight: Mass$Kilogram(12.5),
       sex: Sex.male,
     );
     wfaBoy.saveSvg('${outputDir.path}/who_weight_for_age_boy.svg');
@@ -24,7 +24,7 @@ void main() {
     // 2. WHO Length-for-Age (Girl, 1 Year Old)
     final lfaGirl = gs.lengthForAge(
       age: Age(Date(year: 2023, month: Months.june, date: 30)),
-      lengthHeight: const Length$Centimeter(75.5),
+      lengthHeight: Length$Centimeter(75.5),
       sex: Sex.female,
       measure: LengthHeightMeasurementPosition.recumbent,
     );
@@ -35,7 +35,7 @@ void main() {
     final cdcWfaBoy = cdcGs.weightForAge(
       sex: Sex.male,
       age: Age(Date(year: 2018, month: Months.june, date: 1)),
-      weight: const Mass$Kilogram(26.5),
+      weight: Mass$Kilogram(26.5),
     );
     const cdcConfig = GrowthChartConfig(
       displayMode: GrowthChartDisplayMode.percentile,
@@ -50,7 +50,7 @@ void main() {
     final fentonWfa = GrowthStandard.fenton.weightForAge(
       sex: Sex.female,
       age: const PostmenstrualAge(weeks: 34),
-      weight: const Mass$Kilogram(2.1),
+      weight: Mass$Kilogram(2.1),
     );
     fentonWfa.saveSvg('${outputDir.path}/fenton_weight_for_age_girl.svg');
 
@@ -61,23 +61,23 @@ void main() {
       visits: [
         VisitObservation(
           Date(year: 2022, month: Months.june, date: 30),
-          const Mass$Kilogram(3.4),
+          Mass$Kilogram(3.4),
         ),
         VisitObservation(
           Date(year: 2022, month: Months.september, date: 30),
-          const Mass$Kilogram(6.4),
+          Mass$Kilogram(6.4),
         ),
         VisitObservation(
           Date(year: 2022, month: Months.december, date: 30),
-          const Mass$Kilogram(7.9),
+          Mass$Kilogram(7.9),
         ),
         VisitObservation(
           Date(year: 2023, month: Months.june, date: 30),
-          const Mass$Kilogram(9.6),
+          Mass$Kilogram(9.6),
         ),
         VisitObservation(
           Date(year: 2024, month: Months.june, date: 30),
-          const Mass$Kilogram(12.2),
+          Mass$Kilogram(12.2),
         ),
       ],
     );
@@ -87,11 +87,11 @@ void main() {
     final velocityAge = Age.byMonthsAgo(6);
     final msr1 = MassMeasurementHistory(
       velocityAge.dateAtMonthsAfterBirth(4),
-      const Mass$Kilogram(6.4),
+      Mass$Kilogram(6.4),
     );
     final msr2 = MassMeasurementHistory(
       velocityAge.dateAtMonthsAfterBirth(6),
-      const Mass$Kilogram(7.9),
+      Mass$Kilogram(7.9),
     );
 
     final velocityResult = gs.weightVelocityForAge(

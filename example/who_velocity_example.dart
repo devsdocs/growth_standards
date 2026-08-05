@@ -13,11 +13,11 @@ void main() {
   // 1. Weight Velocity
   final weightMsr1 = MassMeasurementHistory(
     age.dateAtMonthsAfterBirth(4),
-    const Mass$Kilogram(6.4),
+    Mass$Kilogram(6.4),
   );
   final weightMsr2 = MassMeasurementHistory(
     age.dateAtMonthsAfterBirth(6),
-    const Mass$Kilogram(7.9),
+    Mass$Kilogram(7.9),
   );
 
   final weightVelocity = gs.weightVelocityForAge(
@@ -31,11 +31,11 @@ void main() {
   // 2. Length Velocity
   final lengthMsr1 = LengthMeasurementHistory(
     age.dateAtMonthsAfterBirth(3),
-    const Length$Centimeter(61.0),
+    Length$Centimeter(61.0),
   );
   final lengthMsr2 = LengthMeasurementHistory(
     age.dateAtMonthsAfterBirth(6),
-    const Length$Centimeter(67.5),
+    Length$Centimeter(67.5),
   );
 
   final lengthVelocity = gs.lengthVelocityForAge(
@@ -49,11 +49,11 @@ void main() {
   // 3. Head Circumference Velocity
   final hcMsr1 = LengthMeasurementHistory(
     age.dateAtMonthsAfterBirth(4),
-    const Length$Centimeter(41.2),
+    Length$Centimeter(41.2),
   );
   final hcMsr2 = LengthMeasurementHistory(
     age.dateAtMonthsAfterBirth(6),
-    const Length$Centimeter(43.0),
+    Length$Centimeter(43.0),
   );
 
   final hcVelocity = gs.headCircumferenceVelocityForAge(

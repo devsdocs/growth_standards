@@ -74,7 +74,7 @@ sealed class CDCInfantWeightForLength extends LengthBasedResult
       checkLength(_adjustedLength, contextData: contextData);
 
   num get _length {
-    final val = lengthAtObservationDate.value;
+    final val = lengthAtObservationDate.value.toDouble();
     final gridKey = (val * 2).round() / 2;
     if (contextData._data[sex]?.containsKey(gridKey) ?? false) {
       return gridKey;
@@ -96,7 +96,7 @@ sealed class CDCInfantWeightForLength extends LengthBasedResult
   _CDCInfantWeightForLengthLMS get lmsData => _ageData;
 
   @override
-  num get measurementResultInDefaultUnit => weight.toKilogram.value;
+  num get measurementResultInDefaultUnit => weight.toKilogram.value.toDouble();
 }
 
 class _CDCInfantWeightForLengthLMS extends LMSContext {

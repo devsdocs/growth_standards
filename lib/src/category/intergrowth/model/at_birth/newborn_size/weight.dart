@@ -79,7 +79,8 @@ sealed class IntergrowthNewbornBirthWeightForAge
   _IntergrowthNewbornBirthWeightForAgeLMS get lmsData => _ageData;
 
   @override
-  num get measurementResultInDefaultUnit => measurementResult.toKilogram.value;
+  num get measurementResultInDefaultUnit =>
+      measurementResult.toKilogram.value.toDouble();
 }
 
 class _IntergrowthNewbornBirthWeightForAgeLMS extends LMSContext {

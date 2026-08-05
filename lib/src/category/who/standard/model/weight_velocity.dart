@@ -83,10 +83,8 @@ sealed class WHOGrowthStandardsWeightVelocityForAge extends VelocityBasedResult
       WHOGrowthStandardsWeightVelocityForAgeData();
 
   Map<VelocityIncrement, Map<({Date dateBefore, Date dateAfter}), num>>
-  get _incrementalData => VelocityPastMeasurement(
-    pastMeasurement,
-    const Mass$Gram(),
-  ).incrementalData;
+  get _incrementalData =>
+      VelocityPastMeasurement(pastMeasurement, Mass$Gram()).incrementalData;
 
   @override
   Map<VelocityIncrement, Map<VelocityMonths, ZScorePercentile>>

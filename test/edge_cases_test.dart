@@ -12,9 +12,9 @@ void main() {
       final before = Date.fromDateTime(DateTime(2024));
       final after = Date.fromDateTime(DateTime(2024, 1, 29)); // 28 days
       final data = VelocityPastMeasurement([
-        MassMeasurementHistory(before, const Mass$Kilogram(5)),
-        MassMeasurementHistory(after, const Mass$Kilogram(5.8)),
-      ], const Mass$Gram()).incrementalData;
+        MassMeasurementHistory(before, Mass$Kilogram(5)),
+        MassMeasurementHistory(after, Mass$Kilogram(5.8)),
+      ], Mass$Gram()).incrementalData;
 
       expect(data.containsKey(VelocityIncrement.$1), isTrue);
       final delta =
@@ -27,9 +27,9 @@ void main() {
       final before = Date.fromDateTime(DateTime(2024, 5));
       final after = Date.fromDateTime(DateTime(2024, 5, 31)); // 30 days
       final data = VelocityPastMeasurement([
-        MassMeasurementHistory(before, const Mass$Kilogram(6)),
-        MassMeasurementHistory(after, const Mass$Kilogram(6.5)),
-      ], const Mass$Gram()).incrementalData;
+        MassMeasurementHistory(before, Mass$Kilogram(6)),
+        MassMeasurementHistory(after, Mass$Kilogram(6.5)),
+      ], Mass$Gram()).incrementalData;
 
       expect(data.containsKey(VelocityIncrement.$1), isTrue);
     });
@@ -41,9 +41,9 @@ void main() {
         final before = Date.fromDateTime(DateTime(2024, 1, 5));
         final after = Date.fromDateTime(DateTime(2024, 3, 3));
         final data = VelocityPastMeasurement([
-          MassMeasurementHistory(before, const Mass$Kilogram(5)),
-          MassMeasurementHistory(after, const Mass$Kilogram(6.2)),
-        ], const Mass$Gram()).incrementalData;
+          MassMeasurementHistory(before, Mass$Kilogram(5)),
+          MassMeasurementHistory(after, Mass$Kilogram(6.2)),
+        ], Mass$Gram()).incrementalData;
 
         expect(data.containsKey(VelocityIncrement.$2), isTrue);
       },
@@ -53,9 +53,9 @@ void main() {
       final before = Date.fromDateTime(DateTime(2024, 1, 15));
       final after = Date.fromDateTime(DateTime(2024, 2, 15));
       final data = VelocityPastMeasurement([
-        MassMeasurementHistory(before, const Mass$Kilogram(5)),
-        MassMeasurementHistory(after, const Mass$Kilogram(5.6)),
-      ], const Mass$Gram()).incrementalData;
+        MassMeasurementHistory(before, Mass$Kilogram(5)),
+        MassMeasurementHistory(after, Mass$Kilogram(5.6)),
+      ], Mass$Gram()).incrementalData;
 
       expect(data.containsKey(VelocityIncrement.$1), isTrue);
     });
@@ -65,11 +65,11 @@ void main() {
       // Visits at ~4 mo and ~5 mo calendar-ish but 28 days apart mid-month.
       final msr1 = MassMeasurementHistory(
         age.dateAtMonthsAfterBirth(4).addDays(14),
-        const Mass$Kilogram(6.5),
+        Mass$Kilogram(6.5),
       );
       final msr2 = MassMeasurementHistory(
         age.dateAtMonthsAfterBirth(4).addDays(42), // +28 days from msr1
-        const Mass$Kilogram(7.1),
+        Mass$Kilogram(7.1),
       );
 
       final result = GrowthStandard.who.fromBirthTo5Years
@@ -93,9 +93,9 @@ void main() {
         final before = Date.fromDateTime(DateTime(2024));
         final after = Date.fromDateTime(DateTime(2024, 3, 28));
         final data = VelocityPastMeasurement([
-          LengthMeasurementHistory(before, const Length$Centimeter(55)),
-          LengthMeasurementHistory(after, const Length$Centimeter(62)),
-        ], const Length$Centimeter()).incrementalData;
+          LengthMeasurementHistory(before, Length$Centimeter(55)),
+          LengthMeasurementHistory(after, Length$Centimeter(62)),
+        ], Length$Centimeter()).incrementalData;
 
         expect(data.containsKey(VelocityIncrement.$3), isTrue);
       },
@@ -139,12 +139,12 @@ void main() {
       final at24 = CDCWeightForAge(
         sex: Sex.male,
         age: Age.byMonthsAgo(24),
-        weight: const Mass$Kilogram(12.7),
+        weight: Mass$Kilogram(12.7),
       );
       final at25 = CDCWeightForAge(
         sex: Sex.male,
         age: Age.byMonthsAgo(25),
-        weight: const Mass$Kilogram(12.7),
+        weight: Mass$Kilogram(12.7),
       );
 
       // After fix: 24→24.5 and 25→25.5 — adjacent midpoints, close but not equal.
@@ -174,13 +174,13 @@ void main() {
       final adjustedAtBirth = adjustedLengthHeight(
         age: atBirth,
         measure: LengthHeightMeasurementPosition.recumbent,
-        lengthHeight: const Length$Centimeter(50),
+        lengthHeight: Length$Centimeter(50),
         type: AdjustedLengthType.who,
       );
       final adjustedIfCurrentAge = adjustedLengthHeight(
         age: age,
         measure: LengthHeightMeasurementPosition.recumbent,
-        lengthHeight: const Length$Centimeter(50),
+        lengthHeight: Length$Centimeter(50),
         type: AdjustedLengthType.who,
       );
 
@@ -203,19 +203,19 @@ void main() {
       final standing730 = adjustedLengthHeight(
         age: Age.byDaysAgo(730),
         measure: LengthHeightMeasurementPosition.standing,
-        lengthHeight: const Length$Centimeter(85),
+        lengthHeight: Length$Centimeter(85),
         type: AdjustedLengthType.who,
       );
       final standing731 = adjustedLengthHeight(
         age: Age.byDaysAgo(731),
         measure: LengthHeightMeasurementPosition.standing,
-        lengthHeight: const Length$Centimeter(85),
+        lengthHeight: Length$Centimeter(85),
         type: AdjustedLengthType.who,
       );
       final recumbent731 = adjustedLengthHeight(
         age: Age.byDaysAgo(731),
         measure: LengthHeightMeasurementPosition.recumbent,
-        lengthHeight: const Length$Centimeter(85),
+        lengthHeight: Length$Centimeter(85),
         type: AdjustedLengthType.who,
       );
 
@@ -228,19 +228,19 @@ void main() {
       final standing23 = adjustedLengthHeight(
         age: Age.byMonthsAgo(23),
         measure: LengthHeightMeasurementPosition.standing,
-        lengthHeight: const Length$Centimeter(85),
+        lengthHeight: Length$Centimeter(85),
         type: AdjustedLengthType.cdc,
       );
       final standing24 = adjustedLengthHeight(
         age: Age.byMonthsAgo(24),
         measure: LengthHeightMeasurementPosition.standing,
-        lengthHeight: const Length$Centimeter(85),
+        lengthHeight: Length$Centimeter(85),
         type: AdjustedLengthType.cdc,
       );
       final recumbent24 = adjustedLengthHeight(
         age: Age.byMonthsAgo(24),
         measure: LengthHeightMeasurementPosition.recumbent,
-        lengthHeight: const Length$Centimeter(85),
+        lengthHeight: Length$Centimeter(85),
         type: AdjustedLengthType.cdc,
       );
 
@@ -255,12 +255,12 @@ void main() {
       final age = Age.byMonthsAgo(6);
       final msr1 = MassMeasurementHistory(
         age.dateAtMonthsAfterBirth(4),
-        const Mass$Kilogram(6.5),
+        Mass$Kilogram(6.5),
         isOedema: true,
       );
       final msr2 = MassMeasurementHistory(
         age.dateAtMonthsAfterBirth(6),
-        const Mass$Kilogram(7.8),
+        Mass$Kilogram(7.8),
       );
 
       final result = GrowthStandard.who.fromBirthTo5Years
@@ -282,9 +282,9 @@ void main() {
   group('A2 — Fenton sex is required and used in LMS lookup', () {
     test('weight/length/HC APIs require sex and resolve sex-keyed data', () {
       const age = PostmenstrualAge.completedWeeks(40);
-      const weight = Mass$Kilogram(3.581);
-      const length = Length$Centimeter(51.114);
-      const hc = Length$Centimeter(35);
+      final weight = Mass$Kilogram(3.581);
+      final length = Length$Centimeter(51.114);
+      final hc = Length$Centimeter(35);
 
       final maleW = GrowthStandard.fenton.weightForAge(
         sex: Sex.male,
@@ -345,7 +345,7 @@ void main() {
       final calc = GrowthStandard.fenton.weightForAge(
         sex: Sex.male,
         age: const PostmenstrualAge.completedWeeks(20),
-        weight: const Mass$Kilogram(0.4),
+        weight: Mass$Kilogram(0.4),
       );
       expect(() => calc.zScore(), throwsArgumentError);
     });
@@ -359,11 +359,7 @@ void main() {
       expect(pma.days, 0);
 
       final z = GrowthStandard.fenton
-          .weightForAge(
-            sex: Sex.female,
-            age: pma,
-            weight: const Mass$Kilogram(1.446),
-          )
+          .weightForAge(sex: Sex.female, age: pma, weight: Mass$Kilogram(1.446))
           .zScore();
       expect(z.isFinite, isTrue);
     });
@@ -374,12 +370,12 @@ void main() {
         final maleCalc = GrowthStandard.fenton.weightForAge(
           sex: Sex.male,
           age: const PostmenstrualAge.completedWeeks(40),
-          weight: const Mass$Kilogram(3.5),
+          weight: Mass$Kilogram(3.5),
         );
         final femaleCalc = GrowthStandard.fenton.weightForAge(
           sex: Sex.female,
           age: const PostmenstrualAge.completedWeeks(40),
-          weight: const Mass$Kilogram(3.5),
+          weight: Mass$Kilogram(3.5),
         );
 
         // Fenton 2013 male median M = 3.65 kg; female median M = 3.51 kg
@@ -395,8 +391,8 @@ void main() {
       final calc = GrowthStandard.who.fromBirthTo5Years.weightForLength(
         sex: Sex.male,
         age: Age.byDaysAgo(731),
-        lengthMeasurementResult: const Length$Centimeter(90),
-        massMeasurementResult: const Mass$Kilogram(12),
+        lengthMeasurementResult: Length$Centimeter(90),
+        massMeasurementResult: Mass$Kilogram(12),
         measure: LengthHeightMeasurementPosition.recumbent,
       );
       expect(() => calc.zScore(), throwsArgumentError);
@@ -406,8 +402,8 @@ void main() {
       final calc = GrowthStandard.who.fromBirthTo5Years.weightForHeight(
         sex: Sex.male,
         age: Age.byDaysAgo(730),
-        height: const Length$Centimeter(90),
-        mass: const Mass$Kilogram(12),
+        height: Length$Centimeter(90),
+        mass: Mass$Kilogram(12),
         measure: LengthHeightMeasurementPosition.standing,
       );
       expect(() => calc.zScore(), throwsArgumentError);
@@ -417,8 +413,8 @@ void main() {
       final calc = GrowthStandard.who.fromBirthTo5Years.weightForLength(
         sex: Sex.male,
         age: Age.byDaysAgo(365),
-        lengthMeasurementResult: const Length$Centimeter(75),
-        massMeasurementResult: const Mass$Kilogram(9),
+        lengthMeasurementResult: Length$Centimeter(75),
+        massMeasurementResult: Mass$Kilogram(9),
         measure: LengthHeightMeasurementPosition.recumbent,
       );
       expect(calc.zScore().isFinite, isTrue);
@@ -428,8 +424,8 @@ void main() {
       final calc = GrowthStandard.who.fromBirthTo5Years.weightForHeight(
         sex: Sex.male,
         age: Age.byDaysAgo(900),
-        height: const Length$Centimeter(90),
-        mass: const Mass$Kilogram(12),
+        height: Length$Centimeter(90),
+        mass: Mass$Kilogram(12),
         measure: LengthHeightMeasurementPosition.standing,
       );
       expect(calc.zScore().isFinite, isTrue);
@@ -452,12 +448,9 @@ void main() {
       final futureDate = Date.today().addDays(10);
       final msr1 = LengthMeasurementHistory(
         age.dateAtMonthsAfterBirth(2),
-        const Length$Centimeter(38),
+        Length$Centimeter(38),
       );
-      final msr2 = LengthMeasurementHistory(
-        futureDate,
-        const Length$Centimeter(42),
-      );
+      final msr2 = LengthMeasurementHistory(futureDate, Length$Centimeter(42));
       final calc = GrowthStandard.who.fromBirthTo5Years
           .headCircumferenceVelocityForAge(
             sex: Sex.male,
@@ -473,7 +466,7 @@ void main() {
       final calc = IntergrowthNewbornBirthWeightForAge(
         sex: Sex.male,
         age: const GestationalAge(weeks: 38),
-        measurementResult: const Mass$Kilogram(3.2),
+        measurementResult: Mass$Kilogram(3.2),
       );
       expect(calc.zScore().isFinite, isTrue);
     });
@@ -527,7 +520,7 @@ void main() {
         final calc = GrowthStandard.who.fromBirthTo5Years.weightForAge(
           sex: Sex.male,
           age: Age.byDaysAgo(3000), // > 1856 days (out of WHO 0-5y table range)
-          weight: const Mass$Kilogram(15),
+          weight: Mass$Kilogram(15),
         );
         expect(() => calc.zScore(), throwsA(isA<ArgumentError>()));
       });
@@ -541,9 +534,9 @@ void main() {
         final d1 = Date.fromDateTime(DateTime(2024));
         final d2 = Date.fromDateTime(DateTime(2024, 2));
         final history = VelocityPastMeasurement([
-          MassMeasurementHistory(d1, const Mass$Kilogram(5)),
-          MassMeasurementHistory(d2, const Mass$Kilogram(6)),
-        ], const Mass$Gram());
+          MassMeasurementHistory(d1, Mass$Kilogram(5)),
+          MassMeasurementHistory(d2, Mass$Kilogram(6)),
+        ], Mass$Gram());
         expect(history.sortedByDate.length, 2);
       },
     );
@@ -575,8 +568,8 @@ void main() {
       final calc = CDCInfantWeightForLength(
         sex: Sex.male,
         age: Age.byMonthsAgo(2),
-        length: const Length$Centimeter(50),
-        weight: const Mass$Kilogram(3.5),
+        length: Length$Centimeter(50),
+        weight: Mass$Kilogram(3.5),
         measure: LengthHeightMeasurementPosition.recumbent,
       );
 
@@ -594,8 +587,8 @@ void main() {
         sex: Sex.male,
         age: age,
         pastMeasurement: [
-          MassMeasurementHistory(d1, const Mass$Kilogram(5)),
-          MassMeasurementHistory(d1, const Mass$Kilogram(5.2)),
+          MassMeasurementHistory(d1, Mass$Kilogram(5)),
+          MassMeasurementHistory(d1, Mass$Kilogram(5.2)),
         ],
       );
       expect(() => calc.zScorePercentileMap(), throwsArgumentError);

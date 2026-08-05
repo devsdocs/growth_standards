@@ -112,7 +112,7 @@ sealed class WHOGrowthStandardsWeightForLength extends LengthBasedResult
   _WHOGrowthStandardsWeightForLengthLMS get lmsData => _ageData;
 
   @override
-  num get measurementResultInDefaultUnit => weight.toKilogram.value;
+  num get measurementResultInDefaultUnit => weight.toKilogram.value.toDouble();
 }
 
 class _WHOGrowthStandardsWeightForLengthLMS extends LMSContext {

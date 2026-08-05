@@ -17,23 +17,23 @@ void main() {
     visits: [
       VisitObservation(
         Date(year: 2023, month: Months.january, date: 15),
-        const Mass$Kilogram(3.2),
+        Mass$Kilogram(3.2),
       ),
       VisitObservation(
         Date(year: 2023, month: Months.april, date: 15),
-        const Mass$Kilogram(5.8),
+        Mass$Kilogram(5.8),
       ),
       VisitObservation(
         Date(year: 2023, month: Months.july, date: 15),
-        const Mass$Kilogram(7.4),
+        Mass$Kilogram(7.4),
       ),
       VisitObservation(
         Date(year: 2023, month: Months.october, date: 15),
-        const Mass$Kilogram(8.6),
+        Mass$Kilogram(8.6),
       ),
       VisitObservation(
         Date(year: 2024, month: Months.january, date: 15),
-        const Mass$Kilogram(9.5),
+        Mass$Kilogram(9.5),
       ),
     ],
   );
@@ -41,7 +41,7 @@ void main() {
   // Dynamically add a 18-month visit observation:
   final latestVisitResult = trajectory.add(
     Date(year: 2024, month: Months.july, date: 15),
-    const Mass$Kilogram(10.8),
+    Mass$Kilogram(10.8),
   );
 
   print('Patient: Female | DOB: 2023-01-15');

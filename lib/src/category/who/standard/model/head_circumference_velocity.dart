@@ -81,7 +81,7 @@ sealed class WHOGrowthStandardsHeadCircumferenceVelocityForAge
   Map<VelocityIncrement, Map<({Date dateBefore, Date dateAfter}), num>>
   get _incrementalData => VelocityPastMeasurement(
     pastMeasurement,
-    const Length$Centimeter(),
+    Length$Centimeter(),
   ).incrementalData;
 
   @override

@@ -40,7 +40,7 @@ void main() {
   final result = GrowthStandard.who.fromBirthTo5Years.weightForAge(
     sex: Sex.male,
     age: infantAge,
-    weight: const Mass$Kilogram(10.2),
+    weight: Mass$Kilogram(10.2),
   );
 
   print('Z-Score: ${result.zScore()} SD');      // e.g. +0.5 SD
@@ -68,10 +68,10 @@ void main() {
   );
 
   // Append visit observations (visit date + measurement)
-  trajectory.add(Date(year: 2023, month: Months.january, date: 15), const Mass$Kilogram(3.2));
-  trajectory.add(Date(year: 2023, month: Months.april, date: 15), const Mass$Kilogram(5.8));
-  trajectory.add(Date(year: 2023, month: Months.july, date: 15), const Mass$Kilogram(7.4));
-  trajectory.add(Date(year: 2024, month: Months.january, date: 15), const Mass$Kilogram(9.5));
+  trajectory.add(Date(year: 2023, month: Months.january, date: 15), Mass$Kilogram(3.2));
+  trajectory.add(Date(year: 2023, month: Months.april, date: 15), Mass$Kilogram(5.8));
+  trajectory.add(Date(year: 2023, month: Months.july, date: 15), Mass$Kilogram(7.4));
+  trajectory.add(Date(year: 2024, month: Months.january, date: 15), Mass$Kilogram(9.5));
 
   // Access trajectory analytics
   print('Total Visits Tracked: ${trajectory.length}');
@@ -104,8 +104,8 @@ import 'package:growth_standards/growth_standards.dart';
 
 void main() {
   final age = Age.byMonthsAgo(6);
-  final msr1 = MassMeasurementHistory(age.dateAtMonthsAfterBirth(4), const Mass$Kilogram(6.4));
-  final msr2 = MassMeasurementHistory(age.dateAtMonthsAfterBirth(6), const Mass$Kilogram(7.9));
+  final msr1 = MassMeasurementHistory(age.dateAtMonthsAfterBirth(4), Mass$Kilogram(6.4));
+  final msr2 = MassMeasurementHistory(age.dateAtMonthsAfterBirth(6), Mass$Kilogram(7.9));
 
   final velocityResult = GrowthStandard.who.fromBirthTo5Years.weightVelocityForAge(
     sex: Sex.male,
@@ -129,7 +129,7 @@ void main() {
   final cdcWfa = GrowthStandard.cdc.from2YearsAndAbove.weightForAge(
     sex: Sex.female,
     age: Age(Date(year: 2016, month: Months.june, date: 1), observedDate: Date(year: 2024, month: Months.june, date: 1)),
-    weight: const Mass$Kilogram(26.5),
+    weight: Mass$Kilogram(26.5),
   );
 
   // Customize chart display mode and theme

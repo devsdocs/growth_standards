@@ -39,7 +39,8 @@ extension VelocityBasedResultVisualizationExtension on VelocityBasedResult {
 }
 
 /// Extension on [List<VelocityBasedResult>] for rendering velocity trajectories
-extension VelocityBasedResultListVisualizationExtension on List<VelocityBasedResult> {
+extension VelocityBasedResultListVisualizationExtension
+    on List<VelocityBasedResult> {
   /// Render multiple velocity calculations (velocity trajectory) into an SVG string
   String toSvg({GrowthChartConfig? config}) =>
       GrowthChartVisualizer.renderVelocitySvgList(this, config: config);

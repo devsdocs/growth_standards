@@ -20,7 +20,7 @@ void main() {
   final wfa = who05.weightForAge(
     sex: sex,
     age: infantAge,
-    weight: const Mass$Kilogram(10.2),
+    weight: Mass$Kilogram(10.2),
   );
   print(
     '1. Weight-for-Age (0-5y): Z = ${wfa.zScore()} SD | P = ${wfa.percentile()}%',
@@ -30,7 +30,7 @@ void main() {
   final lfa = who05.lengthForAge(
     sex: sex,
     age: infantAge,
-    lengthHeight: const Length$Centimeter(75.5),
+    lengthHeight: Length$Centimeter(75.5),
     measure: LengthHeightMeasurementPosition.recumbent,
   );
   print(
@@ -41,8 +41,8 @@ void main() {
   final wfl = who05.weightForLength(
     sex: sex,
     age: infantAge,
-    lengthMeasurementResult: const Length$Centimeter(75.5),
-    massMeasurementResult: const Mass$Kilogram(10.2),
+    lengthMeasurementResult: Length$Centimeter(75.5),
+    massMeasurementResult: Mass$Kilogram(10.2),
     measure: LengthHeightMeasurementPosition.recumbent,
   );
   print(
@@ -57,8 +57,8 @@ void main() {
   final wfh = who05.weightForHeight(
     sex: sex,
     age: olderAge,
-    height: const Length$Centimeter(88.0),
-    mass: const Mass$Kilogram(12.5),
+    height: Length$Centimeter(88.0),
+    mass: Mass$Kilogram(12.5),
     measure: LengthHeightMeasurementPosition.standing,
   );
   print(
@@ -71,8 +71,8 @@ void main() {
     bodyMassIndexMeasurement:
         WHOGrowthStandardsBodyMassIndexMeasurement.fromMeasurement(
           measure: LengthHeightMeasurementPosition.recumbent,
-          lengthHeight: const Length$Centimeter(75.5),
-          weight: const Mass$Kilogram(10.2),
+          lengthHeight: Length$Centimeter(75.5),
+          weight: Mass$Kilogram(10.2),
           age: infantAge,
         ),
   );
@@ -84,7 +84,7 @@ void main() {
   final hc = who05.headCircumferenceForAge(
     sex: sex,
     age: infantAge,
-    measurementResult: const Length$Centimeter(46.5),
+    measurementResult: Length$Centimeter(46.5),
   );
   print(
     '6. Head Circumference-for-Age: Z = ${hc.zScore()} SD | P = ${hc.percentile()}%',
@@ -94,7 +94,7 @@ void main() {
   final muac = who05.armCircumferenceForAge(
     sex: sex,
     age: infantAge,
-    measurementResult: const Length$Centimeter(15.2),
+    measurementResult: Length$Centimeter(15.2),
   );
   print('7. MUAC-for-Age: Z = ${muac.zScore()} SD | P = ${muac.percentile()}%');
 
@@ -102,7 +102,7 @@ void main() {
   final subscapular = who05.subscapularSkinfoldForAge(
     sex: sex,
     age: infantAge,
-    measurementResult: const Length$Millimeter(7.5),
+    measurementResult: Length$Millimeter(7.5),
   );
   print(
     '8. Subscapular Skinfold-for-Age: Z = ${subscapular.zScore()} SD | P = ${subscapular.percentile()}%',
@@ -112,7 +112,7 @@ void main() {
   final triceps = who05.tricepsSkinfoldForAge(
     sex: sex,
     age: infantAge,
-    measurementResult: const Length$Millimeter(8.2),
+    measurementResult: Length$Millimeter(8.2),
   );
   print(
     '9. Triceps Skinfold-for-Age: Z = ${triceps.zScore()} SD | P = ${triceps.percentile()}%',
@@ -128,7 +128,7 @@ void main() {
   final hfa518 = who518.heightForAge(
     sex: Sex.female,
     age: childAge,
-    lengthHeight: const Length$Centimeter(133.5),
+    lengthHeight: Length$Centimeter(133.5),
     measure: LengthHeightMeasurementPosition.standing,
   );
   print(
@@ -139,7 +139,7 @@ void main() {
   final wfa510 = who518.weightForAge(
     sex: Sex.female,
     age: childAge,
-    weight: const Mass$Kilogram(28.5),
+    weight: Mass$Kilogram(28.5),
   );
   print(
     '11. WHO Weight-for-Age (5-10y): Z = ${wfa510.zScore()} SD | P = ${wfa510.percentile()}%',

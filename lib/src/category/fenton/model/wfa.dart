@@ -74,7 +74,7 @@ sealed class FentonWeightForAge extends PostmenstrualAgeBasedResult
   _FentonWeightForAgeLMS get lmsData => _ageData;
 
   @override
-  num get measurementResultInDefaultUnit => weight.toKilogram.value;
+  num get measurementResultInDefaultUnit => weight.toKilogram.value.toDouble();
 }
 
 class _FentonWeightForAgeLMS extends LMSContext {
