@@ -52,7 +52,7 @@ $Res call({
 });
 
 
-
+$PostmenstrualAgeCopyWith<$Res> get age;
 
 }
 /// @nodoc
@@ -73,7 +73,16 @@ as PostmenstrualAge,measurementResult: null == measurementResult ? _self.measure
 as Length,
   ));
 }
-
+/// Create a copy of FentonHeadCircumferenceForAge
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PostmenstrualAgeCopyWith<$Res> get age {
+  
+  return $PostmenstrualAgeCopyWith<$Res>(_self.age, (value) {
+    return _then(_self.copyWith(age: value));
+  });
+}
 }
 
 
@@ -249,7 +258,7 @@ $Res call({
 });
 
 
-
+@override $PostmenstrualAgeCopyWith<$Res> get age;
 
 }
 /// @nodoc
@@ -271,7 +280,16 @@ as Length,
   ));
 }
 
-
+/// Create a copy of FentonHeadCircumferenceForAge
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PostmenstrualAgeCopyWith<$Res> get age {
+  
+  return $PostmenstrualAgeCopyWith<$Res>(_self.age, (value) {
+    return _then(_self.copyWith(age: value));
+  });
+}
 }
 
 
@@ -315,7 +333,7 @@ $Res call({
 });
 
 
-
+$PostmenstrualAgeCopyWith<$Res> get age;
 
 }
 /// @nodoc
@@ -337,7 +355,16 @@ as Length,measure: null == measure ? _self.measure : measure // ignore: cast_nul
 as LengthHeightMeasurementPosition,
   ));
 }
-
+/// Create a copy of FentonLengthForAge
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PostmenstrualAgeCopyWith<$Res> get age {
+  
+  return $PostmenstrualAgeCopyWith<$Res>(_self.age, (value) {
+    return _then(_self.copyWith(age: value));
+  });
+}
 }
 
 
@@ -514,7 +541,7 @@ $Res call({
 });
 
 
-
+@override $PostmenstrualAgeCopyWith<$Res> get age;
 
 }
 /// @nodoc
@@ -537,7 +564,16 @@ as LengthHeightMeasurementPosition,
   ));
 }
 
-
+/// Create a copy of FentonLengthForAge
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PostmenstrualAgeCopyWith<$Res> get age {
+  
+  return $PostmenstrualAgeCopyWith<$Res>(_self.age, (value) {
+    return _then(_self.copyWith(age: value));
+  });
+}
 }
 
 
@@ -581,7 +617,7 @@ $Res call({
 });
 
 
-
+$PostmenstrualAgeCopyWith<$Res> get age;
 
 }
 /// @nodoc
@@ -602,7 +638,16 @@ as PostmenstrualAge,weight: null == weight ? _self.weight : weight // ignore: ca
 as Mass,
   ));
 }
-
+/// Create a copy of FentonWeightForAge
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PostmenstrualAgeCopyWith<$Res> get age {
+  
+  return $PostmenstrualAgeCopyWith<$Res>(_self.age, (value) {
+    return _then(_self.copyWith(age: value));
+  });
+}
 }
 
 
@@ -778,7 +823,7 @@ $Res call({
 });
 
 
-
+@override $PostmenstrualAgeCopyWith<$Res> get age;
 
 }
 /// @nodoc
@@ -800,7 +845,16 @@ as Mass,
   ));
 }
 
-
+/// Create a copy of FentonWeightForAge
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PostmenstrualAgeCopyWith<$Res> get age {
+  
+  return $PostmenstrualAgeCopyWith<$Res>(_self.age, (value) {
+    return _then(_self.copyWith(age: value));
+  });
+}
 }
 
 // dart format on

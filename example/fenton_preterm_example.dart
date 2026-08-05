@@ -8,7 +8,7 @@ void main() {
   print('====================================================\n');
 
   final fenton = GrowthStandard.fenton;
-  const pma = PostmenstrualAge.completedWeeks(32); // 32 weeks Postmenstrual Age
+  final pma = PostmenstrualAge.completedWeeks(32); // 32 weeks Postmenstrual Age
   const sex = Sex.female;
 
   // 1. Fenton Preterm Weight-for-Age

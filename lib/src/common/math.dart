@@ -6,12 +6,69 @@ import 'package:growth_standards/src/common/model/lms.dart';
 import 'package:growth_standards/src/common/types.dart';
 import 'package:super_measurement/super_measurement.dart';
 
+final _r0 = Rational.parse('0');
+final _r0_5 = Rational.parse('0.5');
+final _r1 = Rational.fromInt(1);
+final _r2 = Rational.fromInt(2);
+final _rMinus2 = Rational.fromInt(-2);
+final _r3 = Rational.fromInt(3);
+final _rMinus3 = Rational.fromInt(-3);
+final _r100 = Rational.fromInt(100);
+final _rInf = Rational.parse('1e99');
+final _rNegInf = Rational.parse('-1e99');
+
+Rational _toRational(dynamic value) {
+  if (value is Rational) return value;
+  if (value is double) {
+    if (value.isNaN) return _r0;
+    if (value.isInfinite) return value > 0 ? _rInf : _rNegInf;
+  }
+  return Rational.parse(value.toString());
+}
+
+Rational? _sdRational(Rational rSD, {required LMS lms}) {
+  final rM = _toRational(lms.m);
+  final rL = _toRational(lms.l);
+  final rS = _toRational(lms.s);
+
+  if (lms.l.abs() < 1e-7) {
+    final expVal = exp((rS * rSD).toDouble());
+    if (expVal.isNaN) return null;
+    if (expVal.isInfinite) return expVal > 0 ? _rInf : _rNegInf;
+    return rM * _toRational(expVal);
+  }
+
+  final inner = (_r1 + (rL * rS * rSD)).toDouble();
+  final exponent = (_r1 / rL).toDouble();
+  final pVal = pow(inner, exponent);
+  if (pVal.isNaN) return null;
+  if (pVal.isInfinite) return pVal > 0 ? _rInf : _rNegInf;
+  return rM * _toRational(pVal);
+}
+
 /// SD calculation using [LMS]
 num standardDeviationCalculation(num sd, {required LMS lms}) {
+  final result = _sdRational(_toRational(sd), lms: lms);
+  return result?.toDouble() ?? double.nan;
+}
+
+Rational? _zScoreRational(Rational rY, {required LMS lms}) {
+  final rM = _toRational(lms.m);
+  final rS = _toRational(lms.s);
+  final rL = _toRational(lms.l);
+
   if (lms.l.abs() < 1e-7) {
-    return lms.m * exp(lms.s * sd);
+    final inner = (rY / rM).toDouble();
+    final logVal = log(inner);
+    if (logVal.isNaN) return null;
+    if (logVal.isInfinite) return logVal > 0 ? _rInf : _rNegInf;
+    return _toRational(logVal) / rS;
   }
-  return lms.m * pow(1 + lms.l * lms.s * sd, 1 / lms.l);
+  final inner = (rY / rM).toDouble();
+  final numPow = pow(inner, lms.l);
+  if (numPow.isNaN) return null;
+  if (numPow.isInfinite) return numPow > 0 ? _rInf : _rNegInf;
+  return (_toRational(numPow) - _r1) / (rS * rL);
 }
 
 /// COMPUTATION OF CENTILES AND Z-SCORES FOR
@@ -25,10 +82,8 @@ num zScoreCalculation(num y, {required LMS lms}) {
   if (y <= 0) {
     throw ArgumentError('Measurement must be strictly positive, got $y');
   }
-  if (lms.l.abs() < 1e-7) {
-    return log(y / lms.m) / lms.s;
-  }
-  return (pow(y / lms.m, lms.l) - 1) / (lms.s * lms.l);
+  final result = _zScoreRational(_toRational(y), lms: lms);
+  return result?.toDouble() ?? double.nan;
 }
 
 /// COMPUTATION OF CENTILES AND Z-SCORES FOR
@@ -47,23 +102,29 @@ num zScoreCalculation(num y, {required LMS lms}) {
 ///
 /// SUBSCAPULAR SKINFOLD-FOR-AGE
 num adjustedZScoreCalculation(num y, {required LMS lms}) {
-  // print('y: $y, l:$l, m:$m, s:$s');
+  final rY = _toRational(y);
+  final zScoreRational = _zScoreRational(rY, lms: lms);
+  if (zScoreRational == null) return double.nan;
 
-  final num zScore = lms.zScore(y);
+  final num zScore = zScoreRational.toDouble();
 
   if (zScore > 3) {
-    final sD3pos = lms.standardDeviation(3);
-    final sD2pos = lms.standardDeviation(2);
-    final sD23pos = sD3pos - sD2pos;
+    final rSD3pos = _sdRational(_r3, lms: lms);
+    final rSD2pos = _sdRational(_r2, lms: lms);
+    if (rSD3pos == null || rSD2pos == null) return double.nan;
 
-    return 3 + ((y - sD3pos) / sD23pos);
+    final rSD23pos = rSD3pos - rSD2pos;
+
+    return (_r3 + ((rY - rSD3pos) / rSD23pos)).toDouble();
   }
   if (zScore < -3) {
-    final sD3neg = lms.standardDeviation(-3);
-    final sD2neg = lms.standardDeviation(-2);
-    final sD23neg = sD2neg - sD3neg;
+    final rSD3neg = _sdRational(_rMinus3, lms: lms);
+    final rSD2neg = _sdRational(_rMinus2, lms: lms);
+    if (rSD3neg == null || rSD2neg == null) return double.nan;
 
-    return -3 + ((y - sD3neg) / sD23neg);
+    final rSD23neg = rSD2neg - rSD3neg;
+
+    return (_rMinus3 + ((rY - rSD3neg) / rSD23neg)).toDouble();
   }
   return zScore;
 }
@@ -101,14 +162,33 @@ Length$Centimeter adjustedLengthHeight({
 }
 
 /// Normal distribution equation, the name [pnorm] inspired from R language
-num pnorm(num zScore) => 0.5 * (1 + erf(zScore / _sq2));
+num pnorm(num zScore) {
+  final rZ = _toRational(zScore);
+  final rSq2 = _toRational(_sq2);
+
+  final inner = (rZ / rSq2).toDouble();
+  final erfVal = erf(inner);
+  if (erfVal.isNaN) return double.nan;
+  if (erfVal.isInfinite) return erfVal;
+
+  return ((_r1 + _toRational(erfVal)) * _r0_5).toDouble();
+}
 
 /// Normal distribution equation, the name [qnorm] inspired from R language
 num qnorm(num percentile) {
-  final p = percentile > 1.0 ? percentile / 100 : percentile;
-  if (p <= 0) return double.negativeInfinity;
-  if (p >= 1) return double.infinity;
-  return _sq2 * erfInv(2 * p - 1);
+  final rPercentile = _toRational(percentile);
+  final rP = rPercentile > _r1 ? rPercentile / _r100 : rPercentile;
+
+  if (rP <= _r0) return double.negativeInfinity;
+  if (rP >= _r1) return double.infinity;
+
+  final inner = ((rP * _r2) - _r1).toDouble();
+  final erfInvVal = erfInv(inner);
+  if (erfInvVal.isNaN) return double.nan;
+  if (erfInvVal.isInfinite) return erfInvVal;
+
+  final rSq2 = _toRational(_sq2);
+  return (rSq2 * _toRational(erfInvVal)).toDouble();
 }
 
 final _sq2 = sqrt(2);

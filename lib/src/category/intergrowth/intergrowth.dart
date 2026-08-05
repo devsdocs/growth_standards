@@ -2,6 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:growth_standards/growth_standards.dart';
 import 'package:growth_standards/src/common/extension.dart';
 import 'package:growth_standards/src/common/model/age.dart';
+import 'package:growth_standards/src/common/model/gestational_age.dart';
 import 'package:growth_standards/src/common/tools.dart';
 import 'package:super_measurement/super_measurement.dart';
 

@@ -110,7 +110,7 @@ void main() {
     test('Fenton Male Weight-for-Age at 30 weeks PMA', () {
       final calc = GrowthStandard.fenton.weightForAge(
         sex: Sex.male,
-        age: const PostmenstrualAge.completedWeeks(30),
+        age: PostmenstrualAge.completedWeeks(30),
         weight: Mass$Kilogram(1.48),
       );
 
@@ -122,7 +122,7 @@ void main() {
     test('Fenton Female Weight-for-Age at 40 weeks PMA', () {
       final calc = GrowthStandard.fenton.weightForAge(
         sex: Sex.female,
-        age: const PostmenstrualAge.completedWeeks(40),
+        age: PostmenstrualAge.completedWeeks(40),
         weight: Mass$Kilogram(3.51),
       );
 
@@ -134,7 +134,7 @@ void main() {
     test('Fenton Male Length-for-Age at 40 weeks PMA', () {
       final calc = GrowthStandard.fenton.lengthForAge(
         sex: Sex.male,
-        age: const PostmenstrualAge.completedWeeks(40),
+        age: PostmenstrualAge.completedWeeks(40),
         lengthHeight: Length$Centimeter(51.6),
         measure: LengthHeightMeasurementPosition.recumbent,
       );
@@ -147,7 +147,7 @@ void main() {
     test('Fenton Female Head Circumference-for-Age at 40 weeks PMA', () {
       final calc = GrowthStandard.fenton.headCircumferenceForAge(
         sex: Sex.female,
-        age: const PostmenstrualAge.completedWeeks(40),
+        age: PostmenstrualAge.completedWeeks(40),
         measurementResult: Length$Centimeter(34.8),
       );
 

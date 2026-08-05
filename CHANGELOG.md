@@ -1,3 +1,8 @@
+## 5.2.0
+- **Math precision upgrade**: Fully migrated internal statistical equations (SD and Z-score calculations) to use the `Rational` class underneath, strictly preventing any floating-point precision loss during intermediate algebraic steps.
+- **Normal distribution accuracy**: Improved probability implementations (`pnorm` and `qnorm`) utilizing `Rational` objects for enhanced exactness.
+- **Dependency upgrade**: Added support for `@freezed` `sealed` classes to `GestationalAge` and `PostmenstrualAge` allowing exhaustive pattern matching.
+
 ## 5.1.1
 - **Fix**: Remove redundant sex badge in svg output
 

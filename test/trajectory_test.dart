@@ -151,7 +151,7 @@ void main() {
     });
 
     test('Fenton Preterm Trajectory', () {
-      const birthPma = PostmenstrualAge.completedWeeks(28);
+      final birthPma = PostmenstrualAge.completedWeeks(28);
       final fentonWeight = GrowthTrajectory.fentonWeightForAge(
         sex: sex,
         dateOfBirth: dob,

@@ -52,7 +52,7 @@ $Res call({
 });
 
 
-
+$GestationalAgeCopyWith<$Res> get age;
 
 }
 /// @nodoc
@@ -73,7 +73,16 @@ as GestationalAge,measurementResult: null == measurementResult ? _self.measureme
 as Length,
   ));
 }
-
+/// Create a copy of IntergrowthNewbornBirthHeadCircumferenceForAge
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$GestationalAgeCopyWith<$Res> get age {
+  
+  return $GestationalAgeCopyWith<$Res>(_self.age, (value) {
+    return _then(_self.copyWith(age: value));
+  });
+}
 }
 
 
@@ -249,7 +258,7 @@ $Res call({
 });
 
 
-
+@override $GestationalAgeCopyWith<$Res> get age;
 
 }
 /// @nodoc
@@ -271,7 +280,16 @@ as Length,
   ));
 }
 
-
+/// Create a copy of IntergrowthNewbornBirthHeadCircumferenceForAge
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$GestationalAgeCopyWith<$Res> get age {
+  
+  return $GestationalAgeCopyWith<$Res>(_self.age, (value) {
+    return _then(_self.copyWith(age: value));
+  });
+}
 }
 
 
@@ -315,7 +333,7 @@ $Res call({
 });
 
 
-
+$GestationalAgeCopyWith<$Res> get age;
 
 }
 /// @nodoc
@@ -336,7 +354,16 @@ as GestationalAge,measurementResult: null == measurementResult ? _self.measureme
 as Length,
   ));
 }
-
+/// Create a copy of IntergrowthNewbornBirthLengthForAge
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$GestationalAgeCopyWith<$Res> get age {
+  
+  return $GestationalAgeCopyWith<$Res>(_self.age, (value) {
+    return _then(_self.copyWith(age: value));
+  });
+}
 }
 
 
@@ -512,7 +539,7 @@ $Res call({
 });
 
 
-
+@override $GestationalAgeCopyWith<$Res> get age;
 
 }
 /// @nodoc
@@ -534,7 +561,16 @@ as Length,
   ));
 }
 
-
+/// Create a copy of IntergrowthNewbornBirthLengthForAge
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$GestationalAgeCopyWith<$Res> get age {
+  
+  return $GestationalAgeCopyWith<$Res>(_self.age, (value) {
+    return _then(_self.copyWith(age: value));
+  });
+}
 }
 
 
@@ -578,7 +614,7 @@ $Res call({
 });
 
 
-
+$GestationalAgeCopyWith<$Res> get age;
 
 }
 /// @nodoc
@@ -599,7 +635,16 @@ as GestationalAge,measurementResult: null == measurementResult ? _self.measureme
 as Mass,
   ));
 }
-
+/// Create a copy of IntergrowthNewbornBirthWeightForAge
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$GestationalAgeCopyWith<$Res> get age {
+  
+  return $GestationalAgeCopyWith<$Res>(_self.age, (value) {
+    return _then(_self.copyWith(age: value));
+  });
+}
 }
 
 
@@ -775,7 +820,7 @@ $Res call({
 });
 
 
-
+@override $GestationalAgeCopyWith<$Res> get age;
 
 }
 /// @nodoc
@@ -797,7 +842,16 @@ as Mass,
   ));
 }
 
-
+/// Create a copy of IntergrowthNewbornBirthWeightForAge
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$GestationalAgeCopyWith<$Res> get age {
+  
+  return $GestationalAgeCopyWith<$Res>(_self.age, (value) {
+    return _then(_self.copyWith(age: value));
+  });
+}
 }
 
 
@@ -841,7 +895,7 @@ $Res call({
 });
 
 
-$NewbornWeightLengthRatioMeasurementCopyWith<$Res> get measurementResult;
+$GestationalAgeCopyWith<$Res> get age;$NewbornWeightLengthRatioMeasurementCopyWith<$Res> get measurementResult;
 
 }
 /// @nodoc
@@ -863,6 +917,15 @@ as NewbornWeightLengthRatioMeasurement,
   ));
 }
 /// Create a copy of IntergrowthNewbornBirthWeightForLengthRatioForAge
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$GestationalAgeCopyWith<$Res> get age {
+  
+  return $GestationalAgeCopyWith<$Res>(_self.age, (value) {
+    return _then(_self.copyWith(age: value));
+  });
+}/// Create a copy of IntergrowthNewbornBirthWeightForLengthRatioForAge
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
@@ -1047,7 +1110,7 @@ $Res call({
 });
 
 
-@override $NewbornWeightLengthRatioMeasurementCopyWith<$Res> get measurementResult;
+@override $GestationalAgeCopyWith<$Res> get age;@override $NewbornWeightLengthRatioMeasurementCopyWith<$Res> get measurementResult;
 
 }
 /// @nodoc
@@ -1070,6 +1133,15 @@ as NewbornWeightLengthRatioMeasurement,
 }
 
 /// Create a copy of IntergrowthNewbornBirthWeightForLengthRatioForAge
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$GestationalAgeCopyWith<$Res> get age {
+  
+  return $GestationalAgeCopyWith<$Res>(_self.age, (value) {
+    return _then(_self.copyWith(age: value));
+  });
+}/// Create a copy of IntergrowthNewbornBirthWeightForLengthRatioForAge
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
@@ -1122,7 +1194,7 @@ $Res call({
 });
 
 
-
+$GestationalAgeCopyWith<$Res> get age;
 
 }
 /// @nodoc
@@ -1143,7 +1215,16 @@ as GestationalAge,measurementResult: null == measurementResult ? _self.measureme
 as Length,
   ));
 }
-
+/// Create a copy of IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$GestationalAgeCopyWith<$Res> get age {
+  
+  return $GestationalAgeCopyWith<$Res>(_self.age, (value) {
+    return _then(_self.copyWith(age: value));
+  });
+}
 }
 
 
@@ -1319,7 +1400,7 @@ $Res call({
 });
 
 
-
+@override $GestationalAgeCopyWith<$Res> get age;
 
 }
 /// @nodoc
@@ -1341,7 +1422,16 @@ as Length,
   ));
 }
 
-
+/// Create a copy of IntergrowthVeryPretermNewbornBirthHeadCircumferenceForAge
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$GestationalAgeCopyWith<$Res> get age {
+  
+  return $GestationalAgeCopyWith<$Res>(_self.age, (value) {
+    return _then(_self.copyWith(age: value));
+  });
+}
 }
 
 
@@ -1385,7 +1475,7 @@ $Res call({
 });
 
 
-
+$GestationalAgeCopyWith<$Res> get age;
 
 }
 /// @nodoc
@@ -1406,7 +1496,16 @@ as GestationalAge,measurementResult: null == measurementResult ? _self.measureme
 as Length,
   ));
 }
-
+/// Create a copy of IntergrowthVeryPretermNewbornBirthLengthForAge
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$GestationalAgeCopyWith<$Res> get age {
+  
+  return $GestationalAgeCopyWith<$Res>(_self.age, (value) {
+    return _then(_self.copyWith(age: value));
+  });
+}
 }
 
 
@@ -1582,7 +1681,7 @@ $Res call({
 });
 
 
-
+@override $GestationalAgeCopyWith<$Res> get age;
 
 }
 /// @nodoc
@@ -1604,7 +1703,16 @@ as Length,
   ));
 }
 
-
+/// Create a copy of IntergrowthVeryPretermNewbornBirthLengthForAge
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$GestationalAgeCopyWith<$Res> get age {
+  
+  return $GestationalAgeCopyWith<$Res>(_self.age, (value) {
+    return _then(_self.copyWith(age: value));
+  });
+}
 }
 
 
@@ -1648,7 +1756,7 @@ $Res call({
 });
 
 
-
+$GestationalAgeCopyWith<$Res> get age;
 
 }
 /// @nodoc
@@ -1669,7 +1777,16 @@ as GestationalAge,measurementResult: null == measurementResult ? _self.measureme
 as Mass,
   ));
 }
-
+/// Create a copy of IntergrowthVeryPretermNewbornBirthWeightForAge
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$GestationalAgeCopyWith<$Res> get age {
+  
+  return $GestationalAgeCopyWith<$Res>(_self.age, (value) {
+    return _then(_self.copyWith(age: value));
+  });
+}
 }
 
 
@@ -1845,7 +1962,7 @@ $Res call({
 });
 
 
-
+@override $GestationalAgeCopyWith<$Res> get age;
 
 }
 /// @nodoc
@@ -1867,7 +1984,16 @@ as Mass,
   ));
 }
 
-
+/// Create a copy of IntergrowthVeryPretermNewbornBirthWeightForAge
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$GestationalAgeCopyWith<$Res> get age {
+  
+  return $GestationalAgeCopyWith<$Res>(_self.age, (value) {
+    return _then(_self.copyWith(age: value));
+  });
+}
 }
 
 
@@ -2168,7 +2294,7 @@ $Res call({
 });
 
 
-$NewbornWeightLengthRatioMeasurementCopyWith<$Res> get measurementResult;
+$GestationalAgeCopyWith<$Res> get age;$NewbornWeightLengthRatioMeasurementCopyWith<$Res> get measurementResult;
 
 }
 /// @nodoc
@@ -2190,6 +2316,15 @@ as NewbornWeightLengthRatioMeasurement,
   ));
 }
 /// Create a copy of IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$GestationalAgeCopyWith<$Res> get age {
+  
+  return $GestationalAgeCopyWith<$Res>(_self.age, (value) {
+    return _then(_self.copyWith(age: value));
+  });
+}/// Create a copy of IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
@@ -2374,7 +2509,7 @@ $Res call({
 });
 
 
-@override $NewbornWeightLengthRatioMeasurementCopyWith<$Res> get measurementResult;
+@override $GestationalAgeCopyWith<$Res> get age;@override $NewbornWeightLengthRatioMeasurementCopyWith<$Res> get measurementResult;
 
 }
 /// @nodoc
@@ -2397,6 +2532,15 @@ as NewbornWeightLengthRatioMeasurement,
 }
 
 /// Create a copy of IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$GestationalAgeCopyWith<$Res> get age {
+  
+  return $GestationalAgeCopyWith<$Res>(_self.age, (value) {
+    return _then(_self.copyWith(age: value));
+  });
+}/// Create a copy of IntergrowthVeryPretermNewbornBirthWeightForLengthRatioForAge
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')

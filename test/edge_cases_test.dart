@@ -184,8 +184,8 @@ void main() {
         type: AdjustedLengthType.who,
       );
 
-      expect(adjustedAtBirth.value, 50);
-      expect(adjustedIfCurrentAge.value, 49.3);
+      expect(adjustedAtBirth.value.toDouble(), 50);
+      expect(adjustedIfCurrentAge.value.toDouble(), 49.3);
     });
 
     test('still returns current age when date is after observation', () {
@@ -219,9 +219,9 @@ void main() {
         type: AdjustedLengthType.who,
       );
 
-      expect(standing730.value, 85.7);
-      expect(standing731.value, 85);
-      expect(recumbent731.value, 84.3);
+      expect(standing730.value.toDouble(), 85.7);
+      expect(standing731.value.toDouble(), 85);
+      expect(recumbent731.value.toDouble(), 84.3);
     });
 
     test('CDC ±0.8 cm flips between completed months 23 and 24', () {
@@ -244,9 +244,9 @@ void main() {
         type: AdjustedLengthType.cdc,
       );
 
-      expect(standing23.value, 85.8);
-      expect(standing24.value, 85);
-      expect(recumbent24.value, 84.2);
+      expect(standing23.value.toDouble(), 85.8);
+      expect(standing24.value.toDouble(), 85);
+      expect(recumbent24.value.toDouble(), 84.2);
     });
   });
 
@@ -281,7 +281,7 @@ void main() {
 
   group('A2 — Fenton sex is required and used in LMS lookup', () {
     test('weight/length/HC APIs require sex and resolve sex-keyed data', () {
-      const age = PostmenstrualAge.completedWeeks(40);
+      final age = PostmenstrualAge.completedWeeks(40);
       final weight = Mass$Kilogram(3.581);
       final length = Length$Centimeter(51.114);
       final hc = Length$Centimeter(35);
@@ -344,7 +344,7 @@ void main() {
     test('rejects PMA outside 22–50 weeks', () {
       final calc = GrowthStandard.fenton.weightForAge(
         sex: Sex.male,
-        age: const PostmenstrualAge.completedWeeks(20),
+        age: PostmenstrualAge.completedWeeks(20),
         weight: Mass$Kilogram(0.4),
       );
       expect(() => calc.zScore(), throwsArgumentError);
@@ -369,12 +369,12 @@ void main() {
       () {
         final maleCalc = GrowthStandard.fenton.weightForAge(
           sex: Sex.male,
-          age: const PostmenstrualAge.completedWeeks(40),
+          age: PostmenstrualAge.completedWeeks(40),
           weight: Mass$Kilogram(3.5),
         );
         final femaleCalc = GrowthStandard.fenton.weightForAge(
           sex: Sex.female,
-          age: const PostmenstrualAge.completedWeeks(40),
+          age: PostmenstrualAge.completedWeeks(40),
           weight: Mass$Kilogram(3.5),
         );
 
