@@ -1,3 +1,6 @@
+## 5.4.1
+- **Fix**: Removed accidentally tracked test `build/` assets from the published package to reduce package size.
+
 ## 5.4.0
 - **SVG Compatibility**: Restructured SVG code generation to completely eliminate `<style>` blocks and CSS classes. All styles are now generated natively via inline standard SVG presentation attributes (`fill=`, `stroke=`, `font-family=`, etc.). This guarantees 100% out-of-the-box compatibility with strict SVG renderers like `flutter_svg`, standard email clients, and document generators without the need for manual regex parsing.
 - **Customizable SVG Headers/Watermarks**: Added `patientInfo` and `watermarkText` to `GrowthChartConfig`. 
