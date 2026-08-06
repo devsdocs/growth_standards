@@ -1,83 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900.0 650.0" width="900.0" height="650.0">
-  <style>
-    .bg { fill: rgb(255, 255, 255); }
-    .chart-bg { fill: rgb(255, 250, 252); }
-    .title { font-family: system-ui, -apple-system, sans-serif; font-size: 20px; font-weight: 700; fill: rgb(136, 14, 79); }
-    .subtitle { font-family: system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: 500; fill: rgb(173, 20, 87); }
-    .axis-title { font-family: system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: 600; fill: rgb(79, 55, 71); }
-    .tick-label { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; fill: rgb(79, 55, 71); }
-    .curve-label { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 600; }
-    .grid-line { stroke: rgb(245, 225, 235); stroke-width: 1; stroke-dasharray: 3,3; }
-    .axis-line { stroke: rgb(176, 144, 164); stroke-width: 1.5; }
-    .callout-box { fill: rgba(255, 255, 255, 1.00); stroke: rgb(216, 27, 96); stroke-width: 1.5; rx: 6; ry: 6; filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.1)); }
-    .callout-text-bold { font-family: system-ui, -apple-system, sans-serif; font-size: 12px; font-weight: 700; fill: rgb(33, 37, 41); }
-    .callout-text { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 500; fill: rgb(33, 37, 41); }
-    .badge-bg { fill: rgb(252, 228, 236); rx: 12; ry: 12; }
-    .badge-text { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 700; fill: rgb(194, 24, 91); }
-  </style>
-
-  <rect class="bg" width="900.0" height="650.0"/>
+  <rect fill="rgb(255, 255, 255)" width="900.0" height="650.0"/>
   <!-- Header -->
   <g transform="translate(80.0, 35)">
-    <text class="title" x="0" y="0">INTERGROWTH-21st Weight-for-Age — Girls</text>
-    <text class="subtitle" x="0" y="22">Value: 3.50 kg at 280.0 wks GA | Z-Score: +0.54 SD | Percentile: 70.6%</text>
+    <text font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="rgb(136, 14, 79)" x="0" y="0">INTERGROWTH-21st Weight-for-Age — Girls</text>
+    <text font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="500" fill="rgb(173, 20, 87)" x="0" y="22">Value: 3.50 kg at 280.0 wks GA | Z-Score: +0.54 SD | Percentile: 70.6%</text>
   </g>
   <!-- Chart Grid Area -->
-  <rect class="chart-bg" x="80.0" y="100.0" width="730.0" height="454.0"/>
-  <line class="grid-line" x1="154.05797101449275" y1="100.0" x2="154.05797101449275" y2="554.0"/>
-  <line class="grid-line" x1="302.17391304347825" y1="100.0" x2="302.17391304347825" y2="554.0"/>
-  <line class="grid-line" x1="450.2898550724638" y1="100.0" x2="450.2898550724638" y2="554.0"/>
-  <line class="grid-line" x1="598.4057971014493" y1="100.0" x2="598.4057971014493" y2="554.0"/>
-  <line class="grid-line" x1="746.5217391304348" y1="100.0" x2="746.5217391304348" y2="554.0"/>
-  <line class="grid-line" x1="80.0" y1="541.3035327892304" x2="810.0" y2="541.3035327892304"/>
-  <line class="grid-line" x1="80.0" y1="481.1103684669248" x2="810.0" y2="481.1103684669248"/>
-  <line class="grid-line" x1="80.0" y1="420.9172041446192" x2="810.0" y2="420.9172041446192"/>
-  <line class="grid-line" x1="80.0" y1="360.72403982231356" x2="810.0" y2="360.72403982231356"/>
-  <line class="grid-line" x1="80.0" y1="300.53087550000794" x2="810.0" y2="300.53087550000794"/>
-  <line class="grid-line" x1="80.0" y1="240.33771117770232" x2="810.0" y2="240.33771117770232"/>
-  <line class="grid-line" x1="80.0" y1="180.1445468553967" x2="810.0" y2="180.1445468553967"/>
-  <line class="grid-line" x1="80.0" y1="119.95138253309108" x2="810.0" y2="119.95138253309108"/>
-  <rect class="axis-line" fill="none" x="80.0" y="100.0" width="730.0" height="454.0"/>
-  <line class="axis-line" x1="154.05797101449275" y1="554.0" x2="154.05797101449275" y2="560.0"/>
-  <text class="tick-label" x="154.05797101449275" y="574.0" text-anchor="middle">34w</text>
-  <line class="axis-line" x1="302.17391304347825" y1="554.0" x2="302.17391304347825" y2="560.0"/>
-  <text class="tick-label" x="302.17391304347825" y="574.0" text-anchor="middle">36w</text>
-  <line class="axis-line" x1="450.2898550724638" y1="554.0" x2="450.2898550724638" y2="560.0"/>
-  <text class="tick-label" x="450.2898550724638" y="574.0" text-anchor="middle">38w</text>
-  <line class="axis-line" x1="598.4057971014493" y1="554.0" x2="598.4057971014493" y2="560.0"/>
-  <text class="tick-label" x="598.4057971014493" y="574.0" text-anchor="middle">40w</text>
-  <line class="axis-line" x1="746.5217391304348" y1="554.0" x2="746.5217391304348" y2="560.0"/>
-  <text class="tick-label" x="746.5217391304348" y="574.0" text-anchor="middle">42w</text>
-  <text class="axis-title" x="445.0" y="598.0" text-anchor="middle">Gestational Age (weeks)</text>
-  <line class="axis-line" x1="74.0" y1="541.3035327892304" x2="80.0" y2="541.3035327892304"/>
-  <text class="tick-label" x="68.0" y="545.3035327892304" text-anchor="end">1.00</text>
-  <line class="axis-line" x1="74.0" y1="481.1103684669248" x2="80.0" y2="481.1103684669248"/>
-  <text class="tick-label" x="68.0" y="485.1103684669248" text-anchor="end">1.50</text>
-  <line class="axis-line" x1="74.0" y1="420.9172041446192" x2="80.0" y2="420.9172041446192"/>
-  <text class="tick-label" x="68.0" y="424.9172041446192" text-anchor="end">2.00</text>
-  <line class="axis-line" x1="74.0" y1="360.72403982231356" x2="80.0" y2="360.72403982231356"/>
-  <text class="tick-label" x="68.0" y="364.72403982231356" text-anchor="end">2.50</text>
-  <line class="axis-line" x1="74.0" y1="300.53087550000794" x2="80.0" y2="300.53087550000794"/>
-  <text class="tick-label" x="68.0" y="304.53087550000794" text-anchor="end">3.00</text>
-  <line class="axis-line" x1="74.0" y1="240.33771117770232" x2="80.0" y2="240.33771117770232"/>
-  <text class="tick-label" x="68.0" y="244.33771117770232" text-anchor="end">3.50</text>
-  <line class="axis-line" x1="74.0" y1="180.1445468553967" x2="80.0" y2="180.1445468553967"/>
-  <text class="tick-label" x="68.0" y="184.1445468553967" text-anchor="end">4.00</text>
-  <line class="axis-line" x1="74.0" y1="119.95138253309108" x2="80.0" y2="119.95138253309108"/>
-  <text class="tick-label" x="68.0" y="123.95138253309108" text-anchor="end">4.50</text>
-  <text class="axis-title" x="0" y="0" transform="translate(25, 327.0) rotate(-90)" text-anchor="middle">Weight (kg)</text>
+  <rect fill="rgb(255, 250, 252)" x="80.0" y="100.0" width="730.0" height="454.0"/>
+  <line stroke="rgb(245, 225, 235)" stroke-width="1" stroke-dasharray="3,3" x1="154.05797101449275" y1="100.0" x2="154.05797101449275" y2="554.0"/>
+  <line stroke="rgb(245, 225, 235)" stroke-width="1" stroke-dasharray="3,3" x1="302.17391304347825" y1="100.0" x2="302.17391304347825" y2="554.0"/>
+  <line stroke="rgb(245, 225, 235)" stroke-width="1" stroke-dasharray="3,3" x1="450.2898550724638" y1="100.0" x2="450.2898550724638" y2="554.0"/>
+  <line stroke="rgb(245, 225, 235)" stroke-width="1" stroke-dasharray="3,3" x1="598.4057971014493" y1="100.0" x2="598.4057971014493" y2="554.0"/>
+  <line stroke="rgb(245, 225, 235)" stroke-width="1" stroke-dasharray="3,3" x1="746.5217391304348" y1="100.0" x2="746.5217391304348" y2="554.0"/>
+  <line stroke="rgb(245, 225, 235)" stroke-width="1" stroke-dasharray="3,3" x1="80.0" y1="541.3035327892304" x2="810.0" y2="541.3035327892304"/>
+  <line stroke="rgb(245, 225, 235)" stroke-width="1" stroke-dasharray="3,3" x1="80.0" y1="481.1103684669248" x2="810.0" y2="481.1103684669248"/>
+  <line stroke="rgb(245, 225, 235)" stroke-width="1" stroke-dasharray="3,3" x1="80.0" y1="420.9172041446192" x2="810.0" y2="420.9172041446192"/>
+  <line stroke="rgb(245, 225, 235)" stroke-width="1" stroke-dasharray="3,3" x1="80.0" y1="360.72403982231356" x2="810.0" y2="360.72403982231356"/>
+  <line stroke="rgb(245, 225, 235)" stroke-width="1" stroke-dasharray="3,3" x1="80.0" y1="300.53087550000794" x2="810.0" y2="300.53087550000794"/>
+  <line stroke="rgb(245, 225, 235)" stroke-width="1" stroke-dasharray="3,3" x1="80.0" y1="240.33771117770232" x2="810.0" y2="240.33771117770232"/>
+  <line stroke="rgb(245, 225, 235)" stroke-width="1" stroke-dasharray="3,3" x1="80.0" y1="180.1445468553967" x2="810.0" y2="180.1445468553967"/>
+  <line stroke="rgb(245, 225, 235)" stroke-width="1" stroke-dasharray="3,3" x1="80.0" y1="119.95138253309108" x2="810.0" y2="119.95138253309108"/>
+  <rect stroke="rgb(176, 144, 164)" stroke-width="1.5" fill="none" x="80.0" y="100.0" width="730.0" height="454.0"/>
+  <line stroke="rgb(176, 144, 164)" stroke-width="1.5" x1="154.05797101449275" y1="554.0" x2="154.05797101449275" y2="560.0"/>
+  <text font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="rgb(79, 55, 71)" x="154.05797101449275" y="574.0" text-anchor="middle">34w</text>
+  <line stroke="rgb(176, 144, 164)" stroke-width="1.5" x1="302.17391304347825" y1="554.0" x2="302.17391304347825" y2="560.0"/>
+  <text font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="rgb(79, 55, 71)" x="302.17391304347825" y="574.0" text-anchor="middle">36w</text>
+  <line stroke="rgb(176, 144, 164)" stroke-width="1.5" x1="450.2898550724638" y1="554.0" x2="450.2898550724638" y2="560.0"/>
+  <text font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="rgb(79, 55, 71)" x="450.2898550724638" y="574.0" text-anchor="middle">38w</text>
+  <line stroke="rgb(176, 144, 164)" stroke-width="1.5" x1="598.4057971014493" y1="554.0" x2="598.4057971014493" y2="560.0"/>
+  <text font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="rgb(79, 55, 71)" x="598.4057971014493" y="574.0" text-anchor="middle">40w</text>
+  <line stroke="rgb(176, 144, 164)" stroke-width="1.5" x1="746.5217391304348" y1="554.0" x2="746.5217391304348" y2="560.0"/>
+  <text font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="rgb(79, 55, 71)" x="746.5217391304348" y="574.0" text-anchor="middle">42w</text>
+  <text font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="rgb(79, 55, 71)" x="445.0" y="598.0" text-anchor="middle">Gestational Age (weeks)</text>
+  <line stroke="rgb(176, 144, 164)" stroke-width="1.5" x1="74.0" y1="541.3035327892304" x2="80.0" y2="541.3035327892304"/>
+  <text font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="rgb(79, 55, 71)" x="68.0" y="545.3035327892304" text-anchor="end">1.00</text>
+  <line stroke="rgb(176, 144, 164)" stroke-width="1.5" x1="74.0" y1="481.1103684669248" x2="80.0" y2="481.1103684669248"/>
+  <text font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="rgb(79, 55, 71)" x="68.0" y="485.1103684669248" text-anchor="end">1.50</text>
+  <line stroke="rgb(176, 144, 164)" stroke-width="1.5" x1="74.0" y1="420.9172041446192" x2="80.0" y2="420.9172041446192"/>
+  <text font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="rgb(79, 55, 71)" x="68.0" y="424.9172041446192" text-anchor="end">2.00</text>
+  <line stroke="rgb(176, 144, 164)" stroke-width="1.5" x1="74.0" y1="360.72403982231356" x2="80.0" y2="360.72403982231356"/>
+  <text font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="rgb(79, 55, 71)" x="68.0" y="364.72403982231356" text-anchor="end">2.50</text>
+  <line stroke="rgb(176, 144, 164)" stroke-width="1.5" x1="74.0" y1="300.53087550000794" x2="80.0" y2="300.53087550000794"/>
+  <text font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="rgb(79, 55, 71)" x="68.0" y="304.53087550000794" text-anchor="end">3.00</text>
+  <line stroke="rgb(176, 144, 164)" stroke-width="1.5" x1="74.0" y1="240.33771117770232" x2="80.0" y2="240.33771117770232"/>
+  <text font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="rgb(79, 55, 71)" x="68.0" y="244.33771117770232" text-anchor="end">3.50</text>
+  <line stroke="rgb(176, 144, 164)" stroke-width="1.5" x1="74.0" y1="180.1445468553967" x2="80.0" y2="180.1445468553967"/>
+  <text font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="rgb(79, 55, 71)" x="68.0" y="184.1445468553967" text-anchor="end">4.00</text>
+  <line stroke="rgb(176, 144, 164)" stroke-width="1.5" x1="74.0" y1="119.95138253309108" x2="80.0" y2="119.95138253309108"/>
+  <text font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="rgb(79, 55, 71)" x="68.0" y="123.95138253309108" text-anchor="end">4.50</text>
+  <text font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="rgb(79, 55, 71)" x="0" y="0" transform="translate(25, 327.0) rotate(-90)" text-anchor="middle">Weight (kg)</text>
   <!-- Percentile / Z-Score Curves -->
   <path d="M 80.0 522.7 L 90.6 517.7 L 101.2 512.9 L 111.7 508.7 L 122.3 503.9 L 132.9 499.1 L 143.5 495.0 L 154.1 490.2 L 164.6 486.2 L 175.2 481.7 L 185.8 477.3 L 196.4 473.4 L 207.0 469.5 L 217.5 465.4 L 228.1 461.5 L 238.7 458.0 L 249.3 453.6 L 259.9 449.9 L 270.4 446.2 L 281.0 443.1 L 291.6 439.4 L 302.2 435.8 L 312.8 432.2 L 323.3 428.6 L 333.9 425.4 L 344.5 421.8 L 355.1 419.0 L 365.7 415.8 L 376.2 412.6 L 386.8 409.6 L 397.4 406.9 L 408.0 403.7 L 418.6 400.9 L 429.1 398.0 L 439.7 395.2 L 450.3 392.5 L 460.9 389.9 L 471.4 387.5 L 482.0 384.8 L 492.6 382.4 L 503.2 379.6 L 513.8 377.1 L 524.3 374.7 L 534.9 372.3 L 545.5 370.2 L 556.1 368.6 L 566.7 366.2 L 577.2 363.9 L 587.8 362.3 L 598.4 360.1 L 609.0 357.8 L 619.6 356.2 L 630.1 354.1 L 640.7 352.5 L 651.3 351.0 L 661.9 348.9 L 672.5 347.4 L 683.0 345.7 L 693.6 344.1 L 704.2 342.9 L 714.8 340.9 L 725.4 339.7 L 735.9 338.5 L 746.5 337.3 L 757.1 335.9 L 767.7 334.7 L 778.3 333.3 L 788.8 332.1 L 799.4 330.9 L 810.0 329.9" fill="none" stroke="rgb(211, 47, 47)" stroke-width="1.8" stroke-dasharray="6,4" stroke-linecap="round" stroke-linejoin="round"/>
-  <text class="curve-label" x="818.0" y="333.874499928726" fill="rgb(211, 47, 47)">3th</text>
+  <text font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" x="818.0" y="333.874499928726" fill="rgb(211, 47, 47)">3th</text>
   <path d="M 80.0 486.2 L 90.6 481.2 L 101.2 476.4 L 111.7 472.0 L 122.3 467.3 L 132.9 462.5 L 143.5 458.0 L 154.1 453.2 L 164.6 449.1 L 175.2 444.6 L 185.8 439.9 L 196.4 436.3 L 207.0 432.2 L 217.5 428.2 L 228.1 423.9 L 238.7 420.4 L 249.3 416.0 L 259.9 412.3 L 270.4 408.6 L 281.0 405.2 L 291.6 401.3 L 302.2 397.6 L 312.8 394.2 L 323.3 390.6 L 333.9 387.1 L 344.5 383.5 L 355.1 380.8 L 365.7 377.5 L 376.2 374.3 L 386.8 371.1 L 397.4 368.2 L 408.0 365.2 L 418.6 362.2 L 429.1 359.2 L 439.7 356.6 L 450.3 353.8 L 460.9 351.0 L 471.4 348.5 L 482.0 346.0 L 492.6 343.5 L 503.2 340.3 L 513.8 337.9 L 524.3 335.5 L 534.9 333.1 L 545.5 330.9 L 556.1 329.1 L 566.7 326.7 L 577.2 324.6 L 587.8 322.6 L 598.4 320.6 L 609.0 318.4 L 619.6 316.5 L 630.1 314.4 L 640.7 312.7 L 651.3 311.1 L 661.9 309.0 L 672.5 307.5 L 683.0 305.5 L 693.6 304.1 L 704.2 303.0 L 714.8 300.6 L 725.4 299.5 L 735.9 298.3 L 746.5 297.0 L 757.1 295.4 L 767.7 294.2 L 778.3 292.8 L 788.8 291.6 L 799.4 290.4 L 810.0 289.3" fill="none" stroke="rgb(124, 179, 66)" stroke-width="1.8"  stroke-linecap="round" stroke-linejoin="round"/>
-  <text class="curve-label" x="818.0" y="293.29143452523937" fill="rgb(124, 179, 66)">15th</text>
+  <text font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" x="818.0" y="293.29143452523937" fill="rgb(124, 179, 66)">15th</text>
   <path d="M 80.0 438.5 L 90.6 433.4 L 101.2 428.6 L 111.7 424.1 L 122.3 419.2 L 132.9 414.4 L 143.5 409.6 L 154.1 404.8 L 164.6 400.7 L 175.2 396.0 L 185.8 391.3 L 196.4 387.8 L 207.0 383.3 L 217.5 379.4 L 228.1 374.8 L 238.7 371.3 L 249.3 367.0 L 259.9 363.1 L 270.4 359.3 L 281.0 355.7 L 291.6 351.7 L 302.2 347.9 L 312.8 344.5 L 323.3 340.9 L 333.9 337.1 L 344.5 333.5 L 355.1 330.8 L 365.7 327.5 L 376.2 324.2 L 386.8 320.8 L 397.4 317.7 L 408.0 314.8 L 418.6 311.6 L 429.1 308.6 L 439.7 305.9 L 450.3 303.2 L 460.9 300.1 L 471.4 297.5 L 482.0 295.1 L 492.6 292.5 L 503.2 289.1 L 513.8 286.7 L 524.3 284.3 L 534.9 281.9 L 545.5 279.5 L 556.1 277.5 L 566.7 275.1 L 577.2 273.1 L 587.8 270.9 L 598.4 268.8 L 609.0 266.8 L 619.6 264.7 L 630.1 262.6 L 640.7 260.8 L 651.3 259.0 L 661.9 256.8 L 672.5 255.4 L 683.0 253.0 L 693.6 252.0 L 704.2 250.7 L 714.8 248.2 L 725.4 247.0 L 735.9 245.8 L 746.5 244.4 L 757.1 242.6 L 767.7 241.4 L 778.3 240.0 L 788.8 238.8 L 799.4 237.6 L 810.0 236.3" fill="none" stroke="rgb(46, 125, 50)" stroke-width="3.0"  stroke-linecap="round" stroke-linejoin="round"/>
-  <text class="curve-label" x="818.0" y="240.31726209080705" fill="rgb(46, 125, 50)">50th</text>
+  <text font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" x="818.0" y="240.31726209080705" fill="rgb(46, 125, 50)">50th</text>
   <path d="M 80.0 387.8 L 90.6 382.7 L 101.2 377.9 L 111.7 373.2 L 122.3 368.0 L 132.9 363.2 L 143.5 358.3 L 154.1 353.5 L 164.6 349.1 L 175.2 344.4 L 185.8 339.7 L 196.4 336.0 L 207.0 331.3 L 217.5 327.3 L 228.1 322.7 L 238.7 319.0 L 249.3 314.7 L 259.9 310.7 L 270.4 306.8 L 281.0 303.0 L 291.6 299.0 L 302.2 295.1 L 312.8 291.5 L 323.3 287.8 L 333.9 284.0 L 344.5 280.4 L 355.1 277.5 L 365.7 274.1 L 376.2 270.8 L 386.8 267.3 L 397.4 263.9 L 408.0 261.0 L 418.6 257.9 L 429.1 254.8 L 439.7 251.9 L 450.3 249.2 L 460.9 246.0 L 471.4 243.3 L 482.0 240.8 L 492.6 238.1 L 503.2 234.7 L 513.8 232.3 L 524.3 229.8 L 534.9 227.4 L 545.5 224.8 L 556.1 222.4 L 566.7 220.0 L 577.2 218.0 L 587.8 215.7 L 598.4 213.6 L 609.0 211.6 L 619.6 209.5 L 630.1 207.3 L 640.7 205.4 L 651.3 203.5 L 661.9 201.1 L 672.5 199.9 L 683.0 197.3 L 693.6 196.3 L 704.2 194.8 L 714.8 192.5 L 725.4 191.0 L 735.9 189.8 L 746.5 188.2 L 757.1 186.3 L 767.7 185.1 L 778.3 183.6 L 788.8 182.4 L 799.4 181.2 L 810.0 179.9" fill="none" stroke="rgb(124, 179, 66)" stroke-width="1.8"  stroke-linecap="round" stroke-linejoin="round"/>
-  <text class="curve-label" x="818.0" y="183.86624464348012" fill="rgb(124, 179, 66)">85th</text>
+  <text font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" x="818.0" y="183.86624464348012" fill="rgb(124, 179, 66)">85th</text>
   <path d="M 80.0 344.6 L 90.6 339.3 L 101.2 334.5 L 111.7 329.7 L 122.3 324.2 L 132.9 319.4 L 143.5 314.4 L 154.1 309.6 L 164.6 305.0 L 175.2 300.2 L 185.8 295.6 L 196.4 291.5 L 207.0 286.7 L 217.5 282.6 L 228.1 278.1 L 238.7 274.2 L 249.3 269.9 L 259.9 265.8 L 270.4 261.8 L 281.0 257.7 L 291.6 253.8 L 302.2 249.9 L 312.8 245.9 L 323.3 242.3 L 333.9 238.6 L 344.5 235.0 L 355.1 231.7 L 365.7 228.3 L 376.2 225.0 L 386.8 221.4 L 397.4 217.9 L 408.0 214.7 L 418.6 211.9 L 429.1 208.5 L 439.7 205.3 L 450.3 202.8 L 460.9 199.5 L 471.4 196.7 L 482.0 194.0 L 492.6 191.2 L 503.2 187.8 L 513.8 185.4 L 524.3 183.0 L 534.9 180.6 L 545.5 177.9 L 556.1 175.1 L 566.7 172.7 L 577.2 170.5 L 587.8 168.3 L 598.4 166.1 L 609.0 164.0 L 619.6 162.0 L 630.1 159.7 L 640.7 157.8 L 651.3 155.6 L 661.9 153.2 L 672.5 152.0 L 683.0 149.5 L 693.6 148.4 L 704.2 146.5 L 714.8 144.7 L 725.4 142.8 L 735.9 141.6 L 746.5 139.7 L 757.1 138.0 L 767.7 136.8 L 778.3 135.1 L 788.8 133.9 L 799.4 132.7 L 810.0 131.3" fill="none" stroke="rgb(211, 47, 47)" stroke-width="1.8" stroke-dasharray="6,4" stroke-linecap="round" stroke-linejoin="round"/>
-  <text class="curve-label" x="818.0" y="135.31034482758628" fill="rgb(211, 47, 47)">97th</text>
+  <text font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" x="818.0" y="135.31034482758628" fill="rgb(211, 47, 47)">97th</text>
   <!-- Calculated Result Markers -->
   <g transform="translate(598.4057971014493, 240.33771117770232)">
     <circle r="12.0" fill="rgba(216, 27, 96, 1.00)" opacity="0.25"/>
@@ -86,23 +69,23 @@
   </g>
   <!-- Header Callout Card -->
   <g transform="translate(590.0, 44.0)">
-    <rect class="callout-box" width="220.0" height="46.0"/>
-    <text class="callout-text-bold" x="10" y="18">Result: 3.50 kg</text>
-    <text class="callout-text" x="10" y="34">Age/X: 280.0 wks GA</text>
-    <text class="callout-text-bold" x="210.0" y="18" text-anchor="end">+0.54 SD</text>
-    <text class="callout-text" x="210.0" y="34" text-anchor="end">70.6th %ile</text>
+    <rect fill="rgba(255, 255, 255, 1.00)" stroke="rgb(216, 27, 96)" stroke-width="1.5" rx="6" ry="6" width="220.0" height="46.0"/>
+    <text font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="rgb(33, 37, 41)" x="10" y="18">Result: 3.50 kg</text>
+    <text font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500" fill="rgb(33, 37, 41)" x="10" y="34">Age/X: 280.0 wks GA</text>
+    <text font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="rgb(33, 37, 41)" x="210.0" y="18" text-anchor="end">+0.54 SD</text>
+    <text font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500" fill="rgb(33, 37, 41)" x="210.0" y="34" text-anchor="end">70.6th %ile</text>
   </g>
   <!-- Legend -->
   <g>
     <line x1="192.89999999999998" y1="626.0" x2="214.89999999999998" y2="626.0" stroke="rgb(46, 125, 50)" stroke-width="3.0"/>
-    <text class="tick-label" x="221.89999999999998" y="630.0">50th (Median)</text>
+    <text font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="rgb(79, 55, 71)" x="221.89999999999998" y="630.0">50th (Median)</text>
     <line x1="332.5" y1="626.0" x2="354.5" y2="626.0" stroke="rgb(124, 179, 66)" stroke-width="2.0"/>
-    <text class="tick-label" x="361.5" y="630.0">15th / 85th</text>
+    <text font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="rgb(79, 55, 71)" x="361.5" y="630.0">15th / 85th</text>
     <line x1="459.7" y1="626.0" x2="481.7" y2="626.0" stroke="rgb(211, 47, 47)" stroke-width="2.0" stroke-dasharray="4,3"/>
-    <text class="tick-label" x="488.7" y="630.0">3rd / 97th</text>
+    <text font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="rgb(79, 55, 71)" x="488.7" y="630.0">3rd / 97th</text>
     <circle cx="587.7" cy="626.0" r="5" fill="rgba(216, 27, 96, 1.00)" opacity="0.3"/>
     <circle cx="587.7" cy="626.0" r="3" fill="rgb(255, 255, 255)" stroke="rgb(216, 27, 96)" stroke-width="1.5"/>
     <circle cx="587.7" cy="626.0" r="1.5" fill="rgb(216, 27, 96)"/>
-    <text class="tick-label" x="601.7" y="630.0">Calculated Result</text>
+    <text font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="rgb(79, 55, 71)" x="601.7" y="630.0">Calculated Result</text>
   </g>
 </svg>

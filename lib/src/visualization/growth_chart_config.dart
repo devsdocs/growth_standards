@@ -24,6 +24,8 @@ class GrowthChartConfig {
     this.customYMax,
     this.zScoreLines,
     this.percentileLines,
+    this.watermarkText,
+    this.patientInfo,
   });
 
   final double width;
@@ -44,6 +46,8 @@ class GrowthChartConfig {
   final double? customYMax;
   final List<int>? zScoreLines;
   final List<num>? percentileLines;
+  final String? watermarkText;
+  final String? patientInfo;
 
   GrowthChartConfig copyWith({
     double? width,
@@ -64,6 +68,8 @@ class GrowthChartConfig {
     double? customYMax,
     List<int>? zScoreLines,
     List<num>? percentileLines,
+    String? watermarkText,
+    String? patientInfo,
   }) {
     return GrowthChartConfig(
       width: width ?? this.width,
@@ -84,6 +90,8 @@ class GrowthChartConfig {
       customYMax: customYMax ?? this.customYMax,
       zScoreLines: zScoreLines ?? this.zScoreLines,
       percentileLines: percentileLines ?? this.percentileLines,
+      watermarkText: watermarkText ?? this.watermarkText,
+      patientInfo: patientInfo ?? this.patientInfo,
     );
   }
 }

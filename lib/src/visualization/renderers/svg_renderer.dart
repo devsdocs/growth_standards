@@ -43,38 +43,27 @@ class SvgRenderer {
       '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 $width $height" width="$width" height="$height">',
     );
 
-    // Styles
-    buffer.writeln('''
-  <style>
-    .bg { fill: ${theme.backgroundColor.toSvgRgb()}; }
-    .chart-bg { fill: ${theme.chartBackgroundColor.toSvgRgb()}; }
-    .title { font-family: ${theme.fontFamily}; font-size: 20px; font-weight: 700; fill: ${theme.titleColor.toSvgRgb()}; }
-    .subtitle { font-family: ${theme.fontFamily}; font-size: 13px; font-weight: 500; fill: ${theme.subtitleColor.toSvgRgb()}; }
-    .axis-title { font-family: ${theme.fontFamily}; font-size: 13px; font-weight: 600; fill: ${theme.axisTextColor.toSvgRgb()}; }
-    .tick-label { font-family: ${theme.fontFamily}; font-size: 11px; fill: ${theme.axisTextColor.toSvgRgb()}; }
-    .curve-label { font-family: ${theme.fontFamily}; font-size: 11px; font-weight: 600; }
-    .grid-line { stroke: ${theme.gridColor.toSvgRgb()}; stroke-width: 1; stroke-dasharray: 3,3; }
-    .axis-line { stroke: ${theme.axisColor.toSvgRgb()}; stroke-width: 1.5; }
-    .callout-box { fill: ${theme.calloutBgColor.toSvgRgba()}; stroke: ${theme.calloutBorderColor.toSvgRgb()}; stroke-width: 1.5; rx: 6; ry: 6; filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.1)); }
-    .callout-text-bold { font-family: ${theme.fontFamily}; font-size: 12px; font-weight: 700; fill: ${theme.calloutTextColor.toSvgRgb()}; }
-    .callout-text { font-family: ${theme.fontFamily}; font-size: 11px; font-weight: 500; fill: ${theme.calloutTextColor.toSvgRgb()}; }
-    .badge-bg { fill: ${theme.headerLightBgColor.toSvgRgb()}; rx: 12; ry: 12; }
-    .badge-text { font-family: ${theme.fontFamily}; font-size: 11px; font-weight: 700; fill: ${theme.headerAccentColor.toSvgRgb()}; }
-  </style>
-''');
+    // (Styles are inlined for flutter_svg compatibility)
 
     // Background
-    buffer.writeln('  <rect class="bg" width="$width" height="$height"/>');
+    buffer.writeln(
+      '  <rect fill="${theme.backgroundColor.toSvgRgb()}" width="$width" height="$height"/>',
+    );
 
     // Header Title & Subtitle
     buffer.writeln('  <!-- Header -->');
     buffer.writeln('  <g transform="translate($marginLeft, 35)">');
     buffer.writeln(
-      '    <text class="title" x="0" y="0">${_escapeXml(model.title)}</text>',
+      '    <text font-family="${theme.fontFamily}" font-size="20" font-weight="700" fill="${theme.titleColor.toSvgRgb()}" x="0" y="0">${_escapeXml(model.title)}</text>',
     );
     if (model.subtitle.isNotEmpty) {
       buffer.writeln(
-        '    <text class="subtitle" x="0" y="22">${_escapeXml(model.subtitle)}</text>',
+        '    <text font-family="${theme.fontFamily}" font-size="13" font-weight="500" fill="${theme.subtitleColor.toSvgRgb()}" x="0" y="22">${_escapeXml(model.subtitle)}</text>',
+      );
+    }
+    if (cfg.patientInfo != null && cfg.patientInfo!.isNotEmpty) {
+      buffer.writeln(
+        '    <text font-family="${theme.fontFamily}" font-size="12" font-weight="600" fill="${theme.subtitleColor.toSvgRgb()}" x="$plotWidth" y="-16" text-anchor="end">${_escapeXml(cfg.patientInfo!)}</text>',
       );
     }
     buffer.writeln('  </g>');
@@ -82,8 +71,15 @@ class SvgRenderer {
     // Chart Area Background
     buffer.writeln('  <!-- Chart Grid Area -->');
     buffer.writeln(
-      '  <rect class="chart-bg" x="$marginLeft" y="$marginTop" width="$plotWidth" height="$plotHeight"/>',
+      '  <rect fill="${theme.chartBackgroundColor.toSvgRgb()}" x="$marginLeft" y="$marginTop" width="$plotWidth" height="$plotHeight"/>',
     );
+
+    if (cfg.watermarkText != null && cfg.watermarkText!.isNotEmpty) {
+      buffer.writeln('  <!-- Watermark -->');
+      buffer.writeln(
+        '  <text font-family="${theme.fontFamily}" font-size="48" font-weight="700" fill="${theme.gridColor.toSvgRgba()}" opacity="0.6" x="${marginLeft + plotWidth / 2}" y="${marginTop + plotHeight / 2}" text-anchor="middle" transform="rotate(-30, ${marginLeft + plotWidth / 2}, ${marginTop + plotHeight / 2})">${_escapeXml(cfg.watermarkText!)}</text>',
+      );
+    }
 
     // Grid Lines & Ticks
     if (cfg.showGridLines) {
@@ -92,7 +88,7 @@ class SvgRenderer {
         final px = mapX(tick.value);
         if (px >= marginLeft && px <= marginLeft + plotWidth) {
           buffer.writeln(
-            '  <line class="grid-line" x1="$px" y1="$marginTop" x2="$px" y2="${marginTop + plotHeight}"/>',
+            '  <line stroke="${theme.gridColor.toSvgRgb()}" stroke-width="1" stroke-dasharray="3,3" x1="$px" y1="$marginTop" x2="$px" y2="${marginTop + plotHeight}"/>',
           );
         }
       }
@@ -101,7 +97,7 @@ class SvgRenderer {
         final py = mapY(tick.value);
         if (py >= marginTop && py <= marginTop + plotHeight) {
           buffer.writeln(
-            '  <line class="grid-line" x1="$marginLeft" y1="$py" x2="${marginLeft + plotWidth}" y2="$py"/>',
+            '  <line stroke="${theme.gridColor.toSvgRgb()}" stroke-width="1" stroke-dasharray="3,3" x1="$marginLeft" y1="$py" x2="${marginLeft + plotWidth}" y2="$py"/>',
           );
         }
       }
@@ -109,7 +105,7 @@ class SvgRenderer {
 
     // Chart Border Box
     buffer.writeln(
-      '  <rect class="axis-line" fill="none" x="$marginLeft" y="$marginTop" width="$plotWidth" height="$plotHeight"/>',
+      '  <rect stroke="${theme.axisColor.toSvgRgb()}" stroke-width="1.5" fill="none" x="$marginLeft" y="$marginTop" width="$plotWidth" height="$plotHeight"/>',
     );
 
     // X Axis Ticks & Labels (labels that would collide with the previous
@@ -120,12 +116,12 @@ class SvgRenderer {
       final px = mapX(tick.value);
       if (px >= marginLeft && px <= marginLeft + plotWidth) {
         buffer.writeln(
-          '  <line class="axis-line" x1="$px" y1="${marginTop + plotHeight}" x2="$px" y2="${marginTop + plotHeight + 6}"/>',
+          '  <line stroke="${theme.axisColor.toSvgRgb()}" stroke-width="1.5" x1="$px" y1="${marginTop + plotHeight}" x2="$px" y2="${marginTop + plotHeight + 6}"/>',
         );
         final labelHalfWidth = tick.label.length * tickCharWidth / 2;
         if (px - labelHalfWidth >= lastLabelEndX + 8) {
           buffer.writeln(
-            '  <text class="tick-label" x="$px" y="${marginTop + plotHeight + 20}" text-anchor="middle">${_escapeXml(tick.label)}</text>',
+            '  <text font-family="${theme.fontFamily}" font-size="11" fill="${theme.axisTextColor.toSvgRgb()}" x="$px" y="${marginTop + plotHeight + 20}" text-anchor="middle">${_escapeXml(tick.label)}</text>',
           );
           lastLabelEndX = px + labelHalfWidth;
         }
@@ -133,7 +129,7 @@ class SvgRenderer {
     }
     // X Axis Title (fixed offset below tick labels, above the legend row)
     buffer.writeln(
-      '  <text class="axis-title" x="${marginLeft + plotWidth / 2}" y="${marginTop + plotHeight + 44}" text-anchor="middle">${_escapeXml(model.xLabel)}</text>',
+      '  <text font-family="${theme.fontFamily}" font-size="13" font-weight="600" fill="${theme.axisTextColor.toSvgRgb()}" x="${marginLeft + plotWidth / 2}" y="${marginTop + plotHeight + 44}" text-anchor="middle">${_escapeXml(model.xLabel)}</text>',
     );
 
     // Y Axis Ticks & Labels
@@ -141,16 +137,16 @@ class SvgRenderer {
       final py = mapY(tick.value);
       if (py >= marginTop && py <= marginTop + plotHeight) {
         buffer.writeln(
-          '  <line class="axis-line" x1="${marginLeft - 6}" y1="$py" x2="$marginLeft" y2="$py"/>',
+          '  <line stroke="${theme.axisColor.toSvgRgb()}" stroke-width="1.5" x1="${marginLeft - 6}" y1="$py" x2="$marginLeft" y2="$py"/>',
         );
         buffer.writeln(
-          '  <text class="tick-label" x="${marginLeft - 12}" y="${py + 4}" text-anchor="end">${_escapeXml(tick.label)}</text>',
+          '  <text font-family="${theme.fontFamily}" font-size="11" fill="${theme.axisTextColor.toSvgRgb()}" x="${marginLeft - 12}" y="${py + 4}" text-anchor="end">${_escapeXml(tick.label)}</text>',
         );
       }
     }
     // Y Axis Title (Rotated)
     buffer.writeln(
-      '  <text class="axis-title" x="0" y="0" transform="translate(25, ${marginTop + plotHeight / 2}) rotate(-90)" text-anchor="middle">${_escapeXml(model.yLabel)}</text>',
+      '  <text font-family="${theme.fontFamily}" font-size="13" font-weight="600" fill="${theme.axisTextColor.toSvgRgb()}" x="0" y="0" transform="translate(25, ${marginTop + plotHeight / 2}) rotate(-90)" text-anchor="middle">${_escapeXml(model.yLabel)}</text>',
     );
 
     // Standard Curves
@@ -187,7 +183,7 @@ class SvgRenderer {
       final endPy = mapY(lastPt.y);
       if (endPy >= marginTop - 10 && endPy <= marginTop + plotHeight + 10) {
         buffer.writeln(
-          '  <text class="curve-label" x="${endPx + 8}" y="${endPy + 4}" fill="$strokeColor">${_escapeXml(curve.label)}</text>',
+          '  <text font-family="${theme.fontFamily}" font-size="11" font-weight="600" x="${endPx + 8}" y="${endPy + 4}" fill="$strokeColor">${_escapeXml(curve.label)}</text>',
         );
       }
     }
@@ -253,22 +249,22 @@ class SvgRenderer {
 
       buffer.writeln('  <g transform="translate($cardX, $cardY)">');
       buffer.writeln(
-        '    <rect class="callout-box" width="$cardW" height="$cardH"/>',
+        '    <rect fill="${theme.calloutBgColor.toSvgRgba()}" stroke="${theme.calloutBorderColor.toSvgRgb()}" stroke-width="1.5" rx="6" ry="6" width="$cardW" height="$cardH"/>',
       );
       buffer.writeln(
-        '    <text class="callout-text-bold" x="10" y="18">Result: ${_escapeXml(lastPt.formattedY)}</text>',
+        '    <text font-family="${theme.fontFamily}" font-size="12" font-weight="700" fill="${theme.calloutTextColor.toSvgRgb()}" x="10" y="18">Result: ${_escapeXml(lastPt.formattedY)}</text>',
       );
       buffer.writeln(
-        '    <text class="callout-text" x="10" y="34">Age/X: ${_escapeXml(lastPt.formattedX)}</text>',
+        '    <text font-family="${theme.fontFamily}" font-size="11" font-weight="500" fill="${theme.calloutTextColor.toSvgRgb()}" x="10" y="34">Age/X: ${_escapeXml(lastPt.formattedX)}</text>',
       );
       final zStr =
           '${lastPt.zScore > 0 ? "+" : ""}${lastPt.zScore.toStringAsFixed(2)} SD';
       final pStr = '${lastPt.percentile.toStringAsFixed(1)}th %ile';
       buffer.writeln(
-        '    <text class="callout-text-bold" x="${cardW - 10}" y="18" text-anchor="end">$zStr</text>',
+        '    <text font-family="${theme.fontFamily}" font-size="12" font-weight="700" fill="${theme.calloutTextColor.toSvgRgb()}" x="${cardW - 10}" y="18" text-anchor="end">$zStr</text>',
       );
       buffer.writeln(
-        '    <text class="callout-text" x="${cardW - 10}" y="34" text-anchor="end">$pStr</text>',
+        '    <text font-family="${theme.fontFamily}" font-size="11" font-weight="500" fill="${theme.calloutTextColor.toSvgRgb()}" x="${cardW - 10}" y="34" text-anchor="end">$pStr</text>',
       );
       buffer.writeln('  </g>');
     }
@@ -352,7 +348,7 @@ class SvgRenderer {
             );
         }
         buffer.writeln(
-          '    <text class="tick-label" x="${cursorX + item.kind.swatchWidth + swatchGap}" y="$legendY">${_escapeXml(item.label)}</text>',
+          '    <text font-family="${theme.fontFamily}" font-size="11" fill="${theme.axisTextColor.toSvgRgb()}" x="${cursorX + item.kind.swatchWidth + swatchGap}" y="$legendY">${_escapeXml(item.label)}</text>',
         );
         cursorX += itemWidth(item) + itemGap;
       }

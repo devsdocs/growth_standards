@@ -1,3 +1,10 @@
+## 5.4.0
+- **SVG Compatibility**: Restructured SVG code generation to completely eliminate `<style>` blocks and CSS classes. All styles are now generated natively via inline standard SVG presentation attributes (`fill=`, `stroke=`, `font-family=`, etc.). This guarantees 100% out-of-the-box compatibility with strict SVG renderers like `flutter_svg`, standard email clients, and document generators without the need for manual regex parsing.
+- **Customizable SVG Headers/Watermarks**: Added `patientInfo` and `watermarkText` to `GrowthChartConfig`. 
+  - `patientInfo` neatly anchors to the top right of the SVG (auto-adjusting vertically to prevent overlap with extremely long chart titles).
+  - `watermarkText` renders as a large, 48pt, diagonal, translucent watermark embedded deeply behind the chart data.
+- **Security Check**: Custom text parameters (`title`, `subtitle`, `patientInfo`, `watermarkText`) are strictly escaped (`_escapeXml()`) to prevent any SVG/XML injection vulnerabilities.
+
 ## 5.3.0
 - **SVG export restructuring**: Revamped SVG generation scripts. Outputs are now meticulously categorized into nested directories for each standard and measurement, producing both standard Z-score curves and percentile-based curves (`dev/generate_all_svg.dart`).
 - **LMS curve correctness**: Corrected the statistical calculations for rendering smooth `ChartCurve` points in graphical outputs to honor standard deviation limits (especially mapping age variables explicitly in equations).

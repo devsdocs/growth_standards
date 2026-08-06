@@ -138,6 +138,8 @@ void main() {
   final config = GrowthChartConfig(
     displayMode: GrowthChartDisplayMode.percentile, // Render Percentiles instead of Z-scores
     title: 'CDC Weight-for-Age Clinical Record (Girl, 8 Years)',
+    patientInfo: 'Patient: Jane Doe | ID: 12345',
+    watermarkText: 'CONFIDENTIAL',
     showGridLines: true,
     showLegend: true,
     showResultCallout: true,
