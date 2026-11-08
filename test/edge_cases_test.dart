@@ -1,6 +1,7 @@
 import 'package:growth_standards/growth_standards.dart';
 import 'package:growth_standards/src/category/who/tools.dart';
 import 'package:growth_standards/src/common/math.dart';
+import 'package:growth_standards/src/common/model/age.dart';
 import 'package:growth_standards/src/common/types.dart' show AdjustedLengthType;
 import 'package:test/test.dart';
 
@@ -621,6 +622,11 @@ void main() {
       const lms = LMS(l: 1.0, m: 3.5, s: 0.12);
       expect(() => zScoreCalculation(0, lms: lms), throwsArgumentError);
       expect(() => zScoreCalculation(-1, lms: lms), throwsArgumentError);
+      expect(() => adjustedZScoreCalculation(0, lms: lms), throwsArgumentError);
+      expect(
+        () => adjustedZScoreCalculation(-1, lms: lms),
+        throwsArgumentError,
+      );
     });
 
     test('qnorm handles probabilities and percentages cleanly', () {
@@ -628,6 +634,95 @@ void main() {
       expect(qnorm(0.5), closeTo(0.0, 1e-5));
       expect(qnorm(0.0), double.negativeInfinity);
       expect(qnorm(100.0), double.infinity);
+    });
+
+    test(
+      'DateTimeUtils.timeDifference handles cross-year, leap-day, and month borrowing cleanly',
+      () {
+        final crossYear = Age(
+          Date(year: 2024, month: Months.november, date: 20),
+          observedDate: Date(year: 2025, month: Months.january, date: 10),
+        );
+        expect(crossYear.yearsMonthsWeeksDaysOfAgeByNow.years, 0);
+        expect(crossYear.yearsMonthsWeeksDaysOfAgeByNow.months, 1);
+
+        final leapDayToMar29 = Age(
+          Date(year: 2024, month: Months.february, date: 29),
+          observedDate: Date(year: 2025, month: Months.march, date: 29),
+        );
+        expect(leapDayToMar29.yearsMonthsWeeksDaysOfAgeByNow.years, 1);
+        expect(leapDayToMar29.yearsMonthsWeeksDaysOfAgeByNow.months, 1);
+        expect(leapDayToMar29.yearsMonthsWeeksDaysOfAgeByNow.weeks, 0);
+        expect(leapDayToMar29.yearsMonthsWeeksDaysOfAgeByNow.days, 0);
+      },
+    );
+
+    test(
+      'WHO velocity resolves 30-day increment within a 31-day calendar month',
+      () {
+        final dob = Date(year: 2024, month: Months.march, date: 1);
+        final d2 = Date(year: 2024, month: Months.march, date: 31);
+        final vel = GrowthStandard.who.fromBirthTo5Years.weightVelocityForAge(
+          sex: Sex.male,
+          age: Age(dob, observedDate: d2),
+          pastMeasurement: [
+            MassMeasurementHistory(dob, Mass$Kilogram(3.3)),
+            MassMeasurementHistory(d2, Mass$Kilogram(4.5)),
+          ],
+        );
+        final map = vel.zScorePercentileMap();
+        expect(map[VelocityIncrement.$1], isNotNull);
+        expect(map[VelocityIncrement.$1]![(low: 0, high: 1)], isNotNull);
+      },
+    );
+
+    test('IntergrowthEarlyPregnancyDatingForCRL converts cm to mm', () {
+      final crlMm = GrowthStandard.intergrowth.duringPregnancy
+          .earlyPregnancyCRL(
+            gestationalAge: Age.byWeeksAgo(10),
+            measurementResult: Length$Millimeter(30),
+          );
+      final crlCm = GrowthStandard.intergrowth.duringPregnancy
+          .earlyPregnancyCRL(
+            gestationalAge: Age.byWeeksAgo(10),
+            measurementResult: Length$Centimeter(3.0),
+          );
+      expect(crlCm.zScore(), equals(crlMm.zScore()));
+    });
+
+    test('CDCInfantLengthForAge supports 36 months and clamps to 35.5', () {
+      final dob = Date(year: 2021, month: Months.january, date: 1);
+      final obs = Date(year: 2024, month: Months.january, date: 1);
+      final calc = GrowthStandard.cdc.fromBirthTo36Months.lengthForAge(
+        sex: Sex.male,
+        age: Age(dob, observedDate: obs),
+        lengthHeight: Length$Centimeter(96.0),
+        measure: LengthHeightMeasurementPosition.standing,
+      );
+      expect(calc.zScore().isFinite, isTrue);
+    });
+
+    test('ExtendedDateUtils.doRangesOverlap includes touching endpoints', () {
+      final d1 = Date(year: 2024, month: Months.january, date: 1);
+      final d2 = Date(year: 2024, month: Months.january, date: 10);
+      final d3 = Date(year: 2024, month: Months.january, date: 20);
+      expect(
+        ExtendedDateUtils.doRangesOverlap(DateRange(d1, d2), DateRange(d2, d3)),
+        isTrue,
+      );
+    });
+
+    test('IntergrowthGestationalWeightGain handles zero/negative gain at L=1', () {
+      final gwg = GrowthStandard.intergrowth.duringPregnancy
+          .gestationalWeightGain(
+            gestationalAge: Age.byWeeksAgo(16),
+            weight: Mass$Kilogram(-0.5),
+          );
+      expect(gwg.zScore().isFinite, isTrue);
+      expect(
+        gwg.contextData.data.values.first[15]!.lms.standardDeviation(-2).isFinite,
+        isTrue,
+      );
     });
   });
 }

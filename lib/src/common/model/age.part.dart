@@ -620,52 +620,19 @@ class DateTimeUtils {
 
     if (days < 0) {
       months -= 1;
-
-      int monthLength;
-      // If crossing year boundary and only difference is in days.
-      if (months < 0 && years > 0) {
-        monthLength = getDaysInMonth(
-          workingTo.year - 1,
-          12,
-        ); // December of the previous year.
-        days += monthLength;
-        months += 12; // Adjusting months after reducing a year above.
-        years -=
-            1; // Correcting years since we're effectively within a 1-day difference, not a full year.
-      } else {
-        final int adjYear = workingFrom.month == 1
-            ? workingFrom.year - 1
-            : workingFrom.year;
-        final int adjMonth = workingFrom.month == 1
-            ? 12
-            : workingFrom.month - 1;
-
-        monthLength = getDaysInMonth(
-          adjYear,
-          adjMonth == 12 ? 1 : adjMonth + 1,
-        );
-
-        days += monthLength;
+      final prevMonth = workingTo.month == 1 ? 12 : workingTo.month - 1;
+      final prevYear =
+          workingTo.month == 1 ? workingTo.year - 1 : workingTo.year;
+      final monthLength = getDaysInMonth(prevYear, prevMonth);
+      days += monthLength;
+      if (days < 0) {
+        days = 0;
       }
     }
 
     if (months < 0) {
       years -= 1;
       months += 12; // Normalize months after adjusting for negative days.
-    }
-
-    // Special handling for leap years, specifically around February calculations
-    // Example: If starting in February of a leap year, ensure we recognize February 29th as valid.
-    if ((workingFrom.month == 2 &&
-            workingTo.month > 2 &&
-            workingFrom.day == 29) ||
-        (workingTo.month == 2 && workingTo.day == 29)) {
-      // Leap day exists, ensure it is considered in the day count between the years
-      if (!isLeapYear(workingTo.year)) {
-        // If the end year is not a leap year but we are counting from a leap day,
-        // adjust the computation to reflect that the leap day "does not exist" in the ending year
-        days -= 1;
-      }
     }
 
     // Normalize the days into weeks and remaining days
@@ -989,8 +956,8 @@ class ExtendedDateUtils {
 
   /// Check if two date ranges overlap
   static bool doRangesOverlap(DateRange range1, DateRange range2) {
-    return range1.start.isBefore(range2.end) &&
-        range2.start.isBefore(range1.end);
+    return range1.start.isSameOrBefore(range2.end) &&
+        range2.start.isSameOrBefore(range1.end);
   }
 }
 

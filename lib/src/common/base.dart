@@ -68,6 +68,7 @@ abstract class LengthBasedResult extends Result {
 abstract class LMSContext {
   const LMSContext();
   LMS get lms;
+  num get delta => 0;
 }
 
 sealed class BaseData {

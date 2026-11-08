@@ -472,10 +472,10 @@ class GrowthTrajectory {
       sex: sex,
       dateOfBirth: dateOfBirth,
       evaluator: (age, measurement) {
-        final daysDiff = age.ageInTotalDaysByNow;
+        final totalDays = birthPma.totalDays + age.ageInTotalDaysByNow;
         final currentPma = PostmenstrualAge(
-          weeks: birthPma.weeks,
-          days: birthPma.days + daysDiff,
+          weeks: totalDays ~/ DateTime.daysPerWeek,
+          days: totalDays % DateTime.daysPerWeek,
         );
         return fenton.weightForAge(
           sex: sex,
@@ -500,10 +500,10 @@ class GrowthTrajectory {
       sex: sex,
       dateOfBirth: dateOfBirth,
       evaluator: (age, measurement) {
-        final daysDiff = age.ageInTotalDaysByNow;
+        final totalDays = birthPma.totalDays + age.ageInTotalDaysByNow;
         final currentPma = PostmenstrualAge(
-          weeks: birthPma.weeks,
-          days: birthPma.days + daysDiff,
+          weeks: totalDays ~/ DateTime.daysPerWeek,
+          days: totalDays % DateTime.daysPerWeek,
         );
         return fenton.lengthForAge(
           sex: sex,
@@ -528,10 +528,10 @@ class GrowthTrajectory {
       sex: sex,
       dateOfBirth: dateOfBirth,
       evaluator: (age, measurement) {
-        final daysDiff = age.ageInTotalDaysByNow;
+        final totalDays = birthPma.totalDays + age.ageInTotalDaysByNow;
         final currentPma = PostmenstrualAge(
-          weeks: birthPma.weeks,
-          days: birthPma.days + daysDiff,
+          weeks: totalDays ~/ DateTime.daysPerWeek,
+          days: totalDays % DateTime.daysPerWeek,
         );
         return fenton.headCircumferenceForAge(
           sex: sex,
@@ -552,6 +552,7 @@ class GrowthTrajectory {
   factory GrowthTrajectory.intergrowthPretermPostnatalWeight({
     required Sex sex,
     required Date dateOfBirth,
+    GestationalAge? gestationalAgeAtBirth,
     List<VisitObservation<Mass>>? visits,
   }) {
     final gs = GrowthStandard.intergrowth.postnatal;
@@ -560,7 +561,7 @@ class GrowthTrajectory {
       dateOfBirth: dateOfBirth,
       evaluator: (age, measurement) => gs.postnatalGrowthPretermInfantsWeight(
         sex: sex,
-        age: age,
+        age: _pretermPostnatalAge(age, dateOfBirth, gestationalAgeAtBirth),
         weight: measurement as Mass,
       ),
     );
@@ -572,6 +573,7 @@ class GrowthTrajectory {
   factory GrowthTrajectory.intergrowthPretermPostnatalLength({
     required Sex sex,
     required Date dateOfBirth,
+    GestationalAge? gestationalAgeAtBirth,
     List<VisitObservation<Length>>? visits,
   }) {
     final gs = GrowthStandard.intergrowth.postnatal;
@@ -580,7 +582,7 @@ class GrowthTrajectory {
       dateOfBirth: dateOfBirth,
       evaluator: (age, measurement) => gs.postnatalGrowthPretermInfantsLength(
         sex: sex,
-        age: age,
+        age: _pretermPostnatalAge(age, dateOfBirth, gestationalAgeAtBirth),
         measurementResult: measurement as Length,
       ),
     );
@@ -592,6 +594,7 @@ class GrowthTrajectory {
   factory GrowthTrajectory.intergrowthPretermPostnatalHeadCircumference({
     required Sex sex,
     required Date dateOfBirth,
+    GestationalAge? gestationalAgeAtBirth,
     List<VisitObservation<Length>>? visits,
   }) {
     final gs = GrowthStandard.intergrowth.postnatal;
@@ -601,7 +604,7 @@ class GrowthTrajectory {
       evaluator: (age, measurement) =>
           gs.postnatalGrowthPretermInfantsHeadCircumference(
             sex: sex,
-            age: age,
+            age: _pretermPostnatalAge(age, dateOfBirth, gestationalAgeAtBirth),
             measurementResult: measurement as Length,
           ),
     );
@@ -742,4 +745,25 @@ class GrowthTrajectory {
 
   /// Whether trajectory has observations
   bool get isNotEmpty => _results.isNotEmpty;
+
+  static Age _pretermPostnatalAge(
+    Age age,
+    Date dateOfBirth,
+    GestationalAge? gestationalAgeAtBirth,
+  ) {
+    if (gestationalAgeAtBirth != null) {
+      return Age(
+        dateOfBirth.subtractDays(gestationalAgeAtBirth.totalDays),
+        observedDate: age.getObservedDate(),
+      );
+    }
+    if (age.ageInTotalWeeksByNow < 27) {
+      // shortcut: defaults to 27w0d GA at birth when gestationalAgeAtBirth is omitted and postnatal age < 27 weeks, pass gestationalAgeAtBirth for exact PMA
+      return Age(
+        dateOfBirth.subtractDays(27 * DateTime.daysPerWeek),
+        observedDate: age.getObservedDate(),
+      );
+    }
+    return age;
+  }
 }

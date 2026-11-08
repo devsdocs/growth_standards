@@ -58,7 +58,8 @@ sealed class IntergrowthEarlyPregnancyDatingForCRL extends LengthBasedResult
   Length get lengthAtObservationDate =>
       checkLength(length, contextData: contextData);
 
-  num get _length => lengthAtObservationDate.value.toDouble().toPrecision(0);
+  num get _length =>
+      lengthAtObservationDate.toMillimeter.value.toDouble().toPrecision(0);
 
   num get _zScore =>
       _ageData.lms.adjustedZScore(measurementResultInDefaultUnit);

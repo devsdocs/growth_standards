@@ -57,7 +57,14 @@ sealed class IntergrowthGestationalWeightGainForAge extends AgeBasedResult
         contextData.unit,
       )]!;
 
-  num get _zScore => _ageData.lms.zScore(measurementResultInDefaultUnit);
+  num get _zScore {
+    final y = measurementResultInDefaultUnit;
+    final lms = _ageData.lms;
+    if (y <= 0 && lms.l == 1) {
+      return ((y / lms.m) - 1) / (lms.l * lms.s);
+    }
+    return lms.zScore(y);
+  }
 
   @override
   Age get ageAtObservationDate => checkAge(age, contextData: contextData);

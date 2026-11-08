@@ -1,3 +1,16 @@
+## 5.4.2
+- **Trajectory Fixes**:
+  - Normalized multi-week `PostmenstrualAge` day accumulation (`weeks` + `days`) in `GrowthTrajectory.fentonWeightForAge`, `fentonLengthForAge`, and `fentonHeadCircumferenceForAge`.
+  - Added optional `gestationalAgeAtBirth` to `GrowthTrajectory.intergrowthPretermPostnatalWeight`, `intergrowthPretermPostnatalLength`, and `intergrowthPretermPostnatalHeadCircumference` to convert postnatal age into postmenstrual age (27–64 weeks PMA).
+- **WHO Velocity & Reference Fixes**:
+  - Fixed WHO velocity interval resolution (`resolveVelocityMonths`) when a valid day-window pair (~28–31 days) falls within a single 31-day calendar month.
+  - Subtracted the Box-Cox `delta` offset when rendering WHO Weight Velocity curves and observation points in `GrowthChartModel`.
+  - Wired `measure` (`LengthHeightMeasurementPosition`) through `adjustedLengthHeight` in `WHOGrowthReference.heightForAge`.
+- **Calendar & Math Edge Cases**:
+  - Fixed month-length borrowing and cross-year/leap-day calculations in `DateTimeUtils.timeDifference`, and made `ExtendedDateUtils.doRangesOverlap` inclusive of touching endpoints.
+  - Added `y <= 0` validation to `adjustedZScoreCalculation` and preserved linear (`L = 1`) zero/negative weight-change support for `IntergrowthGestationalWeightGainForAge`.
+  - Fixed unit conversion (`toMillimeter`) in `IntergrowthEarlyPregnancyDatingForCRL`, `36`-month upper bound clamping in `CDCInfantLengthForAge`, and PMA/GA/fetal indicator labels in `GrowthChartModel`.
+
 ## 5.4.1
 - **Fix**: Removed accidentally tracked test `build/` assets from the published package to reduce package size.
 

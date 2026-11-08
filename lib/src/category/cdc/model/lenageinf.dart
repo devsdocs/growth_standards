@@ -28,6 +28,9 @@ class CDCInfantLengthForAgeData extends AgeBasedData {
 
   @override
   TimeUnit get unit => TimeUnit.months;
+
+  @override
+  num get upperBound => 36;
 }
 
 @freezed
@@ -52,6 +55,8 @@ sealed class CDCInfantLengthForAge extends AgeBasedResult
   _CDCInfantLengthForAgeLMS get _ageData =>
       contextData._data[sex]![ageAtObservationDate.ageInTotalDaysByNow == 0
           ? 0
+          : ageAtObservationDate.ageInTotalMonthsByNow == 36
+          ? 35.5
           : ageAtObservationDate.ageInTotalMonthsByNow + 0.5]!;
 
   Length$Centimeter get _adjustedLength => adjustedLengthHeight(

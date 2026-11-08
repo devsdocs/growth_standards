@@ -1,6 +1,7 @@
 import 'package:growth_standards/src/category/who/reference/reference.dart';
 import 'package:growth_standards/src/category/who/standard/standard.dart';
 import 'package:growth_standards/src/category/who/tools.dart';
+import 'package:growth_standards/src/common/math.dart';
 import 'package:growth_standards/src/common/model/age.dart';
 import 'package:growth_standards/src/common/types.dart';
 import 'package:super_measurement/super_measurement.dart';
@@ -272,7 +273,12 @@ final class WHOGrowthReference {
   }) => WHOGrowthReferenceHeightForAge(
     sex: sex,
     age: age,
-    lengthHeight: lengthHeight,
+    lengthHeight: adjustedLengthHeight(
+      age: age,
+      measure: measure,
+      lengthHeight: lengthHeight,
+      type: AdjustedLengthType.who,
+    ),
   );
 
   WHOGrowthReferenceWeightForAge weightForAge({

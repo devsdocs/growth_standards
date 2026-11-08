@@ -98,10 +98,7 @@ sealed class WHOGrowthStandardsWeightVelocityForAge extends VelocityBasedResult
       if (alt == null || alt.isEmpty) return MapEntry(k1, null);
 
       final alv = alt.map((k2, v2) {
-        final VelocityMonths vm = (
-          low: age.ageInTotalMonthsAtDate(k2.dateBefore),
-          high: age.ageInTotalMonthsAtDate(k2.dateAfter),
-        );
+        final VelocityMonths vm = resolveVelocityMonths(age, k2, v1);
 
         final whoGrowthStandardsWeightVelocityForAgeLMS = v1[vm];
 
@@ -149,5 +146,6 @@ class WHOGrowthStandardsWeightVelocityForAgeLMS extends LMSContext {
   @override
   final LMS lms;
 
+  @override
   final num delta;
 }

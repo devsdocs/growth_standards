@@ -39,6 +39,11 @@ Rational? _sdRational(Rational rSD, {required LMS lms}) {
   }
 
   final inner = (_r1 + (rL * rS * rSD)).toDouble();
+  if (lms.l == 1) {
+    if (inner.isNaN) return null;
+    if (inner.isInfinite) return inner > 0 ? _rInf : _rNegInf;
+    return rM * _toRational(inner);
+  }
   final exponent = (_r1 / rL).toDouble();
   final pVal = pow(inner, exponent);
   if (pVal.isNaN) return null;
@@ -63,6 +68,9 @@ Rational? _zScoreRational(Rational rY, {required LMS lms}) {
     if (logVal.isNaN) return null;
     if (logVal.isInfinite) return logVal > 0 ? _rInf : _rNegInf;
     return _toRational(logVal) / rS;
+  }
+  if (lms.l == 1) {
+    return ((rY / rM) - _r1) / (rS * rL);
   }
   final inner = (rY / rM).toDouble();
   final numPow = pow(inner, lms.l);
@@ -102,6 +110,9 @@ num zScoreCalculation(num y, {required LMS lms}) {
 ///
 /// SUBSCAPULAR SKINFOLD-FOR-AGE
 num adjustedZScoreCalculation(num y, {required LMS lms}) {
+  if (y <= 0) {
+    throw ArgumentError('Measurement must be strictly positive, got $y');
+  }
   final rY = _toRational(y);
   final zScoreRational = _zScoreRational(rY, lms: lms);
   if (zScoreRational == null) return double.nan;

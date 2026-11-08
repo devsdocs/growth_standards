@@ -102,10 +102,7 @@ sealed class WHOGrowthStandardsLengthVelocityForAge extends VelocityBasedResult
       if (alt == null || alt.isEmpty) return MapEntry(k1, null);
 
       final alv = alt.map((k2, v2) {
-        final VelocityMonths vm = (
-          low: age.ageInTotalMonthsAtDate(k2.dateBefore),
-          high: age.ageInTotalMonthsAtDate(k2.dateAfter),
-        );
+        final VelocityMonths vm = resolveVelocityMonths(age, k2, v1);
 
         final whoGrowthStandardsLengthVelocityForAgeLMS = v1[vm];
 

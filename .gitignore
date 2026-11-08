@@ -8,3 +8,7 @@ pubspec.lock
 
 *.test.dart
 build/
+.codebase-memory/
+.cbmignore
+persistent/
+scratch/

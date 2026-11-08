@@ -21,7 +21,7 @@ A comprehensive, clinically accurate growth standards library for **Dart** and *
 | **WHO Growth Velocity** | 0 to 2 Years | Weight Velocity, Length Velocity, Head Circumference Velocity (1, 2, 3, 4 & 6-month increments) |
 | **CDC Clinical Growth Charts** | 2 to 20 Years & Infant 0-36m | Weight-for-Age, Stature-for-Age, BMI-for-Age, Infant Weight, Infant Length, Infant Head Circumference, Weight-for-Stature |
 | **Fenton Preterm Standards** | 22 to 50 Weeks PMA | Preterm Weight-for-Age, Preterm Length-for-Age, Preterm Head Circumference-for-Age |
-| **INTERGROWTH-21st** | Perinatal & Fetal | Early Pregnancy CRL Dating, Fetal CRL, Fetal AC, Fetal BPD, Fetal FL, Fetal HC, Newborn Size at Birth, Postnatal Preterm Growth |
+| **INTERGROWTH-21st** | Perinatal & Fetal | Early Pregnancy CRL Dating, Fetal CRL, Fetal AC, Fetal BPD, Fetal OFD, Fetal FL, Fetal HC, Gestational Weight Gain, Symphysis-Fundal Height, Newborn Size at Birth (including Very Preterm & Weight-for-Length Ratio), Postnatal Preterm Growth (27–64w PMA) |
 
 ---
 
@@ -95,7 +95,7 @@ void main() {
 | **CDC 2–20y** | `GrowthTrajectory.cdcWeightForAge`, `cdcStatureForAge`, `cdcBmiForAge` |
 | **CDC 0–36m** | `GrowthTrajectory.cdcInfantWeightForAge`, `cdcInfantLengthForAge`, `cdcInfantHeadCircumferenceForAge` |
 | **Fenton Preterm** | `GrowthTrajectory.fentonWeightForAge`, `fentonLengthForAge`, `fentonHeadCircumferenceForAge` |
-| **INTERGROWTH** | `GrowthTrajectory.intergrowthPretermPostnatalWeight`, `intergrowthPretermPostnatalLength`, `intergrowthPretermPostnatalHeadCircumference`, `intergrowthFetalAbdominalCircumference`, `intergrowthFetalFemurLength`, `intergrowthFetalHeadCircumference`, `intergrowthFetalBiparietalDiameter` |
+| **INTERGROWTH** | `GrowthTrajectory.intergrowthPretermPostnatalWeight`, `intergrowthPretermPostnatalLength`, `intergrowthPretermPostnatalHeadCircumference` (accept optional `gestationalAgeAtBirth`), `intergrowthFetalAbdominalCircumference`, `intergrowthFetalFemurLength`, `intergrowthFetalHeadCircumference`, `intergrowthFetalBiparietalDiameter` |
 
 ---
 

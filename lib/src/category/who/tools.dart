@@ -44,7 +44,7 @@ VelocityMonths parseVelocityIncrement(String source) {
           .map(
             (e) => int.tryParse(e) == null
                 ? int.parse(
-                    e.replaceAll(RegExp('[a-zA-z]'), '').replaceAll(' ', ''),
+                    e.replaceAll(RegExp('[a-zA-Z]'), '').replaceAll(' ', ''),
                   )
                 : int.parse(e),
           );
@@ -241,4 +241,22 @@ extension MapExt2 on Map<VelocityMonths, ZScorePercentile?> {
       (this..removeWhere((_, v) => v == null)).map(
         (k3, v3) => MapEntry(k3, v3!),
       );
+}
+
+VelocityMonths resolveVelocityMonths<T>(
+  Age age,
+  ({Date dateBefore, Date dateAfter}) pair,
+  Map<VelocityMonths, T> table,
+) {
+  final calendarVm = (
+    low: age.ageInTotalMonthsAtDate(pair.dateBefore),
+    high: age.ageInTotalMonthsAtDate(pair.dateAfter),
+  );
+  if (table.containsKey(calendarVm)) {
+    return calendarVm;
+  }
+  return (
+    low: (age.ageInTotalDaysAtDate(pair.dateBefore) / 30.4375).round(),
+    high: (age.ageInTotalDaysAtDate(pair.dateAfter) / 30.4375).round(),
+  );
 }

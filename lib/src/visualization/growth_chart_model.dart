@@ -335,13 +335,15 @@ class GrowthChartModel {
 
       final lmsHolder = incMonthsMap[vm];
       if (lmsHolder != null) {
-        final lms = (lmsHolder as LMSContext).lms;
+        final lmsCtx = lmsHolder as LMSContext;
+        final lms = lmsCtx.lms;
+        final delta = lmsCtx.delta.toDouble();
         for (final val in sdLines) {
           double rawY = 0.0;
           if (cfg.displayMode == GrowthChartDisplayMode.zScore) {
-            rawY = lms.standardDeviation(val).toDouble();
+            rawY = lms.standardDeviation(val).toDouble() - delta;
           } else {
-            rawY = lms.standardDeviation(qnorm(val / 100)).toDouble();
+            rawY = lms.standardDeviation(qnorm(val / 100)).toDouble() - delta;
           }
           final yVal = isWeight ? rawY / 1000.0 : rawY;
           curvesMap[val]?.add(ChartPoint(midX, yVal));
@@ -357,8 +359,10 @@ class GrowthChartModel {
         final lmsHolder = incMonthsMap[vm];
         double yVal = 0.0;
         if (lmsHolder != null) {
-          final lms = (lmsHolder as LMSContext).lms;
-          double rawY = lms.standardDeviation(zp.zScore).toDouble();
+          final lmsCtx = lmsHolder as LMSContext;
+          final lms = lmsCtx.lms;
+          final delta = lmsCtx.delta.toDouble();
+          double rawY = lms.standardDeviation(zp.zScore).toDouble() - delta;
           if (typeStr.contains('Fenton') && typeStr.contains('Weight')) {
             rawY /= 1000.0;
           }
@@ -578,13 +582,15 @@ class GrowthChartModel {
 
       final lmsHolder = incMonthsMap[vm];
       if (lmsHolder != null) {
-        final lms = (lmsHolder as LMSContext).lms;
+        final lmsCtx = lmsHolder as LMSContext;
+        final lms = lmsCtx.lms;
+        final delta = lmsCtx.delta.toDouble();
         for (final val in sdLines) {
           double rawY = 0.0;
           if (cfg.displayMode == GrowthChartDisplayMode.zScore) {
-            rawY = lms.standardDeviation(val).toDouble();
+            rawY = lms.standardDeviation(val).toDouble() - delta;
           } else {
-            rawY = lms.standardDeviation(qnorm(val / 100)).toDouble();
+            rawY = lms.standardDeviation(qnorm(val / 100)).toDouble() - delta;
           }
           final yVal = isWeight ? rawY / 1000.0 : rawY;
           curvesMap[val]?.add(ChartPoint(midX, yVal));
@@ -604,8 +610,10 @@ class GrowthChartModel {
           final lmsHolder = incMonthsMap[vm];
           double yVal = 0.0;
           if (lmsHolder != null) {
-            final lms = (lmsHolder as LMSContext).lms;
-            double rawY = lms.standardDeviation(zp.zScore).toDouble();
+            final lmsCtx = lmsHolder as LMSContext;
+            final lms = lmsCtx.lms;
+            final delta = lmsCtx.delta.toDouble();
+            double rawY = lms.standardDeviation(zp.zScore).toDouble() - delta;
             if (typeStr.contains('Fenton') && typeStr.contains('Weight')) {
               rawY /= 1000.0;
             }
@@ -887,20 +895,29 @@ class GrowthChartModel {
       }
       return '${xVal.toStringAsFixed(1)} cm';
     } else if (r is PostmenstrualAgeBasedResult) {
-      return '${xVal.toStringAsFixed(1)} wks PMA';
+      final wks = r.postmenstrualAgeAtObservation.exactWeeks;
+      return '${wks.toStringAsFixed(1)} wks PMA';
     } else if (r is GestationalAgeBasedResult) {
-      return '${xVal.toStringAsFixed(1)} wks GA';
+      final wks = r.gestationalAgeAtObservation.exactWeeks;
+      return '${wks.toStringAsFixed(1)} wks GA';
     }
     return xVal.toStringAsFixed(1);
   }
 
   static String _formatYValue(Result r, double yVal) {
     final typeStr = r.runtimeType.toString();
-    if (typeStr.contains('Weight')) {
+    if (typeStr.contains('WeightForLengthRatio')) {
+      return '${yVal.toStringAsFixed(2)} kg/m';
+    } else if (typeStr.contains('EarlyPregnancyDatingForCRL')) {
+      return '${yVal.toStringAsFixed(1)} days';
+    } else if (typeStr.contains('Weight')) {
       return '${yVal.toStringAsFixed(2)} kg';
+    } else if (typeStr.contains('IntergrowthFetal')) {
+      return '${yVal.toStringAsFixed(1)} mm';
     } else if (typeStr.contains('Length') ||
         typeStr.contains('Height') ||
         typeStr.contains('Circumference') ||
+        typeStr.contains('Diameter') ||
         typeStr.contains('Stature')) {
       return '${yVal.toStringAsFixed(1)} cm';
     } else if (typeStr.contains('BodyMassIndex') || typeStr.contains('BMI')) {
@@ -916,27 +933,42 @@ class GrowthChartModel {
     final sexStr = getSexTitleStr(sex, r);
 
     String yLabel = 'Measurement';
-    if (typeStr.contains('Weight')) {
+    if (typeStr.contains('WeightForLengthRatio')) {
+      yLabel = 'Weight-for-Length Ratio (kg/m)';
+    } else if (typeStr.contains('EarlyPregnancyDatingForCRL')) {
+      yLabel = 'Gestational Age (days)';
+    } else if (typeStr.contains('Weight')) {
       yLabel = 'Weight (kg)';
+    } else if (typeStr.contains('HeadCircumference')) {
+      yLabel = typeStr.contains('IntergrowthFetal')
+          ? 'Head Circumference (mm)'
+          : 'Head Circumference (cm)';
+    } else if (typeStr.contains('ArmCircumference')) {
+      yLabel = 'Arm Circumference (cm)';
+    } else if (typeStr.contains('AbdominalCircumference')) {
+      yLabel = 'Abdominal Circumference (mm)';
+    } else if (typeStr.contains('BiparietalDiameter')) {
+      yLabel = 'Biparietal Diameter (mm)';
+    } else if (typeStr.contains('OccipitoFrontalDiameter')) {
+      yLabel = 'Occipito-Frontal Diameter (mm)';
+    } else if (typeStr.contains('FemurLength')) {
+      yLabel = 'Femur Length (mm)';
+    } else if (typeStr.contains('CrownRumpLength')) {
+      yLabel = 'Crown-Rump Length (mm)';
     } else if (typeStr.contains('Length') ||
         typeStr.contains('Height') ||
         typeStr.contains('Stature')) {
       yLabel = 'Length / Height (cm)';
-    } else if (typeStr.contains('EarlyPregnancyDatingForCRL')) {
-      yLabel = 'Gestational Age (days)';
     } else if (typeStr.contains('BodyMassIndex') || typeStr.contains('BMI')) {
       yLabel = 'BMI (kg/m²)';
-    } else if (typeStr.contains('HeadCircumference')) {
-      yLabel = 'Head Circumference (cm)';
-    } else if (typeStr.contains('ArmCircumference')) {
-      yLabel = 'Arm Circumference (cm)';
     } else if (typeStr.contains('Skinfold')) {
       yLabel = 'Skinfold (mm)';
     }
 
     String xLabel = 'X Axis';
     if (r is AgeBasedResult) {
-      xLabel = 'Age (months)';
+      final unit = (r.contextData as AgeBasedData).unit;
+      xLabel = unit == TimeUnit.weeks ? 'Age (weeks)' : 'Age (months)';
     } else if (r is LengthBasedResult) {
       final unit = r.contextData is LengthBasedData
           ? (r.contextData as LengthBasedData).unit

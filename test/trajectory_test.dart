@@ -161,11 +161,15 @@ void main() {
             Date(year: 2023, month: Months.january, date: 15),
             Mass$Kilogram(1.1),
           ),
+          VisitObservation(
+            Date(year: 2023, month: Months.january, date: 29),
+            Mass$Kilogram(1.5),
+          ),
         ],
       );
-      expect(fentonWeight.length, equals(1));
-      expect(fentonWeight.zScores.length, equals(1));
-      expect(fentonWeight.percentiles.length, equals(1));
+      expect(fentonWeight.length, equals(2));
+      expect(fentonWeight.zScores.length, equals(2));
+      expect(fentonWeight.percentiles.length, equals(2));
     });
 
     test('INTERGROWTH Preterm & Fetal Trajectory', () {
@@ -173,6 +177,7 @@ void main() {
           GrowthTrajectory.intergrowthPretermPostnatalWeight(
             sex: sex,
             dateOfBirth: dob,
+            gestationalAgeAtBirth: const GestationalAge(weeks: 28),
             visits: [
               VisitObservation(
                 Date(year: 2023, month: Months.january, date: 20),
@@ -181,6 +186,7 @@ void main() {
             ],
           );
       expect(intergrowthPreterm.length, equals(1));
+      expect(intergrowthPreterm.zScores.single.isFinite, isTrue);
     });
   });
 }

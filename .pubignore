@@ -13,3 +13,7 @@ dev/
 docs/
 doc/
 build/
+.codebase-memory/
+.cbmignore
+persistent/
+scratch/
