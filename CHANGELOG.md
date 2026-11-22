@@ -1,3 +1,11 @@
+## 5.4.3
+- **CDC Infant Recumbent Length Adjustment Fix**:
+  - Added optional `chartIsRecumbent` to `adjustedLengthHeight` and wired `CDCInfantLengthForAge` / `CDCInfantWeightForLength` (`chartIsRecumbent: true`) and `CDCStatureForAge` / `CDCWeightForStature` (`chartIsRecumbent: false`) so 0–36 month recumbent infant charts no longer subtract `0.8 cm` when measured recumbent at 24–36 months.
+- **SVG Chart Model & INTERGROWTH Visualization Fixes**:
+  - Generated weekly X-axis ticks (`9w..15w`) for `IntergrowthFetalCrownRumpLengthForAge` (`58..105` days) and guarded against empty `xTicks` in `GrowthChartModel`.
+  - Formatted weekly `AgeBasedResult` X-values (`IntergrowthFetal*`, `IntergrowthSymphysisFundalHeightForAge`, `IntergrowthGestationalWeightGainForAge`, and `IntergrowthPretermInfantsPostnatalGrowth*`) in weeks (`wks`) instead of months (`mo`).
+  - Added specific SVG chart titles and Y-axis labels for skinfolds, weight-to-length ratio, fetal biometric indicators, symphysis-fundal height, and gestational weight gain, omitting the sex suffix on sex-neutral pregnancy charts.
+
 ## 5.4.2
 - **Trajectory Fixes**:
   - Normalized multi-week `PostmenstrualAge` day accumulation (`weeks` + `days`) in `GrowthTrajectory.fentonWeightForAge`, `fentonLengthForAge`, and `fentonHeadCircumferenceForAge`.

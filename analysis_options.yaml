@@ -9,8 +9,6 @@ include: package:lint/strict.yaml # For production apps
 analyzer:
   errors:
     invalid_annotation_target: ignore
-  plugins:
-    # - custom_lint
   exclude:
     - '**.freezed.dart'
     - '**.g.dart'

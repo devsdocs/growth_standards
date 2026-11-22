@@ -4,7 +4,7 @@
   <!-- Header -->
   <g transform="translate(80.0, 35)">
     <text font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="rgb(13, 71, 161)" x="0" y="0">CDC Weight-for-Age (Boy, 8 Years)</text>
-    <text font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="500" fill="rgb(21, 101, 192)" x="0" y="22">Value: 26.50 kg at 101.3 mo (8.4y) | Z-Score: -0.10 SD | Percentile: 46.0%</text>
+    <text font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="500" fill="rgb(21, 101, 192)" x="0" y="22">Value: 26.50 kg at 101.7 mo (8.5y) | Z-Score: -0.10 SD | Percentile: 46.0%</text>
   </g>
   <!-- Chart Grid Area -->
   <rect fill="rgb(250, 252, 255)" x="80.0" y="100.0" width="730.0" height="454.0"/>
@@ -92,7 +92,7 @@
   <g transform="translate(590.0, 44.0)">
     <rect fill="rgba(255, 255, 255, 1.00)" stroke="rgb(2, 136, 209)" stroke-width="1.5" rx="6" ry="6" width="220.0" height="46.0"/>
     <text font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="rgb(33, 37, 41)" x="10" y="18">Result: 26.50 kg</text>
-    <text font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500" fill="rgb(33, 37, 41)" x="10" y="34">Age/X: 101.3 mo (8.4y)</text>
+    <text font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500" fill="rgb(33, 37, 41)" x="10" y="34">Age/X: 101.7 mo (8.5y)</text>
     <text font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="rgb(33, 37, 41)" x="210.0" y="18" text-anchor="end">-0.10 SD</text>
     <text font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500" fill="rgb(33, 37, 41)" x="210.0" y="34" text-anchor="end">46.0th %ile</text>
   </g>

@@ -58,6 +58,7 @@ sealed class CDCStatureForAge extends AgeBasedResult with _$CDCStatureForAge {
     age: age,
     lengthHeight: lengthHeight,
     type: AdjustedLengthType.cdc,
+    chartIsRecumbent: false,
   );
 
   num get _zScore => _ageData.lms.zScore(_adjustedLength.value.toDouble());

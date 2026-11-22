@@ -147,6 +147,7 @@ Length$Centimeter adjustedLengthHeight({
   required LengthHeightMeasurementPosition measure,
   required Length lengthHeight,
   required AdjustedLengthType type,
+  bool? chartIsRecumbent,
 }) {
   num toCm = lengthHeight.toCentimeter.value.toDouble();
   final isStanding = measure == LengthHeightMeasurementPosition.standing;
@@ -154,13 +155,17 @@ Length$Centimeter adjustedLengthHeight({
   final ageDays = age.ageInTotalDaysByNow;
   final val = type.value.toDouble();
 
-  final isAdd = type == AdjustedLengthType.who
-      ? ageDays <= 730 && isStanding
-      : ageMos < 24 && isStanding;
+  final isAdd = chartIsRecumbent != null
+      ? chartIsRecumbent && isStanding
+      : (type == AdjustedLengthType.who
+            ? ageDays <= 730 && isStanding
+            : ageMos < 24 && isStanding);
 
-  final isSubtract = type == AdjustedLengthType.who
-      ? ageDays > 730 && !isStanding
-      : ageMos >= 24 && !isStanding;
+  final isSubtract = chartIsRecumbent != null
+      ? !chartIsRecumbent && !isStanding
+      : (type == AdjustedLengthType.who
+            ? ageDays > 730 && !isStanding
+            : ageMos >= 24 && !isStanding);
 
   if (isAdd) {
     toCm += val;

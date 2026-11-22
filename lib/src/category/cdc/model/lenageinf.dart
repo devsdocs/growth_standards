@@ -64,6 +64,7 @@ sealed class CDCInfantLengthForAge extends AgeBasedResult
     age: age,
     lengthHeight: lengthHeight,
     type: AdjustedLengthType.cdc,
+    chartIsRecumbent: true,
   );
 
   num get _zScore => _ageData.lms.zScore(_adjustedLength.value.toDouble());

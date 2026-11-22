@@ -52,6 +52,7 @@ sealed class CDCInfantWeightForLength extends LengthBasedResult
     age: age,
     lengthHeight: length,
     type: AdjustedLengthType.cdc,
+    chartIsRecumbent: true,
   );
 
   @override

@@ -724,5 +724,58 @@ void main() {
         isTrue,
       );
     });
+
+    test('CDC 0-36m infant recumbent charts do not subtract 0.8 cm at 24-36 months when measured recumbent', () {
+      final cdc036 = GrowthStandard.cdc.fromBirthTo36Months;
+      final age30m = Age.byMonthsAgo(30);
+
+      final lfaRecumbent = cdc036.lengthForAge(
+        sex: Sex.male,
+        age: age30m,
+        lengthHeight: Length$Centimeter(90.0),
+        measure: LengthHeightMeasurementPosition.recumbent,
+      );
+      expect(lfaRecumbent.measurementResultInDefaultUnit, closeTo(90.0, 1e-6));
+
+      final lfaStanding = cdc036.lengthForAge(
+        sex: Sex.male,
+        age: age30m,
+        lengthHeight: Length$Centimeter(90.0),
+        measure: LengthHeightMeasurementPosition.standing,
+      );
+      expect(lfaStanding.measurementResultInDefaultUnit, closeTo(90.8, 1e-6));
+
+      final wflRecumbent = cdc036.weightForLength(
+        sex: Sex.male,
+        age: age30m,
+        length: Length$Centimeter(90.0),
+        weight: Mass$Kilogram(13.0),
+        measure: LengthHeightMeasurementPosition.recumbent,
+      );
+      expect(
+        wflRecumbent.lengthAtObservationDate.value.toDouble(),
+        closeTo(90.0, 1e-6),
+      );
+    });
+
+    test('SVG chart model generates weekly X ticks for Intergrowth CRL Size and omits sex suffix on pregnancy charts', () {
+      final igPreg = GrowthStandard.intergrowth.duringPregnancy;
+      final crlSize = igPreg.fetalSizeInEarlyPregnancy(
+        gestationalAge: Age.byDaysAgo(70),
+        measurementResult: Length$Millimeter(35.0),
+      );
+      final crlModel = GrowthChartModel.fromResults([crlSize]);
+      expect(crlModel.xTicks, isNotEmpty);
+      expect(crlModel.title, isNot(contains('Boys')));
+      expect(crlModel.subtitle, contains('wks'));
+
+      final gwg = igPreg.gestationalWeightGain(
+        gestationalAge: Age.byDaysAgo(168),
+        weight: Mass$Kilogram(6.0),
+      );
+      final gwgModel = GrowthChartModel.fromResults([gwg]);
+      expect(gwgModel.title, 'INTERGROWTH-21st Gestational Weight Gain');
+      expect(gwgModel.subtitle, contains('24.0 wks'));
+    });
   });
 }

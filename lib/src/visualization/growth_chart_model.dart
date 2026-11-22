@@ -877,6 +877,15 @@ class GrowthChartModel {
   static String _formatXValue(Result r, double xVal) {
     if (r is AgeBasedResult) {
       final days = r.ageAtObservationDate.ageInTotalDaysByNow;
+      final unit = r.contextData is AgeBasedData
+          ? (r.contextData as AgeBasedData).unit
+          : TimeUnit.days;
+      final typeStr = r.runtimeType.toString();
+      if (unit == TimeUnit.weeks ||
+          typeStr.contains('IntergrowthFetalCrownRumpLength')) {
+        final wks = days / 7.0;
+        return '${wks.toStringAsFixed(1)} wks (${days}d)';
+      }
       if (days == 0) return 'Birth';
       if (days < 30) return '$days days';
       final months = days / 30.4375;
@@ -937,6 +946,10 @@ class GrowthChartModel {
       yLabel = 'Weight-for-Length Ratio (kg/m)';
     } else if (typeStr.contains('EarlyPregnancyDatingForCRL')) {
       yLabel = 'Gestational Age (days)';
+    } else if (typeStr.contains('GestationalWeightGain')) {
+      yLabel = 'Weight Gain (kg)';
+    } else if (typeStr.contains('SymphysisFundalHeight')) {
+      yLabel = 'Symphysis-Fundal Height (cm)';
     } else if (typeStr.contains('Weight')) {
       yLabel = 'Weight (kg)';
     } else if (typeStr.contains('HeadCircumference')) {
@@ -968,7 +981,11 @@ class GrowthChartModel {
     String xLabel = 'X Axis';
     if (r is AgeBasedResult) {
       final unit = (r.contextData as AgeBasedData).unit;
-      xLabel = unit == TimeUnit.weeks ? 'Age (weeks)' : 'Age (months)';
+      xLabel =
+          (unit == TimeUnit.weeks ||
+              typeStr.contains('IntergrowthFetalCrownRumpLength'))
+          ? 'Age (weeks)'
+          : 'Age (months)';
     } else if (r is LengthBasedResult) {
       final unit = r.contextData is LengthBasedData
           ? (r.contextData as LengthBasedData).unit
@@ -997,7 +1014,29 @@ class GrowthChartModel {
     }
 
     String measurementName = 'Measurement';
-    if (typeStr.contains('WeightForAge')) {
+    if (typeStr.contains('WeightForLengthRatio')) {
+      measurementName = 'Weight-to-Length Ratio';
+    } else if (typeStr.contains('EarlyPregnancyDatingForCRL')) {
+      measurementName = 'CRL Pregnancy Dating';
+    } else if (typeStr.contains('CrownRumpLength')) {
+      measurementName = 'Fetal CRL-for-Age';
+    } else if (typeStr.contains('AbdominalCircumference')) {
+      measurementName = 'Fetal Abdominal Circumference';
+    } else if (typeStr.contains('BiparietalDiameter')) {
+      measurementName = 'Fetal Biparietal Diameter';
+    } else if (typeStr.contains('FemurLength')) {
+      measurementName = 'Fetal Femur Length';
+    } else if (typeStr.contains('OccipitoFrontalDiameter')) {
+      measurementName = 'Fetal Occipito-Frontal Diameter';
+    } else if (typeStr.contains('SymphysisFundalHeight')) {
+      measurementName = 'Symphysis-Fundal Height';
+    } else if (typeStr.contains('GestationalWeightGain')) {
+      measurementName = 'Gestational Weight Gain';
+    } else if (typeStr.contains('SubscapularSkinfold')) {
+      measurementName = 'Subscapular Skinfold-for-Age';
+    } else if (typeStr.contains('TricepsSkinfold')) {
+      measurementName = 'Triceps Skinfold-for-Age';
+    } else if (typeStr.contains('WeightForAge')) {
       measurementName = 'Weight-for-Age';
     } else if (typeStr.contains('LengthForAge')) {
       measurementName = 'Length-for-Age';
@@ -1008,7 +1047,8 @@ class GrowthChartModel {
     } else if (typeStr.contains('BMIForAge') ||
         typeStr.contains('BodyMassIndexForAge')) {
       measurementName = 'BMI-for-Age';
-    } else if (typeStr.contains('HeadCircumferenceForAge')) {
+    } else if (typeStr.contains('HeadCircumferenceForAge') ||
+        typeStr.contains('HeadCircumference')) {
       measurementName = 'Head Circumference-for-Age';
     } else if (typeStr.contains('ArmCircumferenceForAge')) {
       measurementName = 'MUAC-for-Age';
@@ -1026,7 +1066,9 @@ class GrowthChartModel {
       measurementName = 'Head Circumference Velocity';
     }
 
-    final String title = '$standardName $measurementName — $sexStr';
+    final String title = r.sex == null
+        ? '$standardName $measurementName'
+        : '$standardName $measurementName — $sexStr';
 
     return _IndicatorInfo(title: title, xLabel: xLabel, yLabel: yLabel);
   }
@@ -1049,6 +1091,16 @@ class GrowthChartModel {
           ? (r.contextData as AgeBasedData).unit
           : TimeUnit.days;
 
+      if (unit == TimeUnit.days &&
+          r.runtimeType.toString().contains('IntergrowthFetalCrownRumpLength')) {
+        final startWeek = (xMin / 7.0).ceil();
+        final endWeek = (xMax / 7.0).floor();
+        for (int w = startWeek; w <= endWeek; w++) {
+          ticks.add(ChartTick(value: (w * 7).toDouble(), label: '${w}w'));
+        }
+        if (ticks.isNotEmpty) return ticks;
+      }
+
       if (unit == TimeUnit.days && xMax <= 1856) {
         // WHO 0-5 years (in days) -> display ticks in months (0, 6, 12, 18, 24, 36, 48, 60)
         final monthTicks = [0, 6, 12, 18, 24, 30, 36, 42, 48, 54, 60];
@@ -1066,7 +1118,7 @@ class GrowthChartModel {
             ticks.add(ChartTick(value: dayVal, label: label));
           }
         }
-        return ticks;
+        if (ticks.isNotEmpty) return ticks;
       } else if (unit == TimeUnit.months && xMax >= 20) {
         // CDC / WHO reference (in months) -> display ticks in years or months
         final monthInterval = (xMax - xMin) > 60 ? 24 : 12;

@@ -51,6 +51,7 @@ sealed class CDCWeightForStature extends LengthBasedResult
     age: age,
     lengthHeight: height,
     type: AdjustedLengthType.cdc,
+    chartIsRecumbent: false,
   );
 
   @override
