@@ -53,6 +53,7 @@ Rational? _sdRational(Rational rSD, {required LMS lms}) {
 
 /// SD calculation using [LMS]
 num standardDeviationCalculation(num sd, {required LMS lms}) {
+  if (sd.isNaN) return double.nan;
   final result = _sdRational(_toRational(sd), lms: lms);
   return result?.toDouble() ?? double.nan;
 }
@@ -87,8 +88,8 @@ Rational? _zScoreRational(Rational rY, {required LMS lms}) {
 ///
 /// HEIGHT-FOR-AGE,
 num zScoreCalculation(num y, {required LMS lms}) {
-  if (y <= 0) {
-    throw ArgumentError('Measurement must be strictly positive, got $y');
+  if (y.isNaN || y.isInfinite || y <= 0) {
+    throw ArgumentError('Measurement must be finite and strictly positive, got $y');
   }
   final result = _zScoreRational(_toRational(y), lms: lms);
   return result?.toDouble() ?? double.nan;
@@ -110,8 +111,8 @@ num zScoreCalculation(num y, {required LMS lms}) {
 ///
 /// SUBSCAPULAR SKINFOLD-FOR-AGE
 num adjustedZScoreCalculation(num y, {required LMS lms}) {
-  if (y <= 0) {
-    throw ArgumentError('Measurement must be strictly positive, got $y');
+  if (y.isNaN || y.isInfinite || y <= 0) {
+    throw ArgumentError('Measurement must be finite and strictly positive, got $y');
   }
   final rY = _toRational(y);
   final zScoreRational = _zScoreRational(rY, lms: lms);
@@ -122,7 +123,7 @@ num adjustedZScoreCalculation(num y, {required LMS lms}) {
   if (zScore > 3) {
     final rSD3pos = _sdRational(_r3, lms: lms);
     final rSD2pos = _sdRational(_r2, lms: lms);
-    if (rSD3pos == null || rSD2pos == null) return double.nan;
+    if (rSD3pos == null || rSD2pos == null) return zScore;
 
     final rSD23pos = rSD3pos - rSD2pos;
 
@@ -131,7 +132,7 @@ num adjustedZScoreCalculation(num y, {required LMS lms}) {
   if (zScore < -3) {
     final rSD3neg = _sdRational(_rMinus3, lms: lms);
     final rSD2neg = _sdRational(_rMinus2, lms: lms);
-    if (rSD3neg == null || rSD2neg == null) return double.nan;
+    if (rSD3neg == null || rSD2neg == null) return zScore;
 
     final rSD23neg = rSD2neg - rSD3neg;
 
@@ -179,6 +180,8 @@ Length$Centimeter adjustedLengthHeight({
 
 /// Normal distribution equation, the name [pnorm] inspired from R language
 num pnorm(num zScore) {
+  if (zScore.isNaN) return double.nan;
+  if (zScore.isInfinite) return zScore > 0 ? 1.0 : 0.0;
   final rZ = _toRational(zScore);
   final rSq2 = _toRational(_sq2);
 
@@ -192,6 +195,7 @@ num pnorm(num zScore) {
 
 /// Normal distribution equation, the name [qnorm] inspired from R language
 num qnorm(num percentile) {
+  if (percentile.isNaN) return double.nan;
   final rPercentile = _toRational(percentile);
   final rP = rPercentile > _r1 ? rPercentile / _r100 : rPercentile;
 

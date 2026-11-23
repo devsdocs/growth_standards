@@ -7,7 +7,13 @@ part 'age.freezed.dart';
 part 'age.g.dart';
 part 'age.part.dart';
 
-Months _monthFromNumber(int number) => _reverseMonthsEnum[number]!;
+Months _monthFromNumber(int number) {
+  final month = _reverseMonthsEnum[number];
+  if (month == null) {
+    throw RangeError.range(number, 1, 12, 'number');
+  }
+  return month;
+}
 
 final _reverseMonthsEnum = _$MonthsEnumMap.map((k, v) => MapEntry(v, k));
 
@@ -236,12 +242,19 @@ sealed class Date with _$Date implements Comparable<Date> {
   Date add(Duration duration) => this + duration;
   Date subtract(Duration duration) => this - duration;
 
-  Duration difference(Date other) => Duration(
-    days: DateTimeUtils.getDaysDifference(toDateTime(), other.toDateTime()),
-  );
+  Duration difference(Date other) {
+    final a = toDateTime();
+    final b = other.toDateTime();
+    final days = DateTimeUtils.getDaysDifference(a, b);
+    return Duration(days: a.isBefore(b) ? -days : days);
+  }
 
-  Duration differenceWithDateTime(DateTime other) =>
-      Duration(days: DateTimeUtils.getDaysDifference(toDateTime(), other));
+  Duration differenceWithDateTime(DateTime other) {
+    final a = toDateTime();
+    final b = DateTimeUtils.startOfDay(other);
+    final days = DateTimeUtils.getDaysDifference(a, b);
+    return Duration(days: a.isBefore(b) ? -days : days);
+  }
 
   DateTime toDateTime() => DateTime(year, month.number, date);
 
@@ -259,15 +272,9 @@ sealed class Date with _$Date implements Comparable<Date> {
   Date subtractMonths(int months) => addMonths(-months);
   Date subtractYears(int years) => addYears(-years);
 
-  Date operator +(Duration duration) {
-    if (duration.inDays < 1) return this;
-    return addDays(duration.inDays);
-  }
+  Date operator +(Duration duration) => addDays(duration.inDays);
 
-  Date operator -(Duration duration) {
-    if (duration.inDays < 1) return this;
-    return subtractDays(duration.inDays);
-  }
+  Date operator -(Duration duration) => subtractDays(duration.inDays);
 
   bool operator >=(Date other) {
     if (this == other) return true;
@@ -344,21 +351,17 @@ extension DateFormatExtension on Date {
   /// Returns a formatted string representation of the date
   /// Format: 'yyyy-MM-dd' by default
   String format([String format = 'yyyy-MM-dd']) {
-    final formatParams = [
-      MapEntry('yyyy', year.toString()),
-      MapEntry('MMM', month.text),
-      MapEntry('MM', month.number.toString().padLeft(2, '0')),
-      MapEntry('M', month.number.toString()),
-      MapEntry('dd', date.toString().padLeft(2, '0')),
-      MapEntry('d', date.toString()),
-    ];
-
-    String result = format;
-    for (final entry in formatParams) {
-      result = result.replaceAll(entry.key, entry.value);
-    }
-
-    return result;
+    return format.replaceAllMapped(RegExp('yyyy|MMM|MM|M|dd|d'), (match) {
+      return switch (match[0]) {
+        'yyyy' => year.toString().padLeft(4, '0'),
+        'MMM' => month.text,
+        'MM' => month.number.toString().padLeft(2, '0'),
+        'M' => month.number.toString(),
+        'dd' => date.toString().padLeft(2, '0'),
+        'd' => date.toString(),
+        _ => match[0]!,
+      };
+    });
   }
 
   /// Check if this date is a weekend

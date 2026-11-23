@@ -36,8 +36,11 @@ export 'category/fenton/fenton.dart'
         FentonWeightForAgeData;
 export 'category/intergrowth/intergrowth.dart'
     show
+        IntergrowthDatingMethod,
         IntergrowthEarlyPregnancyDatingForCRL,
         IntergrowthEarlyPregnancyDatingForCRLData,
+        IntergrowthEstimatedFetalWeightForAge,
+        IntergrowthEstimatedFetalWeightForAgeData,
         IntergrowthFetalCrownRumpLengthForAge,
         IntergrowthFetalCrownRumpLengthForAgeData,
         IntergrowthFetalGrowtAbdominalCircumferenceForAge,
@@ -52,6 +55,8 @@ export 'category/intergrowth/intergrowth.dart'
         IntergrowthFetalGrowtOccipitoFrontalDiameterForAgeData,
         IntergrowthGestationalWeightGainForAge,
         IntergrowthGestationalWeightGainForAgeData,
+        IntergrowthHadlockEstimatedFetalWeightForAge,
+        IntergrowthHadlockEstimatedFetalWeightForAgeData,
         IntergrowthNewbornBirthHeadCircumferenceForAge,
         IntergrowthNewbornBirthHeadCircumferenceForAgeData,
         IntergrowthNewbornBirthLengthForAge,
@@ -60,6 +65,7 @@ export 'category/intergrowth/intergrowth.dart'
         IntergrowthNewbornBirthWeightForAgeData,
         IntergrowthNewbornBirthWeightForLengthRatioForAge,
         IntergrowthNewbornBirthWeightForLengthRatioForAgeData,
+        IntergrowthPregnancyDatingEstimate,
         IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAge,
         IntergrowthPretermInfantsPostnatalGrowthHeadCircumferenceForAgeData,
         IntergrowthPretermInfantsPostnatalGrowthLengthForAge,

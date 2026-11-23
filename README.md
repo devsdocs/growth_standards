@@ -21,7 +21,7 @@ A comprehensive, clinically accurate growth standards library for **Dart** and *
 | **WHO Growth Velocity** | 0 to 2 Years | Weight Velocity, Length Velocity, Head Circumference Velocity (1, 2, 3, 4 & 6-month increments) |
 | **CDC Clinical Growth Charts** | 2 to 20 Years & Infant 0-36m | Weight-for-Age, Stature-for-Age, BMI-for-Age, Infant Weight, Infant Length, Infant Head Circumference, Weight-for-Stature |
 | **Fenton Preterm Standards** | 22 to 50 Weeks PMA | Preterm Weight-for-Age, Preterm Length-for-Age, Preterm Head Circumference-for-Age |
-| **INTERGROWTH-21st** | Perinatal & Fetal | Early Pregnancy CRL Dating, Fetal CRL, Fetal AC, Fetal BPD, Fetal OFD, Fetal FL, Fetal HC, Gestational Weight Gain, Symphysis-Fundal Height, Newborn Size at Birth (including Very Preterm & Weight-for-Length Ratio), Postnatal Preterm Growth (27–64w PMA) |
+| **INTERGROWTH-21st** | Perinatal & Fetal | Early Pregnancy CRL Dating (Z-score & GA/EDD), Late Pregnancy Dating (HC+FL & HC-only), Fetal CRL, Fetal Biometry (AC, BPD, OFD, FL, HC; 14–41w), Estimated Fetal Weight (Hadlock 18–41w & IG-21st 22–40w), Gestational Weight Gain, Symphysis-Fundal Height (16–41w), Newborn Size at Birth (including Very Preterm & Weight-for-Length Ratio), Postnatal Preterm Growth (27–64w PMA) |
 
 ---
 
@@ -95,7 +95,7 @@ void main() {
 | **CDC 2–20y** | `GrowthTrajectory.cdcWeightForAge`, `cdcStatureForAge`, `cdcBmiForAge` |
 | **CDC 0–36m** | `GrowthTrajectory.cdcInfantWeightForAge`, `cdcInfantLengthForAge`, `cdcInfantHeadCircumferenceForAge` |
 | **Fenton Preterm** | `GrowthTrajectory.fentonWeightForAge`, `fentonLengthForAge`, `fentonHeadCircumferenceForAge` |
-| **INTERGROWTH** | `GrowthTrajectory.intergrowthPretermPostnatalWeight`, `intergrowthPretermPostnatalLength`, `intergrowthPretermPostnatalHeadCircumference` (accept optional `gestationalAgeAtBirth`), `intergrowthFetalAbdominalCircumference`, `intergrowthFetalFemurLength`, `intergrowthFetalHeadCircumference`, `intergrowthFetalBiparietalDiameter` |
+| **INTERGROWTH** | `GrowthTrajectory.intergrowthPretermPostnatalWeight`, `intergrowthPretermPostnatalLength`, `intergrowthPretermPostnatalHeadCircumference` (accept optional `gestationalAgeAtBirth`), `intergrowthFetalAbdominalCircumference`, `intergrowthFetalFemurLength`, `intergrowthFetalHeadCircumference`, `intergrowthFetalBiparietalDiameter`, `intergrowthFetalOccipitofrontalDiameter`, `intergrowthFetalCrownRumpLength`, `intergrowthSymphysisFundalHeight`, `intergrowthGestationalWeightGain`, `intergrowthEstimatedFetalWeightHadlock`, `intergrowthEstimatedFetalWeight` |
 
 ---
 
@@ -147,6 +147,36 @@ void main() {
   );
 
   cdcWfa.saveSvg('custom_cdc_chart.svg', config: config);
+}
+```
+
+---
+
+### 5. INTERGROWTH-21st Estimated Fetal Weight & Pregnancy Dating
+
+```dart
+import 'package:growth_standards/growth_standards.dart';
+
+void main() {
+  final pregnancy = GrowthStandard.intergrowth.duringPregnancy;
+
+  // Hadlock Estimated Fetal Weight (18+0 to 41+0 weeks GA)
+  final efw = pregnancy.estimatedFetalWeightHadlockFromBiometry(
+    gestationalAge: const GestationalAge(weeks: 24, days: 3),
+    headCircumference: Length$Millimeter(230),
+    abdominalCircumference: Length$Millimeter(210),
+    femurLength: Length$Millimeter(50),
+  );
+  print('EFW: ${efw.measurementResultInDefaultUnit.round()} g | Z: ${efw.zScore()} SD');
+  efw.saveSvg('intergrowth_hadlock_efw.svg');
+
+  // Ultrasound Pregnancy Dating (Early CRL or Late HC + FL)
+  final dating = pregnancy.estimateGestationalAgeByHCAndFL(
+    headCircumference: Length$Millimeter(130),
+    femurLength: Length$Millimeter(20),
+    examinationDate: Date(year: 2024, month: Months.march, date: 1),
+  );
+  print('Estimated GA: ${dating.gestationalAge} | EDD: ${dating.estimatedDueDate}');
 }
 ```
 

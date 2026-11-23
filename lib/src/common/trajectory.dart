@@ -311,15 +311,30 @@ class GrowthTrajectory {
       sex: sex,
       dateOfBirth: dateOfBirth,
       evaluator: (age, measurement) {
-        final num val = measurement is BodyMassIndex
-            ? measurement.value
-            : (measurement as num);
+        final WHOGrowthReferenceBodyMassIndexMeasurement bmiMeasurement;
+        if (measurement is WHOGrowthReferenceBodyMassIndexMeasurement) {
+          bmiMeasurement = measurement;
+        } else if (measurement is LengthMassObservation) {
+          bmiMeasurement =
+              WHOGrowthReferenceBodyMassIndexMeasurement.fromMeasurement(
+                BodyMassIndex(
+                  lengthHeight: measurement.length,
+                  weight: measurement.weight,
+                ),
+              );
+        } else if (measurement is BodyMassIndex) {
+          bmiMeasurement = WHOGrowthReferenceBodyMassIndexMeasurement(
+            measurement.value,
+          );
+        } else {
+          bmiMeasurement = WHOGrowthReferenceBodyMassIndexMeasurement(
+            measurement as num,
+          );
+        }
         return gs.bodyMassIndexForAge(
           sex: sex,
           age: age,
-          bodyMassIndexMeasurement: WHOGrowthReferenceBodyMassIndexMeasurement(
-            val,
-          ),
+          bodyMassIndexMeasurement: bmiMeasurement,
         );
       },
     );
@@ -382,13 +397,25 @@ class GrowthTrajectory {
       sex: sex,
       dateOfBirth: dateOfBirth,
       evaluator: (age, measurement) {
-        final num val = measurement is BodyMassIndex
-            ? measurement.value
-            : (measurement as num);
+        final CDCBodyMassIndexMeasurement bmiMeasurement;
+        if (measurement is CDCBodyMassIndexMeasurement) {
+          bmiMeasurement = measurement;
+        } else if (measurement is LengthMassObservation) {
+          bmiMeasurement = CDCBodyMassIndexMeasurement.fromMeasurement(
+            BodyMassIndex(
+              lengthHeight: measurement.length,
+              weight: measurement.weight,
+            ),
+          );
+        } else if (measurement is BodyMassIndex) {
+          bmiMeasurement = CDCBodyMassIndexMeasurement(measurement.value);
+        } else {
+          bmiMeasurement = CDCBodyMassIndexMeasurement(measurement as num);
+        }
         return gs.bodyMassIndexForAge(
           sex: sex,
           age: age,
-          bodyMassIndexMeasurement: CDCBodyMassIndexMeasurement(val),
+          bodyMassIndexMeasurement: bmiMeasurement,
         );
       },
     );
@@ -679,6 +706,128 @@ class GrowthTrajectory {
         gestationalAge: age,
         measurementResult: measurement as Length,
       ),
+    );
+    if (visits != null) tracker.addAll(visits);
+    return tracker;
+  }
+
+  /// Factory for INTERGROWTH-21st Fetal Occipito-Frontal Diameter (OFD) trajectory
+  factory GrowthTrajectory.intergrowthFetalOccipitofrontalDiameter({
+    required Date dateOfLmp,
+    List<VisitObservation<Length>>? visits,
+  }) {
+    final gs = GrowthStandard.intergrowth.duringPregnancy;
+    final tracker = GrowthTrajectory(
+      sex: Sex.male,
+      dateOfBirth: dateOfLmp,
+      evaluator: (age, measurement) => gs.fetalOccipitofrontalDiameter(
+        gestationalAge: age,
+        measurementResult: measurement as Length,
+      ),
+    );
+    if (visits != null) tracker.addAll(visits);
+    return tracker;
+  }
+
+  /// Factory for INTERGROWTH-21st Early Pregnancy Crown-Rump Length (CRL) trajectory
+  factory GrowthTrajectory.intergrowthFetalCrownRumpLength({
+    required Date dateOfLmp,
+    List<VisitObservation<Length>>? visits,
+  }) {
+    final gs = GrowthStandard.intergrowth.duringPregnancy;
+    final tracker = GrowthTrajectory(
+      sex: Sex.male,
+      dateOfBirth: dateOfLmp,
+      evaluator: (age, measurement) => gs.fetalSizeInEarlyPregnancy(
+        gestationalAge: age,
+        measurementResult: measurement as Length,
+      ),
+    );
+    if (visits != null) tracker.addAll(visits);
+    return tracker;
+  }
+
+  /// Factory for INTERGROWTH-21st Symphysis-Fundal Height (SFH) trajectory
+  factory GrowthTrajectory.intergrowthSymphysisFundalHeight({
+    required Date dateOfLmp,
+    List<VisitObservation<Length>>? visits,
+  }) {
+    final gs = GrowthStandard.intergrowth.duringPregnancy;
+    final tracker = GrowthTrajectory(
+      sex: Sex.male,
+      dateOfBirth: dateOfLmp,
+      evaluator: (age, measurement) => gs.symphysisfundalHeight(
+        gestationalAge: age,
+        measurementResult: measurement as Length,
+      ),
+    );
+    if (visits != null) tracker.addAll(visits);
+    return tracker;
+  }
+
+  /// Factory for INTERGROWTH-21st Gestational Weight Gain (GWG) trajectory
+  factory GrowthTrajectory.intergrowthGestationalWeightGain({
+    required Date dateOfLmp,
+    List<VisitObservation<Mass>>? visits,
+  }) {
+    final gs = GrowthStandard.intergrowth.duringPregnancy;
+    final tracker = GrowthTrajectory(
+      sex: Sex.male,
+      dateOfBirth: dateOfLmp,
+      evaluator: (age, measurement) => gs.gestationalWeightGain(
+        gestationalAge: age,
+        weight: measurement as Mass,
+      ),
+    );
+    if (visits != null) tracker.addAll(visits);
+    return tracker;
+  }
+
+  /// Factory for INTERGROWTH-21st Hadlock Estimated Fetal Weight (EFW) trajectory (18–41w GA)
+  factory GrowthTrajectory.intergrowthEstimatedFetalWeightHadlock({
+    required Date dateOfLmp,
+    List<VisitObservation<Mass>>? visits,
+  }) {
+    final gs = GrowthStandard.intergrowth.duringPregnancy;
+    final tracker = GrowthTrajectory(
+      sex: Sex.male,
+      dateOfBirth: dateOfLmp,
+      evaluator: (age, measurement) {
+        final totalDays = age.ageInTotalDaysByNow;
+        final ga = GestationalAge(
+          weeks: totalDays ~/ DateTime.daysPerWeek,
+          days: totalDays % DateTime.daysPerWeek,
+        );
+        return gs.estimatedFetalWeightHadlock(
+          gestationalAge: ga,
+          estimatedWeight: measurement as Mass,
+        );
+      },
+    );
+    if (visits != null) tracker.addAll(visits);
+    return tracker;
+  }
+
+  /// Factory for INTERGROWTH-21st original Estimated Fetal Weight (EFW) trajectory (22–40w GA)
+  factory GrowthTrajectory.intergrowthEstimatedFetalWeight({
+    required Date dateOfLmp,
+    List<VisitObservation<Mass>>? visits,
+  }) {
+    final gs = GrowthStandard.intergrowth.duringPregnancy;
+    final tracker = GrowthTrajectory(
+      sex: Sex.male,
+      dateOfBirth: dateOfLmp,
+      evaluator: (age, measurement) {
+        final totalDays = age.ageInTotalDaysByNow;
+        final ga = GestationalAge(
+          weeks: totalDays ~/ DateTime.daysPerWeek,
+          days: totalDays % DateTime.daysPerWeek,
+        );
+        return gs.estimatedFetalWeight(
+          gestationalAge: ga,
+          estimatedWeight: measurement as Mass,
+        );
+      },
     );
     if (visits != null) tracker.addAll(visits);
     return tracker;

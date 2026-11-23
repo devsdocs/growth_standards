@@ -257,9 +257,12 @@ class SvgRenderer {
       buffer.writeln(
         '    <text font-family="${theme.fontFamily}" font-size="11" font-weight="500" fill="${theme.calloutTextColor.toSvgRgb()}" x="10" y="34">Age/X: ${_escapeXml(lastPt.formattedX)}</text>',
       );
-      final zStr =
-          '${lastPt.zScore > 0 ? "+" : ""}${lastPt.zScore.toStringAsFixed(2)} SD';
-      final pStr = '${lastPt.percentile.toStringAsFixed(1)}th %ile';
+      final zStr = lastPt.zScore.isFinite
+          ? '${lastPt.zScore > 0 ? "+" : ""}${lastPt.zScore.toStringAsFixed(2)} SD'
+          : 'N/A';
+      final pStr = lastPt.percentile.isFinite
+          ? '${lastPt.percentile.toStringAsFixed(1)}th %ile'
+          : 'N/A';
       buffer.writeln(
         '    <text font-family="${theme.fontFamily}" font-size="12" font-weight="700" fill="${theme.calloutTextColor.toSvgRgb()}" x="${cardW - 10}" y="18" text-anchor="end">$zStr</text>',
       );
@@ -276,6 +279,18 @@ class SvgRenderer {
       final legendY = height - 20.0;
       final isPercentile = cfg.displayMode == GrowthChartDisplayMode.percentile;
 
+      final pLines = cfg.percentileLines ?? const [];
+      final middleBandLabel = (pLines.contains(15) && pLines.contains(85))
+          ? '15th / 85th'
+          : (pLines.contains(25) && pLines.contains(75))
+          ? '25th / 75th'
+          : (pLines.contains(10) && pLines.contains(90))
+          ? '10th / 90th'
+          : '15th / 85th';
+      final middleBandColor = middleBandLabel == '10th / 90th'
+          ? theme.warningCurveColor.toSvgRgb()
+          : theme.normalCurveColor.toSvgRgb();
+
       final items = <_LegendItem>[
         _LegendItem(
           kind: _LegendSwatch.solidLine,
@@ -285,9 +300,11 @@ class SvgRenderer {
         ),
         _LegendItem(
           kind: _LegendSwatch.solidLine,
-          color: theme.normalCurveColor.toSvgRgb(),
+          color: isPercentile
+              ? middleBandColor
+              : theme.normalCurveColor.toSvgRgb(),
           strokeWidth: 2,
-          label: isPercentile ? '15th / 85th' : '\u00B11 SD',
+          label: isPercentile ? middleBandLabel : '\u00B11 SD',
         ),
         _LegendItem(
           kind: _LegendSwatch.dashedLine,

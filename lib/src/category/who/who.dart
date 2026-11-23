@@ -113,9 +113,11 @@ final class WHOGrowthStandard {
     required Sex sex,
     required WHOGrowthStandardsBodyMassIndexMeasurement
     bodyMassIndexMeasurement,
+    bool oedemaExist = false,
   }) => WHOGrowthStandardsBodyMassIndexForAge(
     sex: sex,
     bodyMassIndexMeasurement: bodyMassIndexMeasurement,
+    oedemaExist: oedemaExist,
   );
 
   WHOGrowthStandardsHeadCircumferenceForAge headCircumferenceForAge({
@@ -163,7 +165,13 @@ final class WHOGrowthStandard {
     required Sex sex,
     required Age age,
     required Mass weight,
-  }) => WHOGrowthStandardsWeightForAge(sex: sex, age: age, weight: weight);
+    bool oedemaExist = false,
+  }) => WHOGrowthStandardsWeightForAge(
+    sex: sex,
+    age: age,
+    weight: weight,
+    oedemaExist: oedemaExist,
+  );
 
   WHOGrowthStandardsWeightForHeight weightForHeight({
     required Sex sex,
@@ -171,12 +179,14 @@ final class WHOGrowthStandard {
     required Length height,
     required Mass mass,
     required LengthHeightMeasurementPosition measure,
+    bool oedemaExist = false,
   }) => WHOGrowthStandardsWeightForHeight(
     sex: sex,
     age: age,
     height: height,
     weight: mass,
     measure: measure,
+    oedemaExist: oedemaExist,
   );
 
   WHOGrowthStandardsWeightForLength weightForLength({
@@ -185,12 +195,14 @@ final class WHOGrowthStandard {
     required Mass massMeasurementResult,
     required Age age,
     required LengthHeightMeasurementPosition measure,
+    bool oedemaExist = false,
   }) => WHOGrowthStandardsWeightForLength(
     sex: sex,
     length: lengthMeasurementResult,
     weight: massMeasurementResult,
     age: age,
     measure: measure,
+    oedemaExist: oedemaExist,
   );
 
   WHOGrowthStandardsHeadCircumferenceVelocityForAge

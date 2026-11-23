@@ -103,31 +103,30 @@ sealed class WHOGrowthStandardsWeightVelocityForAge extends VelocityBasedResult
         final whoGrowthStandardsWeightVelocityForAgeLMS = v1[vm];
 
         if (whoGrowthStandardsWeightVelocityForAgeLMS != null) {
-          final adjustedZScore = whoGrowthStandardsWeightVelocityForAgeLMS.lms
-              .adjustedZScore(
-                v2 + whoGrowthStandardsWeightVelocityForAgeLMS.delta,
-              );
-
           final pastMeasurementWithOedema = pastMeasurement.where(
             (e) => e.isOedema == true,
           );
 
           final isValid =
               pastMeasurementWithOedema.isEmpty ||
-              (pastMeasurementWithOedema.isNotEmpty &&
-                  !pastMeasurementWithOedema.map((e) => e.date).containsAnyOf([
-                    k2.dateAfter,
-                    k2.dateBefore,
-                  ]));
+              !pastMeasurementWithOedema.map((e) => e.date).containsAnyOf([
+                k2.dateAfter,
+                k2.dateBefore,
+              ]);
 
-          if (isValid) {
-            return MapEntry(vm, (
-              zScore: adjustedZScore.precision(precision),
-              percentile: (pnorm(adjustedZScore) * 100).precision(precision),
-            ));
+          if (!isValid) {
+            return MapEntry(vm, (zScore: double.nan, percentile: double.nan));
           }
 
-          return MapEntry(vm, (zScore: double.nan, percentile: double.nan));
+          final adjustedZScore = whoGrowthStandardsWeightVelocityForAgeLMS.lms
+              .adjustedZScore(
+                v2 + whoGrowthStandardsWeightVelocityForAgeLMS.delta,
+              );
+
+          return MapEntry(vm, (
+            zScore: adjustedZScore.precision(precision),
+            percentile: (pnorm(adjustedZScore) * 100).precision(precision),
+          ));
         }
         return MapEntry(vm, null);
       });

@@ -3388,6 +3388,562 @@ $AgeCopyWith<$Res> get age {
 
 
 /// @nodoc
+mixin _$IntergrowthHadlockEstimatedFetalWeightForAge {
+
+ GestationalAge get age; Mass get measurementResult;
+/// Create a copy of IntergrowthHadlockEstimatedFetalWeightForAge
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$IntergrowthHadlockEstimatedFetalWeightForAgeCopyWith<IntergrowthHadlockEstimatedFetalWeightForAge> get copyWith => _$IntergrowthHadlockEstimatedFetalWeightForAgeCopyWithImpl<IntergrowthHadlockEstimatedFetalWeightForAge>(this as IntergrowthHadlockEstimatedFetalWeightForAge, _$identity);
+
+  /// Serializes this IntergrowthHadlockEstimatedFetalWeightForAge to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is IntergrowthHadlockEstimatedFetalWeightForAge&&(identical(other.age, age) || other.age == age)&&(identical(other.measurementResult, measurementResult) || other.measurementResult == measurementResult));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,age,measurementResult);
+
+@override
+String toString() {
+  return 'IntergrowthHadlockEstimatedFetalWeightForAge(age: $age, measurementResult: $measurementResult)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $IntergrowthHadlockEstimatedFetalWeightForAgeCopyWith<$Res>  {
+  factory $IntergrowthHadlockEstimatedFetalWeightForAgeCopyWith(IntergrowthHadlockEstimatedFetalWeightForAge value, $Res Function(IntergrowthHadlockEstimatedFetalWeightForAge) _then) = _$IntergrowthHadlockEstimatedFetalWeightForAgeCopyWithImpl;
+@useResult
+$Res call({
+ GestationalAge age, Mass measurementResult
+});
+
+
+$GestationalAgeCopyWith<$Res> get age;
+
+}
+/// @nodoc
+class _$IntergrowthHadlockEstimatedFetalWeightForAgeCopyWithImpl<$Res>
+    implements $IntergrowthHadlockEstimatedFetalWeightForAgeCopyWith<$Res> {
+  _$IntergrowthHadlockEstimatedFetalWeightForAgeCopyWithImpl(this._self, this._then);
+
+  final IntergrowthHadlockEstimatedFetalWeightForAge _self;
+  final $Res Function(IntergrowthHadlockEstimatedFetalWeightForAge) _then;
+
+/// Create a copy of IntergrowthHadlockEstimatedFetalWeightForAge
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? age = null,Object? measurementResult = null,}) {
+  return _then(_self.copyWith(
+age: null == age ? _self.age : age // ignore: cast_nullable_to_non_nullable
+as GestationalAge,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
+as Mass,
+  ));
+}
+/// Create a copy of IntergrowthHadlockEstimatedFetalWeightForAge
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$GestationalAgeCopyWith<$Res> get age {
+  
+  return $GestationalAgeCopyWith<$Res>(_self.age, (value) {
+    return _then(_self.copyWith(age: value));
+  });
+}
+}
+
+
+/// Adds pattern-matching-related methods to [IntergrowthHadlockEstimatedFetalWeightForAge].
+extension IntergrowthHadlockEstimatedFetalWeightForAgePatterns on IntergrowthHadlockEstimatedFetalWeightForAge {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _IntergrowthHadlockEstimatedFetalWeightForAge value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _IntergrowthHadlockEstimatedFetalWeightForAge() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _IntergrowthHadlockEstimatedFetalWeightForAge value)  $default,){
+final _that = this;
+switch (_that) {
+case _IntergrowthHadlockEstimatedFetalWeightForAge():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _IntergrowthHadlockEstimatedFetalWeightForAge value)?  $default,){
+final _that = this;
+switch (_that) {
+case _IntergrowthHadlockEstimatedFetalWeightForAge() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( GestationalAge age,  Mass measurementResult)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _IntergrowthHadlockEstimatedFetalWeightForAge() when $default != null:
+return $default(_that.age,_that.measurementResult);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( GestationalAge age,  Mass measurementResult)  $default,) {final _that = this;
+switch (_that) {
+case _IntergrowthHadlockEstimatedFetalWeightForAge():
+return $default(_that.age,_that.measurementResult);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( GestationalAge age,  Mass measurementResult)?  $default,) {final _that = this;
+switch (_that) {
+case _IntergrowthHadlockEstimatedFetalWeightForAge() when $default != null:
+return $default(_that.age,_that.measurementResult);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _IntergrowthHadlockEstimatedFetalWeightForAge extends IntergrowthHadlockEstimatedFetalWeightForAge {
+   _IntergrowthHadlockEstimatedFetalWeightForAge({required this.age, required this.measurementResult}): super._();
+  factory _IntergrowthHadlockEstimatedFetalWeightForAge.fromJson(Map<String, dynamic> json) => _$IntergrowthHadlockEstimatedFetalWeightForAgeFromJson(json);
+
+@override final  GestationalAge age;
+@override final  Mass measurementResult;
+
+/// Create a copy of IntergrowthHadlockEstimatedFetalWeightForAge
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$IntergrowthHadlockEstimatedFetalWeightForAgeCopyWith<_IntergrowthHadlockEstimatedFetalWeightForAge> get copyWith => __$IntergrowthHadlockEstimatedFetalWeightForAgeCopyWithImpl<_IntergrowthHadlockEstimatedFetalWeightForAge>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$IntergrowthHadlockEstimatedFetalWeightForAgeToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _IntergrowthHadlockEstimatedFetalWeightForAge&&(identical(other.age, age) || other.age == age)&&(identical(other.measurementResult, measurementResult) || other.measurementResult == measurementResult));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,age,measurementResult);
+
+@override
+String toString() {
+  return 'IntergrowthHadlockEstimatedFetalWeightForAge(age: $age, measurementResult: $measurementResult)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$IntergrowthHadlockEstimatedFetalWeightForAgeCopyWith<$Res> implements $IntergrowthHadlockEstimatedFetalWeightForAgeCopyWith<$Res> {
+  factory _$IntergrowthHadlockEstimatedFetalWeightForAgeCopyWith(_IntergrowthHadlockEstimatedFetalWeightForAge value, $Res Function(_IntergrowthHadlockEstimatedFetalWeightForAge) _then) = __$IntergrowthHadlockEstimatedFetalWeightForAgeCopyWithImpl;
+@override @useResult
+$Res call({
+ GestationalAge age, Mass measurementResult
+});
+
+
+@override $GestationalAgeCopyWith<$Res> get age;
+
+}
+/// @nodoc
+class __$IntergrowthHadlockEstimatedFetalWeightForAgeCopyWithImpl<$Res>
+    implements _$IntergrowthHadlockEstimatedFetalWeightForAgeCopyWith<$Res> {
+  __$IntergrowthHadlockEstimatedFetalWeightForAgeCopyWithImpl(this._self, this._then);
+
+  final _IntergrowthHadlockEstimatedFetalWeightForAge _self;
+  final $Res Function(_IntergrowthHadlockEstimatedFetalWeightForAge) _then;
+
+/// Create a copy of IntergrowthHadlockEstimatedFetalWeightForAge
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? age = null,Object? measurementResult = null,}) {
+  return _then(_IntergrowthHadlockEstimatedFetalWeightForAge(
+age: null == age ? _self.age : age // ignore: cast_nullable_to_non_nullable
+as GestationalAge,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
+as Mass,
+  ));
+}
+
+/// Create a copy of IntergrowthHadlockEstimatedFetalWeightForAge
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$GestationalAgeCopyWith<$Res> get age {
+  
+  return $GestationalAgeCopyWith<$Res>(_self.age, (value) {
+    return _then(_self.copyWith(age: value));
+  });
+}
+}
+
+
+/// @nodoc
+mixin _$IntergrowthEstimatedFetalWeightForAge {
+
+ GestationalAge get age; Mass get measurementResult;
+/// Create a copy of IntergrowthEstimatedFetalWeightForAge
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$IntergrowthEstimatedFetalWeightForAgeCopyWith<IntergrowthEstimatedFetalWeightForAge> get copyWith => _$IntergrowthEstimatedFetalWeightForAgeCopyWithImpl<IntergrowthEstimatedFetalWeightForAge>(this as IntergrowthEstimatedFetalWeightForAge, _$identity);
+
+  /// Serializes this IntergrowthEstimatedFetalWeightForAge to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is IntergrowthEstimatedFetalWeightForAge&&(identical(other.age, age) || other.age == age)&&(identical(other.measurementResult, measurementResult) || other.measurementResult == measurementResult));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,age,measurementResult);
+
+@override
+String toString() {
+  return 'IntergrowthEstimatedFetalWeightForAge(age: $age, measurementResult: $measurementResult)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $IntergrowthEstimatedFetalWeightForAgeCopyWith<$Res>  {
+  factory $IntergrowthEstimatedFetalWeightForAgeCopyWith(IntergrowthEstimatedFetalWeightForAge value, $Res Function(IntergrowthEstimatedFetalWeightForAge) _then) = _$IntergrowthEstimatedFetalWeightForAgeCopyWithImpl;
+@useResult
+$Res call({
+ GestationalAge age, Mass measurementResult
+});
+
+
+$GestationalAgeCopyWith<$Res> get age;
+
+}
+/// @nodoc
+class _$IntergrowthEstimatedFetalWeightForAgeCopyWithImpl<$Res>
+    implements $IntergrowthEstimatedFetalWeightForAgeCopyWith<$Res> {
+  _$IntergrowthEstimatedFetalWeightForAgeCopyWithImpl(this._self, this._then);
+
+  final IntergrowthEstimatedFetalWeightForAge _self;
+  final $Res Function(IntergrowthEstimatedFetalWeightForAge) _then;
+
+/// Create a copy of IntergrowthEstimatedFetalWeightForAge
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? age = null,Object? measurementResult = null,}) {
+  return _then(_self.copyWith(
+age: null == age ? _self.age : age // ignore: cast_nullable_to_non_nullable
+as GestationalAge,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
+as Mass,
+  ));
+}
+/// Create a copy of IntergrowthEstimatedFetalWeightForAge
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$GestationalAgeCopyWith<$Res> get age {
+  
+  return $GestationalAgeCopyWith<$Res>(_self.age, (value) {
+    return _then(_self.copyWith(age: value));
+  });
+}
+}
+
+
+/// Adds pattern-matching-related methods to [IntergrowthEstimatedFetalWeightForAge].
+extension IntergrowthEstimatedFetalWeightForAgePatterns on IntergrowthEstimatedFetalWeightForAge {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _IntergrowthEstimatedFetalWeightForAge value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _IntergrowthEstimatedFetalWeightForAge() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _IntergrowthEstimatedFetalWeightForAge value)  $default,){
+final _that = this;
+switch (_that) {
+case _IntergrowthEstimatedFetalWeightForAge():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _IntergrowthEstimatedFetalWeightForAge value)?  $default,){
+final _that = this;
+switch (_that) {
+case _IntergrowthEstimatedFetalWeightForAge() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( GestationalAge age,  Mass measurementResult)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _IntergrowthEstimatedFetalWeightForAge() when $default != null:
+return $default(_that.age,_that.measurementResult);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( GestationalAge age,  Mass measurementResult)  $default,) {final _that = this;
+switch (_that) {
+case _IntergrowthEstimatedFetalWeightForAge():
+return $default(_that.age,_that.measurementResult);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( GestationalAge age,  Mass measurementResult)?  $default,) {final _that = this;
+switch (_that) {
+case _IntergrowthEstimatedFetalWeightForAge() when $default != null:
+return $default(_that.age,_that.measurementResult);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _IntergrowthEstimatedFetalWeightForAge extends IntergrowthEstimatedFetalWeightForAge {
+   _IntergrowthEstimatedFetalWeightForAge({required this.age, required this.measurementResult}): super._();
+  factory _IntergrowthEstimatedFetalWeightForAge.fromJson(Map<String, dynamic> json) => _$IntergrowthEstimatedFetalWeightForAgeFromJson(json);
+
+@override final  GestationalAge age;
+@override final  Mass measurementResult;
+
+/// Create a copy of IntergrowthEstimatedFetalWeightForAge
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$IntergrowthEstimatedFetalWeightForAgeCopyWith<_IntergrowthEstimatedFetalWeightForAge> get copyWith => __$IntergrowthEstimatedFetalWeightForAgeCopyWithImpl<_IntergrowthEstimatedFetalWeightForAge>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$IntergrowthEstimatedFetalWeightForAgeToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _IntergrowthEstimatedFetalWeightForAge&&(identical(other.age, age) || other.age == age)&&(identical(other.measurementResult, measurementResult) || other.measurementResult == measurementResult));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,age,measurementResult);
+
+@override
+String toString() {
+  return 'IntergrowthEstimatedFetalWeightForAge(age: $age, measurementResult: $measurementResult)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$IntergrowthEstimatedFetalWeightForAgeCopyWith<$Res> implements $IntergrowthEstimatedFetalWeightForAgeCopyWith<$Res> {
+  factory _$IntergrowthEstimatedFetalWeightForAgeCopyWith(_IntergrowthEstimatedFetalWeightForAge value, $Res Function(_IntergrowthEstimatedFetalWeightForAge) _then) = __$IntergrowthEstimatedFetalWeightForAgeCopyWithImpl;
+@override @useResult
+$Res call({
+ GestationalAge age, Mass measurementResult
+});
+
+
+@override $GestationalAgeCopyWith<$Res> get age;
+
+}
+/// @nodoc
+class __$IntergrowthEstimatedFetalWeightForAgeCopyWithImpl<$Res>
+    implements _$IntergrowthEstimatedFetalWeightForAgeCopyWith<$Res> {
+  __$IntergrowthEstimatedFetalWeightForAgeCopyWithImpl(this._self, this._then);
+
+  final _IntergrowthEstimatedFetalWeightForAge _self;
+  final $Res Function(_IntergrowthEstimatedFetalWeightForAge) _then;
+
+/// Create a copy of IntergrowthEstimatedFetalWeightForAge
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? age = null,Object? measurementResult = null,}) {
+  return _then(_IntergrowthEstimatedFetalWeightForAge(
+age: null == age ? _self.age : age // ignore: cast_nullable_to_non_nullable
+as GestationalAge,measurementResult: null == measurementResult ? _self.measurementResult : measurementResult // ignore: cast_nullable_to_non_nullable
+as Mass,
+  ));
+}
+
+/// Create a copy of IntergrowthEstimatedFetalWeightForAge
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$GestationalAgeCopyWith<$Res> get age {
+  
+  return $GestationalAgeCopyWith<$Res>(_self.age, (value) {
+    return _then(_self.copyWith(age: value));
+  });
+}
+}
+
+
+/// @nodoc
 mixin _$IntergrowthFetalGrowtFemurLengthForAge {
 
  Age get age; Length get measurementResult;
@@ -4772,6 +5328,296 @@ $AgeCopyWith<$Res> get age {
   
   return $AgeCopyWith<$Res>(_self.age, (value) {
     return _then(_self.copyWith(age: value));
+  });
+}
+}
+
+
+/// @nodoc
+mixin _$IntergrowthPregnancyDatingEstimate {
+
+ IntergrowthDatingMethod get method; double get exactDays; double get sdDays; Date? get examinationDate;
+/// Create a copy of IntergrowthPregnancyDatingEstimate
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$IntergrowthPregnancyDatingEstimateCopyWith<IntergrowthPregnancyDatingEstimate> get copyWith => _$IntergrowthPregnancyDatingEstimateCopyWithImpl<IntergrowthPregnancyDatingEstimate>(this as IntergrowthPregnancyDatingEstimate, _$identity);
+
+  /// Serializes this IntergrowthPregnancyDatingEstimate to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is IntergrowthPregnancyDatingEstimate&&(identical(other.method, method) || other.method == method)&&(identical(other.exactDays, exactDays) || other.exactDays == exactDays)&&(identical(other.sdDays, sdDays) || other.sdDays == sdDays)&&(identical(other.examinationDate, examinationDate) || other.examinationDate == examinationDate));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,method,exactDays,sdDays,examinationDate);
+
+@override
+String toString() {
+  return 'IntergrowthPregnancyDatingEstimate(method: $method, exactDays: $exactDays, sdDays: $sdDays, examinationDate: $examinationDate)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $IntergrowthPregnancyDatingEstimateCopyWith<$Res>  {
+  factory $IntergrowthPregnancyDatingEstimateCopyWith(IntergrowthPregnancyDatingEstimate value, $Res Function(IntergrowthPregnancyDatingEstimate) _then) = _$IntergrowthPregnancyDatingEstimateCopyWithImpl;
+@useResult
+$Res call({
+ IntergrowthDatingMethod method, double exactDays, double sdDays, Date? examinationDate
+});
+
+
+$DateCopyWith<$Res>? get examinationDate;
+
+}
+/// @nodoc
+class _$IntergrowthPregnancyDatingEstimateCopyWithImpl<$Res>
+    implements $IntergrowthPregnancyDatingEstimateCopyWith<$Res> {
+  _$IntergrowthPregnancyDatingEstimateCopyWithImpl(this._self, this._then);
+
+  final IntergrowthPregnancyDatingEstimate _self;
+  final $Res Function(IntergrowthPregnancyDatingEstimate) _then;
+
+/// Create a copy of IntergrowthPregnancyDatingEstimate
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? method = null,Object? exactDays = null,Object? sdDays = null,Object? examinationDate = freezed,}) {
+  return _then(_self.copyWith(
+method: null == method ? _self.method : method // ignore: cast_nullable_to_non_nullable
+as IntergrowthDatingMethod,exactDays: null == exactDays ? _self.exactDays : exactDays // ignore: cast_nullable_to_non_nullable
+as double,sdDays: null == sdDays ? _self.sdDays : sdDays // ignore: cast_nullable_to_non_nullable
+as double,examinationDate: freezed == examinationDate ? _self.examinationDate : examinationDate // ignore: cast_nullable_to_non_nullable
+as Date?,
+  ));
+}
+/// Create a copy of IntergrowthPregnancyDatingEstimate
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$DateCopyWith<$Res>? get examinationDate {
+    if (_self.examinationDate == null) {
+    return null;
+  }
+
+  return $DateCopyWith<$Res>(_self.examinationDate!, (value) {
+    return _then(_self.copyWith(examinationDate: value));
+  });
+}
+}
+
+
+/// Adds pattern-matching-related methods to [IntergrowthPregnancyDatingEstimate].
+extension IntergrowthPregnancyDatingEstimatePatterns on IntergrowthPregnancyDatingEstimate {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _IntergrowthPregnancyDatingEstimate value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _IntergrowthPregnancyDatingEstimate() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _IntergrowthPregnancyDatingEstimate value)  $default,){
+final _that = this;
+switch (_that) {
+case _IntergrowthPregnancyDatingEstimate():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _IntergrowthPregnancyDatingEstimate value)?  $default,){
+final _that = this;
+switch (_that) {
+case _IntergrowthPregnancyDatingEstimate() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( IntergrowthDatingMethod method,  double exactDays,  double sdDays,  Date? examinationDate)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _IntergrowthPregnancyDatingEstimate() when $default != null:
+return $default(_that.method,_that.exactDays,_that.sdDays,_that.examinationDate);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( IntergrowthDatingMethod method,  double exactDays,  double sdDays,  Date? examinationDate)  $default,) {final _that = this;
+switch (_that) {
+case _IntergrowthPregnancyDatingEstimate():
+return $default(_that.method,_that.exactDays,_that.sdDays,_that.examinationDate);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( IntergrowthDatingMethod method,  double exactDays,  double sdDays,  Date? examinationDate)?  $default,) {final _that = this;
+switch (_that) {
+case _IntergrowthPregnancyDatingEstimate() when $default != null:
+return $default(_that.method,_that.exactDays,_that.sdDays,_that.examinationDate);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _IntergrowthPregnancyDatingEstimate extends IntergrowthPregnancyDatingEstimate {
+   _IntergrowthPregnancyDatingEstimate({required this.method, required this.exactDays, required this.sdDays, this.examinationDate}): super._();
+  factory _IntergrowthPregnancyDatingEstimate.fromJson(Map<String, dynamic> json) => _$IntergrowthPregnancyDatingEstimateFromJson(json);
+
+@override final  IntergrowthDatingMethod method;
+@override final  double exactDays;
+@override final  double sdDays;
+@override final  Date? examinationDate;
+
+/// Create a copy of IntergrowthPregnancyDatingEstimate
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$IntergrowthPregnancyDatingEstimateCopyWith<_IntergrowthPregnancyDatingEstimate> get copyWith => __$IntergrowthPregnancyDatingEstimateCopyWithImpl<_IntergrowthPregnancyDatingEstimate>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$IntergrowthPregnancyDatingEstimateToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _IntergrowthPregnancyDatingEstimate&&(identical(other.method, method) || other.method == method)&&(identical(other.exactDays, exactDays) || other.exactDays == exactDays)&&(identical(other.sdDays, sdDays) || other.sdDays == sdDays)&&(identical(other.examinationDate, examinationDate) || other.examinationDate == examinationDate));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,method,exactDays,sdDays,examinationDate);
+
+@override
+String toString() {
+  return 'IntergrowthPregnancyDatingEstimate(method: $method, exactDays: $exactDays, sdDays: $sdDays, examinationDate: $examinationDate)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$IntergrowthPregnancyDatingEstimateCopyWith<$Res> implements $IntergrowthPregnancyDatingEstimateCopyWith<$Res> {
+  factory _$IntergrowthPregnancyDatingEstimateCopyWith(_IntergrowthPregnancyDatingEstimate value, $Res Function(_IntergrowthPregnancyDatingEstimate) _then) = __$IntergrowthPregnancyDatingEstimateCopyWithImpl;
+@override @useResult
+$Res call({
+ IntergrowthDatingMethod method, double exactDays, double sdDays, Date? examinationDate
+});
+
+
+@override $DateCopyWith<$Res>? get examinationDate;
+
+}
+/// @nodoc
+class __$IntergrowthPregnancyDatingEstimateCopyWithImpl<$Res>
+    implements _$IntergrowthPregnancyDatingEstimateCopyWith<$Res> {
+  __$IntergrowthPregnancyDatingEstimateCopyWithImpl(this._self, this._then);
+
+  final _IntergrowthPregnancyDatingEstimate _self;
+  final $Res Function(_IntergrowthPregnancyDatingEstimate) _then;
+
+/// Create a copy of IntergrowthPregnancyDatingEstimate
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? method = null,Object? exactDays = null,Object? sdDays = null,Object? examinationDate = freezed,}) {
+  return _then(_IntergrowthPregnancyDatingEstimate(
+method: null == method ? _self.method : method // ignore: cast_nullable_to_non_nullable
+as IntergrowthDatingMethod,exactDays: null == exactDays ? _self.exactDays : exactDays // ignore: cast_nullable_to_non_nullable
+as double,sdDays: null == sdDays ? _self.sdDays : sdDays // ignore: cast_nullable_to_non_nullable
+as double,examinationDate: freezed == examinationDate ? _self.examinationDate : examinationDate // ignore: cast_nullable_to_non_nullable
+as Date?,
+  ));
+}
+
+/// Create a copy of IntergrowthPregnancyDatingEstimate
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$DateCopyWith<$Res>? get examinationDate {
+    if (_self.examinationDate == null) {
+    return null;
+  }
+
+  return $DateCopyWith<$Res>(_self.examinationDate!, (value) {
+    return _then(_self.copyWith(examinationDate: value));
   });
 }
 }

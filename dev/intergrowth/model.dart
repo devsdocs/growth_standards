@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_dynamic_calls, for_in_of_invalid_type, avoid_print, argument_type_not_assignable, constant_identifier_names
+// ignore_for_file: avoid_dynamic_calls, argument_type_not_assignable, constant_identifier_names
 
 import 'dart:convert';
 

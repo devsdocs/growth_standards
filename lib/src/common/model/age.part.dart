@@ -17,38 +17,21 @@ class TimeIntervalCount {
       DateTimeUtils.timeDifference(fromDate: dob, toDate: day);
 
   TimeDifferenceInYearMonthsWeeksDays timeUntilNextBirthday(DateTime fromDate) {
-    final DateTime endDate = fromDate;
-    final DateTime tempDate = DateTime(endDate.year, dob.month, dob.day);
-    final DateTime nextBirthdayDate = tempDate.isBefore(endDate)
-        ? _add(
-            date: tempDate,
-            duration: TimeDifferenceInYearMonthsWeeksDays._(1),
-          )
-        : tempDate;
+    final DateTime endDate = DateTimeUtils.startOfDay(fromDate);
+    DateTime birthdayInYear(int year) {
+      final maxDay = DateTimeUtils.getDaysInMonth(year, dob.month);
+      return DateTime(year, dob.month, dob.day > maxDay ? maxDay : dob.day);
+    }
+
+    final DateTime thisYearBirthday = birthdayInYear(endDate.year);
+    final DateTime nextBirthdayDate = thisYearBirthday.isBefore(endDate)
+        ? birthdayInYear(endDate.year + 1)
+        : thisYearBirthday;
 
     return DateTimeUtils.timeDifference(
       fromDate: endDate,
       toDate: nextBirthdayDate,
     );
-  }
-
-  DateTime _add({
-    required DateTime date,
-    required TimeDifferenceInYearMonthsWeeksDays duration,
-  }) {
-    int years = date.year + duration.years;
-    years += (date.month + duration.months) ~/ DateTime.monthsPerYear;
-    int months = (date.month + duration.months) % DateTime.monthsPerYear;
-
-    // Fix the edge case where month becomes 0 - convert to December of previous year
-    if (months == 0) {
-      months = 12;
-      years -= 1;
-    }
-
-    final int days = date.day + duration.days - 1;
-
-    return DateTime(years, months).add(Duration(days: days));
   }
 }
 
@@ -796,17 +779,21 @@ extension TimeDifferenceExtension on TimeDifferenceInYearMonthsWeeksDays {
     return (years * 12) + months + (weeks / 4.33) + (days / 30);
   }
 
-  /// Add another time difference
+  /// Add another time difference (normalizing days → weeks and months → years)
   TimeDifferenceInYearMonthsWeeksDays add(
     TimeDifferenceInYearMonthsWeeksDays other,
   ) {
-    // This is a simplistic implementation that doesn't handle overflow
-    // A more complex implementation would normalize the results
+    final totalDays = days + other.days;
+    final totalWeeks = weeks + other.weeks + (totalDays ~/ 7);
+    final normDays = totalDays % 7;
+    final totalMonths = months + other.months;
+    final totalYears = years + other.years + (totalMonths ~/ 12);
+    final normMonths = totalMonths % 12;
     return TimeDifferenceInYearMonthsWeeksDays._(
-      years + other.years,
-      months + other.months,
-      weeks + other.weeks,
-      days + other.days,
+      totalYears,
+      normMonths,
+      totalWeeks,
+      normDays,
     );
   }
 
@@ -891,11 +878,14 @@ class ExtendedDateUtils {
       final month = int.parse(match.group(2)!);
       final day = int.parse(match.group(3)!);
 
-      try {
-        return Date.fromDateTime(DateTime(year, month, day));
-      } catch (e) {
+      if (year < 1 ||
+          month < 1 ||
+          month > 12 ||
+          day < 1 ||
+          day > DateTimeUtils.getDaysInMonth(year, month)) {
         return null;
       }
+      return Date.fromDateTime(DateTime(year, month, day));
     }
 
     // Try slash formats (dd/MM/yyyy or MM/dd/yyyy)
@@ -905,6 +895,8 @@ class ExtendedDateUtils {
       final val1 = int.parse(match.group(1)!);
       final val2 = int.parse(match.group(2)!);
       final year = int.parse(match.group(3)!);
+
+      if (year < 1) return null;
 
       // Try dd/MM/yyyy first (day = val1, month = val2)
       if (val2 >= 1 &&
@@ -963,14 +955,14 @@ class ExtendedDateUtils {
 
 /// Extension to add age comparison functionality
 extension AgeComparisonExtension on Age {
-  /// Check if this age is older than another age
+  /// Check if this age is older than another age (respecting [Age.observedDate])
   bool isOlderThan(Age other) {
-    return dateOfBirth.isBefore(other.dateOfBirth);
+    return ageInTotalDaysByNow > other.ageInTotalDaysByNow;
   }
 
-  /// Check if this age is younger than another age
+  /// Check if this age is younger than another age (respecting [Age.observedDate])
   bool isYoungerThan(Age other) {
-    return dateOfBirth.isAfter(other.dateOfBirth);
+    return ageInTotalDaysByNow < other.ageInTotalDaysByNow;
   }
 
   /// Calculate the age difference between two people

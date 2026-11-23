@@ -17,8 +17,15 @@ sealed class BodyMassIndex with _$BodyMassIndex {
   const BodyMassIndex._();
 
   num get value {
-    final toMeterSquare = pow(lengthHeight.toMeter.value.toDouble(), 2);
+    final meters = lengthHeight.toMeter.value.toDouble();
     final toKg = weight.toKilogram.value.toDouble();
+    if (meters <= 0 || toKg <= 0) {
+      throw ArgumentError(
+        'Length/height and weight must be strictly positive '
+        '(got length=${meters}m, weight=${toKg}kg)',
+      );
+    }
+    final toMeterSquare = pow(meters, 2);
 
     return toKg / toMeterSquare;
   }

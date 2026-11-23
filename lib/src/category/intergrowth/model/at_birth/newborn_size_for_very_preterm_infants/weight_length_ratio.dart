@@ -79,6 +79,12 @@ sealed class NewbornWeightLengthRatioMeasurement
   }) {
     final lengthInMeter = length.toMeter.value.toDouble();
     final weightInKilogram = weight.toKilogram.value.toDouble();
+    if (lengthInMeter <= 0 || weightInKilogram <= 0) {
+      throw ArgumentError(
+        'Length and weight must be strictly positive '
+        '(got length=${lengthInMeter}m, weight=${weightInKilogram}kg)',
+      );
+    }
     final ratio = weightInKilogram / lengthInMeter;
 
     return NewbornWeightLengthRatioMeasurement(ratio);

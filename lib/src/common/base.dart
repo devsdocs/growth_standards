@@ -69,6 +69,9 @@ abstract class LMSContext {
   const LMSContext();
   LMS get lms;
   num get delta => 0;
+
+  /// Measurement value on the natural reporting scale for a given [zScore].
+  num valueAtZScore(num zScore) => lms.standardDeviation(zScore) - delta;
 }
 
 sealed class BaseData {

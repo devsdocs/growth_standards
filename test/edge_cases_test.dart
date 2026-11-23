@@ -777,5 +777,314 @@ void main() {
       expect(gwgModel.title, 'INTERGROWTH-21st Gestational Weight Gain');
       expect(gwgModel.subtitle, contains('24.0 wks'));
     });
+
+    test('CDC 2022 BMI-for-age SVG curves use extended sigma above P95', () {
+      final dob = Date(year: 2004, month: Months.january, date: 1);
+      final obs = Date(year: 2024, month: Months.january, date: 1);
+      final r = GrowthStandard.cdc.from2YearsAndAbove.bodyMassIndexForAge(
+        sex: Sex.male,
+        age: Age(dob, observedDate: obs),
+        bodyMassIndexMeasurement: CDCBodyMassIndexMeasurement(35.0),
+      );
+      final model = GrowthChartModel.fromResults([r]);
+      // Without CDC 2022 sigma extension, +3 SD at L=-2.2 explodes to ~147 kg/m^2.
+      expect(model.yMax, lessThan(60.0));
+      final plus3At240 = r.lmsData.valueAtZScore(3).toDouble();
+      final roundTrip = GrowthStandard.cdc.from2YearsAndAbove
+          .bodyMassIndexForAge(
+            sex: Sex.male,
+            age: Age(dob, observedDate: obs),
+            bodyMassIndexMeasurement: CDCBodyMassIndexMeasurement(plus3At240),
+          );
+      expect(roundTrip.zScore(), closeTo(3.0, 0.02));
+    });
+
+    test('Date.difference is signed and Date +/- handles negative durations', () {
+      final d1 = Date(year: 2024, month: Months.january, date: 1);
+      final d2 = Date(year: 2024, month: Months.january, date: 11);
+      expect(d1.difference(d2).inDays, -10);
+      expect(d2.difference(d1).inDays, 10);
+      expect(d2 + const Duration(days: -5), Date(year: 2024, month: Months.january, date: 6));
+      expect(d1 - const Duration(days: -5), Date(year: 2024, month: Months.january, date: 6));
+      expect(
+        () => GestationalAge.fromLMP(lmpDate: d2, currentOrBirthDate: d1),
+        throwsArgumentError,
+      );
+      expect(
+        () => PostmenstrualAge.fromLMP(lmpDate: d2, currentDate: d1),
+        throwsArgumentError,
+      );
+      expect(
+        () => PostmenstrualAge.fromGestationalAge(
+          const GestationalAge(weeks: 30),
+          daysOfLife: -1,
+        ),
+        throwsArgumentError,
+      );
+    });
+
+    test('BodyMassIndex and NewbornWeightLengthRatio reject non-positive inputs', () {
+      expect(
+        () => BodyMassIndex(
+          lengthHeight: Length$Centimeter(0),
+          weight: Mass$Kilogram(10),
+        ).value,
+        throwsArgumentError,
+      );
+      expect(
+        () => BodyMassIndex(
+          lengthHeight: Length$Centimeter(100),
+          weight: Mass$Kilogram(-5),
+        ).value,
+        throwsArgumentError,
+      );
+      expect(
+        () => NewbornWeightLengthRatioMeasurement.fromMeasurement(
+          length: Length$Centimeter(0),
+          weight: Mass$Kilogram(3),
+        ),
+        throwsArgumentError,
+      );
+    });
+
+    test('WHO oedema SVG and oedema weight-velocity loss never emit NaN text or throw', () {
+      final who = GrowthStandard.who.fromBirthTo5Years;
+      final wfaOedema = who.weightForAge(
+        sex: Sex.male,
+        age: Age.byDaysAgo(180),
+        weight: Mass$Kilogram(7.5),
+        oedemaExist: true,
+      );
+      final svg = wfaOedema.toSvg();
+      expect(svg, isNot(contains('NaN')));
+      expect(svg, contains('N/A'));
+
+      final dob = Date(year: 2024, month: Months.january, date: 1);
+      final d1 = Date(year: 2024, month: Months.march, date: 1);
+      final d2 = Date(year: 2024, month: Months.may, date: 1);
+      // Extreme fluid loss (-3 kg) on an oedema-flagged visit must return NaN, not throw
+      final wv = who.weightVelocityForAge(
+        sex: Sex.male,
+        age: Age(dob, observedDate: d2),
+        pastMeasurement: [
+          MassMeasurementHistory(d1, Mass$Kilogram(7.0), isOedema: true),
+          MassMeasurementHistory(d2, Mass$Kilogram(4.0)),
+        ],
+      );
+      final res = wv.zScorePercentileMap()[VelocityIncrement.$2]!.values.single;
+      expect(res.zScore.isNaN, isTrue);
+      expect(wv.toSvg(), isNot(contains('NaN')));
+
+      // LengthVelocity handles explicit null measurementPosition without crashing
+      final lv = who.lengthVelocityForAge(
+        sex: Sex.male,
+        age: Age(dob, observedDate: d2),
+        pastMeasurement: [
+          LengthMeasurementHistory(d1, Length$Centimeter(58), measurementPosition: null),
+          LengthMeasurementHistory(d2, Length$Centimeter(64), measurementPosition: null),
+        ],
+      );
+      expect(lv.zScorePercentileMap()[VelocityIncrement.$2], isNotNull);
+    });
+
+    test('math functions preserve NaN/Infinity semantics instead of coercing NaN to 0', () {
+      const lms = LMS(l: 1.0, m: 3.5, s: 0.12);
+      expect(pnorm(double.nan).isNaN, isTrue);
+      expect(pnorm(double.infinity), 1.0);
+      expect(pnorm(double.negativeInfinity), 0.0);
+      expect(qnorm(double.nan).isNaN, isTrue);
+      expect(standardDeviationCalculation(double.nan, lms: lms).isNaN, isTrue);
+      expect(() => zScoreCalculation(double.nan, lms: lms), throwsArgumentError);
+      expect(
+        () => adjustedZScoreCalculation(double.nan, lms: lms),
+        throwsArgumentError,
+      );
+      expect(
+        () => zScoreCalculation(double.infinity, lms: lms),
+        throwsArgumentError,
+      );
+    });
+
+    test('SVG renderers skip undefined Box-Cox tail points (WHO LV/HV and CDC Weight-for-Stature)', () {
+      final dob = Date(year: 2024, month: Months.january, date: 1);
+      final obs = Date(year: 2025, month: Months.january, date: 1);
+      final who = GrowthStandard.who.fromBirthTo5Years;
+      final lv = who.lengthVelocityForAge(
+        sex: Sex.male,
+        age: Age(dob, observedDate: obs),
+        pastMeasurement: [
+          LengthMeasurementHistory(dob, Length$Centimeter(50)),
+          LengthMeasurementHistory(dob.addDays(61), Length$Centimeter(58)),
+        ],
+      );
+      final hv = who.headCircumferenceVelocityForAge(
+        sex: Sex.male,
+        age: Age(dob, observedDate: obs),
+        pastMeasurement: [
+          LengthMeasurementHistory(dob, Length$Centimeter(34.5)),
+          LengthMeasurementHistory(dob.addDays(61), Length$Centimeter(39.0)),
+        ],
+      );
+      final cdcWtStat = GrowthStandard.cdc.from2YearsAndAbove.weightForStature(
+        sex: Sex.male,
+        age: Age(Date(year: 2020, month: Months.january, date: 1), observedDate: obs),
+        height: Length$Centimeter(120),
+        weight: Mass$Kilogram(22),
+        measure: LengthHeightMeasurementPosition.standing,
+      );
+      for (final svg in [lv.toSvg(), hv.toSvg(), cdcWtStat.toSvg()]) {
+        expect(svg, contains('<svg'));
+        expect(svg, isNot(contains('NaN')));
+        expect(svg, isNot(contains('Infinity')));
+      }
+    });
+
+    test('ExtendedDateUtils.tryParse, TimeDifferenceExtension.add, and AgeComparisonExtension handle edge cases', () {
+      expect(ExtendedDateUtils.tryParse('2024-02-31'), isNull);
+      expect(ExtendedDateUtils.tryParse('2024-13-01'), isNull);
+      expect(ExtendedDateUtils.tryParse('2024-02-29'), Date(year: 2024, month: Months.february, date: 29));
+
+      final td5d = DateTimeUtils.timeDifference(
+        fromDate: DateTime(2024),
+        toDate: DateTime(2024, 1, 6),
+      );
+      final sum = td5d.add(td5d);
+      expect(sum.weeks, 1);
+      expect(sum.days, 3);
+
+      final age1y = Age(
+        Date(year: 2020, month: Months.january, date: 1),
+        observedDate: Date(year: 2021, month: Months.january, date: 1),
+      );
+      final age3y = Age(
+        Date(year: 2021, month: Months.january, date: 1),
+        observedDate: Date(year: 2024, month: Months.january, date: 1),
+      );
+      expect(age1y.isOlderThan(age3y), isFalse);
+      expect(age1y.isYoungerThan(age3y), isTrue);
+    });
+
+    test('DateFormatExtension.format single-pass token replacement and year/month bounds', () {
+      final mar = Date(year: 2024, month: Months.march, date: 5);
+      final may = Date(year: 2024, month: Months.may, date: 15);
+      expect(mar.format('dd MMM yyyy'), '05 March 2024');
+      expect(may.format('dd MMM yyyy'), '15 May 2024');
+      expect(mar.format('yyyy-M-d'), '2024-3-5');
+      expect(ExtendedDateUtils.tryParse('0000-01-01'), isNull);
+      expect(ExtendedDateUtils.tryParse('01/01/0000'), isNull);
+      expect(() => DateRange.forMonth(2024, 13), throwsRangeError);
+      expect(() => parseIncrement(5), throwsArgumentError);
+    });
+
+    test('GrowthChartModel detects CDC & INTERGROWTH titles, standard percentiles, sorting, and empty guard', () {
+      final obs = Date(year: 2025, month: Months.june, date: 15);
+      final age10y = Age(obs.subtractMonths(120), observedDate: obs);
+      final age1y = Age(obs.subtractMonths(12), observedDate: obs);
+      final cdc2 = GrowthStandard.cdc.from2YearsAndAbove;
+      final cdcInf = GrowthStandard.cdc.fromBirthTo36Months;
+
+      final cdcBmi = cdc2.bodyMassIndexForAge(
+        sex: Sex.male,
+        age: age10y,
+        bodyMassIndexMeasurement: CDCBodyMassIndexMeasurement(16.6),
+      );
+      final cdcStat = cdc2.statureForAge(
+        sex: Sex.male,
+        age: age10y,
+        lengthHeight: Length$Centimeter(138),
+        measure: LengthHeightMeasurementPosition.standing,
+      );
+      final cdcInfLen = cdcInf.lengthForAge(
+        sex: Sex.male,
+        age: age1y,
+        lengthHeight: Length$Centimeter(76),
+        measure: LengthHeightMeasurementPosition.recumbent,
+      );
+      final cdcInfHc = cdcInf.headCircumferenceForAge(
+        sex: Sex.male,
+        age: age1y,
+        measurementResult: Length$Centimeter(46),
+      );
+      final igNewborn = GrowthStandard.intergrowth.atBirth.newbornSizeWeight(
+        sex: Sex.male,
+        gestationalAge: const GestationalAge(weeks: 39, days: 2),
+        weight: Mass$Kilogram(3.3),
+      );
+
+      final bmiModel = GrowthChartModel.fromResults(
+        [cdcBmi],
+        config: const GrowthChartConfig(displayMode: GrowthChartDisplayMode.percentile),
+      );
+      expect(bmiModel.title, 'CDC BMI-for-Age — Boys');
+      expect(bmiModel.config.percentileLines, [3, 10, 25, 50, 75, 90, 97]);
+      expect(cdcBmi.toSvg(config: const GrowthChartConfig(displayMode: GrowthChartDisplayMode.percentile)), contains('25th / 75th'));
+
+      expect(GrowthChartModel.fromResults([cdcStat]).title, 'CDC Stature-for-Age — Boys');
+      expect(GrowthChartModel.fromResults([cdcInfLen]).title, 'CDC Length-for-Age — Boys');
+      expect(GrowthChartModel.fromResults([cdcInfHc]).title, 'CDC Head Circumference-for-Age — Boys');
+
+      final igModel = GrowthChartModel.fromResults(
+        [igNewborn],
+        config: const GrowthChartConfig(displayMode: GrowthChartDisplayMode.percentile),
+      );
+      expect(igModel.config.percentileLines, [3, 10, 50, 90, 97]);
+      expect(igNewborn.toSvg(config: const GrowthChartConfig(displayMode: GrowthChartDisplayMode.percentile)), contains('10th / 90th'));
+
+      // Empty guard & X sorting
+      expect(() => GrowthChartModel.fromResults([]), throwsArgumentError);
+      final dob = Date(year: 2024, month: Months.january, date: 1);
+      final who = GrowthStandard.who.fromBirthTo5Years;
+      final rLate = who.weightForAge(sex: Sex.male, age: Age(dob, observedDate: dob.addDays(180)), weight: Mass$Kilogram(8.0));
+      final rEarly = who.weightForAge(sex: Sex.male, age: Age(dob, observedDate: dob.addDays(30)), weight: Mass$Kilogram(4.5));
+      final sortedModel = GrowthChartModel.fromResults([rLate, rEarly]);
+      expect(sortedModel.observationPoints.first.x, 30.0);
+      expect(sortedModel.observationPoints.last.x, 180.0);
+
+      // WHO 5-19y monthly ticks align to exact year multiples (72, 84, ...)
+      final who5Wfa = GrowthStandard.who.from5YearsAndAbove.weightForAge(
+        sex: Sex.male,
+        age: Age(obs.subtractMonths(84), observedDate: obs),
+        weight: Mass$Kilogram(23),
+      );
+      final who5Model = GrowthChartModel.fromResults([who5Wfa]);
+      expect(who5Model.xTicks.first.value, 72.0);
+      expect(who5Model.xTicks.last.value, 120.0);
+    });
+
+    test('WHO Velocity chart accurately inverts adjustedZScore for extreme gains (|z| > 3)', () {
+      final dob = Date(year: 2024, month: Months.january, date: 1);
+      final d12 = dob.addMonths(12);
+      final d14 = dob.addMonths(14);
+      final wv = GrowthStandard.who.fromBirthTo5Years.weightVelocityForAge(
+        sex: Sex.male,
+        age: Age(dob, observedDate: d14),
+        pastMeasurement: [
+          MassMeasurementHistory(d12, Mass$Kilogram(10.0)),
+          MassMeasurementHistory(d14, Mass$Kilogram(15.0)), // +5.0 kg gain (z >> +3)
+        ],
+      );
+      final model = GrowthChartModel.fromVelocityResult(wv);
+      expect(model.observationPoints, hasLength(1));
+      expect(model.observationPoints.first.y, closeTo(5.0, 0.02));
+      expect(wv.toSvg(), isNot(contains('NaN')));
+    });
+
+    test('GrowthTrajectory.who5To18BmiForAge and cdcBmiForAge accept typed BMI and LengthMassObservation', () {
+      final dob = Date(year: 2015, month: Months.january, date: 1);
+      final visit1 = Date(year: 2023, month: Months.january, date: 1);
+      final visit2 = Date(year: 2024, month: Months.january, date: 1);
+
+      final whoTraj = GrowthTrajectory.who5To18BmiForAge(sex: Sex.male, dateOfBirth: dob);
+      whoTraj.add(visit1, WHOGrowthReferenceBodyMassIndexMeasurement(16.0));
+      whoTraj.add(visit2, LengthMassObservation(length: Length$Centimeter(134), weight: Mass$Kilogram(30)));
+      expect(whoTraj.length, 2);
+      expect(whoTraj.zScores.every((z) => z.isFinite), isTrue);
+
+      final cdcTraj = GrowthTrajectory.cdcBmiForAge(sex: Sex.male, dateOfBirth: dob);
+      cdcTraj.add(visit1, CDCBodyMassIndexMeasurement(16.0));
+      cdcTraj.add(visit2, LengthMassObservation(length: Length$Centimeter(134), weight: Mass$Kilogram(30)));
+      expect(cdcTraj.length, 2);
+      expect(cdcTraj.zScores.every((z) => z.isFinite), isTrue);
+    });
   });
 }

@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:growth_standards/growth_standards.dart';
 import 'package:growth_standards/src/common/extension.dart';
@@ -50,11 +52,13 @@ part 'model/at_birth/newborn_size_for_very_preterm_infants/weight_length_ratio.d
 part 'model/during_pregnancy/early_pregnancy_dating/crl.dart';
 part 'model/during_pregnancy/fetal_growth/abdominal_circumference.dart';
 part 'model/during_pregnancy/fetal_growth/biparietal_diameter.dart';
+part 'model/during_pregnancy/fetal_growth/estimated_fetal_weight.dart';
 part 'model/during_pregnancy/fetal_growth/femur_length.dart';
 part 'model/during_pregnancy/fetal_growth/head_circumference.dart';
 part 'model/during_pregnancy/fetal_growth/occipitofrontal_diameter.dart';
 part 'model/during_pregnancy/fetal_size_in_early_pregnancy/fetal_size_in_early_pregnancy.dart';
 part 'model/during_pregnancy/gestational_weight_gain/gestational_weight_gain.dart';
+part 'model/during_pregnancy/pregnancy_dating/pregnancy_dating.dart';
 part 'model/during_pregnancy/symphysisfundal_height/symphysisfundal_height.dart';
 part 'model/postnatal/postnatal_growth_of_preterm_infants/head_circumference.dart';
 part 'model/postnatal/postnatal_growth_of_preterm_infants/length.dart';
@@ -258,12 +262,31 @@ class IntergrowthDuringPregnancyData {
 
   IntergrowthSymphysisFundalHeightForAgeData get symphysisfundalHeightData =>
       IntergrowthSymphysisFundalHeightForAgeData();
+
+  IntergrowthHadlockEstimatedFetalWeightForAgeData
+  get estimatedFetalWeightHadlockData =>
+      IntergrowthHadlockEstimatedFetalWeightForAgeData();
+
+  IntergrowthEstimatedFetalWeightForAgeData get estimatedFetalWeightData =>
+      IntergrowthEstimatedFetalWeightForAgeData();
 }
 
 class IntergrowthDuringPregnancyFromJson {
   IntergrowthEarlyPregnancyDatingForCRL earlyPregnancyCRL(
     Map<String, dynamic> json,
   ) => IntergrowthEarlyPregnancyDatingForCRL.fromJson(json);
+
+  IntergrowthHadlockEstimatedFetalWeightForAge estimatedFetalWeightHadlock(
+    Map<String, dynamic> json,
+  ) => IntergrowthHadlockEstimatedFetalWeightForAge.fromJson(json);
+
+  IntergrowthEstimatedFetalWeightForAge estimatedFetalWeight(
+    Map<String, dynamic> json,
+  ) => IntergrowthEstimatedFetalWeightForAge.fromJson(json);
+
+  IntergrowthPregnancyDatingEstimate pregnancyDatingEstimate(
+    Map<String, dynamic> json,
+  ) => IntergrowthPregnancyDatingEstimate.fromJson(json);
 
   IntergrowthFetalGrowtAbdominalCircumferenceForAge fetalAbdominalCircumference(
     Map<String, dynamic> json,
@@ -379,6 +402,137 @@ class IntergrowthDuringPregnancy {
     age: gestationalAge,
     length: measurementResult,
   );
+
+  /// INTERGROWTH-21st standards for Hadlock's Estimated Fetal Weight (18+0 to 41+0 weeks GA).
+  IntergrowthHadlockEstimatedFetalWeightForAge estimatedFetalWeightHadlock({
+    required GestationalAge gestationalAge,
+    required Mass estimatedWeight,
+  }) => IntergrowthHadlockEstimatedFetalWeightForAge(
+    age: gestationalAge,
+    measurementResult: estimatedWeight,
+  );
+
+  /// Computes Hadlock EFW from fetal HC, AC, and FL, then evaluates INTERGROWTH-21st Hadlock EFW standards (18+0 to 41+0 weeks GA).
+  IntergrowthHadlockEstimatedFetalWeightForAge
+  estimatedFetalWeightHadlockFromBiometry({
+    required GestationalAge gestationalAge,
+    required Length headCircumference,
+    required Length abdominalCircumference,
+    required Length femurLength,
+  }) => IntergrowthHadlockEstimatedFetalWeightForAge(
+    age: gestationalAge,
+    measurementResult:
+        IntergrowthHadlockEstimatedFetalWeightForAge.estimateWeight(
+          headCircumference: headCircumference,
+          abdominalCircumference: abdominalCircumference,
+          femurLength: femurLength,
+        ),
+  );
+
+  /// INTERGROWTH-21st original Estimated Fetal Weight standards (22+0 to 40+0 weeks GA).
+  IntergrowthEstimatedFetalWeightForAge estimatedFetalWeight({
+    required GestationalAge gestationalAge,
+    required Mass estimatedWeight,
+  }) => IntergrowthEstimatedFetalWeightForAge(
+    age: gestationalAge,
+    measurementResult: estimatedWeight,
+  );
+
+  /// Computes INTERGROWTH-21st EFW from fetal HC and AC, then evaluates INTERGROWTH-21st EFW standards (22+0 to 40+0 weeks GA).
+  IntergrowthEstimatedFetalWeightForAge estimatedFetalWeightFromBiometry({
+    required GestationalAge gestationalAge,
+    required Length headCircumference,
+    required Length abdominalCircumference,
+  }) => IntergrowthEstimatedFetalWeightForAge(
+    age: gestationalAge,
+    measurementResult: IntergrowthEstimatedFetalWeightForAge.estimateWeight(
+      headCircumference: headCircumference,
+      abdominalCircumference: abdominalCircumference,
+    ),
+  );
+
+  /// Estimates gestational age and optional EDD from first-trimester Crown-Rump Length (15–100 mm).
+  ///
+  /// Reference: Papageorghiou AT et al. Ultrasound Obstet Gynecol. 2014;44:641-648.
+  IntergrowthPregnancyDatingEstimate estimateGestationalAgeByCRL({
+    required Length crl,
+    Date? examinationDate,
+  }) {
+    final crlMm = crl.toMillimeter.value.toDouble();
+    if (crlMm < 15 || crlMm > 100) {
+      throw ArgumentError(
+        'CRL for early pregnancy dating must be between 15 and 100 mm, got $crlMm mm',
+      );
+    }
+    final exactDays = 40.9041 + 3.21585 * math.sqrt(crlMm) + 0.348956 * crlMm;
+    final sdDays = 2.39102 + 0.0193474 * crlMm;
+    return IntergrowthPregnancyDatingEstimate(
+      method: IntergrowthDatingMethod.crl,
+      exactDays: exactDays,
+      sdDays: sdDays,
+      examinationDate: examinationDate,
+    );
+  }
+
+  /// Estimates gestational age and optional EDD in late pregnancy from fetal HC and FL.
+  ///
+  /// Reference: Papageorghiou AT et al. Ultrasound Obstet Gynecol. 2016;48:719-726.
+  IntergrowthPregnancyDatingEstimate estimateGestationalAgeByHCAndFL({
+    required Length headCircumference,
+    required Length femurLength,
+    Date? examinationDate,
+  }) {
+    final hcMm = headCircumference.toMillimeter.value.toDouble();
+    final flMm = femurLength.toMillimeter.value.toDouble();
+    if (hcMm < 60 || hcMm > 330) {
+      throw ArgumentError(
+        'Head circumference for late pregnancy dating must be between 60 and 330 mm, got $hcMm mm',
+      );
+    }
+    if (flMm < 5 || flMm > 90) {
+      throw ArgumentError(
+        'Femur length for late pregnancy dating must be between 5 and 90 mm, got $flMm mm',
+      );
+    }
+    final lnHc = math.log(hcMm);
+    final exactDays = math.exp(
+      0.03243 * lnHc * lnHc + 0.001644 * flMm * lnHc + 3.813,
+    );
+    final sdDays = 0.04009 * exactDays - 1.149;
+    return IntergrowthPregnancyDatingEstimate(
+      method: IntergrowthDatingMethod.hcAndFl,
+      exactDays: exactDays,
+      sdDays: sdDays,
+      examinationDate: examinationDate,
+    );
+  }
+
+  /// Estimates gestational age and optional EDD in late pregnancy from fetal HC alone
+  /// (to be used only when femur length is unavailable).
+  ///
+  /// Reference: Papageorghiou AT et al. Ultrasound Obstet Gynecol. 2016;48:719-726.
+  IntergrowthPregnancyDatingEstimate estimateGestationalAgeByHC({
+    required Length headCircumference,
+    Date? examinationDate,
+  }) {
+    final hcMm = headCircumference.toMillimeter.value.toDouble();
+    if (hcMm < 60 || hcMm > 330) {
+      throw ArgumentError(
+        'Head circumference for late pregnancy dating must be between 60 and 330 mm, got $hcMm mm',
+      );
+    }
+    final lnHc = math.log(hcMm);
+    final exactDays = math.exp(
+      0.0597 * lnHc * lnHc + 6.409e-9 * hcMm * hcMm * hcMm + 3.3258,
+    );
+    final sdDays = 0.6492 * math.pow(exactDays / 100.0, 3).toDouble() + 2.991;
+    return IntergrowthPregnancyDatingEstimate(
+      method: IntergrowthDatingMethod.hcOnly,
+      exactDays: exactDays,
+      sdDays: sdDays,
+      examinationDate: examinationDate,
+    );
+  }
 }
 
 class IntergrowthPostnatalData {

@@ -80,7 +80,9 @@ sealed class WHOGrowthStandardsLengthVelocityForAge extends VelocityBasedResult
           (e) => e.copyWith(
             measurement: adjustedLengthHeight(
               age: age.ageAtPastDate(e.date),
-              measure: e.measurementPosition!,
+              measure:
+                  e.measurementPosition ??
+                  LengthHeightMeasurementPosition.recumbent,
               type: AdjustedLengthType.who,
               lengthHeight: e.measurement,
             ),

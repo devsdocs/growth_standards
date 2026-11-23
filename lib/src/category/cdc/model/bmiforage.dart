@@ -117,6 +117,18 @@ class _CDCBodyMassIndexForAgeLMS extends LMSContext {
 
   final double sigma;
 
+  // CDC 2022 extended BMI-for-age uses half-normal sigma above the 95th
+  // percentile so high SD curves do not blow up under negative Box-Cox L.
+  @override
+  num valueAtZScore(num zScore) {
+    final p = pnorm(zScore) * 100;
+    if (p > 95) {
+      final p95 = lms.percentileCutOff[PercentileValue.$95]!;
+      return p95 + sigma * qnorm((p - 90) / 10);
+    }
+    return lms.standardDeviation(zScore);
+  }
+
   @override
   String toString() => 'Body Mass Index For Age LMS($lms, $sigma)';
 }

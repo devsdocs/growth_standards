@@ -32,6 +32,11 @@ sealed class GestationalAge with _$GestationalAge {
     required Date currentOrBirthDate,
   }) {
     final totalDays = currentOrBirthDate.difference(conceptionDate).inDays + 14;
+    if (totalDays < 0) {
+      throw ArgumentError(
+        'currentOrBirthDate ($currentOrBirthDate) cannot precede LMP derived from conceptionDate ($conceptionDate)',
+      );
+    }
     return GestationalAge(
       weeks: totalDays ~/ DateTime.daysPerWeek,
       days: totalDays % DateTime.daysPerWeek,
@@ -44,6 +49,11 @@ sealed class GestationalAge with _$GestationalAge {
     required Date currentOrBirthDate,
   }) {
     final totalDays = currentOrBirthDate.difference(lmpDate).inDays;
+    if (totalDays < 0) {
+      throw ArgumentError(
+        'currentOrBirthDate ($currentOrBirthDate) cannot precede lmpDate ($lmpDate)',
+      );
+    }
     return GestationalAge(
       weeks: totalDays ~/ DateTime.daysPerWeek,
       days: totalDays % DateTime.daysPerWeek,
@@ -99,7 +109,9 @@ sealed class PostmenstrualAge with _$PostmenstrualAge {
     GestationalAge gestationalAge, {
     int daysOfLife = 0,
   }) {
-    assert(daysOfLife >= 0, 'daysOfLife must be ≥ 0');
+    if (daysOfLife < 0) {
+      throw ArgumentError('daysOfLife must be >= 0, got $daysOfLife');
+    }
     final total = gestationalAge.totalDays + daysOfLife;
     return PostmenstrualAge(
       weeks: total ~/ DateTime.daysPerWeek,
@@ -116,6 +128,11 @@ sealed class PostmenstrualAge with _$PostmenstrualAge {
     required Date currentDate,
   }) {
     final totalDays = currentDate.difference(conceptionDate).inDays + 14;
+    if (totalDays < 0) {
+      throw ArgumentError(
+        'currentDate ($currentDate) cannot precede LMP derived from conceptionDate ($conceptionDate)',
+      );
+    }
     return PostmenstrualAge(
       weeks: totalDays ~/ DateTime.daysPerWeek,
       days: totalDays % DateTime.daysPerWeek,
@@ -128,6 +145,11 @@ sealed class PostmenstrualAge with _$PostmenstrualAge {
     required Date currentDate,
   }) {
     final totalDays = currentDate.difference(lmpDate).inDays;
+    if (totalDays < 0) {
+      throw ArgumentError(
+        'currentDate ($currentDate) cannot precede lmpDate ($lmpDate)',
+      );
+    }
     return PostmenstrualAge(
       weeks: totalDays ~/ DateTime.daysPerWeek,
       days: totalDays % DateTime.daysPerWeek,

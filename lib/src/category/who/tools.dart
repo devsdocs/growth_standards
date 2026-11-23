@@ -82,7 +82,17 @@ const _velocityEnum = {
   6: VelocityIncrement.$6,
 };
 
-VelocityIncrement parseIncrement(int val) => _velocityEnum[val]!;
+VelocityIncrement parseIncrement(int val) {
+  final inc = _velocityEnum[val];
+  if (inc == null) {
+    throw ArgumentError.value(
+      val,
+      'val',
+      'Supported WHO velocity increments are 1, 2, 3, 4, or 6 months',
+    );
+  }
+  return inc;
+}
 
 /// Runtime guards for WHO velocity inputs (A7). Freezed `@Assert` only runs in
 /// debug; this throws [ArgumentError] in all modes before scoring.

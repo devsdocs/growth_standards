@@ -216,6 +216,39 @@ Map<String, dynamic> _$IntergrowthFetalGrowtBiparietalDiameterForAgeToJson(
   'measurementResult': instance.measurementResult.toJson(),
 };
 
+_IntergrowthHadlockEstimatedFetalWeightForAge
+_$IntergrowthHadlockEstimatedFetalWeightForAgeFromJson(
+  Map<String, dynamic> json,
+) => _IntergrowthHadlockEstimatedFetalWeightForAge(
+  age: GestationalAge.fromJson(json['age'] as Map<String, dynamic>),
+  measurementResult: Mass.fromJson(
+    json['measurementResult'] as Map<String, dynamic>,
+  ),
+);
+
+Map<String, dynamic> _$IntergrowthHadlockEstimatedFetalWeightForAgeToJson(
+  _IntergrowthHadlockEstimatedFetalWeightForAge instance,
+) => <String, dynamic>{
+  'age': instance.age.toJson(),
+  'measurementResult': instance.measurementResult.toJson(),
+};
+
+_IntergrowthEstimatedFetalWeightForAge
+_$IntergrowthEstimatedFetalWeightForAgeFromJson(Map<String, dynamic> json) =>
+    _IntergrowthEstimatedFetalWeightForAge(
+      age: GestationalAge.fromJson(json['age'] as Map<String, dynamic>),
+      measurementResult: Mass.fromJson(
+        json['measurementResult'] as Map<String, dynamic>,
+      ),
+    );
+
+Map<String, dynamic> _$IntergrowthEstimatedFetalWeightForAgeToJson(
+  _IntergrowthEstimatedFetalWeightForAge instance,
+) => <String, dynamic>{
+  'age': instance.age.toJson(),
+  'measurementResult': instance.measurementResult.toJson(),
+};
+
 _IntergrowthFetalGrowtFemurLengthForAge
 _$IntergrowthFetalGrowtFemurLengthForAgeFromJson(Map<String, dynamic> json) =>
     _IntergrowthFetalGrowtFemurLengthForAge(
@@ -294,6 +327,32 @@ Map<String, dynamic> _$IntergrowthGestationalWeightGainForAgeToJson(
 ) => <String, dynamic>{
   'age': instance.age.toJson(),
   'measurementResult': instance.measurementResult.toJson(),
+};
+
+_IntergrowthPregnancyDatingEstimate
+_$IntergrowthPregnancyDatingEstimateFromJson(Map<String, dynamic> json) =>
+    _IntergrowthPregnancyDatingEstimate(
+      method: $enumDecode(_$IntergrowthDatingMethodEnumMap, json['method']),
+      exactDays: (json['exactDays'] as num).toDouble(),
+      sdDays: (json['sdDays'] as num).toDouble(),
+      examinationDate: json['examinationDate'] == null
+          ? null
+          : Date.fromJson(json['examinationDate'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$IntergrowthPregnancyDatingEstimateToJson(
+  _IntergrowthPregnancyDatingEstimate instance,
+) => <String, dynamic>{
+  'method': _$IntergrowthDatingMethodEnumMap[instance.method]!,
+  'exactDays': instance.exactDays,
+  'sdDays': instance.sdDays,
+  'examinationDate': instance.examinationDate?.toJson(),
+};
+
+const _$IntergrowthDatingMethodEnumMap = {
+  IntergrowthDatingMethod.crl: 'crl',
+  IntergrowthDatingMethod.hcAndFl: 'hcAndFl',
+  IntergrowthDatingMethod.hcOnly: 'hcOnly',
 };
 
 _IntergrowthSymphysisFundalHeightForAge
